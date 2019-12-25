@@ -1,0 +1,44 @@
+# Object files
+*.o
+*.ko
+*.obj
+*.elf
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Libraries
+*.lib
+*.a
+*.la
+*.lo
+
+# Shared objects (inc. Windows DLLs)
+*.dll
+*kefile.so
+*.so.*
+*.dylib
+
+# Executables
+*.exe
+*.out
+*.app
+*.i*86
+*.x86_64
+*.hex
+
+# Automake files
+config/
+config.*
+Makefile
+Makefile.in
+aclocal.m4
+autom4te.cache/
+*.dirstamp
+.deps/
+
+# MacOSX
+.DS_Store
+xcuserdata/
+*.xcworkspace/
