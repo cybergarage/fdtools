@@ -12,15 +12,15 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-AM_CFLAGS = -I$(top_builddir)/include
+bin_PROGRAMS = fdread
 
-noinst_PROGRAMS = fdinfo
+AM_CFLAGS = -I$(top_builddir)/include -I../
 
-fdinfo_SOURCES = \
-	../main.c
+fdread_SOURCES = \
+	..//main.c
 
 #if HAVE_LIBTOOL
-#fdinfo_LDADD = ../../../../lib/unix/libfdtools.la
+#fdread_LDADD = ../../../lib/unix/libfdtools.la
 #else
-fdinfo_LDADD = ../../../../lib/unix/libfdtools.a
+fdread_LDADD = ../../../lib/unix/libfdtools.a
 #endif
