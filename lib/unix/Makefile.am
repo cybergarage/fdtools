@@ -1,6 +1,3 @@
-#!/bin/bash
-# Copyright (C) 2020 Satoshi Konno. All rights reserved.
-#
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
@@ -12,26 +9,28 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+#
+#if HAVE_LIBTOOL
+#lib_LTLIBRARIES = libfdtools.la
+#else
+lib_LIBRARIES = libfdtools.a
+#endif
 
-makefiles=(
-"include"
-"lib/unix"
-"test/unix"
-)
+AM_CFLAGS = -I$(top_builddir)/include
 
-for makefile in "${makefiles[@]}"
-do
-    pushd $makefile && ./Makefile.am.build > Makefile.am && popd
-done
+fdtools_sources = \
+	../../src/fdtools/dummy.c
 
-if [ ! -d config ]; then
-    mkdir config
-fi
-if [ ! -d autom4te.cache ]; then
-	rm -rf autom4te.cache/*
-fi
+libfdtoolsincludedir = $(includedir)/fdtools
+nobase_libfdtoolsinclude_HEADERS =  \
+        $(fdtools_headers)
 
-aclocal
-autoheader
-automake --foreign --add-missing --copy
-autoconf 
+#if HAVE_LIBTOOL
+#libfdtools_la_SOURCES = \
+#        $(fdtools_source)
+#libfdtools_la_CFLAGS = $(AM_CFLAGS)
+#else
+libfdtools_a_SOURCES = \
+        $(fdtools_sources)
+libfdtools_a_CFLAGS = $(AM_CFLAGS)
+#endif

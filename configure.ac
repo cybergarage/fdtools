@@ -53,6 +53,27 @@ if [ test "$enable_debug" = yes ]; then
 fi
 
 ##############################
+# Testing
+##############################
+
+AC_ARG_ENABLE(
+        [test],
+        AC_HELP_STRING([--enable-test], [ build tests (default = no) ]),
+        [case "${enableval}" in
+        yes | no ) build_test="${enableval}" ;;
+        esac],
+        []
+)
+
+AM_CONDITIONAL(FTOOLS_ENABLE_TEST,test "$build_test" = yes)
+if [ test "$build_test" = yes ]; then
+        AC_CHECK_LIB([boost_system-mt],[main],,
+                [AC_CHECK_LIB([boost_system],[main],,[AC_MSG_ERROR(fdtools needs boost::system)])])
+        AC_CHECK_LIB([boost_unit_test_framework-mt],[main],,
+                [AC_CHECK_LIB([boost_unit_test_framework],[main],,[AC_MSG_ERROR(fdtools needs boost::unit_test_framework)])])
+fi
+
+##############################
 # Makefiles
 ##############################
 
@@ -65,7 +86,9 @@ bin/Makefile
 bin/fdwrite/Makefile
 bin/fdwrite/unix/Makefile
 bin/fdread/Makefile
-bin/fdwrite/unix/Makefile
+bin/fdread/unix/Makefile
 bin/fdinfo/Makefile
 bin/fdinfo/unix/Makefile
+test/Makefile
+test/unix/Makefile
 ])

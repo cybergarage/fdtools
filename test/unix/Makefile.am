@@ -1,4 +1,3 @@
-#!/bin/bash
 # Copyright (C) 2020 Satoshi Konno. All rights reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,25 +12,18 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-makefiles=(
-"include"
-"lib/unix"
-"test/unix"
-)
+TESTS = fdtoolstest
 
-for makefile in "${makefiles[@]}"
-do
-    pushd $makefile && ./Makefile.am.build > Makefile.am && popd
-done
+check_PROGRAMS = fdtoolstest
 
-if [ ! -d config ]; then
-    mkdir config
-fi
-if [ ! -d autom4te.cache ]; then
-	rm -rf autom4te.cache/*
-fi
+AM_CPPFLAGS = -I$(top_builddir)/include -I../
 
-aclocal
-autoheader
-automake --foreign --add-missing --copy
-autoconf 
+
+fdtoolstest_SOURCES = \
+	..//fdtools_test.cpp
+
+#if HAVE_LIBTOOL
+#fdtoolstest_LDADD = ../../lib/unix/libfdtools.la
+#else
+fdtoolstest_LDADD = ../../lib/unix/libfdtools.a
+#endif
