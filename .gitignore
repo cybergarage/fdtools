@@ -42,3 +42,6 @@ autom4te.cache/
 .DS_Store
 xcuserdata/
 *.xcworkspace/
+
+# UNIX Binaries
+bin/*/unix/*
