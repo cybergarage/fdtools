@@ -12,31 +12,14 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef _FDTOOLS_PLATFORM_H_
-#define _FDTOOLS_PLATFORM_H_
+#include <fdtools/bios/bios.h>
 
-#include <stdlib.h>
+bool fdtools_bios_seek(int deviceNo, int cylinderNo)
+{
+    return true;
+}
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-#if defined(C99) || defined(HAVE_STDBOOL_H)
-#include <stdbool.h>
-#else
-#if !defined(bool)
-#define bool int
-#endif
-#if !defined(true)
-#define true 1
-#endif
-#if !defined(false)
-#define false 0
-#endif
-#endif
-
-#ifdef __cplusplus
-} /* extern C */
-#endif
-
-#endif /* _FDTOOLS_PLATFORM_H_ */
+int fdtools_bios_read(int deviceNo, int cylinderNo, int sectorNo, void *buf, int bufSize)
+{
+    return 0;
+}

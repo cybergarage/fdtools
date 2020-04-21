@@ -13,6 +13,7 @@
 # limitations under the License.
 
 fdtoolsheaders = \
+	./fdtools/bios/bios.h \
 	./fdtools/typedef.h
 
 nobase_include_HEADERS = \
