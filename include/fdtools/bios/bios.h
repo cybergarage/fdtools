@@ -22,7 +22,7 @@ extern "C" {
 #endif
 
 bool fdtools_bios_seek(int deviceNo, int cylinderNo);
-int fdtools_bios_read(int deviceNo, int cylinderNo, int sectorNo, void *buf, int bufSize);
+int fdtools_bios_read(int deviceNo, int cylinderNo, int sectorNo, void* buf, int bufSize);
 
 #ifdef __cplusplus
 } /* extern C */

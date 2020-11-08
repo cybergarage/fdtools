@@ -16,10 +16,10 @@
 
 bool fdtools_bios_seek(int deviceNo, int cylinderNo)
 {
-    return true;
+  return true;
 }
 
-int fdtools_bios_read(int deviceNo, int cylinderNo, int sectorNo, void *buf, int bufSize)
+int fdtools_bios_read(int deviceNo, int cylinderNo, int sectorNo, void* buf, int bufSize)
 {
-    return 0;
+  return 0;
 }
