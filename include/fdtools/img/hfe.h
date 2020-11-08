@@ -12,8 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef _FDTOOLS_HFE_H_
-#define _FDTOOLS_HFE_H_
+#ifndef _FDTOOLS_IMG_HFE_H_
+#define _FDTOOLS_IMG_HFE_H_
 
 #include <stdlib.h>
 
@@ -25,4 +25,4 @@ extern "C" {
 } /* extern C */
 #endif
 
-#endif /* _FDTOOLS_HFE_H_ */
+#endif /* _FDTOOLS_IMG_HFE_H_ */
