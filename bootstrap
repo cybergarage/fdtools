@@ -20,6 +20,7 @@ makefiles=(
 "bin/fdinfo/unix"
 "bin/fdwrite/unix"
 "bin/fdread/unix"
+"bin/fdimg/unix"
 )
 
 for makefile in "${makefiles[@]}"

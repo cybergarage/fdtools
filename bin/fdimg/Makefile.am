@@ -12,13 +12,4 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-fdtoolsheaders = \
-	./fdtools/img/fdx.h \
-	./fdtools/img/file.h \
-	./fdtools/img/hfe.h \
-	./fdtools/img/d88.h \
-	./fdtools/bios/bios.h \
-	./fdtools/typedef.h
-
-nobase_include_HEADERS = \
-	$(fdtoolsheaders)
+SUBDIRS = unix 
