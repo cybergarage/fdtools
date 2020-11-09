@@ -15,7 +15,7 @@
 AC_CONFIG_AUX_DIR(config)
 AM_CONFIG_HEADER(config.h)
 
-AC_INIT([fdutils], [0.1])
+AC_INIT([fdtools], [0.1])
 AC_CONFIG_SRCDIR([include/fdtools/typedef.h])
 AM_INIT_AUTOMAKE([subdir-objects])
 
@@ -65,7 +65,7 @@ AC_ARG_ENABLE(
         []
 )
 
-AM_CONDITIONAL(FTOOLS_ENABLE_TEST,test "$build_test" = yes)
+AM_CONDITIONAL(FDTOOLS_ENABLE_TEST,test "$build_test" = yes)
 if [ test "$build_test" = yes ]; then
         AC_CHECK_LIB([boost_system-mt],[main],,
                 [AC_CHECK_LIB([boost_system],[main],,[AC_MSG_ERROR(fdtools needs boost::system)])])

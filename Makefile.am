@@ -15,6 +15,6 @@
 SUBDIRS = include lib
 SUBDIRS += bin
 
-if FTOOLS_ENABLE_TEST
+if FDTOOLS_ENABLE_TEST
 SUBDIRS += test
 endif
