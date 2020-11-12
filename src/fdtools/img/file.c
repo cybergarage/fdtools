@@ -12,20 +12,15 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef _FDTOOLS_BIOS_BIOS_H_
-#define _FDTOOLS_BIOS_BIOS_H_
+#include <fdtools/img/file.h>
 
-#include <fdtools/typedef.h>
+bool fdt_bios_seek(int deviceNo, int cylinderNo)
+{
+  return true;
+}
 
-#ifdef __cplusplus
-extern "C" {
-#endif
+int fdt_bios_read(int deviceNo, int cylinderNo, int sectorNo, void* buf, int bufSize)
+{
+  return 0;
+}
 
-bool fdt_bios_seek(int deviceNo, int cylinderNo);
-int fdt_bios_read(int deviceNo, int cylinderNo, int sectorNo, void* buf, int bufSize);
-
-#ifdef __cplusplus
-} /* extern C */
-#endif
-
-#endif /* _FDTOOLS_BIOS_BIOS_H_ */

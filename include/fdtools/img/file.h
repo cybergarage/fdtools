@@ -16,6 +16,7 @@
 #define _FDTOOLS_IMG_HEADER_H_
 
 #include <stdlib.h>
+#include <fdtools/typedef.h>
 
 #ifdef __cplusplus
 extern "C" {

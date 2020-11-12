@@ -42,8 +42,8 @@
 		21ED0F0E255D9CD300FF941B = {
 			isa = PBXGroup;
 			children = (
-				218B7801255DA7D300B635D6 /* Sources */,
 				218B77FE255DA79F00B635D6 /* Headers */,
+				218B7801255DA7D300B635D6 /* Sources */,
 				21ED0F18255D9CD300FF941B /* Products */,
 			);
 			sourceTree = "<group>";

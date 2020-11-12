@@ -14,12 +14,12 @@
 
 #include <fdtools/bios/bios.h>
 
-bool fdtools_bios_seek(int deviceNo, int cylinderNo)
+bool fdt_bios_seek(int deviceNo, int cylinderNo)
 {
   return true;
 }
 
-int fdtools_bios_read(int deviceNo, int cylinderNo, int sectorNo, void* buf, int bufSize)
+int fdt_bios_read(int deviceNo, int cylinderNo, int sectorNo, void* buf, int bufSize)
 {
   return 0;
 }
