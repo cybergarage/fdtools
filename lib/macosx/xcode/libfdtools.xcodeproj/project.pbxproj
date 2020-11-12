@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXFileReference section */
-		216FD0CA255D9EAA005C01F4 /* fdtools */ = {isa = PBXFileReference; lastKnownFileType = folder; name = fdtools; path = ../../../../include/fdtools; sourceTree = "<group>"; };
-		216FD0CB255D9EFB005C01F4 /* fdtools */ = {isa = PBXFileReference; lastKnownFileType = folder; name = fdtools; path = ../../../../src/fdtools; sourceTree = "<group>"; };
+		218B77FF255DA7B100B635D6 /* fdtools */ = {isa = PBXFileReference; lastKnownFileType = folder; name = fdtools; path = ../../../include/fdtools; sourceTree = "<group>"; };
+		218B7802255DA7E900B635D6 /* fdtools */ = {isa = PBXFileReference; lastKnownFileType = folder; name = fdtools; path = ../../../src/fdtools; sourceTree = "<group>"; };
 		21ED0F17255D9CD300FF941B /* libfdtools.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libfdtools.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -23,27 +23,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		216FD0C8255D9E77005C01F4 /* Sources */ = {
+		218B77FE255DA79F00B635D6 /* Headers */ = {
 			isa = PBXGroup;
 			children = (
-				216FD0CB255D9EFB005C01F4 /* fdtools */,
+				218B77FF255DA7B100B635D6 /* fdtools */,
 			);
-			path = Sources;
+			name = Headers;
 			sourceTree = "<group>";
 		};
-		216FD0C9255D9E82005C01F4 /* Headers */ = {
+		218B7801255DA7D300B635D6 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				216FD0CA255D9EAA005C01F4 /* fdtools */,
+				218B7802255DA7E900B635D6 /* fdtools */,
 			);
-			path = Headers;
+			name = Sources;
 			sourceTree = "<group>";
 		};
 		21ED0F0E255D9CD300FF941B = {
 			isa = PBXGroup;
 			children = (
-				216FD0C9255D9E82005C01F4 /* Headers */,
-				216FD0C8255D9E77005C01F4 /* Sources */,
+				218B7801255DA7D300B635D6 /* Sources */,
+				218B77FE255DA79F00B635D6 /* Headers */,
 				21ED0F18255D9CD300FF941B /* Products */,
 			);
 			sourceTree = "<group>";
@@ -180,7 +180,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				LIBRARY_SEARCH_PATHS = ../../../../include;
-				MACH_O_TYPE = staticlib;
+				MACH_O_TYPE = mh_dylib;
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -235,7 +235,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				LIBRARY_SEARCH_PATHS = ../../../../include;
-				MACH_O_TYPE = staticlib;
+				MACH_O_TYPE = mh_dylib;
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
