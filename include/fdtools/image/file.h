@@ -12,8 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef _FDTOOLS_IMG_EADER_H_
-#define _FDTOOLS_IMG_HEADER_H_
+#ifndef _FDTOOLS_IMG_FILE_H_
+#define _FDTOOLS_IMG_FILE_H_
 
 #include <fdtools/typedef.h>
 #include <stdlib.h>
@@ -28,4 +28,4 @@ bool fdt_image_getfiletype(const char* filename);
 } /* extern C */
 #endif
 
-#endif /* _FDTOOLS_IMG_HEADER_H_ */
+#endif /* _FDTOOLS_IMG_FILE_H_ */
