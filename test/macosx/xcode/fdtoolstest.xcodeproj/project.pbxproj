@@ -9,22 +9,22 @@
 /* Begin PBXBuildFile section */
 		211519B8255DA6DA00B747E1 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 211519B7255DA6DA00B747E1 /* main.cpp */; };
 		211519BB255DA6E100B747E1 /* img_test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 211519BA255DA6E100B747E1 /* img_test.cpp */; };
-		21EF9AFA255DAD050025CF8B /* libfdtools.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 218B780A255DA8B000B635D6 /* libfdtools.dylib */; };
+		21B2526B255DB1E500094B1D /* libfdtools.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 21B25266255DB1CD00094B1D /* libfdtools.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		218B7809255DA8B000B635D6 /* PBXContainerItemProxy */ = {
+		21B25265255DB1CD00094B1D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 218B7805255DA8B000B635D6 /* libfdtools.xcodeproj */;
+			containerPortal = 21B25261255DB1CD00094B1D /* libfdtools.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = 21ED0F17255D9CD300FF941B;
+			remoteGlobalIDString = 213AA829255DB05700C00188;
 			remoteInfo = libfdtools;
 		};
-		218B780D255DA8BC00B635D6 /* PBXContainerItemProxy */ = {
+		21B25269255DB1E100094B1D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 218B7805255DA8B000B635D6 /* libfdtools.xcodeproj */;
+			containerPortal = 21B25261255DB1CD00094B1D /* libfdtools.xcodeproj */;
 			proxyType = 1;
-			remoteGlobalIDString = 21ED0F16255D9CD300FF941B;
+			remoteGlobalIDString = 213AA828255DB05700C00188;
 			remoteInfo = libfdtools;
 		};
 /* End PBXContainerItemProxy section */
@@ -45,7 +45,7 @@
 		211519B7255DA6DA00B747E1 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = ../../main.cpp; sourceTree = "<group>"; };
 		211519BA255DA6E100B747E1 /* img_test.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = img_test.cpp; path = ../../img_test.cpp; sourceTree = "<group>"; };
 		216FD0D6255D9F71005C01F4 /* fdtoolstest */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = fdtoolstest; sourceTree = BUILT_PRODUCTS_DIR; };
-		218B7805255DA8B000B635D6 /* libfdtools.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = libfdtools.xcodeproj; path = ../../../lib/macosx/xcode/libfdtools.xcodeproj; sourceTree = "<group>"; };
+		21B25261255DB1CD00094B1D /* libfdtools.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = libfdtools.xcodeproj; path = ../../../lib/macosx/xcode/libfdtools.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,7 +53,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				21EF9AFA255DAD050025CF8B /* libfdtools.dylib in Frameworks */,
+				21B2526B255DB1E500094B1D /* libfdtools.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -90,7 +90,7 @@
 		216FD0ED255DA4E6005C01F4 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
-				218B7805255DA8B000B635D6 /* libfdtools.xcodeproj */,
+				21B25261255DB1CD00094B1D /* libfdtools.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -102,10 +102,10 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		218B7806255DA8B000B635D6 /* Products */ = {
+		21B25262255DB1CD00094B1D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				218B780A255DA8B000B635D6 /* libfdtools.dylib */,
+				21B25266255DB1CD00094B1D /* libfdtools.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -124,7 +124,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				218B780E255DA8BC00B635D6 /* PBXTargetDependency */,
+				21B2526A255DB1E100094B1D /* PBXTargetDependency */,
 			);
 			name = fdtoolstest;
 			productName = fdtoolstest;
@@ -157,8 +157,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = 218B7806255DA8B000B635D6 /* Products */;
-					ProjectRef = 218B7805255DA8B000B635D6 /* libfdtools.xcodeproj */;
+					ProductGroup = 21B25262255DB1CD00094B1D /* Products */;
+					ProjectRef = 21B25261255DB1CD00094B1D /* libfdtools.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -169,11 +169,11 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		218B780A255DA8B000B635D6 /* libfdtools.dylib */ = {
+		21B25266255DB1CD00094B1D /* libfdtools.a */ = {
 			isa = PBXReferenceProxy;
-			fileType = "compiled.mach-o.dylib";
-			path = libfdtools.dylib;
-			remoteRef = 218B7809255DA8B000B635D6 /* PBXContainerItemProxy */;
+			fileType = archive.ar;
+			path = libfdtools.a;
+			remoteRef = 21B25265255DB1CD00094B1D /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -191,10 +191,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		218B780E255DA8BC00B635D6 /* PBXTargetDependency */ = {
+		21B2526A255DB1E100094B1D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = libfdtools;
-			targetProxy = 218B780D255DA8BC00B635D6 /* PBXContainerItemProxy */;
+			targetProxy = 21B25269255DB1E100094B1D /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 

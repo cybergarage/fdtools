@@ -7,13 +7,13 @@
 	objects = {
 
 /* Begin PBXFileReference section */
-		218B77FF255DA7B100B635D6 /* fdtools */ = {isa = PBXFileReference; lastKnownFileType = folder; name = fdtools; path = ../../../include/fdtools; sourceTree = "<group>"; };
-		218B7802255DA7E900B635D6 /* fdtools */ = {isa = PBXFileReference; lastKnownFileType = folder; name = fdtools; path = ../../../src/fdtools; sourceTree = "<group>"; };
-		21ED0F17255D9CD300FF941B /* libfdtools.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libfdtools.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		213AA829255DB05700C00188 /* libfdtools.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libfdtools.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		216F3666255DB161004507DF /* fdtools */ = {isa = PBXFileReference; lastKnownFileType = folder; name = fdtools; path = ../../../include/fdtools; sourceTree = "<group>"; };
+		216F3668255DB180004507DF /* fdtools */ = {isa = PBXFileReference; lastKnownFileType = folder; name = fdtools; path = ../../../src/fdtools; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		21ED0F15255D9CD300FF941B /* Frameworks */ = {
+		213AA827255DB05700C00188 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -23,43 +23,43 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		218B77FE255DA79F00B635D6 /* Headers */ = {
+		213AA820255DB05700C00188 = {
 			isa = PBXGroup;
 			children = (
-				218B77FF255DA7B100B635D6 /* fdtools */,
+				216F3665255DB14E004507DF /* Headers */,
+				216F3667255DB165004507DF /* Sources */,
+				213AA82A255DB05700C00188 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		213AA82A255DB05700C00188 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				213AA829255DB05700C00188 /* libfdtools.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		216F3665255DB14E004507DF /* Headers */ = {
+			isa = PBXGroup;
+			children = (
+				216F3666255DB161004507DF /* fdtools */,
 			);
 			name = Headers;
 			sourceTree = "<group>";
 		};
-		218B7801255DA7D300B635D6 /* Sources */ = {
+		216F3667255DB165004507DF /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				218B7802255DA7E900B635D6 /* fdtools */,
+				216F3668255DB180004507DF /* fdtools */,
 			);
 			name = Sources;
-			sourceTree = "<group>";
-		};
-		21ED0F0E255D9CD300FF941B = {
-			isa = PBXGroup;
-			children = (
-				218B77FE255DA79F00B635D6 /* Headers */,
-				218B7801255DA7D300B635D6 /* Sources */,
-				21ED0F18255D9CD300FF941B /* Products */,
-			);
-			sourceTree = "<group>";
-		};
-		21ED0F18255D9CD300FF941B /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				21ED0F17255D9CD300FF941B /* libfdtools.dylib */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		21ED0F13255D9CD300FF941B /* Headers */ = {
+		213AA825255DB05700C00188 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -69,13 +69,13 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		21ED0F16255D9CD300FF941B /* libfdtools */ = {
+		213AA828255DB05700C00188 /* libfdtools */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 21ED0F1B255D9CD300FF941B /* Build configuration list for PBXNativeTarget "libfdtools" */;
+			buildConfigurationList = 213AA82D255DB05700C00188 /* Build configuration list for PBXNativeTarget "libfdtools" */;
 			buildPhases = (
-				21ED0F13255D9CD300FF941B /* Headers */,
-				21ED0F14255D9CD300FF941B /* Sources */,
-				21ED0F15255D9CD300FF941B /* Frameworks */,
+				213AA825255DB05700C00188 /* Headers */,
+				213AA826255DB05700C00188 /* Sources */,
+				213AA827255DB05700C00188 /* Frameworks */,
 			);
 			buildRules = (
 			);
@@ -83,23 +83,23 @@
 			);
 			name = libfdtools;
 			productName = libfdtools;
-			productReference = 21ED0F17255D9CD300FF941B /* libfdtools.dylib */;
-			productType = "com.apple.product-type.library.dynamic";
+			productReference = 213AA829255DB05700C00188 /* libfdtools.a */;
+			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		21ED0F0F255D9CD300FF941B /* Project object */ = {
+		213AA821255DB05700C00188 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 1210;
 				TargetAttributes = {
-					21ED0F16255D9CD300FF941B = {
+					213AA828255DB05700C00188 = {
 						CreatedOnToolsVersion = 12.1;
 					};
 				};
 			};
-			buildConfigurationList = 21ED0F12255D9CD300FF941B /* Build configuration list for PBXProject "libfdtools" */;
+			buildConfigurationList = 213AA824255DB05700C00188 /* Build configuration list for PBXProject "libfdtools" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -107,18 +107,18 @@
 				en,
 				Base,
 			);
-			mainGroup = 21ED0F0E255D9CD300FF941B;
-			productRefGroup = 21ED0F18255D9CD300FF941B /* Products */;
+			mainGroup = 213AA820255DB05700C00188;
+			productRefGroup = 213AA82A255DB05700C00188 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				21ED0F16255D9CD300FF941B /* libfdtools */,
+				213AA828255DB05700C00188 /* libfdtools */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		21ED0F14255D9CD300FF941B /* Sources */ = {
+		213AA826255DB05700C00188 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -128,7 +128,7 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		21ED0F19255D9CD300FF941B /* Debug */ = {
+		213AA82B255DB05700C00188 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -179,9 +179,10 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = ../../../include;
-				LIBRARY_SEARCH_PATHS = "";
-				MACH_O_TYPE = mh_dylib;
+				HEADER_SEARCH_PATHS = (
+					/usr/local/include,
+					../../../include,
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -190,7 +191,7 @@
 			};
 			name = Debug;
 		};
-		21ED0F1A255D9CD300FF941B /* Release */ = {
+		213AA82C255DB05700C00188 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -235,9 +236,10 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = ../../../include;
-				LIBRARY_SEARCH_PATHS = "";
-				MACH_O_TYPE = mh_dylib;
+				HEADER_SEARCH_PATHS = (
+					/usr/local/include,
+					../../../include,
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -245,24 +247,20 @@
 			};
 			name = Release;
 		};
-		21ED0F1C255D9CD300FF941B /* Debug */ = {
+		213AA82E255DB05700C00188 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
 				EXECUTABLE_PREFIX = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
 		};
-		21ED0F1D255D9CD300FF941B /* Release */ = {
+		213AA82F255DB05700C00188 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
 				EXECUTABLE_PREFIX = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -272,25 +270,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		21ED0F12255D9CD300FF941B /* Build configuration list for PBXProject "libfdtools" */ = {
+		213AA824255DB05700C00188 /* Build configuration list for PBXProject "libfdtools" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				21ED0F19255D9CD300FF941B /* Debug */,
-				21ED0F1A255D9CD300FF941B /* Release */,
+				213AA82B255DB05700C00188 /* Debug */,
+				213AA82C255DB05700C00188 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		21ED0F1B255D9CD300FF941B /* Build configuration list for PBXNativeTarget "libfdtools" */ = {
+		213AA82D255DB05700C00188 /* Build configuration list for PBXNativeTarget "libfdtools" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				21ED0F1C255D9CD300FF941B /* Debug */,
-				21ED0F1D255D9CD300FF941B /* Release */,
+				213AA82E255DB05700C00188 /* Debug */,
+				213AA82F255DB05700C00188 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 21ED0F0F255D9CD300FF941B /* Project object */;
+	rootObject = 213AA821255DB05700C00188 /* Project object */;
 }
