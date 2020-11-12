@@ -12,15 +12,9 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include <fdtools/img/file.h>
+#include <fdtools/image/file.h>
 
-bool fdt_bios_seek(int deviceNo, int cylinderNo)
+bool fdt_image_getfiletype(const char* filename)
 {
   return true;
 }
-
-int fdt_bios_read(int deviceNo, int cylinderNo, int sectorNo, void* buf, int bufSize)
-{
-  return 0;
-}
-

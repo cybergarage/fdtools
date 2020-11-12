@@ -13,7 +13,9 @@
 // limitations under the License.
 
 #include <boost/test/unit_test.hpp>
+#include <fdtools/image/file.h>
 
 BOOST_AUTO_TEST_CASE(ImageTest)
 {
+    fdt_image_getfiletype("");
 }

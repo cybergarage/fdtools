@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		211519B8255DA6DA00B747E1 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 211519B7255DA6DA00B747E1 /* main.cpp */; };
 		211519BB255DA6E100B747E1 /* img_test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 211519BA255DA6E100B747E1 /* img_test.cpp */; };
+		21EF9AFA255DAD050025CF8B /* libfdtools.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 218B780A255DA8B000B635D6 /* libfdtools.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +53,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				21EF9AFA255DAD050025CF8B /* libfdtools.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -250,7 +252,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
 					/usr/local/include,
-					../../..,
+					../../../include,
 				);
 				LIBRARY_SEARCH_PATHS = /usr/local/lib;
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
@@ -310,7 +312,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
 					/usr/local/include,
-					../../..,
+					../../../include,
 				);
 				LIBRARY_SEARCH_PATHS = /usr/local/lib;
 				MACOSX_DEPLOYMENT_TARGET = 10.15;

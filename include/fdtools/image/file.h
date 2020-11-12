@@ -15,12 +15,14 @@
 #ifndef _FDTOOLS_IMG_EADER_H_
 #define _FDTOOLS_IMG_HEADER_H_
 
-#include <stdlib.h>
 #include <fdtools/typedef.h>
+#include <stdlib.h>
 
 #ifdef __cplusplus
 extern "C" {
 #endif
+
+bool fdt_image_getfiletype(const char* filename);
 
 #ifdef __cplusplus
 } /* extern C */
