@@ -6,10 +6,14 @@
 	objectVersion = 50;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		21E273C3255DB305008AC447 /* file.c in Sources */ = {isa = PBXBuildFile; fileRef = 21E273C2255DB305008AC447 /* file.c */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		213AA829255DB05700C00188 /* libfdtools.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libfdtools.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		216F3666255DB161004507DF /* fdtools */ = {isa = PBXFileReference; lastKnownFileType = folder; name = fdtools; path = ../../../include/fdtools; sourceTree = "<group>"; };
-		216F3668255DB180004507DF /* fdtools */ = {isa = PBXFileReference; lastKnownFileType = folder; name = fdtools; path = ../../../src/fdtools; sourceTree = "<group>"; };
+		21E273C2255DB305008AC447 /* file.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = file.c; path = ../../../src/fdtools/image/file.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,9 +57,33 @@
 		216F3667255DB165004507DF /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				216F3668255DB180004507DF /* fdtools */,
+				21E273BF255DB2D5008AC447 /* fdtools */,
 			);
 			name = Sources;
+			sourceTree = "<group>";
+		};
+		21E273BF255DB2D5008AC447 /* fdtools */ = {
+			isa = PBXGroup;
+			children = (
+				21E273C0255DB2DC008AC447 /* bios */,
+				21E273C1255DB2E2008AC447 /* image */,
+			);
+			name = fdtools;
+			sourceTree = "<group>";
+		};
+		21E273C0255DB2DC008AC447 /* bios */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = bios;
+			sourceTree = "<group>";
+		};
+		21E273C1255DB2E2008AC447 /* image */ = {
+			isa = PBXGroup;
+			children = (
+				21E273C2255DB305008AC447 /* file.c */,
+			);
+			name = image;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -124,6 +152,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				21E273C3255DB305008AC447 /* file.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
