@@ -22,7 +22,7 @@
 extern "C" {
 #endif
 
-bool fdt_image_getfiletype(const char* filename);
+bool fdt_img_getfiletype(const char* filename);
 
 #ifdef __cplusplus
 } /* extern C */

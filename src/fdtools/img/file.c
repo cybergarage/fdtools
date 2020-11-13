@@ -12,9 +12,9 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include <fdtools/image/file.h>
+#include <fdtools/img/file.h>
 
-bool fdt_image_getfiletype(const char* filename)
+bool fdt_img_getfiletype(const char* filename)
 {
   return true;
 }
