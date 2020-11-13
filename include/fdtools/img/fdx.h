@@ -21,6 +21,8 @@
 extern "C" {
 #endif
 
+#define FDX_IMAGE_HEADER_SIGNATURE "FDX"
+
 typedef struct {
   BYTE signature[3]; // 識別子('F','D','X')
   BYTE revision; // リビジョン(3)
