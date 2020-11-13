@@ -12,10 +12,22 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef _FDTOOLS_PLATFORM_H_
-#define _FDTOOLS_PLATFORM_H_
+#ifndef _FDTOOLS_TYPEDEF_H_
+#define _FDTOOLS_TYPEDEF_H_
 
 #include <stdlib.h>
+
+#if defined(__APPLE_CPP__) || defined(__APPLE_CC__)
+#include <TargetConditionals.h>
+#endif
+
+#ifdef HAVE_CONFIG_H
+#include "config.h"
+#else
+#if defined(__APPLE_CPP__) || defined(__APPLE_CC__) || defined(WIN32)
+#define HAVE_SNPRINTF 1
+#endif
+#endif
 
 #ifdef __cplusplus
 extern "C" {
@@ -39,4 +51,4 @@ extern "C" {
 } /* extern C */
 #endif
 
-#endif /* _FDTOOLS_PLATFORM_H_ */
+#endif /* _FDTOOLS_TYPEDEF_H_ */

@@ -14,14 +14,15 @@
 
 #include <stdio.h>
 #include <string.h>
+
 #include <fdtools/img/file.h>
 
 FdtImageType fdt_img_file_gettype(const char* filename)
 {
-  FILE *fp = fopen(filename, "rp");
+  FILE* fp = fopen(filename, "rp");
   if (!fp)
     return FDT_IMAGE_TYPE_UNKNOWN;
-  
+
   char sig[FDT_IMAGE_HEADER_SIGNATURE_MAX];
   if (fread(sig, sizeof(char), FDT_IMAGE_HEADER_SIGNATURE_MAX, fp) != FDT_IMAGE_HEADER_SIGNATURE_MAX) {
     return FDT_IMAGE_TYPE_UNKNOWN;

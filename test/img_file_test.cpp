@@ -16,15 +16,15 @@
 #include <fdtools/img/file.h>
 #include <fdtools/util/array.h>
 
-const char *TEST_IMAGE_DIRECTORY = "./img";
+const char* TEST_IMAGE_DIRECTORY = "./img";
 
 BOOST_AUTO_TEST_CASE(HfeImageTest)
 {
-    const char *TEST_HFE_IMAGES[][64]  = {
-        "cpm-x1-v220-blank.hfe"
-    };
- 
-    for (int n = 0; n<fdt_array_countof(TEST_HFE_IMAGES); n++) {
-        fdt_img_file_gettype(*TEST_HFE_IMAGES[n]);
-    }
+  const char* TEST_HFE_IMAGES[][64] = {
+    "cpm-x1-v220-blank.hfe"
+  };
+
+  for (int n = 0; n < fdt_array_countof(TEST_HFE_IMAGES); n++) {
+    fdt_img_file_gettype(*TEST_HFE_IMAGES[n]);
+  }
 }

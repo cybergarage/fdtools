@@ -21,7 +21,7 @@
 extern "C" {
 #endif
 
-#define fdt_array_countof(a) (sizeof(a)/sizeof((a)[0]))
+#define fdt_array_countof(a) (sizeof(a) / sizeof((a)[0]))
 
 #ifdef __cplusplus
 } /* extern C */

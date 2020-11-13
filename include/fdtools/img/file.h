@@ -15,12 +15,13 @@
 #ifndef _FDTOOLS_IMG_FILE_H_
 #define _FDTOOLS_IMG_FILE_H_
 
-#include <fdtools/img/header.h>
-#include <fdtools/typedef.h>
 #include <stdlib.h>
+
 #include <fdtools/img/d88.h>
+//#include <fdtools/img/fdx.h>
+#include <fdtools/img/header.h>
 #include <fdtools/img/hfe.h>
-#include <fdtools/img/fdx.h>
+#include <fdtools/typedef.h>
 
 #ifdef __cplusplus
 extern "C" {
