@@ -15,6 +15,7 @@
 #ifndef _FDTOOLS_IMG_FILE_H_
 #define _FDTOOLS_IMG_FILE_H_
 
+#include <fdtools/img/header.h>
 #include <fdtools/typedef.h>
 #include <stdlib.h>
 

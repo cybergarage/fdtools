@@ -12,10 +12,4 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include <boost/test/unit_test.hpp>
-#include <fdtools/img/file.h>
-
-BOOST_AUTO_TEST_CASE(ImageTest)
-{
-  fdt_img_getfiletype("");
-}
+#include <fdtools/img/header.h>

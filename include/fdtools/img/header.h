@@ -12,10 +12,29 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include <boost/test/unit_test.hpp>
-#include <fdtools/img/file.h>
+#ifndef _FDTOOLS_IMG_HEADER_H_
+#define _FDTOOLS_IMG_HEADER_H_
 
-BOOST_AUTO_TEST_CASE(ImageTest)
-{
-  fdt_img_getfiletype("");
-}
+#include <fdtools/img/config.h>
+#include <fdtools/typedef.h>
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+enum FDT_IMAGE_TYPE {
+  FDT_IMAGE_TYPE_UNKNOWN,
+  FDT_IMAGE_TYPE_RAW,
+  FDT_IMAGE_TYPE_HFE,
+  FDT_IMAGE_TYPE_D88,
+};
+
+typedef struct {
+  FDT_IMAGE_CONFIG_MEMBERS
+} FdtImageHeader;
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
+
+#endif /* _FDTOOLS_IMG_FILE_H_ */

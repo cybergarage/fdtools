@@ -12,10 +12,21 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include <boost/test/unit_test.hpp>
-#include <fdtools/img/file.h>
+#include <fdtools/img/config.h>
 
-BOOST_AUTO_TEST_CASE(ImageTest)
+FdtImageConfig* fdt_image_config_new()
 {
-  fdt_img_getfiletype("");
+  FdtImageConfig* config;
+
+  config = (FdtImageConfig*)malloc(sizeof(FdtImageConfig));
+  if (!config) {
+    return NULL;
+  }
+
+  return config;
+}
+
+void fdt_image_config_delete(FdtImageConfig* config)
+{
+  free(config);
 }
