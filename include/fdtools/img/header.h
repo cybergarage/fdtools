@@ -22,12 +22,14 @@
 extern "C" {
 #endif
 
-enum FDT_IMAGE_TYPE {
+const int FDT_IMAGE_HEADER_SIGNATURE_MAX = 8;
+
+typedef enum {
   FDT_IMAGE_TYPE_UNKNOWN,
   FDT_IMAGE_TYPE_RAW,
   FDT_IMAGE_TYPE_HFE,
   FDT_IMAGE_TYPE_D88,
-};
+} FdtImageType;
 
 typedef struct {
   FDT_IMAGE_CONFIG_MEMBERS

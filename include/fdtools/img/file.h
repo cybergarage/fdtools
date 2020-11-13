@@ -18,12 +18,15 @@
 #include <fdtools/img/header.h>
 #include <fdtools/typedef.h>
 #include <stdlib.h>
+#include <fdtools/img/d88.h>
+#include <fdtools/img/hfe.h>
+#include <fdtools/img/fdx.h>
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-bool fdt_img_getfiletype(const char* filename);
+FdtImageType fdt_img_file_gettype(const char* filename);
 
 #ifdef __cplusplus
 } /* extern C */

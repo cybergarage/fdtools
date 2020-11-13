@@ -12,10 +12,20 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include <boost/test/unit_test.hpp>
+#include <stdio.h>
+#include <string.h>
 #include <fdtools/img/file.h>
 
-BOOST_AUTO_TEST_CASE(ImageTest)
+FdtImageType fdt_img_file_gettype(const char* filename)
 {
-  fdt_img_getfiletype("");
+  FILE *fp = fopen(filename, "rp");
+  if (!fp)
+    return FDT_IMAGE_TYPE_UNKNOWN;
+  
+  char sig[FDT_IMAGE_HEADER_SIGNATURE_MAX];
+  if (fread(sig, sizeof(char), FDT_IMAGE_HEADER_SIGNATURE_MAX, fp) != FDT_IMAGE_HEADER_SIGNATURE_MAX) {
+    return FDT_IMAGE_TYPE_UNKNOWN;
+  }
+
+  return FDT_IMAGE_TYPE_UNKNOWN;
 }
