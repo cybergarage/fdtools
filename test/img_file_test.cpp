@@ -16,7 +16,7 @@
 #include <fdtools/img/file.h>
 #include <fdtools/util/array.h>
 
-const char* TEST_IMAGE_DIRECTORY = "./img";
+const std::string TEST_IMAGE_DIRECTORY = "./img";
 
 BOOST_AUTO_TEST_CASE(HfeImageTest)
 {
@@ -25,6 +25,7 @@ BOOST_AUTO_TEST_CASE(HfeImageTest)
   };
 
   for (int n = 0; n < fdt_array_countof(TEST_HFE_IMAGES); n++) {
-    fdt_img_file_gettype(*TEST_HFE_IMAGES[n]);
+      std::string filename = TEST_IMAGE_DIRECTORY + "/" + *TEST_HFE_IMAGES[n];
+      BOOST_CHECK_EQUAL(fdt_img_file_gettype(filename.c_str()), FDT_IMAGE_TYPE_HFE);
   }
 }

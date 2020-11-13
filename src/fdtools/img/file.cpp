@@ -16,6 +16,7 @@
 #include <string.h>
 
 #include <fdtools/img/file.h>
+#include <fdtools/util/string.h>
 
 FdtImageType fdt_img_file_gettype(const char* filename)
 {
@@ -26,6 +27,10 @@ FdtImageType fdt_img_file_gettype(const char* filename)
   char sig[FDT_IMAGE_HEADER_SIGNATURE_MAX];
   if (fread(sig, sizeof(char), FDT_IMAGE_HEADER_SIGNATURE_MAX, fp) != FDT_IMAGE_HEADER_SIGNATURE_MAX) {
     return FDT_IMAGE_TYPE_UNKNOWN;
+  }
+
+  if (fdt_strncmp(sig, HFE_IMAGE_HEADER_SIGNATURE, fdt_strlen(HFE_IMAGE_HEADER_SIGNATURE)) == 0) {
+    return FDT_IMAGE_TYPE_HFE;
   }
 
   return FDT_IMAGE_TYPE_UNKNOWN;
