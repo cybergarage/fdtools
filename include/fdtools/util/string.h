@@ -28,7 +28,7 @@ size_t fdt_strlen(const char* str);
 char* fdt_strcpy(char* dest, const char* src);
 char* fdt_strcat(char* dest, const char* src);
 int fdt_strcmp(const char* str1, const char* str2);
-int fdt_strncmp(const char* str1, const char* str2, int nchars);
+int fdt_strncmp(const char* str1, const char* str2, size_t nchars);
 int fdt_strcasecmp(const char* str1, const char* str2);
 bool fdt_streq(const char* str1, const char* str2);
 bool fdt_strcaseeq(const char* str1, const char* str2);

@@ -58,7 +58,7 @@ int fdt_strcmp(const char* str1, const char* str2)
   return strcmp(str1, str2);
 }
 
-int fdt_strncmp(const char* str1, const char* str2, int nchars)
+int fdt_strncmp(const char* str1, const char* str2, size_t nchars)
 {
   if (str1 == NULL)
     return -1;
