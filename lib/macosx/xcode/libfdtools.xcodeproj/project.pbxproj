@@ -10,6 +10,7 @@
 		21403C05255EEAE30022389D /* config.c in Sources */ = {isa = PBXBuildFile; fileRef = 21403C03255EEAE30022389D /* config.c */; };
 		21403C06255EEAE30022389D /* header.c in Sources */ = {isa = PBXBuildFile; fileRef = 21403C04255EEAE30022389D /* header.c */; };
 		21403C0C255EFF060022389D /* file.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 21403C0B255EFF060022389D /* file.cpp */; };
+		21403C10255F02C80022389D /* string_func.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 21403C0F255F02C80022389D /* string_func.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -17,6 +18,7 @@
 		21403C03255EEAE30022389D /* config.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = config.c; path = ../../../src/fdtools/img/config.c; sourceTree = "<group>"; };
 		21403C04255EEAE30022389D /* header.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = header.c; path = ../../../src/fdtools/img/header.c; sourceTree = "<group>"; };
 		21403C0B255EFF060022389D /* file.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = file.cpp; path = ../../../src/fdtools/img/file.cpp; sourceTree = "<group>"; };
+		21403C0F255F02C80022389D /* string_func.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = string_func.cpp; path = ../../../src/fdtools/util/string_func.cpp; sourceTree = "<group>"; };
 		216F3666255DB161004507DF /* fdtools */ = {isa = PBXFileReference; lastKnownFileType = folder; name = fdtools; path = ../../../include/fdtools; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -50,6 +52,14 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		21403C0E255F02B00022389D /* util */ = {
+			isa = PBXGroup;
+			children = (
+				21403C0F255F02C80022389D /* string_func.cpp */,
+			);
+			name = util;
+			sourceTree = "<group>";
+		};
 		216F3665255DB14E004507DF /* Headers */ = {
 			isa = PBXGroup;
 			children = (
@@ -69,6 +79,7 @@
 		21E273BF255DB2D5008AC447 /* fdtools */ = {
 			isa = PBXGroup;
 			children = (
+				21403C0E255F02B00022389D /* util */,
 				21E273C0255DB2DC008AC447 /* bios */,
 				21E273C1255DB2E2008AC447 /* img */,
 			);
@@ -160,6 +171,7 @@
 			files = (
 				21403C06255EEAE30022389D /* header.c in Sources */,
 				21403C05255EEAE30022389D /* config.c in Sources */,
+				21403C10255F02C80022389D /* string_func.cpp in Sources */,
 				21403C0C255EFF060022389D /* file.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
