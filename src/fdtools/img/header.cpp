@@ -12,33 +12,9 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef _FDTOOLS_IMG_HEADER_H_
-#define _FDTOOLS_IMG_HEADER_H_
+#include <fdtools/img/header.h>
 
-#include <fdtools/img/config.h>
-#include <fdtools/typedef.h>
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-const int FDT_IMAGE_HEADER_SIGNATURE_MAX = 8;
-
-typedef enum {
-  FDT_IMAGE_TYPE_UNKNOWN,
-  FDT_IMAGE_TYPE_RAW,
-  FDT_IMAGE_TYPE_HFE,
-  FDT_IMAGE_TYPE_D88,
-} FdtImageType;
-
-typedef struct {
-  FDT_IMAGE_CONFIG_MEMBERS
-} FdtImageHeader;
-
-void fdt_image_header_init(FdtImageHeader*);
-
-#ifdef __cplusplus
-} /* extern C */
-#endif
-
-#endif /* _FDTOOLS_IMG_FILE_H_ */
+void fdt_image_header_init(FdtImageHeader* header)
+{
+  fdt_image_config_init((FdtImageConfig*)header);
+}
