@@ -57,11 +57,11 @@ typedef struct FDT_ATTR_PACKED {
   unsigned char number_of_track;
   unsigned char number_of_side;
   unsigned char track_encoding;
-  unsigned short bitRate;
-  unsigned short floppyRPM;
+  uint16_t bitRate;
+  uint16_t floppyRPM;
   unsigned char floppyinterfacemode;
   unsigned char dnu;
-  unsigned short track_list_offset;
+  uint16_t track_list_offset;
   unsigned char write_allowed;
   unsigned char single_step;
   unsigned char track0s0_altencoding;

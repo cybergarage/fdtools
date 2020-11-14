@@ -34,6 +34,7 @@ AC_PROG_RANLIB
 ##############################
 
 AC_CHECK_HEADERS([stdbool.h])
+AC_CHECK_HEADERS([stdint.h])
 
 ##############################
 # Debug
