@@ -33,7 +33,7 @@
 extern "C" {
 #endif
 
-#if defined(C99) || defined(HAVE_STDBOOL_H)
+#if (__STDC_VERSION__ >= 199901L) || defined(HAVE_STDBOOL_H)
 #include <stdbool.h>
 #else
 #if !defined(bool)
@@ -45,6 +45,10 @@ extern "C" {
 #if !defined(false)
 #define false 0
 #endif
+#endif
+
+#if !defined(byte)
+typedef unsigned int byte;
 #endif
 
 #ifdef __cplusplus
