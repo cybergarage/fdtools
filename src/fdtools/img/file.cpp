@@ -28,6 +28,11 @@ int fdt_img_file_close(FILE* fp)
   return fclose(fp);
 }
 
+bool fdt_img_file_read(FILE* fp, byte* buf, size_t n)
+{
+  return (fread(buf, 1, n, fp) == n) ? true : false;
+}
+
 FdtImageType fdt_img_file_gettype(const char* filename)
 {
   FILE* fp = fdt_img_file_open(filename);
