@@ -51,6 +51,10 @@ extern "C" {
 typedef unsigned int byte;
 #endif
 
+#if defined(__GNUC__) || defined(__clang__)
+#define FDT_ATTR_PACKED __attribute__((packed))
+#endif
+
 #ifdef __cplusplus
 } /* extern C */
 #endif
