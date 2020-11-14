@@ -20,7 +20,7 @@ const std::string TEST_IMAGE_DIRECTORY = "./img";
 
 BOOST_AUTO_TEST_CASE(HfeHeaderSizeTest)
 {
-  BOOST_CHECK_EQUAL(sizeof(HFE_FILE_FORMAT_HEADER), HFE_IMAGE_HEADER_SIZE);
+  BOOST_CHECK_EQUAL(sizeof(FdtHfeRawHeader), HFE_HEADER_SIZE);
 }
 
 BOOST_AUTO_TEST_CASE(HfeImageLoadTest)
@@ -37,8 +37,8 @@ BOOST_AUTO_TEST_CASE(HfeImageLoadTest)
     BOOST_CHECK(fp);
     if (!fp)
       continue;
-    FdtHfeHeader* header = fdt_img_hfe_header_new();
-    BOOST_CHECK(fdt_img_hfe_header_load(header, fp));
+    FdtHfeHeader* header = fdt_hfe_header_new();
+    BOOST_CHECK(fdt_hfe_header_load(header, fp));
     fdt_img_file_close(fp);
   }
 }

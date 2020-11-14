@@ -24,7 +24,7 @@ extern "C" {
 #endif
 
 #define HFE_IMAGE_HEADER_SIGNATURE "HXCPICFE"
-#define HFE_IMAGE_HEADER_SIZE 26
+#define HFE_HEADER_SIZE 26
 
 #define HFE_IBMPC_DD_FLOPPYMODE 0x00
 #define HFE_IBMPC_HD_FLOPPYMODE 0x01
@@ -41,6 +41,9 @@ extern "C" {
 #define HFE_S950_DD_FLOPPYMODE 0x0C
 #define HFE_S950_HD_FLOPPYMODE 0x0D
 #define HFE_DISABLE_FLOPPYMODE 0xFE
+
+#define HFE_SINGLE_STEP 0xFF
+#define HFE_DOUBLE_STEP 0x00
 
 #define HFE_ISOIBM_MFM_ENCODING 0x00
 #define HFE_AMIGA_MFM_ENCODING 0x01
@@ -65,15 +68,17 @@ typedef struct FDT_ATTR_PACKED {
   unsigned char track0s0_encoding;
   unsigned char track0s1_altencoding;
   unsigned char track0s1_encoding;
-} HFE_FILE_FORMAT_HEADER;
+} FdtHfeRawHeader;
 
 typedef struct {
   FDT_IMAGE_CONFIG_MEMBERS
 } FdtHfeHeader;
 
-FdtHfeHeader* fdt_img_hfe_header_new(void);
-bool fdt_img_hfe_header_load(FdtHfeHeader*, FILE*);
-bool fdt_img_hfe_header_parse(FdtHfeHeader*, byte*);
+FdtHfeHeader* fdt_hfe_header_new(void);
+bool fdt_hfe_header_load(FdtHfeHeader*, FILE*);
+bool fdt_hfe_header_parse(FdtHfeHeader*, byte*);
+
+void fdt_hfe_raw_header_print(FdtHfeRawHeader* header);
 
 #ifdef __cplusplus
 } /* extern C */
