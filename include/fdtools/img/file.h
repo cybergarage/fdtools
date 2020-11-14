@@ -27,6 +27,8 @@
 extern "C" {
 #endif
 
+FILE* fdt_img_file_open(const char* filename);
+int fdt_img_file_close(FILE*);
 FdtImageType fdt_img_file_gettype(const char* filename);
 
 #ifdef __cplusplus

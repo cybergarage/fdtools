@@ -18,14 +18,27 @@
 #include <fdtools/img/file.h>
 #include <fdtools/util/string.h>
 
+FILE* fdt_img_file_open(const char* filename)
+{
+  return fopen(filename, "rb");
+}
+
+int fdt_img_file_close(FILE* fp)
+{
+  return fclose(fp);
+}
+
 FdtImageType fdt_img_file_gettype(const char* filename)
 {
-  FILE* fp = fopen(filename, "rp");
+  FILE* fp = fdt_img_file_open(filename);
   if (!fp)
     return FDT_IMAGE_TYPE_UNKNOWN;
 
   char sig[FDT_IMAGE_HEADER_SIGNATURE_MAX];
-  if (fread(sig, sizeof(char), FDT_IMAGE_HEADER_SIGNATURE_MAX, fp) != FDT_IMAGE_HEADER_SIGNATURE_MAX) {
+  size_t n_read = fread(sig, sizeof(char), FDT_IMAGE_HEADER_SIGNATURE_MAX, fp);
+  fdt_img_file_close(fp);
+
+  if (n_read != FDT_IMAGE_HEADER_SIGNATURE_MAX) {
     return FDT_IMAGE_TYPE_UNKNOWN;
   }
 
