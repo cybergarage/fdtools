@@ -12,21 +12,31 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include <fdtools/img/config.h>
+#include <stdio.h>
+#include <string.h>
 
-FdtImageConfig* fdt_image_config_new()
+#include <fdtools/img/file.h>
+#include <fdtools/util/string.h>
+
+FdtHfeHeader* fdt_img_hfe_header_new(void)
 {
-  FdtImageConfig* config;
-
-  config = (FdtImageConfig*)malloc(sizeof(FdtImageConfig));
-  if (!config) {
+  FdtHfeHeader* header = (FdtHfeHeader*)malloc(sizeof(FdtHfeHeader));
+  if (!header) {
     return NULL;
   }
-
-  return config;
+  fdt_image_header_init((FdtImageHeader*)header);
+  return header;
 }
 
-void fdt_image_config_delete(FdtImageConfig* config)
+bool fdt_img_hfe_header_load(FdtHfeHeader* header, FILE* fp)
 {
-  free(config);
+  byte header_buf[sizeof(HFE_FILE_FORMAT_HEADER)];
+  if (!fdt_img_file_read(fp, header_buf, sizeof(header_buf)))
+    return false;
+  return fdt_img_hfe_header_parse(header, header_buf);
+}
+
+bool fdt_img_hfe_header_parse(FdtHfeHeader*, byte*)
+{
+  return false;
 }

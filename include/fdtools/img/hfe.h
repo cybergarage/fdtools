@@ -17,11 +17,14 @@
 
 #include <stdlib.h>
 
+#include <fdtools/img/header.h>
+
 #ifdef __cplusplus
 extern "C" {
 #endif
 
 #define HFE_IMAGE_HEADER_SIGNATURE "HXCPICFE"
+#define HFE_IMAGE_HEADER_SIZE 26
 
 #define HFE_IBMPC_DD_FLOPPYMODE 0x00
 #define HFE_IBMPC_HD_FLOPPYMODE 0x01
@@ -45,7 +48,7 @@ extern "C" {
 #define HFE_EMU_FM_ENCODING 0x03
 #define HFE_UNKNOWN_ENCODING 0xFF
 
-typedef struct HFE_FILE_FORMAT_HEADER_ {
+typedef struct FDT_ATTR_PACKED {
   unsigned char HEADERSIGNATURE[8];
   unsigned char formatrevision;
   unsigned char number_of_track;
@@ -63,6 +66,14 @@ typedef struct HFE_FILE_FORMAT_HEADER_ {
   unsigned char track0s1_altencoding;
   unsigned char track0s1_encoding;
 } HFE_FILE_FORMAT_HEADER;
+
+typedef struct {
+  FDT_IMAGE_CONFIG_MEMBERS
+} FdtHfeHeader;
+
+FdtHfeHeader* fdt_img_hfe_header_new(void);
+bool fdt_img_hfe_header_load(FdtHfeHeader*, FILE*);
+bool fdt_img_hfe_header_parse(FdtHfeHeader*, byte*);
 
 #ifdef __cplusplus
 } /* extern C */
