@@ -36,7 +36,8 @@ bool fdt_img_hfe_header_load(FdtHfeHeader* header, FILE* fp)
   return fdt_img_hfe_header_parse(header, header_buf);
 }
 
-bool fdt_img_hfe_header_parse(FdtHfeHeader*, byte*)
+bool fdt_img_hfe_header_parse(FdtHfeHeader* header, byte* header_buf)
 {
-  return false;
+  HFE_FILE_FORMAT_HEADER* hfe_header = (HFE_FILE_FORMAT_HEADER*)header_buf;
+  return true;
 }
