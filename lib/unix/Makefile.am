@@ -19,7 +19,6 @@ lib_LIBRARIES = libfdtools.a
 AM_CFLAGS = -I$(top_builddir)/include
 
 fdtools_sources = \
-	../../src/fdtools/image/file.c \
 	../../src/fdtools/bios/bios_posix.c
 
 libfdtoolsincludedir = $(includedir)/fdtools

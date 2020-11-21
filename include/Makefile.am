@@ -13,10 +13,14 @@
 # limitations under the License.
 
 fdtoolsheaders = \
-	./fdtools/image/fdx.h \
-	./fdtools/image/file.h \
-	./fdtools/image/hfe.h \
-	./fdtools/image/d88.h \
+	./fdtools/util/array.h \
+	./fdtools/util/string.h \
+	./fdtools/img/header.h \
+	./fdtools/img/config.h \
+	./fdtools/img/fdx.h \
+	./fdtools/img/file.h \
+	./fdtools/img/hfe.h \
+	./fdtools/img/d88.h \
 	./fdtools/bios/bios.h \
 	./fdtools/typedef.h
 

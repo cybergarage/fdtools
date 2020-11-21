@@ -33,7 +33,7 @@ bool fdt_img_file_read(FILE* fp, byte* buf, size_t n)
   return (fread(buf, 1, n, fp) == n) ? true : false;
 }
 
-bool fdt_img_file_hasextension(const char* filename, const char *extname)
+bool fdt_img_file_hasextension(const char* filename, const char* extname)
 {
   size_t filename_len = fdt_strlen(filename);
   size_t extname_len = fdt_strlen(extname);

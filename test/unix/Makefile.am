@@ -20,7 +20,9 @@ AM_CPPFLAGS = -I$(top_builddir)/include -I../
 
 
 fdtoolstest_SOURCES = \
-	..//img_test.cpp \
+	..//img_hfe_test.cpp \
+	..//img_d88_test.cpp \
+	..//img_file_test.cpp \
 	..//main.cpp
 
 #if HAVE_LIBTOOL

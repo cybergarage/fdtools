@@ -21,9 +21,17 @@
 extern "C" {
 #endif
 
-const int D88_HEADER_SIZE = (17 + 9 + 1 + 1 + 4(4 * D88_HEADER_NUMBER_OF_TRACK * D88_HEADER_NUMBER_OF_HEADER));
+const char D88_EXTENTION_D88[] = "d88";
+const char D88_EXTENTION_88D[] = "88d";
+const char D88_EXTENTION_D77[] = "d77";
+const char D88_EXTENTION_D68[] = "d68";
+const char D88_EXTENTION_D98[] = "d98";
+const char D88_EXTENTION_D8U[] = "d8u";
+const char D88_EXTENTION_1DD[] = "1dd";
+
 const int D88_HEADER_NUMBER_OF_TRACK = 82;
 const int D88_HEADER_NUMBER_OF_HEADER = 2;
+const int D88_HEADER_SIZE = (17 + 9 + 1 + 1 + 4 + (4 * D88_HEADER_NUMBER_OF_TRACK * D88_HEADER_NUMBER_OF_HEADER));
 
 const uint8_t D88_WRITE_PROTECT_NONE = 0x00;
 const uint8_t D88_WRITE_PROTECT_ENABLED = 0x10;
@@ -42,6 +50,10 @@ typedef struct FDT_ATTR_PACKED {
   uint32_t disk_size;
   uint32_t track_offset[D88_HEADER_NUMBER_OF_TRACK * D88_HEADER_NUMBER_OF_HEADER];
 } FdtD88RawHeader;
+
+typedef struct {
+  FDT_IMAGE_CONFIG_MEMBERS
+} FdtD88Header;
 
 const uint8_t D88_TRACK_DELETED_MARK_NONE = 0x00;
 const uint8_t D88_TRACK_DELETED_MARK_ENABLED = 0x10;
@@ -68,6 +80,13 @@ typedef struct FDT_ATTR_PACKED {
   uint8_t reserve[5];
   uint16_t size_of_data;
 } FdtD88RawTrack;
+
+FdtD88Header* fdt_d88_header_new(void);
+void fdt_d88_header_delete(FdtD88Header*);
+bool fdt_d88_header_load(FdtD88Header*, FILE*);
+bool fdt_d88_header_parse(FdtD88Header*, byte*);
+
+void fdt_d88_raw_header_print(FdtD88RawHeader* header);
 
 #ifdef __cplusplus
 } /* extern C */
