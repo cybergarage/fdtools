@@ -31,7 +31,8 @@ const char D88_EXTENTION_1DD[] = "1dd";
 
 const int D88_HEADER_NUMBER_OF_TRACK = 82;
 const int D88_HEADER_NUMBER_OF_HEADER = 2;
-const int D88_HEADER_SIZE = (17 + 9 + 1 + 1 + 4 + (4 * D88_HEADER_NUMBER_OF_TRACK * D88_HEADER_NUMBER_OF_HEADER));
+const int D88_HEADER_NUMBER_OF_SECTOR = D88_HEADER_NUMBER_OF_TRACK * D88_HEADER_NUMBER_OF_HEADER;
+const int D88_HEADER_SIZE = (17 + 9 + 1 + 1 + 4 + (4 * D88_HEADER_NUMBER_OF_SECTOR));
 
 const uint8_t D88_WRITE_PROTECT_NONE = 0x00;
 const uint8_t D88_WRITE_PROTECT_ENABLED = 0x10;
@@ -48,7 +49,7 @@ typedef struct FDT_ATTR_PACKED {
   uint8_t write_protect;
   uint8_t disk_type;
   uint32_t disk_size;
-  uint32_t track_offset[D88_HEADER_NUMBER_OF_TRACK * D88_HEADER_NUMBER_OF_HEADER];
+  uint32_t track_offset[D88_HEADER_NUMBER_OF_SECTOR];
 } FdtD88RawHeader;
 
 typedef struct {
@@ -79,14 +80,17 @@ typedef struct FDT_ATTR_PACKED {
   uint8_t status;
   uint8_t reserve[5];
   uint16_t size_of_data;
-} FdtD88RawTrack;
+} FdtD88RawSector;
 
 FdtD88Header* fdt_d88_header_new(void);
 void fdt_d88_header_delete(FdtD88Header*);
 bool fdt_d88_header_load(FdtD88Header*, FILE*);
-bool fdt_d88_header_parse(FdtD88Header*, byte*);
 
-void fdt_d88_raw_header_print(FdtD88RawHeader* header);
+bool fdt_d88_raw_header_parse(FdtD88RawHeader*, byte*);
+void fdt_d88_raw_header_print(FdtD88RawHeader*);
+bool fdt_d88_raw_sector_load(FdtD88RawSector*, FILE* fp, int n, size_t offset);
+bool fdt_d88_raw_sector_parse(FdtD88RawSector*, int, size_t, byte*);
+void fdt_d88_raw_sector_print(FdtD88RawSector*, int n, size_t offset);
 
 #ifdef __cplusplus
 } /* extern C */

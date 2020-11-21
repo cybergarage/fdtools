@@ -38,13 +38,28 @@ bool fdt_d88_header_load(FdtD88Header* header, FILE* fp)
   byte header_buf[sizeof(FdtD88RawHeader)];
   if (!fdt_img_file_read(fp, header_buf, sizeof(header_buf)))
     return false;
-  return fdt_d88_header_parse(header, header_buf);
+
+  FdtD88RawHeader raw_header;
+  if (!fdt_d88_raw_header_parse(&raw_header, header_buf))
+    return false;
+
+  for (int n = 0; n < D88_HEADER_NUMBER_OF_SECTOR; n++) {
+    size_t offset = raw_header.track_offset[n];
+    if (offset == 0) {
+      continue;
+    }
+    FdtD88RawSector raw_sector;
+    if (!fdt_d88_raw_sector_load(&raw_sector, fp, n, offset))
+      return false;
+  }
+
+  return true;
 }
 
-bool fdt_d88_header_parse(FdtD88Header* header, byte* header_buf)
+bool fdt_d88_raw_header_parse(FdtD88RawHeader* header, byte* header_buf)
 {
-  FdtD88RawHeader* raw_header = (FdtD88RawHeader*)header_buf;
-  fdt_d88_raw_header_print(raw_header);
+  memcpy(header, header_buf, sizeof(FdtD88RawHeader));
+  fdt_d88_raw_header_print(header);
   return true;
 }
 
@@ -55,4 +70,31 @@ void fdt_d88_raw_header_print(FdtD88RawHeader* header)
   printf("write_protect: %02X\n", header->write_protect);
   printf("disk_type:     %02X\n", header->disk_type);
   printf("disk_size:     %d\n", header->disk_size);
+}
+
+bool fdt_d88_raw_sector_load(FdtD88RawSector* sector, FILE* fp, int n, size_t offset)
+{
+  if (fseek(fp, offset, SEEK_SET) != 0)
+    return false;
+
+  byte sector_buf[sizeof(FdtD88RawSector)];
+  if (!fdt_img_file_read(fp, sector_buf, sizeof(sector_buf)))
+    return false;
+
+  if (!fdt_d88_raw_sector_parse(sector, n, offset, sector_buf))
+    return false;
+
+  return true;
+}
+
+bool fdt_d88_raw_sector_parse(FdtD88RawSector* sector, int n, size_t offset, byte* sector_buf)
+{
+  memcpy(sector, sector_buf, sizeof(FdtD88RawSector));
+  fdt_d88_raw_sector_print(sector, n, offset);
+  return true;
+}
+
+void fdt_d88_raw_sector_print(FdtD88RawSector* sector, int n, size_t offset)
+{
+  printf("[%d] %ld\n", n, offset);
 }
