@@ -26,7 +26,8 @@ BOOST_AUTO_TEST_CASE(HfeHeaderSizeTest)
 BOOST_AUTO_TEST_CASE(HfeImageLoadTest)
 {
   const char* TEST_HFE_IMAGES[][64] = {
-    "cpm-x1-v220-blank.hfe"
+    "test-001.hfe",
+    "test-002.hfe",
   };
 
   for (int n = 0; n < fdt_array_countof(TEST_HFE_IMAGES); n++) {
