@@ -18,21 +18,6 @@
 #include <fdtools/img/file.h>
 #include <fdtools/util/string.h>
 
-FILE* fdt_img_file_open(const char* filename)
-{
-  return fopen(filename, "rb");
-}
-
-int fdt_img_file_close(FILE* fp)
-{
-  return fclose(fp);
-}
-
-bool fdt_img_file_read(FILE* fp, byte* buf, size_t n)
-{
-  return (fread(buf, 1, n, fp) == n) ? true : false;
-}
-
 bool fdt_img_file_hasextension(const char* filename, const char* extname)
 {
   size_t filename_len = fdt_strlen(filename);
@@ -45,13 +30,13 @@ bool fdt_img_file_hasextension(const char* filename, const char* extname)
 
 FdtImageType fdt_img_file_gettype(const char* filename)
 {
-  FILE* fp = fdt_img_file_open(filename);
+  FILE* fp = fdt_file_open(filename);
   if (!fp)
     return FDT_IMAGE_TYPE_UNKNOWN;
 
   char sig[FDT_IMAGE_HEADER_SIGNATURE_MAX];
   size_t n_read = fread(sig, sizeof(char), FDT_IMAGE_HEADER_SIGNATURE_MAX, fp);
-  fdt_img_file_close(fp);
+  fdt_file_close(fp);
 
   // Identify image file type by the header signature
 

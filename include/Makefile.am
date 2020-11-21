@@ -13,6 +13,7 @@
 # limitations under the License.
 
 fdtoolsheaders = \
+	./fdtools/util/file.h \
 	./fdtools/util/array.h \
 	./fdtools/util/string.h \
 	./fdtools/img/header.h \

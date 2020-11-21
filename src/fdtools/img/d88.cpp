@@ -36,7 +36,7 @@ void fdt_d88_header_delete(FdtD88Header* header)
 bool fdt_d88_header_load(FdtD88Header* header, FILE* fp)
 {
   byte header_buf[sizeof(FdtD88RawHeader)];
-  if (!fdt_img_file_read(fp, header_buf, sizeof(header_buf)))
+  if (!fdt_file_read(fp, header_buf, sizeof(header_buf)))
     return false;
 
   FdtD88RawHeader raw_header;
@@ -78,7 +78,7 @@ bool fdt_d88_raw_sector_load(FdtD88RawSector* sector, FILE* fp, int n, size_t of
     return false;
 
   byte sector_buf[sizeof(FdtD88RawSector)];
-  if (!fdt_img_file_read(fp, sector_buf, sizeof(sector_buf)))
+  if (!fdt_file_read(fp, sector_buf, sizeof(sector_buf)))
     return false;
 
   if (!fdt_d88_raw_sector_parse(sector, n, offset, sector_buf))

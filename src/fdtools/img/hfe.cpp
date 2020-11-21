@@ -36,7 +36,7 @@ void fdt_hfe_header_delete(FdtHfeHeader* header)
 bool fdt_hfe_header_load(FdtHfeHeader* header, FILE* fp)
 {
   byte header_buf[sizeof(FdtHfeRawHeader)];
-  if (!fdt_img_file_read(fp, header_buf, sizeof(header_buf)))
+  if (!fdt_file_read(fp, header_buf, sizeof(header_buf)))
     return false;
   return fdt_hfe_header_parse(header, header_buf);
 }

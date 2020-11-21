@@ -12,27 +12,23 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef _FDTOOLS_IMG_FILE_H_
-#define _FDTOOLS_IMG_FILE_H_
+#include <stdio.h>
+#include <string.h>
 
-#include <stdlib.h>
+#include <fdtools/img/file.h>
+#include <fdtools/util/string.h>
 
-#include <fdtools/typedef.h>
+FILE* fdt_file_open(const char* filename)
+{
+  return fopen(filename, "rb");
+}
 
-#include <fdtools/img/d88.h>
-#include <fdtools/img/header.h>
-#include <fdtools/img/hfe.h>
-#include <fdtools/util/file.h>
+int fdt_file_close(FILE* fp)
+{
+  return fclose(fp);
+}
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-bool fdt_img_file_hasextension(const char* filename, const char* extname);
-FdtImageType fdt_img_file_gettype(const char* filename);
-
-#ifdef __cplusplus
-} /* extern C */
-#endif
-
-#endif /* _FDTOOLS_IMG_FILE_H_ */
+bool fdt_file_read(FILE* fp, byte* buf, size_t n)
+{
+  return (fread(buf, 1, n, fp) == n) ? true : false;
+}

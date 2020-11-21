@@ -12,24 +12,20 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef _FDTOOLS_IMG_FILE_H_
-#define _FDTOOLS_IMG_FILE_H_
+#ifndef _FDTOOLS_UTIL_FILE_H_
+#define _FDTOOLS_UTIL_FILE_H_
 
 #include <stdlib.h>
 
 #include <fdtools/typedef.h>
 
-#include <fdtools/img/d88.h>
-#include <fdtools/img/header.h>
-#include <fdtools/img/hfe.h>
-#include <fdtools/util/file.h>
-
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-bool fdt_img_file_hasextension(const char* filename, const char* extname);
-FdtImageType fdt_img_file_gettype(const char* filename);
+FILE* fdt_file_open(const char* filename);
+int fdt_file_close(FILE*);
+bool fdt_file_read(FILE*, byte*, size_t);
 
 #ifdef __cplusplus
 } /* extern C */
