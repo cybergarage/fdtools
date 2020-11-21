@@ -18,7 +18,6 @@
 #include <stdlib.h>
 
 #include <fdtools/img/d88.h>
-//#include <fdtools/img/fdx.h>
 #include <fdtools/img/header.h>
 #include <fdtools/img/hfe.h>
 #include <fdtools/typedef.h>
@@ -30,6 +29,8 @@ extern "C" {
 FILE* fdt_img_file_open(const char* filename);
 int fdt_img_file_close(FILE*);
 bool fdt_img_file_read(FILE*, byte*, size_t);
+
+bool fdt_img_file_hasextension(const char* filename, const char *extname);
 FdtImageType fdt_img_file_gettype(const char* filename);
 
 #ifdef __cplusplus

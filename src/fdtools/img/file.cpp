@@ -33,6 +33,16 @@ bool fdt_img_file_read(FILE* fp, byte* buf, size_t n)
   return (fread(buf, 1, n, fp) == n) ? true : false;
 }
 
+bool fdt_img_file_hasextension(const char* filename, const char *extname)
+{
+  size_t filename_len = fdt_strlen(filename);
+  size_t extname_len = fdt_strlen(extname);
+  if (filename_len < extname_len)
+    return false;
+  size_t filename_ext_idx = filename_len - extname_len - 1;
+  return (fdt_strcmp((filename + filename_ext_idx), extname) == 0) ? true : false;
+}
+
 FdtImageType fdt_img_file_gettype(const char* filename)
 {
   FILE* fp = fdt_img_file_open(filename);
@@ -42,6 +52,8 @@ FdtImageType fdt_img_file_gettype(const char* filename)
   char sig[FDT_IMAGE_HEADER_SIGNATURE_MAX];
   size_t n_read = fread(sig, sizeof(char), FDT_IMAGE_HEADER_SIGNATURE_MAX, fp);
   fdt_img_file_close(fp);
+
+  // Identify image file type by the header signature
 
   if (n_read != FDT_IMAGE_HEADER_SIGNATURE_MAX) {
     return FDT_IMAGE_TYPE_UNKNOWN;
