@@ -28,6 +28,11 @@ FdtHfeHeader* fdt_hfe_header_new(void)
   return header;
 }
 
+void fdt_hfe_header_delete(FdtHfeHeader* header)
+{
+  free(header);
+}
+
 bool fdt_hfe_header_load(FdtHfeHeader* header, FILE* fp)
 {
   byte header_buf[sizeof(FdtHfeRawHeader)];

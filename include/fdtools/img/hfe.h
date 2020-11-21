@@ -75,6 +75,7 @@ typedef struct {
 } FdtHfeHeader;
 
 FdtHfeHeader* fdt_hfe_header_new(void);
+void fdt_hfe_header_delete(FdtHfeHeader*);
 bool fdt_hfe_header_load(FdtHfeHeader*, FILE*);
 bool fdt_hfe_header_parse(FdtHfeHeader*, byte*);
 
