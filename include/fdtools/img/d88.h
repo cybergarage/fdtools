@@ -75,7 +75,8 @@ typedef struct FDT_ATTR_PACKED {
   uint8_t h;
   uint8_t r;
   uint8_t n;
-  uint8_t number_of_sector;
+  uint16_t number_of_sector;
+  uint8_t density;
   uint8_t deleted_mark;
   uint8_t status;
   uint8_t reserve[5];
