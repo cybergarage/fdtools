@@ -39,7 +39,7 @@ bool fdt_img_file_hasextension(const char* filename, const char *extname)
   size_t extname_len = fdt_strlen(extname);
   if (filename_len < extname_len)
     return false;
-  size_t filename_ext_idx = filename_len - extname_len - 1;
+  size_t filename_ext_idx = filename_len - extname_len;
   return (fdt_strcmp((filename + filename_ext_idx), extname) == 0) ? true : false;
 }
 
@@ -62,6 +62,23 @@ FdtImageType fdt_img_file_gettype(const char* filename)
   if (fdt_strncmp(sig, HFE_IMAGE_HEADER_SIGNATURE, fdt_strlen(HFE_IMAGE_HEADER_SIGNATURE)) == 0) {
     return FDT_IMAGE_TYPE_HFE;
   }
+
+  // Identify image file type by the filename extention
+
+  if (fdt_img_file_hasextension(filename, D88_EXTENTION_D88))
+    return FDT_IMAGE_TYPE_D88;
+  if (fdt_img_file_hasextension(filename, D88_EXTENTION_88D))
+    return FDT_IMAGE_TYPE_D88;
+  if (fdt_img_file_hasextension(filename, D88_EXTENTION_D77))
+    return FDT_IMAGE_TYPE_D88;
+  if (fdt_img_file_hasextension(filename, D88_EXTENTION_D68))
+    return FDT_IMAGE_TYPE_D88;
+  if (fdt_img_file_hasextension(filename, D88_EXTENTION_D98))
+    return FDT_IMAGE_TYPE_D88;
+  if (fdt_img_file_hasextension(filename, D88_EXTENTION_D8U))
+    return FDT_IMAGE_TYPE_D88;
+  if (fdt_img_file_hasextension(filename, D88_EXTENTION_1DD))
+    return FDT_IMAGE_TYPE_D88;
 
   return FDT_IMAGE_TYPE_UNKNOWN;
 }
