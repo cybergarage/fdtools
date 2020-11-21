@@ -96,5 +96,5 @@ bool fdt_d88_raw_sector_parse(FdtD88RawSector* sector, int n, size_t offset, byt
 
 void fdt_d88_raw_sector_print(FdtD88RawSector* sector, int n, size_t offset)
 {
-  printf("[%d] %ld\n", n, offset);
+  printf("[%02d] %06X C:%02d H:%d S:%d S:%d\n", n, offset, sector->c, sector->h, sector->number_of_sector, sector->size_of_data);
 }
