@@ -21,6 +21,10 @@
 extern "C" {
 #endif
 
+const int D88_HEADER_SIZE = (17 + 9 + 1 + 1 + 4(4 * D88_HEADER_NUMBER_OF_TRACK * D88_HEADER_NUMBER_OF_HEADER));
+const int D88_HEADER_NUMBER_OF_TRACK = 82;
+const int D88_HEADER_NUMBER_OF_HEADER = 2;
+
 const uint8_t D88_WRITE_PROTECT_NONE = 0x00;
 const uint8_t D88_WRITE_PROTECT_ENABLED = 0x10;
 
@@ -36,7 +40,7 @@ typedef struct FDT_ATTR_PACKED {
   uint8_t write_protect;
   uint8_t disk_type;
   uint32_t disk_size;
-  uint32_t track_offset[164];
+  uint32_t track_offset[D88_HEADER_NUMBER_OF_TRACK * D88_HEADER_NUMBER_OF_HEADER];
 } FdtD88RawHeader;
 
 const uint8_t D88_TRACK_DELETED_MARK_NONE = 0x00;
