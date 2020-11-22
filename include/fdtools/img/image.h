@@ -37,8 +37,10 @@ typedef struct {
 FdtImage* fdt_image_new();
 void fdt_image_delete(FdtImage* img);
 
-inline FdtImageConfig* fdt_image_getconfig(FdtImage* img) { return img->config; }
-inline FdtImageSectors* fdt_image_getsectors(FdtImage* img) { return img->sectors; }
+#define fdt_image_getconfig(img) (img->config)
+#define fdt_image_getsectors(img) (img->sectors)
+
+#define fdt_image_addsector(img,sector) fdt_list_add((FdtList*)img->sectors, (FdtList*)sector)
 
 bool fdt_image_load(FdtImage*, FILE*);
 
