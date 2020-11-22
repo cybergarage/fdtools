@@ -27,14 +27,15 @@ BOOST_AUTO_TEST_CASE(D88ImageLoadTest)
 {
   const char* TEST_D88_IMAGES[][64] = {
     "test-001.d88",
-    "test-002.d88",
+    //"test-002.d88",
+    //"test-003.d88",
   };
 
   for (int n = 0; n < fdt_array_countof(TEST_D88_IMAGES); n++) {
     std::string filename = TEST_IMAGE_DIRECTORY + "/" + *TEST_D88_IMAGES[n];
     BOOST_CHECK_EQUAL(fdt_img_file_gettype(filename.c_str()), FDT_IMAGE_TYPE_D88);
 
-    FILE* fp = fdt_img_file_open(filename.c_str());
+    FILE* fp = fdt_file_open(filename.c_str());
     BOOST_CHECK(fp);
     if (!fp)
       continue;
@@ -42,6 +43,6 @@ BOOST_AUTO_TEST_CASE(D88ImageLoadTest)
     FdtD88Header* header = fdt_d88_header_new();
     BOOST_CHECK(fdt_d88_header_load(header, fp));
 
-    fdt_img_file_close(fp);
+    fdt_file_close(fp);
   }
 }

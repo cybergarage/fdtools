@@ -17,7 +17,7 @@
 
 #include <stdlib.h>
 
-#include <fdtools/img/header.h>
+#include <fdtools/img/image.h>
 
 #ifdef __cplusplus
 extern "C" {

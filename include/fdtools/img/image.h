@@ -16,7 +16,6 @@
 #define _FDTOOLS_IMG_HEADER_H_
 
 #include <fdtools/img/config.h>
-#include <fdtools/typedef.h>
 
 #ifdef __cplusplus
 extern "C" {
@@ -24,18 +23,13 @@ extern "C" {
 
 const int FDT_IMAGE_HEADER_SIGNATURE_MAX = 8;
 
-typedef enum {
-  FDT_IMAGE_TYPE_UNKNOWN,
-  FDT_IMAGE_TYPE_RAW,
-  FDT_IMAGE_TYPE_HFE,
-  FDT_IMAGE_TYPE_D88,
-} FdtImageType;
-
 typedef struct {
-  FDT_IMAGE_CONFIG_MEMBERS
-} FdtImageHeader;
+  FdtImageConfig* config;
+} FdtImage;
 
-void fdt_image_header_init(FdtImageHeader*);
+FdtImage* fdt_image_new();
+void fdt_image_sector_delete(FdtImage* img);
+void fdt_image_init(FdtImage* img);
 
 #ifdef __cplusplus
 } /* extern C */

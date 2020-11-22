@@ -15,8 +15,9 @@
 #include <stdio.h>
 #include <string.h>
 
-#include <fdtools/img/file.h>
+#include <fdtools/img/d88.h>
 #include <fdtools/util/string.h>
+#include <fdtools/util/file.h>
 
 FdtD88Header* fdt_d88_header_new(void)
 {
@@ -24,7 +25,7 @@ FdtD88Header* fdt_d88_header_new(void)
   if (!header) {
     return NULL;
   }
-  fdt_image_header_init((FdtImageHeader*)header);
+  fdt_image_init((FdtImage*)header);
   return header;
 }
 

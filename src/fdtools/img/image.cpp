@@ -12,9 +12,24 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include <fdtools/img/header.h>
+#include <fdtools/img/image.h>
 
-void fdt_image_header_init(FdtImageHeader* header)
+
+void fdt_image_init(FdtImage* img)
 {
-  fdt_image_config_init((FdtImageConfig*)header);
+}
+
+FdtImage* fdt_image_new()
+{
+  FdtImage* img = (FdtImage*)malloc(sizeof(FdtImage));
+  if (!img) {
+    return NULL;
+  }
+
+  return img;
+}
+
+void fdt_image_sector_delete(FdtImage* img)
+{
+  free(img);
 }

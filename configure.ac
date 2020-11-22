@@ -90,6 +90,8 @@ bin/fdread/Makefile
 bin/fdread/unix/Makefile
 bin/fdinfo/Makefile
 bin/fdinfo/unix/Makefile
+bin/fdimg/Makefile
+bin/fdimg/unix/Makefile
 test/Makefile
 test/unix/Makefile
 ])

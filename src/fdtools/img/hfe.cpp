@@ -24,7 +24,7 @@ FdtHfeHeader* fdt_hfe_header_new(void)
   if (!header) {
     return NULL;
   }
-  fdt_image_header_init((FdtImageHeader*)header);
+  fdt_image_init((FdtImage*)header);
   return header;
 }
 
