@@ -52,9 +52,6 @@ typedef struct FDT_ATTR_PACKED {
   uint32_t track_offset[D88_HEADER_NUMBER_OF_SECTOR];
 } FdtD88Header;
 
-typedef struct {
-} FdtD88Image;
-
 const uint8_t D88_TRACK_DELETED_MARK_NONE = 0x00;
 const uint8_t D88_TRACK_DELETED_MARK_ENABLED = 0x10;
 
@@ -82,9 +79,8 @@ typedef struct FDT_ATTR_PACKED {
   uint16_t size_of_data;
 } FdtD88Sector;
 
-FdtD88Image* fdt_d88_image_new(void);
-void fdt_d88_image_delete(FdtD88Image*);
-bool fdt_d88_image_load(FdtD88Image*, FILE*);
+FdtImage* fdt_d88_image_new(void);
+bool fdt_d88_image_load(FdtImage*, FILE*);
 
 bool fdt_d88_header_parse(FdtD88Header*, byte*);
 void fdt_d88_header_print(FdtD88Header*);
