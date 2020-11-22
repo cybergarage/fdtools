@@ -28,6 +28,6 @@ FdtImageSectors* fdt_image_sectors_new()
 
 void fdt_image_sectors_delete(FdtImageSectors* sectors)
 {
-  fdt_list_remove((FdtList*)sectors);
+  fdt_image_sectors_clear(sectors);
   free(sectors);
 }

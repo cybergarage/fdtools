@@ -32,6 +32,7 @@ typedef struct {
 
 FdtImageSectors* fdt_image_sectors_new();
 void fdt_image_sectors_delete(FdtImageSectors* sectors);
+#define fdt_image_sectors_clear(sectors) fdt_list_clear((FdtList*)sectors, (FDT_LIST_DESTRUCTORFUNC)fdt_image_sector_delete)
 
 FdtImageSector* fdt_image_sector_new();
 void fdt_image_sector_delete(FdtImageSector* sector);
