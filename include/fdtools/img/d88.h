@@ -53,7 +53,7 @@ typedef struct FDT_ATTR_PACKED {
 } FdtD88RawHeader;
 
 typedef struct {
-} FdtD88Header;
+} FdtD88Image;
 
 const uint8_t D88_TRACK_DELETED_MARK_NONE = 0x00;
 const uint8_t D88_TRACK_DELETED_MARK_ENABLED = 0x10;
@@ -82,9 +82,9 @@ typedef struct FDT_ATTR_PACKED {
   uint16_t size_of_data;
 } FdtD88RawSector;
 
-FdtD88Header* fdt_d88_header_new(void);
-void fdt_d88_header_delete(FdtD88Header*);
-bool fdt_d88_header_load(FdtD88Header*, FILE*);
+FdtD88Image* fdt_d88_header_new(void);
+void fdt_d88_header_delete(FdtD88Image*);
+bool fdt_d88_header_load(FdtD88Image*, FILE*);
 
 bool fdt_d88_raw_header_parse(FdtD88RawHeader*, byte*);
 void fdt_d88_raw_header_print(FdtD88RawHeader*);

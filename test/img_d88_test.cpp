@@ -40,7 +40,7 @@ BOOST_AUTO_TEST_CASE(D88ImageLoadTest)
     if (!fp)
       continue;
 
-    FdtD88Header* header = fdt_d88_header_new();
+    FdtD88Image* header = fdt_d88_header_new();
     BOOST_CHECK(fdt_d88_header_load(header, fp));
 
     fdt_file_close(fp);
