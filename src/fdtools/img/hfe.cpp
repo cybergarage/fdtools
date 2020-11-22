@@ -18,30 +18,30 @@
 #include <fdtools/img/file.h>
 #include <fdtools/util/string.h>
 
-FdtHfeImage* fdt_hfe_header_new(void)
+FdtHfeImage* fdt_hfe_image_new(void)
 {
-  FdtHfeImage* header = (FdtHfeImage*)malloc(sizeof(FdtHfeImage));
-  if (!header) {
+  FdtHfeImage* img = (FdtHfeImage*)malloc(sizeof(FdtHfeImage));
+  if (!img) {
     return NULL;
   }
-  fdt_image_init((FdtImage*)header);
-  return header;
+  fdt_image_init((FdtImage*)img);
+  return img;
 }
 
-void fdt_hfe_header_delete(FdtHfeImage* header)
+void fdt_hfe_image_delete(FdtHfeImage* img)
 {
-  free(header);
+  free(img);
 }
 
-bool fdt_hfe_header_load(FdtHfeImage* header, FILE* fp)
+bool fdt_hfe_image_load(FdtHfeImage* img, FILE* fp)
 {
   byte header_buf[sizeof(FdtHfeRawHeader)];
   if (!fdt_file_read(fp, header_buf, sizeof(header_buf)))
     return false;
-  return fdt_hfe_header_parse(header, header_buf);
+  return fdt_hfe_image_parse(img, header_buf);
 }
 
-bool fdt_hfe_header_parse(FdtHfeImage* header, byte* header_buf)
+bool fdt_hfe_image_parse(FdtHfeImage* img, byte* header_buf)
 {
   FdtHfeRawHeader* raw_header = (FdtHfeRawHeader*)header_buf;
   fdt_hfe_raw_header_print(raw_header);
