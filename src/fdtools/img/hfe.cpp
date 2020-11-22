@@ -44,11 +44,11 @@ bool fdt_hfe_image_load(FdtHfeImage* img, FILE* fp)
 bool fdt_hfe_image_parse(FdtHfeImage* img, byte* header_buf)
 {
   FdtHfeHeader* raw_header = (FdtHfeHeader*)header_buf;
-  fdt_hfe_raw_header_print(raw_header);
+  fdt_hfe_header_print(raw_header);
   return true;
 }
 
-void fdt_hfe_raw_header_print(FdtHfeHeader* header)
+void fdt_hfe_header_print(FdtHfeHeader* header)
 {
   printf("formatrevision:       %d\n", header->formatrevision);
   printf("number_of_track:      %d\n", header->number_of_track);
