@@ -19,7 +19,7 @@
 #include <fdtools/util/file.h>
 #include <fdtools/util/string.h>
 
-FdtD88Image* fdt_d88_header_new(void)
+FdtD88Image* fdt_d88_image_new(void)
 {
   FdtD88Image* header = (FdtD88Image*)malloc(sizeof(FdtD88Image));
   if (!header) {
@@ -29,12 +29,12 @@ FdtD88Image* fdt_d88_header_new(void)
   return header;
 }
 
-void fdt_d88_header_delete(FdtD88Image* header)
+void fdt_d88_image_delete(FdtD88Image* header)
 {
   free(header);
 }
 
-bool fdt_d88_header_load(FdtD88Image* header, FILE* fp)
+bool fdt_d88_image_load(FdtD88Image* header, FILE* fp)
 {
   byte header_buf[sizeof(FdtD88RawHeader)];
   if (!fdt_file_read(fp, header_buf, sizeof(header_buf)))

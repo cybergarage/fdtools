@@ -82,9 +82,9 @@ typedef struct FDT_ATTR_PACKED {
   uint16_t size_of_data;
 } FdtD88RawSector;
 
-FdtD88Image* fdt_d88_header_new(void);
-void fdt_d88_header_delete(FdtD88Image*);
-bool fdt_d88_header_load(FdtD88Image*, FILE*);
+FdtD88Image* fdt_d88_image_new(void);
+void fdt_d88_image_delete(FdtD88Image*);
+bool fdt_d88_image_load(FdtD88Image*, FILE*);
 
 bool fdt_d88_raw_header_parse(FdtD88RawHeader*, byte*);
 void fdt_d88_raw_header_print(FdtD88RawHeader*);
