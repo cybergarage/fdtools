@@ -52,6 +52,11 @@ typedef struct FDT_ATTR_PACKED {
   uint32_t track_offset[D88_HEADER_NUMBER_OF_SECTOR];
 } FdtD88Header;
 
+const uint8_t D88_SECTOR_N_128 = 0x00;
+const uint8_t D88_SECTOR_N_256 = 0x01;
+const uint8_t D88_SECTOR_N_512 = 0x02;
+const uint8_t D88_SECTOR_N_1024 = 0x03;
+
 const uint8_t D88_SECTOR_DELETED_MARK_NONE = 0x00;
 const uint8_t D88_SECTOR_DELETED_MARK_ENABLED = 0x10;
 

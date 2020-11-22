@@ -40,7 +40,7 @@ void fdt_image_delete(FdtImage* img);
 #define fdt_image_getconfig(img) (img->config)
 #define fdt_image_getsectors(img) (img->sectors)
 
-#define fdt_image_addsector(img,sector) fdt_list_add((FdtList*)img->sectors, (FdtList*)sector)
+#define fdt_image_addsector(img, sector) fdt_list_add((FdtList*)img->sectors, (FdtList*)sector)
 
 bool fdt_image_load(FdtImage*, FILE*);
 
