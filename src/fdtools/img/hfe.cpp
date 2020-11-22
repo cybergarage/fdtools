@@ -18,21 +18,18 @@
 #include <fdtools/img/file.h>
 #include <fdtools/util/string.h>
 
-FdtHfeImage* fdt_hfe_image_new(void)
+FdtImage* fdt_hfe_image_new(void)
 {
-  FdtHfeImage* img = (FdtHfeImage*)malloc(sizeof(FdtHfeImage));
-  if (!img) {
+  FdtImage* img = fdt_image_new();
+  if (!img)
     return NULL;
-  }
+
+  img->load_file =(FDT_IMAGE_FILELOADERFUNC)fdt_hfe_image_load;
+
   return img;
 }
 
-void fdt_hfe_image_delete(FdtHfeImage* img)
-{
-  free(img);
-}
-
-bool fdt_hfe_image_load(FdtHfeImage* img, FILE* fp)
+bool fdt_hfe_image_load(FdtImage* img, FILE* fp)
 {
   byte header_buf[sizeof(FdtHfeHeader)];
   if (!fdt_file_read(fp, header_buf, sizeof(header_buf)))
@@ -40,7 +37,7 @@ bool fdt_hfe_image_load(FdtHfeImage* img, FILE* fp)
   return fdt_hfe_image_parse(img, header_buf);
 }
 
-bool fdt_hfe_image_parse(FdtHfeImage* img, byte* header_buf)
+bool fdt_hfe_image_parse(FdtImage* img, byte* header_buf)
 {
   FdtHfeHeader* raw_header = (FdtHfeHeader*)header_buf;
   fdt_hfe_header_print(raw_header);

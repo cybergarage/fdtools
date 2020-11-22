@@ -40,9 +40,9 @@ BOOST_AUTO_TEST_CASE(HfeImageLoadTest)
     if (!fp)
       continue;
 
-    FdtHfeImage* header = fdt_hfe_image_new();
+    FdtImage* header = fdt_hfe_image_new();
     BOOST_CHECK(fdt_hfe_image_load(header, fp));
-    fdt_hfe_image_delete(header);
+    fdt_image_delete(header);
 
     fdt_file_close(fp);
   }
