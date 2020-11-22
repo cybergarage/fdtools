@@ -45,7 +45,7 @@ FdtList* fdt_list_next_circular(FdtList* list);
 FdtList* fdt_list_next(FdtList* list);
 void fdt_list_clear(FdtList* headList, FDT_LIST_DESTRUCTORFUNC destructorFunc);
 
-FdtList* fdt_list_gets(FdtList* headList) { return fdt_list_next(headList); }
+inline FdtList* fdt_list_gets(FdtList* headList) { return fdt_list_next(headList); }
 
 #ifdef __cplusplus
 } /* extern "C" */

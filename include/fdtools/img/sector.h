@@ -15,8 +15,6 @@
 #ifndef _FDTOOLS_IMG_SECTOR_H_
 #define _FDTOOLS_IMG_SECTOR_H_
 
-#include <stdlib.h>
-
 #include <fdtools/util/list.h>
 
 #ifdef __cplusplus

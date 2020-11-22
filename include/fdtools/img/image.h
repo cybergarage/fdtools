@@ -16,6 +16,7 @@
 #define _FDTOOLS_IMG_HEADER_H_
 
 #include <fdtools/img/config.h>
+#include <fdtools/img/sector.h>
 
 #ifdef __cplusplus
 extern "C" {
@@ -28,7 +29,7 @@ typedef struct {
 } FdtImage;
 
 FdtImage* fdt_image_new();
-void fdt_image_sector_delete(FdtImage* img);
+void fdt_image_delete(FdtImage* img);
 
 #ifdef __cplusplus
 } /* extern C */

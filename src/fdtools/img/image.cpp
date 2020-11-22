@@ -24,7 +24,7 @@ FdtImage* fdt_image_new()
   return img;
 }
 
-void fdt_image_sector_delete(FdtImage* img)
+void fdt_image_delete(FdtImage* img)
 {
   free(img);
 }
