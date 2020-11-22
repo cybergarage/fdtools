@@ -12,8 +12,10 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef _FDTOOLS_IMG_HEADER_H_
-#define _FDTOOLS_IMG_HEADER_H_
+#ifndef _FDTOOLS_IMG_IMAGE_H_
+#define _FDTOOLS_IMG_IMAGE_H_
+
+#include <stdio.h>
 
 #include <fdtools/img/config.h>
 #include <fdtools/img/sector.h>
@@ -24,9 +26,12 @@ extern "C" {
 
 const int FDT_IMAGE_HEADER_SIGNATURE_MAX = 8;
 
+typedef void (*FDT_IMAGE_FILELOADERFUNC)(void*, FILE*);
+
 typedef struct {
   FdtImageConfig* config;
   FdtImageSectors* sectors;
+  FDT_IMAGE_FILELOADERFUNC load_file;
 } FdtImage;
 
 FdtImage* fdt_image_new();
@@ -39,4 +44,4 @@ inline FdtImageSectors* fdt_image_getsectors(FdtImage* img) { return img->sector
 } /* extern C */
 #endif
 
-#endif /* _FDTOOLS_IMG_FILE_H_ */
+#endif /* _FDTOOLS_IMG_IMAGE_H_ */
