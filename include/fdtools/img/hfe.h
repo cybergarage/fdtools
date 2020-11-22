@@ -71,12 +71,12 @@ typedef struct FDT_ATTR_PACKED {
 } FdtHfeRawHeader;
 
 typedef struct {
-} FdtHfeHeader;
+} FdtHfeImage;
 
-FdtHfeHeader* fdt_hfe_header_new(void);
-void fdt_hfe_header_delete(FdtHfeHeader*);
-bool fdt_hfe_header_load(FdtHfeHeader*, FILE*);
-bool fdt_hfe_header_parse(FdtHfeHeader*, byte*);
+FdtHfeImage* fdt_hfe_header_new(void);
+void fdt_hfe_header_delete(FdtHfeImage*);
+bool fdt_hfe_header_load(FdtHfeImage*, FILE*);
+bool fdt_hfe_header_parse(FdtHfeImage*, byte*);
 
 void fdt_hfe_raw_header_print(FdtHfeRawHeader* header);
 
