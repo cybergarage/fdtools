@@ -36,6 +36,12 @@ void fdt_image_sectors_delete(FdtImageSectors* sectors);
 FdtImageSector* fdt_image_sector_new();
 void fdt_image_sector_delete(FdtImageSector* sector);
 
+#define fdt_image_sector_setcylindernumber(sector, n) (sector->cylinder_number = n)
+#define fdt_image_sector_setsidenumber(sector, n) (sector->side_number = n)
+#define fdt_image_sector_setnumber(sector, n) (sector->number = n)
+#define fdt_image_sector_setsize(sector, n) (sector->size = n)
+#define fdt_image_sector_setdata(sector, v) (sector->data = v)
+
 #ifdef __cplusplus
 } /* extern C */
 #endif

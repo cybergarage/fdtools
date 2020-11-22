@@ -23,11 +23,11 @@ FdtImageSector* fdt_image_sector_new()
 
   fdt_list_node_init((FdtList*)sector);
 
-  sector->cylinder_number = 0;
-  sector->side_number = 0;
-  sector->number = 0;
-  sector->size = 0;
-  sector->data = NULL;
+  fdt_image_sector_setcylindernumber(sector, 0);
+  fdt_image_sector_setsidenumber(sector, 0);
+  fdt_image_sector_setnumber(sector, 0);
+  fdt_image_sector_setsize(sector, 0);
+  fdt_image_sector_setdata(sector, NULL);
 
   return sector;
 }
