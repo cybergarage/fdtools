@@ -68,7 +68,7 @@ typedef struct FDT_ATTR_PACKED {
   unsigned char track0s0_encoding;
   unsigned char track0s1_altencoding;
   unsigned char track0s1_encoding;
-} FdtHfeRawHeader;
+} FdtHfeHeader;
 
 typedef struct {
 } FdtHfeImage;
@@ -78,7 +78,7 @@ void fdt_hfe_image_delete(FdtHfeImage*);
 bool fdt_hfe_image_load(FdtHfeImage*, FILE*);
 bool fdt_hfe_image_parse(FdtHfeImage*, byte*);
 
-void fdt_hfe_raw_header_print(FdtHfeRawHeader* header);
+void fdt_hfe_raw_header_print(FdtHfeHeader* header);
 
 #ifdef __cplusplus
 } /* extern C */

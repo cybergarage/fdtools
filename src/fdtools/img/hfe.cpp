@@ -35,7 +35,7 @@ void fdt_hfe_image_delete(FdtHfeImage* img)
 
 bool fdt_hfe_image_load(FdtHfeImage* img, FILE* fp)
 {
-  byte header_buf[sizeof(FdtHfeRawHeader)];
+  byte header_buf[sizeof(FdtHfeHeader)];
   if (!fdt_file_read(fp, header_buf, sizeof(header_buf)))
     return false;
   return fdt_hfe_image_parse(img, header_buf);
@@ -43,12 +43,12 @@ bool fdt_hfe_image_load(FdtHfeImage* img, FILE* fp)
 
 bool fdt_hfe_image_parse(FdtHfeImage* img, byte* header_buf)
 {
-  FdtHfeRawHeader* raw_header = (FdtHfeRawHeader*)header_buf;
+  FdtHfeHeader* raw_header = (FdtHfeHeader*)header_buf;
   fdt_hfe_raw_header_print(raw_header);
   return true;
 }
 
-void fdt_hfe_raw_header_print(FdtHfeRawHeader* header)
+void fdt_hfe_raw_header_print(FdtHfeHeader* header)
 {
   printf("formatrevision:       %d\n", header->formatrevision);
   printf("number_of_track:      %d\n", header->number_of_track);

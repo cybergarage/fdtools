@@ -20,7 +20,7 @@ const std::string TEST_IMAGE_DIRECTORY = "./img";
 
 BOOST_AUTO_TEST_CASE(HfeHeaderSizeTest)
 {
-  BOOST_CHECK_EQUAL(sizeof(FdtHfeRawHeader), HFE_HEADER_SIZE);
+  BOOST_CHECK_EQUAL(sizeof(FdtHfeHeader), HFE_HEADER_SIZE);
 }
 
 BOOST_AUTO_TEST_CASE(HfeImageLoadTest)
