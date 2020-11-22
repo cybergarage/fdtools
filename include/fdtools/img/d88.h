@@ -86,8 +86,8 @@ FdtD88Image* fdt_d88_image_new(void);
 void fdt_d88_image_delete(FdtD88Image*);
 bool fdt_d88_image_load(FdtD88Image*, FILE*);
 
-bool fdt_d88_raw_header_parse(FdtD88Header*, byte*);
-void fdt_d88_raw_header_print(FdtD88Header*);
+bool fdt_d88_header_parse(FdtD88Header*, byte*);
+void fdt_d88_header_print(FdtD88Header*);
 bool fdt_d88_raw_sector_load(FdtD88RawSector*, FILE* fp, int n, size_t offset);
 bool fdt_d88_raw_sector_parse(FdtD88RawSector*, int, size_t, byte*);
 void fdt_d88_raw_sector_print(FdtD88RawSector*, int n, size_t offset);

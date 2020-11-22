@@ -41,7 +41,7 @@ bool fdt_d88_image_load(FdtD88Image* header, FILE* fp)
     return false;
 
   FdtD88Header raw_header;
-  if (!fdt_d88_raw_header_parse(&raw_header, header_buf))
+  if (!fdt_d88_header_parse(&raw_header, header_buf))
     return false;
 
   for (int n = 0; n < D88_HEADER_NUMBER_OF_SECTOR; n++) {
@@ -57,14 +57,14 @@ bool fdt_d88_image_load(FdtD88Image* header, FILE* fp)
   return true;
 }
 
-bool fdt_d88_raw_header_parse(FdtD88Header* header, byte* header_buf)
+bool fdt_d88_header_parse(FdtD88Header* header, byte* header_buf)
 {
   memcpy(header, header_buf, sizeof(FdtD88Header));
-  fdt_d88_raw_header_print(header);
+  fdt_d88_header_print(header);
   return true;
 }
 
-void fdt_d88_raw_header_print(FdtD88Header* header)
+void fdt_d88_header_print(FdtD88Header* header)
 {
   printf("name:          %s\n", header->name);
   printf("reserve:       %02X%02X%02X%02X%02X%02X%02X%02X%02X\n", header->reserve[0], header->reserve[1], header->reserve[2], header->reserve[3], header->reserve[4], header->reserve[5], header->reserve[6], header->reserve[7], header->reserve[8]);
