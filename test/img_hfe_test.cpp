@@ -26,9 +26,9 @@ BOOST_AUTO_TEST_CASE(HfeHeaderSizeTest)
 BOOST_AUTO_TEST_CASE(HfeImageLoadTest)
 {
   const char* TEST_HFE_IMAGES[][64] = {
-    //"test-001.hfe",
-    //"test-002.hfe",
-    //"test-003.hfe",
+    "test-001.hfe",
+    "test-002.hfe",
+    "test-003.hfe",
   };
 
   for (int n = 0; n < fdt_array_countof(TEST_HFE_IMAGES); n++) {
@@ -41,7 +41,7 @@ BOOST_AUTO_TEST_CASE(HfeImageLoadTest)
       continue;
 
     FdtImage* header = fdt_hfe_image_new();
-    BOOST_CHECK(fdt_hfe_image_load(header, fp));
+    BOOST_CHECK(fdt_image_load(header, fp));
     fdt_image_delete(header);
 
     fdt_file_close(fp);

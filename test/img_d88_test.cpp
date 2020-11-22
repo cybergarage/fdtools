@@ -27,8 +27,8 @@ BOOST_AUTO_TEST_CASE(D88ImageLoadTest)
 {
   const char* TEST_D88_IMAGES[][64] = {
     "test-001.d88",
-    //"test-002.d88",
-    //"test-003.d88",
+    "test-002.d88",
+    "test-003.d88",
   };
 
   for (int n = 0; n < fdt_array_countof(TEST_D88_IMAGES); n++) {
@@ -40,8 +40,9 @@ BOOST_AUTO_TEST_CASE(D88ImageLoadTest)
     if (!fp)
       continue;
 
-    FdtImage* header = fdt_d88_image_new();
-    BOOST_CHECK(fdt_d88_image_load(header, fp));
+    FdtImage* img = fdt_d88_image_new();
+    BOOST_CHECK(fdt_image_load(img, fp));
+    fdt_image_delete(img);
 
     fdt_file_close(fp);
   }

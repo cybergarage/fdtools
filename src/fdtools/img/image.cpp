@@ -34,3 +34,10 @@ void fdt_image_delete(FdtImage* img)
 
   free(img);
 }
+
+bool fdt_image_load(FdtImage* img, FILE* fp)
+{
+  if (!img || !fp)
+    return false;
+  return img->load_file(img, fp);
+}
