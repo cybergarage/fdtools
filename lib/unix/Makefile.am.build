@@ -22,7 +22,7 @@ AM_CFLAGS = -I\$(top_builddir)/include
 
 fdtools_sources = \\
 HEADER
-my @find_files = `find ../../src/fdtools -name *.cpp -or -name *.c`;
+my @find_files = `find ../../src/fdtools -name *.c -or -name *.cpp`;
 my @source_files;
 foreach $file (@find_files) {
 	$file =~ s/\n//;

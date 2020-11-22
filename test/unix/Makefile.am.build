@@ -35,7 +35,7 @@ print<<SOURCES;
 fdtoolstest_SOURCES = \\
 SOURCES
 
-my @find_files = `find ../ -name *.cpp -or -name *.c`;
+my @find_files = `find ../ -name *.c -or -name *.cpp`;
 my @source_files;
 foreach $file (@find_files) {
 	$file =~ s/\n//;

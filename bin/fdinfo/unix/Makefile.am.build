@@ -21,7 +21,7 @@ AM_CFLAGS = -I\$(top_builddir)/include -I../
 fdinfo_SOURCES = \\
 HEADER
 
-my @find_files = `find ../ -name *.c`;
+my @find_files = `find ../ -name *.c -or -name *.cpp`;
 my @source_files;
 foreach $file (@find_files) {
 	$file =~ s/\n//;

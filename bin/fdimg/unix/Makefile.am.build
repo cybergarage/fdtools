@@ -18,10 +18,10 @@ bin_PROGRAMS = fdimg
 
 AM_CFLAGS = -I\$(top_builddir)/include -I../
 
-fdinfo_SOURCES = \\
+fdimg_SOURCES = \\
 HEADER
 
-my @find_files = `find ../ -name *.c`;
+my @find_files = `find ../ -name *.c -or -name *.cpp`;
 my @source_files;
 foreach $file (@find_files) {
 	$file =~ s/\n//;
@@ -33,9 +33,9 @@ print join(" \\\n", @source_files) . "\n";
 print<<FOTTER;
 
 #if HAVE_LIBTOOL
-#fdinfo_LDADD = ../../../lib/unix/libfdtools.la
+#fdimg_LDADD = ../../../lib/unix/libfdtools.la
 #else
-fdinfo_LDADD = ../../../lib/unix/libfdtools.a
+fdimg_LDADD = ../../../lib/unix/libfdtools.a
 #endif
 FOTTER
 
