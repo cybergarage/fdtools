@@ -49,7 +49,7 @@ bool fdt_d88_image_load(FdtD88Image* header, FILE* fp)
     if (offset == 0) {
       continue;
     }
-    FdtD88RawSector raw_sector;
+    FdtD88Sector raw_sector;
     if (!fdt_d88_raw_sector_load(&raw_sector, fp, n, offset))
       return false;
   }
@@ -73,12 +73,12 @@ void fdt_d88_header_print(FdtD88Header* header)
   printf("disk_size:     %d\n", header->disk_size);
 }
 
-bool fdt_d88_raw_sector_load(FdtD88RawSector* sector, FILE* fp, int n, size_t offset)
+bool fdt_d88_raw_sector_load(FdtD88Sector* sector, FILE* fp, int n, size_t offset)
 {
   if (fseek(fp, offset, SEEK_SET) != 0)
     return false;
 
-  byte sector_buf[sizeof(FdtD88RawSector)];
+  byte sector_buf[sizeof(FdtD88Sector)];
   if (!fdt_file_read(fp, sector_buf, sizeof(sector_buf)))
     return false;
 
@@ -88,14 +88,14 @@ bool fdt_d88_raw_sector_load(FdtD88RawSector* sector, FILE* fp, int n, size_t of
   return true;
 }
 
-bool fdt_d88_raw_sector_parse(FdtD88RawSector* sector, int n, size_t offset, byte* sector_buf)
+bool fdt_d88_raw_sector_parse(FdtD88Sector* sector, int n, size_t offset, byte* sector_buf)
 {
-  memcpy(sector, sector_buf, sizeof(FdtD88RawSector));
+  memcpy(sector, sector_buf, sizeof(FdtD88Sector));
   fdt_d88_raw_sector_print(sector, n, offset);
   return true;
 }
 
-void fdt_d88_raw_sector_print(FdtD88RawSector* sector, int n, size_t offset)
+void fdt_d88_raw_sector_print(FdtD88Sector* sector, int n, size_t offset)
 {
   printf("[%02d] %06X C:%02d H:%d R:%d N:%d SNUM:%d SSIZE:%d\n", n, offset, sector->c, sector->h, sector->r, sector->n, sector->number_of_sector, sector->size_of_data);
 }
