@@ -50,7 +50,7 @@ typedef struct FDT_ATTR_PACKED {
   uint8_t disk_type;
   uint32_t disk_size;
   uint32_t track_offset[D88_HEADER_NUMBER_OF_SECTOR];
-} FdtD88RawHeader;
+} FdtD88Header;
 
 typedef struct {
 } FdtD88Image;
@@ -86,8 +86,8 @@ FdtD88Image* fdt_d88_image_new(void);
 void fdt_d88_image_delete(FdtD88Image*);
 bool fdt_d88_image_load(FdtD88Image*, FILE*);
 
-bool fdt_d88_raw_header_parse(FdtD88RawHeader*, byte*);
-void fdt_d88_raw_header_print(FdtD88RawHeader*);
+bool fdt_d88_raw_header_parse(FdtD88Header*, byte*);
+void fdt_d88_raw_header_print(FdtD88Header*);
 bool fdt_d88_raw_sector_load(FdtD88RawSector*, FILE* fp, int n, size_t offset);
 bool fdt_d88_raw_sector_parse(FdtD88RawSector*, int, size_t, byte*);
 void fdt_d88_raw_sector_print(FdtD88RawSector*, int n, size_t offset);

@@ -36,11 +36,11 @@ void fdt_d88_image_delete(FdtD88Image* header)
 
 bool fdt_d88_image_load(FdtD88Image* header, FILE* fp)
 {
-  byte header_buf[sizeof(FdtD88RawHeader)];
+  byte header_buf[sizeof(FdtD88Header)];
   if (!fdt_file_read(fp, header_buf, sizeof(header_buf)))
     return false;
 
-  FdtD88RawHeader raw_header;
+  FdtD88Header raw_header;
   if (!fdt_d88_raw_header_parse(&raw_header, header_buf))
     return false;
 
@@ -57,14 +57,14 @@ bool fdt_d88_image_load(FdtD88Image* header, FILE* fp)
   return true;
 }
 
-bool fdt_d88_raw_header_parse(FdtD88RawHeader* header, byte* header_buf)
+bool fdt_d88_raw_header_parse(FdtD88Header* header, byte* header_buf)
 {
-  memcpy(header, header_buf, sizeof(FdtD88RawHeader));
+  memcpy(header, header_buf, sizeof(FdtD88Header));
   fdt_d88_raw_header_print(header);
   return true;
 }
 
-void fdt_d88_raw_header_print(FdtD88RawHeader* header)
+void fdt_d88_raw_header_print(FdtD88Header* header)
 {
   printf("name:          %s\n", header->name);
   printf("reserve:       %02X%02X%02X%02X%02X%02X%02X%02X%02X\n", header->reserve[0], header->reserve[1], header->reserve[2], header->reserve[3], header->reserve[4], header->reserve[5], header->reserve[6], header->reserve[7], header->reserve[8]);

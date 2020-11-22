@@ -20,7 +20,7 @@ const std::string TEST_IMAGE_DIRECTORY = "./img";
 
 BOOST_AUTO_TEST_CASE(D88HeaderSizeTest)
 {
-  BOOST_CHECK_EQUAL(sizeof(FdtD88RawHeader), D88_HEADER_SIZE);
+  BOOST_CHECK_EQUAL(sizeof(FdtD88Header), D88_HEADER_SIZE);
 }
 
 BOOST_AUTO_TEST_CASE(D88ImageLoadTest)
