@@ -83,7 +83,9 @@
 				216FD0D7255D9F71005C01F4 /* Products */,
 				216FD0F9255DA5D8005C01F4 /* Frameworks */,
 			);
+			indentWidth = 2;
 			sourceTree = "<group>";
+			tabWidth = 2;
 		};
 		216FD0D7255D9F71005C01F4 /* Products */ = {
 			isa = PBXGroup;

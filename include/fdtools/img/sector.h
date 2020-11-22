@@ -23,6 +23,11 @@ extern "C" {
 
 typedef struct {
   FDT_LIST_STRUCT_MEMBERS
+  int cylinder_number;
+  int side_number;
+  int number;
+  size_t size;
+  byte* data;
 } FdtImageSector, FdtImageSectors;
 
 FdtImageSectors* fdt_image_sectors_new();
