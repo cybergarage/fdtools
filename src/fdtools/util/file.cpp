@@ -32,3 +32,13 @@ bool fdt_file_read(FILE* fp, byte* buf, size_t n)
 {
   return (fread(buf, 1, n, fp) == n) ? true : false;
 }
+
+bool fdt_file_hasextension(const char* filename, const char* extname)
+{
+  size_t filename_len = fdt_strlen(filename);
+  size_t extname_len = fdt_strlen(extname);
+  if (filename_len < extname_len)
+    return false;
+  size_t filename_ext_idx = filename_len - extname_len;
+  return (fdt_strcmp((filename + filename_ext_idx), extname) == 0) ? true : false;
+}

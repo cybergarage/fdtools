@@ -17,10 +17,7 @@
 
 #include <stdlib.h>
 
-#include <fdtools/typedef.h>
-
 #include <fdtools/img/d88.h>
-#include <fdtools/img/header.h>
 #include <fdtools/img/hfe.h>
 #include <fdtools/util/file.h>
 
@@ -28,7 +25,13 @@
 extern "C" {
 #endif
 
-bool fdt_img_file_hasextension(const char* filename, const char* extname);
+typedef enum {
+  FDT_IMAGE_TYPE_UNKNOWN,
+  FDT_IMAGE_TYPE_RAW,
+  FDT_IMAGE_TYPE_HFE,
+  FDT_IMAGE_TYPE_D88,
+} FdtImageType;
+
 FdtImageType fdt_img_file_gettype(const char* filename);
 
 #ifdef __cplusplus

@@ -27,6 +27,8 @@ FILE* fdt_file_open(const char* filename);
 int fdt_file_close(FILE*);
 bool fdt_file_read(FILE*, byte*, size_t);
 
+bool fdt_file_hasextension(const char* filename, const char* extname);
+
 #ifdef __cplusplus
 } /* extern C */
 #endif
