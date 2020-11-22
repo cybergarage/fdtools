@@ -25,7 +25,6 @@ FdtD88Image* fdt_d88_image_new(void)
   if (!header) {
     return NULL;
   }
-  fdt_image_init((FdtImage*)header);
   return header;
 }
 

@@ -29,7 +29,6 @@ typedef struct {
 
 FdtImage* fdt_image_new();
 void fdt_image_sector_delete(FdtImage* img);
-void fdt_image_init(FdtImage* img);
 
 #ifdef __cplusplus
 } /* extern C */

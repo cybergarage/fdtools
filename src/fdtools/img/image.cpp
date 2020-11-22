@@ -14,10 +14,6 @@
 
 #include <fdtools/img/image.h>
 
-void fdt_image_init(FdtImage* img)
-{
-}
-
 FdtImage* fdt_image_new()
 {
   FdtImage* img = (FdtImage*)malloc(sizeof(FdtImage));

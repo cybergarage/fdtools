@@ -24,7 +24,6 @@ FdtHfeImage* fdt_hfe_image_new(void)
   if (!img) {
     return NULL;
   }
-  fdt_image_init((FdtImage*)img);
   return img;
 }
 
