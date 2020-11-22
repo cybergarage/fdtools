@@ -53,7 +53,6 @@ typedef struct FDT_ATTR_PACKED {
 } FdtD88RawHeader;
 
 typedef struct {
-  FDT_IMAGE_CONFIG_MEMBERS
 } FdtD88Header;
 
 const uint8_t D88_TRACK_DELETED_MARK_NONE = 0x00;

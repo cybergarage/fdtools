@@ -14,7 +14,6 @@
 
 #include <fdtools/img/image.h>
 
-
 void fdt_image_init(FdtImage* img)
 {
 }

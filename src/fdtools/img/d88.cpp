@@ -16,8 +16,8 @@
 #include <string.h>
 
 #include <fdtools/img/d88.h>
-#include <fdtools/util/string.h>
 #include <fdtools/util/file.h>
+#include <fdtools/util/string.h>
 
 FdtD88Header* fdt_d88_header_new(void)
 {

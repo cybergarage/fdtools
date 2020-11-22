@@ -71,7 +71,6 @@ typedef struct FDT_ATTR_PACKED {
 } FdtHfeRawHeader;
 
 typedef struct {
-  FDT_IMAGE_CONFIG_MEMBERS
 } FdtHfeHeader;
 
 FdtHfeHeader* fdt_hfe_header_new(void);
