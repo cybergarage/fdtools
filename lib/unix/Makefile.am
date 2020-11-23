@@ -20,14 +20,18 @@ AM_CFLAGS = -I$(top_builddir)/include
 
 fdtools_sources = \
 	../../src/fdtools/util/string_func.cpp \
+	../../src/fdtools/util/string.cpp \
 	../../src/fdtools/util/file.cpp \
 	../../src/fdtools/util/list.cpp \
 	../../src/fdtools/img/d88.cpp \
 	../../src/fdtools/img/image.cpp \
+	../../src/fdtools/img/d88_loader.cpp \
 	../../src/fdtools/img/sector.cpp \
 	../../src/fdtools/img/hfe.cpp \
 	../../src/fdtools/img/file.cpp \
 	../../src/fdtools/img/config.cpp \
+	../../src/fdtools/img/d88_exporter.cpp \
+	../../src/fdtools/img/hfe_loader.cpp \
 	../../src/fdtools/img/sectors.cpp \
 	../../src/fdtools/bios/bios_posix.c
 

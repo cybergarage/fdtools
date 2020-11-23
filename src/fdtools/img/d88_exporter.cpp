@@ -19,17 +19,7 @@
 #include <fdtools/util/file.h>
 #include <fdtools/util/string.h>
 
-bool fdt_d88_image_load(FdtImage*, FILE*);
-bool fdt_d88_image_export(FdtImage*, FILE*);
-
-FdtImage* fdt_d88_image_new(void)
+bool fdt_d88_image_export(FdtImage* img, FILE* fp)
 {
-  FdtImage* img = fdt_image_new();
-  if (!img)
-    return NULL;
-
-  fdt_image_setfileloader(img, fdt_d88_image_load);
-  fdt_image_setfileexporter(img, fdt_d88_image_export);
-
-  return img;
+  return true;
 }

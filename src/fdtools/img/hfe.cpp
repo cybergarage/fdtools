@@ -18,47 +18,15 @@
 #include <fdtools/img/file.h>
 #include <fdtools/util/string.h>
 
+bool fdt_hfe_image_load(FdtImage* img, FILE* fp);
+
 FdtImage* fdt_hfe_image_new(void)
 {
   FdtImage* img = fdt_image_new();
   if (!img)
     return NULL;
 
-  img->file_loader = (FDT_IMAGE_FILELOADER)fdt_hfe_image_load;
-
+  fdt_image_setfileloader(img, fdt_hfe_image_load);
+  
   return img;
-}
-
-bool fdt_hfe_image_load(FdtImage* img, FILE* fp)
-{
-  byte header_buf[sizeof(FdtHfeHeader)];
-  if (!fdt_file_read(fp, header_buf, sizeof(header_buf)))
-    return false;
-  return fdt_hfe_image_parse(img, header_buf);
-}
-
-bool fdt_hfe_image_parse(FdtImage* img, byte* header_buf)
-{
-  FdtHfeHeader* raw_header = (FdtHfeHeader*)header_buf;
-  //fdt_hfe_header_print(raw_header);
-  return true;
-}
-
-void fdt_hfe_header_print(FdtHfeHeader* header)
-{
-  printf("formatrevision:       %d\n", header->formatrevision);
-  printf("number_of_track:      %d\n", header->number_of_track);
-  printf("number_of_side:       %d\n", header->number_of_side);
-  printf("track_encoding:       %d\n", header->track_encoding);
-  printf("bitRate:              %d\n", header->bitRate);
-  printf("floppyRPM:            %d\n", header->floppyRPM);
-  printf("floppyinterfacemode:  %02X\n", header->floppyinterfacemode);
-  printf("dnu:                  %d\n", header->dnu);
-  printf("track_list_offset:    %d\n", header->track_list_offset);
-  printf("write_allowed:        %d\n", header->write_allowed);
-  printf("single_step:          %s\n", (header->single_step == HFE_SINGLE_STEP) ? "S" : "D");
-  printf("track0s0_altencoding: %02X\n", header->track0s0_altencoding);
-  printf("track0s0_encoding:    %02X\n", header->track0s0_encoding);
-  printf("track0s1_altencoding: %02X\n", header->track0s1_altencoding);
-  printf("track0s1_encoding:    %02X\n", header->track0s1_encoding);
 }
