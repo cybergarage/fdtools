@@ -25,6 +25,7 @@ FdtImageConfig* fdt_image_config_new()
     return NULL;
   }
 
+  config->name = fdt_string_new();
   fdt_image_config_setdensitytype(config, FDT_DENSITY_UNKNOWN);
   fdt_image_config_setrpm(config, 0);
   fdt_image_config_setnumberofhead(config, 0);
@@ -37,6 +38,10 @@ FdtImageConfig* fdt_image_config_new()
 
 void fdt_image_config_delete(FdtImageConfig* config)
 {
+  if (!config)
+    return;
+
+  fdt_string_delete(config->name);
   free(config);
 }
 

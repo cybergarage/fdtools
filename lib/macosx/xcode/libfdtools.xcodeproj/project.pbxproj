@@ -17,6 +17,7 @@
 		21E15B02256A70D200029338 /* sectors.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 21E15B01256A70D200029338 /* sectors.cpp */; };
 		21E15B05256A742700029338 /* list.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 21E15B04256A742700029338 /* list.cpp */; };
 		21E15B08256A955A00029338 /* image.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 21E15B07256A955A00029338 /* image.cpp */; };
+		21E15B0C256BB09100029338 /* string.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 21E15B0B256BB09100029338 /* string.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		21E15B01256A70D200029338 /* sectors.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = sectors.cpp; path = ../../../src/fdtools/img/sectors.cpp; sourceTree = "<group>"; };
 		21E15B04256A742700029338 /* list.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = list.cpp; path = ../../../src/fdtools/util/list.cpp; sourceTree = "<group>"; };
 		21E15B07256A955A00029338 /* image.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = image.cpp; path = ../../../src/fdtools/img/image.cpp; sourceTree = "<group>"; };
+		21E15B0B256BB09100029338 /* string.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = string.cpp; path = ../../../src/fdtools/util/string.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +69,7 @@
 		21403C0E255F02B00022389D /* util */ = {
 			isa = PBXGroup;
 			children = (
+				21E15B0B256BB09100029338 /* string.cpp */,
 				21E15B04256A742700029338 /* list.cpp */,
 				2151DF45256989AC009FC0E0 /* file.cpp */,
 				21403C0F255F02C80022389D /* string_func.cpp */,
@@ -190,6 +193,7 @@
 				219F7D5925691BD100827D5C /* d88.cpp in Sources */,
 				21403C10255F02C80022389D /* string_func.cpp in Sources */,
 				2151DF4C256A4B40009FC0E0 /* sector.cpp in Sources */,
+				21E15B0C256BB09100029338 /* string.cpp in Sources */,
 				21E15B05256A742700029338 /* list.cpp in Sources */,
 				21E15B02256A70D200029338 /* sectors.cpp in Sources */,
 				2151DF46256989AC009FC0E0 /* file.cpp in Sources */,
