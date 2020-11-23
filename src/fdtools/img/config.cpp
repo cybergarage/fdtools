@@ -29,11 +29,12 @@ FdtImageConfig* fdt_image_config_new()
 
   fdt_image_config_setname(config, "");
   fdt_image_config_setsize(config, 0);
-  fdt_image_config_setdensitytype(config, FDT_DENSITY_UNKNOWN);
+  fdt_image_config_setdensity(config, FDT_DENSITY_UNKNOWN);
   fdt_image_config_setnumberofhead(config, 0);
   fdt_image_config_setnumberofsector(config, 0);
   fdt_image_config_setnumberofcylinder(config, 0);
   fdt_image_config_setsectorsize(config, 0);
+  fdt_image_config_setrpm(config, 0);
   fdt_image_config_setwriteprotect(config, false);
 
   return config;
@@ -48,15 +49,34 @@ void fdt_image_config_delete(FdtImageConfig* config)
   free(config);
 }
 
+const char* fdt_image_config_getdensitystring(FdtImageConfig* config)
+{
+  switch (config->density) {
+  case FDT_DENSITY_SD:
+    return "SD";
+  case FDT_DENSITY_DD:
+    return "DD";
+  case FDT_DENSITY_HD:
+    return "HD";
+  case FDT_DENSITY_QD:
+    return "QD";
+  case FDT_DENSITY_ED:
+    return "ED";
+  case FDT_DENSITY_UNKNOWN:
+    return "";
+  }
+  return "";
+}
+
 void fdt_image_config_print(FdtImageConfig* config)
 {
   printf("name               : %s\n", fdt_image_config_getname(config));
   printf("size               : %ld\n", fdt_image_config_getsize(config));
-  printf("density            : %d\n", config->density_type);
-  printf("number_of_cylinder : %ld\n", config->number_of_cylinder);
-  printf("number_of_head     : %ld\n", config->number_of_head);
-  printf("number_of_sector   : %ld\n", config->number_of_sector);
-  printf("sector_size        : %ld\n", config->sector_size);
+  printf("density            : %s\n", fdt_image_config_getdensitystring(config));
+  printf("number of cylinder : %ld\n", config->number_of_cylinder);
+  printf("number of head     : %ld\n", config->number_of_head);
+  printf("number of sector   : %ld\n", config->number_of_sector);
+  printf("sector size        : %ld\n", config->sector_size);
   printf("rpm                : %d\n", config->rpm);
   printf("write_protect      : %d\n", config->write_protect);
 }

@@ -35,7 +35,7 @@ typedef enum {
 
 typedef struct {
   FdtString* name;
-  FdtDensity density_type;
+  FdtDensity density;
   size_t size;
   size_t number_of_head;
   size_t number_of_sector;
@@ -51,7 +51,7 @@ void fdt_image_config_print(FdtImageConfig*);
 
 #define fdt_image_config_setname(config, v) fdt_string_setvalue(config->name, v)
 #define fdt_image_config_setsize(config, v) (config->size = v)
-#define fdt_image_config_setdensitytype(config, v) (config->density_type = v)
+#define fdt_image_config_setdensity(config, v) (config->density = v)
 #define fdt_image_config_setnumberofhead(config, v) (config->number_of_head = v)
 #define fdt_image_config_setnumberofsector(config, v) (config->number_of_sector = v)
 #define fdt_image_config_setnumberofcylinder(config, v) (config->number_of_cylinder = v)
@@ -61,13 +61,15 @@ void fdt_image_config_print(FdtImageConfig*);
 
 #define fdt_image_config_getname(config) fdt_string_getvalue(config->name)
 #define fdt_image_config_getsize(config) (config->size)
-#define fdt_image_config_getdensitytype(config) (config->density_type)
+#define fdt_image_config_getdensity(config) (config->density)
 #define fdt_image_config_getnumberofhead(config) (config->number_of_head)
 #define fdt_image_config_getnumberofsector(config) (config->number_of_sector)
 #define fdt_image_config_getnumberofcylinder(config) (config->number_of_cylinder)
 #define fdt_image_config_getsectorsize(config) (config->sector_size)
 #define fdt_image_config_getrpm(config) (config->rpm)
 #define fdt_image_config_getwriteprotect(config) (config->write_protect)
+
+const char* fdt_image_config_getdensitystring(FdtImageConfig*);
 
 #ifdef __cplusplus
 } /* extern C */

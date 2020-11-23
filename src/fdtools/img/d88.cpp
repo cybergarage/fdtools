@@ -121,19 +121,19 @@ bool fdt_image_setd88headerinfo(FdtImage* img, FdtD88Header* header)
   fdt_image_setname(img, header->name);
   fdt_image_setsize(img, header->disk_size);
   fdt_image_setwriteprotect(img, header->write_protect ? true : false);
-  
+
   switch (header->disk_type) {
-    case D88_DISK_TYPE_1D:
-    case D88_DISK_TYPE_2D:
-      fdt_image_setdensitytype(img, FDT_DENSITY_SD);
-      break;
-    case D88_DISK_TYPE_1DD:
-    case D88_DISK_TYPE_2DD:
-      fdt_image_setdensitytype(img, FDT_DENSITY_DD);
-      break;
-    case D88_DISK_TYPE_2HD:
-      fdt_image_setdensitytype(img, FDT_DENSITY_HD);
-      break;
+  case D88_DISK_TYPE_1D:
+  case D88_DISK_TYPE_2D:
+    fdt_image_setdensity(img, FDT_DENSITY_SD);
+    break;
+  case D88_DISK_TYPE_1DD:
+  case D88_DISK_TYPE_2DD:
+    fdt_image_setdensity(img, FDT_DENSITY_DD);
+    break;
+  case D88_DISK_TYPE_2HD:
+    fdt_image_setdensity(img, FDT_DENSITY_HD);
+    break;
   }
 
   return true;
