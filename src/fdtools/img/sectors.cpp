@@ -60,14 +60,14 @@ size_t fdt_image_sectors_getnumberofhead(FdtImageSectors* sectors)
 
 size_t fdt_image_sectors_getnumberofsector(FdtImageSectors* sectors)
 {
-  size_t max_sector_idx = 0;
+  int max_sector_no = 0;
   for (FdtImageSector* sector = fdt_image_sectors_gets(sectors); sector; sector = fdt_image_sector_next(sector)) {
-    size_t sector_idx = fdt_image_sector_getnumber(sector);
-    if (sector_idx < max_sector_idx)
+    int sector_no = fdt_image_sector_getnumber(sector);
+    if (sector_no < max_sector_no)
       continue;
-    max_sector_idx = sector_idx;
+    max_sector_no = sector_no;
   }
-  return (max_sector_idx + 1);
+  return max_sector_no;
 }
 
 size_t fdt_image_sectors_getmaxsectorsize(FdtImageSectors* sectors)
