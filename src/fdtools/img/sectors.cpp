@@ -34,6 +34,18 @@ void fdt_image_sectors_delete(FdtImageSectors* sectors)
   free(sectors);
 }
 
+size_t fdt_image_sectors_getnumberofcylinder(FdtImageSectors* sectors)
+{
+  size_t max_cylinder_idx = 0;
+  for (FdtImageSector* sector = fdt_image_sectors_gets(sectors); sector; sector = fdt_image_sector_next(sector)) {
+    size_t cylinder_idx = fdt_image_sector_getcylindernumber(sector);
+    if (cylinder_idx < max_cylinder_idx)
+      continue;
+    max_cylinder_idx = cylinder_idx;
+  }
+  return (max_cylinder_idx + 1);
+}
+
 void fdt_image_sectors_print(FdtImageSectors* sectors)
 {
   int n = 0;
