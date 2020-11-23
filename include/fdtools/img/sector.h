@@ -34,6 +34,7 @@ FdtImageSectors* fdt_image_sectors_new();
 void fdt_image_sectors_delete(FdtImageSectors* sectors);
 void fdt_image_sectors_print(FdtImageSectors* sectors);
 
+#define fdt_image_sectors_size(sectors) fdt_list_size((FdtList*)sectors)
 #define fdt_image_sectors_gets(sectors) (FdtImageSector*)fdt_list_gets((FdtList*)sectors)
 #define fdt_image_sectors_clear(sectors) fdt_list_clear((FdtList*)sectors, (FDT_LIST_DESTRUCTORFUNC)fdt_image_sector_delete)
 
