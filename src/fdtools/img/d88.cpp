@@ -179,7 +179,7 @@ bool fdt_d88_sector_header_parse(FdtD88SectorHeader* sector, int n, size_t offse
 
 void fdt_d88_sector_header_print(FdtD88SectorHeader* sector, int n, size_t offset)
 {
-  printf("[%02d] %06X C:%02d H:%d R:%d N:%d SNUM:%d SSIZE:%d\n", n, offset, sector->c, sector->h, sector->r, sector->n, sector->number_of_sector, sector->size_of_data);
+  printf("[%02d] %06X C:%02d H:%d R:%d N:%d SNUM:%d SSIZE:%d\n", n, (int)offset, sector->c, sector->h, sector->r, sector->n, sector->number_of_sector, sector->size_of_data);
 }
 
 bool fdt_d88_sector_data_read(FdtD88SectorHeader*, FILE* fp, size_t offset, byte* buf, size_t buf_size)
