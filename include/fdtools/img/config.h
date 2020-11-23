@@ -35,13 +35,14 @@ typedef enum {
 
 typedef struct {
   FdtString* name;
-  size_t size;
   FdtDensity density_type;
-  int rpm;
+  size_t size;
   size_t number_of_head;
   size_t number_of_sector;
   size_t number_of_cylinder;
   size_t sector_size;
+  int rpm;
+  bool write_protect;
 } FdtImageConfig;
 
 FdtImageConfig* fdt_image_config_new();
@@ -49,22 +50,24 @@ void fdt_image_config_delete(FdtImageConfig*);
 void fdt_image_config_print(FdtImageConfig*);
 
 #define fdt_image_config_setname(config, v) fdt_string_setvalue(config->name, v)
-#define fdt_image_config_setsize(config, n) (config->size = n)
-#define fdt_image_config_setdensitytype(config, n) (config->density_type = n)
-#define fdt_image_config_setrpm(config, n) (config->rpm = n)
-#define fdt_image_config_setnumberofhead(config, n) (config->number_of_head = n)
-#define fdt_image_config_setnumberofsector(config, n) (config->number_of_sector = n)
-#define fdt_image_config_setnumberofcylinder(config, n) (config->number_of_cylinder = n)
-#define fdt_image_config_setsectorsize(config, n) (config->sector_size = n)
+#define fdt_image_config_setsize(config, v) (config->size = v)
+#define fdt_image_config_setdensitytype(config, v) (config->density_type = v)
+#define fdt_image_config_setnumberofhead(config, v) (config->number_of_head = v)
+#define fdt_image_config_setnumberofsector(config, v) (config->number_of_sector = v)
+#define fdt_image_config_setnumberofcylinder(config, v) (config->number_of_cylinder = v)
+#define fdt_image_config_setsectorsize(config, v) (config->sector_size = v)
+#define fdt_image_config_setrpm(config, v) (config->rpm = v)
+#define fdt_image_config_setwriteprotect(config, v) (config->write_protect = v)
 
 #define fdt_image_config_getname(config) fdt_string_getvalue(config->name)
 #define fdt_image_config_getsize(config) (config->size)
 #define fdt_image_config_getdensitytype(config) (config->density_type)
-#define fdt_image_config_getrpm(config) (config->rpm)
 #define fdt_image_config_getnumberofhead(config) (config->number_of_head)
 #define fdt_image_config_getnumberofsector(config) (config->number_of_sector)
 #define fdt_image_config_getnumberofcylinder(config) (config->number_of_cylinder)
 #define fdt_image_config_getsectorsize(config) (config->sector_size)
+#define fdt_image_config_getrpm(config) (config->rpm)
+#define fdt_image_config_getwriteprotect(config) (config->write_protect)
 
 #ifdef __cplusplus
 } /* extern C */
