@@ -105,6 +105,11 @@ bool fdt_d88_image_load(FdtImage* img, FILE* fp)
     fdt_image_sector_setdata(sector, sector_data);
     fdt_image_addsector(img, sector);
   }
+  
+  fdt_image_setnumberofcylinder(img, fdt_image_sectors_getnumberofcylinder(img->sectors));
+  fdt_image_setnumberofhead(img, fdt_image_sectors_getnumberofhead(img->sectors));
+  fdt_image_setnumberofsector(img, fdt_image_sectors_getnumberofsector(img->sectors));
+  fdt_image_setsectorsize(img, fdt_image_sectors_getmaxsectorsize(img->sectors));
 
   return true;
 }
