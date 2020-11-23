@@ -95,7 +95,7 @@ void fdt_image_sectors_print(FdtImageSectors* sectors)
 {
   int n = 0;
   for (FdtImageSector* sector = fdt_image_sectors_gets(sectors); sector; sector = fdt_image_sector_next(sector)) {
-    printf("[%02d] C:%02d H:%d R:%d SIZE:%ld\n",
+    printf("[%04d] C:%02d H:%01d R:%02d SIZE:%ld\n",
         n,
         fdt_image_sector_getcylindernumber(sector),
         fdt_image_sector_getheadnumber(sector),
