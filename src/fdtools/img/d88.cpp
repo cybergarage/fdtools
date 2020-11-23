@@ -46,9 +46,13 @@ bool fdt_d88_image_load(FdtImage* img, FILE* fp)
       continue;
     }
 
+    // Read a raw header
+
     FdtD88SectorHeader d88_sector_header;
     if (!fdt_d88_sector_header_read(&d88_sector_header, fp, n, sector_header_offset))
       return false;
+
+    // Read a raw sectors
 
     FdtImageSector* sector = fdt_image_sector_new();
     if (!sector)

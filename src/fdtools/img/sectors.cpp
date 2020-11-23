@@ -12,6 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#include <stdio.h>
+
 #include <fdtools/img/sector.h>
 
 FdtImageSectors* fdt_image_sectors_new()
@@ -36,6 +38,12 @@ void fdt_image_sectors_print(FdtImageSectors* sectors)
 {
   int n = 0;
   for (FdtImageSector* sector = fdt_image_sectors_gets(sectors); sector; sector = fdt_image_sector_next(sector)) {
+    printf("[%02d] C:%02d H:%d R:%d SIZE:%d\n",
+        n,
+        fdt_image_sector_getcylindernumber(sector),
+        fdt_image_sector_getsidenumber(sector),
+        fdt_image_sector_getnumber(sector),
+        fdt_image_sector_getsize(sector));
     n++;
   }
 }
