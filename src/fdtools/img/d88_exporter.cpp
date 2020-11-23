@@ -34,6 +34,7 @@ bool fdt_d88_header_setconfig(FdtD88Header *d88header, FdtImage* img)
   memset(d88header, 0, sizeof(FdtD88Header));
   
   fdt_strncpy(d88header->name, fdt_image_getname(img), D88_NAME_MAXLEN);
-
+  d88header->write_protect = fdt_image_getwriteprotect(img) ? D88_WRITE_PROTECT_ENABLED : D88_WRITE_PROTECT_NONE;
+  
   return true;
 }
