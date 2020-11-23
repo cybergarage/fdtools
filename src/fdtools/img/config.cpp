@@ -12,6 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#include <stdio.h>
+
 #include <fdtools/img/config.h>
 
 FdtImageConfig* fdt_image_config_new()
@@ -23,16 +25,20 @@ FdtImageConfig* fdt_image_config_new()
     return NULL;
   }
 
-  fdt_image_config_init(config);
-
   return config;
-}
-
-void fdt_image_config_init(FdtImageConfig* config)
-{
 }
 
 void fdt_image_config_delete(FdtImageConfig* config)
 {
   free(config);
+}
+
+void fdt_image_config_print(FdtImageConfig* config)
+{
+  printf("density            : %d\n", config->density_type);
+  printf("number_of_cylinder : %d\n", config->number_of_cylinder);
+  printf("number_of_head     : %d\n", config->number_of_head);
+  printf("number_of_sector   : %d\n", config->number_of_sector);
+  printf("rpm                : %d\n", config->rpm);
+  printf("sector_size        : %d\n", config->sector_size);
 }
