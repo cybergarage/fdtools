@@ -38,7 +38,7 @@ void fdt_image_sectors_print(FdtImageSectors* sectors)
 {
   int n = 0;
   for (FdtImageSector* sector = fdt_image_sectors_gets(sectors); sector; sector = fdt_image_sector_next(sector)) {
-    printf("[%02d] C:%02d H:%d R:%d SIZE:%d\n",
+    printf("[%02d] C:%02d H:%d R:%d SIZE:%ld\n",
         n,
         fdt_image_sector_getcylindernumber(sector),
         fdt_image_sector_getsidenumber(sector),
