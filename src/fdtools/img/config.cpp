@@ -26,6 +26,8 @@ FdtImageConfig* fdt_image_config_new()
   }
 
   config->name = fdt_string_new();
+  
+  fdt_image_config_setname(config, "");
   fdt_image_config_setdensitytype(config, FDT_DENSITY_UNKNOWN);
   fdt_image_config_setrpm(config, 0);
   fdt_image_config_setnumberofhead(config, 0);
@@ -47,6 +49,7 @@ void fdt_image_config_delete(FdtImageConfig* config)
 
 void fdt_image_config_print(FdtImageConfig* config)
 {
+  printf("name               : %s\n", fdt_image_config_getname(config));
   printf("density            : %d\n", config->density_type);
   printf("number_of_cylinder : %d\n", config->number_of_cylinder);
   printf("number_of_head     : %d\n", config->number_of_head);
