@@ -56,6 +56,16 @@ void fdt_image_print(FdtImage* img);
 #define fdt_image_setrpm(img, v) fdt_image_config_setrpm(img->config, v)
 #define fdt_image_setwriteprotect(img, v) fdt_image_config_setwriteprotect(img->config, v)
 
+#define fdt_image_getname(img) fdt_image_config_getname(img->config)
+#define fdt_image_getsize(img) fdt_image_config_getsize(img->config)
+#define fdt_image_getdensity(img) fdt_image_config_getdensity(img->config)
+#define fdt_image_getnumberofhead(img) fdt_image_config_getnumberofhead(img->config)
+#define fdt_image_getnumberofsector(img) fdt_image_config_getnumberofsector(img->config)
+#define fdt_image_getnumberofcylinder(img) fdt_image_config_getnumberofcylinder(img->config)
+#define fdt_image_getsectorsize(img) fdt_image_config_getsectorsize(img->config)
+#define fdt_image_getrpm(img) fdt_image_config_getrpm(img->config)
+#define fdt_image_getwriteprotect(img) fdt_image_config_getwriteprotect(img->config)
+
 #define fdt_image_addsector(img, sector) fdt_list_add((FdtList*)img->sectors, (FdtList*)sector)
 
 bool fdt_image_load(FdtImage*, FILE*);
