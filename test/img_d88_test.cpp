@@ -42,6 +42,7 @@ BOOST_AUTO_TEST_CASE(D88ImageLoadTest)
 
     FdtImage* img = fdt_d88_image_new();
     BOOST_CHECK(fdt_image_load(img, fp));
+    fdt_image_print(img);
     fdt_image_delete(img);
 
     fdt_file_close(fp);

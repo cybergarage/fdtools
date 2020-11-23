@@ -35,7 +35,7 @@ void fdt_image_sectors_delete(FdtImageSectors* sectors)
 void fdt_image_sectors_print(FdtImageSectors* sectors)
 {
   int n = 0;
-  for (FdtImageSector *sector = fdt_image_sectors_gets(sectors); sector; sector = fdt_image_sector_next(sector)) {
+  for (FdtImageSector* sector = fdt_image_sectors_gets(sectors); sector; sector = fdt_image_sector_next(sector)) {
     n++;
   }
 }

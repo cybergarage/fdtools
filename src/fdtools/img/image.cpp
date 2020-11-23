@@ -24,13 +24,20 @@ FdtImage* fdt_image_new()
   img->config = fdt_image_config_new();
   img->sectors = fdt_image_sectors_new();
 
+  if (!img->config || !img->config) {
+    fdt_image_delete(img);
+    return NULL;
+  }
+
   return img;
 }
 
 void fdt_image_delete(FdtImage* img)
 {
-  fdt_image_config_delete(img->config);
-  fdt_image_sectors_delete(img->sectors);
+  if (img->config)
+    fdt_image_config_delete(img->config);
+  if (img->sectors)
+    fdt_image_sectors_delete(img->sectors);
 
   free(img);
 }
@@ -40,4 +47,12 @@ bool fdt_image_load(FdtImage* img, FILE* fp)
   if (!img || !fp)
     return false;
   return img->load_file(img, fp);
+}
+
+void fdt_image_print(FdtImage* img)
+{
+  if (img->config)
+    fdt_image_config_print(img->config);
+  if (img->sectors)
+    fdt_image_sectors_print(img->sectors);
 }
