@@ -19,7 +19,21 @@
 #include <fdtools/util/file.h>
 #include <fdtools/util/string.h>
 
+bool fdt_d88_header_setconfig(FdtD88Header *d88header, FdtImage* img);
+
 bool fdt_d88_image_export(FdtImage* img, FILE* fp)
 {
+  FdtD88Header d88_header;
+  if (!fdt_d88_header_setconfig(&d88_header, img))
+    return false;
+  return true;
+}
+
+bool fdt_d88_header_setconfig(FdtD88Header *d88header, FdtImage* img)
+{
+  memset(d88header, 0, sizeof(FdtD88Header));
+  
+  fdt_strncpy(d88header->name, fdt_image_getname(img), D88_NAME_MAXLEN);
+
   return true;
 }
