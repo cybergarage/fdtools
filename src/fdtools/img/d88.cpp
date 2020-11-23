@@ -78,6 +78,10 @@ bool fdt_d88_image_load(FdtImage* img, FILE* fp)
     size_t sector_data_size = fdt_image_sector_getsize(sector);
     size_t sector_data_offset = sector_header_offset + sizeof(FdtD88SectorHeader);
     byte* sector_data = (byte*)malloc(sector_data_size);
+    if (!sector_data) {
+      fdt_image_sector_delete(sector);
+      return false;
+    }
     if (!fdt_d88_sector_data_read(&d88_sector_header, fp, sector_data_offset, sector_data, sector_data_size)) {
       fdt_image_sector_delete(sector);
       free(sector_data);
@@ -93,7 +97,7 @@ bool fdt_d88_image_load(FdtImage* img, FILE* fp)
 bool fdt_d88_header_parse(FdtD88Header* header, byte* header_buf)
 {
   memcpy(header, header_buf, sizeof(FdtD88Header));
-  fdt_d88_header_print(header);
+  //fdt_d88_header_print(header);
   return true;
 }
 
@@ -124,7 +128,7 @@ bool fdt_d88_sector_header_read(FdtD88SectorHeader* sector, FILE* fp, int n, siz
 bool fdt_d88_sector_header_parse(FdtD88SectorHeader* sector, int n, size_t offset, byte* sector_buf)
 {
   memcpy(sector, sector_buf, sizeof(FdtD88SectorHeader));
-  fdt_d88_sector_header_print(sector, n, offset);
+  //fdt_d88_sector_header_print(sector, n, offset);
   return true;
 }
 

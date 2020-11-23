@@ -40,7 +40,7 @@ bool fdt_hfe_image_load(FdtImage* img, FILE* fp)
 bool fdt_hfe_image_parse(FdtImage* img, byte* header_buf)
 {
   FdtHfeHeader* raw_header = (FdtHfeHeader*)header_buf;
-  fdt_hfe_header_print(raw_header);
+  //fdt_hfe_header_print(raw_header);
   return true;
 }
 
