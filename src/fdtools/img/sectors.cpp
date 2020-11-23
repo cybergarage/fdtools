@@ -46,6 +46,18 @@ size_t fdt_image_sectors_getnumberofcylinder(FdtImageSectors* sectors)
   return (max_cylinder_idx + 1);
 }
 
+size_t fdt_image_sectors_getnumberofhead(FdtImageSectors* sectors)
+{
+  size_t max_head_idx = 0;
+  for (FdtImageSector* sector = fdt_image_sectors_gets(sectors); sector; sector = fdt_image_sector_next(sector)) {
+    size_t head_idx = fdt_image_sector_getcylindernumber(sector);
+    if (head_idx < max_head_idx)
+      continue;
+    max_head_idx = head_idx;
+  }
+  return (max_head_idx + 1);
+}
+
 void fdt_image_sectors_print(FdtImageSectors* sectors)
 {
   int n = 0;
