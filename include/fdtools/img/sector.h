@@ -34,6 +34,7 @@ FdtImageSectors* fdt_image_sectors_new();
 void fdt_image_sectors_delete(FdtImageSectors* sectors);
 size_t fdt_image_sectors_getnumberofcylinder(FdtImageSectors* sectors);
 size_t fdt_image_sectors_getnumberofhead(FdtImageSectors* sectors);
+size_t fdt_image_sectors_getnumberofsector(FdtImageSectors* sectors);
 void fdt_image_sectors_print(FdtImageSectors* sectors);
 
 #define fdt_image_sectors_size(sectors) fdt_list_size((FdtList*)sectors)
