@@ -29,6 +29,7 @@ BOOST_AUTO_TEST_CASE(D88ImageLoadTest)
     "test-001.d88",
     "test-002.d88",
     "test-003.d88",
+    "test-004.d88",
   };
 
   for (int n = 0; n < fdt_array_countof(TEST_D88_IMAGES); n++) {
