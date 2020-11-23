@@ -58,6 +58,21 @@ const char* fdt_ssizet2str(ssize_t value, char* buf, size_t bufSize);
 #define fdt_str2sizet(value) ((size_t)(value ? atol(value) : 0))
 #define fdt_str2ssizet(value) ((ssize_t)(value ? atol(value) : 0))
 
+typedef struct {
+  char* value;
+  size_t memSize;
+  size_t valueSize;
+} FdtString;
+
+FdtString* fdt_string_new();
+void fdt_string_delete(FdtString* str);
+void fdt_string_clear(FdtString* str);
+
+void fdt_string_setvalue(FdtString* str, const char* value);
+void fdt_string_setnvalue(FdtString* str, const char* value, size_t len);
+char* fdt_string_getvalue(FdtString* str);
+size_t fdt_string_length(FdtString* str);
+
 #ifdef __cplusplus
 } /* extern C */
 #endif
