@@ -25,13 +25,13 @@ FdtImageConfig* fdt_image_config_new()
     return NULL;
   }
 
-  fdt_image_config_setdensitytype(config, 0);
+  fdt_image_config_setdensitytype(config, FDT_DENSITY_UNKNOWN);
   fdt_image_config_setrpm(config, 0);
   fdt_image_config_setnumberofhead(config, 0);
   fdt_image_config_setnumberofsector(config, 0);
   fdt_image_config_setnumberofcylinder(config, 0);
   fdt_image_config_setsectorsize(config, 0);
-  
+
   return config;
 }
 
