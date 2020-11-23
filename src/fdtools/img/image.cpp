@@ -46,7 +46,7 @@ bool fdt_image_load(FdtImage* img, FILE* fp)
 {
   if (!img || !fp)
     return false;
-  return img->load_file(img, fp);
+  return img->file_loader(img, fp);
 }
 
 void fdt_image_print(FdtImage* img)

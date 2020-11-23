@@ -26,12 +26,12 @@ extern "C" {
 
 const int FDT_IMAGE_HEADER_SIGNATURE_MAX = 8;
 
-typedef bool (*FDT_IMAGE_FILELOADERFUNC)(void*, FILE*);
+typedef bool (*FDT_IMAGE_FILELOADER)(void*, FILE*);
 
 typedef struct {
   FdtImageConfig* config;
   FdtImageSectors* sectors;
-  FDT_IMAGE_FILELOADERFUNC load_file;
+  FDT_IMAGE_FILELOADER file_loader;
 } FdtImage;
 
 FdtImage* fdt_image_new();
@@ -40,6 +40,8 @@ void fdt_image_print(FdtImage* img);
 
 #define fdt_image_getconfig(img) (img->config)
 #define fdt_image_getsectors(img) (img->sectors)
+
+#define fdt_image_setfileloader(img, fn) (img->file_loader = (FDT_IMAGE_FILELOADER)fn)
 
 #define fdt_image_setname(img, v) fdt_image_config_setname(img->config, v)
 #define fdt_image_setsize(img, v) fdt_image_config_setsize(img->config, v)
