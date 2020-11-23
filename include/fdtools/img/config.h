@@ -35,12 +35,13 @@ typedef enum {
 
 typedef struct {
   FdtString* name;
+  size_t size;
   FdtDensity density_type;
   int rpm;
-  int number_of_head;
-  int number_of_sector;
-  int number_of_cylinder;
-  int sector_size;
+  size_t number_of_head;
+  size_t number_of_sector;
+  size_t number_of_cylinder;
+  size_t sector_size;
 } FdtImageConfig;
 
 FdtImageConfig* fdt_image_config_new();
@@ -48,6 +49,7 @@ void fdt_image_config_delete(FdtImageConfig*);
 void fdt_image_config_print(FdtImageConfig*);
 
 #define fdt_image_config_setname(config, v) fdt_string_setvalue(config->name, v)
+#define fdt_image_config_setsize(config, n) (config->size = n)
 #define fdt_image_config_setdensitytype(config, n) (config->density_type = n)
 #define fdt_image_config_setrpm(config, n) (config->rpm = n)
 #define fdt_image_config_setnumberofhead(config, n) (config->number_of_head = n)
@@ -56,6 +58,7 @@ void fdt_image_config_print(FdtImageConfig*);
 #define fdt_image_config_setsectorsize(config, n) (config->sector_size = n)
 
 #define fdt_image_config_getname(config) fdt_string_getvalue(config->name)
+#define fdt_image_config_getsize(config) (config->size)
 #define fdt_image_config_getdensitytype(config) (config->density_type)
 #define fdt_image_config_getrpm(config) (config->rpm)
 #define fdt_image_config_getnumberofhead(config) (config->number_of_head)

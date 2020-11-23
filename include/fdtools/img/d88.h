@@ -86,14 +86,6 @@ typedef struct FDT_ATTR_PACKED {
 
 FdtImage* fdt_d88_image_new(void);
 
-bool fdt_d88_image_load(FdtImage*, FILE*);
-bool fdt_d88_header_parse(FdtD88Header*, byte*);
-void fdt_d88_header_print(FdtD88Header*);
-bool fdt_d88_sector_header_read(FdtD88SectorHeader*, FILE* fp, int n, size_t offset);
-bool fdt_d88_sector_header_parse(FdtD88SectorHeader*, int, size_t, byte*);
-void fdt_d88_sector_header_print(FdtD88SectorHeader*, int n, size_t offset);
-bool fdt_d88_sector_data_read(FdtD88SectorHeader*, FILE* fp, size_t offset, byte* buf, size_t buf_size);
-
 #ifdef __cplusplus
 } /* extern C */
 #endif
