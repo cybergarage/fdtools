@@ -50,7 +50,7 @@ size_t fdt_image_sectors_getnumberofhead(FdtImageSectors* sectors)
 {
   size_t max_head_idx = 0;
   for (FdtImageSector* sector = fdt_image_sectors_gets(sectors); sector; sector = fdt_image_sector_next(sector)) {
-    size_t head_idx = fdt_image_sector_getsidenumber(sector);
+    size_t head_idx = fdt_image_sector_getheadnumber(sector);
     if (head_idx < max_head_idx)
       continue;
     max_head_idx = head_idx;
@@ -65,7 +65,7 @@ void fdt_image_sectors_print(FdtImageSectors* sectors)
     printf("[%02d] C:%02d H:%d R:%d SIZE:%ld\n",
         n,
         fdt_image_sector_getcylindernumber(sector),
-        fdt_image_sector_getsidenumber(sector),
+        fdt_image_sector_getheadnumber(sector),
         fdt_image_sector_getnumber(sector),
         fdt_image_sector_getsize(sector));
     n++;

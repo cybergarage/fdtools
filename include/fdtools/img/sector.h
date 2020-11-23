@@ -24,7 +24,7 @@ extern "C" {
 typedef struct {
   FDT_LIST_STRUCT_MEMBERS
   int cylinder_number;
-  int side_number;
+  int head_number;
   int number;
   size_t size;
   byte* data;
@@ -46,13 +46,13 @@ void fdt_image_sector_delete(FdtImageSector* sector);
 #define fdt_image_sector_next(sector) (FdtImageSector*)fdt_list_next((FdtList*)sector)
 
 #define fdt_image_sector_setcylindernumber(sector, n) (sector->cylinder_number = n)
-#define fdt_image_sector_setsidenumber(sector, n) (sector->side_number = n)
+#define fdt_image_sector_setheadnumber(sector, n) (sector->head_number = n)
 #define fdt_image_sector_setnumber(sector, n) (sector->number = n)
 #define fdt_image_sector_setsize(sector, n) (sector->size = n)
 #define fdt_image_sector_setdata(sector, v) (sector->data = v)
 
 #define fdt_image_sector_getcylindernumber(sector) (sector->cylinder_number)
-#define fdt_image_sector_getsidenumber(sector) (sector->side_number)
+#define fdt_image_sector_getheadnumber(sector) (sector->head_number)
 #define fdt_image_sector_getnumber(sector) (sector->number)
 #define fdt_image_sector_getsize(sector) (sector->size)
 #define fdt_image_sector_getdata(sector) (sector->data)

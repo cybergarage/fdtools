@@ -69,7 +69,7 @@ bool fdt_d88_image_load(FdtImage* img, FILE* fp)
     if (!sector)
       return false;
     fdt_image_sector_setcylindernumber(sector, d88_sector_header.c);
-    fdt_image_sector_setsidenumber(sector, d88_sector_header.h);
+    fdt_image_sector_setheadnumber(sector, d88_sector_header.h);
     fdt_image_sector_setnumber(sector, d88_sector_header.r);
     if (0 < d88_sector_header.size_of_data) {
       fdt_image_sector_setsize(sector, d88_sector_header.size_of_data);

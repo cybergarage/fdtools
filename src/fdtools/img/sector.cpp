@@ -24,7 +24,7 @@ FdtImageSector* fdt_image_sector_new()
   fdt_list_node_init((FdtList*)sector);
 
   fdt_image_sector_setcylindernumber(sector, 0);
-  fdt_image_sector_setsidenumber(sector, 0);
+  fdt_image_sector_setheadnumber(sector, 0);
   fdt_image_sector_setnumber(sector, 0);
   fdt_image_sector_setsize(sector, 0);
   fdt_image_sector_setdata(sector, NULL);
