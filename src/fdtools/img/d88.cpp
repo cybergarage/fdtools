@@ -118,6 +118,7 @@ bool fdt_d88_image_load(FdtImage* img, FILE* fp)
 
 bool fdt_d88_header_parse(FdtD88Header* header, byte* header_buf)
 {
+  // TODO: Support Big-endian architecture
   memcpy(header, header_buf, sizeof(FdtD88Header));
   //fdt_d88_header_print(header);
   return true;
@@ -172,6 +173,7 @@ bool fdt_d88_sector_header_read(FdtD88SectorHeader* sector, FILE* fp, int n, siz
 
 bool fdt_d88_sector_header_parse(FdtD88SectorHeader* sector, int n, size_t offset, byte* sector_buf)
 {
+  // TODO: Support Big-endian architecture
   memcpy(sector, sector_buf, sizeof(FdtD88SectorHeader));
   //fdt_d88_sector_header_print(sector, n, offset);
   return true;
