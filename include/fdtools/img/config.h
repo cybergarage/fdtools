@@ -47,6 +47,9 @@ typedef struct {
 
 FdtImageConfig* fdt_image_config_new();
 void fdt_image_config_delete(FdtImageConfig*);
+
+bool fdt_image_config_equals(FdtImageConfig*, FdtImageConfig*);
+
 void fdt_image_config_print(FdtImageConfig*);
 
 #define fdt_image_config_setname(config, v) fdt_string_setvalue(config->name, v)

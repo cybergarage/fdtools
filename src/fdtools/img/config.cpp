@@ -13,6 +13,7 @@
 // limitations under the License.
 
 #include <stdio.h>
+#include <string.h>
 
 #include <fdtools/img/config.h>
 
@@ -66,6 +67,11 @@ const char* fdt_image_config_getdensitystring(FdtImageConfig* config)
     return "";
   }
   return "";
+}
+
+bool fdt_image_config_equals(FdtImageConfig* config, FdtImageConfig* other)
+{
+  return memcmp(config, other, sizeof(FdtImageConfig)) == 0 ? true : false;
 }
 
 void fdt_image_config_print(FdtImageConfig* config)
