@@ -18,25 +18,41 @@
 #include <fdtools/img/file.h>
 #include <fdtools/util/string.h>
 
-FILE* fdt_file_open(const char* filename, FdtFileMode mode)
+const char* fdt_file_mode2str(FdtFileMode mode)
 {
-  const char* fmode = NULL;
   switch (mode) {
   case FDT_FILE_READ:
-    fmode = "rb";
+    return "rb";
     break;
   case FDT_FILE_WRITE:
-    fmode = "rb";
+    return "rb";
     break;
   }
+  return NULL;
+}
 
+FILE* fdt_file_open(const char* filename, FdtFileMode mode)
+{
+  const char* fmode = fdt_file_mode2str(mode);
   if (!fmode)
     return NULL;
-
   return fopen(filename, fmode);
 }
 
 int fdt_file_close(FILE* fp)
+{
+  return fclose(fp);
+}
+
+FILE* fdt_file_memopen(byte* buf, size_t n, FdtFileMode mode)
+{
+  const char* fmode = fdt_file_mode2str(mode);
+  if (!fmode)
+    return NULL;
+  return fmemopen(buf, n, fmode);
+}
+
+int fdt_file_memclose(FILE* fp)
 {
   return fclose(fp);
 }
