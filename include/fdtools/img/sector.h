@@ -21,17 +21,22 @@
 extern "C" {
 #endif
 
+typedef int FdtCylinderNumber;
+typedef int FdtHeadNumber;
+typedef int FdtSectorNumber;
+
 typedef struct {
   FDT_LIST_STRUCT_MEMBERS
-  int cylinder_number;
-  int head_number;
-  int number;
+  FdtCylinderNumber cylinder_number;
+  FdtHeadNumber head_number;
+  FdtSectorNumber number;
   size_t size;
   byte* data;
 } FdtImageSector, FdtImageSectors;
 
 FdtImageSectors* fdt_image_sectors_new();
 void fdt_image_sectors_delete(FdtImageSectors*);
+FdtImageSector* fdt_image_sectors_findsector(FdtImageSectors*, FdtCylinderNumber, FdtHeadNumber, FdtSectorNumber);
 size_t fdt_image_sectors_getnumberofcylinder(FdtImageSectors*);
 size_t fdt_image_sectors_getnumberofhead(FdtImageSectors*);
 size_t fdt_image_sectors_getnumberofsector(FdtImageSectors*);
