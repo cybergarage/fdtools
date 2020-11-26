@@ -42,6 +42,7 @@ size_t fdt_image_sectors_getnumberofhead(FdtImageSectors*);
 size_t fdt_image_sectors_getnumberofsector(FdtImageSectors*);
 size_t fdt_image_sectors_getmaxsectorsize(FdtImageSectors*);
 size_t fdt_image_sectors_gettotalsize(FdtImageSectors*);
+bool fdt_image_sectors_equals(FdtImageSectors*, FdtImageSectors*);
 void fdt_image_sectors_print(FdtImageSectors*);
 
 #define fdt_image_sectors_size(sectors) fdt_list_size((FdtList*)sectors)

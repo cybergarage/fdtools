@@ -105,6 +105,18 @@ size_t fdt_image_sectors_gettotalsize(FdtImageSectors* sectors)
   return total_sector_size;
 }
 
+bool fdt_image_sectors_equals(FdtImageSectors* sectors, FdtImageSectors* others)
+{
+  for (FdtImageSector* sector = fdt_image_sectors_gets(sectors); sector; sector = fdt_image_sector_next(sector)) {
+    FdtImageSector* other = fdt_image_sectors_findsector(others, fdt_image_sector_getcylindernumber(sector), fdt_image_sector_getheadnumber(sector), fdt_image_sector_getnumber(sector));
+    if (!other)
+      return false;
+    if (!fdt_image_sector_equals(sector, other))
+      return false;
+  }
+  return true;
+}
+
 void fdt_image_sectors_print(FdtImageSectors* sectors)
 {
   int n = 0;
