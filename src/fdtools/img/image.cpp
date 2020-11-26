@@ -56,6 +56,17 @@ bool fdt_image_export(FdtImage* img, FILE* fp)
   return img->file_exporter(img, fp);
 }
 
+bool fdt_image_equals(FdtImage* img, FdtImage* other)
+{
+  if (!img || !other)
+    return false;
+  if (!fdt_image_config_equals(img->config, other->config))
+    return false;
+  if (!fdt_image_sectors_equals(img->sectors, other->sectors))
+    return false;
+  return true;
+}
+
 void fdt_image_print(FdtImage* img)
 {
   if (img->config)

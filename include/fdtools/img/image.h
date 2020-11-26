@@ -38,6 +38,7 @@ typedef struct {
 
 FdtImage* fdt_image_new();
 void fdt_image_delete(FdtImage* img);
+bool fdt_image_equals(FdtImage*, FdtImage*);
 
 bool fdt_image_load(FdtImage*, FILE*);
 bool fdt_image_export(FdtImage*, FILE*);

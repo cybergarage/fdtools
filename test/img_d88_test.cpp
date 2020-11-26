@@ -42,11 +42,9 @@ BOOST_AUTO_TEST_CASE(D88ImageLoadTest)
     BOOST_CHECK(fp);
     if (!fp)
       continue;
-
     FdtImage* src_img = fdt_d88_image_new();
     BOOST_CHECK(fdt_image_load(src_img, fp));
-    fdt_image_print(src_img);
-
+    //fdt_image_print(src_img);
     fdt_file_close(fp);
 
     // Exporter test
@@ -54,13 +52,23 @@ BOOST_AUTO_TEST_CASE(D88ImageLoadTest)
     size_t img_size = fdt_image_getsize(src_img);
 
     byte* dst_img_buf = (byte*)malloc(img_size);
-    FILE* dst_img = fdt_file_memopen(dst_img_buf, img_size, FDT_FILE_WRITE);
-    BOOST_CHECK(fdt_image_export(src_img, fp));
-    fdt_file_memclose(dst_img);
+    FILE* mem_fp = fdt_file_memopen(dst_img_buf, img_size, FDT_FILE_WRITE);
+    BOOST_CHECK(fdt_image_export(src_img, mem_fp));
+    fdt_file_memclose(mem_fp);
+
+    // Compare test
+
+    mem_fp = fdt_file_memopen(dst_img_buf, img_size, FDT_FILE_READ);
+    FdtImage* dst_img = fdt_d88_image_new();
+    BOOST_CHECK(fdt_image_load(dst_img, fp));
+    fdt_file_memclose(mem_fp);
+    BOOST_CHECK(fdt_image_equals(src_img, dst_img));
+
     free(dst_img_buf);
 
     // Clean up
 
+    fdt_image_delete(dst_img);
     fdt_image_delete(src_img);
   }
 }
