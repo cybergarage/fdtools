@@ -49,6 +49,13 @@ bool fdt_image_load(FdtImage* img, FILE* fp)
   return img->file_loader(img, fp);
 }
 
+bool fdt_image_export(FdtImage* img, FILE* fp)
+{
+  if (!img || !fp)
+    return false;
+  return img->file_exporter(img, fp);
+}
+
 void fdt_image_print(FdtImage* img)
 {
   if (img->config)

@@ -38,6 +38,10 @@ typedef struct {
 
 FdtImage* fdt_image_new();
 void fdt_image_delete(FdtImage* img);
+
+bool fdt_image_load(FdtImage*, FILE*);
+bool fdt_image_export(FdtImage*, FILE*);
+
 void fdt_image_print(FdtImage* img);
 
 #define fdt_image_getconfig(img) (img->config)
@@ -67,8 +71,6 @@ void fdt_image_print(FdtImage* img);
 #define fdt_image_getwriteprotect(img) fdt_image_config_getwriteprotect(img->config)
 
 #define fdt_image_addsector(img, sector) fdt_list_add((FdtList*)img->sectors, (FdtList*)sector)
-
-bool fdt_image_load(FdtImage*, FILE*);
 
 #ifdef __cplusplus
 } /* extern C */

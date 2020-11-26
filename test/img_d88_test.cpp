@@ -36,16 +36,31 @@ BOOST_AUTO_TEST_CASE(D88ImageLoadTest)
     std::string filename = TEST_IMAGE_DIRECTORY + "/" + *TEST_D88_IMAGES[n];
     BOOST_CHECK_EQUAL(fdt_img_file_gettype(filename.c_str()), FDT_IMAGE_TYPE_D88);
 
+    // Loader test
+
     FILE* fp = fdt_file_open(filename.c_str(), FDT_FILE_READ);
     BOOST_CHECK(fp);
     if (!fp)
       continue;
 
-    FdtImage* img = fdt_d88_image_new();
-    BOOST_CHECK(fdt_image_load(img, fp));
-    fdt_image_print(img);
-    fdt_image_delete(img);
+    FdtImage* src_img = fdt_d88_image_new();
+    BOOST_CHECK(fdt_image_load(src_img, fp));
+    fdt_image_print(src_img);
 
     fdt_file_close(fp);
+
+    // Exporter test
+
+    size_t img_size = fdt_image_getsize(src_img);
+
+    byte* dst_img_buf = (byte*)malloc(img_size);
+    FILE* dst_img = fdt_file_memopen(dst_img_buf, img_size, FDT_FILE_WRITE);
+    BOOST_CHECK(fdt_image_export(src_img, fp));
+    fdt_file_memclose(dst_img);
+    free(dst_img_buf);
+
+    // Clean up
+
+    fdt_image_delete(src_img);
   }
 }
