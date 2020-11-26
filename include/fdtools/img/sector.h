@@ -31,20 +31,21 @@ typedef struct {
 } FdtImageSector, FdtImageSectors;
 
 FdtImageSectors* fdt_image_sectors_new();
-void fdt_image_sectors_delete(FdtImageSectors* sectors);
-size_t fdt_image_sectors_getnumberofcylinder(FdtImageSectors* sectors);
-size_t fdt_image_sectors_getnumberofhead(FdtImageSectors* sectors);
-size_t fdt_image_sectors_getnumberofsector(FdtImageSectors* sectors);
-size_t fdt_image_sectors_getmaxsectorsize(FdtImageSectors* sectors);
-size_t fdt_image_sectors_gettotalsize(FdtImageSectors* sectors);
-void fdt_image_sectors_print(FdtImageSectors* sectors);
+void fdt_image_sectors_delete(FdtImageSectors*);
+size_t fdt_image_sectors_getnumberofcylinder(FdtImageSectors*);
+size_t fdt_image_sectors_getnumberofhead(FdtImageSectors*);
+size_t fdt_image_sectors_getnumberofsector(FdtImageSectors*);
+size_t fdt_image_sectors_getmaxsectorsize(FdtImageSectors*);
+size_t fdt_image_sectors_gettotalsize(FdtImageSectors*);
+void fdt_image_sectors_print(FdtImageSectors*);
 
 #define fdt_image_sectors_size(sectors) fdt_list_size((FdtList*)sectors)
 #define fdt_image_sectors_gets(sectors) (FdtImageSector*)fdt_list_gets((FdtList*)sectors)
 #define fdt_image_sectors_clear(sectors) fdt_list_clear((FdtList*)sectors, (FDT_LIST_DESTRUCTORFUNC)fdt_image_sector_delete)
 
 FdtImageSector* fdt_image_sector_new();
-void fdt_image_sector_delete(FdtImageSector* sector);
+void fdt_image_sector_delete(FdtImageSector*);
+bool fdt_image_sector_equals(FdtImageSector*, FdtImageSector*);
 
 #define fdt_image_sector_next(sector) (FdtImageSector*)fdt_list_next((FdtList*)sector)
 

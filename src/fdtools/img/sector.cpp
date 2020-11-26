@@ -12,6 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#include <string.h>
+
 #include <fdtools/img/sector.h>
 
 FdtImageSector* fdt_image_sector_new()
@@ -36,4 +38,17 @@ void fdt_image_sector_delete(FdtImageSector* sector)
 {
   fdt_list_remove((FdtList*)sector);
   free(sector);
+}
+
+bool fdt_image_sector_equals(FdtImageSector* sector, FdtImageSector* other)
+{
+  if (sector->cylinder_number != other->cylinder_number)
+    return false;
+  if (sector->head_number != other->head_number)
+    return false;
+  if (sector->number != other->number)
+    return false;
+  if (sector->size != other->size)
+    return false;
+  return memcmp(sector->data, other->data, sector->size) == 0 ? true : false;
 }
