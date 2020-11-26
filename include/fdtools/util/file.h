@@ -23,7 +23,12 @@
 extern "C" {
 #endif
 
-FILE* fdt_file_open(const char* filename);
+typedef enum {
+  FDT_FILE_READ = 0x01,
+  FDT_FILE_WRITE = 0x20,
+} FdtFileMode;
+
+FILE* fdt_file_open(const char* filename, FdtFileMode);
 int fdt_file_close(FILE*);
 bool fdt_file_read(FILE*, byte*, size_t);
 

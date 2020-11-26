@@ -36,7 +36,7 @@ BOOST_AUTO_TEST_CASE(D88ImageLoadTest)
     std::string filename = TEST_IMAGE_DIRECTORY + "/" + *TEST_D88_IMAGES[n];
     BOOST_CHECK_EQUAL(fdt_img_file_gettype(filename.c_str()), FDT_IMAGE_TYPE_D88);
 
-    FILE* fp = fdt_file_open(filename.c_str());
+    FILE* fp = fdt_file_open(filename.c_str(), FDT_FILE_READ);
     BOOST_CHECK(fp);
     if (!fp)
       continue;

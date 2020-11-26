@@ -35,7 +35,7 @@ BOOST_AUTO_TEST_CASE(HfeImageLoadTest)
     std::string filename = TEST_IMAGE_DIRECTORY + "/" + *TEST_HFE_IMAGES[n];
     BOOST_CHECK_EQUAL(fdt_img_file_gettype(filename.c_str()), FDT_IMAGE_TYPE_HFE);
 
-    FILE* fp = fdt_file_open(filename.c_str());
+    FILE* fp = fdt_file_open(filename.c_str(), FDT_FILE_READ);
     BOOST_CHECK(fp);
     if (!fp)
       continue;

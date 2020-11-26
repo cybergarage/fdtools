@@ -46,7 +46,7 @@ const uint8_t D88_DISK_TYPE_1DD = 0x40;
 const size_t D88_NAME_MAXLEN = 16;
 
 typedef struct FDT_ATTR_PACKED {
-  char name[D88_NAME_MAXLEN+1];
+  char name[D88_NAME_MAXLEN + 1];
   uint8_t reserve[9];
   uint8_t write_protect;
   uint8_t disk_type;

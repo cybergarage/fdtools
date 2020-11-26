@@ -20,7 +20,7 @@
 
 FdtImageType fdt_img_file_gettype(const char* filename)
 {
-  FILE* fp = fdt_file_open(filename);
+  FILE* fp = fdt_file_open(filename, FDT_FILE_READ);
   if (!fp)
     return FDT_IMAGE_TYPE_UNKNOWN;
 
