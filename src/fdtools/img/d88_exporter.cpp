@@ -118,9 +118,21 @@ bool fdt_d88_header_setconfig(FdtD88Header* d88_header, FdtImage* img)
   return true;
 }
 
-bool fdt_d88_sector_header_setconfig(FdtD88SectorHeader* d88_sector_header, FdtImageSector *sector)
+bool fdt_d88_sector_header_setconfig(FdtD88SectorHeader* d88_sector_header, FdtImageSector* sector)
 {
   memset(d88_sector_header, 0, sizeof(FdtD88SectorHeader));
-  
+
+  d88_sector_header->c = fdt_image_sector_getcylindernumber(sector);
+  d88_sector_header->h = fdt_image_sector_getheadnumber(sector);
+  d88_sector_header->r = 1;
+  /*
+  d88_sector_header->n = ;
+  d88_sector_header->number_of_sector = ;
+  d88_sector_header->density = ;
+*/
+  d88_sector_header->deleted_mark = D88_SECTOR_DELETED_MARK_NONE;
+  d88_sector_header->status = D88_SECTOR_STATUS_NORMAL;
+  d88_sector_header->size_of_data = fdt_image_sector_getsize(sector);
+
   return true;
 }
