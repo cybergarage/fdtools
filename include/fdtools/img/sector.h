@@ -36,7 +36,7 @@ typedef struct {
 
 FdtImageSectors* fdt_image_sectors_new();
 void fdt_image_sectors_delete(FdtImageSectors*);
-FdtImageSector* fdt_image_sectors_findsector(FdtImageSectors*, FdtCylinderNumber, FdtHeadNumber, FdtSectorNumber);
+FdtImageSector* fdt_image_sectors_getsector(FdtImageSectors*, FdtCylinderNumber, FdtHeadNumber, FdtSectorNumber);
 size_t fdt_image_sectors_getnumberofcylinder(FdtImageSectors*);
 size_t fdt_image_sectors_getnumberofhead(FdtImageSectors*);
 size_t fdt_image_sectors_getnumberofsector(FdtImageSectors*);
