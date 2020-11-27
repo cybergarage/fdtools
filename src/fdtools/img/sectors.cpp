@@ -121,6 +121,19 @@ size_t fdt_image_sectors_gettotalsize(FdtImageSectors* sectors)
   return total_sector_size;
 }
 
+size_t fdt_image_sectors_gettracksize(FdtImageSectors* sectors, FdtCylinderNumber c, FdtHeadNumber h)
+{
+  size_t track_total_sector_size = 0;
+  for (FdtImageSector* sector = fdt_image_sectors_gets(sectors); sector; sector = fdt_image_sector_next(sector)) {
+    if (fdt_image_sector_getcylindernumber(sector) != c)
+      continue;
+    if (fdt_image_sector_getheadnumber(sector) != h)
+      continue;
+    track_total_sector_size += fdt_image_sector_getsize(sector);
+  }
+  return track_total_sector_size;
+}
+
 bool fdt_image_sectors_equals(FdtImageSectors* sectors, FdtImageSectors* others)
 {
   for (FdtImageSector* sector = fdt_image_sectors_gets(sectors); sector; sector = fdt_image_sector_next(sector)) {
