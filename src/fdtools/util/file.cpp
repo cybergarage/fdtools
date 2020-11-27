@@ -57,12 +57,12 @@ int fdt_file_memclose(FILE* fp)
   return fclose(fp);
 }
 
-bool fdt_file_read(FILE* fp, byte* buf, size_t n)
+bool fdt_file_read(FILE* fp, void* buf, size_t n)
 {
   return (fread(buf, 1, n, fp) == n) ? true : false;
 }
 
-bool fdt_file_write(FILE* fp, byte* buf, size_t n)
+bool fdt_file_write(FILE* fp, void* buf, size_t n)
 {
   return (fwrite(buf, 1, n, fp) == n) ? true : false;
 }

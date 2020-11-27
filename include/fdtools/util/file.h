@@ -34,8 +34,8 @@ int fdt_file_close(FILE*);
 FILE* fdt_file_memopen(byte* buf, size_t n, FdtFileMode mode);
 int fdt_file_memclose(FILE*);
 
-bool fdt_file_read(FILE*, byte*, size_t);
-bool fdt_file_write(FILE*, byte*, size_t);
+bool fdt_file_read(FILE*, void*, size_t);
+bool fdt_file_write(FILE*, void*, size_t);
 
 bool fdt_file_hasextension(const char* filename, const char* extname);
 
