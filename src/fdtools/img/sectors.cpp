@@ -34,7 +34,7 @@ void fdt_image_sectors_delete(FdtImageSectors* sectors)
   free(sectors);
 }
 
-FdtImageSector* fdt_image_sectors_findsector(FdtImageSectors* sectors, FdtCylinderNumber c, FdtHeadNumber h, FdtSectorNumber n)
+FdtImageSector* fdt_image_sectors_getsector(FdtImageSectors* sectors, FdtCylinderNumber c, FdtHeadNumber h, FdtSectorNumber n)
 {
   for (FdtImageSector* sector = fdt_image_sectors_gets(sectors); sector; sector = fdt_image_sector_next(sector)) {
     if (fdt_image_sector_getcylindernumber(sector) != c)
@@ -137,7 +137,7 @@ size_t fdt_image_sectors_gettracksize(FdtImageSectors* sectors, FdtCylinderNumbe
 bool fdt_image_sectors_equals(FdtImageSectors* sectors, FdtImageSectors* others)
 {
   for (FdtImageSector* sector = fdt_image_sectors_gets(sectors); sector; sector = fdt_image_sector_next(sector)) {
-    FdtImageSector* other = fdt_image_sectors_findsector(others, fdt_image_sector_getcylindernumber(sector), fdt_image_sector_getheadnumber(sector), fdt_image_sector_getnumber(sector));
+    FdtImageSector* other = fdt_image_sectors_getsector(others, fdt_image_sector_getcylindernumber(sector), fdt_image_sector_getheadnumber(sector), fdt_image_sector_getnumber(sector));
     if (!other)
       return false;
     if (!fdt_image_sector_equals(sector, other))

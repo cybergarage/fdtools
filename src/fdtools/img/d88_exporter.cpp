@@ -19,22 +19,108 @@
 #include <fdtools/util/file.h>
 #include <fdtools/util/string.h>
 
-bool fdt_d88_header_setconfig(FdtD88Header* d88header, FdtImage* img);
+bool fdt_d88_header_setconfig(FdtD88Header*, FdtImage*);
+bool fdt_d88_sector_header_setconfig(FdtD88SectorHeader*, FdtImageSector*);
 
 bool fdt_d88_image_export(FdtImage* img, FILE* fp)
 {
   FdtD88Header d88_header;
   if (!fdt_d88_header_setconfig(&d88_header, img))
     return false;
+
+  if (!fdt_file_write(fp, &d88_header, sizeof(d88_header)))
+    return false;
+
+  for (int c = 0; c < (D88_HEADER_NUMBER_OF_SECTOR / D88_HEADER_NUMBER_OF_HEADER); c++) {
+    for (int h = 0; h < D88_HEADER_NUMBER_OF_HEADER; h++) {
+      size_t track_sector_num = fdt_image_getnumberoftracksector(img, c, h);
+      if (track_sector_num <= 0)
+        continue;
+      for (int r = 0; r < track_sector_num; r++) {
+        FdtImageSector* sector = fdt_image_getsector(img, c, h, r);
+        if (!sector)
+          return false;
+        FdtD88SectorHeader d88_sector_header;
+        if (!fdt_d88_sector_header_setconfig(&d88_sector_header, sector))
+          return false;
+        if (!fdt_file_write(fp, &d88_sector_header, sizeof(FdtD88SectorHeader)))
+          return false;
+      }
+    }
+  }
+
   return true;
 }
 
-bool fdt_d88_header_setconfig(FdtD88Header* d88header, FdtImage* img)
+bool fdt_d88_header_setconfig(FdtD88Header* d88_header, FdtImage* img)
 {
-  memset(d88header, 0, sizeof(FdtD88Header));
+  memset(d88_header, 0, sizeof(FdtD88Header));
 
-  fdt_strncpy(d88header->name, fdt_image_getname(img), D88_NAME_MAXLEN);
-  d88header->write_protect = fdt_image_getwriteprotect(img) ? D88_WRITE_PROTECT_ENABLED : D88_WRITE_PROTECT_NONE;
+  fdt_strncpy(d88_header->name, fdt_image_getname(img), D88_NAME_MAXLEN);
+  d88_header->write_protect = fdt_image_getwriteprotect(img) ? D88_WRITE_PROTECT_ENABLED : D88_WRITE_PROTECT_NONE;
+  d88_header->disk_size = (uint32_t)fdt_image_getsize(img);
 
+  // Sets a disk type
+
+  switch (fdt_image_getdensity(img)) {
+  case FDT_DENSITY_SD:
+    switch (fdt_image_getnumberofhead(img)) {
+    case 1:
+      d88_header->disk_type = D88_DISK_TYPE_1D;
+      break;
+    case 2:
+      d88_header->disk_type = D88_DISK_TYPE_2D;
+      break;
+    default:
+      return false;
+    }
+    break;
+  case FDT_DENSITY_DD:
+    switch (fdt_image_getnumberofhead(img)) {
+    case 1:
+      d88_header->disk_type = D88_DISK_TYPE_1DD;
+      break;
+    case 2:
+      d88_header->disk_type = D88_DISK_TYPE_2DD;
+      break;
+    default:
+      return false;
+    }
+    break;
+  case FDT_DENSITY_HD:
+    switch (fdt_image_getnumberofhead(img)) {
+    case 2:
+      d88_header->disk_type = D88_DISK_TYPE_2HD;
+      break;
+    default:
+      return false;
+    }
+    break;
+  default:
+    return false;
+  }
+
+  // Sets track offsets
+
+  uint32_t track_offset = sizeof(FdtD88Header);
+  for (int c = 0; c < (D88_HEADER_NUMBER_OF_SECTOR / D88_HEADER_NUMBER_OF_HEADER); c++) {
+    for (int h = 0; h < D88_HEADER_NUMBER_OF_HEADER; h++) {
+      int n = (D88_HEADER_NUMBER_OF_HEADER * c) + h;
+      d88_header->track_offset[n] = track_offset;
+      size_t track_total_size = fdt_image_gettracksize(img, c, h);
+      if (track_total_size <= 0)
+        break;
+      track_offset += sizeof(FdtD88SectorHeader);
+      track_offset += track_total_size;
+    }
+  }
+
+  return true;
+}
+
+bool fdt_d88_sector_header_setconfig(FdtD88SectorHeader* d88_sector_header, FdtImageSector *sector)
+{
+  memset(d88_sector_header, 0, sizeof(FdtD88SectorHeader));
+  
   return true;
 }
