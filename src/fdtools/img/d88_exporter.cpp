@@ -37,7 +37,7 @@ bool fdt_d88_image_export(FdtImage* img, FILE* fp)
       size_t number_of_sector = fdt_image_getnumberoftracksector(img, c, h);
       if (number_of_sector <= 0)
         continue;
-      for (int r = 0; r < number_of_sector; r++) {
+      for (int r = 1; r <= number_of_sector; r++) {
         FdtImageSector* sector = fdt_image_getsector(img, c, h, r);
         if (!sector)
           return false;
