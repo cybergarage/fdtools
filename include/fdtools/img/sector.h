@@ -40,6 +40,7 @@ FdtImageSector* fdt_image_sectors_findsector(FdtImageSectors*, FdtCylinderNumber
 size_t fdt_image_sectors_getnumberofcylinder(FdtImageSectors*);
 size_t fdt_image_sectors_getnumberofhead(FdtImageSectors*);
 size_t fdt_image_sectors_getnumberofsector(FdtImageSectors*);
+size_t fdt_image_sectors_getnumberoftracksector(FdtImageSectors*, FdtCylinderNumber, FdtHeadNumber);
 size_t fdt_image_sectors_getmaxsectorsize(FdtImageSectors*);
 size_t fdt_image_sectors_gettotalsize(FdtImageSectors*);
 bool fdt_image_sectors_equals(FdtImageSectors*, FdtImageSectors*);

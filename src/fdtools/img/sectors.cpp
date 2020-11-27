@@ -84,6 +84,22 @@ size_t fdt_image_sectors_getnumberofsector(FdtImageSectors* sectors)
   return max_sector_no;
 }
 
+size_t fdt_image_sectors_getnumberoftracksector(FdtImageSectors* sectors, FdtCylinderNumber c, FdtHeadNumber h)
+{
+  int max_sector_no = 0;
+  for (FdtImageSector* sector = fdt_image_sectors_gets(sectors); sector; sector = fdt_image_sector_next(sector)) {
+    if (fdt_image_sector_getcylindernumber(sector) != c)
+      continue;
+    if (fdt_image_sector_getheadnumber(sector) != h)
+      continue;
+    int sector_no = fdt_image_sector_getnumber(sector);
+    if (sector_no < max_sector_no)
+      continue;
+    max_sector_no = sector_no;
+  }
+  return max_sector_no;
+}
+
 size_t fdt_image_sectors_getmaxsectorsize(FdtImageSectors* sectors)
 {
   size_t max_sector_size = 0;
