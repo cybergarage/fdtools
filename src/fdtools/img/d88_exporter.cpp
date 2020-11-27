@@ -20,7 +20,7 @@
 #include <fdtools/util/string.h>
 
 bool fdt_d88_header_setconfig(FdtD88Header*, FdtImage*);
-bool fdt_d88_sector_header_setconfig(FdtD88SectorHeader*, FdtImageSector*);
+bool fdt_d88_sector_header_setconfig(FdtD88SectorHeader*, FdtImageSector*, size_t);
 
 bool fdt_d88_image_export(FdtImage* img, FILE* fp)
 {
@@ -33,15 +33,15 @@ bool fdt_d88_image_export(FdtImage* img, FILE* fp)
 
   for (int c = 0; c < (D88_HEADER_NUMBER_OF_SECTOR / D88_HEADER_NUMBER_OF_HEADER); c++) {
     for (int h = 0; h < D88_HEADER_NUMBER_OF_HEADER; h++) {
-      size_t track_sector_num = fdt_image_getnumberoftracksector(img, c, h);
-      if (track_sector_num <= 0)
+      size_t number_of_sector = fdt_image_getnumberoftracksector(img, c, h);
+      if (number_of_sector <= 0)
         continue;
-      for (int r = 0; r < track_sector_num; r++) {
+      for (int r = 0; r < number_of_sector; r++) {
         FdtImageSector* sector = fdt_image_getsector(img, c, h, r);
         if (!sector)
           return false;
         FdtD88SectorHeader d88_sector_header;
-        if (!fdt_d88_sector_header_setconfig(&d88_sector_header, sector))
+        if (!fdt_d88_sector_header_setconfig(&d88_sector_header, sector, number_of_sector))
           return false;
         if (!fdt_file_write(fp, &d88_sector_header, sizeof(FdtD88SectorHeader)))
           return false;
@@ -118,21 +118,38 @@ bool fdt_d88_header_setconfig(FdtD88Header* d88_header, FdtImage* img)
   return true;
 }
 
-bool fdt_d88_sector_header_setconfig(FdtD88SectorHeader* d88_sector_header, FdtImageSector* sector)
+bool fdt_d88_sector_header_setconfig(FdtD88SectorHeader* d88_sector_header, FdtImageSector* sector, size_t number_of_sector)
 {
   memset(d88_sector_header, 0, sizeof(FdtD88SectorHeader));
+
+  size_t sector_size = fdt_image_sector_getsize(sector);
 
   d88_sector_header->c = fdt_image_sector_getcylindernumber(sector);
   d88_sector_header->h = fdt_image_sector_getheadnumber(sector);
   d88_sector_header->r = 1;
+  switch (sector_size) {
+  case 128:
+    d88_sector_header->n = D88_SECTOR_N_128;
+    break;
+  case 256:
+    d88_sector_header->n = D88_SECTOR_N_256;
+    break;
+  case 512:
+    d88_sector_header->n = D88_SECTOR_N_512;
+    break;
+  case 1024:
+    d88_sector_header->n = D88_SECTOR_N_1024;
+    break;
+  default:
+    return false;
+  }
+  d88_sector_header->number_of_sector = (uint16_t)number_of_sector;
   /*
-  d88_sector_header->n = ;
-  d88_sector_header->number_of_sector = ;
   d88_sector_header->density = ;
 */
   d88_sector_header->deleted_mark = D88_SECTOR_DELETED_MARK_NONE;
   d88_sector_header->status = D88_SECTOR_STATUS_NORMAL;
-  d88_sector_header->size_of_data = fdt_image_sector_getsize(sector);
+  d88_sector_header->size_of_data = sector_size;
 
   return true;
 }
