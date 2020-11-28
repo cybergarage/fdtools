@@ -77,29 +77,31 @@ bool fdt_d88_image_load(FdtImage* img, FILE* fp)
 
     size_t number_of_sector = d88_sector_header.number_of_sector;
     for (int sector_no = 0; sector_no < number_of_sector; sector_no++) {
-      FdtImageSector* sector = fdt_image_sector_new();
-      if (!sector)
+      byte* sector_data = (byte*)malloc(sector_data_size);
+      if (!sector_data) {
         return false;
+      }
+
+      size_t sector_data_offset = sector_header_offset + sizeof(FdtD88SectorHeader) + (sector_data_size * sector_no);
+      if (!fdt_d88_sector_data_read(&d88_sector_header, fp, sector_data_offset, sector_data, sector_data_size)) {
+        free(sector_data);
+        return false;
+      }
+
+      FdtImageSector* sector = fdt_image_sector_new();
+      if (!sector) {
+        free(sector_data);
+        return false;
+      }
 
       fdt_image_sector_setcylindernumber(sector, d88_sector_header.c);
       fdt_image_sector_setheadnumber(sector, d88_sector_header.h);
       fdt_image_sector_setnumber(sector, sector_no + 1);
       fdt_image_sector_setsize(sector, sector_data_size);
-
-      byte* sector_data = (byte*)malloc(sector_data_size);
-      if (!sector_data) {
-        fdt_image_sector_delete(sector);
-        return false;
-      }
-      d88_image_file_size += sector_data_size;
-
-      size_t sector_data_offset = sector_header_offset + sizeof(FdtD88SectorHeader) + (sector_data_size * sector_no);
-      if (!fdt_d88_sector_data_read(&d88_sector_header, fp, sector_data_offset, sector_data, sector_data_size)) {
-        fdt_image_sector_delete(sector);
-        free(sector_data);
-        return false;
-      }
       fdt_image_sector_setdata(sector, sector_data);
+
+      d88_image_file_size += sector_data_size;
+      free(sector_data);
 
       fdt_image_addsector(img, sector);
     }
