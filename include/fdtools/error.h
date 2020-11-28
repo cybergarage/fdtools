@@ -23,13 +23,25 @@ extern "C" {
 
 typedef struct {
   FdtString* message;
+  FdtString* debug_message;
+  FdtString* file_name;
+  int line_no;
+  FdtString* func_name;
 } FdtError;
 
 FdtError* fdt_error_new();
 void fdt_error_delete(FdtError*);
 
-#define fdt_error_setmessage(err, msg) fdt_string_setvalue(err->message, msg)
+#if defined(__USE_ISOC99)
+#define fdt_error_setmessage(err, format, ...) fdt_error_setdebugmessage(err, __FILE__, __LINE__, __func__, format, __VA_ARGS__)
+#else
+#define fdt_error_setmessage(err, format...) fdt_error_setdebugmessage(err, __FILE__, __LINE__, __func__, format)
+#endif
+
 #define fdt_error_getmessage(err) fdt_string_getvalue(err->message)
+
+void fdt_error_setdebugmessage(FdtError*, const char*, int, const char*, const char*, ...);
+const char* fdt_error_getdebugmessage(FdtError*);
 
 #ifdef __cplusplus
 } /* extern "C" */
