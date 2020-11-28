@@ -99,9 +99,9 @@ bool fdt_d88_image_load(FdtImage* img, FILE* fp)
       fdt_image_sector_setnumber(sector, sector_no + 1);
       fdt_image_sector_setsize(sector, sector_data_size);
       fdt_image_sector_setdata(sector, sector_data);
+      free(sector_data);
 
       d88_image_file_size += sector_data_size;
-      free(sector_data);
 
       fdt_image_addsector(img, sector);
     }

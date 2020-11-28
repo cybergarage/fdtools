@@ -41,11 +41,13 @@ bool fdt_d88_image_export(FdtImage* img, FILE* fp)
         FdtImageSector* sector = fdt_image_getsector(img, c, h, r);
         if (!sector)
           return false;
-        FdtD88SectorHeader d88_sector_header;
-        if (!fdt_d88_sector_header_setconfig(&d88_sector_header, sector, img_density, number_of_sector))
-          return false;
-        if (!fdt_file_write(fp, &d88_sector_header, sizeof(FdtD88SectorHeader)))
-          return false;
+        if (r == 1) {
+          FdtD88SectorHeader d88_sector_header;
+          if (!fdt_d88_sector_header_setconfig(&d88_sector_header, sector, img_density, number_of_sector))
+            return false;
+          if (!fdt_file_write(fp, &d88_sector_header, sizeof(FdtD88SectorHeader)))
+            return false;
+        }
         size_t sector_size = fdt_image_sector_getsize(sector);
         if (!fdt_file_write(fp, fdt_image_sector_getdata(sector), sector_size))
           return false;
