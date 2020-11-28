@@ -43,7 +43,7 @@ bool fdt_d88_image_load(FdtImage* img, FILE* fp)
     return false;
 
   size_t d88_image_file_size = sizeof(FdtD88Header);
-  
+
   for (int n = 0; n < D88_HEADER_NUMBER_OF_SECTOR; n++) {
     size_t sector_header_offset = d88_header.track_offset[n];
     if (sector_header_offset == 0) {
@@ -55,9 +55,7 @@ bool fdt_d88_image_load(FdtImage* img, FILE* fp)
     FdtD88SectorHeader d88_sector_header;
     if (!fdt_d88_sector_header_read(&d88_sector_header, fp, n, sector_header_offset))
       return false;
-
     d88_image_file_size += sizeof(FdtD88SectorHeader);
-    d88_image_file_size += d88_sector_header.size_of_data;
 
     size_t sector_data_size = d88_sector_header.size_of_data;
     if (sector_data_size <= 0) {
@@ -82,15 +80,19 @@ bool fdt_d88_image_load(FdtImage* img, FILE* fp)
       FdtImageSector* sector = fdt_image_sector_new();
       if (!sector)
         return false;
+
       fdt_image_sector_setcylindernumber(sector, d88_sector_header.c);
       fdt_image_sector_setheadnumber(sector, d88_sector_header.h);
       fdt_image_sector_setnumber(sector, sector_no + 1);
       fdt_image_sector_setsize(sector, sector_data_size);
+
       byte* sector_data = (byte*)malloc(sector_data_size);
       if (!sector_data) {
         fdt_image_sector_delete(sector);
         return false;
       }
+      d88_image_file_size += sector_data_size;
+
       size_t sector_data_offset = sector_header_offset + sizeof(FdtD88SectorHeader) + (sector_data_size * sector_no);
       if (!fdt_d88_sector_data_read(&d88_sector_header, fp, sector_data_offset, sector_data, sector_data_size)) {
         fdt_image_sector_delete(sector);
@@ -98,10 +100,11 @@ bool fdt_d88_image_load(FdtImage* img, FILE* fp)
         return false;
       }
       fdt_image_sector_setdata(sector, sector_data);
+
       fdt_image_addsector(img, sector);
     }
   }
-  
+
   fdt_image_setsize(img, d88_image_file_size);
   fdt_image_setnumberofcylinder(img, fdt_image_sectors_getnumberofcylinder(img->sectors));
   fdt_image_setnumberofhead(img, fdt_image_sectors_getnumberofhead(img->sectors));

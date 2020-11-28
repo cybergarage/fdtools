@@ -47,7 +47,7 @@ bool fdt_d88_image_export(FdtImage* img, FILE* fp)
         if (!fdt_file_write(fp, &d88_sector_header, sizeof(FdtD88SectorHeader)))
           return false;
         size_t sector_size = fdt_image_sector_getsize(sector);
-        if (!fdt_file_write(fp,  fdt_image_sector_getdata(sector), sector_size))
+        if (!fdt_file_write(fp, fdt_image_sector_getdata(sector), sector_size))
           return false;
       }
     }
