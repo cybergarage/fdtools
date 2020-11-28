@@ -112,7 +112,7 @@ size_t fdt_image_sectors_getmaxsectorsize(FdtImageSectors* sectors)
   return max_sector_size;
 }
 
-size_t fdt_image_sectors_gettotalsize(FdtImageSectors* sectors)
+size_t fdt_image_sectors_gettotaldatasize(FdtImageSectors* sectors)
 {
   size_t total_sector_size = 0;
   for (FdtImageSector* sector = fdt_image_sectors_gets(sectors); sector; sector = fdt_image_sector_next(sector)) {
