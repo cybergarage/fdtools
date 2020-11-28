@@ -19,9 +19,7 @@
 
 FdtImageConfig* fdt_image_config_new()
 {
-  FdtImageConfig* config;
-
-  config = (FdtImageConfig*)malloc(sizeof(FdtImageConfig));
+  FdtImageConfig* config = (FdtImageConfig*)malloc(sizeof(FdtImageConfig));
   if (!config) {
     return NULL;
   }
