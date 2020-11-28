@@ -22,12 +22,14 @@ extern "C" {
 #endif
 
 typedef struct {
-
-  int code;
+  FdtString* message;
 } FdtError;
 
 FdtError* fdt_error_new();
 void fdt_error_delete(FdtError*);
+
+#define fdt_error_setmessage(err, msg) fdt_string_setvalue(err->message, msg)
+#define fdt_error_getmessage(err) fdt_string_getvalue(err->message)
 
 #ifdef __cplusplus
 } /* extern "C" */

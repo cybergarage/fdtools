@@ -21,6 +21,12 @@ FdtError* fdt_error_new()
     return NULL;
   }
 
+  err->message = fdt_string_new();
+  if (!err->message) {
+    fdt_error_delete(err);
+    return NULL;
+  }
+
   return err;
 }
 
@@ -28,6 +34,8 @@ void fdt_error_delete(FdtError* err)
 {
   if (!err)
     return;
+
+  fdt_string_delete(err->message);
 
   free(err);
 }
