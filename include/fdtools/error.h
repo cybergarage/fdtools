@@ -15,13 +15,14 @@
 #ifndef _FDTOOLS_ERROR_H_
 #define _FDTOOLS_ERROR_H_
 
-#include <fdtools/typedef.h>
+#include <fdtools/util/string.h>
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
 typedef struct {
+
   int code;
 } FdtError;
 

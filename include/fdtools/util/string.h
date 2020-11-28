@@ -15,7 +15,7 @@
 #ifndef _FDTOOLS_UTIL_STRING_H_
 #define _FDTOOLS_UTIL_STRING_H_
 
-#include <stdlib.h>
+#include <string.h>
 
 #include <fdtools/typedef.h>
 
