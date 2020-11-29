@@ -39,9 +39,9 @@ FILE* fdt_file_open(const char* filename, FdtFileMode mode)
   return fopen(filename, fmode);
 }
 
-int fdt_file_close(FILE* fp)
+bool fdt_file_close(FILE* fp)
 {
-  return fclose(fp);
+  return (fclose(fp) == 0) ? true : false;
 }
 
 FILE* fdt_file_memopen(byte* buf, size_t n, FdtFileMode mode)
@@ -52,9 +52,9 @@ FILE* fdt_file_memopen(byte* buf, size_t n, FdtFileMode mode)
   return fmemopen(buf, n, fmode);
 }
 
-int fdt_file_memclose(FILE* fp)
+bool fdt_file_memclose(FILE* fp)
 {
-  return fclose(fp);
+  return (fclose(fp) == 0) ? true : false;
 }
 
 bool fdt_file_read(FILE* fp, void* buf, size_t n)
