@@ -61,23 +61,20 @@ void fdt_error_delete(FdtError* err)
   free(err);
 }
 
-void fdt_error_setdebugmessage(FdtError* err, const char* file, int line_no, const char* function, const char* format, ...)
+void fdt_error_setdebugmessage(FdtError* err, const char* file, int line_no, const char* function, const char* prefix, const char* format, ...)
 {
   fdt_string_setvalue(err->file_name, file);
   err->line_no = line_no;
   fdt_string_setvalue(err->func_name, function);
 
+  char msg[FDT_ERROR_MESSAGE_MAX];
+  size_t prefix_len = 0;
+  if (0 < fdt_strlen(prefix)) {
+    prefix_len = snprintf(msg, sizeof(msg), "%s: ", prefix);
+  }
+
   va_list list;
   va_start(list, format);
-  char msg[FDT_ERROR_MESSAGE_MAX];
-  vsnprintf(msg, FDT_ERROR_MESSAGE_MAX, format, list);
+  vsnprintf((msg + prefix_len), (sizeof(msg) - prefix_len), format, list);
   va_end(list);
-}
-
-const char* fdt_error_getdebugmessage(FdtError* err)
-{
-  char msg[FDT_ERROR_MESSAGE_MAX];
-  snprintf(msg, FDT_ERROR_MESSAGE_MAX, "%s(): %s (%d:%s)", fdt_string_getvalue(err->func_name), fdt_string_getvalue(err->message), err->line_no, fdt_string_getvalue(err->file_name));
-  fdt_string_setvalue(err->debug_message, msg);
-  return fdt_string_getvalue(err->debug_message);
 }

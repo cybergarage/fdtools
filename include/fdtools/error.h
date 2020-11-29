@@ -33,14 +33,14 @@ FdtError* fdt_error_new();
 void fdt_error_delete(FdtError*);
 
 #if defined(__USE_ISOC99)
-#define fdt_error_setmessage(err, format, ...) fdt_error_setdebugmessage(err, __FILE__, __LINE__, __func__, format, __VA_ARGS__)
+#define fdt_error_setmessage(err, format, ...) fdt_error_setdebugmessage(err, __FILE__, __LINE__, __func__, "", format, __VA_ARGS__)
 #else
-#define fdt_error_setmessage(err, format...) fdt_error_setdebugmessage(err, __FILE__, __LINE__, __func__, format)
+#define fdt_error_setmessage(err, format...) fdt_error_setdebugmessage(err, __FILE__, __LINE__, __func__, "", format)
 #endif
 
 #define fdt_error_getmessage(err) fdt_string_getvalue(err->message)
 
-void fdt_error_setdebugmessage(FdtError*, const char*, int, const char*, const char*, ...);
+void fdt_error_setdebugmessage(FdtError*, const char*, int, const char*, const char*, const char*, ...);
 const char* fdt_error_getdebugmessage(FdtError*);
 
 #ifdef __cplusplus
