@@ -37,6 +37,9 @@ FdtImageSector* fdt_image_sector_new()
 void fdt_image_sector_delete(FdtImageSector* sector)
 {
   fdt_list_remove((FdtList*)sector);
+  if (sector->data) {
+    free(sector->data);
+  }
   free(sector);
 }
 
