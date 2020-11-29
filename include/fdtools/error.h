@@ -15,6 +15,9 @@
 #ifndef _FDTOOLS_ERROR_H_
 #define _FDTOOLS_ERROR_H_
 
+#include <errno.h>
+#include <string.h>
+
 #include <fdtools/util/string.h>
 
 #ifdef __cplusplus
@@ -34,8 +37,10 @@ void fdt_error_delete(FdtError*);
 
 #if defined(__USE_ISOC99)
 #define fdt_error_setmessage(err, format, ...) fdt_error_setdebugmessage(err, __FILE__, __LINE__, __func__, "", format, __VA_ARGS__)
+#define fdt_error_setlasterror(err, format, ...) fdt_error_setdebugmessage(err, __FILE__, __LINE__, __func__, strerror(errno), format, __VA_ARGS__)
 #else
 #define fdt_error_setmessage(err, format...) fdt_error_setdebugmessage(err, __FILE__, __LINE__, __func__, "", format)
+#define fdt_error_setlasterror(err, format...) fdt_error_setdebugmessage(err, __FILE__, __LINE__, __func__, strerror(errno), format)
 #endif
 
 #define fdt_error_getmessage(err) fdt_string_getvalue(err->message)
