@@ -76,13 +76,14 @@ bool fdt_d88_image_load(FdtImage* img, FILE* fp, FdtError* err)
     }
 
     size_t number_of_sector = d88_sector_header.number_of_sector;
+    size_t sector_data_offset = sector_header_offset + sizeof(FdtD88SectorHeader);
+
     for (int sector_no = 0; sector_no < number_of_sector; sector_no++) {
       byte* sector_data = (byte*)malloc(sector_data_size);
       if (!sector_data) {
         return false;
       }
 
-      size_t sector_data_offset = sector_header_offset + sizeof(FdtD88SectorHeader) + (sector_data_size * sector_no);
       if (!fdt_d88_sector_data_read(&d88_sector_header, fp, sector_data_offset, sector_data, sector_data_size)) {
         free(sector_data);
         return false;
@@ -99,8 +100,8 @@ bool fdt_d88_image_load(FdtImage* img, FILE* fp, FdtError* err)
       fdt_image_sector_setnumber(sector, sector_no + 1);
       fdt_image_sector_setsize(sector, sector_data_size);
       fdt_image_sector_setdata(sector, sector_data);
-      free(sector_data);
 
+      sector_data_offset += sector_data_size;
       d88_image_file_size += sector_data_size;
 
       fdt_image_addsector(img, sector);
