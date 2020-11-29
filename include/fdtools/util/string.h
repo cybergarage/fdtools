@@ -72,6 +72,7 @@ void fdt_string_setvalue(FdtString* str, const char* value);
 void fdt_string_setnvalue(FdtString* str, const char* value, size_t len);
 char* fdt_string_getvalue(FdtString* str);
 size_t fdt_string_length(FdtString* str);
+bool fdt_string_equals(FdtString* str, FdtString* other);
 
 #ifdef __cplusplus
 } /* extern C */

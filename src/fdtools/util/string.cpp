@@ -95,3 +95,8 @@ size_t fdt_string_length(FdtString* str)
 
   return str->valueSize;
 }
+
+bool fdt_string_equals(FdtString* str, FdtString* other)
+{
+  return fdt_streq(fdt_string_getvalue(str), fdt_string_getvalue(other));
+}
