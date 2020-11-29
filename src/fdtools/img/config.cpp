@@ -69,7 +69,25 @@ const char* fdt_image_config_getdensitystring(FdtImageConfig* config)
 
 bool fdt_image_config_equals(FdtImageConfig* config, FdtImageConfig* other)
 {
-  return memcmp(config, other, sizeof(FdtImageConfig)) == 0 ? true : false;
+  if (!fdt_string_equals(config->name, other->name))
+    return false;
+  if (config->density != other->density)
+    return false;
+  if (config->size != other->size)
+    return false;
+  if (config->number_of_head != other->number_of_head)
+    return false;
+  if (config->number_of_sector != other->number_of_sector)
+    return false;
+  if (config->number_of_cylinder != other->number_of_cylinder)
+    return false;
+  if (config->sector_size != other->sector_size)
+    return false;
+  if (config->rpm != other->rpm)
+    return false;
+  if (config->write_protect != other->write_protect)
+    return false;
+  return true;
 }
 
 void fdt_image_config_print(FdtImageConfig* config)
