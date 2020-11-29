@@ -114,8 +114,10 @@ bool fdt_d88_header_setconfig(FdtD88Header* d88_header, FdtImage* img)
       int n = (D88_HEADER_NUMBER_OF_HEADER * c) + h;
       d88_header->track_offset[n] = track_offset;
       size_t track_total_size = fdt_image_gettracksize(img, c, h);
-      if (track_total_size <= 0)
+      if (track_total_size <= 0) {
+        d88_header->track_offset[n] = 0;
         break;
+      }
       track_offset += sizeof(FdtD88SectorHeader);
       track_offset += track_total_size;
     }
