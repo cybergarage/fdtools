@@ -22,7 +22,7 @@
 bool fdt_d88_header_setconfig(FdtD88Header*, FdtImage*);
 bool fdt_d88_sector_header_setconfig(FdtD88SectorHeader*, FdtImageSector*, FdtDensity, size_t);
 
-bool fdt_d88_image_export(FdtImage* img, FILE* fp)
+bool fdt_d88_image_export(FdtImage* img, FILE* fp, FdtError* err)
 {
   FdtD88Header d88_header;
   if (!fdt_d88_header_setconfig(&d88_header, img))

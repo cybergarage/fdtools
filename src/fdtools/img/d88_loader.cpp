@@ -28,7 +28,7 @@ void fdt_d88_sector_header_print(FdtD88SectorHeader*, int n, size_t offset);
 bool fdt_d88_sector_data_read(FdtD88SectorHeader*, FILE* fp, size_t offset, byte* buf, size_t buf_size);
 bool fdt_image_setd88headerinfo(FdtImage* img, FdtD88Header* header);
 
-bool fdt_d88_image_load(FdtImage* img, FILE* fp)
+bool fdt_d88_image_load(FdtImage* img, FILE* fp, FdtError* err)
 {
   byte header_buf[sizeof(FdtD88Header)];
   if (!fdt_file_read(fp, header_buf, sizeof(header_buf)))

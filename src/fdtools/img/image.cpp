@@ -42,18 +42,18 @@ void fdt_image_delete(FdtImage* img)
   free(img);
 }
 
-bool fdt_image_load(FdtImage* img, FILE* fp)
+bool fdt_image_load(FdtImage* img, FILE* fp, FdtError* err)
 {
   if (!img || !fp)
     return false;
-  return img->file_loader(img, fp);
+  return img->file_loader(img, fp, err);
 }
 
-bool fdt_image_export(FdtImage* img, FILE* fp)
+bool fdt_image_export(FdtImage* img, FILE* fp, FdtError* err)
 {
   if (!img || !fp)
     return false;
-  return img->file_exporter(img, fp);
+  return img->file_exporter(img, fp, err);
 }
 
 bool fdt_image_equals(FdtImage* img, FdtImage* other)

@@ -31,6 +31,8 @@ BOOST_AUTO_TEST_CASE(HfeImageLoadTest)
     "test-003.hfe",
   };
 
+  FdtError* err = fdt_error_new();
+
   for (int n = 0; n < fdt_array_countof(TEST_HFE_IMAGES); n++) {
     std::string filename = TEST_IMAGE_DIRECTORY + "/" + *TEST_HFE_IMAGES[n];
     BOOST_CHECK_EQUAL(fdt_img_file_gettype(filename.c_str()), FDT_IMAGE_TYPE_HFE);
@@ -41,10 +43,12 @@ BOOST_AUTO_TEST_CASE(HfeImageLoadTest)
       continue;
 
     FdtImage* img = fdt_hfe_image_new();
-    BOOST_CHECK(fdt_image_load(img, fp));
+    BOOST_CHECK(fdt_image_load(img, fp, err));
     fdt_image_print(img);
     fdt_image_delete(img);
 
     fdt_file_close(fp);
   }
+
+  fdt_error_delete(err);
 }

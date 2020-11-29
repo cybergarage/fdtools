@@ -12,9 +12,9 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#include <stdarg.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <stdarg.h>
 
 #include <fdtools/error.h>
 
@@ -74,7 +74,7 @@ void fdt_error_setdebugmessage(FdtError* err, const char* file, int line_no, con
   va_end(list);
 }
 
-const char* fdt_error_getdebugmessage(FdtError*err)
+const char* fdt_error_getdebugmessage(FdtError* err)
 {
   char msg[FDT_ERROR_MESSAGE_MAX];
   snprintf(msg, FDT_ERROR_MESSAGE_MAX, "%s(): %s (%d:%s)", fdt_string_getvalue(err->func_name), fdt_string_getvalue(err->message), err->line_no, fdt_string_getvalue(err->file_name));

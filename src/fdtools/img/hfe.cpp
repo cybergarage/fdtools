@@ -18,7 +18,7 @@
 #include <fdtools/img/file.h>
 #include <fdtools/util/string.h>
 
-bool fdt_hfe_image_load(FdtImage* img, FILE* fp);
+bool fdt_hfe_image_load(FdtImage* img, FILE* fp, FdtError* err);
 
 FdtImage* fdt_hfe_image_new(void)
 {

@@ -32,6 +32,8 @@ BOOST_AUTO_TEST_CASE(D88ImageLoadTest)
     "test-004.d88",
   };
 
+  FdtError* err = fdt_error_new();
+
   for (int n = 0; n < fdt_array_countof(TEST_D88_IMAGES); n++) {
     std::string filename = TEST_IMAGE_DIRECTORY + "/" + *TEST_D88_IMAGES[n];
     BOOST_CHECK_EQUAL(fdt_img_file_gettype(filename.c_str()), FDT_IMAGE_TYPE_D88);
@@ -43,7 +45,7 @@ BOOST_AUTO_TEST_CASE(D88ImageLoadTest)
     if (!fp)
       continue;
     FdtImage* src_img = fdt_d88_image_new();
-    BOOST_CHECK(fdt_image_load(src_img, fp));
+    BOOST_CHECK(fdt_image_load(src_img, fp, err));
     fdt_image_print(src_img);
     fdt_file_close(fp);
 
@@ -53,14 +55,14 @@ BOOST_AUTO_TEST_CASE(D88ImageLoadTest)
 
     byte* dst_img_buf = (byte*)malloc(img_size);
     FILE* mem_fp = fdt_file_memopen(dst_img_buf, img_size, FDT_FILE_WRITE);
-    BOOST_CHECK(fdt_image_export(src_img, mem_fp));
+    BOOST_CHECK(fdt_image_export(src_img, mem_fp, err));
     fdt_file_memclose(mem_fp);
 
     // Compare test
 
     mem_fp = fdt_file_memopen(dst_img_buf, img_size, FDT_FILE_READ);
     FdtImage* dst_img = fdt_d88_image_new();
-    BOOST_CHECK(fdt_image_load(dst_img, fp));
+    BOOST_CHECK(fdt_image_load(dst_img, fp, err));
     fdt_file_memclose(mem_fp);
     BOOST_CHECK(fdt_image_equals(src_img, dst_img));
 
@@ -71,4 +73,6 @@ BOOST_AUTO_TEST_CASE(D88ImageLoadTest)
     fdt_image_delete(dst_img);
     fdt_image_delete(src_img);
   }
+
+  fdt_error_delete(err);
 }
