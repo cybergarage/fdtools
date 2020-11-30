@@ -72,7 +72,7 @@ bool fdt_image_config_equals(FdtImageConfig* config, FdtImageConfig* other)
   if (!fdt_string_equals(config->name, other->name))
     return false;
   size_t config_name_size = sizeof(FdtString);
-  return memcmp((config+config_name_size), (other+config_name_size), (sizeof(FdtImageConfig)-config_name_size)) ? true : false;
+  return memcmp((config + config_name_size), (other + config_name_size), (sizeof(FdtImageConfig) - config_name_size)) ? true : false;
 }
 
 void fdt_image_config_print(FdtImageConfig* config)

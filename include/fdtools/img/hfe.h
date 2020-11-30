@@ -70,6 +70,11 @@ typedef struct FDT_ATTR_PACKED {
   unsigned char track0s1_encoding;
 } FdtHfeHeader;
 
+typedef struct FDT_ATTR_PACKED {
+  unsigned short offset;
+  unsigned short track_len;
+} FdtHfeTrackOffsets;
+
 FdtImage* fdt_hfe_image_new(void);
 bool fdt_hfe_image_load(FdtImage*, FILE*, FdtError* err);
 bool fdt_hfe_image_parse(FdtImage*, byte*);
