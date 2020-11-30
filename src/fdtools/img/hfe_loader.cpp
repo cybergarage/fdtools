@@ -33,7 +33,7 @@ bool fdt_hfe_image_load(FdtImage* img, FILE* fp, FdtError* err)
   if (!fdt_image_sethfeheaderinfo(img, &hfe_header))
     return false;
 
-  return fdt_hfe_image_parse(img, header_buf);
+  return true;
 }
 
 bool fdt_hfe_header_parse(FdtHfeHeader* header, byte* header_buf)
