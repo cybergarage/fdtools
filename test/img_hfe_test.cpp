@@ -44,7 +44,7 @@ BOOST_AUTO_TEST_CASE(HfeImageLoadTest)
 
     FdtImage* img = fdt_hfe_image_new();
     BOOST_CHECK(fdt_image_load(img, fp, err));
-    fdt_image_print(img);
+    //fdt_image_print(img);
     fdt_image_delete(img);
 
     fdt_file_close(fp);
