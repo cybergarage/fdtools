@@ -20,9 +20,12 @@
 
 bool fdt_hfe_header_parse(FdtHfeHeader* header, byte* header_buf);
 bool fdt_image_sethfeheaderinfo(FdtImage* img, FdtHfeHeader* header);
+void fdt_hfe_header_print(FdtHfeTrackOffsets*, size_t);
 
 bool fdt_hfe_image_load(FdtImage* img, FILE* fp, FdtError* err)
 {
+  // Read first part: File header
+
   byte header_buf[sizeof(FdtHfeHeader)];
   if (!fdt_file_read(fp, header_buf, sizeof(header_buf)))
     return false;
@@ -33,7 +36,32 @@ bool fdt_hfe_image_load(FdtImage* img, FILE* fp, FdtError* err)
   if (!fdt_image_sethfeheaderinfo(img, &hfe_header))
     return false;
 
+  fdt_hfe_header_print(&hfe_header);
+
+  // Read second part: Track offset LUT
+
+  size_t number_of_track = hfe_header.number_of_track;
+  size_t number_of_head = hfe_header.number_of_side;
+  size_t number_of_all_track = number_of_track * number_of_head;
+  size_t track_offsets_buf_size = sizeof(FdtHfeTrackOffsets) * number_of_all_track;
+  FdtHfeTrackOffsets* hfe_track_offsets = (FdtHfeTrackOffsets*)malloc(track_offsets_buf_size);
+  if (!hfe_track_offsets)
+    return false;
+  if (!fdt_file_read(fp, hfe_track_offsets, track_offsets_buf_size)) {
+    free(hfe_track_offsets);
+    return false;
+  }
+
+  fdt_hfe_header_print(hfe_track_offsets, number_of_all_track);
+
   return true;
+}
+
+void fdt_hfe_header_print(FdtHfeTrackOffsets* track_offsets, size_t number_of_track)
+{
+  for (size_t n = 0; n < number_of_track; n++) {
+    printf("[%02ld] %04X %d\n", n, track_offsets[n].offset, track_offsets[n].track_len);
+  }
 }
 
 bool fdt_hfe_header_parse(FdtHfeHeader* header, byte* header_buf)
