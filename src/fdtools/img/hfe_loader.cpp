@@ -41,6 +41,10 @@ bool fdt_hfe_image_load(FdtImage* img, FILE* fp, FdtError* err)
 
   // Read second part: Track offset LUT
 
+  size_t track_list_offset = hfe_header.track_list_offset * 512;
+  if (!fdt_file_seek(fp, track_list_offset, SEEK_SET))
+    return false;
+  
   size_t number_of_track = hfe_header.number_of_track;
   size_t number_of_head = hfe_header.number_of_side;
   //size_t number_of_all_track = number_of_track * number_of_head;
@@ -56,13 +60,16 @@ bool fdt_hfe_image_load(FdtImage* img, FILE* fp, FdtError* err)
   fdt_hfe_header_print(hfe_track_offsets, number_of_track);
 
   // Read third part: Track data
-
+  
   for (size_t n = 0; n < number_of_track; n++) {
     size_t track_offset = hfe_track_offsets[n].offset;
+    size_t track_data_offset = 512 * track_offset;
+    if (!fdt_file_seek(fp, track_data_offset, SEEK_SET))
+      return false;
     size_t track_len = hfe_track_offsets[n].track_len;
     byte* track_buf = (byte*)malloc(track_len);
-    if (!fdt_file_read(fp, track_buf, track_len)) {
-      fdt_hfe_track_print(track_buf, track_len);
+    if (fdt_file_read(fp, track_buf, track_len)) {
+      //fdt_hfe_track_print(track_buf, track_len);
     }
     free(track_buf);
   }
