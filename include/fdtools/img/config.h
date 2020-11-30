@@ -33,7 +33,7 @@ typedef enum {
   FDT_DENSITY_ED = 5,
 } FdtDensity;
 
-typedef struct {
+typedef struct FDT_ATTR_PACKED {
   FdtString* name;
   FdtDensity density;
   size_t size;
