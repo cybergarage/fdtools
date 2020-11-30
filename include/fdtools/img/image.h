@@ -30,7 +30,7 @@ const int FDT_IMAGE_HEADER_SIGNATURE_MAX = 8;
 typedef bool (*FDT_IMAGE_FILELOADER)(void*, FILE*, FdtError*);
 typedef bool (*FDT_IMAGE_FILEEXPORTER)(void*, FILE*, FdtError*);
 
-typedef struct {
+typedef struct FDT_ATTR_PACKED {
   FdtImageConfig* config;
   FdtImageSectors* sectors;
   FDT_IMAGE_FILELOADER file_loader;
