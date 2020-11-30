@@ -18,19 +18,39 @@
 #include <fdtools/img/file.h>
 #include <fdtools/util/string.h>
 
+bool fdt_hfe_header_parse(FdtHfeHeader* header, byte* header_buf);
+bool fdt_image_sethfeheaderinfo(FdtImage* img, FdtHfeHeader* header);
+
 bool fdt_hfe_image_load(FdtImage* img, FILE* fp, FdtError* err)
 {
   byte header_buf[sizeof(FdtHfeHeader)];
   if (!fdt_file_read(fp, header_buf, sizeof(header_buf)))
     return false;
+
+  FdtHfeHeader hfe_header;
+  if (!fdt_hfe_header_parse(&hfe_header, header_buf))
+    return false;
+  if (!fdt_image_sethfeheaderinfo(img, &hfe_header))
+    return false;
+
   return fdt_hfe_image_parse(img, header_buf);
 }
 
-bool fdt_hfe_image_parse(FdtImage* img, byte* header_buf)
+bool fdt_hfe_header_parse(FdtHfeHeader* header, byte* header_buf)
 {
   // TODO: Support Big-endian architecture
-  FdtHfeHeader* raw_header = (FdtHfeHeader*)header_buf;
-  //fdt_hfe_header_print(raw_header);
+  memcpy(header, header_buf, sizeof(FdtHfeHeader));
+  //fdt_hfe_header_print(header);
+  return true;
+}
+
+bool fdt_image_sethfeheaderinfo(FdtImage* img, FdtHfeHeader* header)
+{
+  fdt_image_setwriteprotect(img, header->write_allowed ? true : false);
+  fdt_image_setnumberofcylinder(img, header->number_of_track);
+  fdt_image_setnumberofhead(img, header->number_of_side);
+  fdt_image_setrpm(img, header->floppyRPM);
+
   return true;
 }
 
