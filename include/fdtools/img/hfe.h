@@ -71,8 +71,8 @@ typedef struct FDT_ATTR_PACKED {
 } FdtHfeHeader;
 
 typedef struct FDT_ATTR_PACKED {
-  unsigned short offset;
-  unsigned short track_len;
+  uint16_t offset;
+  uint16_t track_len;
 } FdtHfeTrackOffsets;
 
 FdtImage* fdt_hfe_image_new(void);
