@@ -21,6 +21,7 @@
 bool fdt_hfe_header_parse(FdtHfeHeader* header, byte* header_buf);
 bool fdt_image_sethfeheaderinfo(FdtImage* img, FdtHfeHeader* header);
 void fdt_hfe_header_print(FdtHfeTrackOffsets*, size_t);
+void fdt_hfe_track_print(byte* track_buf, size_t track_len);
 
 bool fdt_hfe_image_load(FdtImage* img, FILE* fp, FdtError* err)
 {
@@ -42,8 +43,8 @@ bool fdt_hfe_image_load(FdtImage* img, FILE* fp, FdtError* err)
 
   size_t number_of_track = hfe_header.number_of_track;
   size_t number_of_head = hfe_header.number_of_side;
-  size_t number_of_all_track = number_of_track * number_of_head;
-  size_t track_offsets_buf_size = sizeof(FdtHfeTrackOffsets) * number_of_all_track;
+  //size_t number_of_all_track = number_of_track * number_of_head;
+  size_t track_offsets_buf_size = sizeof(FdtHfeTrackOffsets) * number_of_track;
   FdtHfeTrackOffsets* hfe_track_offsets = (FdtHfeTrackOffsets*)malloc(track_offsets_buf_size);
   if (!hfe_track_offsets)
     return false;
@@ -52,16 +53,21 @@ bool fdt_hfe_image_load(FdtImage* img, FILE* fp, FdtError* err)
     return false;
   }
 
-  fdt_hfe_header_print(hfe_track_offsets, number_of_all_track);
+  fdt_hfe_header_print(hfe_track_offsets, number_of_track);
+
+  // Read third part: Track data
+
+  for (size_t n = 0; n < number_of_track; n++) {
+    size_t track_offset = hfe_track_offsets[n].offset;
+    size_t track_len = hfe_track_offsets[n].track_len;
+    byte* track_buf = (byte*)malloc(track_len);
+    if (!fdt_file_read(fp, track_buf, track_len)) {
+      fdt_hfe_track_print(track_buf, track_len);
+    }
+    free(track_buf);
+  }
 
   return true;
-}
-
-void fdt_hfe_header_print(FdtHfeTrackOffsets* track_offsets, size_t number_of_track)
-{
-  for (size_t n = 0; n < number_of_track; n++) {
-    printf("[%02ld] %04X %d\n", n, track_offsets[n].offset, track_offsets[n].track_len);
-  }
 }
 
 bool fdt_hfe_header_parse(FdtHfeHeader* header, byte* header_buf)
@@ -99,4 +105,19 @@ void fdt_hfe_header_print(FdtHfeHeader* header)
   printf("track0s0_encoding:    %02X\n", header->track0s0_encoding);
   printf("track0s1_altencoding: %02X\n", header->track0s1_altencoding);
   printf("track0s1_encoding:    %02X\n", header->track0s1_encoding);
+}
+
+void fdt_hfe_header_print(FdtHfeTrackOffsets* track_offsets, size_t number_of_track)
+{
+  for (size_t n = 0; n < number_of_track; n++) {
+    printf("[%02ld] %04X %d\n", n, track_offsets[n].offset, track_offsets[n].track_len);
+  }
+}
+
+void fdt_hfe_track_print(byte* track_buf, size_t track_len)
+{
+  for (size_t n = 0; n < track_len; n++) {
+    printf("%02X", track_buf[n]);
+  }
+  printf("\n");
 }

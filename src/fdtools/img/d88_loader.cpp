@@ -159,7 +159,7 @@ void fdt_d88_header_print(FdtD88Header* header)
 
 bool fdt_d88_sector_header_read(FdtD88SectorHeader* sector, FILE* fp, int n, size_t offset)
 {
-  if (fseek(fp, offset, SEEK_SET) != 0)
+  if (!fdt_file_seek(fp, offset, SEEK_SET))
     return false;
 
   byte sector_buf[sizeof(FdtD88SectorHeader)];
@@ -187,7 +187,7 @@ void fdt_d88_sector_header_print(FdtD88SectorHeader* sector, int n, size_t offse
 
 bool fdt_d88_sector_data_read(FdtD88SectorHeader*, FILE* fp, size_t offset, byte* buf, size_t buf_size)
 {
-  if (fseek(fp, offset, SEEK_SET) != 0)
+  if (!fdt_file_seek(fp, offset, SEEK_SET))
     return false;
 
   if (!fdt_file_read(fp, buf, buf_size))

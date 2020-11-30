@@ -36,6 +36,7 @@ bool fdt_file_memclose(FILE*);
 
 bool fdt_file_read(FILE*, void*, size_t);
 bool fdt_file_write(FILE*, void*, size_t);
+bool fdt_file_seek(FILE*, long, int);
 
 bool fdt_file_hasextension(const char* filename, const char* extname);
 

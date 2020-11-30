@@ -67,6 +67,11 @@ bool fdt_file_write(FILE* fp, void* buf, size_t n)
   return (fwrite(buf, 1, n, fp) == n) ? true : false;
 }
 
+bool fdt_file_seek(FILE* fp, long offset, int whence)
+{
+  return (fseek(fp, offset, whence) == 0) ? true : false;
+}
+
 bool fdt_file_hasextension(const char* filename, const char* extname)
 {
   size_t filename_len = fdt_strlen(filename);
