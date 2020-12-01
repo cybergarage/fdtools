@@ -54,7 +54,11 @@ typedef unsigned short uint16_t;
 #endif
 
 #if !defined(byte)
-typedef unsigned int byte;
+#if (__STDC_VERSION__ >= 199901L) || defined(HAVE_STDINT_H)
+typedef uint8_t byte;
+#else
+typedef char byte;
+#endif
 #endif
 
 #if defined(__GNUC__) || defined(__clang__)
