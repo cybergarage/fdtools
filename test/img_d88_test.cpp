@@ -25,7 +25,7 @@ BOOST_AUTO_TEST_CASE(D88HeaderSizeTest)
 
 BOOST_AUTO_TEST_CASE(D88ImageLoadTest)
 {
-  const char* TEST_D88_IMAGES[][64] = {
+  const char TEST_D88_IMAGES[][64] = {
     "test-001.d88",
     "test-002.d88",
     "test-003.d88",
@@ -35,7 +35,7 @@ BOOST_AUTO_TEST_CASE(D88ImageLoadTest)
   FdtError* err = fdt_error_new();
 
   for (int n = 0; n < fdt_array_countof(TEST_D88_IMAGES); n++) {
-    std::string filename = TEST_IMAGE_DIRECTORY + "/" + *TEST_D88_IMAGES[n];
+    std::string filename = TEST_IMAGE_DIRECTORY + "/" + TEST_D88_IMAGES[n];
     BOOST_CHECK_EQUAL(fdt_img_file_gettype(filename.c_str()), FDT_IMAGE_TYPE_D88);
 
     // Loader test
