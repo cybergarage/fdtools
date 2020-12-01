@@ -25,7 +25,7 @@ BOOST_AUTO_TEST_CASE(HfeHeaderSizeTest)
 
 BOOST_AUTO_TEST_CASE(HfeImageLoadTest)
 {
-  const char* TEST_HFE_IMAGES[][64] = {
+  const char TEST_HFE_IMAGES[][64] = {
     "test-001.hfe",
     "test-002.hfe",
     "test-003.hfe",
@@ -34,7 +34,7 @@ BOOST_AUTO_TEST_CASE(HfeImageLoadTest)
   FdtError* err = fdt_error_new();
 
   for (int n = 0; n < fdt_array_countof(TEST_HFE_IMAGES); n++) {
-    std::string filename = TEST_IMAGE_DIRECTORY + "/" + *TEST_HFE_IMAGES[n];
+    std::string filename = TEST_IMAGE_DIRECTORY + "/" + TEST_HFE_IMAGES[n];
     BOOST_CHECK_EQUAL(fdt_img_file_gettype(filename.c_str()), FDT_IMAGE_TYPE_HFE);
 
     FILE* fp = fdt_file_open(filename.c_str(), FDT_FILE_READ);
