@@ -18,6 +18,7 @@
 #include <fdtools/img/d88.h>
 #include <fdtools/util/file.h>
 #include <fdtools/util/string.h>
+#include <fdtools/util/hexdump.h>
 
 bool fdt_d88_image_load(FdtImage*, FILE*);
 bool fdt_d88_header_parse(FdtD88Header*, byte*);
@@ -105,6 +106,9 @@ bool fdt_d88_image_load(FdtImage* img, FILE* fp, FdtError* err)
       d88_image_file_size += sector_data_size;
 
       fdt_image_addsector(img, sector);
+      
+      fdt_hexdump_print(fdt_image_sector_getdata(sector), fdt_image_sector_getsize(sector));
+
     }
   }
 

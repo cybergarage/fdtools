@@ -17,6 +17,7 @@
 
 #include <fdtools/img/file.h>
 #include <fdtools/util/string.h>
+#include <fdtools/util/hexdump.h>
 
 bool fdt_hfe_header_parse(FdtHfeHeader* header, byte* header_buf);
 bool fdt_image_sethfeheaderinfo(FdtImage* img, FdtHfeHeader* header);
@@ -69,7 +70,7 @@ bool fdt_hfe_image_load(FdtImage* img, FILE* fp, FdtError* err)
     size_t track_len = hfe_track_offsets[n].track_len;
     byte* track_buf = (byte*)malloc(track_len);
     if (fdt_file_read(fp, track_buf, track_len)) {
-      fdt_hfe_track_print(track_buf, track_len);
+      fdt_hexdump_print(track_buf, track_len);
       break;
     }
     free(track_buf);
@@ -120,12 +121,4 @@ void fdt_hfe_header_print(FdtHfeTrackOffsets* track_offsets, size_t number_of_tr
   for (size_t n = 0; n < number_of_track; n++) {
     printf("[%02ld] %04X %d\n", n, track_offsets[n].offset, track_offsets[n].track_len);
   }
-}
-
-void fdt_hfe_track_print(byte* track_buf, size_t track_len)
-{
-  for (size_t n = 0; n < track_len; n++) {
-    printf("%02X", track_buf[n]);
-  }
-  printf("\n");
 }
