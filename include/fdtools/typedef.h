@@ -47,6 +47,12 @@ extern "C" {
 #endif
 #endif
 
+#if (__STDC_VERSION__ >= 199901L) || defined(HAVE_STDINT_H)
+#include <stdint.h>
+#else
+typedef unsigned short uint16_t;
+#endif
+
 #if !defined(byte)
 typedef unsigned int byte;
 #endif
