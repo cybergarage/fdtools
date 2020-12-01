@@ -17,6 +17,7 @@ fdtoolsheaders = \
 	./fdtools/util/file.h \
 	./fdtools/util/list.h \
 	./fdtools/util/array.h \
+	./fdtools/util/hexdump.h \
 	./fdtools/util/string.h \
 	./fdtools/img/sector.h \
 	./fdtools/img/config.h \

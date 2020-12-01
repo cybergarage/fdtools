@@ -176,7 +176,7 @@ bool fdt_d88_sector_header_parse(FdtD88SectorHeader* sector, int n, size_t offse
 {
   // TODO: Support Big-endian architecture
   memcpy(sector, sector_buf, sizeof(FdtD88SectorHeader));
-  //fdt_d88_sector_header_print(sector, n, offset);
+  fdt_d88_sector_header_print(sector, n, offset);
   return true;
 }
 

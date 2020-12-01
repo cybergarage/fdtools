@@ -69,7 +69,8 @@ bool fdt_hfe_image_load(FdtImage* img, FILE* fp, FdtError* err)
     size_t track_len = hfe_track_offsets[n].track_len;
     byte* track_buf = (byte*)malloc(track_len);
     if (fdt_file_read(fp, track_buf, track_len)) {
-      //fdt_hfe_track_print(track_buf, track_len);
+      fdt_hfe_track_print(track_buf, track_len);
+      break;
     }
     free(track_buf);
   }

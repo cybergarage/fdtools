@@ -27,9 +27,9 @@ BOOST_AUTO_TEST_CASE(D88ImageLoadTest)
 {
   const char TEST_D88_IMAGES[][64] = {
     "test-001.d88",
-    "test-002.d88",
-    "test-003.d88",
-    "test-004.d88",
+    //"test-002.d88",
+    //"test-003.d88",
+    //"test-004.d88",
   };
 
   FdtError* err = fdt_error_new();

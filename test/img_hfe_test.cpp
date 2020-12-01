@@ -27,8 +27,8 @@ BOOST_AUTO_TEST_CASE(HfeImageLoadTest)
 {
   const char TEST_HFE_IMAGES[][64] = {
     "test-001.hfe",
-    "test-002.hfe",
-    "test-003.hfe",
+    //"test-002.hfe",
+    //"test-003.hfe",
   };
 
   FdtError* err = fdt_error_new();
