@@ -38,7 +38,7 @@ bool fdt_hfe_image_load(FdtImage* img, FILE* fp, FdtError* err)
   if (!fdt_image_sethfeheaderinfo(img, &hfe_header))
     return false;
 
-  fdt_hfe_header_print(&hfe_header);
+  //fdt_hfe_header_print(&hfe_header);
 
   // Read second part: Track offset LUT
 
@@ -58,7 +58,7 @@ bool fdt_hfe_image_load(FdtImage* img, FILE* fp, FdtError* err)
     return false;
   }
 
-  fdt_hfe_header_print(hfe_track_offsets, number_of_track);
+  //fdt_hfe_header_print(hfe_track_offsets, number_of_track);
 
   // Read third part: Track data
   
@@ -69,10 +69,11 @@ bool fdt_hfe_image_load(FdtImage* img, FILE* fp, FdtError* err)
       return false;
     size_t track_len = hfe_track_offsets[n].track_len;
     byte* track_buf = (byte*)malloc(track_len);
-    if (fdt_file_read(fp, track_buf, track_len)) {
-      fdt_hexdump_print(track_buf, track_len);
-      break;
+    if (!fdt_file_read(fp, track_buf, track_len)) {
+      free(track_buf);
+      return false;
     }
+    //fdt_hexdump_print(track_buf, track_len);
     free(track_buf);
   }
 
@@ -83,7 +84,6 @@ bool fdt_hfe_header_parse(FdtHfeHeader* header, byte* header_buf)
 {
   // TODO: Support Big-endian architecture
   memcpy(header, header_buf, sizeof(FdtHfeHeader));
-  //fdt_hfe_header_print(header);
   return true;
 }
 
