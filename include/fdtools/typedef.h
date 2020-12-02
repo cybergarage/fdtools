@@ -15,9 +15,9 @@
 #ifndef _FDTOOLS_TYPEDEF_H_
 #define _FDTOOLS_TYPEDEF_H_
 
-#include <stdlib.h>
-#include <stdint.h>
 #include <stdbool.h>
+#include <stdint.h>
+#include <stdlib.h>
 
 #if defined(__APPLE_CPP__) || defined(__APPLE_CC__)
 #include <TargetConditionals.h>
