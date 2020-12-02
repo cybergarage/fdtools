@@ -16,8 +16,8 @@
 #include <string.h>
 
 #include <fdtools/img/file.h>
-#include <fdtools/util/string.h>
 #include <fdtools/util/hexdump.h>
+#include <fdtools/util/string.h>
 
 bool fdt_hfe_header_parse(FdtHfeHeader* header, byte* header_buf);
 bool fdt_image_sethfeheaderinfo(FdtImage* img, FdtHfeHeader* header);
@@ -45,10 +45,10 @@ bool fdt_hfe_image_load(FdtImage* img, FILE* fp, FdtError* err)
   size_t track_list_offset = hfe_header.track_list_offset * 512;
   if (!fdt_file_seek(fp, track_list_offset, SEEK_SET))
     return false;
-  
+
   size_t number_of_track = hfe_header.number_of_track;
   size_t number_of_head = hfe_header.number_of_side;
-  //size_t number_of_all_track = number_of_track * number_of_head;
+
   size_t track_offsets_buf_size = sizeof(FdtHfeTrackOffsets) * number_of_track;
   FdtHfeTrackOffsets* hfe_track_offsets = (FdtHfeTrackOffsets*)malloc(track_offsets_buf_size);
   if (!hfe_track_offsets)
@@ -61,19 +61,54 @@ bool fdt_hfe_image_load(FdtImage* img, FILE* fp, FdtError* err)
   //fdt_hfe_header_print(hfe_track_offsets, number_of_track);
 
   // Read third part: Track data
-  
-  for (size_t n = 0; n < number_of_track; n++) {
-    size_t track_offset = hfe_track_offsets[n].offset;
+
+  for (int t = 0; t < number_of_track; t++) {
+    size_t track_offset = hfe_track_offsets[t].offset;
     size_t track_data_offset = 512 * track_offset;
     if (!fdt_file_seek(fp, track_data_offset, SEEK_SET))
       return false;
-    size_t track_len = hfe_track_offsets[n].track_len;
+
+    size_t track_len = hfe_track_offsets[t].track_len;
     byte* track_buf = (byte*)malloc(track_len);
     if (!fdt_file_read(fp, track_buf, track_len)) {
       free(track_buf);
       return false;
     }
     //fdt_hexdump_print(track_buf, track_len);
+
+    for (int h = 0; h < number_of_head; h++) {
+      size_t sector_data_size = track_len / 2;
+
+      byte* sector_data = (byte*)malloc(sector_data_size);
+      if (!sector_data) {
+        free(track_buf);
+        return false;
+      }
+
+      FdtImageSector* sector = fdt_image_sector_new();
+      if (!sector) {
+        free(track_buf);
+        return false;
+      }
+
+      size_t block_len = sector_data_size / 256;
+      for (int b = 0; b < block_len; b++) {
+        for (int i = 0; i < 256; i++) {
+          size_t offset = (b * 256) + i;
+          size_t offset2 = (b * 512) + i + (256 * h);
+          //sector_data[offset]=LUT_ByteBitsInverter[track_buf[offset2]];
+        }
+      }
+
+      fdt_image_sector_setcylindernumber(sector, t);
+      fdt_image_sector_setheadnumber(sector, h);
+      fdt_image_sector_setnumber(sector, 0 /*TODO*/);
+      fdt_image_sector_setsize(sector, sector_data_size);
+      fdt_image_sector_setdata(sector, sector_data);
+
+      fdt_image_addsector(img, sector);
+    }
+
     free(track_buf);
   }
 
