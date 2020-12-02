@@ -16,6 +16,8 @@
 #define _FDTOOLS_TYPEDEF_H_
 
 #include <stdlib.h>
+#include <stdint.h>
+#include <stdbool.h>
 
 #if defined(__APPLE_CPP__) || defined(__APPLE_CC__)
 #include <TargetConditionals.h>
@@ -29,44 +31,10 @@
 #endif
 #endif
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-#if (__STDC_VERSION__ >= 199901L) || defined(HAVE_STDBOOL_H)
-#include <stdbool.h>
-#else
-#if !defined(bool)
-#define bool int
-#endif
-#if !defined(true)
-#define true 1
-#endif
-#if !defined(false)
-#define false 0
-#endif
-#endif
-
-#if (__STDC_VERSION__ >= 199901L) || defined(HAVE_STDINT_H)
-#include <stdint.h>
-#else
-typedef unsigned short uint16_t;
-#endif
-
-#if !defined(byte)
-#if (__STDC_VERSION__ >= 199901L) || defined(HAVE_STDINT_H)
-typedef uint8_t byte;
-#else
-typedef char byte;
-#endif
-#endif
-
 #if defined(__GNUC__) || defined(__clang__)
 #define FDT_ATTR_PACKED __attribute__((packed))
 #endif
 
-#ifdef __cplusplus
-} /* extern C */
-#endif
+typedef uint8_t byte;
 
 #endif /* _FDTOOLS_TYPEDEF_H_ */

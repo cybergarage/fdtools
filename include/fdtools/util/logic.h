@@ -21,15 +21,16 @@
 extern "C" {
 #endif
 
-inline byte fdt_swapbyte(uint8_t x)
+inline byte fdt_swapbyte(byte x)
 {
-  uint8_t r = 0;
+  byte r = 0;
   for (int n = 0; n < 8; n++) {
     r <<= 1;
-    r |= (x & 1);
+    r &= 0xFF;
+    r |= (x & 0x01);
     x >>= 1;
   }
-  return r;
+  return (r & 0xFF);
 }
 
 #ifdef __cplusplus
