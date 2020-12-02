@@ -94,10 +94,9 @@ bool fdt_hfe_image_load(FdtImage* img, FILE* fp, FdtError* err)
 
       size_t block_len = sector_data_size / 256;
       for (int b = 0; b < block_len; b++) {
-        for (int i = 0; i < 256; i++) {
-          size_t sector_data_offset = (b * 256) + i;
-          size_t track_buf_offset = (b * 512) + i + (256 * h);
-          sector_data[sector_data_offset] = fdt_swapbyte(track_buf[track_buf_offset]);
+        for (int n = 0; n < 256; n++) {
+          size_t track_buf_offset = (b * 512) + n + (256 * h);
+          sector_data[n] = fdt_swapbyte(track_buf[track_buf_offset]);
         }
       }
 
