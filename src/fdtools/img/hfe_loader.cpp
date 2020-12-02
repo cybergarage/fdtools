@@ -19,16 +19,16 @@
 #include <fdtools/util/hexdump.h>
 #include <fdtools/util/string.h>
 
-bool fdt_hfe_header_parse(FdtHfeHeader* header, byte* header_buf);
+bool fdt_hfe_header_parse(FdtHfeHeader* header, byte_t* header_buf);
 bool fdt_image_sethfeheaderinfo(FdtImage* img, FdtHfeHeader* header);
 void fdt_hfe_header_print(FdtHfeTrackOffsets*, size_t);
-void fdt_hfe_track_print(byte* track_buf, size_t track_len);
+void fdt_hfe_track_print(byte_t* track_buf, size_t track_len);
 
 bool fdt_hfe_image_load(FdtImage* img, FILE* fp, FdtError* err)
 {
   // Read first part: File header
 
-  byte header_buf[sizeof(FdtHfeHeader)];
+  byte_t header_buf[sizeof(FdtHfeHeader)];
   if (!fdt_file_read(fp, header_buf, sizeof(header_buf)))
     return false;
 
@@ -69,7 +69,7 @@ bool fdt_hfe_image_load(FdtImage* img, FILE* fp, FdtError* err)
       return false;
 
     size_t track_len = hfe_track_offsets[t].track_len;
-    byte* track_buf = (byte*)malloc(track_len);
+    byte_t* track_buf = (byte_t*)malloc(track_len);
     if (!fdt_file_read(fp, track_buf, track_len)) {
       free(track_buf);
       return false;
@@ -79,7 +79,7 @@ bool fdt_hfe_image_load(FdtImage* img, FILE* fp, FdtError* err)
     for (int h = 0; h < number_of_head; h++) {
       size_t sector_data_size = track_len / 2;
 
-      byte* sector_data = (byte*)malloc(sector_data_size);
+      byte_t* sector_data = (byte_t*)malloc(sector_data_size);
       if (!sector_data) {
         free(track_buf);
         return false;
@@ -115,7 +115,7 @@ bool fdt_hfe_image_load(FdtImage* img, FILE* fp, FdtError* err)
   return true;
 }
 
-bool fdt_hfe_header_parse(FdtHfeHeader* header, byte* header_buf)
+bool fdt_hfe_header_parse(FdtHfeHeader* header, byte_t* header_buf)
 {
   // TODO: Support Big-endian architecture
   memcpy(header, header_buf, sizeof(FdtHfeHeader));

@@ -21,7 +21,7 @@
 extern "C" {
 #endif
 
-void fdt_hexdump_print(byte* buf, size_t buf_len);
+void fdt_hexdump_print(byte_t* buf, size_t buf_len);
 
 #ifdef __cplusplus
 } /* extern "C" */

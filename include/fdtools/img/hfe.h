@@ -77,7 +77,7 @@ typedef struct FDT_ATTR_PACKED {
 
 FdtImage* fdt_hfe_image_new(void);
 bool fdt_hfe_image_load(FdtImage*, FILE*, FdtError* err);
-bool fdt_hfe_image_parse(FdtImage*, byte*);
+bool fdt_hfe_image_parse(FdtImage*, byte_t*);
 
 void fdt_hfe_header_print(FdtHfeHeader* header);
 

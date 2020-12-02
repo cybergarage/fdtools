@@ -21,17 +21,17 @@
 #include <fdtools/util/string.h>
 
 bool fdt_d88_image_load(FdtImage*, FILE*);
-bool fdt_d88_header_parse(FdtD88Header*, byte*);
+bool fdt_d88_header_parse(FdtD88Header*, byte_t*);
 void fdt_d88_header_print(FdtD88Header*);
 bool fdt_d88_sector_header_read(FdtD88SectorHeader*, FILE* fp, int n, size_t offset);
-bool fdt_d88_sector_header_parse(FdtD88SectorHeader*, int, size_t, byte*);
+bool fdt_d88_sector_header_parse(FdtD88SectorHeader*, int, size_t, byte_t*);
 void fdt_d88_sector_header_print(FdtD88SectorHeader*, int n, size_t offset);
-bool fdt_d88_sector_data_read(FdtD88SectorHeader*, FILE* fp, size_t offset, byte* buf, size_t buf_size);
+bool fdt_d88_sector_data_read(FdtD88SectorHeader*, FILE* fp, size_t offset, byte_t* buf, size_t buf_size);
 bool fdt_image_setd88headerinfo(FdtImage* img, FdtD88Header* header);
 
 bool fdt_d88_image_load(FdtImage* img, FILE* fp, FdtError* err)
 {
-  byte header_buf[sizeof(FdtD88Header)];
+  byte_t header_buf[sizeof(FdtD88Header)];
   if (!fdt_file_read(fp, header_buf, sizeof(header_buf)))
     return false;
 
@@ -80,7 +80,7 @@ bool fdt_d88_image_load(FdtImage* img, FILE* fp, FdtError* err)
     size_t sector_data_offset = sector_header_offset + sizeof(FdtD88SectorHeader);
 
     for (int sector_no = 0; sector_no < number_of_sector; sector_no++) {
-      byte* sector_data = (byte*)malloc(sector_data_size);
+      byte_t* sector_data = (byte_t*)malloc(sector_data_size);
       if (!sector_data) {
         return false;
       }
@@ -120,7 +120,7 @@ bool fdt_d88_image_load(FdtImage* img, FILE* fp, FdtError* err)
   return true;
 }
 
-bool fdt_d88_header_parse(FdtD88Header* header, byte* header_buf)
+bool fdt_d88_header_parse(FdtD88Header* header, byte_t* header_buf)
 {
   // TODO: Support Big-endian architecture
   memcpy(header, header_buf, sizeof(FdtD88Header));
@@ -165,7 +165,7 @@ bool fdt_d88_sector_header_read(FdtD88SectorHeader* sector, FILE* fp, int n, siz
   if (!fdt_file_seek(fp, offset, SEEK_SET))
     return false;
 
-  byte sector_buf[sizeof(FdtD88SectorHeader)];
+  byte_t sector_buf[sizeof(FdtD88SectorHeader)];
   if (!fdt_file_read(fp, sector_buf, sizeof(sector_buf)))
     return false;
 
@@ -175,7 +175,7 @@ bool fdt_d88_sector_header_read(FdtD88SectorHeader* sector, FILE* fp, int n, siz
   return true;
 }
 
-bool fdt_d88_sector_header_parse(FdtD88SectorHeader* sector, int n, size_t offset, byte* sector_buf)
+bool fdt_d88_sector_header_parse(FdtD88SectorHeader* sector, int n, size_t offset, byte_t* sector_buf)
 {
   // TODO: Support Big-endian architecture
   memcpy(sector, sector_buf, sizeof(FdtD88SectorHeader));
@@ -188,7 +188,7 @@ void fdt_d88_sector_header_print(FdtD88SectorHeader* sector, int n, size_t offse
   printf("[%02d] %06X C:%02d H:%d R:%d N:%d SNUM:%d SSIZE:%d\n", n, (int)offset, sector->c, sector->h, sector->r, sector->n, sector->number_of_sector, sector->size_of_data);
 }
 
-bool fdt_d88_sector_data_read(FdtD88SectorHeader*, FILE* fp, size_t offset, byte* buf, size_t buf_size)
+bool fdt_d88_sector_data_read(FdtD88SectorHeader*, FILE* fp, size_t offset, byte_t* buf, size_t buf_size)
 {
   if (!fdt_file_seek(fp, offset, SEEK_SET))
     return false;

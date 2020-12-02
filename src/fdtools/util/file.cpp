@@ -44,7 +44,7 @@ bool fdt_file_close(FILE* fp)
   return (fclose(fp) == 0) ? true : false;
 }
 
-FILE* fdt_file_memopen(byte* buf, size_t n, FdtFileMode mode)
+FILE* fdt_file_memopen(byte_t* buf, size_t n, FdtFileMode mode)
 {
   const char* fmode = fdt_file_mode2str(mode);
   if (!fmode)

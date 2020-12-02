@@ -31,7 +31,7 @@ typedef enum {
 FILE* fdt_file_open(const char*, FdtFileMode);
 bool fdt_file_close(FILE*);
 
-FILE* fdt_file_memopen(byte* buf, size_t n, FdtFileMode mode);
+FILE* fdt_file_memopen(byte_t* buf, size_t n, FdtFileMode mode);
 bool fdt_file_memclose(FILE*);
 
 bool fdt_file_read(FILE*, void*, size_t);

@@ -21,9 +21,9 @@
 extern "C" {
 #endif
 
-inline byte fdt_swapbyte(byte x)
+inline byte_t fdt_swapbyte(byte_t x)
 {
-  byte r = 0;
+  byte_t r = 0;
   for (int n = 0; n < 8; n++) {
     r <<= 1;
     r &= 0xFF;

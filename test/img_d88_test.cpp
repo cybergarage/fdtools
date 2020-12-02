@@ -53,7 +53,7 @@ BOOST_AUTO_TEST_CASE(D88ImageLoadTest)
 
     size_t img_size = fdt_image_getsize(src_img);
 
-    byte* dst_img_buf = (byte*)malloc(img_size);
+    byte_t* dst_img_buf = (byte_t*)malloc(img_size);
     FILE* mem_fp = fdt_file_memopen(dst_img_buf, img_size, FDT_FILE_WRITE);
     BOOST_CHECK(fdt_image_export(src_img, mem_fp, err));
     fdt_file_memclose(mem_fp);

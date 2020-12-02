@@ -31,7 +31,7 @@ typedef struct {
   FdtHeadNumber head_number;
   FdtSectorNumber number;
   size_t size;
-  byte* data;
+  byte_t* data;
 } FdtImageSector, FdtImageSectors;
 
 FdtImageSectors* fdt_image_sectors_new();

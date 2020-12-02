@@ -35,6 +35,8 @@
 #define FDT_ATTR_PACKED __attribute__((packed))
 #endif
 
-typedef uint8_t byte;
+#if !defined(byte_t)
+typedef uint8_t byte_t;
+#endif
 
 #endif /* _FDTOOLS_TYPEDEF_H_ */

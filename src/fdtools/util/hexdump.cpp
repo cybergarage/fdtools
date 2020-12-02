@@ -19,7 +19,7 @@
 
 const size_t FDT_HEXDUMP_LINE_BYTES = 16;
 
-void fdt_hexdump_print(byte* buf, size_t buf_len)
+void fdt_hexdump_print(byte_t* buf, size_t buf_len)
 {
   for (size_t offset = 0; offset < buf_len; offset += FDT_HEXDUMP_LINE_BYTES) {
     size_t line_len = FDT_HEXDUMP_LINE_BYTES;
