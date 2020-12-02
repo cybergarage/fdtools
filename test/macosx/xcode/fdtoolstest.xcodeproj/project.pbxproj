@@ -11,6 +11,7 @@
 		21403C09255EF3360022389D /* img_file_test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 21403C08255EF3360022389D /* img_file_test.cpp */; };
 		219F7D4E255FD26600827D5C /* img_hfe_test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 219F7D4D255FD26600827D5C /* img_hfe_test.cpp */; };
 		219F7D522568F68700827D5C /* img_d88_test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 219F7D512568F68700827D5C /* img_d88_test.cpp */; };
+		21AB318C2577F1ED00AD5066 /* logic_test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 21AB318B2577F1ED00AD5066 /* logic_test.cpp */; };
 		21B2526B255DB1E500094B1D /* libfdtools.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 21B25266255DB1CD00094B1D /* libfdtools.a */; };
 /* End PBXBuildFile section */
 
@@ -49,6 +50,7 @@
 		216FD0D6255D9F71005C01F4 /* fdtoolstest */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = fdtoolstest; sourceTree = BUILT_PRODUCTS_DIR; };
 		219F7D4D255FD26600827D5C /* img_hfe_test.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = img_hfe_test.cpp; path = ../../img_hfe_test.cpp; sourceTree = "<group>"; };
 		219F7D512568F68700827D5C /* img_d88_test.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = img_d88_test.cpp; path = ../../img_d88_test.cpp; sourceTree = "<group>"; };
+		21AB318B2577F1ED00AD5066 /* logic_test.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = logic_test.cpp; path = ../../logic_test.cpp; sourceTree = "<group>"; };
 		21B25261255DB1CD00094B1D /* libfdtools.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = libfdtools.xcodeproj; path = ../../../lib/macosx/xcode/libfdtools.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -67,6 +69,7 @@
 		211519B5255DA6C200B747E1 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				21AB318B2577F1ED00AD5066 /* logic_test.cpp */,
 				219F7D512568F68700827D5C /* img_d88_test.cpp */,
 				219F7D4D255FD26600827D5C /* img_hfe_test.cpp */,
 				21403C08255EF3360022389D /* img_file_test.cpp */,
@@ -194,6 +197,7 @@
 				219F7D522568F68700827D5C /* img_d88_test.cpp in Sources */,
 				219F7D4E255FD26600827D5C /* img_hfe_test.cpp in Sources */,
 				211519B8255DA6DA00B747E1 /* main.cpp in Sources */,
+				21AB318C2577F1ED00AD5066 /* logic_test.cpp in Sources */,
 				21403C09255EF3360022389D /* img_file_test.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -16,6 +16,7 @@ fdtoolsheaders = \
 	./fdtools/error.h \
 	./fdtools/util/file.h \
 	./fdtools/util/list.h \
+	./fdtools/util/logic.h \
 	./fdtools/util/array.h \
 	./fdtools/util/hexdump.h \
 	./fdtools/util/string.h \
