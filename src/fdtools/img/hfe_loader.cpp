@@ -17,6 +17,7 @@
 
 #include <fdtools/img/file.h>
 #include <fdtools/util/hexdump.h>
+#include <fdtools/util/logic.h>
 #include <fdtools/util/string.h>
 
 bool fdt_hfe_header_parse(FdtHfeHeader* header, byte_t* header_buf);
@@ -94,9 +95,9 @@ bool fdt_hfe_image_load(FdtImage* img, FILE* fp, FdtError* err)
       size_t block_len = sector_data_size / 256;
       for (int b = 0; b < block_len; b++) {
         for (int i = 0; i < 256; i++) {
-          size_t offset = (b * 256) + i;
-          size_t offset2 = (b * 512) + i + (256 * h);
-          //sector_data[offset]=LUT_ByteBitsInverter[track_buf[offset2]];
+          size_t sector_data_offset = (b * 256) + i;
+          size_t track_buf_offset = (b * 512) + i + (256 * h);
+          sector_data[sector_data_offset] = fdt_swapbyte(track_buf[track_buf_offset]);
         }
       }
 
