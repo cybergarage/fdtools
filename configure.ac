@@ -84,14 +84,10 @@ include/Makefile
 lib/Makefile
 lib/unix/Makefile
 bin/Makefile
-bin/fdwrite/Makefile
-bin/fdwrite/unix/Makefile
-bin/fdread/Makefile
-bin/fdread/unix/Makefile
+bin/fddump/Makefile
+bin/fddump/unix/Makefile
 bin/fdinfo/Makefile
 bin/fdinfo/unix/Makefile
-bin/fdimg/Makefile
-bin/fdimg/unix/Makefile
 test/Makefile
 test/unix/Makefile
 ])

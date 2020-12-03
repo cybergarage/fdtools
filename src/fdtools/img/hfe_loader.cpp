@@ -107,6 +107,9 @@ bool fdt_hfe_image_load(FdtImage* img, FILE* fp, FdtError* err)
       fdt_image_sector_setdata(sector, sector_data);
 
       fdt_image_addsector(img, sector);
+
+      fdt_hexdump_print(sector_data, sector_data_size);
+      return true;
     }
 
     free(track_buf);

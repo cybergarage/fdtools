@@ -18,9 +18,7 @@ makefiles=(
 "lib/unix"
 "test/unix"
 "bin/fdinfo/unix"
-"bin/fdwrite/unix"
-"bin/fdread/unix"
-"bin/fdimg/unix"
+"bin/fddump/unix"
 )
 
 for makefile in "${makefiles[@]}"
