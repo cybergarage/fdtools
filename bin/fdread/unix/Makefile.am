@@ -15,6 +15,7 @@
 bin_PROGRAMS = fdread
 
 AM_CFLAGS = -I$(top_builddir)/include -I../
+AM_CPPFLAGS = -I$(top_builddir)/include -I../
 
 fdread_SOURCES = \
 	../main.c

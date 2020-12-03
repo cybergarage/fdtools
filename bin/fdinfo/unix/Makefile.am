@@ -15,6 +15,7 @@
 bin_PROGRAMS = fdinfo
 
 AM_CFLAGS = -I$(top_builddir)/include -I../
+AM_CPPFLAGS = -I$(top_builddir)/include -I../
 
 fdinfo_SOURCES = \
 	../main.c

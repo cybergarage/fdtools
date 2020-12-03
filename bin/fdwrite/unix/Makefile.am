@@ -15,6 +15,7 @@
 bin_PROGRAMS = fdwrite
 
 AM_CFLAGS = -I$(top_builddir)/include -I../
+AM_CPPFLAGS = -I$(top_builddir)/include -I../
 
 fdwrite_SOURCES = \
 	../main.c
