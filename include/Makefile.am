@@ -14,20 +14,20 @@
 
 fdtoolsheaders = \
 	./fdtools/error.h \
-	./fdtools/util/file.h \
-	./fdtools/util/list.h \
-	./fdtools/util/array.h \
-	./fdtools/util/hexdump.h \
-	./fdtools/util/string.h \
-	./fdtools/img/sector.h \
-	./fdtools/img/config.h \
-	./fdtools/img/fdx.h \
 	./fdtools/img/file.h \
 	./fdtools/img/hfe.h \
 	./fdtools/img/d88.h \
 	./fdtools/img/image.h \
+	./fdtools/img/fdx.h \
+	./fdtools/img/sector.h \
+	./fdtools/img/config.h \
 	./fdtools/bios/bios.h \
-	./fdtools/typedef.h
+	./fdtools/typedef.h \
+	./fdtools/util/file.h \
+	./fdtools/util/hexdump.h \
+	./fdtools/util/array.h \
+	./fdtools/util/list.h \
+	./fdtools/util/string.h
 
 nobase_include_HEADERS = \
 	$(fdtoolsheaders)

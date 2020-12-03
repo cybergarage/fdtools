@@ -17,7 +17,7 @@ bin_PROGRAMS = fdread
 AM_CFLAGS = -I$(top_builddir)/include -I../
 
 fdread_SOURCES = \
-	..//main.c
+	../main.c
 
 #if HAVE_LIBTOOL
 #fdread_LDADD = ../../../lib/unix/libfdtools.la

@@ -17,7 +17,7 @@ bin_PROGRAMS = fdwrite
 AM_CFLAGS = -I$(top_builddir)/include -I../
 
 fdwrite_SOURCES = \
-	..//main.c
+	../main.c
 
 #if HAVE_LIBTOOL
 #fdwrite_LDADD = ../../../lib/unix/libfdtools.la
