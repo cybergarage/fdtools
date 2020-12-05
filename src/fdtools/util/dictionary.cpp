@@ -30,10 +30,11 @@ FdtDictionary* fdt_dictionary_new()
   return dir;
 }
 
-void fdt_dictionary_delete(FdtDictionary* dictionaryList)
+bool fdt_dictionary_delete(FdtDictionary* dictionaryList)
 {
   fdt_dictionary_clear(dictionaryList);
   free(dictionaryList);
+  return true;
 }
 
 FdtDictionaryElement* fdt_dictionary_getelement(FdtDictionary* dir, const char* key)

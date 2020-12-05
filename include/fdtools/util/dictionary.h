@@ -41,7 +41,7 @@ bool fdt_dictionary_element_delete(FdtDictionaryElement* dirElem);
 #define fdt_dictionary_element_remove(dirElem) fdt_list_remove((FdtList*)dirElem)
 
 FdtDictionary* fdt_dictionary_new();
-void fdt_dictionary_delete(FdtDictionary* dir);
+bool fdt_dictionary_delete(FdtDictionary* dir);
 
 #define fdt_dictionary_clear(dir) fdt_list_clear((FdtList*)dir, (FDT_LIST_DESTRUCTORFUNC)fdt_dictionary_element_delete)
 #define fdt_dictionary_size(dir) fdt_list_size((FdtList*)dir)
