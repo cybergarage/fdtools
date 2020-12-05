@@ -18,16 +18,21 @@
 
 BOOST_AUTO_TEST_CASE(DictionaryTest)
 {
+  const int TEST_DICTIONARY_ELEMENT_COUNT = 10;
+
   char key[8], value[8];
 
   FdtDictionary* dir = fdt_dictionary_new();
   BOOST_CHECK(dir);
 
-  for (int n = 0; n < 10; n++) {
-    snprintf(key, sizeof(key), "%d", n);
-    snprintf(value, sizeof(value), "%d", n);
-    BOOST_CHECK(fdt_dictionary_setvalue(dir, key, value));
-    BOOST_CHECK_EQUAL(value, fdt_dictionary_getvalue(dir, key));
+  for (int i = 0; i < 2; i++) {
+    for (int n = 0; n < TEST_DICTIONARY_ELEMENT_COUNT; n++) {
+      snprintf(key, sizeof(key), "%d", n);
+      snprintf(value, sizeof(value), "%d", n);
+      BOOST_CHECK(fdt_dictionary_setstring(dir, key, value));
+      BOOST_CHECK_EQUAL(value, fdt_dictionary_getstring(dir, key));
+    }
+    BOOST_CHECK_EQUAL(fdt_dictionary_size(dir), TEST_DICTIONARY_ELEMENT_COUNT);
   }
 
   BOOST_CHECK(fdt_dictionary_delete(dir));

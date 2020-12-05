@@ -55,14 +55,13 @@ bool fdt_dictionary_element_clear_value(FdtDictionaryElement* elem)
   return true;
 }
 
-bool fdt_dictionary_element_setvalue(FdtDictionaryElement* elem, void *value, FDT_DICTIONARY_ELEMENT_DESTRUCTORFUNC destructor)
+bool fdt_dictionary_element_setvalue(FdtDictionaryElement* elem, void* value, FDT_DICTIONARY_ELEMENT_DESTRUCTORFUNC destructor)
 {
   if (!fdt_dictionary_element_clear_value(elem))
     return false;
-  
+
   elem->value = value;
   elem->destructor = destructor;
 
   return true;
 }
-

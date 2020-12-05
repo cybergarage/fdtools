@@ -34,7 +34,7 @@ typedef struct {
 
 FdtDictionaryElement* fdt_dictionary_element_new();
 bool fdt_dictionary_element_delete(FdtDictionaryElement* elem);
-bool fdt_dictionary_element_setvalue(FdtDictionaryElement* elem, void *value, FDT_DICTIONARY_ELEMENT_DESTRUCTORFUNC destructor);
+bool fdt_dictionary_element_setvalue(FdtDictionaryElement* elem, void* value, FDT_DICTIONARY_ELEMENT_DESTRUCTORFUNC destructor);
 
 #define fdt_dictionary_element_setkey(elem, name) fdt_string_setvalue(elem->key, name)
 #define fdt_dictionary_element_getkey(elem) fdt_string_getvalue(elem->key)
@@ -47,6 +47,9 @@ bool fdt_dictionary_element_setvalue(FdtDictionaryElement* elem, void *value, FD
 
 FdtDictionary* fdt_dictionary_new();
 bool fdt_dictionary_delete(FdtDictionary* dir);
+FdtDictionaryElement* fdt_dictionary_get(FdtDictionary* dir, const char* key);
+bool fdt_dictionary_setvalue(FdtDictionary* dir, const char* key, void* value, FDT_DICTIONARY_ELEMENT_DESTRUCTORFUNC destructor);
+void* fdt_dictionary_getvalue(FdtDictionary* dir, const char* key);
 
 #define fdt_dictionary_clear(dir) fdt_list_clear((FdtList*)dir, (FDT_LIST_DESTRUCTORFUNC)fdt_dictionary_element_delete)
 #define fdt_dictionary_size(dir) fdt_list_size((FdtList*)dir)
@@ -54,10 +57,8 @@ bool fdt_dictionary_delete(FdtDictionary* dir);
 #define fdt_dictionary_add(dir, elem) fdt_list_add((FdtList*)dir, (FdtList*)elem)
 #define fdt_dictionary_remove(elem) fdt_list_remove((FdtList*)elem)
 
-FdtDictionaryElement* fdt_dictionary_get(FdtDictionary* dir, const char* key);
-
-bool fdt_dictionary_setvalue(FdtDictionary* dir, const char* key, void *value, FDT_DICTIONARY_ELEMENT_DESTRUCTORFUNC destructor);
-void *fdt_dictionary_getvalue(FdtDictionary* dir, const char* key);
+bool fdt_dictionary_setstring(FdtDictionary* dir, const char* key, const char* value);
+const char* fdt_dictionary_getstring(FdtDictionary* dir, const char* key);
 
 #ifdef __cplusplus
 

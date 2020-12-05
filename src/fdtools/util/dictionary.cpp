@@ -56,7 +56,7 @@ FdtDictionaryElement* fdt_dictionary_getelement(FdtDictionary* dir, const char* 
   return NULL;
 }
 
-bool fdt_dictionary_setvalue(FdtDictionary* dir, const char* key, void *value, FDT_DICTIONARY_ELEMENT_DESTRUCTORFUNC destructor)
+bool fdt_dictionary_setvalue(FdtDictionary* dir, const char* key, void* value, FDT_DICTIONARY_ELEMENT_DESTRUCTORFUNC destructor)
 {
   FdtDictionaryElement* elem = fdt_dictionary_getelement(dir, key);
   if (!elem) {
@@ -73,13 +73,33 @@ bool fdt_dictionary_setvalue(FdtDictionary* dir, const char* key, void *value, F
   return true;
 }
 
-void *fdt_dictionary_getvalue(FdtDictionary* dir, const char* key)
+void* fdt_dictionary_getvalue(FdtDictionary* dir, const char* key)
 {
-  FdtDictionaryElement* elem;
+  if (!dir)
+    return NULL;
 
-  elem = fdt_dictionary_getelement(dir, key);
+  FdtDictionaryElement* elem = fdt_dictionary_getelement(dir, key);
   if (!elem)
     return NULL;
 
   return fdt_dictionary_element_getvalue(elem);
+}
+
+bool fdt_dictionary_setstring(FdtDictionary* dir, const char* key, const char* value)
+{
+  FdtString* str = fdt_string_new();
+  if (!str)
+    return false;
+  fdt_string_setvalue(str, value);
+  return fdt_dictionary_setvalue(dir, key, str, (FDT_DICTIONARY_ELEMENT_DESTRUCTORFUNC)fdt_string_delete);
+}
+
+const char* fdt_dictionary_getstring(FdtDictionary* dir, const char* key)
+{
+  if (!dir)
+    return NULL;
+  void* str = fdt_dictionary_getvalue(dir, key);
+  if (!str)
+    return NULL;
+  return fdt_string_getvalue((FdtString*)str);
 }
