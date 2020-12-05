@@ -16,17 +16,18 @@
 
 FdtDictionary* fdt_dictionary_new()
 {
-  FdtDictionary* dictionaryList;
+  FdtDictionary* dir;
 
-  dictionaryList = (FdtDictionary*)malloc(sizeof(FdtDictionary));
-
-  if (NULL != dictionaryList) {
-    fdt_list_header_init((FdtList*)dictionaryList);
-    dictionaryList->key = NULL;
-    dictionaryList->value = NULL;
+  dir = (FdtDictionary*)malloc(sizeof(FdtDictionary));
+  if (!dir) {
+    return NULL;
   }
 
-  return dictionaryList;
+  fdt_list_header_init((FdtList*)dir);
+  dir->key = NULL;
+  dir->value = NULL;
+
+  return dir;
 }
 
 void fdt_dictionary_delete(FdtDictionary* dictionaryList)

@@ -19,14 +19,16 @@
 BOOST_AUTO_TEST_CASE(DictionaryTest)
 {
   char key[8], value[8];
-  
-  FdtDictionary *dir = fdt_dictionary_new();
+
+  FdtDictionary* dir = fdt_dictionary_new();
+  BOOST_CHECK(dir);
+
   for (int n = 0; n < 10; n++) {
-    snprintf(key,sizeof(key), "%d", n);
-    snprintf(value,sizeof(value), "%d", n);
+    snprintf(key, sizeof(key), "%d", n);
+    snprintf(value, sizeof(value), "%d", n);
     fdt_dictionary_setvalue(dir, key, value);
     BOOST_CHECK_EQUAL(value, fdt_dictionary_getvalue(dir, key));
   }
-  
+
   fdt_dictionary_delete(dir);
 }
