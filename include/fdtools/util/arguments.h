@@ -16,11 +16,23 @@
 #define _FDTOOLS_UTIL_ARGUMENTS_H_
 
 #include <fdtools/util/dictionary.h>
+#include <fdtools/util/list.h>
 #include <fdtools/util/string.h>
 
 #ifdef __cplusplus
 extern "C" {
 #endif
+
+typedef struct {
+  FDT_LIST_STRUCT_MEMBERS
+  FdtString* value;
+} FdtArgument, FdtArgumentList;
+
+FdtArgument* fdt_argument_new();
+bool fdt_argument_delete(FdtArgument*);
+
+#define fdt_argument_setvalue(arg, v) fdt_string_setvalue(arg->value, v)
+#define fdt_argument_getvalue(arg) fdt_string_getvalue(arg->value)
 
 typedef struct {
   FdtString* name;
