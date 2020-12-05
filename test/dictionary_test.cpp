@@ -30,5 +30,5 @@ BOOST_AUTO_TEST_CASE(DictionaryTest)
     BOOST_CHECK_EQUAL(value, fdt_dictionary_getvalue(dir, key));
   }
 
-  fdt_dictionary_delete(dir);
+  BOOST_CHECK(fdt_dictionary_delete(dir));
 }
