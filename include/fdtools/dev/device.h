@@ -12,20 +12,27 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef _FDTOOLS_BIOS_BIOS_H_
-#define _FDTOOLS_BIOS_BIOS_H_
+#ifndef _FDTOOLS_DEV_DEVICE_H_
+#define _FDTOOLS_DEV_DEVICE_H_
 
 #include <fdtools/typedef.h>
+#include <fdtools/util/string.h>
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-bool fdt_bios_seek(int deviceNo, int cylinderNo);
-int fdt_bios_read(int deviceNo, int cylinderNo, int sectorNo, void* buf, int bufSize);
+typedef struct FDT_ATTR_PACKED {
+  FdtString* name;
+} FdtDevice;
+
+FdtDevice* fdt_device_new();
+void fdt_device_delete(FdtDevice*);
+
+#define fdt_device_setname(dev, v) fdt_string_setvalue(dev->name, v)
 
 #ifdef __cplusplus
 } /* extern C */
 #endif
 
-#endif /* _FDTOOLS_BIOS_BIOS_H_ */
+#endif /* _FDTOOLS_DEV_DEVICE_H_ */

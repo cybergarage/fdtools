@@ -14,7 +14,6 @@
 
 fdtoolsheaders = \
 	./fdtools/error.h \
-<<<<<<< HEAD
 	./fdtools/util/file.h \
 	./fdtools/util/list.h \
 	./fdtools/util/logic.h \
@@ -24,22 +23,12 @@ fdtoolsheaders = \
 	./fdtools/img/sector.h \
 	./fdtools/img/config.h \
 	./fdtools/img/fdx.h \
-=======
->>>>>>> 48691522a478ae06a2f4f15fc3f2ead701cc27a0
 	./fdtools/img/file.h \
 	./fdtools/img/hfe.h \
 	./fdtools/img/d88.h \
 	./fdtools/img/image.h \
-	./fdtools/img/fdx.h \
-	./fdtools/img/sector.h \
-	./fdtools/img/config.h \
-	./fdtools/bios/bios.h \
-	./fdtools/typedef.h \
-	./fdtools/util/file.h \
-	./fdtools/util/hexdump.h \
-	./fdtools/util/array.h \
-	./fdtools/util/list.h \
-	./fdtools/util/string.h
+	./fdtools/dev/device.h \
+	./fdtools/typedef.h
 
 nobase_include_HEADERS = \
 	$(fdtoolsheaders)

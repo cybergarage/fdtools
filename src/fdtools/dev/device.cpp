@@ -12,14 +12,25 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include <fdtools/bios/bios.h>
+#include <fdtools/dev/device.h>
 
-bool fdt_bios_seek(int deviceNo, int cylinderNo)
+FdtDevice* fdt_device_new()
 {
-  return true;
+  FdtDevice* dev = (FdtDevice*)malloc(sizeof(FdtDevice));
+  if (!dev) {
+    return NULL;
+  }
+
+  dev->name = fdt_string_new();
+
+  return dev;
 }
 
-int fdt_bios_read(int deviceNo, int cylinderNo, int sectorNo, void* buf, int bufSize)
+void fdt_device_delete(FdtDevice* dev)
 {
-  return 0;
+  if (!dev)
+    return;
+
+  fdt_string_delete(dev->name);
+  free(dev);
 }
