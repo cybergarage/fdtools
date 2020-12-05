@@ -12,6 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#include <unistd.h>
+
 #include <fdtools/util/arguments.h>
 
 FdtArguments* fdt_arguments_new()
@@ -46,5 +48,10 @@ bool fdt_arguments_delete(FdtArguments* args)
   fdt_string_delete(args->program_name);
   fdt_dictionary_delete(args->options);
   free(args);
+  return true;
+}
+
+bool fdt_arguments_parse(FdtArguments*, int argc, char * const argv[])
+{
   return true;
 }

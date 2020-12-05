@@ -62,6 +62,7 @@ typedef struct {
 
 FdtArguments* fdt_arguments_new();
 bool fdt_arguments_delete(FdtArguments*);
+bool fdt_arguments_parse(FdtArguments*, int argc, char * const argv[]);
 
 #define fdt_arguments_option_setprogramname(opt, v) fdt_string_setvalue(opt->program_name, v)
 #define fdt_arguments_option_getprogramname(opt) fdt_string_getvalue(opt->program_name)
