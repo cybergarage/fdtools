@@ -26,8 +26,8 @@ fdtools_sources = \
 	../../src/fdtools/util/string.cpp \
 	../../src/fdtools/util/file.cpp \
 	../../src/fdtools/util/list.cpp \
-	../../src/fdtools/util/argument_option.cpp \
 	../../src/fdtools/util/argument.cpp \
+	../../src/fdtools/util/program_option.cpp \
 	../../src/fdtools/util/hexdump.cpp \
 	../../src/fdtools/util/dictionary.cpp \
 	../../src/fdtools/error.cpp \

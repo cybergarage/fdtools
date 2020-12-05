@@ -14,27 +14,27 @@
 
 #include <fdtools/util/program.h>
 
-FdtArgumentOption* fdt_argument_option_new()
+FdtProgramOption* fdt_program_option_new()
 {
-  FdtArgumentOption* opt = (FdtArgumentOption*)malloc(sizeof(FdtArgumentOption));
+  FdtProgramOption* opt = (FdtProgramOption*)malloc(sizeof(FdtProgramOption));
   if (!opt) {
     return NULL;
   }
 
   opt->name = fdt_string_new();
   opt->value = fdt_string_new();
-  fdt_argument_option_setenabled(opt, false);
-  fdt_argument_option_setvalueenabled(opt, false);
+  fdt_program_option_setenabled(opt, false);
+  fdt_program_option_setvalueenabled(opt, false);
 
   if (!opt->name || !opt->value) {
-    fdt_argument_option_delete(opt);
+    fdt_program_option_delete(opt);
     return NULL;
   }
 
   return opt;
 }
 
-bool fdt_argument_option_delete(FdtArgumentOption* opt)
+bool fdt_program_option_delete(FdtProgramOption* opt)
 {
   if (!opt)
     return true;

@@ -39,20 +39,20 @@ typedef struct {
   FdtString* value;
   bool enabled;
   bool valueEnabled;
-} FdtArgumentOption;
+} FdtProgramOption;
 
-FdtArgumentOption* fdt_argument_option_new();
-bool fdt_argument_option_delete(FdtArgumentOption*);
+FdtProgramOption* fdt_program_option_new();
+bool fdt_program_option_delete(FdtProgramOption*);
 
-#define fdt_argument_option_setname(opt, v) fdt_string_setvalue(opt->name, v)
-#define fdt_argument_option_setvalue(opt, v) fdt_string_setvalue(opt->value, v)
-#define fdt_argument_option_setenabled(opt, v) (opt->enabled, v)
-#define fdt_argument_option_setvalueenabled(opt, v) (opt->valueEnabled, v)
+#define fdt_program_option_setname(opt, v) fdt_string_setvalue(opt->name, v)
+#define fdt_program_option_setvalue(opt, v) fdt_string_setvalue(opt->value, v)
+#define fdt_program_option_setenabled(opt, v) (opt->enabled, v)
+#define fdt_program_option_setvalueenabled(opt, v) (opt->valueEnabled, v)
 
-#define fdt_argument_option_getname(opt) fdt_string_getvalue(opt->name)
-#define fdt_argument_option_getvalue(opt) fdt_string_getvalue(opt->value)
-#define fdt_argument_option_isenabled(opt) (opt->enabled)
-#define fdt_argument_option_isvalueenabled(opt) (opt->valueEnabled)
+#define fdt_program_option_getname(opt) fdt_string_getvalue(opt->name)
+#define fdt_program_option_getvalue(opt) fdt_string_getvalue(opt->value)
+#define fdt_program_option_isenabled(opt) (opt->enabled)
+#define fdt_program_option_isvalueenabled(opt) (opt->valueEnabled)
 
 typedef struct {
   FdtString* name;
