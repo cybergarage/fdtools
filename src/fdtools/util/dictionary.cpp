@@ -30,10 +30,12 @@ FdtDictionary* fdt_dictionary_new()
   return dir;
 }
 
-bool fdt_dictionary_delete(FdtDictionary* dictionaryList)
+bool fdt_dictionary_delete(FdtDictionary* dir)
 {
-  fdt_dictionary_clear(dictionaryList);
-  free(dictionaryList);
+  if (!dir)
+    return false;
+  fdt_dictionary_clear(dir);
+  free(dir);
   return true;
 }
 
