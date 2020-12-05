@@ -23,22 +23,27 @@
 extern "C" {
 #endif
 
+typedef void (*FDT_DICTIONARY_ELEMENT_DESTRUCTORFUNC)(void*);
+
 typedef struct {
   FDT_LIST_STRUCT_MEMBERS
   FdtString* key;
-  FdtString* value;
+  void* value;
+  FDT_DICTIONARY_ELEMENT_DESTRUCTORFUNC destructor;
 } FdtDictionaryElement, FdtDictionary;
 
 FdtDictionaryElement* fdt_dictionary_element_new();
-bool fdt_dictionary_element_delete(FdtDictionaryElement* dirElem);
+bool fdt_dictionary_element_delete(FdtDictionaryElement* elem);
 
-#define fdt_dictionary_element_setkey(dirElem, name) fdt_string_setvalue(dirElem->key, name)
-#define fdt_dictionary_element_getkey(dirElem) fdt_string_getvalue(dirElem->key)
-#define fdt_dictionary_element_setvalue(dirElem, val) fdt_string_setvalue(dirElem->value, val)
-#define fdt_dictionary_element_getvalue(dirElem) fdt_string_getvalue(dirElem->value)
+#define fdt_dictionary_element_setkey(elem, name) fdt_string_setvalue(elem->key, name)
+#define fdt_dictionary_element_getkey(elem) fdt_string_getvalue(elem->key)
+#define fdt_dictionary_element_setvalue(elem, v) (elem->value = v)
+#define fdt_dictionary_element_getvalue(elem) (elem->value)
+#define fdt_dictionary_element_setdestructor(elem, fn) (elem->destructor = fn)
+#define fdt_dictionary_element_getdestructor(elem) (elem->destructor)
 
-#define fdt_dictionary_element_next(dirElem) (FdtDictionaryElement*)fdt_list_next((FdtList*)dirElem)
-#define fdt_dictionary_element_remove(dirElem) fdt_list_remove((FdtList*)dirElem)
+#define fdt_dictionary_element_next(elem) (FdtDictionaryElement*)fdt_list_next((FdtList*)elem)
+#define fdt_dictionary_element_remove(elem) fdt_list_remove((FdtList*)elem)
 
 FdtDictionary* fdt_dictionary_new();
 bool fdt_dictionary_delete(FdtDictionary* dir);
@@ -46,12 +51,13 @@ bool fdt_dictionary_delete(FdtDictionary* dir);
 #define fdt_dictionary_clear(dir) fdt_list_clear((FdtList*)dir, (FDT_LIST_DESTRUCTORFUNC)fdt_dictionary_element_delete)
 #define fdt_dictionary_size(dir) fdt_list_size((FdtList*)dir)
 #define fdt_dictionary_gets(dir) (FdtDictionaryElement*)fdt_list_next((FdtList*)dir)
-#define fdt_dictionary_add(dir, dirElem) fdt_list_add((FdtList*)dir, (FdtList*)dirElem)
-#define fdt_dictionary_remove(dirElem) fdt_list_remove((FdtList*)dirElem)
+#define fdt_dictionary_add(dir, elem) fdt_list_add((FdtList*)dir, (FdtList*)elem)
+#define fdt_dictionary_remove(elem) fdt_list_remove((FdtList*)elem)
 
 FdtDictionaryElement* fdt_dictionary_get(FdtDictionary* dir, const char* key);
-bool fdt_dictionary_setvalue(FdtDictionary* dir, const char* key, const char* value);
-const char* fdt_dictionary_getvalue(FdtDictionary* dir, const char* key);
+
+bool fdt_dictionary_setvalue(FdtDictionary* dir, const char* key, void *value, FDT_DICTIONARY_ELEMENT_DESTRUCTORFUNC destructor);
+void *fdt_dictionary_getvalue(FdtDictionary* dir, const char* key);
 
 #ifdef __cplusplus
 

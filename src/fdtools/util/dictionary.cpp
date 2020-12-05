@@ -39,46 +39,47 @@ bool fdt_dictionary_delete(FdtDictionary* dictionaryList)
 
 FdtDictionaryElement* fdt_dictionary_getelement(FdtDictionary* dir, const char* key)
 {
-  FdtDictionaryElement* dirElem;
-  char* dirElemKey;
+  FdtDictionaryElement* elem;
+  char* elemKey;
 
   if (!dir || fdt_strlen(key) <= 0)
     return NULL;
 
-  for (dirElem = fdt_dictionary_gets(dir); dirElem != NULL; dirElem = fdt_dictionary_element_next(dirElem)) {
-    dirElemKey = fdt_dictionary_element_getkey(dirElem);
-    if (fdt_strlen(dirElemKey) <= 0)
+  for (elem = fdt_dictionary_gets(dir); elem != NULL; elem = fdt_dictionary_element_next(elem)) {
+    elemKey = fdt_dictionary_element_getkey(elem);
+    if (fdt_strlen(elemKey) <= 0)
       continue;
-    if (fdt_streq(dirElemKey, key) == true)
-      return dirElem;
+    if (fdt_streq(elemKey, key) == true)
+      return elem;
   }
 
   return NULL;
 }
 
-bool fdt_dictionary_setvalue(FdtDictionary* dir, const char* key, const char* value)
+bool fdt_dictionary_setvalue(FdtDictionary* dir, const char* key, void *value, FDT_DICTIONARY_ELEMENT_DESTRUCTORFUNC destructor)
 {
-  FdtDictionaryElement* dirElem = fdt_dictionary_getelement(dir, key);
-  if (!dirElem) {
-    dirElem = fdt_dictionary_element_new();
-    if (!dirElem)
+  FdtDictionaryElement* elem = fdt_dictionary_getelement(dir, key);
+  if (!elem) {
+    elem = fdt_dictionary_element_new();
+    if (!elem)
       return false;
-    fdt_dictionary_add(dir, dirElem);
+    fdt_dictionary_add(dir, elem);
   }
 
-  fdt_dictionary_element_setkey(dirElem, key);
-  fdt_dictionary_element_setvalue(dirElem, value);
+  fdt_dictionary_element_setkey(elem, key);
+  fdt_dictionary_element_setvalue(elem, value);
+  fdt_dictionary_element_setdestructor(elem, destructor);
 
   return true;
 }
 
-const char* fdt_dictionary_getvalue(FdtDictionary* dir, const char* key)
+void *fdt_dictionary_getvalue(FdtDictionary* dir, const char* key)
 {
-  FdtDictionaryElement* dirElem;
+  FdtDictionaryElement* elem;
 
-  dirElem = fdt_dictionary_getelement(dir, key);
-  if (!dirElem)
+  elem = fdt_dictionary_getelement(dir, key);
+  if (!elem)
     return NULL;
 
-  return fdt_dictionary_element_getvalue(dirElem);
+  return fdt_dictionary_element_getvalue(elem);
 }
