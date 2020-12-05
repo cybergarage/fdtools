@@ -55,17 +55,17 @@ bool fdt_argument_option_delete(FdtArgumentOption*);
 #define fdt_argument_option_isvalueenabled(opt) (opt->valueEnabled)
 
 typedef struct {
-  FdtString* program_name;
+  FdtString* name;
   FdtArgumentList* args;
   FdtDictionary* options;
-} FdtArguments;
+} FdtProgram;
 
-FdtArguments* fdt_arguments_new();
-bool fdt_arguments_delete(FdtArguments*);
-bool fdt_arguments_parse(FdtArguments*, int argc, char * const argv[]);
+FdtProgram* fdt_program_new();
+bool fdt_program_delete(FdtProgram*);
+bool fdt_program_parse(FdtProgram*, int argc, char * const argv[]);
 
-#define fdt_arguments_option_setprogramname(opt, v) fdt_string_setvalue(opt->program_name, v)
-#define fdt_arguments_option_getprogramname(opt) fdt_string_getvalue(opt->program_name)
+#define fdt_program_option_setname(opt, v) fdt_string_setvalue(opt->name, v)
+#define fdt_program_option_getname(opt) fdt_string_getvalue(opt->name)
 
 #ifdef __cplusplus
 

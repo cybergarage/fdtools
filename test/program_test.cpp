@@ -14,11 +14,11 @@
 
 #include <boost/test/unit_test.hpp>
 
-#include <fdtools/util/arguments.h>
+#include <fdtools/util/program.h>
 
 BOOST_AUTO_TEST_CASE(ArgumentTest)
 {
-  FdtArguments* args = fdt_arguments_new();
+  FdtProgram* args = fdt_program_new();
   BOOST_CHECK(args);
-  BOOST_CHECK(fdt_arguments_delete(args));
+  BOOST_CHECK(fdt_program_delete(args));
 }

@@ -14,11 +14,11 @@
 
 #include <unistd.h>
 
-#include <fdtools/util/arguments.h>
+#include <fdtools/util/program.h>
 
-FdtArguments* fdt_arguments_new()
+FdtProgram* fdt_program_new()
 {
-  FdtArguments* args = (FdtArguments*)malloc(sizeof(FdtArguments));
+  FdtProgram* args = (FdtProgram*)malloc(sizeof(FdtProgram));
   if (!args) {
     return NULL;
   }
@@ -30,28 +30,28 @@ FdtArguments* fdt_arguments_new()
   }
   fdt_list_header_init((FdtList*)args->args);
 
-  args->program_name = fdt_string_new();
+  args->name = fdt_string_new();
   args->options = fdt_dictionary_new();
-  if (!args->program_name || !args->options) {
-    fdt_arguments_delete(args);
+  if (!args->name || !args->options) {
+    fdt_program_delete(args);
     return NULL;
   }
 
   return args;
 }
 
-bool fdt_arguments_delete(FdtArguments* args)
+bool fdt_program_delete(FdtProgram* args)
 {
   if (!args)
     return false;
   fdt_list_clear((FdtList*)args->args, (FDT_LIST_DESTRUCTORFUNC)fdt_argument_delete);
-  fdt_string_delete(args->program_name);
+  fdt_string_delete(args->name);
   fdt_dictionary_delete(args->options);
   free(args);
   return true;
 }
 
-bool fdt_arguments_parse(FdtArguments*, int argc, char * const argv[])
+bool fdt_program_parse(FdtProgram*, int argc, char * const argv[])
 {
   return true;
 }

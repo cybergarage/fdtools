@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include <fdtools/util/arguments.h>
+#include <fdtools/util/program.h>
 
 FdtArgumentOption* fdt_argument_option_new()
 {

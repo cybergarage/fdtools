@@ -20,12 +20,14 @@ AM_CFLAGS = -I$(top_builddir)/include
 AM_CPPFLAGS = -I$(top_builddir)/include
 
 fdtools_sources = \
+	../../src/fdtools/util/program.cpp \
 	../../src/fdtools/util/string_func.cpp \
-	../../src/fdtools/util/arguments.cpp \
 	../../src/fdtools/util/dictionary_elem.cpp \
 	../../src/fdtools/util/string.cpp \
 	../../src/fdtools/util/file.cpp \
 	../../src/fdtools/util/list.cpp \
+	../../src/fdtools/util/argument_option.cpp \
+	../../src/fdtools/util/argument.cpp \
 	../../src/fdtools/util/hexdump.cpp \
 	../../src/fdtools/util/dictionary.cpp \
 	../../src/fdtools/error.cpp \
