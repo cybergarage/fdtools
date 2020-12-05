@@ -15,6 +15,7 @@
 #ifndef _FDTOOLS_DEV_DEVICE_H_
 #define _FDTOOLS_DEV_DEVICE_H_
 
+#include <fdtools/error.h>
 #include <fdtools/typedef.h>
 #include <fdtools/util/string.h>
 
@@ -22,12 +23,20 @@
 extern "C" {
 #endif
 
+typedef enum {
+  FDT_DEVICE_READ = 0x01,
+  FDT_DEVICE_WRITE = 0x02,
+} FdtDeviceMode;
+
 typedef struct FDT_ATTR_PACKED {
   FdtString* name;
+  int fd;
 } FdtDevice;
 
 FdtDevice* fdt_device_new();
 void fdt_device_delete(FdtDevice*);
+
+bool fdt_device_open(FdtDevice*, const char*, FdtDeviceMode, FdtError*);
 
 #define fdt_device_setname(dev, v) fdt_string_setvalue(dev->name, v)
 

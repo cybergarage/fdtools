@@ -36,6 +36,7 @@ fdtools_sources = \
 	../../src/fdtools/img/d88_exporter.cpp \
 	../../src/fdtools/img/hfe_loader.cpp \
 	../../src/fdtools/img/sectors.cpp \
+	../../src/fdtools/dev/device_unix.cpp \
 	../../src/fdtools/dev/device.cpp
 
 libfdtoolsincludedir = $(includedir)/fdtools
