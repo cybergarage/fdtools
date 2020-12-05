@@ -32,6 +32,9 @@ FdtDictionaryElement* fdt_dictionary_element_new()
 
 bool fdt_dictionary_element_delete(FdtDictionaryElement* elem)
 {
+  if (!elem)
+    return false;
+
   fdt_list_remove((FdtList*)elem);
 
   fdt_string_delete(elem->key);
