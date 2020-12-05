@@ -34,12 +34,11 @@ bool fdt_dictionary_element_delete(FdtDictionaryElement* elem)
 {
   fdt_list_remove((FdtList*)elem);
 
-  if (elem->key) {
-    fdt_string_delete(elem->key);
-  }
-
+  fdt_string_delete(elem->key);
   fdt_dictionary_element_clear_value(elem);
 
+  free(elem);
+  
   return true;
 }
 
