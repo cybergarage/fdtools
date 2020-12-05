@@ -45,7 +45,46 @@ bool fdt_program_delete(FdtProgram* prg)
   return true;
 }
 
-bool fdt_program_parse(FdtProgram*, int argc, char * const argv[])
+bool fdt_program_parse(FdtProgram* prg, int argc, char* const argv[])
 {
+  FdtString* opt_strs = fdt_string_new();
+  if (!opt_strs)
+    return false;
+
+  for (FdtProgramOption* opt = fdt_program_getoptions(prg); opt; opt = fdt_program_option_next(opt)) {
+    if (!fdt_string_addvalue(opt_strs, fdt_program_option_getname(opt)))
+      return false;
+    if (fdt_program_option_isparameterrequired(opt)) {
+      if (!fdt_string_addvalue(opt_strs, ":"))
+        return false;
+    }
+  }
+
+  // Sets program name
+
+  fdt_program_setname(prg, argv[0]);
+
+  // Parses option parameters
+
+  char opt_str[2] = { 0x00, 0x00 };
+  int opt_ch;
+  while ((opt_ch = getopt(argc, argv, fdt_string_getvalue(opt_strs))) != -1) {
+    opt_str[0] = opt_ch;
+    FdtProgramOption* opt = fdt_program_getoption(prg, opt_str);
+    if (!opt)
+      return false;
+    fdt_program_option_setenabled(opt, true);
+    if (fdt_program_option_isparameterrequired(opt)) {
+      fdt_program_option_setparameter(opt, optarg);
+    }
+  }
+
+  // Adds non option arguments
+
+  while (optind < argc) {
+    fdt_program_addargument(prg, argv[optind]);
+    optind++;
+  }
+
   return true;
 }

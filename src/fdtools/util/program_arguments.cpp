@@ -32,3 +32,13 @@ bool fdt_program_arguments_delete(FdtProgramArguments* args)
   free(args);
   return true;
 }
+
+bool fdt_program_arguments_add(FdtProgramArguments* args, const char* value)
+{
+  FdtProgramArgument* arg = fdt_program_arguments_new();
+  if (!arg)
+    return false;
+  fdt_program_argument_setvalue(arg, value);
+  fdt_list_add((FdtList*)args, (FdtList*)arg);
+  return true;
+}

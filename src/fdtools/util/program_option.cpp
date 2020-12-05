@@ -24,7 +24,7 @@ FdtProgramOption* fdt_program_option_new()
   opt->name = fdt_string_new();
   opt->value = fdt_string_new();
   fdt_program_option_setenabled(opt, false);
-  fdt_program_option_setvalueenabled(opt, false);
+  fdt_program_option_setparameterrequired(opt, false);
 
   if (!opt->name || !opt->value) {
     fdt_program_option_delete(opt);

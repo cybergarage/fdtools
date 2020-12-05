@@ -30,9 +30,10 @@ typedef struct {
 
 FdtProgramArguments* fdt_program_arguments_new();
 bool fdt_program_arguments_delete(FdtProgramArguments*);
+bool fdt_program_arguments_add(FdtProgramArguments*, const char*);
 
 #define fdt_program_arguments_size(args) fdt_list_size((FdtList*)args)
-#define fdt_program_arguments_gets(args) (FdtImageSector*)fdt_list_gets((FdtList*)args)
+#define fdt_program_arguments_gets(args) (FdtProgramArgument*)fdt_list_gets((FdtList*)args)
 #define fdt_program_arguments_clear(args) fdt_list_clear((FdtList*)args, (FDT_LIST_DESTRUCTORFUNC)fdt_program_argument_delete)
 
 FdtProgramArgument* fdt_program_argument_new();
@@ -45,21 +46,21 @@ typedef struct {
   FdtString* name;
   FdtString* value;
   bool enabled;
-  bool valueEnabled;
+  bool paramRequired;
 } FdtProgramOption;
 
 FdtProgramOption* fdt_program_option_new();
 bool fdt_program_option_delete(FdtProgramOption*);
 
 #define fdt_program_option_setname(opt, v) fdt_string_setvalue(opt->name, v)
-#define fdt_program_option_setvalue(opt, v) fdt_string_setvalue(opt->value, v)
 #define fdt_program_option_setenabled(opt, v) (opt->enabled, v)
-#define fdt_program_option_setvalueenabled(opt, v) (opt->valueEnabled, v)
+#define fdt_program_option_setparameter(opt, v) fdt_string_setvalue(opt->value, v)
+#define fdt_program_option_setparameterrequired(opt, v) (opt->paramRequired, v)
 
+#define fdt_program_option_next(opt) (FdtProgramOption*)fdt_list_next((FdtList*)opt)
 #define fdt_program_option_getname(opt) fdt_string_getvalue(opt->name)
-#define fdt_program_option_getvalue(opt) fdt_string_getvalue(opt->value)
-#define fdt_program_option_isenabled(opt) (opt->enabled)
-#define fdt_program_option_isvalueenabled(opt) (opt->valueEnabled)
+#define fdt_program_option_getparameter(opt) fdt_string_getvalue(opt->value)
+#define fdt_program_option_isparameterrequired(opt) (opt->paramRequired)
 
 typedef struct {
   FdtString* name;
@@ -69,10 +70,15 @@ typedef struct {
 
 FdtProgram* fdt_program_new();
 bool fdt_program_delete(FdtProgram*);
-bool fdt_program_parse(FdtProgram*, int argc, char * const argv[]);
+bool fdt_program_parse(FdtProgram*, int argc, char* const argv[]);
 
-#define fdt_program_option_setname(opt, v) fdt_string_setvalue(opt->name, v)
-#define fdt_program_option_getname(opt) fdt_string_getvalue(opt->name)
+#define fdt_program_setname(prg, v) fdt_string_setvalue(prg->name, v)
+#define fdt_program_addargument(prg, v) fdt_program_arguments_add(prg->args, v)
+
+#define fdt_program_getname(prg) fdt_string_getvalue(prg->name)
+#define fdt_program_getarguments(prg) fdt_program_arguments_gets(prg->args)
+#define fdt_program_getoptions(prg) ((FdtProgramOption*)fdt_dictionary_gets(prg->options))
+#define fdt_program_getoption(prg, name) ((FdtProgramOption*)fdt_dictionary_get(prg->options, name))
 
 #ifdef __cplusplus
 
