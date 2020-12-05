@@ -80,7 +80,7 @@ void fdt_string_setnvalue(FdtString* str, const char* value, size_t len)
   str->value[len] = '\0';
 }
 
-char* fdt_string_getvalue(FdtString* str)
+const char* fdt_string_getvalue(FdtString* str)
 {
   return (str) ? str->value : NULL;
 }
