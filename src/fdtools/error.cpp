@@ -45,18 +45,10 @@ void fdt_error_delete(FdtError* err)
   if (!err)
     return;
 
-  if (err->message) {
-    fdt_string_delete(err->message);
-  }
-  if (err->debug_message) {
-    fdt_string_delete(err->debug_message);
-  }
-  if (err->file_name) {
-    fdt_string_delete(err->file_name);
-  }
-  if (err->func_name) {
-    fdt_string_delete(err->func_name);
-  }
+  fdt_string_delete(err->message);
+  fdt_string_delete(err->debug_message);
+  fdt_string_delete(err->file_name);
+  fdt_string_delete(err->func_name);
 
   free(err);
 }
