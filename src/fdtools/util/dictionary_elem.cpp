@@ -16,26 +16,26 @@
 
 FdtDictionaryElement* fdt_dictionary_element_new()
 {
-  FdtDictionaryElement* dirElem = (FdtDictionaryElement*)malloc(sizeof(FdtDictionaryElement));
-  if (!dirElem)
+  FdtDictionaryElement* elem = (FdtDictionaryElement*)malloc(sizeof(FdtDictionaryElement));
+  if (!elem)
     return NULL;
 
-  fdt_list_node_init((FdtList*)dirElem);
-  dirElem->key = fdt_string_new();
-  dirElem->value = fdt_string_new();
+  fdt_list_node_init((FdtList*)elem);
+  elem->key = fdt_string_new();
+  elem->value = fdt_string_new();
 
-  return dirElem;
+  return elem;
 }
 
-bool fdt_dictionary_element_delete(FdtDictionaryElement* dirElem)
+bool fdt_dictionary_element_delete(FdtDictionaryElement* elem)
 {
-  fdt_list_remove((FdtList*)dirElem);
+  fdt_list_remove((FdtList*)elem);
 
-  if (dirElem->key)
-    fdt_string_delete(dirElem->key);
-  if (dirElem->value)
-    fdt_string_delete(dirElem->value);
-  free(dirElem);
+  if (elem->key)
+    fdt_string_delete(elem->key);
+  if (elem->value)
+    fdt_string_delete(elem->value);
+  free(elem);
 
   return true;
 }
