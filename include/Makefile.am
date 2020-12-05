@@ -14,6 +14,7 @@
 
 fdtoolsheaders = \
 	./fdtools/error.h \
+	./fdtools/util/arguments.h \
 	./fdtools/util/file.h \
 	./fdtools/util/list.h \
 	./fdtools/util/dictionary.h \

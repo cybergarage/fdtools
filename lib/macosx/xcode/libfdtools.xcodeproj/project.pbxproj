@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		211D4845257BB31900895CFE /* arguments.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 211D4844257BB31900895CFE /* arguments.cpp */; };
 		21352E2125768FA7007E05A4 /* hexdump.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 21352E2025768FA7007E05A4 /* hexdump.cpp */; };
 		21403C0C255EFF060022389D /* file.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 21403C0B255EFF060022389D /* file.cpp */; };
 		21403C10255F02C80022389D /* string_func.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 21403C0F255F02C80022389D /* string_func.cpp */; };
@@ -30,6 +31,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		211D4844257BB31900895CFE /* arguments.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = arguments.cpp; path = ../../../src/fdtools/util/arguments.cpp; sourceTree = "<group>"; };
 		21352E2025768FA7007E05A4 /* hexdump.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = hexdump.cpp; path = ../../../src/fdtools/util/hexdump.cpp; sourceTree = "<group>"; };
 		213AA829255DB05700C00188 /* libfdtools.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libfdtools.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		21403C0B255EFF060022389D /* file.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = file.cpp; path = ../../../src/fdtools/img/file.cpp; sourceTree = "<group>"; };
@@ -87,6 +89,7 @@
 		21403C0E255F02B00022389D /* util */ = {
 			isa = PBXGroup;
 			children = (
+				211D4844257BB31900895CFE /* arguments.cpp */,
 				21DC2022257BA110004F3363 /* dictionary_elem.cpp */,
 				21DC201F257B9EEA004F3363 /* dictionary.cpp */,
 				21352E2025768FA7007E05A4 /* hexdump.cpp */,
@@ -228,6 +231,7 @@
 				21352E2125768FA7007E05A4 /* hexdump.cpp in Sources */,
 				21E15B12256C0AAD00029338 /* hfe_loader.cpp in Sources */,
 				21E15B02256A70D200029338 /* sectors.cpp in Sources */,
+				211D4845257BB31900895CFE /* arguments.cpp in Sources */,
 				21E15B18256C0AF800029338 /* hfe.cpp in Sources */,
 				21DC2023257BA110004F3363 /* dictionary_elem.cpp in Sources */,
 				2151DF46256989AC009FC0E0 /* file.cpp in Sources */,
