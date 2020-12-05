@@ -117,7 +117,7 @@ bool fdt_string_naddvalue(FdtString* str, const char* value, size_t valueLen)
   size_t new_mem_size = str->value_size + valueLen + 1;
   if (new_mem_size > str->mem_size || str->value == NULL) {
     new_mem_size += MUPNP_STRING_REALLOC_EXTRA;
-    char* new_value = new_value = (char *)realloc(str->value, new_mem_size * sizeof(char));
+    char* new_value = new_value = (char*)realloc(str->value, new_mem_size * sizeof(char));
     if (!new_value)
       return false;
 
