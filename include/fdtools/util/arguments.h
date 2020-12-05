@@ -55,12 +55,16 @@ bool fdt_argument_option_delete(FdtArgumentOption*);
 #define fdt_argument_option_isvalueenabled(opt) (opt->valueEnabled)
 
 typedef struct {
-  FdtArgumentList *args;
+  FdtString* program_name;
+  FdtArgumentList* args;
   FdtDictionary* options;
 } FdtArguments;
 
 FdtArguments* fdt_arguments_new();
 bool fdt_arguments_delete(FdtArguments*);
+
+#define fdt_arguments_option_setprogramname(opt, v) fdt_string_setvalue(opt->program_name, v)
+#define fdt_arguments_option_getprogramname(opt) fdt_string_getvalue(opt->program_name)
 
 #ifdef __cplusplus
 

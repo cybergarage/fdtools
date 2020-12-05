@@ -28,8 +28,9 @@ FdtArguments* fdt_arguments_new()
   }
   fdt_list_header_init((FdtList*)args->args);
 
+  args->program_name = fdt_string_new();
   args->options = fdt_dictionary_new();
-  if (!args->options) {
+  if (!args->program_name || !args->options) {
     fdt_arguments_delete(args);
     return NULL;
   }
@@ -42,6 +43,7 @@ bool fdt_arguments_delete(FdtArguments* args)
   if (!args)
     return false;
   fdt_list_clear((FdtList*)args->args, (FDT_LIST_DESTRUCTORFUNC)fdt_argument_delete);
+  fdt_string_delete(args->program_name);
   fdt_dictionary_delete(args->options);
   free(args);
   return true;
