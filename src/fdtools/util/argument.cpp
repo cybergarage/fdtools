@@ -21,6 +21,7 @@ FdtArgument* fdt_argument_new()
     return NULL;
   }
 
+  fdt_list_node_init((FdtList*)arg);
   arg->value = fdt_string_new();
 
   if (!arg->value) {
@@ -35,6 +36,7 @@ bool fdt_argument_delete(FdtArgument* arg)
 {
   if (!arg)
     return true;
+  fdt_list_remove((FdtList*)arg);
   fdt_string_delete(arg->value);
   free(arg);
   return true;

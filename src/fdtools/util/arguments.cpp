@@ -20,8 +20,15 @@ FdtArguments* fdt_arguments_new()
   if (!args) {
     return NULL;
   }
-  args->options = fdt_dictionary_new();
 
+  args->args = (FdtArgumentList*)malloc(sizeof(FdtArgumentList));
+  if (!args->args) {
+    free(args);
+    return NULL;
+  }
+  fdt_list_header_init((FdtList*)args->args);
+
+  args->options = fdt_dictionary_new();
   if (!args->options) {
     fdt_arguments_delete(args);
     return NULL;
@@ -34,6 +41,7 @@ bool fdt_arguments_delete(FdtArguments* args)
 {
   if (!args)
     return false;
+  fdt_list_clear((FdtList*)args->args, (FDT_LIST_DESTRUCTORFUNC)fdt_argument_delete);
   fdt_dictionary_delete(args->options);
   free(args);
   return true;

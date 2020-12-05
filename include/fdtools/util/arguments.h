@@ -55,6 +55,7 @@ bool fdt_argument_option_delete(FdtArgumentOption*);
 #define fdt_argument_option_isvalueenabled(opt) (opt->valueEnabled)
 
 typedef struct {
+  FdtArgumentList *args;
   FdtDictionary* options;
 } FdtArguments;
 
