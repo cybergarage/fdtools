@@ -45,7 +45,7 @@ FdtDictionaryElement* fdt_dictionary_get(FdtDictionary* dir, const char* key)
     return NULL;
 
   for (FdtDictionaryElement* elem = fdt_dictionary_gets(dir); elem != NULL; elem = fdt_dictionary_element_next(elem)) {
-    const char *elemKey = fdt_dictionary_element_getkey(elem);
+    const char* elemKey = fdt_dictionary_element_getkey(elem);
     if (fdt_strlen(elemKey) <= 0)
       continue;
     if (fdt_streq(elemKey, key) == true)
