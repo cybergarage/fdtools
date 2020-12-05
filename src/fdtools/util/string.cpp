@@ -27,8 +27,8 @@ FdtString* fdt_string_new()
     return NULL;
 
   str->value = NULL;
-  str->memSize = 0;
-  str->valueSize = 0;
+  str->mem_size = 0;
+  str->value_size = 0;
 
   return str;
 }
@@ -51,8 +51,8 @@ void fdt_string_clear(FdtString* str)
 
   free(str->value);
   str->value = NULL;
-  str->memSize = 0;
-  str->valueSize = 0;
+  str->mem_size = 0;
+  str->value_size = 0;
 }
 
 void fdt_string_setvalue(FdtString* str, const char* value)
@@ -69,9 +69,9 @@ void fdt_string_setnvalue(FdtString* str, const char* value, size_t len)
   if (!value)
     return;
 
-  str->valueSize = len;
-  str->memSize = str->valueSize + 1;
-  str->value = (char*)malloc(str->memSize * sizeof(char));
+  str->value_size = len;
+  str->mem_size = str->value_size + 1;
+  str->value = (char*)malloc(str->mem_size * sizeof(char));
 
   if (!str->value)
     return;
@@ -93,10 +93,41 @@ size_t fdt_string_length(FdtString* str)
   if (!str->value)
     return 0;
 
-  return str->valueSize;
+  return str->value_size;
 }
 
 bool fdt_string_equals(FdtString* str, FdtString* other)
 {
   return fdt_streq(fdt_string_getvalue(str), fdt_string_getvalue(other));
+}
+
+bool fdt_string_addvalue(FdtString* str, const char* value)
+{
+  return fdt_string_naddvalue(str, value, fdt_strlen(value));
+}
+
+bool fdt_string_naddvalue(FdtString* str, const char* value, size_t valueLen)
+{
+  if (!str)
+    return false;
+
+  if (!value || valueLen <= 0)
+    return true;
+
+  size_t new_mem_size = str->value_size + valueLen + 1;
+  if (new_mem_size > str->mem_size || str->value == NULL) {
+    new_mem_size += MUPNP_STRING_REALLOC_EXTRA;
+    char* new_value = new_value = (char *)realloc(str->value, new_mem_size * sizeof(char));
+    if (!new_value)
+      return false;
+
+    str->mem_size = new_mem_size;
+    str->value = new_value;
+  }
+
+  memcpy(str->value + str->value_size, value, valueLen);
+  str->value_size += valueLen;
+  str->value[str->value_size] = '\0';
+
+  return true;
 }
