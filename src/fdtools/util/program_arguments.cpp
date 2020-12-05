@@ -12,40 +12,23 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include <unistd.h>
-
 #include <fdtools/util/program.h>
 
-FdtProgram* fdt_program_new()
+FdtProgramArguments* fdt_program_arguments_new()
 {
-  FdtProgram* prg = (FdtProgram*)malloc(sizeof(FdtProgram));
-  if (!prg) {
+  FdtProgramArgument* args = (FdtProgramArguments*)malloc(sizeof(FdtProgramArguments));
+  if (!args) {
     return NULL;
   }
-
-  prg->name = fdt_string_new();
-  prg->args = fdt_program_arguments_new();
-  prg->options = fdt_dictionary_new();
-  if (!prg->name || !prg->args || !prg->options) {
-    fdt_program_delete(prg);
-    return NULL;
-  }
-
-  return prg;
+  fdt_list_header_init((FdtList*)args);
+  return args;
 }
 
-bool fdt_program_delete(FdtProgram* prg)
+bool fdt_program_arguments_delete(FdtProgramArguments* args)
 {
-  if (!prg)
-    return false;
-  fdt_string_delete(prg->name);
-  fdt_program_arguments_delete(prg->args);
-  fdt_dictionary_delete(prg->options);
-  free(prg);
-  return true;
-}
-
-bool fdt_program_parse(FdtProgram*, int argc, char * const argv[])
-{
+  if (!args)
+    return true;
+  fdt_program_arguments_clear(args);
+  free(args);
   return true;
 }

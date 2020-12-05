@@ -14,9 +14,9 @@
 
 #include <fdtools/util/program.h>
 
-FdtArgument* fdt_argument_new()
+FdtProgramArgument* fdt_program_argument_new()
 {
-  FdtArgument* arg = (FdtArgument*)malloc(sizeof(FdtArgument));
+  FdtProgramArgument* arg = (FdtProgramArgument*)malloc(sizeof(FdtProgramArgument));
   if (!arg) {
     return NULL;
   }
@@ -25,14 +25,14 @@ FdtArgument* fdt_argument_new()
   arg->value = fdt_string_new();
 
   if (!arg->value) {
-    fdt_argument_delete(arg);
+    fdt_program_argument_delete(arg);
     return NULL;
   }
 
   return arg;
 }
 
-bool fdt_argument_delete(FdtArgument* arg)
+bool fdt_program_argument_delete(FdtProgramArgument* arg)
 {
   if (!arg)
     return true;

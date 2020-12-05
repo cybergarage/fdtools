@@ -26,13 +26,20 @@ extern "C" {
 typedef struct {
   FDT_LIST_STRUCT_MEMBERS
   FdtString* value;
-} FdtArgument, FdtArgumentList;
+} FdtProgramArgument, FdtProgramArguments;
 
-FdtArgument* fdt_argument_new();
-bool fdt_argument_delete(FdtArgument*);
+FdtProgramArguments* fdt_program_arguments_new();
+bool fdt_program_arguments_delete(FdtProgramArguments*);
 
-#define fdt_argument_setvalue(arg, v) fdt_string_setvalue(arg->value, v)
-#define fdt_argument_getvalue(arg) fdt_string_getvalue(arg->value)
+#define fdt_program_arguments_size(args) fdt_list_size((FdtList*)args)
+#define fdt_program_arguments_gets(args) (FdtImageSector*)fdt_list_gets((FdtList*)args)
+#define fdt_program_arguments_clear(args) fdt_list_clear((FdtList*)args, (FDT_LIST_DESTRUCTORFUNC)fdt_program_argument_delete)
+
+FdtProgramArgument* fdt_program_argument_new();
+bool fdt_program_argument_delete(FdtProgramArgument*);
+
+#define fdt_program_argument_setvalue(arg, v) fdt_string_setvalue(arg->value, v)
+#define fdt_program_argument_getvalue(arg) fdt_string_getvalue(arg->value)
 
 typedef struct {
   FdtString* name;
@@ -56,7 +63,7 @@ bool fdt_program_option_delete(FdtProgramOption*);
 
 typedef struct {
   FdtString* name;
-  FdtArgumentList* args;
+  FdtProgramArguments* args;
   FdtDictionary* options;
 } FdtProgram;
 
