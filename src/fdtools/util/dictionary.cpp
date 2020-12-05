@@ -67,7 +67,7 @@ bool fdt_dictionary_setvalue(FdtDictionary* dir, const char* key, void *value, F
   }
 
   fdt_dictionary_element_setkey(elem, key);
-  fdt_dictionary_element_setvalue(elem, value);
+  fdt_dictionary_element_setvalue(elem, value, destructor);
   fdt_dictionary_element_setdestructor(elem, destructor);
 
   return true;

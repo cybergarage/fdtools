@@ -34,10 +34,10 @@ typedef struct {
 
 FdtDictionaryElement* fdt_dictionary_element_new();
 bool fdt_dictionary_element_delete(FdtDictionaryElement* elem);
+bool fdt_dictionary_element_setvalue(FdtDictionaryElement* elem, void *value, FDT_DICTIONARY_ELEMENT_DESTRUCTORFUNC destructor);
 
 #define fdt_dictionary_element_setkey(elem, name) fdt_string_setvalue(elem->key, name)
 #define fdt_dictionary_element_getkey(elem) fdt_string_getvalue(elem->key)
-#define fdt_dictionary_element_setvalue(elem, v) (elem->value = v)
 #define fdt_dictionary_element_getvalue(elem) (elem->value)
 #define fdt_dictionary_element_setdestructor(elem, fn) (elem->destructor = fn)
 #define fdt_dictionary_element_getdestructor(elem) (elem->destructor)

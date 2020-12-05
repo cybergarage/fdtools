@@ -14,6 +14,8 @@
 
 #include <fdtools/util/dictionary.h>
 
+bool fdt_dictionary_element_clear_value(FdtDictionaryElement* elem);
+
 FdtDictionaryElement* fdt_dictionary_element_new()
 {
   FdtDictionaryElement* elem = (FdtDictionaryElement*)malloc(sizeof(FdtDictionaryElement));
@@ -35,11 +37,32 @@ bool fdt_dictionary_element_delete(FdtDictionaryElement* elem)
   if (elem->key) {
     fdt_string_delete(elem->key);
   }
-  if (elem->value || elem->destructor) {
-    elem->destructor(elem->value);
-  }
 
-  free(elem);
+  fdt_dictionary_element_clear_value(elem);
 
   return true;
 }
+
+bool fdt_dictionary_element_clear_value(FdtDictionaryElement* elem)
+{
+  if (elem->value) {
+    if (elem->destructor)
+      elem->destructor(elem->value);
+    else
+      free(elem->value);
+  }
+  elem->value = NULL;
+  return true;
+}
+
+bool fdt_dictionary_element_setvalue(FdtDictionaryElement* elem, void *value, FDT_DICTIONARY_ELEMENT_DESTRUCTORFUNC destructor)
+{
+  if (!fdt_dictionary_element_clear_value(elem))
+    return false;
+  
+  elem->value = value;
+  elem->destructor = destructor;
+
+  return true;
+}
+
