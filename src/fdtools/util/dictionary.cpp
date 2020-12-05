@@ -55,17 +55,20 @@ FdtDictionaryElement* fdt_dictionary_getelement(FdtDictionary* dir, const char* 
   return NULL;
 }
 
-void fdt_dictionary_setvalue(FdtDictionary* dir, const char* key, const char* value)
+bool fdt_dictionary_setvalue(FdtDictionary* dir, const char* key, const char* value)
 {
-  FdtDictionaryElement* dirElem;
-
-  dirElem = fdt_dictionary_getelement(dir, key);
+  FdtDictionaryElement* dirElem = fdt_dictionary_getelement(dir, key);
   if (!dirElem) {
     dirElem = fdt_dictionary_element_new();
+    if (!dirElem)
+      return false;
     fdt_dictionary_add(dir, dirElem);
   }
+
   fdt_dictionary_element_setkey(dirElem, key);
   fdt_dictionary_element_setvalue(dirElem, value);
+
+  return true;
 }
 
 const char* fdt_dictionary_getvalue(FdtDictionary* dir, const char* key)

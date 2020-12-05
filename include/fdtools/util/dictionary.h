@@ -50,7 +50,7 @@ void fdt_dictionary_delete(FdtDictionary* dir);
 #define fdt_dictionary_remove(dirElem) fdt_list_remove((FdtList*)dirElem)
 
 FdtDictionaryElement* fdt_dictionary_get(FdtDictionary* dir, const char* key);
-void fdt_dictionary_setvalue(FdtDictionary* dir, const char* key, const char* value);
+bool fdt_dictionary_setvalue(FdtDictionary* dir, const char* key, const char* value);
 const char* fdt_dictionary_getvalue(FdtDictionary* dir, const char* key);
 
 #ifdef __cplusplus

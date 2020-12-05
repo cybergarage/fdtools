@@ -26,7 +26,7 @@ BOOST_AUTO_TEST_CASE(DictionaryTest)
   for (int n = 0; n < 10; n++) {
     snprintf(key, sizeof(key), "%d", n);
     snprintf(value, sizeof(value), "%d", n);
-    fdt_dictionary_setvalue(dir, key, value);
+    BOOST_CHECK(fdt_dictionary_setvalue(dir, key, value));
     BOOST_CHECK_EQUAL(value, fdt_dictionary_getvalue(dir, key));
   }
 
