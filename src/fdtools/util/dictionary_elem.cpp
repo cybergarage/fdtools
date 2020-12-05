@@ -41,7 +41,7 @@ bool fdt_dictionary_element_delete(FdtDictionaryElement* elem)
   fdt_dictionary_element_clear_value(elem);
 
   free(elem);
-  
+
   return true;
 }
 
