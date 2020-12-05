@@ -16,13 +16,34 @@
 #define _FDTOOLS_UTIL_ARGUMENTS_H_
 
 #include <fdtools/util/dictionary.h>
+#include <fdtools/util/string.h>
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
 typedef struct {
-  FdtDictionary* args;
+  FdtString* name;
+  FdtString* value;
+  bool enabled;
+  bool valueEnabled;
+} FdtArgumentOption;
+
+FdtArgumentOption* fdt_argument_option_new();
+bool fdt_argument_option_delete(FdtArgumentOption*);
+
+#define fdt_argument_option_setname(opt, v) fdt_string_setvalue(opt->name, v)
+#define fdt_argument_option_setvalue(opt, v) fdt_string_setvalue(opt->value, v)
+#define fdt_argument_option_setenabled(opt, v) (opt->enabled, v)
+#define fdt_argument_option_setvalueenabled(opt, v) (opt->valueEnabled, v)
+
+#define fdt_argument_option_getname(opt) fdt_string_getvalue(opt->name)
+#define fdt_argument_option_getvalue(opt) fdt_string_getvalue(opt->value)
+#define fdt_argument_option_isenabled(opt) (opt->enabled)
+#define fdt_argument_option_isvalueenabled(opt) (opt->valueEnabled)
+
+typedef struct {
+  FdtDictionary* options;
 } FdtArguments;
 
 FdtArguments* fdt_arguments_new();

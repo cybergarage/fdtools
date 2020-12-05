@@ -14,25 +14,32 @@
 
 #include <fdtools/util/arguments.h>
 
-FdtArguments* fdt_arguments_new()
+FdtArgumentOption* fdt_argument_option_new()
 {
-  FdtArguments* args = (FdtArguments*)malloc(sizeof(FdtArguments));
-  if (!args) {
-    return NULL;
-  }
-  args->options = fdt_dictionary_new();
-  
-  if (!args->options) {
-    fdt_arguments_delete(args);
+  FdtArgumentOption* opt = (FdtArgumentOption*)malloc(sizeof(FdtArgumentOption));
+  if (!opt) {
     return NULL;
   }
 
-  return args;
+  opt->name = fdt_string_new();
+  opt->value = fdt_string_new();
+  fdt_argument_option_setenabled(opt, false);
+  fdt_argument_option_setvalueenabled(opt, false);
+
+  if (!opt->name || !opt->value) {
+    fdt_argument_option_delete(opt);
+    return NULL;
+  }
+
+  return opt;
 }
 
-bool fdt_arguments_delete(FdtArguments* args)
+bool fdt_argument_option_delete(FdtArgumentOption* opt)
 {
-  fdt_dictionary_delete(args->options);
-  free(args);
+  if (!opt)
+    return true;
+  fdt_string_delete(opt->name);
+  fdt_string_delete(opt->value);
+  free(opt);
   return true;
 }
