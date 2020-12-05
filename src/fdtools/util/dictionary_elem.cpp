@@ -47,6 +47,9 @@ bool fdt_dictionary_element_delete(FdtDictionaryElement* elem)
 
 bool fdt_dictionary_element_clear_value(FdtDictionaryElement* elem)
 {
+  if (!elem)
+    return false;
+
   if (elem->value) {
     if (elem->destructor)
       elem->destructor(elem->value);
