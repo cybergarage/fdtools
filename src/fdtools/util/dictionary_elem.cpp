@@ -16,15 +16,13 @@
 
 FdtDictionaryElement* fdt_dictionary_element_new()
 {
-  FdtDictionaryElement* dirElem;
+  FdtDictionaryElement* dirElem = (FdtDictionaryElement*)malloc(sizeof(FdtDictionaryElement));
+  if (!dirElem)
+    return NULL;
 
-  dirElem = (FdtDictionaryElement*)malloc(sizeof(FdtDictionaryElement));
-
-  if (NULL != dirElem) {
-    fdt_list_node_init((FdtList*)dirElem);
-    dirElem->key = fdt_string_new();
-    dirElem->value = fdt_string_new();
-  }
+  fdt_list_node_init((FdtList*)dirElem);
+  dirElem->key = fdt_string_new();
+  dirElem->value = fdt_string_new();
 
   return dirElem;
 }
