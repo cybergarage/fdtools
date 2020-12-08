@@ -45,7 +45,7 @@ bool fdt_program_delete(FdtProgram* prg)
   return true;
 }
 
-bool fdt_program_parse(FdtProgram* prg, int argc, char* const argv[])
+bool fdt_program_parse(FdtProgram* prg, int argc, char* argv[])
 {
   FdtString* opt_strs = fdt_string_new();
   if (!opt_strs)
