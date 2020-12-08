@@ -50,7 +50,8 @@ bool fdt_program_parse(FdtProgram* prg, int argc, char* argv[])
   FdtString* opt_strs = fdt_string_new();
   if (!opt_strs)
     return false;
-
+  
+  fdt_string_setvalue(opt_strs, "");  
   for (FdtProgramOption* opt = fdt_program_getoptions(prg); opt; opt = fdt_program_option_next(opt)) {
     if (!fdt_string_addvalue(opt_strs, fdt_program_option_getname(opt)))
       return false;

@@ -14,11 +14,16 @@
 
 #include <boost/test/unit_test.hpp>
 
+#include <fdtools/util/array.h>
 #include <fdtools/util/program.h>
 
 BOOST_AUTO_TEST_CASE(ArgumentTest)
 {
-  FdtProgram* args = fdt_program_new();
-  BOOST_CHECK(args);
-  BOOST_CHECK(fdt_program_delete(args));
+  char *TEST_PRG_ARGS[] = {"prg", "-c", "40", "-h", "2", "-s", "16", "-v", "/dev/fd0" };
+
+  FdtProgram* prg = fdt_program_new();
+  BOOST_CHECK(prg);
+  BOOST_CHECK(fdt_program_parse(prg, fdt_array_countof(TEST_PRG_ARGS), TEST_PRG_ARGS));
+
+  BOOST_CHECK(fdt_program_delete(prg));
 }
