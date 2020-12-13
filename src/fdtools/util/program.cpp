@@ -73,7 +73,7 @@ bool fdt_program_parse(FdtProgram* prg, int argc, char* argv[])
     opt_str[0] = opt_ch;
     FdtProgramOption* opt = fdt_program_getoption(prg, opt_str);
     if (!opt)
-      return false;
+      continue;
     fdt_program_option_setenabled(opt, true);
     if (fdt_program_option_isparameterrequired(opt)) {
       fdt_program_option_setparameter(opt, optarg);
