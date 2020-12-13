@@ -82,7 +82,7 @@ bool fdt_program_parse(FdtProgram*, int argc, char* argv[], FdtError*);
 #define fdt_program_getoptionelements(prg) (fdt_dictionary_getelements(prg->options))
 #define fdt_program_optionelement_next(elem) fdt_dictionary_element_next(elem)
 #define fdt_program_getelementoption(elem) ((FdtProgramOption*)fdt_dictionary_element_getvalue(elem))
-#define fdt_program_getoption(prg, name) ((FdtProgramOption*)fdt_dictionary_get(prg->options, name))
+#define fdt_program_getoption(prg, name) ((FdtProgramOption*)fdt_dictionary_element_getvalue(fdt_dictionary_get(prg->options, name)))
 #define fdt_program_hasoption(prg, name) (fdt_program_getoption(prg, name) ? true : false)
 
 #ifdef __cplusplus
