@@ -65,8 +65,8 @@ typedef struct {
 } FdtString;
 
 FdtString* fdt_string_new();
-void fdt_string_delete(FdtString* str);
-void fdt_string_clear(FdtString* str);
+bool fdt_string_delete(FdtString* str);
+bool fdt_string_clear(FdtString* str);
 
 void fdt_string_setvalue(FdtString* str, const char* value);
 void fdt_string_setnvalue(FdtString* str, const char* value, size_t len);

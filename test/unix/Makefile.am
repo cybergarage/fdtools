@@ -23,6 +23,7 @@ fdtoolstest_SOURCES = \
 	..//dev_device_test.cpp \
 	..//dictionary_test.cpp \
 	..//img_hfe_test.cpp \
+	..//string_test.cpp \
 	..//program_test.cpp \
 	..//logic_test.cpp \
 	..//img_d88_test.cpp \

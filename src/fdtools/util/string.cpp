@@ -33,26 +33,29 @@ FdtString* fdt_string_new()
   return str;
 }
 
-void fdt_string_delete(FdtString* str)
+bool fdt_string_delete(FdtString* str)
 {
   if (!str)
-    return;
+    return false;
   fdt_string_clear(str);
   free(str);
+  return true;
 }
 
-void fdt_string_clear(FdtString* str)
+bool fdt_string_clear(FdtString* str)
 {
   if (!str)
-    return;
+    return false;
 
   if (!str->value)
-    return;
+    return true;
 
   free(str->value);
   str->value = NULL;
   str->mem_size = 0;
   str->value_size = 0;
+
+  return true;
 }
 
 void fdt_string_setvalue(FdtString* str, const char* value)

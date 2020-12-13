@@ -70,7 +70,7 @@ typedef struct {
 
 FdtProgram* fdt_program_new();
 bool fdt_program_delete(FdtProgram*);
-bool fdt_program_addoption(FdtProgram*, const char *, bool);
+bool fdt_program_addoption(FdtProgram*, const char*, bool);
 bool fdt_program_parse(FdtProgram*, int argc, char* rgv[]);
 
 #define fdt_program_setname(prg, v) fdt_string_setvalue(prg->name, v)
