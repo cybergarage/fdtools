@@ -40,10 +40,10 @@ FdtError* fdt_error_new()
   return err;
 }
 
-void fdt_error_delete(FdtError* err)
+bool fdt_error_delete(FdtError* err)
 {
   if (!err)
-    return;
+    return false;
 
   fdt_string_delete(err->message);
   fdt_string_delete(err->debug_message);
@@ -51,6 +51,8 @@ void fdt_error_delete(FdtError* err)
   fdt_string_delete(err->func_name);
 
   free(err);
+
+  return true;
 }
 
 void fdt_error_setdebugmessage(FdtError* err, const char* file, int line_no, const char* function, const char* prefix, const char* format, ...)
