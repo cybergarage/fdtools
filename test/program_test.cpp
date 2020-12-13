@@ -19,7 +19,7 @@
 
 BOOST_AUTO_TEST_CASE(ArgumentTest)
 {
-  char *TEST_PRG_ARGS[] = {"prg", "-c", "40", "-h", "2", "-s", "16", "-v", "/dev/fd0" };
+  const char* TEST_PRG_ARGS[] = { "prg", "-c", "40", "-h", "2", "-s", "16", "-v", "/dev/fd0" };
 
   FdtProgram* prg = fdt_program_new();
   BOOST_CHECK(prg);
@@ -29,7 +29,7 @@ BOOST_AUTO_TEST_CASE(ArgumentTest)
   BOOST_CHECK(fdt_program_addoption(prg, "s", true));
   BOOST_CHECK(fdt_program_addoption(prg, "v", false));
 
-  BOOST_CHECK(fdt_program_parse(prg, fdt_array_countof(TEST_PRG_ARGS), TEST_PRG_ARGS));
+  BOOST_CHECK(fdt_program_parse(prg, fdt_array_countof(TEST_PRG_ARGS), (char**)TEST_PRG_ARGS));
 
   BOOST_CHECK(fdt_program_delete(prg));
 }

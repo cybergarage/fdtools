@@ -54,9 +54,7 @@ bool fdt_program_addoption(FdtProgram* prg, const char* name, bool hasParam)
   fdt_program_option_setname(opt, name);
   fdt_program_option_setparameterrequired(opt, hasParam);
 
-  fdt_dictionary_add(prg->options, opt);
-
-  return true;
+  return fdt_dictionary_setvalue(prg->options, name, opt, (FDT_DICTIONARY_ELEMENT_DESTRUCTORFUNC)fdt_program_option_delete);
 }
 
 bool fdt_program_parse(FdtProgram* prg, int argc, char* argv[])
