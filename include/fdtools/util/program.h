@@ -53,9 +53,9 @@ FdtProgramOption* fdt_program_option_new();
 bool fdt_program_option_delete(FdtProgramOption*);
 
 #define fdt_program_option_setname(opt, v) fdt_string_setvalue(opt->name, v)
-#define fdt_program_option_setenabled(opt, v) (opt->enabled, v)
+#define fdt_program_option_setenabled(opt, v) (opt->enabled = v)
 #define fdt_program_option_setparameter(opt, v) fdt_string_setvalue(opt->value, v)
-#define fdt_program_option_setparameterrequired(opt, v) (opt->paramRequired, v)
+#define fdt_program_option_setparameterrequired(opt, v) (opt->paramRequired = v)
 
 #define fdt_program_option_next(opt) (FdtProgramOption*)fdt_list_next((FdtList*)opt)
 #define fdt_program_option_getname(opt) fdt_string_getvalue(opt->name)
