@@ -57,7 +57,7 @@ bool fdt_program_addoption(FdtProgram* prg, const char* name, bool hasParam)
   return fdt_dictionary_setvalue(prg->options, name, opt, (FDT_DICTIONARY_ELEMENT_DESTRUCTORFUNC)fdt_program_option_delete);
 }
 
-bool fdt_program_parse(FdtProgram* prg, int argc, char* argv[])
+bool fdt_program_parse(FdtProgram* prg, int argc, char* argv[], FdtError *err)
 {
   FdtString* opt_strs = fdt_string_new();
   if (!opt_strs)
@@ -85,7 +85,7 @@ bool fdt_program_parse(FdtProgram* prg, int argc, char* argv[])
     opt_str[0] = opt_ch;
     FdtProgramOption* opt = fdt_program_getoption(prg, opt_str);
     if (!opt)
-      continue;
+      return false;
     fdt_program_option_setenabled(opt, true);
     if (fdt_program_option_isparameterrequired(opt)) {
       fdt_program_option_setparameter(opt, optarg);
