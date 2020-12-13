@@ -30,6 +30,7 @@ fdtools_sources = \
 	../../src/fdtools/img/hfe_loader.cpp \
 	../../src/fdtools/img/config.cpp \
 	../../src/fdtools/img/file.cpp \
+	../../src/fdtools/dev/device_linux.cpp \
 	../../src/fdtools/dev/device_posix.cpp \
 	../../src/fdtools/dev/device.cpp \
 	../../src/fdtools/error.cpp \
