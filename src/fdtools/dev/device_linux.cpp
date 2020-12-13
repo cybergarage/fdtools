@@ -12,6 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#if defined(__linux__)
+
 #include <fcntl.h>
 
 #include <linux/fd.h>
@@ -36,3 +38,6 @@ bool fdt_device_setparameters(FdtDevice* dev, FdtError* err)
 
   return true;
 }
+
+#endif
+
