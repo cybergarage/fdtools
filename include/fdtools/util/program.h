@@ -73,14 +73,14 @@ typedef struct {
 FdtProgram* fdt_program_new();
 bool fdt_program_delete(FdtProgram*);
 bool fdt_program_addoption(FdtProgram*, const char*, bool);
-bool fdt_program_parse(FdtProgram*, int argc, char* argv[], FdtError *);
+bool fdt_program_parse(FdtProgram*, int argc, char* argv[], FdtError*);
 
 #define fdt_program_setname(prg, v) fdt_string_setvalue(prg->name, v)
 #define fdt_program_addargument(prg, v) fdt_program_arguments_add(prg->args, v)
 
 #define fdt_program_getname(prg) fdt_string_getvalue(prg->name)
 #define fdt_program_getarguments(prg) fdt_program_arguments_gets(prg->args)
-#define fdt_program_getoptions(prg) ((FdtProgramOption*)fdt_dictionary_gets(prg->options))
+#define fdt_program_getoptionelements(prg) (fdt_dictionary_getelements(prg->options))
 #define fdt_program_getoption(prg, name) ((FdtProgramOption*)fdt_dictionary_get(prg->options, name))
 #define fdt_program_hasoption(prg, name) (fdt_program_getoption(prg, name) ? true : false)
 

@@ -53,7 +53,7 @@ void* fdt_dictionary_getvalue(FdtDictionary* dir, const char* key);
 
 #define fdt_dictionary_clear(dir) fdt_list_clear((FdtList*)dir, (FDT_LIST_DESTRUCTORFUNC)fdt_dictionary_element_delete)
 #define fdt_dictionary_size(dir) fdt_list_size((FdtList*)dir)
-#define fdt_dictionary_gets(dir) (FdtDictionaryElement*)fdt_list_next((FdtList*)dir)
+#define fdt_dictionary_getelements(dir) (FdtDictionaryElement*)fdt_list_next((FdtList*)dir)
 #define fdt_dictionary_add(dir, elem) fdt_list_add((FdtList*)dir, (FdtList*)elem)
 #define fdt_dictionary_remove(elem) fdt_list_remove((FdtList*)elem)
 
