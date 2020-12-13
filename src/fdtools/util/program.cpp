@@ -64,7 +64,9 @@ bool fdt_program_parse(FdtProgram* prg, int argc, char* argv[], FdtError* err)
     return false;
 
   fdt_string_setvalue(opt_strs, "");
-  for (FdtDictionaryElement* elem = fdt_program_getoptionelements(prg); elem; elem = fdt_program_option_next(opt)) {
+  for (FdtDictionaryElement* elem = fdt_program_getoptionelements(prg); elem; elem = fdt_program_optionelement_next(elem)) {
+    FdtProgramOption* opt = fdt_program_getelementoption(elem);
+
     if (!fdt_string_addvalue(opt_strs, fdt_program_option_getname(opt)))
       return false;
     if (fdt_program_option_isparameterrequired(opt)) {

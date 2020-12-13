@@ -59,7 +59,6 @@ bool fdt_program_option_delete(FdtProgramOption*);
 #define fdt_program_option_setparameter(opt, v) fdt_string_setvalue(opt->value, v)
 #define fdt_program_option_setparameterrequired(opt, v) (opt->paramRequired = v)
 
-#define fdt_program_option_next(opt) (FdtProgramOption*)fdt_list_next((FdtList*)opt)
 #define fdt_program_option_getname(opt) fdt_string_getvalue(opt->name)
 #define fdt_program_option_getparameter(opt) fdt_string_getvalue(opt->value)
 #define fdt_program_option_isparameterrequired(opt) (opt->paramRequired)
@@ -81,6 +80,8 @@ bool fdt_program_parse(FdtProgram*, int argc, char* argv[], FdtError*);
 #define fdt_program_getname(prg) fdt_string_getvalue(prg->name)
 #define fdt_program_getarguments(prg) fdt_program_arguments_gets(prg->args)
 #define fdt_program_getoptionelements(prg) (fdt_dictionary_getelements(prg->options))
+#define fdt_program_optionelement_next(elem) fdt_dictionary_element_next(elem)
+#define fdt_program_getelementoption(elem) ((FdtProgramOption*)fdt_dictionary_element_getvalue(elem))
 #define fdt_program_getoption(prg, name) ((FdtProgramOption*)fdt_dictionary_get(prg->options, name))
 #define fdt_program_hasoption(prg, name) (fdt_program_getoption(prg, name) ? true : false)
 
