@@ -38,6 +38,11 @@ BOOST_AUTO_TEST_CASE(ProgramParseTest)
 
   BOOST_CHECK(fdt_program_parse(prg, fdt_array_countof(TEST_PRG_ARGS), (char**)TEST_PRG_ARGS, err));
 
+  BOOST_CHECK_EQUAL(fdt_program_getoptionparameter(prg, "c"), "40");
+  BOOST_CHECK_EQUAL(fdt_program_getoptionparameter(prg, "h"), "2");
+  BOOST_CHECK_EQUAL(fdt_program_getoptionparameter(prg, "s"), "16");
+  BOOST_CHECK_EQUAL(fdt_program_getoptionparameter(prg, "v"), (char*)NULL);
+  
   BOOST_CHECK(fdt_program_delete(prg));
 
   BOOST_CHECK(fdt_error_delete(err));
