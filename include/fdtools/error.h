@@ -35,9 +35,12 @@ typedef struct {
 FdtError* fdt_error_new();
 bool fdt_error_delete(FdtError*);
 
-#if defined(__USE_ISOC99)
+#if defined(__USE_ISOC99) && !defined(__GNUC__)
 #define fdt_error_setmessage(err, format, ...) fdt_error_setdebugmessage(err, __FILE__, __LINE__, __func__, "", format, __VA_ARGS__)
 #define fdt_error_setlasterror(err, format, ...) fdt_error_setdebugmessage(err, __FILE__, __LINE__, __func__, strerror(errno), format, __VA_ARGS__)
+#elif defined(__GNUC__)
+#define fdt_error_setmessage(err, format, ...) fdt_error_setdebugmessage(err, __FILE__, __LINE__, __func__, "", format, ##__VA_ARGS__)
+#define fdt_error_setlasterror(err, format, ...) fdt_error_setdebugmessage(err, __FILE__, __LINE__, __func__, strerror(errno), format, ##__VA_ARGS__)
 #else
 #define fdt_error_setmessage(err, format...) fdt_error_setdebugmessage(err, __FILE__, __LINE__, __func__, "", format)
 #define fdt_error_setlasterror(err, format...) fdt_error_setdebugmessage(err, __FILE__, __LINE__, __func__, strerror(errno), format)
