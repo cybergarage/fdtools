@@ -80,6 +80,7 @@ bool fdt_program_parse(FdtProgram*, int argc, char* rgv[]);
 #define fdt_program_getarguments(prg) fdt_program_arguments_gets(prg->args)
 #define fdt_program_getoptions(prg) ((FdtProgramOption*)fdt_dictionary_gets(prg->options))
 #define fdt_program_getoption(prg, name) ((FdtProgramOption*)fdt_dictionary_get(prg->options, name))
+#define fdt_program_hasoption(prg, name) (fdt_program_getoption(prg, name) ? true : false)
 
 #ifdef __cplusplus
 

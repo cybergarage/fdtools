@@ -17,7 +17,7 @@
 #include <fdtools/util/array.h>
 #include <fdtools/util/program.h>
 
-BOOST_AUTO_TEST_CASE(ArgumentTest)
+BOOST_AUTO_TEST_CASE(ProgramParseTest)
 {
   const char* TEST_PRG_ARGS[] = { "prg", "-c", "40", "-h", "2", "-s", "16", "-v", "/dev/fd0" };
 
@@ -28,6 +28,11 @@ BOOST_AUTO_TEST_CASE(ArgumentTest)
   BOOST_CHECK(fdt_program_addoption(prg, "h", true));
   BOOST_CHECK(fdt_program_addoption(prg, "s", true));
   BOOST_CHECK(fdt_program_addoption(prg, "v", false));
+
+  BOOST_CHECK(fdt_program_hasoption(prg, "c"));
+  BOOST_CHECK(fdt_program_hasoption(prg, "h"));
+  BOOST_CHECK(fdt_program_hasoption(prg, "s"));
+  BOOST_CHECK(fdt_program_hasoption(prg, "v"));
 
   BOOST_CHECK(fdt_program_parse(prg, fdt_array_countof(TEST_PRG_ARGS), (char**)TEST_PRG_ARGS));
 
