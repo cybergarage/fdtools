@@ -23,6 +23,12 @@ BOOST_AUTO_TEST_CASE(ArgumentTest)
 
   FdtProgram* prg = fdt_program_new();
   BOOST_CHECK(prg);
+
+  BOOST_CHECK(fdt_program_addoption(prg, "c", true));
+  BOOST_CHECK(fdt_program_addoption(prg, "h", true));
+  BOOST_CHECK(fdt_program_addoption(prg, "s", true));
+  BOOST_CHECK(fdt_program_addoption(prg, "v", false));
+
   BOOST_CHECK(fdt_program_parse(prg, fdt_array_countof(TEST_PRG_ARGS), TEST_PRG_ARGS));
 
   BOOST_CHECK(fdt_program_delete(prg));
