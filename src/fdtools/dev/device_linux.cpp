@@ -25,13 +25,27 @@
 
 #include <fdtools/dev/device.h>
 
+bool fdt_device_getparameters(FdtDevice* dev, FdtError* err)
+{
+  if (dev->fd < 0)
+    return false;
+
+  struct floppy_struct fdprms;
+  if (ioctl(fd, FDGETPRM, &fdprms) < 0) {
+    fdt_error_setlasterror(err, "");
+    return false;
+  }
+
+  return true;
+}
+
 bool fdt_device_setparameters(FdtDevice* dev, FdtError* err)
 {
   if (dev->fd < 0)
     return false;
 
-  struct floppy_struct medprm;
-  if (ioctl(dev->fd, FDSETPRM, &medprm) < 0) {
+  struct floppy_struct fdprms;
+  if (ioctl(dev->fd, FDSETPRM, &fdprms) < 0) {
     fdt_error_setlasterror(err, "");
     return false;
   }
@@ -40,4 +54,3 @@ bool fdt_device_setparameters(FdtDevice* dev, FdtError* err)
 }
 
 #endif
-
