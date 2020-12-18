@@ -38,7 +38,7 @@ bool fdt_floppy_params_delete(FdtFloppyParams* params)
 
   if (params->name)
     fdt_string_delete(params->name);
-  
+
   free(params);
 
   return true;

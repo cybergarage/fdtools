@@ -16,21 +16,30 @@
 
 FdtDevice* fdt_device_new()
 {
-  FdtDevice* dev = (FdtDevice*)malloc(sizeof(FdtDevice));
+  FdtDevice* dev = (FdtDevice*)calloc(sizeof(FdtDevice), 1);
   if (!dev) {
     return NULL;
   }
 
   dev->name = fdt_string_new();
+  if (!dev->name) {
+    fdt_device_delete(dev);
+    return NULL;
+  }
 
   return dev;
 }
 
-void fdt_device_delete(FdtDevice* dev)
+bool fdt_device_delete(FdtDevice* dev)
 {
   if (!dev)
-    return;
+    return false;
 
-  fdt_string_delete(dev->name);
+  if (dev->name) {
+    fdt_string_delete(dev->name);
+  }
+
   free(dev);
+
+  return true;
 }

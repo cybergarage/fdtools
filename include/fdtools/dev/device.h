@@ -35,7 +35,7 @@ typedef struct FDT_ATTR_PACKED {
 } FdtDevice;
 
 FdtDevice* fdt_device_new();
-void fdt_device_delete(FdtDevice*);
+bool fdt_device_delete(FdtDevice*);
 
 bool fdt_device_open(FdtDevice*, const char*, FdtDeviceMode, FdtError*);
 

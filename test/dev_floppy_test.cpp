@@ -18,7 +18,7 @@
 
 BOOST_AUTO_TEST_CASE(FloppyParamsTest)
 {
-  FdtFloppyParams*params = fdt_floppy_params_new();
+  FdtFloppyParams* params = fdt_floppy_params_new();
   BOOST_CHECK(params);
-BOOST_CHECK(fdt_floppy_params_delete(params));
+  BOOST_CHECK(fdt_floppy_params_delete(params));
 }
