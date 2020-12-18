@@ -22,6 +22,7 @@ AM_CPPFLAGS = -I$(top_builddir)/include -I../
 fdtoolstest_SOURCES = \
 	../img_hfe_test.cpp \
 	../img_d88_test.cpp \
+	../error_test.cpp \
 	../logic_test.cpp \
 	../string_test.cpp \
 	../dictionary_test.cpp \
