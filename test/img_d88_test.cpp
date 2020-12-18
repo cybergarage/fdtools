@@ -12,7 +12,9 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#include <boost/filesystem.hpp>
 #include <boost/test/unit_test.hpp>
+
 #include <fdtools/img/file.h>
 #include <fdtools/util/array.h>
 
@@ -36,6 +38,10 @@ BOOST_AUTO_TEST_CASE(D88ImageLoadTest)
 
   for (int n = 0; n < fdt_array_countof(TEST_D88_IMAGES); n++) {
     std::string filename = TEST_IMAGE_DIRECTORY + "/" + TEST_D88_IMAGES[n];
+    boost::filesystem::path filepath(filename);
+    if (!boost::filesystem::exists(filepath))
+      continue;
+
     BOOST_CHECK_EQUAL(fdt_img_file_gettype(filename.c_str()), FDT_IMAGE_TYPE_D88);
 
     // Loader test
