@@ -72,6 +72,8 @@ if [ test "$build_test" = yes ]; then
                 [AC_CHECK_LIB([boost_system],[main],,[AC_MSG_ERROR(fdtools needs boost::system)])])
         AC_CHECK_LIB([boost_unit_test_framework-mt],[main],,
                 [AC_CHECK_LIB([boost_unit_test_framework],[main],,[AC_MSG_ERROR(fdtools needs boost::unit_test_framework)])])
+        AC_CHECK_LIB([boost_filesystem-mt],[main],,
+                [AC_CHECK_LIB([boost_filesystem],[main],,[AC_MSG_ERROR(fdtools needs boost::filesystem)])])
 fi
 
 ##############################
