@@ -24,6 +24,22 @@ extern "C" {
 #endif
 
 typedef enum {
+  FDT_FLOPPY_MEDIA_UNKNOWN,
+  FDT_FLOPPY_MEDIA_8,
+  FDT_FLOPPY_MEDIA_525,
+  FDT_FLOPPY_MEDIA_35,
+} FdtFloppyMedia;
+
+typedef enum {
+  FDT_FLOPPY_DENSITY_UNKNOWN,
+  FDT_FLOPPY_DENSITY_SD,
+  FDT_FLOPPY_DENSITY_DD,
+  FDT_FLOPPY_DENSITY_QD,
+  FDT_FLOPPY_DENSITY_HD,
+  FDT_FLOPPY_DENSITY_ED
+} FdtFloppyDensity;
+
+typedef enum {
   FDT_DEVICE_READ = 0x01,
   FDT_DEVICE_WRITE = 0x02,
 } FdtDeviceMode;
