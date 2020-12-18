@@ -13,7 +13,36 @@
 // limitations under the License.
 
 #include <stdlib.h>
+
+#include <fdtools/dev/device.h>
+
 int main(int argc, char* argv[])
 {
+  const char* dev_name = "/dev/fd0";
+  if (1 < argc) {
+    dev_name = argv[1];
+  }
+
+  FdtDevice* dev = fdt_device_new();
+  if (!dev)
+    return 1;
+
+  FdtError* err = fdt_error_new();
+  if (!err)
+    return 1;
+
+  FdtFloppyParams* fdparams = fdt_floppy_params_new();
+  if (!fdparams)
+    return 1;
+
+  if (fdt_device_open(dev, dev_name, FDT_DEVICE_READ, err)) {
+    if (fdt_device_getfloppyparameters(dev, fdparams, err)) {
+    }
+  }
+
+  fdt_device_delete(dev);
+  fdt_floppy_params_delete(fdparams);
+  fdt_error_delete(err);
+
   return 0;
 }

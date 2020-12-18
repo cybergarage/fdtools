@@ -27,13 +27,27 @@
 
 bool fdt_device_getfloppyparams(floppy_struct* fdprms, FdtFloppyParams* params, FdtError* err);
 
-bool fdt_device_getparameters(FdtDevice* dev, FdtError* err)
+bool fdt_device_getfloppyparameters(FdtDevice* dev, FdtFloppyParams* params, FdtError* err)
 {
   if (dev->fd < 0)
     return false;
 
   struct floppy_struct fdprms;
   if (ioctl(dev->fd, FDGETPRM, &fdprms) < 0) {
+    fdt_error_setlasterror(err, "");
+    return false;
+  }
+
+  return fdt_device_getfloppyparams(&fdprms, params, err);
+}
+
+bool fdt_device_setparameters(FdtDevice* dev, FdtError* err)
+{
+  if (dev->fd < 0)
+    return false;
+
+  struct floppy_struct fdprms;
+  if (ioctl(dev->fd, FDSETPRM, &fdprms) < 0) {
     fdt_error_setlasterror(err, "");
     return false;
   }
@@ -55,20 +69,6 @@ bool fdt_device_getfloppyparams(floppy_struct* fdprms, FdtFloppyParams* params, 
   fdt_floppy_params_setsize(params, fdprms->rate);
   fdt_floppy_params_setsize(params, fdprms->spec1);
   fdt_floppy_params_setsize(params, fdprms->fmt_gap);
-
-  return true;
-}
-
-bool fdt_device_setparameters(FdtDevice* dev, FdtError* err)
-{
-  if (dev->fd < 0)
-    return false;
-
-  struct floppy_struct fdprms;
-  if (ioctl(dev->fd, FDSETPRM, &fdprms) < 0) {
-    fdt_error_setlasterror(err, "");
-    return false;
-  }
 
   return true;
 }

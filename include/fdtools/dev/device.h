@@ -43,6 +43,8 @@ bool fdt_device_open(FdtDevice*, const char*, FdtDeviceMode, FdtError*);
 
 #define fdt_device_getname(dev) fdt_string_getvalue(dev->name)
 
+bool fdt_device_getfloppyparameters(FdtDevice* dev, FdtFloppyParams* params, FdtError* err);
+
 #ifdef __cplusplus
 } /* extern C */
 #endif
