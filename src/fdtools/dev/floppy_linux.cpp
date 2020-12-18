@@ -25,8 +25,10 @@ FdtFloppyParams* fdt_floppy_params_new()
     return NULL;
 
   params->name = fdt_string_new();
-  if (!params->name)
+  if (!params->name) {
+    fdt_floppy_params_delete(params);
     return NULL;
+  }
 
   return params;
 }
@@ -36,8 +38,9 @@ bool fdt_floppy_params_delete(FdtFloppyParams* params)
   if (!params)
     return false;
 
-  if (params->name)
+  if (params->name) {
     fdt_string_delete(params->name);
+  }
 
   free(params);
 
