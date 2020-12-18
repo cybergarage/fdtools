@@ -39,6 +39,21 @@ typedef enum {
   FDT_FLOPPY_DENSITY_ED
 } FdtFloppyDensity;
 
+typedef struct {
+  FdtString* name;
+  FdtFloppyMedia media;
+  FdtFloppyDensity density;
+  unsigned int size;
+  unsigned int sect;
+  unsigned int head;
+  unsigned int track;
+  unsigned int stretch;
+  unsigned char gap;
+  unsigned char rate;
+  unsigned char spec1;
+  unsigned char fmt_gap;
+} FdtFloppyParams;
+
 typedef enum {
   FDT_DEVICE_READ = 0x01,
   FDT_DEVICE_WRITE = 0x02,
