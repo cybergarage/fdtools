@@ -55,6 +55,17 @@ bool fdt_error_delete(FdtError* err)
   return true;
 }
 
+bool fdt_error_iserror(FdtError* err)
+{
+  if (!err)
+    return false;
+
+  if (fdt_string_length(err->message) <= 0)
+    return false;
+
+  return true;
+}
+
 void fdt_error_setdebugmessage(FdtError* err, const char* file, int line_no, const char* function, const char* prefix, const char* format, ...)
 {
   fdt_string_setvalue(err->file_name, file);
