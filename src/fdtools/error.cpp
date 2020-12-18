@@ -82,4 +82,6 @@ void fdt_error_setdebugmessage(FdtError* err, const char* file, int line_no, con
   va_start(list, format);
   vsnprintf((msg + prefix_len), (sizeof(msg) - prefix_len), format, list);
   va_end(list);
+
+  fdt_string_setvalue(err->message, msg);
 }
