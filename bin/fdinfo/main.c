@@ -48,8 +48,12 @@ int main(int argc, char* argv[])
       printf("spec1   : %c\n", fdt_floppy_params_getspec1(fdparams));
       printf("fmt gap : %c\n", fdt_floppy_params_getfmtgap(fdparams));
     }
+    else {
+      printf("%s\n", fdt_error_getdebugmessage(err));
+    }
   }
   else {
+    printf("%s\n", fdt_error_getdebugmessage(err));
   }
 
   fdt_device_delete(dev);
