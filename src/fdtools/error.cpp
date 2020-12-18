@@ -85,3 +85,13 @@ void fdt_error_setdebugmessage(FdtError* err, const char* file, int line_no, con
 
   fdt_string_setvalue(err->message, msg);
 }
+
+void fdt_error_printmessage(FdtError* err)
+{
+  printf("%s\n", fdt_error_getmessage(err));
+}
+
+void fdt_error_printdebugmessage(FdtError* err)
+{
+  printf("%s\n", fdt_error_getmessage(err));
+}

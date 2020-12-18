@@ -49,6 +49,8 @@ int main(int argc, char* argv[])
       printf("fmt gap : %c\n", fdt_floppy_params_getfmtgap(fdparams));
     }
   }
+  else {
+  }
 
   fdt_device_delete(dev);
   fdt_floppy_params_delete(fdparams);

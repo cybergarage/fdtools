@@ -14,11 +14,30 @@
 
 #include <boost/test/unit_test.hpp>
 
-#include <fdtools/dev/floppy.h>
+#include <fdtools/dev/device.h>
 
 BOOST_AUTO_TEST_CASE(FloppyParamsTest)
 {
   FdtFloppyParams* params = fdt_floppy_params_new();
   BOOST_CHECK(params);
   BOOST_CHECK(fdt_floppy_params_delete(params));
+}
+
+BOOST_AUTO_TEST_CASE(FloppyGetParamsTest)
+{
+  const char* TEST_DEV = "/dev/fd0";
+  FdtDevice* dev = fdt_device_new();
+  BOOST_CHECK(dev);
+  FdtError* err = fdt_error_new();
+  BOOST_CHECK(err);
+  FdtFloppyParams* fdparams = fdt_floppy_params_new();
+  BOOST_CHECK(fdparams);
+
+  BOOST_CHECK(fdt_device_open(dev, TEST_DEV, FDT_DEVICE_READ, err));
+
+  BOOST_CHECK(fdt_device_getfloppyparameters(dev, fdparams, err));
+
+  BOOST_CHECK(fdt_device_delete(dev));
+  BOOST_CHECK(fdt_floppy_params_delete(fdparams));
+  BOOST_CHECK(fdt_error_delete(err));
 }
