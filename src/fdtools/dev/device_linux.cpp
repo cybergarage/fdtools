@@ -31,7 +31,7 @@ bool fdt_device_getparameters(FdtDevice* dev, FdtError* err)
     return false;
 
   struct floppy_struct fdprms;
-  if (ioctl(fd, FDGETPRM, &fdprms) < 0) {
+  if (ioctl(dev->fd, FDGETPRM, &fdprms) < 0) {
     fdt_error_setlasterror(err, "");
     return false;
   }
