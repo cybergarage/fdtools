@@ -20,16 +20,16 @@ AM_CPPFLAGS = -I$(top_builddir)/include -I../
 
 
 fdtoolstest_SOURCES = \
+	../program_test.cpp \
 	../img_hfe_test.cpp \
-	../img_d88_test.cpp \
-	../logic_test.cpp \
-	../string_test.cpp \
-	../dictionary_test.cpp \
-	../dev_floppy_test.cpp \
-	../dev_device_test.cpp \
 	../main.cpp \
+	../dev_floppy_test.cpp \
+	../dictionary_test.cpp \
+	../string_test.cpp \
 	../img_file_test.cpp \
-	../program_test.cpp
+	../img_d88_test.cpp \
+	../dev_device_test.cpp \
+	../logic_test.cpp
 
 #if HAVE_LIBTOOL
 #fdtoolstest_LDADD = ../../lib/unix/libfdtools.la
