@@ -1,0 +1,32 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+        {
+            "label": "configure",
+            "type": "shell",
+            "command": "./configure --enable-test",
+            "group": "build",
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            },
+            "options": {
+                "cwd": "${workspaceFolder}"
+            }
+        },
+        {
+            "label": "make",
+            "type": "shell",
+            "command": "make check",
+            "group": "build",
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            },
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": []
+        }
+    ]
+}
