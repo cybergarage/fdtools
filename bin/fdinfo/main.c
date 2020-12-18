@@ -12,6 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#include <stdio.h>
 #include <stdlib.h>
 
 #include <fdtools/dev/device.h>
@@ -37,6 +38,15 @@ int main(int argc, char* argv[])
 
   if (fdt_device_open(dev, dev_name, FDT_DEVICE_READ, err)) {
     if (fdt_device_getfloppyparameters(dev, fdparams, err)) {
+      printf("device  : %s\n", dev_name);
+      printf("size    : %d\n", fdt_floppy_params_getsize(fdparams));
+      printf("head    : %d\n", fdt_floppy_params_gethead(fdparams));
+      printf("track   : %d\n", fdt_floppy_params_gettrack(fdparams));
+      printf("stretch : %d\n", fdt_floppy_params_getstretch(fdparams));
+      printf("gap     : %c\n", fdt_floppy_params_getgap(fdparams));
+      printf("rate    : %c\n", fdt_floppy_params_getrate(fdparams));
+      printf("spec1   : %c\n", fdt_floppy_params_getspec1(fdparams));
+      printf("fmt gap : %c\n", fdt_floppy_params_getfmtgap(fdparams));
     }
   }
 
