@@ -15,6 +15,7 @@
 #ifndef _FDTOOLS_DEV_DEVICE_H_
 #define _FDTOOLS_DEV_DEVICE_H_
 
+#include <fdtools/dev/floppy.h>
 #include <fdtools/error.h>
 #include <fdtools/typedef.h>
 #include <fdtools/util/string.h>
@@ -22,37 +23,6 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-
-typedef enum {
-  FDT_FLOPPY_MEDIA_UNKNOWN,
-  FDT_FLOPPY_MEDIA_8,
-  FDT_FLOPPY_MEDIA_525,
-  FDT_FLOPPY_MEDIA_35,
-} FdtFloppyMedia;
-
-typedef enum {
-  FDT_FLOPPY_DENSITY_UNKNOWN,
-  FDT_FLOPPY_DENSITY_SD,
-  FDT_FLOPPY_DENSITY_DD,
-  FDT_FLOPPY_DENSITY_QD,
-  FDT_FLOPPY_DENSITY_HD,
-  FDT_FLOPPY_DENSITY_ED
-} FdtFloppyDensity;
-
-typedef struct {
-  FdtString* name;
-  FdtFloppyMedia media;
-  FdtFloppyDensity density;
-  unsigned int size;
-  unsigned int sect;
-  unsigned int head;
-  unsigned int track;
-  unsigned int stretch;
-  unsigned char gap;
-  unsigned char rate;
-  unsigned char spec1;
-  unsigned char fmt_gap;
-} FdtFloppyParams;
 
 typedef enum {
   FDT_DEVICE_READ = 0x01,
@@ -70,6 +40,8 @@ void fdt_device_delete(FdtDevice*);
 bool fdt_device_open(FdtDevice*, const char*, FdtDeviceMode, FdtError*);
 
 #define fdt_device_setname(dev, v) fdt_string_setvalue(dev->name, v)
+
+#define fdt_device_getname(dev) fdt_string_getvalue(dev->name)
 
 #ifdef __cplusplus
 } /* extern C */

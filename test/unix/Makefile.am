@@ -25,6 +25,7 @@ fdtoolstest_SOURCES = \
 	../logic_test.cpp \
 	../string_test.cpp \
 	../dictionary_test.cpp \
+	../dev_floppy_test.cpp \
 	../dev_device_test.cpp \
 	../main.cpp \
 	../img_file_test.cpp \

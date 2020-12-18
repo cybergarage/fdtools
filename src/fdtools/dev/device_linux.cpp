@@ -25,6 +25,8 @@
 
 #include <fdtools/dev/device.h>
 
+bool fdt_device_getfloppyparams(floppy_struct* fdprms, FdtFloppyParams* params, FdtError* err);
+
 bool fdt_device_getparameters(FdtDevice* dev, FdtError* err)
 {
   if (dev->fd < 0)
@@ -35,6 +37,24 @@ bool fdt_device_getparameters(FdtDevice* dev, FdtError* err)
     fdt_error_setlasterror(err, "");
     return false;
   }
+
+  return true;
+}
+
+bool fdt_device_getfloppyparams(floppy_struct* fdprms, FdtFloppyParams* params, FdtError* err)
+{
+  if (!fdprms || !params)
+    return false;
+
+  fdt_floppy_params_setsize(params, fdprms->size);
+  fdt_floppy_params_setsect(params, fdprms->sect);
+  fdt_floppy_params_setsize(params, fdprms->head);
+  fdt_floppy_params_setsize(params, fdprms->track);
+  fdt_floppy_params_setsize(params, fdprms->stretch);
+  fdt_floppy_params_setsize(params, fdprms->gap);
+  fdt_floppy_params_setsize(params, fdprms->rate);
+  fdt_floppy_params_setsize(params, fdprms->spec1);
+  fdt_floppy_params_setsize(params, fdprms->fmt_gap);
 
   return true;
 }

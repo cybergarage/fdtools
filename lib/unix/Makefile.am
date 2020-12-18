@@ -32,6 +32,7 @@ fdtools_sources = \
 	../../src/fdtools/img/file.cpp \
 	../../src/fdtools/dev/device_linux.cpp \
 	../../src/fdtools/dev/device_posix.cpp \
+	../../src/fdtools/dev/floppy_linux.cpp \
 	../../src/fdtools/dev/device.cpp \
 	../../src/fdtools/error.cpp \
 	../../src/fdtools/util/program_option.cpp \
