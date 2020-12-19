@@ -61,7 +61,7 @@ size_t fdt_floppy_params_getsectorsize(FdtFloppyParams* params)
   if (ssize < 2)
     return (128 << ssize);
   if (ssize > 2)
-    return (1 << (ssize-3)) * 1024;
+    return (1 << (ssize - 3)) * 1024;
   return 512;
 }
 

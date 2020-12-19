@@ -20,32 +20,32 @@ AM_CFLAGS = -I$(top_builddir)/include
 AM_CPPFLAGS = -I$(top_builddir)/include
 
 fdtools_sources = \
-	../../src/fdtools/util/program_arguments.cpp \
 	../../src/fdtools/util/program.cpp \
+	../../src/fdtools/util/string_func.cpp \
 	../../src/fdtools/util/dictionary_elem.cpp \
 	../../src/fdtools/util/string.cpp \
-	../../src/fdtools/util/list.cpp \
-	../../src/fdtools/util/file.cpp \
 	../../src/fdtools/util/program_argument.cpp \
-	../../src/fdtools/util/string_func.cpp \
-	../../src/fdtools/util/dictionary.cpp \
-	../../src/fdtools/util/hexdump.cpp \
+	../../src/fdtools/util/file.cpp \
+	../../src/fdtools/util/list.cpp \
 	../../src/fdtools/util/program_option.cpp \
+	../../src/fdtools/util/program_arguments.cpp \
+	../../src/fdtools/util/hexdump.cpp \
+	../../src/fdtools/util/dictionary.cpp \
+	../../src/fdtools/error.cpp \
 	../../src/fdtools/img/d88.cpp \
 	../../src/fdtools/img/image.cpp \
-	../../src/fdtools/img/config.cpp \
-	../../src/fdtools/img/d88_exporter.cpp \
+	../../src/fdtools/img/d88_loader.cpp \
+	../../src/fdtools/img/sector.cpp \
 	../../src/fdtools/img/hfe.cpp \
 	../../src/fdtools/img/file.cpp \
-	../../src/fdtools/img/sector.cpp \
-	../../src/fdtools/img/sectors.cpp \
+	../../src/fdtools/img/config.cpp \
+	../../src/fdtools/img/d88_exporter.cpp \
 	../../src/fdtools/img/hfe_loader.cpp \
-	../../src/fdtools/img/d88_loader.cpp \
+	../../src/fdtools/img/sectors.cpp \
+	../../src/fdtools/dev/device_unix.cpp \
 	../../src/fdtools/dev/floppy_linux.cpp \
-	../../src/fdtools/dev/device_posix.cpp \
 	../../src/fdtools/dev/device.cpp \
-	../../src/fdtools/dev/device_linux.cpp \
-	../../src/fdtools/error.cpp
+	../../src/fdtools/dev/device_linux.cpp
 
 libfdtoolsincludedir = $(includedir)/fdtools
 nobase_libfdtoolsinclude_HEADERS =  \

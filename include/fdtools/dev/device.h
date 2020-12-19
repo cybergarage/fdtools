@@ -15,6 +15,8 @@
 #ifndef _FDTOOLS_DEV_DEVICE_H_
 #define _FDTOOLS_DEV_DEVICE_H_
 
+#include <sys/types.h>
+
 #include <fdtools/dev/floppy.h>
 #include <fdtools/error.h>
 #include <fdtools/typedef.h>
@@ -40,6 +42,8 @@ bool fdt_device_delete(FdtDevice*);
 bool fdt_device_open(FdtDevice*, const char*, FdtDeviceMode, FdtError*);
 bool fdt_device_close(FdtDevice*, FdtError*);
 bool fdt_device_isopened(FdtDevice*);
+bool fdt_device_readoffsetblock(FdtDevice* dev, off_t offset, byte_t* buf, size_t block_size, FdtError* err);
+bool fdt_device_writeoffsetblock(FdtDevice* dev, off_t offset, byte_t* buf, size_t block_size, FdtError* err);
 
 #define fdt_device_setname(dev, v) fdt_string_setvalue(dev->name, v)
 
