@@ -42,11 +42,19 @@ bool fdt_device_open(FdtDevice* dev, const char* name, FdtDeviceMode mode, FdtEr
   return true;
 }
 
+bool fdt_device_isopened(FdtDevice* dev)
+{
+  if (!dev)
+    return false;
+  return (dev->fd != -1) ? true : false;
+}
+
 bool fdt_device_close(FdtDevice* dev, FdtError* err)
 {
-  if (dev->fd < 0) {
+  if (!dev)
+    return false;
+  if (dev->fd < 0)
     return true;
-  }
 
   if (close(dev->fd) != 0) {
     fdt_error_setlasterror(err, fdt_device_getname(dev));

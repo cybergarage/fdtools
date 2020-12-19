@@ -20,5 +20,6 @@ BOOST_AUTO_TEST_CASE(DeviceReadTest)
 {
   FdtDevice* dev = fdt_device_new();
   BOOST_CHECK(dev);
+  BOOST_CHECK(!fdt_device_isopened(dev));  
   BOOST_CHECK(fdt_device_delete(dev));
 }
