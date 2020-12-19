@@ -38,6 +38,7 @@ FdtDevice* fdt_device_new();
 bool fdt_device_delete(FdtDevice*);
 
 bool fdt_device_open(FdtDevice*, const char*, FdtDeviceMode, FdtError*);
+bool fdt_device_close(FdtDevice*, FdtError*);
 
 #define fdt_device_setname(dev, v) fdt_string_setvalue(dev->name, v)
 

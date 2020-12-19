@@ -15,6 +15,7 @@
 #include <fcntl.h>
 #include <sys/stat.h>
 #include <sys/types.h>
+#include <unistd.h>
 
 #include <fdtools/dev/device.h>
 
@@ -37,6 +38,23 @@ bool fdt_device_open(FdtDevice* dev, const char* name, FdtDeviceMode mode, FdtEr
     fdt_error_setlasterror(err, name);
     return false;
   }
+
+  return true;
+}
+
+bool fdt_device_close(FdtDevice* dev, FdtError* err)
+{
+  if (dev->fd < 0) {
+    return true;
+  }
+
+  if (close(dev->fd) != 0) {
+    fdt_error_setlasterror(err, fdt_device_getname(dev));
+    return false;
+  }
+
+  fdt_device_setname(dev, "");
+  dev->fd = -1;
 
   return true;
 }
