@@ -42,14 +42,16 @@ bool fdt_device_delete(FdtDevice*);
 bool fdt_device_open(FdtDevice*, const char*, FdtDeviceMode, FdtError*);
 bool fdt_device_close(FdtDevice*, FdtError*);
 bool fdt_device_isopened(FdtDevice*);
-bool fdt_device_readoffsetblock(FdtDevice* dev, off_t offset, byte_t* buf, size_t block_size, FdtError* err);
-bool fdt_device_writeoffsetblock(FdtDevice* dev, off_t offset, byte_t* buf, size_t block_size, FdtError* err);
+bool fdt_device_readblock(FdtDevice*, byte_t*, size_t, FdtError*);
+bool fdt_device_writeblock(FdtDevice*, byte_t*, size_t, FdtError*);
+bool fdt_device_readoffsetblock(FdtDevice*, off_t, byte_t*, size_t, FdtError*);
+bool fdt_device_writeoffsetblock(FdtDevice*, off_t, byte_t*, size_t, FdtError*);
 
 #define fdt_device_setname(dev, v) fdt_string_setvalue(dev->name, v)
 
 #define fdt_device_getname(dev) fdt_string_getvalue(dev->name)
 
-bool fdt_device_getfloppyparameters(FdtDevice* dev, FdtFloppyParams* params, FdtError* err);
+bool fdt_device_getfloppyparameters(FdtDevice*, FdtFloppyParams*, FdtError*);
 
 #ifdef __cplusplus
 } /* extern C */

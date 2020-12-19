@@ -67,14 +67,21 @@ bool fdt_device_close(FdtDevice* dev, FdtError* err)
   return true;
 }
 
+bool fdt_device_readblock(FdtDevice* dev, off_t offset, byte_t* buf, size_t block_size, FdtError* err)
+{
+  return fdt_device_readoffsetblock(dev, -1, buf, block_size, err);
+}
+
 bool fdt_device_readoffsetblock(FdtDevice* dev, off_t offset, byte_t* buf, size_t block_size, FdtError* err)
 {
   if (!dev || (dev->fd < 0))
     return false;
 
-  if (lseek(dev->fd, offset, SEEK_SET) == -1) {
-    fdt_error_setlasterror(err, "");
-    return false;
+  if (0 <= offset) {
+    if (lseek(dev->fd, offset, SEEK_SET) == -1) {
+      fdt_error_setlasterror(err, "");
+      return false;
+    }
   }
 
   ssize_t n_read = 0;
@@ -92,14 +99,21 @@ bool fdt_device_readoffsetblock(FdtDevice* dev, off_t offset, byte_t* buf, size_
   return (n_read == block_size) ? true : false;
 }
 
+bool fdt_device_writeblock(FdtDevice* dev, off_t offset, byte_t* buf, size_t block_size, FdtError* err)
+{
+  return fdt_device_writeoffsetblock(dev, -1, buf, block_size, err);
+}
+
 bool fdt_device_writeoffsetblock(FdtDevice* dev, off_t offset, byte_t* buf, size_t block_size, FdtError* err)
 {
   if (!dev || (dev->fd < 0))
     return false;
 
-  if (lseek(dev->fd, offset, SEEK_SET) == -1) {
-    fdt_error_setlasterror(err, "");
-    return false;
+  if (0 <= offset) {
+    if (lseek(dev->fd, offset, SEEK_SET) == -1) {
+      fdt_error_setlasterror(err, "");
+      return false;
+    }
   }
 
   ssize_t n_wrote = 0;
