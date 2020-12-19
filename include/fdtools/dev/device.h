@@ -46,6 +46,7 @@ bool fdt_device_readblock(FdtDevice*, byte_t*, size_t, FdtError*);
 bool fdt_device_writeblock(FdtDevice*, byte_t*, size_t, FdtError*);
 bool fdt_device_readoffsetblock(FdtDevice*, off_t, byte_t*, size_t, FdtError*);
 bool fdt_device_writeoffsetblock(FdtDevice*, off_t, byte_t*, size_t, FdtError*);
+ssize_t fdt_device_getsize(FdtDevice* dev, FdtError* err);
 
 #define fdt_device_setname(dev, v) fdt_string_setvalue(dev->name, v)
 

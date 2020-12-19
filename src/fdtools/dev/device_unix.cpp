@@ -133,3 +133,22 @@ bool fdt_device_writeoffsetblock(FdtDevice* dev, off_t offset, byte_t* buf, size
 
   return (n_wrote == block_size) ? true : false;
 }
+
+ssize_t fdt_device_getsize(FdtDevice* dev, FdtError* err)
+{
+  if (!dev || (dev->fd < 0))
+    return -1;
+
+  off_t size = lseek(dev->fd, 0, SEEK_END);
+  if (size == -1) {
+    fdt_error_setlasterror(err, "");
+    return -1;
+  }
+
+  if (lseek(dev->fd, 0, SEEK_SET) == -1) {
+    fdt_error_setlasterror(err, "");
+    return -1;
+  }
+
+  return size;
+}
