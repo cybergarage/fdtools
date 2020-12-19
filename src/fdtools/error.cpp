@@ -68,6 +68,9 @@ bool fdt_error_iserror(FdtError* err)
 
 void fdt_error_setdebugmessage(FdtError* err, const char* file, int line_no, const char* function, const char* prefix, const char* format, ...)
 {
+  if (!err)
+    return;
+
   fdt_string_setvalue(err->file_name, file);
   err->line_no = line_no;
   fdt_string_setvalue(err->func_name, function);

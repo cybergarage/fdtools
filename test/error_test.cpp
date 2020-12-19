@@ -24,3 +24,8 @@ BOOST_AUTO_TEST_CASE(ErrorTest)
   BOOST_CHECK(!fdt_error_iserror(err));
   BOOST_CHECK(fdt_error_delete(err));
 }
+
+BOOST_AUTO_TEST_CASE(ErrorNullTest)
+{
+  fdt_error_setmessage(NULL, "");
+}
