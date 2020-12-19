@@ -43,10 +43,10 @@ int main(int argc, char* argv[])
       printf("head    : %d\n", fdt_floppy_params_gethead(fdparams));
       printf("track   : %d\n", fdt_floppy_params_gettrack(fdparams));
       printf("stretch : %d\n", fdt_floppy_params_getstretch(fdparams));
-      printf("gap     : %c\n", fdt_floppy_params_getgap(fdparams));
-      printf("rate    : %c\n", fdt_floppy_params_getrate(fdparams));
-      printf("spec1   : %c\n", fdt_floppy_params_getspec1(fdparams));
-      printf("fmt gap : %c\n", fdt_floppy_params_getfmtgap(fdparams));
+      printf("gap     : %02X\n", fdt_floppy_params_getgap(fdparams));
+      printf("rate    : %02X\n", fdt_floppy_params_getrate(fdparams));
+      printf("spec1   : %02X\n", fdt_floppy_params_getspec1(fdparams));
+      printf("fmt gap : %02X\n", fdt_floppy_params_getfmtgap(fdparams));
     }
     else {
       printf("%s\n", fdt_error_getdebugmessage(err));
