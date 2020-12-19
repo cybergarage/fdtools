@@ -43,11 +43,11 @@ typedef struct {
   FdtString* name;
   FdtFloppyMedia media;
   FdtFloppyDensity density;
-  unsigned int size;
-  unsigned int sect;
-  unsigned int head;
-  unsigned int track;
-  unsigned int stretch;
+  size_t size;
+  size_t sect;
+  size_t head;
+  size_t track;
+  size_t stretch;
   unsigned char gap;
   unsigned char rate;
   unsigned char spec1;
