@@ -37,6 +37,12 @@ bool fdt_device_delete(FdtDevice* dev)
   if (!dev)
     return false;
 
+  if (fdt_device_isopened(dev)) {
+    if (!fdt_device_close(dev, NULL)) {
+      return false;
+    }
+  }
+
   if (dev->name) {
     fdt_string_delete(dev->name);
   }
