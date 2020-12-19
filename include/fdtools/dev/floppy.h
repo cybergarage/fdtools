@@ -43,11 +43,11 @@ typedef struct {
   FdtString* name;
   FdtFloppyMedia media;
   FdtFloppyDensity density;
-  unsigned int size;
-  unsigned int sect;
-  unsigned int head;
-  unsigned int track;
-  unsigned int stretch;
+  size_t size;
+  size_t sect;
+  size_t head;
+  size_t track;
+  size_t stretch;
   unsigned char gap;
   unsigned char rate;
   unsigned char spec1;
@@ -69,6 +69,8 @@ bool fdt_floppy_params_delete(FdtFloppyParams*);
 #define fdt_floppy_params_setrate(params, v) (params->rate = v)
 #define fdt_floppy_params_setspec1(params, v) (params->spec1 = v)
 #define fdt_floppy_params_setfmtgap(params, v) (params->fmt_gap = v)
+
+size_t fdt_floppy_params_getsectorsize(FdtFloppyParams*);
 
 #define fdt_floppy_params_getname (dev) fdt_string_getvalue(dev->name)
 #define fdt_floppy_params_getmedia(params) (params->media)
