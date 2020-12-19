@@ -13,24 +13,24 @@
 # limitations under the License.
 
 fdtoolsheaders = \
-	./fdtools/error.h \
-	./fdtools/util/file.h \
 	./fdtools/util/list.h \
-	./fdtools/util/dictionary.h \
-	./fdtools/util/logic.h \
 	./fdtools/util/array.h \
-	./fdtools/util/program.h \
+	./fdtools/util/logic.h \
+	./fdtools/util/file.h \
 	./fdtools/util/hexdump.h \
+	./fdtools/util/dictionary.h \
 	./fdtools/util/string.h \
+	./fdtools/util/program.h \
 	./fdtools/img/sector.h \
-	./fdtools/img/config.h \
-	./fdtools/img/fdx.h \
-	./fdtools/img/file.h \
-	./fdtools/img/hfe.h \
-	./fdtools/img/d88.h \
 	./fdtools/img/image.h \
+	./fdtools/img/config.h \
+	./fdtools/img/file.h \
+	./fdtools/img/fdx.h \
+	./fdtools/img/d88.h \
+	./fdtools/img/hfe.h \
 	./fdtools/dev/device.h \
 	./fdtools/dev/floppy.h \
+	./fdtools/error.h \
 	./fdtools/typedef.h
 
 nobase_include_HEADERS = \
