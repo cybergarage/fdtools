@@ -29,11 +29,15 @@ bool fdt_device_getfloppyparams(floppy_struct* fdprms, FdtFloppyParams* params, 
 
 bool fdt_device_setparameters(FdtDevice* dev, FdtError* err)
 {
-  if (dev->fd < 0)
+  if (!dev)
+    return false;
+
+  int fd = fdt_device_getfileno(dev);
+  if (fd == -1)
     return false;
 
   struct floppy_struct fdprms;
-  if (ioctl(dev->fd, FDSETPRM, &fdprms) < 0) {
+  if (ioctl(fd, FDSETPRM, &fdprms) < 0) {
     fdt_error_setlasterror(err, "");
     return false;
   }
@@ -43,11 +47,15 @@ bool fdt_device_setparameters(FdtDevice* dev, FdtError* err)
 
 bool fdt_device_getfloppyparameters(FdtDevice* dev, FdtFloppyParams* params, FdtError* err)
 {
-  if (dev->fd < 0)
+  if (!dev)
+    return false;
+
+  int fd = fdt_device_getfileno(dev);
+  if (fd == -1)
     return false;
 
   struct floppy_struct fdprms;
-  if (ioctl(dev->fd, FDGETPRM, &fdprms) < 0) {
+  if (ioctl(fd, FDGETPRM, &fdprms) < 0) {
     fdt_error_setlasterror(err, "");
     return false;
   }
