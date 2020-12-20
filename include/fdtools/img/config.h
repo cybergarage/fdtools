@@ -62,6 +62,7 @@ void fdt_image_config_print(FdtImageConfig*);
 #define fdt_image_config_setrpm(config, v) (config->rpm = v)
 #define fdt_image_config_setwriteprotect(config, v) (config->write_protect = v)
 
+#define fdt_image_config_hasname(config) ((0 < fdt_string_length(config->name)) ? true : false)
 #define fdt_image_config_getname(config) fdt_string_getvalue(config->name)
 #define fdt_image_config_getsize(config) (config->size)
 #define fdt_image_config_getdensity(config) (config->density)
