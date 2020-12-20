@@ -53,6 +53,7 @@ void fdt_image_sectors_print(FdtImageSectors*);
 
 FdtImageSector* fdt_image_sector_new();
 void fdt_image_sector_delete(FdtImageSector*);
+bool fdt_image_sector_hasdata(FdtImageSector*);
 bool fdt_image_sector_equals(FdtImageSector*, FdtImageSector*);
 
 #define fdt_image_sector_next(sector) (FdtImageSector*)fdt_list_next((FdtList*)sector)

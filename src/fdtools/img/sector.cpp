@@ -43,6 +43,17 @@ void fdt_image_sector_delete(FdtImageSector* sector)
   free(sector);
 }
 
+bool fdt_image_sector_hasdata(FdtImageSector*sector)
+{
+    if (!sector)
+      return false;
+  
+  if (!sector->data || (sector->size == 0))
+    return false;
+  
+  return true;
+}
+
 bool fdt_image_sector_equals(FdtImageSector* sector, FdtImageSector* other)
 {
   if (sector->cylinder_number != other->cylinder_number)
