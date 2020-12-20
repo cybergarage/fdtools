@@ -19,6 +19,8 @@
 
 #include <fdtools/dev/device.h>
 
+const mode_t FDT_DEVICE_WMODE = S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH | S_IWOTH;
+
 bool fdt_device_open(FdtDevice* dev, const char* name, FdtDeviceMode mode, FdtError* err)
 {
   if (!dev)
@@ -30,11 +32,11 @@ bool fdt_device_open(FdtDevice* dev, const char* name, FdtDeviceMode mode, FdtEr
     dev->fd = open(name, O_RDONLY);
     break;
   case FDT_DEVICE_WRITE:
-    dev->fd = open(name, O_WRONLY | O_CREAT | O_TRUNC, 0644);
+    dev->fd = open(name, O_WRONLY | O_CREAT | O_TRUNC, FDT_DEVICE_WMODE);
     break;
   }
 
-  if (dev->fd < 0) {
+  if (dev->fd == -1) {
     fdt_error_setlasterror(err, name);
     return false;
   }
