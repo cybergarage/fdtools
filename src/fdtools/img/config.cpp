@@ -75,6 +75,11 @@ bool fdt_image_config_equals(FdtImageConfig* config, FdtImageConfig* other)
   return memcmp((config + config_name_size), (other + config_name_size), (sizeof(FdtImageConfig) - config_name_size)) ? true : false;
 }
 
+size_t fdt_image_config_calculaterawsize(FdtImageConfig* config)
+{
+  return config->number_of_cylinder * config->number_of_head * config->number_of_sector * config->sector_size;
+}
+
 void fdt_image_config_print(FdtImageConfig* config)
 {
   printf("name               : %s\n", fdt_image_config_getname(config));
