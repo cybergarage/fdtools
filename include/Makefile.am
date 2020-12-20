@@ -29,6 +29,7 @@ fdtoolsheaders = \
 	./fdtools/img/d88.h \
 	./fdtools/img/hfe.h \
 	./fdtools/dev/device.h \
+	./fdtools/dev/image.h \
 	./fdtools/dev/floppy.h \
 	./fdtools/error.h \
 	./fdtools/typedef.h

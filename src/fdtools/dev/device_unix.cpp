@@ -41,7 +41,7 @@ bool fdt_device_open(FdtDevice* dev, const char* name, FdtDeviceMode mode, FdtEr
     return false;
   }
 
-  fdt_device_setfd(dev, fd);
+  fdt_device_setfileno(dev, fd);
 
   return true;
 }
@@ -50,7 +50,7 @@ bool fdt_device_isopened(FdtDevice* dev)
 {
   if (!dev)
     return false;
-  return (fdt_device_getfd(dev) != -1) ? true : false;
+  return (fdt_device_getfileno(dev) != -1) ? true : false;
 }
 
 bool fdt_device_close(FdtDevice* dev, FdtError* err)
@@ -58,7 +58,7 @@ bool fdt_device_close(FdtDevice* dev, FdtError* err)
   if (!dev)
     return false;
 
-  int fd = fdt_device_getfd(dev);
+  int fd = fdt_device_getfileno(dev);
   if (fd < 0)
     return true;
 
@@ -68,7 +68,7 @@ bool fdt_device_close(FdtDevice* dev, FdtError* err)
   }
 
   fdt_device_setname(dev, "");
-  fdt_device_setfd(dev, -1);
+  fdt_device_setfileno(dev, -1);
 
   return true;
 }
@@ -83,7 +83,7 @@ bool fdt_device_readoffsetblock(FdtDevice* dev, off_t offset, byte_t* buf, size_
   if (!dev)
     return false;
 
-  int fd = fdt_device_getfd(dev);
+  int fd = fdt_device_getfileno(dev);
   if (fd == -1)
     return false;
 
@@ -119,7 +119,7 @@ bool fdt_device_writeoffsetblock(FdtDevice* dev, off_t offset, byte_t* buf, size
   if (!dev)
     return false;
 
-  int fd = fdt_device_getfd(dev);
+  int fd = fdt_device_getfileno(dev);
   if (fd == -1)
     return false;
 
@@ -153,7 +153,7 @@ bool fdt_device_seek(FdtDevice* dev, off_t offset, int whence, FdtError* err)
   if (!dev)
     return false;
 
-  int fd = fdt_device_getfd(dev);
+  int fd = fdt_device_getfileno(dev);
   if (fd == -1)
     return false;
 
@@ -171,7 +171,7 @@ ssize_t fdt_device_getsize(FdtDevice* dev, FdtError* err)
   if (!dev)
     return false;
 
-  int fd = fdt_device_getfd(dev);
+  int fd = fdt_device_getfileno(dev);
   if (fd == -1)
     return false;
 

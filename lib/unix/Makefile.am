@@ -41,6 +41,7 @@ fdtools_sources = \
 	../../src/fdtools/img/sectors.cpp \
 	../../src/fdtools/img/hfe_loader.cpp \
 	../../src/fdtools/img/d88_loader.cpp \
+	../../src/fdtools/dev/image.cpp \
 	../../src/fdtools/dev/floppy_linux.cpp \
 	../../src/fdtools/dev/device_unix.cpp \
 	../../src/fdtools/dev/device.cpp \

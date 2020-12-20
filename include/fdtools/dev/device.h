@@ -50,12 +50,13 @@ bool fdt_device_writeoffsetblock(FdtDevice*, off_t, byte_t*, size_t, FdtError*);
 bool fdt_device_seek(FdtDevice*, off_t, int, FdtError*);
 ssize_t fdt_device_getsize(FdtDevice*, FdtError*);
 
+void fdt_device_setfileno(FdtDevice*, int);
+int fdt_device_getfileno(FdtDevice*);
+
 #define fdt_device_setname(dev, v) fdt_string_setvalue(dev->name, v)
-#define fdt_device_setfd(dev, v) (dev->file._file = v)
 
 #define fdt_device_getname(dev) fdt_string_getvalue(dev->name)
 #define fdt_device_getfile(dev) (&dev->file)
-#define fdt_device_getfd(dev) (dev->file._file)
 
 bool fdt_device_getfloppyparameters(FdtDevice*, FdtFloppyParams*, FdtError*);
 

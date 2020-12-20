@@ -27,7 +27,7 @@ FdtDevice* fdt_device_new()
     return NULL;
   }
 
-  fdt_device_setfd(dev, -1);
+  fdt_device_setfileno(dev, -1);
 
   return dev;
 }
@@ -50,4 +50,22 @@ bool fdt_device_delete(FdtDevice* dev)
   free(dev);
 
   return true;
+}
+
+void fdt_device_setfileno(FdtDevice* dev, int fd)
+{
+#if defined(__linux__)
+  dev->file._fileno = fd;
+#else
+  dev->file._file = fd;
+#endif
+}
+
+int fdt_device_getfileno(FdtDevice* dev)
+{
+#if defined(__linux__)
+  return dev->file._fileno;
+#else
+  return dev->file._file;
+#endif
 }
