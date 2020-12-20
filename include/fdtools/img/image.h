@@ -62,6 +62,7 @@ void fdt_image_print(FdtImage* img);
 #define fdt_image_setrpm(img, v) fdt_image_config_setrpm(img->config, v)
 #define fdt_image_setwriteprotect(img, v) fdt_image_config_setwriteprotect(img->config, v)
 
+#define fdt_image_hasname(img) fdt_image_config_hasname(img->config)
 #define fdt_image_getname(img) fdt_image_config_getname(img->config)
 #define fdt_image_getsize(img) fdt_image_config_getsize(img->config)
 #define fdt_image_getdensity(img) fdt_image_config_getdensity(img->config)
