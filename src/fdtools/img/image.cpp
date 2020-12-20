@@ -46,14 +46,14 @@ bool fdt_image_load(FdtImage* img, FILE* fp, FdtError* err)
 {
   if (!img || !fp)
     return false;
-  return img->file_loader(img, fp, err);
+  return img->image_loader(img, fp, err);
 }
 
 bool fdt_image_export(FdtImage* img, FILE* fp, FdtError* err)
 {
   if (!img || !fp)
     return false;
-  return img->file_exporter(img, fp, err);
+  return img->image_exporter(img, fp, err);
 }
 
 bool fdt_image_equals(FdtImage* img, FdtImage* other)
