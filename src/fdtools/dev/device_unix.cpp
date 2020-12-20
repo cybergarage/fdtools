@@ -26,20 +26,22 @@ bool fdt_device_open(FdtDevice* dev, const char* name, FdtDeviceMode mode, FdtEr
   if (!dev)
     return false;
 
-  dev->fd = -1;
+  int fd = -1;
   switch (mode) {
   case FDT_DEVICE_READ:
-    dev->fd = open(name, O_RDONLY);
+    fd = open(name, O_RDONLY);
     break;
   case FDT_DEVICE_WRITE:
-    dev->fd = open(name, O_WRONLY | O_CREAT | O_TRUNC, FDT_DEVICE_WMODE);
+    fd = open(name, O_WRONLY | O_CREAT | O_TRUNC, FDT_DEVICE_WMODE);
     break;
   }
 
-  if (dev->fd == -1) {
+  if (fd == -1) {
     fdt_error_setlasterror(err, name);
     return false;
   }
+
+  fdt_device_setfd(dev, fd);
 
   return true;
 }
@@ -48,23 +50,25 @@ bool fdt_device_isopened(FdtDevice* dev)
 {
   if (!dev)
     return false;
-  return (dev->fd != -1) ? true : false;
+  return (fdt_device_getfd(dev) != -1) ? true : false;
 }
 
 bool fdt_device_close(FdtDevice* dev, FdtError* err)
 {
   if (!dev)
     return false;
-  if (dev->fd < 0)
+
+  int fd = fdt_device_getfd(dev);
+  if (fd < 0)
     return true;
 
-  if (close(dev->fd) != 0) {
+  if (close(fd) != 0) {
     fdt_error_setlasterror(err, fdt_device_getname(dev));
     return false;
   }
 
   fdt_device_setname(dev, "");
-  dev->fd = -1;
+  fdt_device_setfd(dev, -1);
 
   return true;
 }
@@ -76,11 +80,15 @@ bool fdt_device_readblock(FdtDevice* dev, off_t offset, byte_t* buf, size_t bloc
 
 bool fdt_device_readoffsetblock(FdtDevice* dev, off_t offset, byte_t* buf, size_t block_size, FdtError* err)
 {
-  if (!dev || (dev->fd < 0))
+  if (!dev)
+    return false;
+
+  int fd = fdt_device_getfd(dev);
+  if (fd == -1)
     return false;
 
   if (0 <= offset) {
-    if (lseek(dev->fd, offset, SEEK_SET) == -1) {
+    if (lseek(fd, offset, SEEK_SET) == -1) {
       fdt_error_setlasterror(err, "");
       return false;
     }
@@ -88,7 +96,7 @@ bool fdt_device_readoffsetblock(FdtDevice* dev, off_t offset, byte_t* buf, size_
 
   ssize_t n_read = 0;
   while (n_read < block_size) {
-    ssize_t n = read(dev->fd, buf + n_read, block_size - n_read);
+    ssize_t n = read(fd, buf + n_read, block_size - n_read);
     if (n == 0) // EOF
       break;
     if (0 < n) {
@@ -108,11 +116,15 @@ bool fdt_device_writeblock(FdtDevice* dev, off_t offset, byte_t* buf, size_t blo
 
 bool fdt_device_writeoffsetblock(FdtDevice* dev, off_t offset, byte_t* buf, size_t block_size, FdtError* err)
 {
-  if (!dev || (dev->fd < 0))
+  if (!dev)
+    return false;
+
+  int fd = fdt_device_getfd(dev);
+  if (fd == -1)
     return false;
 
   if (0 <= offset) {
-    if (lseek(dev->fd, offset, SEEK_SET) == -1) {
+    if (lseek(fd, offset, SEEK_SET) == -1) {
       fdt_error_setlasterror(err, "");
       return false;
     }
@@ -122,7 +134,7 @@ bool fdt_device_writeoffsetblock(FdtDevice* dev, off_t offset, byte_t* buf, size
   errno = 0;
   while (n_wrote < block_size) {
     errno = 0;
-    ssize_t n = write(dev->fd, buf + n_wrote, block_size - n_wrote);
+    ssize_t n = write(fd, buf + n_wrote, block_size - n_wrote);
     if (0 < n) {
       n_wrote += n;
       continue;
@@ -138,10 +150,14 @@ bool fdt_device_writeoffsetblock(FdtDevice* dev, off_t offset, byte_t* buf, size
 
 bool fdt_device_seek(FdtDevice* dev, off_t offset, int whence, FdtError* err)
 {
-  if (!dev || (dev->fd < 0))
+  if (!dev)
     return false;
 
-  off_t pos = lseek(dev->fd, offset, whence);
+  int fd = fdt_device_getfd(dev);
+  if (fd == -1)
+    return false;
+
+  off_t pos = lseek(fd, offset, whence);
   if (pos == -1) {
     fdt_error_setlasterror(err, "");
     return false;
@@ -152,10 +168,14 @@ bool fdt_device_seek(FdtDevice* dev, off_t offset, int whence, FdtError* err)
 
 ssize_t fdt_device_getsize(FdtDevice* dev, FdtError* err)
 {
-  if (!dev || (dev->fd < 0))
-    return -1;
+  if (!dev)
+    return false;
 
-  off_t size = lseek(dev->fd, 0, SEEK_END);
+  int fd = fdt_device_getfd(dev);
+  if (fd == -1)
+    return false;
+
+  off_t size = lseek(fd, 0, SEEK_END);
   if (size == -1) {
     fdt_error_setlasterror(err, "");
     return -1;

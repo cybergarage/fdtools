@@ -27,7 +27,7 @@ FdtDevice* fdt_device_new()
     return NULL;
   }
 
-  dev->fd = -1;
+  fdt_device_setfd(dev, -1);
 
   return dev;
 }

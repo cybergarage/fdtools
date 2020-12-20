@@ -15,6 +15,7 @@
 #ifndef _FDTOOLS_DEV_DEVICE_H_
 #define _FDTOOLS_DEV_DEVICE_H_
 
+#include <stdio.h>
 #include <sys/types.h>
 
 #include <fdtools/dev/floppy.h>
@@ -33,7 +34,7 @@ typedef enum {
 
 typedef struct FDT_ATTR_PACKED {
   FdtString* name;
-  int fd;
+  FILE file;
 } FdtDevice;
 
 FdtDevice* fdt_device_new();
@@ -50,8 +51,11 @@ bool fdt_device_seek(FdtDevice*, off_t, int, FdtError*);
 ssize_t fdt_device_getsize(FdtDevice*, FdtError*);
 
 #define fdt_device_setname(dev, v) fdt_string_setvalue(dev->name, v)
+#define fdt_device_setfd(dev, v) (dev->file._file = v)
 
 #define fdt_device_getname(dev) fdt_string_getvalue(dev->name)
+#define fdt_device_getfile(dev) (&dev->file)
+#define fdt_device_getfd(dev) (dev->file._file)
 
 bool fdt_device_getfloppyparameters(FdtDevice*, FdtFloppyParams*, FdtError*);
 
