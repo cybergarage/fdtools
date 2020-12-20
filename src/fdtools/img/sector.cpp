@@ -56,6 +56,9 @@ bool fdt_image_sector_hasdata(FdtImageSector*sector)
 
 bool fdt_image_sector_equals(FdtImageSector* sector, FdtImageSector* other)
 {
+  if (!sector || !other)
+    return false;
+  
   if (sector->cylinder_number != other->cylinder_number)
     return false;
   if (sector->head_number != other->head_number)
