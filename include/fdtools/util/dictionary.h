@@ -23,7 +23,7 @@
 extern "C" {
 #endif
 
-typedef void (*FDT_DICTIONARY_ELEMENT_DESTRUCTORFUNC)(void*);
+typedef bool (*FDT_DICTIONARY_ELEMENT_DESTRUCTORFUNC)(void*);
 
 typedef struct {
   FDT_LIST_STRUCT_MEMBERS
