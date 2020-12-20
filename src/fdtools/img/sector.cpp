@@ -34,23 +34,28 @@ FdtImageSector* fdt_image_sector_new()
   return sector;
 }
 
-void fdt_image_sector_delete(FdtImageSector* sector)
+bool fdt_image_sector_delete(FdtImageSector* sector)
 {
+  if (!sector)
+    return false;
+
   fdt_list_remove((FdtList*)sector);
   if (sector->data) {
     free(sector->data);
   }
   free(sector);
+
+  return true;
 }
 
-bool fdt_image_sector_hasdata(FdtImageSector*sector)
+bool fdt_image_sector_hasdata(FdtImageSector* sector)
 {
-    if (!sector)
-      return false;
-  
+  if (!sector)
+    return false;
+
   if (!sector->data || (sector->size == 0))
     return false;
-  
+
   return true;
 }
 
@@ -58,7 +63,7 @@ bool fdt_image_sector_equals(FdtImageSector* sector, FdtImageSector* other)
 {
   if (!sector || !other)
     return false;
-  
+
   if (sector->cylinder_number != other->cylinder_number)
     return false;
   if (sector->head_number != other->head_number)

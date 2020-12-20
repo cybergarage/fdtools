@@ -21,7 +21,7 @@
 extern "C" {
 #endif
 
-typedef void (*FDT_LIST_DESTRUCTORFUNC)(void*);
+typedef bool (*FDT_LIST_DESTRUCTORFUNC)(void*);
 
 #define FDT_LIST_STRUCT_MEMBERS \
   bool headFlag;                \

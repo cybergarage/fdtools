@@ -52,7 +52,7 @@ void fdt_image_sectors_print(FdtImageSectors*);
 #define fdt_image_sectors_clear(sectors) fdt_list_clear((FdtList*)sectors, (FDT_LIST_DESTRUCTORFUNC)fdt_image_sector_delete)
 
 FdtImageSector* fdt_image_sector_new();
-void fdt_image_sector_delete(FdtImageSector*);
+bool fdt_image_sector_delete(FdtImageSector*);
 bool fdt_image_sector_hasdata(FdtImageSector*);
 bool fdt_image_sector_equals(FdtImageSector*, FdtImageSector*);
 
