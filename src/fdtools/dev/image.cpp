@@ -34,12 +34,18 @@ FdtImage* fdt_device_image_new(void)
   return img;
 }
 
-bool fdt_device_image_load(FdtImage*, FILE*, FdtError*)
+bool fdt_device_image_load(FdtImage* img, FILE* fp, FdtError* err)
 {
-  return false;
+  if (!img)
+    return false;
+
+  return true;
 }
 
-bool fdt_device_image_export(FdtImage*, FILE*, FdtError*)
+bool fdt_device_image_export(FdtImage* img, FILE* fp, FdtError* err)
 {
-  return false;
+  if (!img)
+    return false;
+
+  return true;
 }
