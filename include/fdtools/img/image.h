@@ -18,9 +18,9 @@
 #include <stdio.h>
 
 #include <fdtools/error.h>
-#include <fdtools/util/file.h>
 #include <fdtools/img/config.h>
 #include <fdtools/img/sector.h>
+#include <fdtools/util/file.h>
 
 #ifdef __cplusplus
 extern "C" {
@@ -41,7 +41,8 @@ typedef struct FDT_ATTR_PACKED {
 } FdtImage;
 
 FdtImage* fdt_image_new();
-void fdt_image_delete(FdtImage* img);
+bool fdt_image_init(FdtImage*);
+void fdt_image_delete(FdtImage*);
 bool fdt_image_equals(FdtImage*, FdtImage*);
 
 bool fdt_image_load(FdtImage*, FILE*, FdtError*);

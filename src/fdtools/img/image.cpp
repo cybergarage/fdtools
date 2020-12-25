@@ -21,15 +21,24 @@ FdtImage* fdt_image_new()
     return NULL;
   }
 
-  img->config = fdt_image_config_new();
-  img->sectors = fdt_image_sectors_new();
-
-  if (!img->config || !img->config) {
+  if (!fdt_image_init(img)) {
     fdt_image_delete(img);
     return NULL;
   }
 
   return img;
+}
+
+bool fdt_image_init(FdtImage* img)
+{
+  img->config = fdt_image_config_new();
+  img->sectors = fdt_image_sectors_new();
+
+  if (!img->config || !img->config) {
+    return false;
+  }
+
+  return true;
 }
 
 void fdt_image_delete(FdtImage* img)
