@@ -17,8 +17,7 @@
 
 #include <stdlib.h>
 
-#include <fdtools/img/d88.h>
-#include <fdtools/img/hfe.h>
+#include <fdtools/img/image.h>
 #include <fdtools/util/file.h>
 
 #ifdef __cplusplus
@@ -31,6 +30,11 @@ typedef enum {
   FDT_IMAGE_TYPE_HFE,
   FDT_IMAGE_TYPE_D88,
 } FdtImageType;
+
+typedef struct {
+  FDT_IMAGE_STRUCT_MEMBERS
+  FILE* fp;
+} FdtFileImage;
 
 FdtImageType fdt_img_file_gettype(const char* filename);
 

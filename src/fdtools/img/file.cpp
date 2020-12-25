@@ -15,7 +15,9 @@
 #include <stdio.h>
 #include <string.h>
 
+#include <fdtools/img/d88.h>
 #include <fdtools/img/file.h>
+#include <fdtools/img/hfe.h>
 #include <fdtools/util/string.h>
 
 FdtImageType fdt_img_file_gettype(const char* filename)

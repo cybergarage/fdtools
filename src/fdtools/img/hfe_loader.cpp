@@ -16,6 +16,7 @@
 #include <string.h>
 
 #include <fdtools/img/file.h>
+#include <fdtools/img/hfe.h>
 #include <fdtools/util/hexdump.h>
 #include <fdtools/util/logic.h>
 #include <fdtools/util/string.h>

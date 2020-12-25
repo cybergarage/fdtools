@@ -16,6 +16,7 @@
 #include <boost/test/unit_test.hpp>
 
 #include <fdtools/img/file.h>
+#include <fdtools/img/hfe.h>
 #include <fdtools/util/array.h>
 
 const std::string TEST_IMAGE_DIRECTORY = "./img";

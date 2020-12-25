@@ -15,6 +15,7 @@
 #include <boost/filesystem.hpp>
 #include <boost/test/unit_test.hpp>
 
+#include <fdtools/img/d88.h>
 #include <fdtools/img/file.h>
 #include <fdtools/util/array.h>
 
