@@ -15,7 +15,7 @@
 #include <stdio.h>
 #include <string.h>
 
-#include <fdtools/img/file.h>
+#include <fdtools/img/hfe.h>
 #include <fdtools/util/string.h>
 
 bool fdt_hfe_image_load(FdtImage* img, FILE* fp, FdtError* err);
