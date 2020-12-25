@@ -18,6 +18,7 @@
 #include <stdio.h>
 
 #include <fdtools/error.h>
+#include <fdtools/util/file.h>
 #include <fdtools/img/config.h>
 #include <fdtools/img/sector.h>
 
@@ -27,6 +28,7 @@ extern "C" {
 
 const int FDT_IMAGE_HEADER_SIGNATURE_MAX = 8;
 
+typedef bool (*FDT_IMAGE_OPENER)(void*, const char*, FdtFileMode, FdtError*);
 typedef bool (*FDT_IMAGE_LOADER)(void*, FILE*, FdtError*);
 typedef bool (*FDT_IMAGE_EXPORTER)(void*, FILE*, FdtError*);
 
