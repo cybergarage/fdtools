@@ -26,7 +26,7 @@ FdtImage* fdt_hfe_image_new(void)
   if (!img)
     return NULL;
 
-  fdt_image_setfileloader(img, fdt_hfe_image_load);
+  fdt_image_setloader(img, fdt_hfe_image_load);
 
   return img;
 }

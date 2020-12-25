@@ -28,7 +28,7 @@ FdtImage* fdt_device_image_new(void)
   if (!img)
     return NULL;
 
-  fdt_image_setfileloader(img, fdt_device_image_load);
+  fdt_image_setloader(img, fdt_device_image_load);
   fdt_image_setfileexporter(img, fdt_device_image_export);
 
   return img;
