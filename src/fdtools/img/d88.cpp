@@ -29,7 +29,7 @@ FdtImage* fdt_d88_image_new(void)
     return NULL;
 
   fdt_image_setloader(img, fdt_d88_image_load);
-  fdt_image_setfileexporter(img, fdt_d88_image_export);
+  fdt_image_setexporter(img, fdt_d88_image_export);
 
   return img;
 }
