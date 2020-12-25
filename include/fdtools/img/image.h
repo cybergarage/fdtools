@@ -28,16 +28,21 @@ extern "C" {
 
 const int FDT_IMAGE_HEADER_SIGNATURE_MAX = 8;
 
+#define FDT_IMAGE_STRUCT_MEMBERS \
+  FdtImageConfig* config;        \
+  FdtImageSectors* sectors;      \
+  FDT_IMAGE_OPENER image_opener; \
+  FDT_IMAGE_CLOSER image_closer; \
+  FDT_IMAGE_LOADER image_loader; \
+  FDT_IMAGE_EXPORTER image_exporter;
+
 typedef bool (*FDT_IMAGE_OPENER)(void*, const char*, FdtFileMode, FdtError*);
 typedef bool (*FDT_IMAGE_CLOSER)(void*, FdtError*);
 typedef bool (*FDT_IMAGE_LOADER)(void*, FILE*, FdtError*);
 typedef bool (*FDT_IMAGE_EXPORTER)(void*, FILE*, FdtError*);
 
 typedef struct FDT_ATTR_PACKED {
-  FdtImageConfig* config;
-  FdtImageSectors* sectors;
-  FDT_IMAGE_LOADER image_loader;
-  FDT_IMAGE_EXPORTER image_exporter;
+  FDT_IMAGE_STRUCT_MEMBERS
 } FdtImage;
 
 FdtImage* fdt_image_new();
