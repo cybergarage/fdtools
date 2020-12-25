@@ -58,6 +58,7 @@ void fdt_image_print(FdtImage* img);
 #define fdt_image_getconfig(img) (img->config)
 #define fdt_image_getsectors(img) (img->sectors)
 
+#define fdt_image_setopener(img, fn) (img->image_opener = (FDT_IMAGE_OPENER)fn)
 #define fdt_image_setloader(img, fn) (img->image_loader = (FDT_IMAGE_LOADER)fn)
 #define fdt_image_setexporter(img, fn) (img->image_exporter = (FDT_IMAGE_EXPORTER)fn)
 
