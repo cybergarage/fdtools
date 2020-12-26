@@ -53,10 +53,12 @@ bool fdt_image_delete(FdtImage*);
 bool fdt_image_init(FdtImage*);
 bool fdt_image_clear(FdtImage*);
 
-bool fdt_image_equals(FdtImage*, FdtImage*);
+bool fdt_image_open(FdtImage*, const char*, FdtFileMode, FdtError*);
+bool fdt_image_close(FdtImage*, FdtError*);
+bool fdt_image_load(FdtImage*, FdtError*);
+bool fdt_image_export(FdtImage*, FdtError*);
 
-bool fdt_image_load(FdtImage*, FILE*, FdtError*);
-bool fdt_image_export(FdtImage*, FILE*, FdtError*);
+bool fdt_image_equals(FdtImage*, FdtImage*);
 
 void fdt_image_print(FdtImage* img);
 

@@ -31,10 +31,10 @@ bool fdt_image_setd88headerinfo(FdtFileImage* img, FdtD88Header* header);
 
 bool fdt_d88_image_load(FdtFileImage* img, FdtError* err)
 {
-  FILE *fp = fdt_image_file_getfile(img);
+  FILE* fp = fdt_image_file_getfile(img);
   if (!fp)
     return false;
-  
+
   byte_t header_buf[sizeof(FdtD88Header)];
   if (!fdt_file_read(fp, header_buf, sizeof(header_buf)))
     return false;

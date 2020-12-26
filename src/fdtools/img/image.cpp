@@ -64,18 +64,32 @@ bool fdt_image_clear(FdtImage* img)
   return true;
 }
 
-bool fdt_image_load(FdtImage* img, FILE* fp, FdtError* err)
+bool fdt_image_open(FdtImage* img, const char* name, FdtFileMode mode, FdtError* err)
 {
-  if (!img || !fp)
+  if (!img)
     return false;
-  return img->image_loader(img, fp, err);
+  return img->image_opener(img, name, mode, err);
 }
 
-bool fdt_image_export(FdtImage* img, FILE* fp, FdtError* err)
+bool fdt_image_close(FdtImage* img, FdtError* err)
 {
-  if (!img || !fp)
+  if (!img)
     return false;
-  return img->image_exporter(img, fp, err);
+  return img->image_closer(img, err);
+}
+
+bool fdt_image_load(FdtImage* img, FdtError* err)
+{
+  if (!img)
+    return false;
+  return img->image_loader(img, err);
+}
+
+bool fdt_image_export(FdtImage* img, FdtError* err)
+{
+  if (!img)
+    return false;
+  return img->image_exporter(img, err);
 }
 
 bool fdt_image_equals(FdtImage* img, FdtImage* other)

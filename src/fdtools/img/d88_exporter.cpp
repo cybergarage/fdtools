@@ -24,7 +24,7 @@ bool fdt_d88_sector_header_setconfig(FdtD88SectorHeader*, FdtImageSector*, FdtDe
 
 bool fdt_d88_image_export(FdtFileImage* img, FdtError* err)
 {
-  FILE *fp = fdt_image_file_getfile(img);
+  FILE* fp = fdt_image_file_getfile(img);
   if (!fp)
     return false;
 
