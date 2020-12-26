@@ -39,8 +39,8 @@ const int FDT_IMAGE_HEADER_SIGNATURE_MAX = 8;
 
 typedef bool (*FDT_IMAGE_OPENER)(void*, const char*, FdtFileMode, FdtError*);
 typedef bool (*FDT_IMAGE_CLOSER)(void*, FdtError*);
-typedef bool (*FDT_IMAGE_LOADER)(void*, FILE*, FdtError*);
-typedef bool (*FDT_IMAGE_EXPORTER)(void*, FILE*, FdtError*);
+typedef bool (*FDT_IMAGE_LOADER)(void*, FdtError*);
+typedef bool (*FDT_IMAGE_EXPORTER)(void*, FdtError*);
 typedef bool (*FDT_IMAGE_DESTRUCTOR)(void*);
 
 typedef struct FDT_ATTR_PACKED {
