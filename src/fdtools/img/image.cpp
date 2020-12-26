@@ -16,7 +16,7 @@
 
 FdtImage* fdt_image_new()
 {
-  FdtImage* img = (FdtImage*)malloc(sizeof(FdtImage));
+  FdtImage* img = (FdtImage*)calloc(sizeof(FdtImage), 1);
   if (!img) {
     return NULL;
   }
@@ -51,10 +51,21 @@ bool fdt_image_delete(FdtImage* img)
 
 bool fdt_image_clear(FdtImage* img)
 {
-  if (img->config)
+  if (!img)
+    return false;
+
+  if (img->image_destructor) {
+    if (!img->image_destructor(img))
+      return false;
+  }
+
+  if (img->config) {
     fdt_image_config_delete(img->config);
-  if (img->sectors)
+  }
+  if (img->sectors) {
     fdt_image_sectors_delete(img->sectors);
+  }
+
   return true;
 }
 

@@ -28,18 +28,20 @@ extern "C" {
 
 const int FDT_IMAGE_HEADER_SIGNATURE_MAX = 8;
 
-#define FDT_IMAGE_STRUCT_MEMBERS \
-  FdtImageConfig* config;        \
-  FdtImageSectors* sectors;      \
-  FDT_IMAGE_OPENER image_opener; \
-  FDT_IMAGE_CLOSER image_closer; \
-  FDT_IMAGE_LOADER image_loader; \
-  FDT_IMAGE_EXPORTER image_exporter;
+#define FDT_IMAGE_STRUCT_MEMBERS     \
+  FdtImageConfig* config;            \
+  FdtImageSectors* sectors;          \
+  FDT_IMAGE_OPENER image_opener;     \
+  FDT_IMAGE_CLOSER image_closer;     \
+  FDT_IMAGE_LOADER image_loader;     \
+  FDT_IMAGE_EXPORTER image_exporter; \
+  FDT_IMAGE_DESTRUCTOR image_destructor;
 
 typedef bool (*FDT_IMAGE_OPENER)(void*, const char*, FdtFileMode, FdtError*);
 typedef bool (*FDT_IMAGE_CLOSER)(void*, FdtError*);
 typedef bool (*FDT_IMAGE_LOADER)(void*, FILE*, FdtError*);
 typedef bool (*FDT_IMAGE_EXPORTER)(void*, FILE*, FdtError*);
+typedef bool (*FDT_IMAGE_DESTRUCTOR)(void*);
 
 typedef struct FDT_ATTR_PACKED {
   FDT_IMAGE_STRUCT_MEMBERS
@@ -65,6 +67,7 @@ void fdt_image_print(FdtImage* img);
 #define fdt_image_setcloser(img, fn) (img->image_closer = (FDT_IMAGE_CLOSER)fn)
 #define fdt_image_setloader(img, fn) (img->image_loader = (FDT_IMAGE_LOADER)fn)
 #define fdt_image_setexporter(img, fn) (img->image_exporter = (FDT_IMAGE_EXPORTER)fn)
+#define fdt_image_destructor(img, fn) (img->image_destructor = (FDT_IMAGE_DESTRUCTOR)fn)
 
 #define fdt_image_setname(img, v) fdt_image_config_setname(img->config, v)
 #define fdt_image_setsize(img, v) fdt_image_config_setsize(img->config, v)
