@@ -43,8 +43,8 @@ bool fdt_image_init(FdtImage* img)
 
 bool fdt_image_delete(FdtImage* img)
 {
-  if (!fdt_image_clear(img))
-    return false;
+  if (img->image_destructor)
+    return img->image_destructor(img);
   free(img);
   return true;
 }
@@ -53,11 +53,6 @@ bool fdt_image_clear(FdtImage* img)
 {
   if (!img)
     return false;
-
-  if (img->image_destructor) {
-    if (!img->image_destructor(img))
-      return false;
-  }
 
   if (img->config) {
     fdt_image_config_delete(img->config);
