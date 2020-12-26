@@ -21,9 +21,9 @@
 extern "C" {
 #endif
 
-typedef int FdtCylinderNumber;
-typedef int FdtHeadNumber;
-typedef int FdtSectorNumber;
+typedef size_t FdtCylinderNumber;
+typedef size_t FdtHeadNumber;
+typedef size_t FdtSectorNumber;
 
 typedef struct {
   FDT_LIST_STRUCT_MEMBERS
