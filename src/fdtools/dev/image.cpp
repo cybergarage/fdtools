@@ -81,15 +81,18 @@ bool fdt_device_image_close(FdtDeviceImage* img, FdtError* err)
   return fdt_device_close(img->dev, err);
 }
 
-bool fdt_device_image_load(FdtImage* img, FILE* fp, FdtError* err)
+bool fdt_device_image_load(FdtDeviceImage* img, FILE* fp, FdtError* err)
 {
   if (!img)
     return false;
 
+  if (!fdt_device_image_isopened(img))
+    return false;
+  
   return true;
 }
 
-bool fdt_device_image_export(FdtImage* img, FILE* fp, FdtError* err)
+bool fdt_device_image_export(FdtDeviceImage* img, FILE* fp, FdtError* err)
 {
   if (!img)
     return false;
