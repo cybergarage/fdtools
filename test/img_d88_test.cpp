@@ -47,14 +47,12 @@ BOOST_AUTO_TEST_CASE(D88ImageLoadTest)
 
     // Loader test
 
-    FILE* fp = fdt_file_open(filename.c_str(), FDT_FILE_READ);
-    BOOST_CHECK(fp);
-    if (!fp)
-      continue;
     FdtImage* src_img = fdt_d88_image_new();
-    BOOST_CHECK(fdt_image_load(src_img, fp, err));
+    BOOST_CHECK(src_img);
+    BOOST_CHECK(fdt_image_open(src_img, filename.c_str(), FDT_FILE_READ, err));
+    BOOST_CHECK(fdt_image_load(src_img, err));
     //fdt_image_print(src_img);
-    fdt_file_close(fp);
+    BOOST_CHECK(fdt_image_close(src_img, err));
 
     // Exporter test
 
@@ -62,15 +60,17 @@ BOOST_AUTO_TEST_CASE(D88ImageLoadTest)
 
     byte_t* dst_img_buf = (byte_t*)malloc(img_size);
     FILE* mem_fp = fdt_file_memopen(dst_img_buf, img_size, FDT_FILE_WRITE);
-    BOOST_CHECK(fdt_image_export(src_img, mem_fp, err));
-    fdt_file_memclose(mem_fp);
+    fdt_image_file_setfile(src_img, mem_fp);
+    BOOST_CHECK(fdt_image_export(src_img, err));
+    BOOST_CHECK(fdt_image_close(src_img, err));
 
     // Compare test
 
     mem_fp = fdt_file_memopen(dst_img_buf, img_size, FDT_FILE_READ);
     FdtImage* dst_img = fdt_d88_image_new();
-    BOOST_CHECK(fdt_image_load(dst_img, fp, err));
-    fdt_file_memclose(mem_fp);
+    fdt_image_file_setfile(src_img, mem_fp);
+    BOOST_CHECK(fdt_image_load(dst_img, err));
+    BOOST_CHECK(fdt_image_close(dst_img, err));
     BOOST_CHECK(fdt_image_equals(src_img, dst_img));
 
     free(dst_img_buf);
