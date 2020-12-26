@@ -113,7 +113,8 @@ bool fdt_hfe_image_load(FdtFileImage* img, FdtError* err)
 
       fdt_image_addsector(img, sector);
 
-      fdt_hexdump_print(sector_data, sector_data_size);
+      //fdt_hexdump_print(sector_data, sector_data_size);
+
       return true;
     }
 
