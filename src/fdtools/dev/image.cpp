@@ -81,7 +81,7 @@ bool fdt_device_image_close(FdtDeviceImage* img, FdtError* err)
   return fdt_device_close(img->dev, err);
 }
 
-bool fdt_device_image_load(FdtDeviceImage* img, FILE* fp, FdtError* err)
+bool fdt_device_image_load(FdtDeviceImage* img, FdtError* err)
 {
   if (!img)
     return false;
@@ -92,7 +92,7 @@ bool fdt_device_image_load(FdtDeviceImage* img, FILE* fp, FdtError* err)
   return true;
 }
 
-bool fdt_device_image_export(FdtDeviceImage* img, FILE* fp, FdtError* err)
+bool fdt_device_image_export(FdtDeviceImage* img, FdtError* err)
 {
   if (!img)
     return false;
