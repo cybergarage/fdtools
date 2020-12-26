@@ -15,16 +15,17 @@
 #include <stdio.h>
 #include <string.h>
 
+#include <fdtools/img/file.h>
 #include <fdtools/img/d88.h>
 #include <fdtools/util/file.h>
 #include <fdtools/util/string.h>
 
-bool fdt_d88_image_load(FdtImage*, FILE*, FdtError* err);
-bool fdt_d88_image_export(FdtImage*, FILE*, FdtError* err);
+bool fdt_d88_image_load(FdtImage*, FdtError* err);
+bool fdt_d88_image_export(FdtImage*, FdtError* err);
 
 FdtImage* fdt_d88_image_new(void)
 {
-  FdtImage* img = fdt_image_new();
+  FdtImage* img = fdt_image_file_new();
   if (!img)
     return NULL;
 

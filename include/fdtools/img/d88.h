@@ -15,7 +15,7 @@
 #ifndef _FDTOOLS_IMG_D88_H_
 #define _FDTOOLS_IMG_D88_H_
 
-#include <fdtools/img/image.h>
+#include <fdtools/img/file.h>
 
 #ifdef __cplusplus
 extern "C" {
