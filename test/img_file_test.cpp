@@ -18,7 +18,7 @@
 
 BOOST_AUTO_TEST_CASE(ImageFileTest)
 {
-  FdtImage *img = fdt_image_file_new();
+  FdtImage* img = fdt_image_file_new();
   BOOST_CHECK(img);
   BOOST_CHECK(fdt_image_delete(img));
 }

@@ -35,8 +35,10 @@ FdtImage* fdt_image_file_new()
   }
 
   img->fp = NULL;
+  
+  fdt_image_setdestructor(img, fdt_image_file_delete);
 
-  return (FdtImage *)img;
+  return (FdtImage*)img;
 }
 
 bool fdt_image_file_delete(FdtFileImage* img)
