@@ -40,6 +40,7 @@ FdtImage* fdt_image_file_new(void);
 
 #define fdt_image_file_setfile(img, v) (((FdtFileImage*)img)->fp = v)
 #define fdt_image_file_getfile(img) (img->fp)
+#define fdt_image_file_isopened(img) ((img->fp) ? true : false)
 
 FdtImageType fdt_imag_file_gettype(const char* filename);
 
