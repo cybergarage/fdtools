@@ -18,11 +18,11 @@
 #include <fdtools/img/hfe.h>
 #include <fdtools/util/string.h>
 
-bool fdt_hfe_image_load(FdtImage* img, FILE* fp, FdtError* err);
+bool fdt_hfe_image_load(FdtFileImage* img, FdtError* err);
 
 FdtImage* fdt_hfe_image_new(void)
 {
-  FdtImage* img = fdt_image_new();
+  FdtImage* img = fdt_image_file_new();
   if (!img)
     return NULL;
 

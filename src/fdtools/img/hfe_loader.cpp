@@ -22,12 +22,16 @@
 #include <fdtools/util/string.h>
 
 bool fdt_hfe_header_parse(FdtHfeHeader* header, byte_t* header_buf);
-bool fdt_image_sethfeheaderinfo(FdtImage* img, FdtHfeHeader* header);
+bool fdt_image_sethfeheaderinfo(FdtFileImage* img, FdtHfeHeader* header);
 void fdt_hfe_header_print(FdtHfeTrackOffsets*, size_t);
 void fdt_hfe_track_print(byte_t* track_buf, size_t track_len);
 
-bool fdt_hfe_image_load(FdtImage* img, FILE* fp, FdtError* err)
+bool fdt_hfe_image_load(FdtFileImage* img, FdtError* err)
 {
+  FILE* fp = fdt_image_file_getfile(img);
+  if (!fp)
+    return false;
+
   // Read first part: File header
 
   byte_t header_buf[sizeof(FdtHfeHeader)];
@@ -126,7 +130,7 @@ bool fdt_hfe_header_parse(FdtHfeHeader* header, byte_t* header_buf)
   return true;
 }
 
-bool fdt_image_sethfeheaderinfo(FdtImage* img, FdtHfeHeader* header)
+bool fdt_image_sethfeheaderinfo(FdtFileImage* img, FdtHfeHeader* header)
 {
   fdt_image_setwriteprotect(img, header->write_allowed ? true : false);
   fdt_image_setnumberofcylinder(img, header->number_of_track);
