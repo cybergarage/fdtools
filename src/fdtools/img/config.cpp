@@ -94,6 +94,8 @@ bool fdt_image_config_equals(FdtImageConfig* config, FdtImageConfig* other)
 
 size_t fdt_image_config_calculaterawsize(FdtImageConfig* config)
 {
+  if (!config)
+    return 0;
   return config->number_of_cylinder * config->number_of_head * config->number_of_sector * config->sector_size;
 }
 
