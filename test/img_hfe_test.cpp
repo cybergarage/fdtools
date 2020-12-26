@@ -44,17 +44,13 @@ BOOST_AUTO_TEST_CASE(HfeImageLoadTest)
 
     BOOST_CHECK_EQUAL(fdt_imag_file_gettype(filename.c_str()), FDT_IMAGE_TYPE_HFE);
 
-    FILE* fp = fdt_file_open(filename.c_str(), FDT_FILE_READ);
-    BOOST_CHECK(fp);
-    if (!fp)
-      continue;
-
     FdtImage* img = fdt_hfe_image_new();
-    BOOST_CHECK(fdt_image_load(img, fp, err));
+    BOOST_CHECK(img);
+    BOOST_CHECK(fdt_image_open(img, filename.c_str(), FDT_FILE_READ, err));
+    BOOST_CHECK(fdt_image_load(img, err));
     //fdt_image_print(img);
+    BOOST_CHECK(fdt_image_close(img, err));
     fdt_image_delete(img);
-
-    fdt_file_close(fp);
   }
 
   fdt_error_delete(err);
