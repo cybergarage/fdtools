@@ -17,11 +17,12 @@
 
 #include <fdtools/dev/image.h>
 
-bool fdt_device_image_delete(FdtDeviceImage* img);
-bool fdt_device_image_open(FdtDeviceImage* img, const char* name, FdtFileMode mode, FdtError* err);
-bool fdt_device_image_close(FdtDeviceImage* img, FdtError* err);
+bool fdt_device_image_delete(FdtDeviceImage*);
+bool fdt_device_image_open(FdtDeviceImage*, const char*, FdtFileMode, FdtError*);
+bool fdt_device_image_close(FdtDeviceImage*, FdtError*);
 bool fdt_device_image_load(FdtDeviceImage*, FdtError*);
 bool fdt_device_image_export(FdtDeviceImage*, FdtError*);
+bool fdt_device_image_loadsector(FdtDeviceImage*, FdtImageSector*, FdtError*);
 
 FdtImage* fdt_device_image_new(void)
 {
@@ -91,7 +92,15 @@ bool fdt_device_image_load(FdtDeviceImage* img, FdtError* err)
 
   if (!fdt_device_image_generatesectors(img))
     return false;
-  
+
+  return true;
+}
+
+bool fdt_device_image_loadsector(FdtDeviceImage* img, FdtImageSector* sector, FdtError* err)
+{
+  if (!img || !sector)
+    return false;
+
   return true;
 }
 

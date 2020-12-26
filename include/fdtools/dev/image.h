@@ -32,7 +32,6 @@ FdtImage* fdt_device_image_new(void);
 #define fdt_device_image_isopened(img) fdt_device_isopened(img->dev)
 #define fdt_device_image_generatesectors(img) fdt_image_generatesectors((FdtImage*)img)
 
-
 #ifdef __cplusplus
 } /* extern C */
 #endif

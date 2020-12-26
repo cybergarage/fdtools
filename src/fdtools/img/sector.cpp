@@ -48,6 +48,21 @@ bool fdt_image_sector_delete(FdtImageSector* sector)
   return true;
 }
 
+bool fdt_image_sector_isvalid(FdtImageSector* sector)
+{
+  if (!sector)
+    return false;
+
+  if (fdt_image_sector_getcylindernumber(sector) <= 0)
+    return false;
+  if (fdt_image_sector_getheadnumber(sector) <= 0)
+    return false;
+  if (fdt_image_sector_getnumber(sector) <= 0)
+    return false;
+
+  return true;
+}
+
 bool fdt_image_sector_hasdata(FdtImageSector* sector)
 {
   if (!sector)
@@ -72,5 +87,6 @@ bool fdt_image_sector_equals(FdtImageSector* sector, FdtImageSector* other)
     return false;
   if (sector->size != other->size)
     return false;
+
   return memcmp(sector->data, other->data, sector->size) == 0 ? true : false;
 }
