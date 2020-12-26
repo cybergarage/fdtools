@@ -20,17 +20,21 @@
 #include <fdtools/util/hexdump.h>
 #include <fdtools/util/string.h>
 
-bool fdt_d88_image_load(FdtImage*, FILE*);
+bool fdt_d88_image_load(FdtFileImage*, FILE*);
 bool fdt_d88_header_parse(FdtD88Header*, byte_t*);
 void fdt_d88_header_print(FdtD88Header*);
 bool fdt_d88_sector_header_read(FdtD88SectorHeader*, FILE* fp, int n, size_t offset);
 bool fdt_d88_sector_header_parse(FdtD88SectorHeader*, int, size_t, byte_t*);
 void fdt_d88_sector_header_print(FdtD88SectorHeader*, int n, size_t offset);
 bool fdt_d88_sector_data_read(FdtD88SectorHeader*, FILE* fp, size_t offset, byte_t* buf, size_t buf_size);
-bool fdt_image_setd88headerinfo(FdtImage* img, FdtD88Header* header);
+bool fdt_image_setd88headerinfo(FdtFileImage* img, FdtD88Header* header);
 
-bool fdt_d88_image_load(FdtImage* img, FILE* fp, FdtError* err)
+bool fdt_d88_image_load(FdtFileImage* img, FdtError* err)
 {
+  FILE *fp = fdt_image_file_getfile(img);
+  if (!fp)
+    return false;
+  
   byte_t header_buf[sizeof(FdtD88Header)];
   if (!fdt_file_read(fp, header_buf, sizeof(header_buf)))
     return false;
@@ -128,7 +132,7 @@ bool fdt_d88_header_parse(FdtD88Header* header, byte_t* header_buf)
   return true;
 }
 
-bool fdt_image_setd88headerinfo(FdtImage* img, FdtD88Header* header)
+bool fdt_image_setd88headerinfo(FdtFileImage* img, FdtD88Header* header)
 {
   fdt_image_setname(img, header->name);
   fdt_image_setsize(img, header->disk_size);

@@ -36,9 +36,11 @@ typedef struct {
   FILE* fp;
 } FdtFileImage;
 
-FdtImageType fdt_imag_file_gettype(const char* filename);
-
 FdtImage* fdt_image_file_new(void);
+
+#define fdt_image_file_getfile(img) (img->fp)
+
+FdtImageType fdt_imag_file_gettype(const char* filename);
 
 #ifdef __cplusplus
 } /* extern C */
