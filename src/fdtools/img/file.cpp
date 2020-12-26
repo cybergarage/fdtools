@@ -20,42 +20,26 @@
 #include <fdtools/img/hfe.h>
 #include <fdtools/util/string.h>
 
-FdtImageType fdt_img_file_gettype(const char* filename)
+bool fdt_image_file_delete(FdtFileImage*);
+
+FdtImage* fdt_image_file_new()
 {
-  FILE* fp = fdt_file_open(filename, FDT_FILE_READ);
-  if (!fp)
-    return FDT_IMAGE_TYPE_UNKNOWN;
-
-  char sig[FDT_IMAGE_HEADER_SIGNATURE_MAX];
-  size_t n_read = fread(sig, sizeof(char), FDT_IMAGE_HEADER_SIGNATURE_MAX, fp);
-  fdt_file_close(fp);
-
-  // Identify image file type by the header signature
-
-  if (n_read != FDT_IMAGE_HEADER_SIGNATURE_MAX) {
-    return FDT_IMAGE_TYPE_UNKNOWN;
+  FdtFileImage* img = (FdtFileImage*)malloc(sizeof(FdtFileImage));
+  if (!img) {
+    return NULL;
   }
 
-  if (fdt_strncmp(sig, HFE_IMAGE_HEADER_SIGNATURE, fdt_strlen(HFE_IMAGE_HEADER_SIGNATURE)) == 0) {
-    return FDT_IMAGE_TYPE_HFE;
+  if (!fdt_image_init((FdtImage*)img)) {
+    fdt_image_file_delete(img);
+    return NULL;
   }
 
-  // Identify image file type by the filename extention
+  img->fp = NULL;
 
-  if (fdt_file_hasextension(filename, D88_EXTENTION_D88))
-    return FDT_IMAGE_TYPE_D88;
-  if (fdt_file_hasextension(filename, D88_EXTENTION_88D))
-    return FDT_IMAGE_TYPE_D88;
-  if (fdt_file_hasextension(filename, D88_EXTENTION_D77))
-    return FDT_IMAGE_TYPE_D88;
-  if (fdt_file_hasextension(filename, D88_EXTENTION_D68))
-    return FDT_IMAGE_TYPE_D88;
-  if (fdt_file_hasextension(filename, D88_EXTENTION_D98))
-    return FDT_IMAGE_TYPE_D88;
-  if (fdt_file_hasextension(filename, D88_EXTENTION_D8U))
-    return FDT_IMAGE_TYPE_D88;
-  if (fdt_file_hasextension(filename, D88_EXTENTION_1DD))
-    return FDT_IMAGE_TYPE_D88;
+  return (FdtImage *)img;
+}
 
-  return FDT_IMAGE_TYPE_UNKNOWN;
+bool fdt_image_file_delete(FdtFileImage* img)
+{
+  return true;
 }

@@ -46,8 +46,11 @@ typedef struct FDT_ATTR_PACKED {
 } FdtImage;
 
 FdtImage* fdt_image_new();
-bool fdt_image_init(FdtImage*);
 bool fdt_image_delete(FdtImage*);
+
+bool fdt_image_init(FdtImage*);
+bool fdt_image_clear(FdtImage*);
+
 bool fdt_image_equals(FdtImage*, FdtImage*);
 
 bool fdt_image_load(FdtImage*, FILE*, FdtError*);

@@ -43,13 +43,18 @@ bool fdt_image_init(FdtImage* img)
 
 bool fdt_image_delete(FdtImage* img)
 {
+  if (!fdt_image_clear(img))
+    return false;
+  free(img);
+  return true;
+}
+
+bool fdt_image_clear(FdtImage* img)
+{
   if (img->config)
     fdt_image_config_delete(img->config);
   if (img->sectors)
     fdt_image_sectors_delete(img->sectors);
-
-  free(img);
-  
   return true;
 }
 
