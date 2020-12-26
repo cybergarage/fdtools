@@ -33,7 +33,10 @@ BOOST_AUTO_TEST_CASE(FloppyGetParamsTest)
   FdtFloppyParams* fdparams = fdt_floppy_params_new();
   BOOST_CHECK(fdparams);
 
-  BOOST_CHECK(fdt_device_open(dev, TEST_DEV, FDT_DEVICE_READ, err));
+  if (!fdt_device_open(dev, TEST_DEV, FDT_FILE_READ, err)) {
+    BOOST_CHECK(fdt_error_delete(err));
+    return;
+  }
 
   BOOST_CHECK(fdt_device_getfloppyparameters(dev, fdparams, err));
 
