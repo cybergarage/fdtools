@@ -92,6 +92,28 @@ bool fdt_image_export(FdtImage* img, FdtError* err)
   return img->image_exporter(img, err);
 }
 
+off_t fdt_image_getsectoroffset(FdtImage* img, FdtImageSector* sector)
+{
+  if (!img || !sector)
+    return -1;
+
+  if (!fdt_image_sector_isvalid(sector))
+    return -1;
+
+  size_t sector_size = fdt_image_getsectorsize(img);
+  size_t number_of_head = fdt_image_getnumberofhead(img);
+  size_t number_of_sector = fdt_image_getnumberofsector(img);
+  size_t cylinder_no = fdt_image_sector_getcylindernumber(sector);
+  size_t header_no = fdt_image_sector_getheadnumber(sector);
+  size_t sector_no = fdt_image_sector_getnumber(sector);
+
+  size_t offset = (cylinder_no * number_of_head * number_of_sector) * sector_size;
+  offset += (header_no * number_of_sector) * sector_size;
+  offset += sector_no * sector_size;
+
+  return offset;
+}
+
 bool fdt_image_generatesectors(FdtImage* img)
 {
   if (!img)
