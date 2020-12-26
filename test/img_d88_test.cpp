@@ -68,7 +68,7 @@ BOOST_AUTO_TEST_CASE(D88ImageLoadTest)
 
     mem_fp = fdt_file_memopen(dst_img_buf, img_size, FDT_FILE_READ);
     FdtImage* dst_img = fdt_d88_image_new();
-    fdt_image_file_setfile(src_img, mem_fp);
+    fdt_image_file_setfile(dst_img, mem_fp);
     BOOST_CHECK(fdt_image_load(dst_img, err));
     BOOST_CHECK(fdt_image_close(dst_img, err));
     BOOST_CHECK(fdt_image_equals(src_img, dst_img));
