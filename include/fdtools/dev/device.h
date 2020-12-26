@@ -19,8 +19,8 @@
 #include <sys/types.h>
 
 #include <fdtools/dev/floppy.h>
-#include <fdtools/util/string.h>
 #include <fdtools/util/file.h>
+#include <fdtools/util/string.h>
 
 #ifdef __cplusplus
 extern "C" {

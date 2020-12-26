@@ -60,7 +60,7 @@ bool fdt_device_image_delete(FdtDeviceImage* img)
   if (!fdt_device_delete(img->dev))
     return false;
   img->dev = NULL;
-  
+
   if (!fdt_image_clear((FdtImage*)img))
     return false;
 
