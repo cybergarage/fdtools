@@ -19,8 +19,8 @@
 #include <fdtools/util/file.h>
 #include <fdtools/util/string.h>
 
-bool fdt_d88_image_load(FdtImage*, FdtError* err);
-bool fdt_d88_image_export(FdtImage*, FdtError* err);
+bool fdt_d88_image_load(FdtFileImage*, FdtError* err);
+bool fdt_d88_image_export(FdtFileImage*, FdtError* err);
 
 FdtImage* fdt_d88_image_new(void)
 {
