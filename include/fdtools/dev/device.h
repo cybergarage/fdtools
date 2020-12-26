@@ -19,28 +19,22 @@
 #include <sys/types.h>
 
 #include <fdtools/dev/floppy.h>
-#include <fdtools/error.h>
-#include <fdtools/typedef.h>
 #include <fdtools/util/string.h>
+#include <fdtools/util/file.h>
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-typedef enum {
-  FDT_DEVICE_READ = 0x01,
-  FDT_DEVICE_WRITE = 0x02,
-} FdtDeviceMode;
-
 typedef struct FDT_ATTR_PACKED {
   FdtString* name;
-  FILE file;
+  int fd;
 } FdtDevice;
 
 FdtDevice* fdt_device_new();
 bool fdt_device_delete(FdtDevice*);
 
-bool fdt_device_open(FdtDevice*, const char*, FdtDeviceMode, FdtError*);
+bool fdt_device_open(FdtDevice*, const char*, FdtFileMode, FdtError*);
 bool fdt_device_close(FdtDevice*, FdtError*);
 bool fdt_device_isopened(FdtDevice*);
 bool fdt_device_readblock(FdtDevice*, byte_t*, size_t, FdtError*);
@@ -50,13 +44,11 @@ bool fdt_device_writeoffsetblock(FdtDevice*, off_t, byte_t*, size_t, FdtError*);
 bool fdt_device_seek(FdtDevice*, off_t, int, FdtError*);
 ssize_t fdt_device_getsize(FdtDevice*, FdtError*);
 
-void fdt_device_setfileno(FdtDevice*, int);
-int fdt_device_getfileno(FdtDevice*);
-
 #define fdt_device_setname(dev, v) fdt_string_setvalue(dev->name, v)
+#define fdt_device_setfileno(dev, v) (dev->fd = v)
 
 #define fdt_device_getname(dev) fdt_string_getvalue(dev->name)
-#define fdt_device_getfile(dev) (&dev->file)
+#define fdt_device_getfileno(dev) (dev->fd)
 
 bool fdt_device_getfloppyparameters(FdtDevice*, FdtFloppyParams*, FdtError*);
 
