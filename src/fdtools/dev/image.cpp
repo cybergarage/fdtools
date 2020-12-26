@@ -15,23 +15,70 @@
 #include <stdio.h>
 #include <string.h>
 
-#include <fdtools/img/d88.h>
-#include <fdtools/util/file.h>
-#include <fdtools/util/string.h>
+#include <fdtools/dev/image.h>
 
-bool fdt_device_image_load(FdtImage*, FILE*, FdtError*);
-bool fdt_device_image_export(FdtImage*, FILE*, FdtError*);
+bool fdt_device_image_delete(FdtDeviceImage* img);
+bool fdt_device_image_open(FdtDeviceImage* img, const char* name, FdtFileMode mode, FdtError* err);
+bool fdt_device_image_close(FdtDeviceImage* img, FdtError* err);
+bool fdt_device_image_load(FdtDeviceImage*, FdtError*);
+bool fdt_device_image_export(FdtDeviceImage*, FdtError*);
 
 FdtImage* fdt_device_image_new(void)
 {
-  FdtImage* img = fdt_image_new();
+  FdtDeviceImage* img = (FdtDeviceImage*)calloc(sizeof(FdtDeviceImage), 1);
   if (!img)
     return NULL;
 
+  if (!fdt_image_init((FdtImage*)img)) {
+    fdt_device_image_delete(img);
+    return NULL;
+  }
+
+  img->dev = fdt_device_new();
+  if (!img->dev) {
+    fdt_device_image_delete(img);
+    return NULL;
+  }
+
+  fdt_image_setopener(img, fdt_device_image_open);
+  fdt_image_setcloser(img, fdt_device_image_close);
+  fdt_image_setdestructor(img, fdt_device_image_delete);
   fdt_image_setloader(img, fdt_device_image_load);
   fdt_image_setexporter(img, fdt_device_image_export);
 
-  return img;
+  return (FdtImage*)img;
+}
+
+bool fdt_device_image_delete(FdtDeviceImage* img)
+{
+  if (!img)
+    return false;
+
+  if (!fdt_device_image_close(img, NULL))
+    return false;
+
+  if (!fdt_device_delete(img->dev))
+    return false;
+  img->dev = NULL;
+  
+  if (!fdt_image_clear((FdtImage*)img))
+    return false;
+
+  return true;
+}
+
+bool fdt_device_image_open(FdtDeviceImage* img, const char* name, FdtFileMode mode, FdtError* err)
+{
+  if (!img)
+    return false;
+  return fdt_device_open(img->dev, name, mode, err);
+}
+
+bool fdt_device_image_close(FdtDeviceImage* img, FdtError* err)
+{
+  if (!img)
+    return false;
+  return fdt_device_close(img->dev, err);
 }
 
 bool fdt_device_image_load(FdtImage* img, FILE* fp, FdtError* err)

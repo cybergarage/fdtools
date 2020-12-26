@@ -16,10 +16,16 @@
 #define _FDTOOLS_DEVICE_IMAGE_H_
 
 #include <fdtools/img/image.h>
+#include <fdtools/dev/device.h>
 
 #ifdef __cplusplus
 extern "C" {
 #endif
+
+typedef struct FDT_ATTR_PACKED {
+  FDT_IMAGE_STRUCT_MEMBERS
+  FdtDevice *dev;
+} FdtDeviceImage;
 
 FdtImage* fdt_device_image_new(void);
 
