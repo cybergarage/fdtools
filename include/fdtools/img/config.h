@@ -46,8 +46,9 @@ typedef struct FDT_ATTR_PACKED {
 } FdtImageConfig;
 
 FdtImageConfig* fdt_image_config_new();
-void fdt_image_config_delete(FdtImageConfig*);
+bool fdt_image_config_delete(FdtImageConfig*);
 
+bool fdt_image_config_isvalid(FdtImageConfig*);
 bool fdt_image_config_equals(FdtImageConfig*, FdtImageConfig*);
 
 size_t fdt_image_config_calculaterawsize(FdtImageConfig*);

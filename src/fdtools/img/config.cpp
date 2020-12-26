@@ -39,13 +39,13 @@ FdtImageConfig* fdt_image_config_new()
   return config;
 }
 
-void fdt_image_config_delete(FdtImageConfig* config)
+bool fdt_image_config_delete(FdtImageConfig* config)
 {
   if (!config)
-    return;
-
+    return false;
   fdt_string_delete(config->name);
   free(config);
+  return true;
 }
 
 const char* fdt_image_config_getdensitystring(FdtImageConfig* config)
@@ -65,6 +65,23 @@ const char* fdt_image_config_getdensitystring(FdtImageConfig* config)
     return "";
   }
   return "";
+}
+
+bool fdt_image_config_isvalid(FdtImageConfig* config)
+{
+  if (!config)
+    return false;
+
+  if (fdt_image_config_getnumberofhead(config) <= 0)
+    return false;
+  if (fdt_image_config_getnumberofsector(config) <= 0)
+    return false;
+  if (fdt_image_config_getnumberofcylinder(config) <= 0)
+    return false;
+  if (fdt_image_config_getsectorsize(config) <= 0)
+    return false;
+
+  return true;
 }
 
 bool fdt_image_config_equals(FdtImageConfig* config, FdtImageConfig* other)
