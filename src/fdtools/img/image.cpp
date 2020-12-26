@@ -41,7 +41,7 @@ bool fdt_image_init(FdtImage* img)
   return true;
 }
 
-void fdt_image_delete(FdtImage* img)
+bool fdt_image_delete(FdtImage* img)
 {
   if (img->config)
     fdt_image_config_delete(img->config);
@@ -49,6 +49,8 @@ void fdt_image_delete(FdtImage* img)
     fdt_image_sectors_delete(img->sectors);
 
   free(img);
+  
+  return true;
 }
 
 bool fdt_image_load(FdtImage* img, FILE* fp, FdtError* err)
