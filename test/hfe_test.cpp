@@ -26,7 +26,7 @@ BOOST_AUTO_TEST_CASE(HfeHeaderSizeTest)
   BOOST_CHECK_EQUAL(sizeof(FdtHfeHeader), HFE_HEADER_SIZE);
 }
 
-BOOST_AUTO_TEST_CASE(HfeImageLoadTest)
+BOOST_AUTO_TEST_CASE(HfeImageLoaderTest)
 {
   const char TEST_HFE_IMAGES[][64] = {
     "test-001.hfe",
