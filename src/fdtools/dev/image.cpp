@@ -106,10 +106,10 @@ bool fdt_device_image_loadsector(FdtDeviceImage* img, FdtImageSector* sector, Fd
     return false;
 
   size_t sector_size = fdt_image_getsectorsize(img);
-  byte_t *sector_data = (byte_t *)malloc(sector_size);
+  byte_t* sector_data = (byte_t*)malloc(sector_size);
   if (!sector_data)
     return false;
-  
+
   if (!fdt_device_readoffsetblock(img->dev, sector_offset, sector_data, sector_size, err))
     return false;
 
