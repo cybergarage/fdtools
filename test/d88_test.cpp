@@ -26,7 +26,7 @@ BOOST_AUTO_TEST_CASE(D88HeaderSizeTest)
   BOOST_CHECK_EQUAL(sizeof(FdtD88Header), D88_HEADER_SIZE);
 }
 
-BOOST_AUTO_TEST_CASE(D88ImageLoadTest)
+BOOST_AUTO_TEST_CASE(D88ImageLoaderTest)
 {
   const char TEST_D88_IMAGES[][64] = {
     "test-001.d88",
