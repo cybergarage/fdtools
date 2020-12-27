@@ -18,9 +18,15 @@
 #include <fdtools/img/d88.h>
 #include <fdtools/img/hfe.h>
 #include <fdtools/img/raw.h>
+#include <fdtools/dev/device.h>
 
 FdtImageType fdt_imag_file_gettype(const char* filename)
 {
+  if (fdt_file_hasprefix(filename, FDT_DEVICE_PREFIX))
+    return FDT_IMAGE_TYPE_DEV;
+
+  // Identify image file type by the header signature
+
   FILE* fp = fdt_file_open(filename, FDT_FILE_READ);
   if (!fp)
     return FDT_IMAGE_TYPE_UNKNOWN;
@@ -28,8 +34,6 @@ FdtImageType fdt_imag_file_gettype(const char* filename)
   char sig[FDT_IMAGE_HEADER_SIGNATURE_MAX];
   size_t n_read = fread(sig, sizeof(char), FDT_IMAGE_HEADER_SIGNATURE_MAX, fp);
   fdt_file_close(fp);
-
-  // Identify image file type by the header signature
 
   if (n_read != FDT_IMAGE_HEADER_SIGNATURE_MAX) {
     return FDT_IMAGE_TYPE_UNKNOWN;

@@ -72,6 +72,11 @@ bool fdt_file_seek(FILE* fp, long offset, int whence)
   return (fseek(fp, offset, whence) == 0) ? true : false;
 }
 
+bool fdt_file_hasprefix(const char* filename, const char* prefix)
+{
+  return fdt_strncmp(filename, prefix, fdt_strlen(prefix)) == 0 ? true : false;
+}
+
 bool fdt_file_hasextension(const char* filename, const char* extname)
 {
   size_t filename_len = fdt_strlen(filename);
