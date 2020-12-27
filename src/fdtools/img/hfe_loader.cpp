@@ -68,7 +68,7 @@ bool fdt_hfe_image_load(FdtFileImage* img, FdtError* err)
 
   // Read third part: Track data
 
-  for (int t = 0; t < number_of_track; t++) {
+  for (size_t t = 0; t < number_of_track; t++) {
     size_t track_offset = hfe_track_offsets[t].offset;
     size_t track_data_offset = 512 * track_offset;
     if (!fdt_file_seek(fp, track_data_offset, SEEK_SET))
@@ -82,7 +82,7 @@ bool fdt_hfe_image_load(FdtFileImage* img, FdtError* err)
     }
     //fdt_hexdump_print(track_buf, track_len);
 
-    for (int h = 0; h < number_of_head; h++) {
+    for (size_t h = 0; h < number_of_head; h++) {
       size_t sector_data_size = track_len / 2;
 
       byte_t* sector_data = (byte_t*)malloc(sector_data_size);
