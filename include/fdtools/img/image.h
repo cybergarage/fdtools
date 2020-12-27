@@ -58,6 +58,7 @@ bool fdt_image_close(FdtImage*, FdtError*);
 bool fdt_image_load(FdtImage*, FdtError*);
 bool fdt_image_export(FdtImage*, FdtError*);
 
+bool fdt_image_isvalid(FdtImage*, FdtError*);
 bool fdt_image_generatesectors(FdtImage*, FdtError*);
 off_t fdt_image_getsectoroffset(FdtImage*, FdtImageSector*);
 bool fdt_image_equals(FdtImage*, FdtImage*);
