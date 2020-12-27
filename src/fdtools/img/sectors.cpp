@@ -74,9 +74,9 @@ size_t fdt_image_sectors_getnumberofhead(FdtImageSectors* sectors)
 
 size_t fdt_image_sectors_getnumberofsector(FdtImageSectors* sectors)
 {
-  int max_sector_no = 0;
+  size_t max_sector_no = 0;
   for (FdtImageSector* sector = fdt_image_sectors_gets(sectors); sector; sector = fdt_image_sector_next(sector)) {
-    int sector_no = fdt_image_sector_getnumber(sector);
+    size_t sector_no = fdt_image_sector_getnumber(sector);
     if (sector_no < max_sector_no)
       continue;
     max_sector_no = sector_no;
@@ -86,13 +86,13 @@ size_t fdt_image_sectors_getnumberofsector(FdtImageSectors* sectors)
 
 size_t fdt_image_sectors_getnumberoftracksector(FdtImageSectors* sectors, FdtCylinderNumber c, FdtHeadNumber h)
 {
-  int max_sector_no = 0;
+  size_t max_sector_no = 0;
   for (FdtImageSector* sector = fdt_image_sectors_gets(sectors); sector; sector = fdt_image_sector_next(sector)) {
     if (fdt_image_sector_getcylindernumber(sector) != c)
       continue;
     if (fdt_image_sector_getheadnumber(sector) != h)
       continue;
-    int sector_no = fdt_image_sector_getnumber(sector);
+    size_t sector_no = fdt_image_sector_getnumber(sector);
     if (sector_no < max_sector_no)
       continue;
     max_sector_no = sector_no;
@@ -150,7 +150,7 @@ void fdt_image_sectors_print(FdtImageSectors* sectors)
 {
   int n = 0;
   for (FdtImageSector* sector = fdt_image_sectors_gets(sectors); sector; sector = fdt_image_sector_next(sector)) {
-    printf("[%04d] C:%02d H:%01d R:%02d SIZE:%ld\n",
+    printf("[%04d] C:%02ld H:%01ld R:%02ld SIZE:%ld\n",
         n,
         fdt_image_sector_getcylindernumber(sector),
         fdt_image_sector_getheadnumber(sector),
