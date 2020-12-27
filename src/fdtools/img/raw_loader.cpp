@@ -26,5 +26,12 @@ bool fdt_raw_image_load(FdtFileImage* img, FdtError* err)
   if (!fp)
     return false;
 
+  FdtImageConfig* config = fdt_image_getconfig(img);
+  if (!config)
+    return false;
+
+  if (!fdt_image_config_isvalid(config, err))
+    return false;
+
   return true;
 }
