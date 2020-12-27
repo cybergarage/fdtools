@@ -17,6 +17,7 @@
 
 #include <stdlib.h>
 
+#include <fdtools/error.h>
 #include <fdtools/typedef.h>
 #include <fdtools/util/string.h>
 
@@ -48,7 +49,7 @@ typedef struct FDT_ATTR_PACKED {
 FdtImageConfig* fdt_image_config_new();
 bool fdt_image_config_delete(FdtImageConfig*);
 
-bool fdt_image_config_isvalid(FdtImageConfig*);
+bool fdt_image_config_isvalid(FdtImageConfig*, FdtError*);
 bool fdt_image_config_equals(FdtImageConfig*, FdtImageConfig*);
 
 size_t fdt_image_config_calculaterawsize(FdtImageConfig*);

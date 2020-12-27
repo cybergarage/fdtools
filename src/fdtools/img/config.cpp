@@ -67,19 +67,15 @@ const char* fdt_image_config_getdensitystring(FdtImageConfig* config)
   return "";
 }
 
-bool fdt_image_config_isvalid(FdtImageConfig* config)
+bool fdt_image_config_isvalid(FdtImageConfig* config, FdtError* err)
 {
   if (!config)
     return false;
 
-  if (fdt_image_config_getnumberofhead(config) <= 0)
+  if (fdt_image_config_getnumberofhead(config) <= 0 || fdt_image_config_getnumberofsector(config) <= 0 || fdt_image_config_getnumberofcylinder(config) <= 0 || fdt_image_config_getsectorsize(config) <= 0) {
+    fdt_error_setmessage(err, "Invalid Parameters cylinder:%ld, head:%ld, sector:%ld, ssize:%ld", fdt_image_config_getnumberofcylinder(config), fdt_image_config_getnumberofhead(config), fdt_image_config_getnumberofsector(config), fdt_image_config_getsectorsize(config));
     return false;
-  if (fdt_image_config_getnumberofsector(config) <= 0)
-    return false;
-  if (fdt_image_config_getnumberofcylinder(config) <= 0)
-    return false;
-  if (fdt_image_config_getsectorsize(config) <= 0)
-    return false;
+  }
 
   return true;
 }

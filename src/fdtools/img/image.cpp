@@ -114,12 +114,12 @@ off_t fdt_image_getsectoroffset(FdtImage* img, FdtImageSector* sector)
   return offset;
 }
 
-bool fdt_image_generatesectors(FdtImage* img)
+bool fdt_image_generatesectors(FdtImage* img, FdtError* err)
 {
   if (!img)
     return false;
 
-  if (!fdt_image_config_isvalid(img->config))
+  if (!fdt_image_config_isvalid(img->config, err))
     return false;
 
   size_t number_of_cylinder = fdt_image_getnumberofcylinder(img);

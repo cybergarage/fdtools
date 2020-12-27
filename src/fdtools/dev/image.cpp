@@ -90,7 +90,7 @@ bool fdt_device_image_load(FdtDeviceImage* img, FdtError* err)
   if (!fdt_device_image_isopened(img))
     return false;
 
-  if (!fdt_device_image_generatesectors(img))
+  if (!fdt_device_image_generatesectors(img, err))
     return false;
 
   bool all_sector_status = true;
