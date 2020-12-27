@@ -93,7 +93,14 @@ bool fdt_device_image_load(FdtDeviceImage* img, FdtError* err)
   if (!fdt_device_image_generatesectors(img))
     return false;
 
-  return true;
+  bool all_sector_status = true;
+  for (FdtImageSector* sector = fdt_device_image_getsectors(img); sector; sector = fdt_image_sector_next(sector)) {
+    if (!fdt_device_image_loadsector(img, sector, err)) {
+      all_sector_status = false;
+    }
+  }
+
+  return all_sector_status;
 }
 
 bool fdt_device_image_loadsector(FdtDeviceImage* img, FdtImageSector* sector, FdtError* err)
