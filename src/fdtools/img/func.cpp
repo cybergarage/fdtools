@@ -56,9 +56,9 @@ FdtImageType fdt_imag_file_gettype(const char* filename)
   if (fdt_file_hasextension(filename, D88_EXTENTION_1DD))
     return FDT_IMAGE_TYPE_D88;
 
-  if (fdt_file_hasextension(filename, RAW_EXTENTION_RAW))
+  if (fdt_file_hasextension(filename, FDT_RAW_EXTENTION_RAW))
     return FDT_IMAGE_TYPE_RAW;
-  if (fdt_file_hasextension(filename, RAW_EXTENTION_IMG))
+  if (fdt_file_hasextension(filename, FDT_RAW_EXTENTION_IMG))
     return FDT_IMAGE_TYPE_RAW;
 
   return FDT_IMAGE_TYPE_UNKNOWN;
