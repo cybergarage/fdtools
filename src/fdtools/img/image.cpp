@@ -173,7 +173,7 @@ bool fdt_image_generatesectors(FdtImage* img, FdtError* err)
 
   for (size_t c = 0; c < number_of_cylinder; c++) {
     for (size_t h = 0; h < number_of_head; h++) {
-      for (size_t s = 0; s < number_of_sector; s++) {
+      for (size_t s = 1; s <= number_of_sector; s++) {
         FdtImageSector* sector = fdt_image_sector_new();
         if (!sector) {
           return false;
