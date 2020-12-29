@@ -75,7 +75,7 @@ bool fdt_error_iserror(FdtError* err)
   if (!err)
     return false;
 
-  if (fdt_string_length(err->message) <= 0)
+  if (fdt_string_length(err->func_name) <= 0)
     return false;
 
   return true;
