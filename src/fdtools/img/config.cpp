@@ -80,12 +80,19 @@ bool fdt_image_config_isvalid(FdtImageConfig* config, FdtError* err)
   return true;
 }
 
-bool fdt_image_config_equals(FdtImageConfig* config, FdtImageConfig* other)
+bool fdt_image_config_equals(FdtImageConfig* config, FdtImageConfig* other, FdtError* err)
 {
-  if (!fdt_string_equals(config->name, other->name))
+  if (!fdt_string_equals(config->name, other->name)) {
+    fdt_error_setmessage(err, "%s != %s", fdt_string_getvalue(config->name), fdt_string_getvalue(other->name));
     return false;
+  }
+
   size_t config_name_size = sizeof(FdtString);
-  return memcmp((config + config_name_size), (other + config_name_size), (sizeof(FdtImageConfig) - config_name_size)) ? true : false;
+  if (memcmp((config + config_name_size), (other + config_name_size), (sizeof(FdtImageConfig) - config_name_size)) != 0) {
+    return false;
+  }
+
+  return true;
 }
 
 size_t fdt_image_config_calculaterawsize(FdtImageConfig* config)

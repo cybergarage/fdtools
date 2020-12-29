@@ -194,7 +194,7 @@ bool fdt_image_equals(FdtImage* img, FdtImage* other, FdtError* err)
 {
   if (!img || !other)
     return false;
-  if (!fdt_image_config_equals(img->config, other->config))
+  if (!fdt_image_config_equals(img->config, other->config, err))
     return false;
   if (!fdt_image_sectors_equals(img->sectors, other->sectors))
     return false;
