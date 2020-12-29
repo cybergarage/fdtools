@@ -22,6 +22,9 @@
 
 bool fdt_raw_image_load(FdtFileImage* img, FdtError* err)
 {
+  if (!img)
+    return false;
+
   FILE* fp = fdt_image_file_getfile(img);
   if (!fp)
     return false;
