@@ -36,6 +36,7 @@ typedef enum {
 
 typedef struct FDT_ATTR_PACKED {
   FdtString* name;
+  FdtString* desc;
   FdtDensity density;
   size_t size;
   size_t number_of_head;
@@ -44,7 +45,6 @@ typedef struct FDT_ATTR_PACKED {
   size_t sector_size;
   int rpm;
   bool write_protect;
-  FdtString* description;
 } FdtImageConfig;
 
 FdtImageConfig* fdt_image_config_new();
