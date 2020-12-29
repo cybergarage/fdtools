@@ -24,12 +24,12 @@ BOOST_AUTO_TEST_CASE(ProgramParseTest)
   FdtError* err = fdt_error_new();
 
   FdtProgram* prg = fdt_program_new();
-  BOOST_CHECK(prg);
+  BOOST_REQUIRE(prg);
 
-  BOOST_CHECK(fdt_program_addoption(prg, "c", true));
-  BOOST_CHECK(fdt_program_addoption(prg, "h", true));
-  BOOST_CHECK(fdt_program_addoption(prg, "s", true));
-  BOOST_CHECK(fdt_program_addoption(prg, "v", false));
+  BOOST_REQUIRE(fdt_program_addoption(prg, "c", true));
+  BOOST_REQUIRE(fdt_program_addoption(prg, "h", true));
+  BOOST_REQUIRE(fdt_program_addoption(prg, "s", true));
+  BOOST_REQUIRE(fdt_program_addoption(prg, "v", false));
 
   BOOST_CHECK(fdt_program_hasoption(prg, "c"));
   BOOST_CHECK(fdt_program_hasoption(prg, "h"));
