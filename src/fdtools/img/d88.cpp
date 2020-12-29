@@ -28,6 +28,7 @@ FdtImage* fdt_d88_image_new(void)
   if (!img)
     return NULL;
 
+  fdt_image_settype(img, FDT_IMAGE_TYPE_D88);
   fdt_image_setloader(img, fdt_d88_image_load);
   fdt_image_setexporter(img, fdt_d88_image_export);
 
