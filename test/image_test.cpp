@@ -44,14 +44,14 @@ BOOST_AUTO_TEST_CASE(ImageGenerateTest)
   BOOST_CHECK(fdt_image_delete(img));
 }
 
-void ImageLorderComareTest(boost::filesystem::path& filepath, FDT_TEST_IMAGE_NEW_FUNC image_lorder_new, FDT_TEST_IMAGE_NEW_FUNC image_expoter_new)
+void ImageLoarderComareTest(boost::filesystem::path& filepath, FDT_TEST_IMAGE_NEW_FUNC image_loarder_new, FDT_TEST_IMAGE_NEW_FUNC image_expoter_new)
 {
   FdtError* err = fdt_error_new();
   BOOST_REQUIRE(err);
 
   // Loader test
 
-  FdtImage* src_img = image_lorder_new();
+  FdtImage* src_img = image_loarder_new();
   BOOST_REQUIRE(src_img);
   BOOST_REQUIRE_MESSAGE(fdt_image_open(src_img, filepath.c_str(), FDT_FILE_READ, err), fdt_error_getdebugmessage(err));
   BOOST_REQUIRE_MESSAGE(fdt_image_load(src_img, err), fdt_error_getdebugmessage(err));

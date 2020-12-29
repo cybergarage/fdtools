@@ -44,6 +44,6 @@ BOOST_AUTO_TEST_CASE(RAWImageLoaderTest)
 
     BOOST_CHECK_EQUAL(fdt_image_name_gettype(filename.c_str()), FDT_IMAGE_TYPE_RAW);
 
-    ImageLorderComareTest(filepath, fdt_raw_pc_image_new, fdt_raw_pc_image_new);
+    ImageLoarderComareTest(filepath, fdt_raw_pc_image_new, fdt_raw_pc_image_new);
   }
 }
