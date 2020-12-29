@@ -15,10 +15,10 @@
 #include <stdio.h>
 #include <string.h>
 
+#include <fdtools/dev/device.h>
 #include <fdtools/img/d88.h>
 #include <fdtools/img/hfe.h>
 #include <fdtools/img/raw.h>
-#include <fdtools/dev/device.h>
 
 FdtImageType fdt_imag_file_gettype(const char* filename)
 {
