@@ -12,6 +12,13 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#include <boost/filesystem.hpp>
 #include <boost/test/unit_test.hpp>
 
+#include <fdtools/img/image.h>
+
+typedef FdtImage* (*FDT_TEST_IMAGE_NEW_FUNC)();
+
 const std::string TEST_IMAGE_DIRECTORY = "./img";
+
+void ImageLorderComareTest(boost::filesystem::path& filepath, FDT_TEST_IMAGE_NEW_FUNC image_lorder_new, FDT_TEST_IMAGE_NEW_FUNC image_expoter_new);
