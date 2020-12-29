@@ -31,6 +31,8 @@ FdtImage* fdt_image_new()
 
 bool fdt_image_init(FdtImage* img)
 {
+  fdt_image_settype(img, FDT_IMAGE_TYPE_UNKNOWN);
+
   img->config = fdt_image_config_new();
   img->sectors = fdt_image_sectors_new();
 
