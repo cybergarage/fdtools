@@ -28,6 +28,9 @@ void fdt_hfe_track_print(byte_t* track_buf, size_t track_len);
 
 bool fdt_hfe_image_load(FdtFileImage* img, FdtError* err)
 {
+  if (!img)
+    return false;
+
   FILE* fp = fdt_image_file_getfile(img);
   if (!fp)
     return false;
