@@ -24,7 +24,7 @@
 extern "C" {
 #endif
 
-typedef struct {
+typedef struct FDT_ATTR_PACKED {
   FDT_IMAGE_STRUCT_MEMBERS
   FILE* fp;
 } FdtFileImage;
