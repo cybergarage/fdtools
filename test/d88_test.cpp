@@ -43,7 +43,7 @@ BOOST_AUTO_TEST_CASE(D88ImageLoaderTest)
     if (!boost::filesystem::exists(filepath))
       continue;
 
-    BOOST_CHECK_EQUAL(fdt_image_name_gettype(filename.c_str()), FDT_IMAGE_TYPE_D88);
+    BOOST_CHECK_EQUAL(fdt_image_file_gettype(filename.c_str()), FDT_IMAGE_TYPE_D88);
 
     // Loader test
 
