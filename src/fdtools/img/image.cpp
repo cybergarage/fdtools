@@ -190,7 +190,7 @@ bool fdt_image_generatesectors(FdtImage* img, FdtError* err)
   return true;
 }
 
-bool fdt_image_equals(FdtImage* img, FdtImage* other)
+bool fdt_image_equals(FdtImage* img, FdtImage* other, FdtError* err)
 {
   if (!img || !other)
     return false;

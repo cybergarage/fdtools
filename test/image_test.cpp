@@ -78,7 +78,7 @@ void ImageLoarderComareTest(boost::filesystem::path& filepath, FDT_TEST_IMAGE_NE
   fdt_image_file_setfile(dst_img, mem_fp);
   BOOST_REQUIRE_MESSAGE(fdt_image_load(dst_img, err), fdt_error_getdebugmessage(err));
   BOOST_CHECK_MESSAGE(fdt_image_close(dst_img, err), fdt_error_getdebugmessage(err));
-  BOOST_CHECK_MESSAGE(fdt_image_equals(src_img, dst_img), fdt_error_getdebugmessage(err));
+  BOOST_CHECK_MESSAGE(fdt_image_equals(src_img, dst_img, err), fdt_error_getdebugmessage(err));
 
   free(dst_img_buf);
 
