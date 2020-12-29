@@ -23,7 +23,7 @@ BOOST_AUTO_TEST_CASE(DictionaryTest)
   char key[8], value[8];
 
   FdtDictionary* dir = fdt_dictionary_new();
-  BOOST_CHECK(dir);
+  BOOST_REQUIRE(dir);
 
   for (int i = 0; i < 2; i++) {
     for (int n = 0; n < TEST_DICTIONARY_ELEMENT_COUNT; n++) {
