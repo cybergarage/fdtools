@@ -15,38 +15,37 @@
 #include <stdio.h>
 #include <string.h>
 
+#include <fdtools/dev/image.h>
 #include <fdtools/img/d88.h>
 #include <fdtools/img/hfe.h>
 #include <fdtools/img/raw.h>
-#include <fdtools/dev/image.h>
 
-FdtImage* fdt_image_name_new(const char *filename, FdtError *err)
+FdtImage* fdt_image_name_new(const char* filename, FdtError* err)
 {
   FdtImage* img;
 
   switch (fdt_image_name_gettype(filename)) {
-    case FDT_IMAGE_TYPE_DEV:
-      img = fdt_device_image_new();
-      break;
-    case FDT_IMAGE_TYPE_RAW:
-      img = fdt_raw_image_new();
-      break;
-    case FDT_IMAGE_TYPE_HFE:
-      img = fdt_hfe_image_new();
-      break;
-    case FDT_IMAGE_TYPE_D88:
-      img = fdt_d88_image_new();
-      break;
-    default:
-      fdt_error_setmessage(err, "Unknown image type: %s", filename);
-      return NULL;
+  case FDT_IMAGE_TYPE_DEV:
+    img = fdt_device_image_new();
+    break;
+  case FDT_IMAGE_TYPE_RAW:
+    img = fdt_raw_image_new();
+    break;
+  case FDT_IMAGE_TYPE_HFE:
+    img = fdt_hfe_image_new();
+    break;
+  case FDT_IMAGE_TYPE_D88:
+    img = fdt_d88_image_new();
+    break;
+  default:
+    fdt_error_setmessage(err, "Unknown image type: %s", filename);
+    return NULL;
   }
-  
+
   fdt_image_setname(img, filename);
 
   return img;
 }
-
 
 FdtImageType fdt_image_name_gettype(const char* filename)
 {

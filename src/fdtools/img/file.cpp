@@ -24,7 +24,7 @@ bool fdt_image_file_delete(FdtFileImage*);
 
 FdtImage* fdt_image_file_new()
 {
-  FdtFileImage* img = (FdtFileImage*)malloc(sizeof(FdtFileImage));
+  FdtFileImage* img = (FdtFileImage*)calloc(sizeof(FdtFileImage), 1);
   if (!img) {
     return NULL;
   }
