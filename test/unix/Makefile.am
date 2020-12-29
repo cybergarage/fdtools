@@ -17,22 +17,22 @@ TESTS = fdtoolstest
 check_PROGRAMS = fdtoolstest
 
 AM_CPPFLAGS = -I$(top_builddir)/include -I../
-
+	..//image_test.h
 
 fdtoolstest_SOURCES = \
-	../image_test.cpp \
-	../d88_test.cpp \
-	../error_test.cpp \
-	../file_test.cpp \
-	../hfe_test.cpp \
-	../logic_test.cpp \
-	../string_test.cpp \
-	../device_test.cpp \
-	../dictionary_test.cpp \
-	../dev_floppy_test.cpp \
-	../main.cpp \
-	../raw_test.cpp \
-	../program_test.cpp
+	..//device_test.cpp \
+	..//dictionary_test.cpp \
+	..//string_test.cpp \
+	..//program_test.cpp \
+	..//image_file_test.cpp \
+	..//image_hfe_test.cpp \
+	..//logic_test.cpp \
+	..//image_raw_test.cpp \
+	..//image_test.cpp \
+	..//image_d88_test.cpp \
+	..//main.cpp \
+	..//dev_floppy_test.cpp \
+	..//error_test.cpp
 
 #if HAVE_LIBTOOL
 #fdtoolstest_LDADD = ../../lib/unix/libfdtools.la

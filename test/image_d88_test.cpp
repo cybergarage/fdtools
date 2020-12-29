@@ -15,32 +15,39 @@
 #include <boost/filesystem.hpp>
 #include <boost/test/unit_test.hpp>
 
+#include <fdtools/img/d88.h>
 #include <fdtools/img/file.h>
-#include <fdtools/img/raw.h>
 #include <fdtools/util/array.h>
 
-const std::string TEST_IMAGE_DIRECTORY = "./img";
+#include "image_test.h"
 
-BOOST_AUTO_TEST_CASE(RAWImageLoaderTest)
+BOOST_AUTO_TEST_CASE(D88HeaderSizeTest)
 {
-  const char TEST_RAW_IMAGES[][64] = {
-    "test-001.raw",
-    "test-001.img",
+  BOOST_CHECK_EQUAL(sizeof(FdtD88Header), D88_HEADER_SIZE);
+}
+
+BOOST_AUTO_TEST_CASE(D88ImageLoaderTest)
+{
+  const char TEST_D88_IMAGES[][64] = {
+    "test-001.d88",
+    "test-002.d88",
+    "test-003.d88",
+    "test-004.d88",
   };
 
   FdtError* err = fdt_error_new();
 
-  for (int n = 0; n < fdt_array_countof(TEST_RAW_IMAGES); n++) {
-    std::string filename = TEST_IMAGE_DIRECTORY + "/" + TEST_RAW_IMAGES[n];
+  for (int n = 0; n < fdt_array_countof(TEST_D88_IMAGES); n++) {
+    std::string filename = TEST_IMAGE_DIRECTORY + "/" + TEST_D88_IMAGES[n];
     boost::filesystem::path filepath(filename);
     if (!boost::filesystem::exists(filepath))
       continue;
 
-    BOOST_CHECK_EQUAL(fdt_image_name_gettype(filename.c_str()), FDT_IMAGE_TYPE_RAW);
+    BOOST_CHECK_EQUAL(fdt_image_name_gettype(filename.c_str()), FDT_IMAGE_TYPE_D88);
 
     // Loader test
 
-    FdtImage* src_img = fdt_raw_image_new();
+    FdtImage* src_img = fdt_d88_image_new();
     BOOST_CHECK(src_img);
     BOOST_CHECK(fdt_image_open(src_img, filename.c_str(), FDT_FILE_READ, err));
     BOOST_CHECK(fdt_image_load(src_img, err));
@@ -60,7 +67,7 @@ BOOST_AUTO_TEST_CASE(RAWImageLoaderTest)
     // Compare test
 
     mem_fp = fdt_file_memopen(dst_img_buf, img_size, FDT_FILE_READ);
-    FdtImage* dst_img = fdt_raw_image_new();
+    FdtImage* dst_img = fdt_d88_image_new();
     fdt_image_file_setfile(dst_img, mem_fp);
     BOOST_CHECK(fdt_image_load(dst_img, err));
     BOOST_CHECK(fdt_image_close(dst_img, err));

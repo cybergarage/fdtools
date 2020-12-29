@@ -19,7 +19,7 @@
 #include <fdtools/img/hfe.h>
 #include <fdtools/util/array.h>
 
-const std::string TEST_IMAGE_DIRECTORY = "./img";
+#include "image_test.h"
 
 BOOST_AUTO_TEST_CASE(HfeHeaderSizeTest)
 {

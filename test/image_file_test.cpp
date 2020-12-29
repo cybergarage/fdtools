@@ -13,32 +13,14 @@
 // limitations under the License.
 
 #include <boost/test/unit_test.hpp>
-
-#include <fdtools/img/image.h>
+#include <fdtools/img/file.h>
+#include <fdtools/util/array.h>
 
 #include "image_test.h"
 
-BOOST_AUTO_TEST_CASE(ImageConfigTest)
+BOOST_AUTO_TEST_CASE(ImageFileTest)
 {
-  FdtImageConfig* config = fdt_image_config_new();
-  BOOST_CHECK(config);
-
-  BOOST_CHECK(!fdt_image_config_isvalid(config, NULL));
-  BOOST_CHECK(fdt_image_config_delete(config));
-}
-
-BOOST_AUTO_TEST_CASE(ImageGenerateTest)
-{
-  FdtImage* img = fdt_image_new();
+  FdtImage* img = fdt_image_file_new();
   BOOST_CHECK(img);
-
-  BOOST_CHECK(!fdt_image_generatesectors(img, NULL));
-
-  fdt_image_setnumberofcylinder(img, 80);
-  fdt_image_setnumberofhead(img, 2);
-  fdt_image_setnumberofsector(img, 18);
-  fdt_image_setsectorsize(img, 512);
-  BOOST_CHECK(fdt_image_generatesectors(img, NULL));
-
   BOOST_CHECK(fdt_image_delete(img));
 }
