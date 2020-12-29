@@ -91,6 +91,9 @@ void fdt_error_setdebugmessage(FdtError* err, const char* file, int line_no, con
 
 const char* fdt_error_getdebugmessage(FdtError* err)
 {
+  if (!err)
+    return "";
+
   char msg[FDT_ERROR_MESSAGE_MAX];
   if (fdt_error_iserror(err)) {
     snprintf(msg, sizeof(msg), "%s (%s())", fdt_string_getvalue(err->message), fdt_string_getvalue(err->func_name));
@@ -99,6 +102,7 @@ const char* fdt_error_getdebugmessage(FdtError* err)
   else {
     fdt_string_setvalue(err->debug_message, "");
   }
+
   return fdt_string_getvalue(err->debug_message);
 }
 
