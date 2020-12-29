@@ -17,6 +17,7 @@
 
 #include <stdio.h>
 
+#include <fdtools/error.h>
 #include <fdtools/util/list.h>
 
 #ifdef __cplusplus
@@ -46,7 +47,7 @@ size_t fdt_image_sectors_getnumberoftracksector(FdtImageSectors*, FdtCylinderNum
 size_t fdt_image_sectors_getmaxsectorsize(FdtImageSectors*);
 size_t fdt_image_sectors_gettotaldatasize(FdtImageSectors*);
 size_t fdt_image_sectors_gettracksize(FdtImageSectors*, FdtCylinderNumber, FdtHeadNumber);
-bool fdt_image_sectors_equals(FdtImageSectors*, FdtImageSectors*);
+bool fdt_image_sectors_equals(FdtImageSectors*, FdtImageSectors*, FdtError*);
 void fdt_image_sectors_print(FdtImageSectors*);
 
 #define fdt_image_sectors_size(sectors) fdt_list_size((FdtList*)sectors)

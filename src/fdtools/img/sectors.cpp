@@ -134,14 +134,21 @@ size_t fdt_image_sectors_gettracksize(FdtImageSectors* sectors, FdtCylinderNumbe
   return track_total_sector_size;
 }
 
-bool fdt_image_sectors_equals(FdtImageSectors* sectors, FdtImageSectors* others)
+bool fdt_image_sectors_equals(FdtImageSectors* sectors, FdtImageSectors* others, FdtError* err)
 {
   for (FdtImageSector* sector = fdt_image_sectors_gets(sectors); sector; sector = fdt_image_sector_next(sector)) {
-    FdtImageSector* other = fdt_image_sectors_getsector(others, fdt_image_sector_getcylindernumber(sector), fdt_image_sector_getheadnumber(sector), fdt_image_sector_getnumber(sector));
-    if (!other)
+    size_t c = fdt_image_sector_getcylindernumber(sector);
+    size_t h = fdt_image_sector_getheadnumber(sector);
+    size_t s = fdt_image_sector_getnumber(sector);
+    FdtImageSector* other = fdt_image_sectors_getsector(others, c, h, s);
+    if (!other) {
+      fdt_error_setmessage(err, "Not found (%ld:%ld:%ld)", c, h, s);
       return false;
-    if (!fdt_image_sector_equals(sector, other))
+    }
+    if (!fdt_image_sector_equals(sector, other)) {
+      fdt_error_setmessage(err, "Not equal (%ld:%ld:%ld)", c, h, s);
       return false;
+    }
   }
   return true;
 }
