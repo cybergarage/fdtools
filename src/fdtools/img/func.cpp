@@ -20,8 +20,11 @@
 #include <fdtools/img/hfe.h>
 #include <fdtools/img/raw.h>
 
-FdtImageType fdt_imag_file_gettype(const char* filename)
+FdtImageType fdt_image_name_gettype(const char* filename)
 {
+  if (!filename || (fdt_strlen(filename) <= 0))
+    return FDT_IMAGE_TYPE_UNKNOWN;
+
   if (fdt_file_hasprefix(filename, FDT_DEVICE_PREFIX))
     return FDT_IMAGE_TYPE_DEV;
 
