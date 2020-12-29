@@ -48,6 +48,7 @@ BOOST_AUTO_TEST_CASE(RAWImageLoaderTest)
     ImageLorderComareTest(filepath, fdt_raw_pc_image_new, fdt_raw_pc_image_new, err);
     if (fdt_error_iserror(err)) {
       BOOST_FAIL(fdt_error_getdebugmessage(err));
+      BOOST_CHECK(fdt_error_clear(err));
     }
   }
   fdt_error_delete(err);

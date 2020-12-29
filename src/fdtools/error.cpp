@@ -37,6 +37,8 @@ FdtError* fdt_error_new()
     return NULL;
   }
 
+  fdt_error_clear(err);
+
   return err;
 }
 
@@ -51,6 +53,19 @@ bool fdt_error_delete(FdtError* err)
   fdt_string_delete(err->func_name);
 
   free(err);
+
+  return true;
+}
+
+bool fdt_error_clear(FdtError* err)
+{
+  if (!err)
+    return false;
+
+  err->line_no = -1;
+  fdt_string_clear(err->message);
+  fdt_string_clear(err->file_name);
+  fdt_string_clear(err->func_name);
 
   return true;
 }
