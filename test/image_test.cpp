@@ -44,14 +44,14 @@ BOOST_AUTO_TEST_CASE(ImageGenerateTest)
   BOOST_CHECK(fdt_image_delete(img));
 }
 
-void ImageLoarderComareTest(boost::filesystem::path& filepath, FDT_TEST_IMAGE_NEW_FUNC image_loarder_new, FDT_TEST_IMAGE_NEW_FUNC image_expoter_new)
+void ImageLoarderCompareTest(boost::filesystem::path& filepath, FDT_TEST_IMAGE_NEW_FUNC image_new_func)
 {
   FdtError* err = fdt_error_new();
   BOOST_REQUIRE(err);
 
   // Loader test
 
-  FdtImage* src_img = image_loarder_new();
+  FdtImage* src_img = image_new_func();
   BOOST_REQUIRE(src_img);
   BOOST_REQUIRE_MESSAGE(fdt_image_open(src_img, filepath.c_str(), FDT_FILE_READ, err), fdt_error_getdebugmessage(err));
   BOOST_REQUIRE_MESSAGE(fdt_image_load(src_img, err), fdt_error_getdebugmessage(err));
@@ -73,7 +73,7 @@ void ImageLoarderComareTest(boost::filesystem::path& filepath, FDT_TEST_IMAGE_NE
 
   mem_fp = fdt_file_memopen(dst_img_buf, img_size, FDT_FILE_READ);
   BOOST_REQUIRE(mem_fp);
-  FdtImage* dst_img = image_expoter_new();
+  FdtImage* dst_img = image_new_func();
   BOOST_REQUIRE(dst_img);
   fdt_image_file_setfile(dst_img, mem_fp);
   BOOST_REQUIRE_MESSAGE(fdt_image_load(dst_img, err), fdt_error_getdebugmessage(err));
