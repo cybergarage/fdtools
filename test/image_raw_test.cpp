@@ -20,6 +20,16 @@
 
 #include "image_test.h"
 
+FdtImage* fdt_raw_pc_image_new(void)
+{
+  FdtImage* img = fdt_raw_image_new();
+  fdt_image_setnumberofcylinder(img, 80);
+  fdt_image_setnumberofhead(img, 2);
+  fdt_image_setnumberofsector(img, 18);
+  fdt_image_setsectorsize(img, 512);
+  return img;
+}
+
 BOOST_AUTO_TEST_CASE(RAWImageLoaderTest)
 {
   const char TEST_RAW_IMAGES[][64] = {
@@ -34,8 +44,6 @@ BOOST_AUTO_TEST_CASE(RAWImageLoaderTest)
 
     BOOST_CHECK_EQUAL(fdt_image_name_gettype(filename.c_str()), FDT_IMAGE_TYPE_RAW);
 
-    // TODO: Set raw image parameters
-
-    ImageLorderComareTest(filepath, fdt_raw_image_new, fdt_raw_image_new);
+    ImageLorderComareTest(filepath, fdt_raw_pc_image_new, fdt_raw_pc_image_new);
   }
 }
