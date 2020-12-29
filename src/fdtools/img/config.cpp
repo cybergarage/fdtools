@@ -117,9 +117,7 @@ size_t fdt_image_config_calculaterawsize(FdtImageConfig* config)
 
 const char* fdt_image_config_getdescription(FdtImageConfig* config)
 {
-  char desc[128];
-  snprintf(desc, sizeof(desc), "cylinder:%ld, head:%ld, sector:%ld, ssize:%ld", config->number_of_cylinder, config->number_of_head, config->number_of_sector, config->sector_size);
-  fdt_string_setvalue(config->description, desc);
+  fdt_string_setvaluef(config->description, "cylinder:%ld, head:%ld, sector:%ld, ssize:%ld", config->number_of_cylinder, config->number_of_head, config->number_of_sector, config->sector_size);
   return fdt_string_getvalue(config->description);
 }
 

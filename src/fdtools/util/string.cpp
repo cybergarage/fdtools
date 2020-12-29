@@ -12,6 +12,9 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#include <stdarg.h>
+#include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 
 #include <fdtools/util/string.h>
@@ -51,6 +54,7 @@ bool fdt_string_clear(FdtString* str)
     return true;
 
   free(str->value);
+
   str->value = NULL;
   str->mem_size = 0;
   str->value_size = 0;
@@ -107,6 +111,20 @@ bool fdt_string_equals(FdtString* str, FdtString* other)
 bool fdt_string_addvalue(FdtString* str, const char* value)
 {
   return fdt_string_naddvalue(str, value, fdt_strlen(value));
+}
+
+void fdt_string_setvaluef(FdtString* str, const char* format, ...)
+{
+  if (!str)
+    return;
+
+  char value[512];
+  va_list list;
+  va_start(list, format);
+  vsnprintf(value, sizeof(value), format, list);
+  va_end(list);
+
+  fdt_string_setvalue(str, value);
 }
 
 bool fdt_string_naddvalue(FdtString* str, const char* value, size_t valueLen)
