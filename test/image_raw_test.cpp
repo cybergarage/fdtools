@@ -36,7 +36,6 @@ BOOST_AUTO_TEST_CASE(RAWImageLoaderTest)
     "test-001.img",
   };
 
-  FdtError* err = fdt_error_new();
   for (int n = 0; n < fdt_array_countof(TEST_RAW_IMAGES); n++) {
     std::string filename = TEST_IMAGE_DIRECTORY + "/" + TEST_RAW_IMAGES[n];
     boost::filesystem::path filepath(filename);
@@ -45,7 +44,6 @@ BOOST_AUTO_TEST_CASE(RAWImageLoaderTest)
 
     BOOST_CHECK_EQUAL(fdt_image_name_gettype(filename.c_str()), FDT_IMAGE_TYPE_RAW);
 
-    ImageLorderComareTest(filepath, fdt_raw_pc_image_new, fdt_raw_pc_image_new, err);
+    ImageLorderComareTest(filepath, fdt_raw_pc_image_new, fdt_raw_pc_image_new);
   }
-  fdt_error_delete(err);
 }
