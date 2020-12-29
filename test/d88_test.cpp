@@ -38,8 +38,6 @@ BOOST_AUTO_TEST_CASE(D88ImageLoaderTest)
   FdtError* err = fdt_error_new();
 
   for (int n = 0; n < fdt_array_countof(TEST_D88_IMAGES); n++) {
-    BOOST_CHECK_EQUAL(fdt_image_name_gettype(TEST_D88_IMAGES[n]), FDT_IMAGE_TYPE_D88);
-
     std::string filename = TEST_IMAGE_DIRECTORY + "/" + TEST_D88_IMAGES[n];
     boost::filesystem::path filepath(filename);
     if (!boost::filesystem::exists(filepath))
