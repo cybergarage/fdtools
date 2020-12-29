@@ -28,6 +28,14 @@ bool fdt_structcmp(void* t, void* o, off_t offset, size_t size)
   return (memcmp((((byte_t*)t) + offset), (((byte_t*)o) + offset), size) == 0) ? true : false;
 }
 
+bool fdt_structcpy(void* dest, void* src, off_t offset, size_t size)
+{
+  if (!dest || !src)
+    return false;
+  memcpy((((byte_t*)dest) + offset), (((byte_t*)src) + offset), size);
+  return true;
+}
+
 #ifdef __cplusplus
 } /* extern "C" */
 #endif
