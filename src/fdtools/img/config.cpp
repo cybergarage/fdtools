@@ -16,10 +16,11 @@
 #include <string.h>
 
 #include <fdtools/img/config.h>
+#include <fdtools/util/hexdump.h>
 
 FdtImageConfig* fdt_image_config_new()
 {
-  FdtImageConfig* config = (FdtImageConfig*)malloc(sizeof(FdtImageConfig));
+  FdtImageConfig* config = (FdtImageConfig*)calloc(sizeof(FdtImageConfig),1);
   if (!config) {
     return NULL;
   }
@@ -100,7 +101,8 @@ bool fdt_image_config_equals(FdtImageConfig* config, FdtImageConfig* other, FdtE
   }
 
   size_t config_offset = sizeof(FdtString*) /* name */ + sizeof(FdtString*) /* desc */;
-  if (memcmp((config + config_offset), (other + config_offset), (sizeof(FdtImageConfig) - config_offset)) != 0) {
+  size_t config_comp_size = sizeof(FdtImageConfig) - config_offset;
+  if (memcmp((((byte_t *)config) + config_offset), (((byte_t *)other) + config_offset), config_comp_size) != 0) {
     fdt_error_setmessage(err, "%s != %s", fdt_image_config_getdescription(config), fdt_image_config_getdescription(other));
     return false;
   }
