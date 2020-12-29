@@ -45,7 +45,7 @@ bool fdt_raw_image_load(FdtFileImage* img, FdtError* err)
 
   for (size_t c = 0; c < number_of_cylinder; c++) {
     for (size_t h = 0; h < number_of_head; h++) {
-      for (size_t s = 0; s < number_of_sector; s++) {
+      for (size_t s = 1; s <= number_of_sector; s++) {
         byte_t* sector_data = (byte_t*)malloc(sector_size);
         if (!sector_data) {
           return false;
@@ -65,7 +65,7 @@ bool fdt_raw_image_load(FdtFileImage* img, FdtError* err)
 
         fdt_image_sector_setcylindernumber(sector, c);
         fdt_image_sector_setheadnumber(sector, h);
-        fdt_image_sector_setnumber(sector, s + 1);
+        fdt_image_sector_setnumber(sector, s);
         fdt_image_sector_setsize(sector, sector_size);
         fdt_image_sector_setdata(sector, sector_data);
 
