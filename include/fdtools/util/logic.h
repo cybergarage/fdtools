@@ -36,4 +36,4 @@ inline byte_t fdt_swapbyte(byte_t x)
 } /* extern "C" */
 #endif
 
-#endif /* _FDTOOLS_UTIL_LIST_H_ */
+#endif /* _FDTOOLS_UTIL_LOGIC_H_ */
