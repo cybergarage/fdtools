@@ -36,7 +36,7 @@ int main(int argc, char* argv[])
   if (!fdparams)
     return 1;
 
-  if (fdt_device_open(dev, dev_name, FDT_DEVICE_READ, err)) {
+  if (fdt_device_open(dev, dev_name, FDT_FILE_READ, err)) {
     if (fdt_device_getfloppyparameters(dev, fdparams, err)) {
       printf("device  : %s\n", dev_name);
       printf("size    : %ld\n", fdt_floppy_params_getsize(fdparams));
