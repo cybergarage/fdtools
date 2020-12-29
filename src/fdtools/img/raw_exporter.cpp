@@ -21,6 +21,9 @@
 
 bool fdt_raw_image_export(FdtFileImage* img, FdtError* err)
 {
+  if (!img)
+    return false;
+
   if (!fdt_image_file_isvalid(img, err))
     return false;
 
