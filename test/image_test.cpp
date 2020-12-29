@@ -44,10 +44,8 @@ BOOST_AUTO_TEST_CASE(ImageGenerateTest)
   BOOST_CHECK(fdt_image_delete(img));
 }
 
-void ImageLorderComareTest(boost::filesystem::path& filepath, FDT_TEST_IMAGE_NEW_FUNC image_lorder_new, FDT_TEST_IMAGE_NEW_FUNC image_expoter_new)
+void ImageLorderComareTest(boost::filesystem::path& filepath, FDT_TEST_IMAGE_NEW_FUNC image_lorder_new, FDT_TEST_IMAGE_NEW_FUNC image_expoter_new, FdtError* err)
 {
-  FdtError* err = fdt_error_new();
-
   // Loader test
 
   FdtImage* src_img = image_lorder_new();
@@ -85,6 +83,4 @@ void ImageLorderComareTest(boost::filesystem::path& filepath, FDT_TEST_IMAGE_NEW
 
   fdt_image_delete(dst_img);
   fdt_image_delete(src_img);
-
-  fdt_error_delete(err);
 }
