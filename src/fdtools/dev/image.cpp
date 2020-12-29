@@ -41,6 +41,7 @@ FdtImage* fdt_device_image_new(void)
     return NULL;
   }
 
+  fdt_image_settype(img, FDT_IMAGE_TYPE_DEV);
   fdt_image_setopener(img, fdt_device_image_open);
   fdt_image_setcloser(img, fdt_device_image_close);
   fdt_image_setdestructor(img, fdt_device_image_delete);
