@@ -51,9 +51,9 @@ void ImageLorderComareTest(boost::filesystem::path& filepath, FDT_TEST_IMAGE_NEW
   // Loader test
 
   FdtImage* src_img = image_lorder_new();
-  BOOST_CHECK(src_img);
-  BOOST_CHECK(fdt_image_open(src_img, filepath.c_str(), FDT_FILE_READ, err));
-  BOOST_CHECK(fdt_image_load(src_img, err));
+  BOOST_REQUIRE(src_img);
+  BOOST_REQUIRE(fdt_image_open(src_img, filepath.c_str(), FDT_FILE_READ, err));
+  BOOST_REQUIRE(fdt_image_load(src_img, err));
   //fdt_image_print(src_img);
   BOOST_CHECK(fdt_image_close(src_img, err));
 
@@ -63,16 +63,19 @@ void ImageLorderComareTest(boost::filesystem::path& filepath, FDT_TEST_IMAGE_NEW
 
   byte_t* dst_img_buf = (byte_t*)malloc(img_size);
   FILE* mem_fp = fdt_file_memopen(dst_img_buf, img_size, FDT_FILE_WRITE);
+  BOOST_REQUIRE(mem_fp);
   fdt_image_file_setfile(src_img, mem_fp);
-  BOOST_CHECK(fdt_image_export(src_img, err));
+  BOOST_REQUIRE(fdt_image_export(src_img, err));
   BOOST_CHECK(fdt_image_close(src_img, err));
 
   // Compare test
 
   mem_fp = fdt_file_memopen(dst_img_buf, img_size, FDT_FILE_READ);
+  BOOST_REQUIRE(mem_fp);
   FdtImage* dst_img = image_expoter_new();
+  BOOST_REQUIRE(dst_img);
   fdt_image_file_setfile(dst_img, mem_fp);
-  BOOST_CHECK(fdt_image_load(dst_img, err));
+  BOOST_REQUIRE(fdt_image_load(dst_img, err));
   BOOST_CHECK(fdt_image_close(dst_img, err));
   BOOST_CHECK(fdt_image_equals(src_img, dst_img));
 

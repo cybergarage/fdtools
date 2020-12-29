@@ -23,7 +23,6 @@
 BOOST_AUTO_TEST_CASE(RAWImageLoaderTest)
 {
   const char TEST_RAW_IMAGES[][64] = {
-    "test-001.raw",
     "test-001.img",
   };
 
