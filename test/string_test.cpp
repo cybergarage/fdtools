@@ -22,7 +22,7 @@ BOOST_AUTO_TEST_CASE(StringAddValueTest)
   const char TEST_STRINGS[] = "abcdefghijklmnopqrstuvwxyz";
 
   FdtString* str = fdt_string_new();
-  BOOST_CHECK(str);
+  BOOST_REQUIRE(str);
 
   char ch[2] = { 0x00, 0x00 };
   for (int n = 0; n < fdt_array_countof(TEST_STRINGS); n++) {
