@@ -26,6 +26,8 @@
 extern "C" {
 #endif
 
+const char FDT_DEVICE_PREFIX[] = "/dev/";
+
 typedef struct FDT_ATTR_PACKED {
   FdtString* name;
   int fd;

@@ -38,6 +38,7 @@ bool fdt_file_read(FILE*, void*, size_t);
 bool fdt_file_write(FILE*, void*, size_t);
 bool fdt_file_seek(FILE*, long, int);
 
+bool fdt_file_hasprefix(const char* filename, const char* prefix);
 bool fdt_file_hasextension(const char* filename, const char* extname);
 
 #ifdef __cplusplus

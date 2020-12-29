@@ -42,7 +42,7 @@ BOOST_AUTO_TEST_CASE(HfeImageLoaderTest)
     if (!boost::filesystem::exists(filepath))
       continue;
 
-    BOOST_CHECK_EQUAL(fdt_imag_file_gettype(filename.c_str()), FDT_IMAGE_TYPE_HFE);
+    BOOST_CHECK_EQUAL(fdt_image_file_gettype(filename.c_str()), FDT_IMAGE_TYPE_HFE);
 
     FdtImage* img = fdt_hfe_image_new();
     BOOST_CHECK(img);

@@ -21,8 +21,8 @@
 extern "C" {
 #endif
 
-const char RAW_EXTENTION_RAW[] = "raw";
-const char RAW_EXTENTION_IMG[] = "img";
+const char FDT_RAW_EXTENTION_RAW[] = "raw";
+const char FDT_RAW_EXTENTION_IMG[] = "img";
 
 FdtImage* fdt_raw_image_new(void);
 

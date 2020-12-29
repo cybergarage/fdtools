@@ -24,13 +24,6 @@
 extern "C" {
 #endif
 
-typedef enum {
-  FDT_IMAGE_TYPE_UNKNOWN,
-  FDT_IMAGE_TYPE_RAW,
-  FDT_IMAGE_TYPE_HFE,
-  FDT_IMAGE_TYPE_D88,
-} FdtImageType;
-
 typedef struct {
   FDT_IMAGE_STRUCT_MEMBERS
   FILE* fp;
@@ -43,7 +36,7 @@ FdtImage* fdt_image_file_new(void);
 #define fdt_image_file_getfile(img) (img->fp)
 #define fdt_image_file_isopened(img) ((img->fp) ? true : false)
 
-FdtImageType fdt_imag_file_gettype(const char* filename);
+FdtImageType fdt_image_file_gettype(const char* filename);
 
 #ifdef __cplusplus
 } /* extern C */

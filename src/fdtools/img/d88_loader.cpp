@@ -62,20 +62,20 @@ bool fdt_d88_image_load(FdtFileImage* img, FdtError* err)
       return false;
     d88_image_file_size += sizeof(FdtD88SectorHeader);
 
-    size_t sector_data_size = d88_sector_header.size_of_data;
-    if (sector_data_size <= 0) {
+    size_t sector_size = d88_sector_header.size_of_data;
+    if (sector_size <= 0) {
       switch (d88_sector_header.n) {
       case D88_SECTOR_N_128:
-        sector_data_size = 128;
+        sector_size = 128;
         break;
       case D88_SECTOR_N_256:
-        sector_data_size = 256;
+        sector_size = 256;
         break;
       case D88_SECTOR_N_512:
-        sector_data_size = 512;
+        sector_size = 512;
         break;
       case D88_SECTOR_N_1024:
-        sector_data_size = 1024;
+        sector_size = 1024;
         break;
       }
     }
@@ -84,12 +84,12 @@ bool fdt_d88_image_load(FdtFileImage* img, FdtError* err)
     size_t sector_data_offset = sector_header_offset + sizeof(FdtD88SectorHeader);
 
     for (int sector_no = 0; sector_no < number_of_sector; sector_no++) {
-      byte_t* sector_data = (byte_t*)malloc(sector_data_size);
+      byte_t* sector_data = (byte_t*)malloc(sector_size);
       if (!sector_data) {
         return false;
       }
 
-      if (!fdt_d88_sector_data_read(&d88_sector_header, fp, sector_data_offset, sector_data, sector_data_size)) {
+      if (!fdt_d88_sector_data_read(&d88_sector_header, fp, sector_data_offset, sector_data, sector_size)) {
         free(sector_data);
         return false;
       }
@@ -103,11 +103,11 @@ bool fdt_d88_image_load(FdtFileImage* img, FdtError* err)
       fdt_image_sector_setcylindernumber(sector, d88_sector_header.c);
       fdt_image_sector_setheadnumber(sector, d88_sector_header.h);
       fdt_image_sector_setnumber(sector, sector_no + 1);
-      fdt_image_sector_setsize(sector, sector_data_size);
+      fdt_image_sector_setsize(sector, sector_size);
       fdt_image_sector_setdata(sector, sector_data);
 
-      sector_data_offset += sector_data_size;
-      d88_image_file_size += sector_data_size;
+      sector_data_offset += sector_size;
+      d88_image_file_size += sector_size;
 
       fdt_image_addsector(img, sector);
 
