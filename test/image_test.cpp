@@ -31,9 +31,9 @@ BOOST_AUTO_TEST_CASE(ImageConfigTest)
 BOOST_AUTO_TEST_CASE(ImageGenerateTest)
 {
   FdtImage* img = fdt_image_new();
-  BOOST_CHECK(img);
+  BOOST_REQUIRE(img);
 
-  BOOST_CHECK(!fdt_image_generatesectors(img, NULL));
+  BOOST_REQUIRE(!fdt_image_generatesectors(img, NULL));
 
   fdt_image_setnumberofcylinder(img, 80);
   fdt_image_setnumberofhead(img, 2);
