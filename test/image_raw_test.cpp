@@ -40,6 +40,8 @@ BOOST_AUTO_TEST_CASE(RAWImageLoaderTest)
 
     // Loader test
 
+    // TODO: Set raw image parameters
+    
     FdtImage* src_img = fdt_raw_image_new();
     BOOST_CHECK(src_img);
     BOOST_CHECK(fdt_image_open(src_img, filename.c_str(), FDT_FILE_READ, err));
