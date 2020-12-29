@@ -22,7 +22,7 @@
 BOOST_AUTO_TEST_CASE(ImageConfigTest)
 {
   FdtImageConfig* config = fdt_image_config_new();
-  BOOST_CHECK(config);
+  BOOST_REQUIRE(config);
 
   BOOST_CHECK(!fdt_image_config_isvalid(config, NULL));
   BOOST_CHECK(fdt_image_config_delete(config));
