@@ -44,6 +44,7 @@ typedef struct FDT_ATTR_PACKED {
   size_t sector_size;
   int rpm;
   bool write_protect;
+  FdtString* description;
 } FdtImageConfig;
 
 FdtImageConfig* fdt_image_config_new();
@@ -53,6 +54,7 @@ bool fdt_image_config_isvalid(FdtImageConfig*, FdtError*);
 bool fdt_image_config_equals(FdtImageConfig*, FdtImageConfig*, FdtError*);
 
 size_t fdt_image_config_calculaterawsize(FdtImageConfig*);
+const char* fdt_image_config_getdescription(FdtImageConfig*);
 void fdt_image_config_print(FdtImageConfig*);
 
 #define fdt_image_config_setname(config, v) fdt_string_setvalue(config->name, v)

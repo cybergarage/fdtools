@@ -25,6 +25,11 @@ FdtImageConfig* fdt_image_config_new()
   }
 
   config->name = fdt_string_new();
+  config->description = fdt_string_new();
+  if (!config->name || !config->description) {
+    fdt_image_config_delete(config);
+    return NULL;
+  }
 
   fdt_image_config_setname(config, "");
   fdt_image_config_setsize(config, 0);
@@ -43,7 +48,14 @@ bool fdt_image_config_delete(FdtImageConfig* config)
 {
   if (!config)
     return false;
-  fdt_string_delete(config->name);
+
+  if (config->name) {
+    fdt_string_delete(config->name);
+  }
+  if (config->description) {
+    fdt_string_delete(config->description);
+  }
+
   free(config);
   return true;
 }
@@ -89,6 +101,7 @@ bool fdt_image_config_equals(FdtImageConfig* config, FdtImageConfig* other, FdtE
 
   size_t config_name_size = sizeof(FdtString);
   if (memcmp((config + config_name_size), (other + config_name_size), (sizeof(FdtImageConfig) - config_name_size)) != 0) {
+    fdt_error_setmessage(err, "%s != %s", fdt_image_config_getdescription(config), fdt_image_config_getdescription(other));
     return false;
   }
 
@@ -100,6 +113,14 @@ size_t fdt_image_config_calculaterawsize(FdtImageConfig* config)
   if (!config)
     return 0;
   return config->number_of_cylinder * config->number_of_head * config->number_of_sector * config->sector_size;
+}
+
+const char* fdt_image_config_getdescription(FdtImageConfig* config)
+{
+  char desc[128];
+  snprintf(desc, sizeof(desc), "cylinder:%ld, head:%ld, sector:%ld, ssize:%ld", config->number_of_cylinder, config->number_of_head, config->number_of_sector, config->sector_size);
+  fdt_string_setvalue(config->description, desc);
+  return fdt_string_getvalue(config->description);
 }
 
 void fdt_image_config_print(FdtImageConfig* config)
