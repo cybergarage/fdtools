@@ -14,12 +14,12 @@ print<<HEADER;
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-bin_PROGRAMS = fdimg
+bin_PROGRAMS = fddump
 
 AM_CFLAGS = -I\$(top_builddir)/include -I../
 AM_CPPFLAGS = -I\$(top_builddir)/include -I../
 
-fdimg_SOURCES = \\
+fddump_SOURCES = \\
 HEADER
 
 my @find_files = `find ../ -name *.c -or -name *.cpp`;
@@ -34,9 +34,9 @@ print join(" \\\n", @source_files) . "\n";
 print<<FOTTER;
 
 #if HAVE_LIBTOOL
-#fdimg_LDADD = ../../../lib/unix/libfdtools.la
+#fddump_LDADD = ../../../lib/unix/libfdtools.la
 #else
-fdimg_LDADD = ../../../lib/unix/libfdtools.a
+fddump_LDADD = ../../../lib/unix/libfdtools.a
 #endif
 FOTTER
 

@@ -15,6 +15,7 @@
 fdtoolsheaders = \
 	./fdtools/error.h \
 	./fdtools/img/file.h \
+	./fdtools/img/error.h \
 	./fdtools/img/hfe.h \
 	./fdtools/img/d88.h \
 	./fdtools/img/image.h \
@@ -29,6 +30,7 @@ fdtoolsheaders = \
 	./fdtools/util/file.h \
 	./fdtools/util/program.h \
 	./fdtools/util/hexdump.h \
+	./fdtools/util/struct.h \
 	./fdtools/util/array.h \
 	./fdtools/util/dictionary.h \
 	./fdtools/util/logic.h \
