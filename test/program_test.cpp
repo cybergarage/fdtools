@@ -19,7 +19,7 @@
 
 BOOST_AUTO_TEST_CASE(ProgramParseTest)
 {
-  const char* TEST_PRG_ARGS[] = { "prg", "-c", "40", "-h", "2", "-s", "16", "-v", "/dev/fd0" };
+  const char* TEST_PRG_ARGS[] = { "prg", "-c", "40", "-h", "2", "-s", "16", "-v", "/dev/fd0", "test.img" };
 
   FdtError* err = fdt_error_new();
 
@@ -43,6 +43,8 @@ BOOST_AUTO_TEST_CASE(ProgramParseTest)
   BOOST_CHECK_EQUAL(fdt_program_getoptionparameter(prg, "s"), "16");
   BOOST_CHECK_EQUAL(fdt_program_getoptionparameter(prg, "v"), (char*)NULL);
 
+  BOOST_CHECK_EQUAL(fdt_program_getnarguments(prg), 2);
+  
   BOOST_CHECK(fdt_program_delete(prg));
 
   BOOST_CHECK(fdt_error_delete(err));

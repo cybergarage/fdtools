@@ -79,6 +79,7 @@ bool fdt_program_parse(FdtProgram*, int argc, char* argv[], FdtError*);
 
 #define fdt_program_getname(prg) fdt_string_getvalue(prg->name)
 #define fdt_program_getarguments(prg) fdt_program_arguments_gets(prg->args)
+#define fdt_program_getnarguments(prg) fdt_program_arguments_size(prg->args)
 #define fdt_program_getoptionelements(prg) (fdt_dictionary_getelements(prg->options))
 #define fdt_program_optionelement_next(elem) fdt_dictionary_element_next(elem)
 #define fdt_program_getelementoption(elem) ((FdtProgramOption*)fdt_dictionary_element_getvalue(elem))
