@@ -35,7 +35,8 @@ bool fdt_program_arguments_delete(FdtProgramArguments*);
 bool fdt_program_arguments_add(FdtProgramArguments*, const char*);
 
 #define fdt_program_arguments_size(args) fdt_list_size((FdtList*)args)
-#define fdt_program_arguments_gets(args) (FdtProgramArgument*)fdt_list_gets((FdtList*)args)
+#define fdt_program_arguments_gets(args) ((FdtProgramArgument*)fdt_list_gets((FdtList*)args))
+#define fdt_program_arguments_get(args,n) ((FdtProgramArgument*)fdt_list_get((FdtList*)args,n))
 #define fdt_program_arguments_clear(args) fdt_list_clear((FdtList*)args, (FDT_LIST_DESTRUCTORFUNC)fdt_program_argument_delete)
 
 FdtProgramArgument* fdt_program_argument_new();
@@ -80,6 +81,7 @@ bool fdt_program_parse(FdtProgram*, int argc, char* argv[], FdtError*);
 #define fdt_program_getname(prg) fdt_string_getvalue(prg->name)
 #define fdt_program_getarguments(prg) fdt_program_arguments_gets(prg->args)
 #define fdt_program_getnarguments(prg) fdt_program_arguments_size(prg->args)
+#define fdt_program_getargument(prg,n) fdt_program_argument_getvalue(fdt_program_arguments_get(prg->args,n))
 #define fdt_program_getoptionelements(prg) (fdt_dictionary_getelements(prg->options))
 #define fdt_program_optionelement_next(elem) fdt_dictionary_element_next(elem)
 #define fdt_program_getelementoption(elem) ((FdtProgramOption*)fdt_dictionary_element_getvalue(elem))
