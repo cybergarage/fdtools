@@ -80,6 +80,7 @@ bool fdt_program_addoption(FdtProgram*, const char*, const char*, bool, const ch
 bool fdt_program_parse(FdtProgram*, int argc, char* argv[], FdtError*);
 bool fdt_program_isoptionenabled(FdtProgram*, const char*);
 const char* fdt_program_getoptionstring(FdtProgram*, const char*);
+int fdt_program_getoptioninteger(FdtProgram*, const char*);
 void fdt_program_printoptionusages(FdtProgram*);
 
 #define fdt_program_setname(prg, v) fdt_string_setvalue(prg->name, v)

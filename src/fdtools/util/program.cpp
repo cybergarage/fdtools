@@ -13,6 +13,7 @@
 // limitations under the License.
 
 #include <stdio.h>
+#include <stdlib.h>
 #include <unistd.h>
 
 #include <fdtools/util/program.h>
@@ -132,7 +133,18 @@ bool fdt_program_isoptionenabled(FdtProgram* prg, const char* name)
 
 const char* fdt_program_getoptionstring(FdtProgram* prg, const char* name)
 {
-  return fdt_program_option_getparameter(fdt_program_getoption(prg, name));
+  FdtProgramOption* opt = fdt_program_getoption(prg, name);
+  if (!opt)
+    return NULL;
+  return fdt_program_option_getparameter(opt);
+}
+
+int fdt_program_getoptioninteger(FdtProgram* prg, const char* name)
+{
+  const char* optstr = fdt_program_getoptionstring(prg, name);
+  if (!optstr)
+    return 0;
+  return atoi(optstr);
 }
 
 void fdt_program_printoptionusages(FdtProgram* prg)
