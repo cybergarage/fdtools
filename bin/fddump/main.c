@@ -115,37 +115,34 @@ int main(int argc, char* argv[])
     break;
   }
 
-  if (!fdt_image_open(src_img, src_img_name, FDT_FILE_READ, err)) {
-    exit_error(err);
-  }
+  print_message("loading %s ....", src_img_name);
   if (!fdt_image_load(src_img, err)) {
-    exit_error(err);
-  }
-  if (!fdt_image_close(src_img, err)) {
     exit_error(err);
   }
 
   // Export source file image
 
   const char* dst_img_name = fdt_program_getargument(prg, 1);
+  print_message("exporting %s ....", dst_img_name);
   FdtImage* dst_img = fdt_image_name_new(dst_img_name, err);
   if (!dst_img) {
     exit_error(err);
   }
+  print_message("importing %s ....", dst_img_name);
   if (!fdt_image_import(dst_img, src_img, err)) {
     exit_error(err);
   }
+  print_message("imported");
+
   fdt_image_delete(src_img);
 
-  if (!fdt_image_open(dst_img, src_img_name, FDT_FILE_WRITE, err)) {
-    exit_error(err);
-  }
+
+  print_message("exporting .....");
   if (!fdt_image_export(dst_img, err)) {
     exit_error(err);
   }
-  if (!fdt_image_close(dst_img, err)) {
-    exit_error(err);
-  }
+  print_message("exported");
+
   fdt_image_delete(dst_img);
 
   // Cleanup
