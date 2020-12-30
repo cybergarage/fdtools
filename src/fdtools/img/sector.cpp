@@ -54,11 +54,11 @@ bool fdt_image_sector_isvalid(FdtImageSector* sector)
   if (!sector)
     return false;
 
-  if (fdt_image_sector_getcylindernumber(sector) <= 0)
+  if (fdt_image_sector_getcylindernumber(sector) < 0)
     return false;
-  if (fdt_image_sector_getheadnumber(sector) <= 0)
+  if (fdt_image_sector_getheadnumber(sector) < 0)
     return false;
-  if (fdt_image_sector_getnumber(sector) <= 0)
+  if (fdt_image_sector_getnumber(sector) < 1)
     return false;
 
   return true;
