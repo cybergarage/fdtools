@@ -20,6 +20,7 @@
 bool fdt_device_image_delete(FdtDeviceImage*);
 bool fdt_device_image_open(FdtDeviceImage*, const char*, FdtFileMode, FdtError*);
 bool fdt_device_image_close(FdtDeviceImage*, FdtError*);
+bool fdt_device_image_isopened(FdtDeviceImage* img);
 bool fdt_device_image_load(FdtDeviceImage*, FdtError*);
 bool fdt_device_image_export(FdtDeviceImage*, FdtError*);
 bool fdt_device_image_loadsector(FdtDeviceImage*, FdtImageSector*, FdtError*);
@@ -44,6 +45,7 @@ FdtImage* fdt_device_image_new(void)
   fdt_image_settype(img, FDT_IMAGE_TYPE_DEV);
   fdt_image_setopener(img, fdt_device_image_open);
   fdt_image_setcloser(img, fdt_device_image_close);
+  fdt_image_setopenchecker(img, fdt_device_image_isopened);
   fdt_image_setdestructor(img, fdt_device_image_delete);
   fdt_image_setloader(img, fdt_device_image_load);
   fdt_image_setexporter(img, fdt_device_image_export);
@@ -81,6 +83,14 @@ bool fdt_device_image_close(FdtDeviceImage* img, FdtError* err)
   if (!img)
     return false;
   return fdt_device_close(img->dev, err);
+}
+
+bool fdt_device_image_isopened(FdtDeviceImage* img)
+{
+  if (!img || !img->dev)
+    return false;
+
+  return fdt_device_isopened(img->dev);
 }
 
 bool fdt_device_image_load(FdtDeviceImage* img, FdtError* err)

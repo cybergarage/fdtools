@@ -33,6 +33,7 @@ bool fdt_image_init(FdtImage* img)
 {
   fdt_image_settype(img, FDT_IMAGE_TYPE_UNKNOWN);
 
+  img->name = fdt_string_new();
   img->config = fdt_image_config_new();
   img->sectors = fdt_image_sectors_new();
 
@@ -56,12 +57,9 @@ bool fdt_image_clear(FdtImage* img)
   if (!img)
     return false;
 
-  if (img->config) {
-    fdt_image_config_delete(img->config);
-  }
-  if (img->sectors) {
-    fdt_image_sectors_delete(img->sectors);
-  }
+  fdt_string_delete(img->name);
+  fdt_image_config_delete(img->config);
+  fdt_image_sectors_delete(img->sectors);
 
   return true;
 }
@@ -84,7 +82,21 @@ bool fdt_image_load(FdtImage* img, FdtError* err)
 {
   if (!img)
     return false;
-  return img->image_loader(img, err);
+
+  bool is_already_opened = img->image_openchcker(img);
+  if (!is_already_opened) {
+    if (!fdt_image_open(img, fdt_image_getname(img), FDT_FILE_READ, err))
+      return false;
+  }
+
+  bool is_success = img->image_loader(img, err);
+
+  if (!is_already_opened) {
+    if (!fdt_image_close(img, err))
+      return false;
+  }
+
+  return is_success;
 }
 
 bool fdt_image_import(FdtImage* img, FdtImage* src, FdtError* err)
@@ -112,7 +124,21 @@ bool fdt_image_export(FdtImage* img, FdtError* err)
 {
   if (!img)
     return false;
-  return img->image_exporter(img, err);
+
+  bool is_already_opened = img->image_openchcker(img);
+  if (!is_already_opened) {
+    if (!fdt_image_open(img, fdt_image_getname(img), FDT_FILE_WRITE, err))
+      return false;
+  }
+
+  bool is_success = img->image_exporter(img, err);
+
+  if (!is_already_opened) {
+    if (!fdt_image_close(img, err))
+      return false;
+  }
+
+  return is_success;
 }
 
 off_t fdt_image_getsectoroffset(FdtImage* img, FdtImageSector* sector)

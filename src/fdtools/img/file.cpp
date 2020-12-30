@@ -19,7 +19,8 @@
 #include <fdtools/util/string.h>
 
 bool fdt_image_file_open(FdtFileImage*, const char*, FdtFileMode, FdtError*);
-bool fdt_image_file_close(FdtFileImage* img, FdtError* err);
+bool fdt_image_file_close(FdtFileImage*, FdtError*);
+bool fdt_image_file_isopened(FdtFileImage*);
 bool fdt_image_file_delete(FdtFileImage*);
 
 FdtImage* fdt_image_file_new()
@@ -38,6 +39,7 @@ FdtImage* fdt_image_file_new()
 
   fdt_image_setopener(img, fdt_image_file_open);
   fdt_image_setcloser(img, fdt_image_file_close);
+  fdt_image_setopenchecker(img, fdt_image_file_isopened);
   fdt_image_setdestructor(img, fdt_image_file_delete);
 
   return (FdtImage*)img;
@@ -82,4 +84,11 @@ bool fdt_image_file_close(FdtFileImage* img, FdtError* err)
   img->fp = NULL;
 
   return true;
+}
+
+bool fdt_image_file_isopened(FdtFileImage* img)
+{
+  if (!img)
+    return false;
+  return (img->fp ? true : false);
 }

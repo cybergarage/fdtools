@@ -36,21 +36,24 @@ typedef enum {
 
 const int FDT_IMAGE_HEADER_SIGNATURE_MAX = 8;
 
-#define FDT_IMAGE_STRUCT_MEMBERS     \
-  FdtImageType type;                 \
-  FdtImageConfig* config;            \
-  FdtImageSectors* sectors;          \
-  FDT_IMAGE_OPENER image_opener;     \
-  FDT_IMAGE_CLOSER image_closer;     \
-  FDT_IMAGE_LOADER image_loader;     \
-  FDT_IMAGE_EXPORTER image_exporter; \
-  FDT_IMAGE_DESTRUCTOR image_destructor;
-
 typedef bool (*FDT_IMAGE_OPENER)(void*, const char*, FdtFileMode, FdtError*);
 typedef bool (*FDT_IMAGE_CLOSER)(void*, FdtError*);
+typedef bool (*FDT_IMAGE_OPENCHECKER)(void*);
 typedef bool (*FDT_IMAGE_LOADER)(void*, FdtError*);
 typedef bool (*FDT_IMAGE_EXPORTER)(void*, FdtError*);
 typedef bool (*FDT_IMAGE_DESTRUCTOR)(void*);
+
+#define FDT_IMAGE_STRUCT_MEMBERS          \
+  FdtImageType type;                      \
+  FdtString* name;                        \
+  FdtImageConfig* config;                 \
+  FdtImageSectors* sectors;               \
+  FDT_IMAGE_OPENER image_opener;          \
+  FDT_IMAGE_CLOSER image_closer;          \
+  FDT_IMAGE_OPENCHECKER image_openchcker; \
+  FDT_IMAGE_LOADER image_loader;          \
+  FDT_IMAGE_EXPORTER image_exporter;      \
+  FDT_IMAGE_DESTRUCTOR image_destructor;
 
 typedef struct FDT_ATTR_PACKED {
   FDT_IMAGE_STRUCT_MEMBERS
@@ -64,6 +67,7 @@ bool fdt_image_clear(FdtImage*);
 
 bool fdt_image_open(FdtImage*, const char*, FdtFileMode, FdtError*);
 bool fdt_image_close(FdtImage*, FdtError*);
+bool fdt_image_isopened(FdtImage*);
 bool fdt_image_load(FdtImage*, FdtError*);
 bool fdt_image_import(FdtImage*, FdtImage*, FdtError*);
 bool fdt_image_export(FdtImage*, FdtError*);
@@ -79,12 +83,14 @@ void fdt_image_print(FdtImage* img);
 
 #define fdt_image_setopener(img, fn) (img->image_opener = (FDT_IMAGE_OPENER)fn)
 #define fdt_image_setcloser(img, fn) (img->image_closer = (FDT_IMAGE_CLOSER)fn)
+#define fdt_image_setopenchecker(img, fn) (img->image_openchcker = (FDT_IMAGE_OPENCHECKER)fn)
 #define fdt_image_setloader(img, fn) (img->image_loader = (FDT_IMAGE_LOADER)fn)
 #define fdt_image_setexporter(img, fn) (img->image_exporter = (FDT_IMAGE_EXPORTER)fn)
 #define fdt_image_setdestructor(img, fn) (img->image_destructor = (FDT_IMAGE_DESTRUCTOR)fn)
 
 #define fdt_image_settype(img, v) (img->type = v)
-#define fdt_image_setname(img, v) fdt_image_config_setname(img->config, v)
+#define fdt_image_setname(img, v) fdt_string_setvalue(img->name, v)
+#define fdt_image_setconfigname(img, v) fdt_image_config_setname(img->config, v)
 #define fdt_image_setsize(img, v) fdt_image_config_setsize(img->config, v)
 #define fdt_image_setdensity(img, v) fdt_image_config_setdensity(img->config, v)
 #define fdt_image_setnumberofhead(img, v) fdt_image_config_setnumberofhead(img->config, v)
@@ -95,8 +101,10 @@ void fdt_image_print(FdtImage* img);
 #define fdt_image_setwriteprotect(img, v) fdt_image_config_setwriteprotect(img->config, v)
 
 #define fdt_image_gettype(img) (img->type)
-#define fdt_image_hasname(img) fdt_image_config_hasname(img->config)
-#define fdt_image_getname(img) fdt_image_config_getname(img->config)
+#define fdt_image_hasname(img) ((0 < fdt_string_length(img->name)) ? true : false)
+#define fdt_image_getname(img) fdt_string_getvalue(img->name)
+#define fdt_image_hasconfigname(img) fdt_image_config_hasname(img->config)
+#define fdt_image_getconfigname(img) fdt_image_config_getname(img->config)
 #define fdt_image_getsize(img) fdt_image_config_getsize(img->config)
 #define fdt_image_getdensity(img) fdt_image_config_getdensity(img->config)
 #define fdt_image_getnumberofhead(img) fdt_image_config_getnumberofhead(img->config)
