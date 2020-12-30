@@ -76,6 +76,7 @@ size_t fdt_floppy_params_getsectorsize(FdtFloppyParams*);
 #define fdt_floppy_params_getmedia(params) (params->media)
 #define fdt_floppy_params_getdensity(params) (params->density)
 #define fdt_floppy_params_getsize(params) (params->size)
+#define fdt_floppy_params_getsect(params) (params->sect)
 #define fdt_floppy_params_gethead(params) (params->head)
 #define fdt_floppy_params_gettrack(params) (params->track)
 #define fdt_floppy_params_getstretch(params) (params->stretch)
