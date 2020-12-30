@@ -75,7 +75,7 @@ bool fdt_device_close(FdtDevice* dev, FdtError* err)
 
 bool fdt_device_readblock(FdtDevice* dev, off_t offset, byte_t* buf, size_t block_size, FdtError* err)
 {
-  return fdt_device_readoffsetblock(dev, -1, buf, block_size, err);
+  return fdt_device_readoffsetblock(dev, 0, buf, block_size, err);
 }
 
 bool fdt_device_readoffsetblock(FdtDevice* dev, off_t offset, byte_t* buf, size_t block_size, FdtError* err)
@@ -106,6 +106,7 @@ bool fdt_device_readoffsetblock(FdtDevice* dev, off_t offset, byte_t* buf, size_
     fdt_error_setlasterror(err, "");
     break;
   }
+
   return (n_read == block_size) ? true : false;
 }
 
