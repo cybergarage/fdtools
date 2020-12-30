@@ -28,9 +28,8 @@ void ImageLoarderCompareTest(boost::filesystem::path& filepath, FDT_TEST_IMAGE_N
 
   FdtImage* src_img = image_new_func();
   BOOST_REQUIRE(src_img);
-  BOOST_REQUIRE_MESSAGE(fdt_image_open(src_img, filepath.c_str(), FDT_FILE_READ, err), fdt_error_getdebugmessage(err));
+  fdt_image_setname(src_img, filepath.c_str());
   BOOST_REQUIRE_MESSAGE(fdt_image_load(src_img, err), fdt_error_getdebugmessage(err));
-  BOOST_CHECK_MESSAGE(fdt_image_close(src_img, err), fdt_error_getdebugmessage(err));
 
   // Exporter test
 
