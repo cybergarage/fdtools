@@ -18,6 +18,12 @@
 
 BOOST_AUTO_TEST_CASE(SectorCopyTest)
 {
+  const int TEST_SECTOR_DATA_SIZE = 16;
+  byte_t* TEST_SECTOR_DATA = (byte_t*)calloc(TEST_SECTOR_DATA_SIZE, 1);
+  for (int n = 0; n < TEST_SECTOR_DATA_SIZE; n++) {
+    TEST_SECTOR_DATA[n] = n;
+  }
+
   FdtError* err = fdt_error_new();
   BOOST_REQUIRE(err);
 
@@ -26,7 +32,8 @@ BOOST_AUTO_TEST_CASE(SectorCopyTest)
   fdt_image_sector_setcylindernumber(sector, 80);
   fdt_image_sector_setheadnumber(sector, 2);
   fdt_image_sector_setnumber(sector, 18);
-  fdt_image_sector_setsize(sector, 512);
+  fdt_image_sector_setsize(sector, TEST_SECTOR_DATA_SIZE);
+  fdt_image_sector_setdata(sector, TEST_SECTOR_DATA);
 
   FdtImageSector* other = fdt_image_sector_copy(sector);
   BOOST_REQUIRE(sector);

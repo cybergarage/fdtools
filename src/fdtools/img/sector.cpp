@@ -100,7 +100,7 @@ FdtImageSector* fdt_image_sector_copy(FdtImageSector* sector)
   fdt_image_sector_setnumber(other, fdt_image_sector_getnumber(sector));
   fdt_image_sector_setsize(other, fdt_image_sector_getsize(sector));
 
-  if (other->data) {
+  if (sector->data) {
     byte_t* data = (byte_t*)malloc(sector->size);
     if (!data) {
       fdt_image_sector_delete(other);
