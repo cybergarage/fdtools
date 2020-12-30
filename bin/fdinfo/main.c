@@ -42,7 +42,8 @@ int main(int argc, char* argv[])
       printf("size    : %ld\n", fdt_floppy_params_getsize(fdparams));
       printf("head    : %ld\n", fdt_floppy_params_gethead(fdparams));
       printf("track   : %ld\n", fdt_floppy_params_gettrack(fdparams));
-      printf("sector  : %ld\n", fdt_floppy_params_getssize(fdparams));
+      printf("sect    : %ld\n", fdt_floppy_params_getsect(fdparams));
+      printf("ssize   : %ld\n", fdt_floppy_params_getssize(fdparams));
       printf("stretch : %ld\n", fdt_floppy_params_getstretch(fdparams));
       printf("gap     : %02X\n", fdt_floppy_params_getgap(fdparams));
       printf("rate    : %02X\n", fdt_floppy_params_getrate(fdparams));
