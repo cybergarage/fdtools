@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		211519B8255DA6DA00B747E1 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 211519B7255DA6DA00B747E1 /* main.cpp */; };
 		211D4842257BB28E00895CFE /* program_test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 211D4841257BB28E00895CFE /* program_test.cpp */; };
+		213114AA259C38D100C3C8F6 /* config_test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 213114A9259C38D100C3C8F6 /* config_test.cpp */; };
 		21403C09255EF3360022389D /* image_file_test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 21403C08255EF3360022389D /* image_file_test.cpp */; };
 		21587B7F259798C800F98743 /* image_test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 21587B7E259798C800F98743 /* image_test.cpp */; };
 		21587B872598978C00F98743 /* image_raw_test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 21587B862598978B00F98743 /* image_raw_test.cpp */; };
@@ -54,6 +55,7 @@
 		211519B7255DA6DA00B747E1 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = ../../main.cpp; sourceTree = "<group>"; };
 		211D4841257BB28E00895CFE /* program_test.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = program_test.cpp; path = ../../program_test.cpp; sourceTree = "<group>"; };
 		2131149D259B6F3A00C3C8F6 /* image_test.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = image_test.h; path = ../../image_test.h; sourceTree = "<group>"; };
+		213114A9259C38D100C3C8F6 /* config_test.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = config_test.cpp; path = ../../config_test.cpp; sourceTree = "<group>"; };
 		21403C08255EF3360022389D /* image_file_test.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = image_file_test.cpp; path = ../../image_file_test.cpp; sourceTree = "<group>"; };
 		21587B7E259798C800F98743 /* image_test.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = image_test.cpp; path = ../../image_test.cpp; sourceTree = "<group>"; };
 		21587B862598978B00F98743 /* image_raw_test.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = image_raw_test.cpp; path = ../../image_raw_test.cpp; sourceTree = "<group>"; };
@@ -82,6 +84,7 @@
 		211519B5255DA6C200B747E1 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				213114A9259C38D100C3C8F6 /* config_test.cpp */,
 				21DC201C257B6B81004F3363 /* device_test.cpp */,
 				21DC2025257BA4A1004F3363 /* dictionary_test.cpp */,
 				219F7D512568F68700827D5C /* image_d88_test.cpp */,
@@ -219,6 +222,7 @@
 				219F7D4E255FD26600827D5C /* image_hfe_test.cpp in Sources */,
 				211519B8255DA6DA00B747E1 /* main.cpp in Sources */,
 				21B0911C2585D14C00036CC5 /* string_test.cpp in Sources */,
+				213114AA259C38D100C3C8F6 /* config_test.cpp in Sources */,
 				21587B7F259798C800F98743 /* image_test.cpp in Sources */,
 				21587B872598978C00F98743 /* image_raw_test.cpp in Sources */,
 				21DC2026257BA4A1004F3363 /* dictionary_test.cpp in Sources */,

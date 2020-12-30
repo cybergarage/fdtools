@@ -51,6 +51,7 @@ FdtImageConfig* fdt_image_config_new();
 bool fdt_image_config_delete(FdtImageConfig*);
 
 bool fdt_image_config_isvalid(FdtImageConfig*, FdtError*);
+FdtImageConfig* fdt_image_config_copy(FdtImageConfig*);
 bool fdt_image_config_equals(FdtImageConfig*, FdtImageConfig*, FdtError*);
 
 size_t fdt_image_config_calculaterawsize(FdtImageConfig*);

@@ -93,6 +93,22 @@ bool fdt_image_config_isvalid(FdtImageConfig* config, FdtError* err)
   return true;
 }
 
+FdtImageConfig* fdt_image_config_copy(FdtImageConfig* config)
+{
+  FdtImageConfig* other = fdt_image_config_new();
+  if (!other)
+    return NULL;
+
+  fdt_image_config_setname(other, fdt_image_config_getname(config));
+
+  off_t config_offset = sizeof(FdtString*) /* name */ + sizeof(FdtString*) /* desc */;
+  size_t config_copy_size = sizeof(FdtImageConfig) - config_offset;
+
+  fdt_structcpy(other, config, config_offset, config_copy_size);
+
+  return other;
+}
+
 bool fdt_image_config_equals(FdtImageConfig* config, FdtImageConfig* other, FdtError* err)
 {
   if (!fdt_string_equals(config->name, other->name)) {
@@ -102,6 +118,7 @@ bool fdt_image_config_equals(FdtImageConfig* config, FdtImageConfig* other, FdtE
 
   off_t config_offset = sizeof(FdtString*) /* name */ + sizeof(FdtString*) /* desc */;
   size_t config_comp_size = sizeof(FdtImageConfig) - config_offset;
+
   if (!fdt_structcmp(config, other, config_offset, config_comp_size)) {
     fdt_error_setmessage(err, "%s != %s", fdt_image_config_getdescription(config), fdt_image_config_getdescription(other));
     return false;
