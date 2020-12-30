@@ -12,12 +12,23 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#include <stdarg.h>
 #include <stdio.h>
 #include <stdlib.h>
 
 #include <fdtools/dev/device.h>
 #include <fdtools/img/image.h>
 #include <fdtools/util/program.h>
+
+void print_message(const char* format, ...)
+{
+  char msg[512];
+  va_list list;
+  va_start(list, format);
+  vsnprintf(msg, sizeof(msg), format, list);
+  va_end(list);
+  printf("%s\n", msg);
+}
 
 void print_usage(FdtProgram* prg)
 {
@@ -30,7 +41,7 @@ void print_error(FdtError* err)
   printf("Error: %s\n", fdt_error_getmessage(err));
 }
 
-void exit_systemerror()
+void panic()
 {
   exit(EXIT_FAILURE);
 }
@@ -45,12 +56,12 @@ int main(int argc, char* argv[])
 {
   FdtError* err = fdt_error_new();
   if (!err) {
-    exit_systemerror();
+    panic();
   }
 
   FdtProgram* prg = fdt_program_new();
   if (!prg) {
-    exit_systemerror();
+    panic();
   }
   fdt_program_addoption(prg, "c", "number of cylinders", true, "");
   fdt_program_addoption(prg, "h", "number of heads", true, "");
@@ -82,12 +93,12 @@ int main(int argc, char* argv[])
     FdtDevice* dev = fdt_device_new();
     FdtFloppyParams* fdparams = fdt_floppy_params_new();
     if (!dev || !fdparams) {
-      exit_systemerror();
+      panic();
     }
-    if (fdt_device_open(dev, src_img_name, FDT_FILE_READ, err)) {
+    if (!fdt_device_open(dev, src_img_name, FDT_FILE_READ, err)) {
       exit_error(err);
     }
-    if (fdt_device_getfloppyparameters(dev, fdparams, err)) {
+    if (!fdt_device_getfloppyparameters(dev, fdparams, err)) {
       exit_error(err);
     }
     fdt_image_setnumberofcylinder(src_img, fdt_floppy_params_gettrack(fdparams));
@@ -96,6 +107,8 @@ int main(int argc, char* argv[])
     fdt_image_setsectorsize(src_img, fdt_floppy_params_getssize(fdparams));
     fdt_device_delete(dev);
     fdt_floppy_params_delete(fdparams);
+
+    print_message("cyl=%ld head=%ld sect=%ld ssize=%ld\n", fdt_image_getnumberofcylinder(src_img), fdt_image_getnumberofhead(src_img), fdt_image_getnumberofsector(src_img), fdt_image_getsectorsize(src_img));
   } break;
   case FDT_IMAGE_TYPE_RAW:
     // TODO: Set parameters
