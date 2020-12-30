@@ -49,11 +49,13 @@ size_t fdt_image_sectors_getmaxsectorsize(FdtImageSectors*);
 size_t fdt_image_sectors_gettotaldatasize(FdtImageSectors*);
 size_t fdt_image_sectors_gettracksize(FdtImageSectors*, FdtCylinderNumber, FdtHeadNumber);
 
+FdtImageSectors* fdt_image_sectors_copy(FdtImageSectors* sectors, FdtError* err);
 bool fdt_image_sectors_equals(FdtImageSectors*, FdtImageSectors*, FdtError*);
 void fdt_image_sectors_print(FdtImageSectors*);
 
 #define fdt_image_sectors_size(sectors) fdt_list_size((FdtList*)sectors)
 #define fdt_image_sectors_gets(sectors) (FdtImageSector*)fdt_list_gets((FdtList*)sectors)
+#define fdt_image_sectors_addsector(sectors, sector) fdt_list_add((FdtList*)sectors, (FdtList*)sector)
 #define fdt_image_sectors_clear(sectors) fdt_list_clear((FdtList*)sectors, (FDT_LIST_DESTRUCTORFUNC)fdt_image_sector_delete)
 
 FdtImageSector* fdt_image_sector_new();
