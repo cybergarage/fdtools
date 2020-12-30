@@ -39,6 +39,7 @@ typedef struct {
 
 FdtImageSectors* fdt_image_sectors_new();
 void fdt_image_sectors_delete(FdtImageSectors*);
+
 FdtImageSector* fdt_image_sectors_getsector(FdtImageSectors*, FdtCylinderNumber, FdtHeadNumber, FdtSectorNumber);
 size_t fdt_image_sectors_getnumberofcylinder(FdtImageSectors*);
 size_t fdt_image_sectors_getnumberofhead(FdtImageSectors*);
@@ -47,6 +48,7 @@ size_t fdt_image_sectors_getnumberoftracksector(FdtImageSectors*, FdtCylinderNum
 size_t fdt_image_sectors_getmaxsectorsize(FdtImageSectors*);
 size_t fdt_image_sectors_gettotaldatasize(FdtImageSectors*);
 size_t fdt_image_sectors_gettracksize(FdtImageSectors*, FdtCylinderNumber, FdtHeadNumber);
+
 bool fdt_image_sectors_equals(FdtImageSectors*, FdtImageSectors*, FdtError*);
 void fdt_image_sectors_print(FdtImageSectors*);
 
@@ -58,8 +60,10 @@ FdtImageSector* fdt_image_sector_new();
 bool fdt_image_sector_delete(FdtImageSector*);
 
 bool fdt_image_sector_isvalid(FdtImageSector*);
+bool fdt_image_sector_setdata(FdtImageSector*, byte_t*);
 bool fdt_image_sector_hasdata(FdtImageSector*);
 bool fdt_image_sector_equals(FdtImageSector*, FdtImageSector*);
+FdtImageSector* fdt_image_sector_copy(FdtImageSector* sector);
 
 #define fdt_image_sector_next(sector) (FdtImageSector*)fdt_list_next((FdtList*)sector)
 
@@ -67,7 +71,6 @@ bool fdt_image_sector_equals(FdtImageSector*, FdtImageSector*);
 #define fdt_image_sector_setheadnumber(sector, n) (sector->head_number = n)
 #define fdt_image_sector_setnumber(sector, n) (sector->number = n)
 #define fdt_image_sector_setsize(sector, n) (sector->size = n)
-#define fdt_image_sector_setdata(sector, v) (sector->data = v)
 
 #define fdt_image_sector_getcylindernumber(sector) (sector->cylinder_number)
 #define fdt_image_sector_getheadnumber(sector) (sector->head_number)

@@ -18,7 +18,7 @@
 
 FdtImageSector* fdt_image_sector_new()
 {
-  FdtImageSector* sector = (FdtImageSector*)malloc(sizeof(FdtImageSector));
+  FdtImageSector* sector = (FdtImageSector*)calloc(sizeof(FdtImageSector), 1);
   if (!sector) {
     return NULL;
   }
@@ -63,6 +63,20 @@ bool fdt_image_sector_isvalid(FdtImageSector* sector)
   return true;
 }
 
+bool fdt_image_sector_setdata(FdtImageSector* sector, byte_t* data)
+{
+  if (!sector)
+    return false;
+
+  if (sector->data) {
+    free(sector->data);
+  }
+
+  sector->data = data;
+
+  return true;
+}
+
 bool fdt_image_sector_hasdata(FdtImageSector* sector)
 {
   if (!sector)
@@ -72,6 +86,30 @@ bool fdt_image_sector_hasdata(FdtImageSector* sector)
     return false;
 
   return true;
+}
+
+FdtImageSector* fdt_image_sector_copy(FdtImageSector* sector)
+{
+  FdtImageSector* other = fdt_image_sector_new();
+  if (!other)
+    return NULL;
+
+  fdt_image_sector_setcylindernumber(other, fdt_image_sector_getcylindernumber(sector));
+  fdt_image_sector_setheadnumber(other, fdt_image_sector_getheadnumber(sector));
+  fdt_image_sector_setnumber(other, fdt_image_sector_getnumber(sector));
+  fdt_image_sector_setsize(other, fdt_image_sector_getsize(sector));
+
+  if (other->data) {
+    byte_t* data = (byte_t*)malloc(sector->size);
+    if (!data) {
+      fdt_image_sector_delete(other);
+      return NULL;
+    }
+    memcpy(data, sector->data, sector->size);
+    fdt_image_sector_setdata(other, data);
+  }
+
+  return other;
 }
 
 bool fdt_image_sector_equals(FdtImageSector* sector, FdtImageSector* other)
@@ -86,6 +124,9 @@ bool fdt_image_sector_equals(FdtImageSector* sector, FdtImageSector* other)
   if (sector->number != other->number)
     return false;
   if (sector->size != other->size)
+    return false;
+
+  if (!sector->data || !other->data)
     return false;
 
   return memcmp(sector->data, other->data, sector->size) == 0 ? true : false;
