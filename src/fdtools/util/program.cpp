@@ -85,11 +85,14 @@ bool fdt_program_parse(FdtProgram* prg, int argc, char* argv[], FdtError* err)
 
   char opt_str[2] = { 0x00, 0x00 };
   int opt_ch;
+  opterr = 0;
   while ((opt_ch = getopt(argc, argv, fdt_string_getvalue(opt_strs))) != -1) {
     opt_str[0] = opt_ch;
     FdtProgramOption* opt = fdt_program_getoption(prg, opt_str);
-    if (!opt)
+    if (!opt) {
+      fdt_error_setmessage(err,"invalid option '%c'", opt_ch);
       return false;
+    }
     fdt_program_option_setenabled(opt, true);
     if (fdt_program_option_isparameterrequired(opt)) {
       fdt_program_option_setparameter(opt, optarg);
