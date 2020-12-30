@@ -70,7 +70,7 @@ bool fdt_floppy_params_delete(FdtFloppyParams*);
 #define fdt_floppy_params_setspec1(params, v) (params->spec1 = v)
 #define fdt_floppy_params_setfmtgap(params, v) (params->fmt_gap = v)
 
-size_t fdt_floppy_params_getsectorsize(FdtFloppyParams*);
+size_t fdt_floppy_params_getssize(FdtFloppyParams*);
 
 #define fdt_floppy_params_getname (dev) fdt_string_getvalue(dev->name)
 #define fdt_floppy_params_getmedia(params) (params->media)

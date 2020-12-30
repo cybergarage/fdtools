@@ -93,7 +93,7 @@ int main(int argc, char* argv[])
     fdt_image_setnumberofcylinder(src_img, fdt_floppy_params_gettrack(fdparams));
     fdt_image_setnumberofhead(src_img, fdt_floppy_params_gethead(fdparams));
     fdt_image_setnumberofsector(src_img, fdt_floppy_params_getsect(fdparams));
-    fdt_image_setsectorsize(src_img, fdt_floppy_params_getsectorsize(fdparams));
+    fdt_image_setsectorsize(src_img, fdt_floppy_params_getssize(fdparams));
     fdt_device_delete(dev);
     fdt_floppy_params_delete(fdparams);
   } break;
