@@ -22,6 +22,7 @@ FdtProgramOption* fdt_program_option_new()
   }
 
   opt->name = fdt_string_new();
+  opt->desc = fdt_string_new();
   opt->value = fdt_string_new();
   fdt_program_option_setenabled(opt, false);
   fdt_program_option_setparameterrequired(opt, false);
@@ -39,6 +40,7 @@ bool fdt_program_option_delete(FdtProgramOption* opt)
   if (!opt)
     return true;
   fdt_string_delete(opt->name);
+  fdt_string_delete(opt->desc);
   fdt_string_delete(opt->value);
   free(opt);
   return true;

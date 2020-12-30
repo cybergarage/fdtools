@@ -36,7 +36,7 @@ bool fdt_program_arguments_add(FdtProgramArguments*, const char*);
 
 #define fdt_program_arguments_size(args) fdt_list_size((FdtList*)args)
 #define fdt_program_arguments_gets(args) ((FdtProgramArgument*)fdt_list_gets((FdtList*)args))
-#define fdt_program_arguments_get(args,n) ((FdtProgramArgument*)fdt_list_get((FdtList*)args,n))
+#define fdt_program_arguments_get(args, n) ((FdtProgramArgument*)fdt_list_get((FdtList*)args, n))
 #define fdt_program_arguments_clear(args) fdt_list_clear((FdtList*)args, (FDT_LIST_DESTRUCTORFUNC)fdt_program_argument_delete)
 
 FdtProgramArgument* fdt_program_argument_new();
@@ -48,6 +48,7 @@ bool fdt_program_argument_delete(FdtProgramArgument*);
 typedef struct {
   FdtString* name;
   FdtString* value;
+  FdtString* desc;
   bool enabled;
   bool paramRequired;
 } FdtProgramOption;
@@ -56,11 +57,13 @@ FdtProgramOption* fdt_program_option_new();
 bool fdt_program_option_delete(FdtProgramOption*);
 
 #define fdt_program_option_setname(opt, v) fdt_string_setvalue(opt->name, v)
+#define fdt_program_option_setdescription(opt, v) fdt_string_setvalue(opt->desc, v)
 #define fdt_program_option_setenabled(opt, v) (opt->enabled = v)
 #define fdt_program_option_setparameter(opt, v) fdt_string_setvalue(opt->value, v)
 #define fdt_program_option_setparameterrequired(opt, v) (opt->paramRequired = v)
 
 #define fdt_program_option_getname(opt) fdt_string_getvalue(opt->name)
+#define fdt_program_option_getdescription(opt) fdt_string_getvalue(opt->desc)
 #define fdt_program_option_getparameter(opt) fdt_string_getvalue(opt->value)
 #define fdt_program_option_isparameterrequired(opt) (opt->paramRequired)
 
@@ -81,7 +84,7 @@ bool fdt_program_parse(FdtProgram*, int argc, char* argv[], FdtError*);
 #define fdt_program_getname(prg) fdt_string_getvalue(prg->name)
 #define fdt_program_getarguments(prg) fdt_program_arguments_gets(prg->args)
 #define fdt_program_getnarguments(prg) fdt_program_arguments_size(prg->args)
-#define fdt_program_getargument(prg,n) fdt_program_argument_getvalue(fdt_program_arguments_get(prg->args,n))
+#define fdt_program_getargument(prg, n) fdt_program_argument_getvalue(fdt_program_arguments_get(prg->args, n))
 #define fdt_program_getoptionelements(prg) (fdt_dictionary_getelements(prg->options))
 #define fdt_program_optionelement_next(elem) fdt_dictionary_element_next(elem)
 #define fdt_program_getelementoption(elem) ((FdtProgramOption*)fdt_dictionary_element_getvalue(elem))

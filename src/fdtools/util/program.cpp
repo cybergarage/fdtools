@@ -45,7 +45,7 @@ bool fdt_program_delete(FdtProgram* prg)
   return true;
 }
 
-bool fdt_program_addoption(FdtProgram* prg, const char* name, bool hasParam)
+bool fdt_program_addoption(FdtProgram* prg, const char* name, const bool hasParam)
 {
   FdtProgramOption* opt = fdt_program_option_new();
   if (!opt)
