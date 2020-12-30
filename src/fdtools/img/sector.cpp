@@ -14,6 +14,7 @@
 
 #include <string.h>
 
+#include <fdtools/img/error.h>
 #include <fdtools/img/sector.h>
 
 FdtImageSector* fdt_image_sector_new()
@@ -112,22 +113,15 @@ FdtImageSector* fdt_image_sector_copy(FdtImageSector* sector)
   return other;
 }
 
-bool fdt_image_sector_equals(FdtImageSector* sector, FdtImageSector* other)
+bool fdt_image_sector_equals(FdtImageSector* sector, FdtImageSector* other, FdtError* err)
 {
   if (!sector || !other)
     return false;
 
-  if (sector->cylinder_number != other->cylinder_number)
+  if ((sector->cylinder_number != other->cylinder_number) || (sector->head_number != other->head_number) || (sector->number != other->number) || (sector->size != other->size) || (!sector->data) || (!other->data) || (memcmp(sector->data, other->data, sector->size) != 0)) {
+    fdt_error_setmessage(err, FDT_IMAGE_SECTOR_SIZE_PRINTF_FORMAT " != " FDT_IMAGE_SECTOR_SIZE_PRINTF_FORMAT, sector->cylinder_number, sector->head_number, sector->number, sector->size, other->cylinder_number, other->head_number, other->number, other->size);
     return false;
-  if (sector->head_number != other->head_number)
-    return false;
-  if (sector->number != other->number)
-    return false;
-  if (sector->size != other->size)
-    return false;
+  }
 
-  if (!sector->data || !other->data)
-    return false;
-
-  return memcmp(sector->data, other->data, sector->size) == 0 ? true : false;
+  return true;
 }

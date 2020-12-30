@@ -146,10 +146,8 @@ bool fdt_image_sectors_equals(FdtImageSectors* sectors, FdtImageSectors* others,
       fdt_error_setmessage(err, "Not found " FDT_IMAGE_SECTOR_PRINTF_FORMAT, c, h, s);
       return false;
     }
-    if (!fdt_image_sector_equals(sector, other)) {
-      fdt_error_setmessage(err, "Not equal (%ld:%ld:%ld)", c, h, s);
+    if (!fdt_image_sector_equals(sector, other, err))
       return false;
-    }
   }
   return true;
 }

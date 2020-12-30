@@ -31,7 +31,7 @@ BOOST_AUTO_TEST_CASE(SectorCopyTest)
   FdtImageSector* other = fdt_image_sector_copy(sector);
   BOOST_REQUIRE(sector);
 
-  BOOST_CHECK(fdt_image_sector_equals(sector, other));
+  BOOST_CHECK_MESSAGE(fdt_image_sector_equals(sector, other, err), fdt_error_getdebugmessage(err));
 
   BOOST_CHECK(fdt_image_sector_delete(sector));
   BOOST_CHECK(fdt_image_sector_delete(other));

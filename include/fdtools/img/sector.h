@@ -62,7 +62,7 @@ bool fdt_image_sector_delete(FdtImageSector*);
 bool fdt_image_sector_isvalid(FdtImageSector*);
 bool fdt_image_sector_setdata(FdtImageSector*, byte_t*);
 bool fdt_image_sector_hasdata(FdtImageSector*);
-bool fdt_image_sector_equals(FdtImageSector*, FdtImageSector*);
+bool fdt_image_sector_equals(FdtImageSector*, FdtImageSector*, FdtError*);
 FdtImageSector* fdt_image_sector_copy(FdtImageSector* sector);
 
 #define fdt_image_sector_next(sector) (FdtImageSector*)fdt_list_next((FdtList*)sector)
