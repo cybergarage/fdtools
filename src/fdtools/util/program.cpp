@@ -45,13 +45,14 @@ bool fdt_program_delete(FdtProgram* prg)
   return true;
 }
 
-bool fdt_program_addoption(FdtProgram* prg, const char* name, const bool hasParam)
+bool fdt_program_addoption(FdtProgram* prg, const char* name, const char* desc, const bool hasParam)
 {
   FdtProgramOption* opt = fdt_program_option_new();
   if (!opt)
     return false;
 
   fdt_program_option_setname(opt, name);
+  fdt_program_option_setdescription(opt, desc);
   fdt_program_option_setparameterrequired(opt, hasParam);
 
   return fdt_dictionary_setvalue(prg->options, name, opt, (FDT_DICTIONARY_ELEMENT_DESTRUCTORFUNC)fdt_program_option_delete);
