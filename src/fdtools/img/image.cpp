@@ -154,7 +154,10 @@ off_t fdt_image_getsectoroffset(FdtImage* img, FdtImageSector* sector)
   size_t number_of_sector = fdt_image_getnumberofsector(img);
   size_t cylinder_no = fdt_image_sector_getcylindernumber(sector);
   size_t header_no = fdt_image_sector_getheadnumber(sector);
-  size_t sector_no = fdt_image_sector_getnumber(sector);
+  size_t sector_no = fdt_image_sector_getnumber(sector) - 1; // Sector no stats from 1
+
+  if ((cylinder_no < 0) || (cylinder_no < 0) || (sector_no < 0))
+    return -1;
 
   size_t offset = (cylinder_no * number_of_head * number_of_sector) * sector_size;
   offset += (header_no * number_of_sector) * sector_size;
