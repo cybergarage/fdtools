@@ -114,6 +114,9 @@ void fdt_image_print(FdtImage* img);
 
 #define fdt_image_addsector(img, sector) fdt_list_add((FdtList*)img->sectors, (FdtList*)sector)
 
+FdtImage* fdt_image_name_new(const char* filename, FdtError* err);
+FdtImageType fdt_image_name_gettype(const char* filename);
+
 #ifdef __cplusplus
 } /* extern C */
 #endif
