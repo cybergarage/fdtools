@@ -65,6 +65,7 @@ bool fdt_image_clear(FdtImage*);
 bool fdt_image_open(FdtImage*, const char*, FdtFileMode, FdtError*);
 bool fdt_image_close(FdtImage*, FdtError*);
 bool fdt_image_load(FdtImage*, FdtError*);
+bool fdt_image_import(FdtImage*, FdtImage*, FdtError*);
 bool fdt_image_export(FdtImage*, FdtError*);
 
 bool fdt_image_isvalid(FdtImage*, FdtError*);

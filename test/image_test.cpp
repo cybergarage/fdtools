@@ -44,47 +44,34 @@ BOOST_AUTO_TEST_CASE(ImageGenerateTest)
   BOOST_CHECK(fdt_image_delete(img));
 }
 
-void ImageLoarderCompareTest(boost::filesystem::path& filepath, FDT_TEST_IMAGE_NEW_FUNC image_new_func)
+BOOST_AUTO_TEST_CASE(ImageImportTest)
 {
   FdtError* err = fdt_error_new();
   BOOST_REQUIRE(err);
 
-  // Loader test
-
-  FdtImage* src_img = image_new_func();
+  FdtImage* src_img = fdt_image_new();
   BOOST_REQUIRE(src_img);
-  BOOST_REQUIRE_MESSAGE(fdt_image_open(src_img, filepath.c_str(), FDT_FILE_READ, err), fdt_error_getdebugmessage(err));
-  BOOST_REQUIRE_MESSAGE(fdt_image_load(src_img, err), fdt_error_getdebugmessage(err));
-  BOOST_CHECK_MESSAGE(fdt_image_close(src_img, err), fdt_error_getdebugmessage(err));
+  fdt_image_setnumberofcylinder(src_img, 80);
+  fdt_image_setnumberofhead(src_img, 2);
+  fdt_image_setnumberofsector(src_img, 18);
+  fdt_image_setsectorsize(src_img, 512);
+  BOOST_REQUIRE(fdt_image_generatesectors(src_img, NULL));
+  size_t sector_no = 1;
+  for (FdtImageSector* sector = fdt_image_getsectors(src_img); sector; sector = fdt_image_sector_next(sector)) {
+    size_t sector_size = sector_no;
+    byte_t* sector_data = (byte_t*)calloc(sector_size, 1);
+    sector_data[0] = sector_no;
+    fdt_image_sector_setsize(sector, sector_size);
+    fdt_image_sector_setdata(sector, sector_data);
+  }
 
-  // Exporter test
-
-  size_t img_size = fdt_image_getsize(src_img);
-  BOOST_CHECK(0 < img_size);
-
-  byte_t* dst_img_buf = (byte_t*)malloc(img_size);
-  FILE* mem_fp = fdt_file_memopen(dst_img_buf, img_size, FDT_FILE_WRITE);
-  BOOST_REQUIRE(mem_fp);
-  fdt_image_file_setfile(src_img, mem_fp);
-  BOOST_REQUIRE_MESSAGE(fdt_image_export(src_img, err), fdt_error_getdebugmessage(err));
-  BOOST_CHECK_MESSAGE(fdt_image_close(src_img, err), fdt_error_getdebugmessage(err));
-
-  // Compare test
-
-  mem_fp = fdt_file_memopen(dst_img_buf, img_size, FDT_FILE_READ);
-  BOOST_REQUIRE(mem_fp);
-  FdtImage* dst_img = image_new_func();
+  FdtImage* dst_img = fdt_image_new();
   BOOST_REQUIRE(dst_img);
-  fdt_image_file_setfile(dst_img, mem_fp);
-  BOOST_REQUIRE_MESSAGE(fdt_image_load(dst_img, err), fdt_error_getdebugmessage(err));
-  BOOST_CHECK_MESSAGE(fdt_image_close(dst_img, err), fdt_error_getdebugmessage(err));
+  BOOST_REQUIRE_MESSAGE(fdt_image_import(dst_img, src_img, err), fdt_error_getdebugmessage(err));
   BOOST_CHECK_MESSAGE(fdt_image_equals(src_img, dst_img, err), fdt_error_getdebugmessage(err));
-
-  free(dst_img_buf);
-
-  // Clean up
-
   BOOST_CHECK(fdt_image_delete(dst_img));
+
   BOOST_CHECK(fdt_image_delete(src_img));
+
   BOOST_CHECK(fdt_error_delete(err));
 }

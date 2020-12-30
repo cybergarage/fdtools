@@ -87,6 +87,27 @@ bool fdt_image_load(FdtImage* img, FdtError* err)
   return img->image_loader(img, err);
 }
 
+bool fdt_image_import(FdtImage* img, FdtImage* src, FdtError* err)
+{
+  FdtImageConfig* src_config = fdt_image_config_copy(src->config);
+  if (!src_config)
+    return false;
+
+  FdtImageSectors* src_sectors = fdt_image_sectors_copy(src->sectors, err);
+  if (!src_sectors) {
+    fdt_image_config_delete(src_config);
+    return false;
+  }
+
+  fdt_image_config_delete(img->config);
+  img->config = src_config;
+
+  fdt_image_sectors_delete(img->sectors);
+  img->sectors = src_sectors;
+
+  return true;
+}
+
 bool fdt_image_export(FdtImage* img, FdtError* err)
 {
   if (!img)
