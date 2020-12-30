@@ -82,7 +82,21 @@ bool fdt_image_load(FdtImage* img, FdtError* err)
 {
   if (!img)
     return false;
-  return img->image_loader(img, err);
+
+  bool is_already_opened = img->image_openchcker(img);
+  if (!is_already_opened) {
+    if (!fdt_image_open(img, fdt_image_getname(img), FDT_FILE_READ, err))
+        return false;
+  }
+
+  bool is_success = img->image_loader(img, err);
+
+  if (!is_already_opened) {
+    if (!fdt_image_close(img, err))
+        return false;
+  }
+
+  return is_success;
 }
 
 bool fdt_image_import(FdtImage* img, FdtImage* src, FdtError* err)
