@@ -102,8 +102,10 @@ bool fdt_image_config_equals(FdtImageConfig* config, FdtImageConfig* other, FdtE
 
   off_t config_offset = sizeof(FdtString*) /* name */ + sizeof(FdtString*) /* desc */;
   size_t config_comp_size = sizeof(FdtImageConfig) - config_offset;
-  if (!fdt_structcmp(config, other, config_offset, config_comp_size))
+  if (!fdt_structcmp(config, other, config_offset, config_comp_size)) {
+    fdt_error_setmessage(err, "%s != %s", fdt_image_config_getdescription(config), fdt_image_config_getdescription(other));
     return false;
+  }
 
   return true;
 }
