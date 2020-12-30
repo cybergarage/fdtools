@@ -39,15 +39,20 @@ bool fdt_program_delete(FdtProgram* prg)
 {
   if (!prg)
     return false;
+
   fdt_string_delete(prg->name);
   fdt_program_arguments_delete(prg->args);
   fdt_dictionary_delete(prg->options);
   free(prg);
+
   return true;
 }
 
-bool fdt_program_addoption(FdtProgram* prg, const char* name, const char* desc, const bool hasParam)
+bool fdt_program_addoption(FdtProgram* prg, const char* name, const char* desc, bool hasParam, const char* default_value)
 {
+  if (!prg)
+    return false;
+  
   FdtProgramOption* opt = fdt_program_option_new();
   if (!opt)
     return false;
@@ -55,12 +60,16 @@ bool fdt_program_addoption(FdtProgram* prg, const char* name, const char* desc, 
   fdt_program_option_setname(opt, name);
   fdt_program_option_setdescription(opt, desc);
   fdt_program_option_setparameterrequired(opt, hasParam);
+  fdt_program_option_setparameter(opt, default_value);
 
   return fdt_dictionary_setvalue(prg->options, name, opt, (FDT_DICTIONARY_ELEMENT_DESTRUCTORFUNC)fdt_program_option_delete);
 }
 
 bool fdt_program_parse(FdtProgram* prg, int argc, char* argv[], FdtError* err)
 {
+  if (!prg)
+    return false;
+
   FdtString* opt_strs = fdt_string_new();
   if (!opt_strs)
     return false;
@@ -90,7 +99,7 @@ bool fdt_program_parse(FdtProgram* prg, int argc, char* argv[], FdtError* err)
     opt_str[0] = opt_ch;
     FdtProgramOption* opt = fdt_program_getoption(prg, opt_str);
     if (!opt) {
-      fdt_error_setmessage(err,"invalid option '%c'", optopt);
+      fdt_error_setmessage(err, "invalid option '%c'", optopt);
       return false;
     }
     fdt_program_option_setenabled(opt, true);
@@ -99,7 +108,7 @@ bool fdt_program_parse(FdtProgram* prg, int argc, char* argv[], FdtError* err)
     }
   }
 
-  // Adds non option arguments
+  // Adds non option arguments1
 
   while (optind < argc) {
     fdt_program_addargument(prg, argv[optind]);
@@ -109,8 +118,23 @@ bool fdt_program_parse(FdtProgram* prg, int argc, char* argv[], FdtError* err)
   return true;
 }
 
+bool fdt_program_isoptionenabled(FdtProgram*prg, const char*name)
+{
+  if (!prg)
+    return false;
+
+  FdtProgramOption *opt = fdt_program_getoption(prg, name);
+  if (!opt)
+    return false;
+  
+  return fdt_program_option_isenabled(opt);
+}
+
 void fdt_program_printoptionusages(FdtProgram* prg)
 {
+  if (!prg)
+    return;
+
   for (FdtDictionaryElement* elem = fdt_program_getoptionelements(prg); elem; elem = fdt_program_optionelement_next(elem)) {
     FdtProgramOption* opt = (FdtProgramOption*)fdt_dictionary_element_getvalue(elem);
     printf("-%s %s\n", fdt_program_option_getname(opt), fdt_program_option_getdescription(opt));

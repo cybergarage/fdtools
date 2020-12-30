@@ -28,22 +28,31 @@ BOOST_AUTO_TEST_CASE(ProgramParseTest)
   FdtProgram* prg = fdt_program_new();
   BOOST_REQUIRE(prg);
 
-  BOOST_REQUIRE(fdt_program_addoption(prg, "c", "", true));
-  BOOST_REQUIRE(fdt_program_addoption(prg, "h", "", true));
-  BOOST_REQUIRE(fdt_program_addoption(prg, "s", "", true));
-  BOOST_REQUIRE(fdt_program_addoption(prg, "v", "", false));
+  BOOST_REQUIRE(fdt_program_addoption(prg, "c", "", true, ""));
+  BOOST_REQUIRE(fdt_program_addoption(prg, "h", "", true, ""));
+  BOOST_REQUIRE(fdt_program_addoption(prg, "s", "", true, ""));
+  BOOST_REQUIRE(fdt_program_addoption(prg, "v", "", false, ""));
 
   BOOST_CHECK(fdt_program_hasoption(prg, "c"));
   BOOST_CHECK(fdt_program_hasoption(prg, "h"));
   BOOST_CHECK(fdt_program_hasoption(prg, "s"));
   BOOST_CHECK(fdt_program_hasoption(prg, "v"));
 
+  BOOST_CHECK(!fdt_program_isoptionenabled(prg, "c"));
+  BOOST_CHECK(!fdt_program_isoptionenabled(prg, "h"));
+  BOOST_CHECK(!fdt_program_isoptionenabled(prg, "s"));
+  BOOST_CHECK(!fdt_program_isoptionenabled(prg, "v"));
+
   BOOST_CHECK(fdt_program_parse(prg, fdt_array_countof(TEST_PRG_ARGS), (char**)TEST_PRG_ARGS, err));
 
+  BOOST_CHECK(fdt_program_isoptionenabled(prg, "c"));
+  BOOST_CHECK(fdt_program_isoptionenabled(prg, "h"));
+  BOOST_CHECK(fdt_program_isoptionenabled(prg, "s"));
+  BOOST_CHECK(fdt_program_isoptionenabled(prg, "v"));
+  
   BOOST_CHECK_EQUAL(fdt_program_getoptionparameter(prg, "c"), "40");
   BOOST_CHECK_EQUAL(fdt_program_getoptionparameter(prg, "h"), "2");
   BOOST_CHECK_EQUAL(fdt_program_getoptionparameter(prg, "s"), "16");
-  BOOST_CHECK_EQUAL(fdt_program_getoptionparameter(prg, "v"), (char*)NULL);
 
   BOOST_CHECK_EQUAL(fdt_program_getnarguments(prg), 2);
   BOOST_CHECK_EQUAL(fdt_program_getargument(prg, 0), TEST_PRG_ARG1);

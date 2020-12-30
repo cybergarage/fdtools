@@ -66,6 +66,7 @@ bool fdt_program_option_delete(FdtProgramOption*);
 #define fdt_program_option_getdescription(opt) fdt_string_getvalue(opt->desc)
 #define fdt_program_option_getparameter(opt) fdt_string_getvalue(opt->value)
 #define fdt_program_option_isparameterrequired(opt) (opt->paramRequired)
+#define fdt_program_option_isenabled(opt) (opt->enabled)
 
 typedef struct {
   FdtString* name;
@@ -75,8 +76,9 @@ typedef struct {
 
 FdtProgram* fdt_program_new();
 bool fdt_program_delete(FdtProgram*);
-bool fdt_program_addoption(FdtProgram*, const char*, const char*, bool);
+bool fdt_program_addoption(FdtProgram*, const char*, const char*, bool, const char*);
 bool fdt_program_parse(FdtProgram*, int argc, char* argv[], FdtError*);
+bool fdt_program_isoptionenabled(FdtProgram*, const char*);
 void fdt_program_printoptionusages(FdtProgram*);
 
 #define fdt_program_setname(prg, v) fdt_string_setvalue(prg->name, v)
