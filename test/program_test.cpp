@@ -21,6 +21,28 @@ BOOST_AUTO_TEST_CASE(ProgramParseTest)
 {
   const char* TEST_PRG_ARG1 = "/dev/fd0";
   const char* TEST_PRG_ARG2 = "test.img";
+  const char* TEST_PRG_ARGS[] = { "prg", TEST_PRG_ARG1, TEST_PRG_ARG2 };
+
+  FdtError* err = fdt_error_new();
+
+  FdtProgram* prg = fdt_program_new();
+  BOOST_REQUIRE(prg);
+
+  BOOST_CHECK(fdt_program_parse(prg, fdt_array_countof(TEST_PRG_ARGS), (char**)TEST_PRG_ARGS, err));
+
+  BOOST_CHECK_EQUAL(fdt_program_getnarguments(prg), 2);
+  BOOST_CHECK_EQUAL(fdt_program_getargument(prg, 0), TEST_PRG_ARG1);
+  BOOST_CHECK_EQUAL(fdt_program_getargument(prg, 1), TEST_PRG_ARG2);
+
+  BOOST_CHECK(fdt_program_delete(prg));
+
+  BOOST_CHECK(fdt_error_delete(err));
+}
+
+BOOST_AUTO_TEST_CASE(ProgramParseTestWithOptions)
+{
+  const char* TEST_PRG_ARG1 = "/dev/fd0";
+  const char* TEST_PRG_ARG2 = "test.img";
   const char* TEST_PRG_ARGS[] = { "prg", "-c", "40", "-h", "2", "-s", "16", "-v", TEST_PRG_ARG1, TEST_PRG_ARG2 };
 
   FdtError* err = fdt_error_new();
