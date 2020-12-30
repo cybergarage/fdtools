@@ -90,7 +90,7 @@ bool fdt_program_parse(FdtProgram* prg, int argc, char* argv[], FdtError* err)
     opt_str[0] = opt_ch;
     FdtProgramOption* opt = fdt_program_getoption(prg, opt_str);
     if (!opt) {
-      fdt_error_setmessage(err,"invalid option '%c'", opt_ch);
+      fdt_error_setmessage(err,"invalid option '%c'", optopt);
       return false;
     }
     fdt_program_option_setenabled(opt, true);
