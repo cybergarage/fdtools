@@ -12,6 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#include <stdio.h>
 #include <unistd.h>
 
 #include <fdtools/util/program.h>
@@ -103,4 +104,12 @@ bool fdt_program_parse(FdtProgram* prg, int argc, char* argv[], FdtError* err)
   }
 
   return true;
+}
+
+void fdt_program_printoptionusages(FdtProgram* prg)
+{
+  for (FdtDictionaryElement* elem = fdt_program_getoptionelements(prg); elem; elem = fdt_program_optionelement_next(elem)) {
+    FdtProgramOption* opt = (FdtProgramOption*)fdt_dictionary_element_getvalue(elem);
+    printf("-%s %s\n", fdt_program_option_getname(opt), fdt_program_option_getdescription(opt));
+  }
 }
