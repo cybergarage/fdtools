@@ -49,10 +49,10 @@ BOOST_AUTO_TEST_CASE(ProgramParseTest)
   BOOST_CHECK(fdt_program_isoptionenabled(prg, "h"));
   BOOST_CHECK(fdt_program_isoptionenabled(prg, "s"));
   BOOST_CHECK(fdt_program_isoptionenabled(prg, "v"));
-  
-  BOOST_CHECK_EQUAL(fdt_program_getoptionparameter(prg, "c"), "40");
-  BOOST_CHECK_EQUAL(fdt_program_getoptionparameter(prg, "h"), "2");
-  BOOST_CHECK_EQUAL(fdt_program_getoptionparameter(prg, "s"), "16");
+
+  BOOST_CHECK_EQUAL(fdt_program_getoptionstring(prg, "c"), "40");
+  BOOST_CHECK_EQUAL(fdt_program_getoptionstring(prg, "h"), "2");
+  BOOST_CHECK_EQUAL(fdt_program_getoptionstring(prg, "s"), "16");
 
   BOOST_CHECK_EQUAL(fdt_program_getnarguments(prg), 2);
   BOOST_CHECK_EQUAL(fdt_program_getargument(prg, 0), TEST_PRG_ARG1);

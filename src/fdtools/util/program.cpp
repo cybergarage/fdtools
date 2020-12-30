@@ -52,7 +52,7 @@ bool fdt_program_addoption(FdtProgram* prg, const char* name, const char* desc, 
 {
   if (!prg)
     return false;
-  
+
   FdtProgramOption* opt = fdt_program_option_new();
   if (!opt)
     return false;
@@ -118,16 +118,21 @@ bool fdt_program_parse(FdtProgram* prg, int argc, char* argv[], FdtError* err)
   return true;
 }
 
-bool fdt_program_isoptionenabled(FdtProgram*prg, const char*name)
+bool fdt_program_isoptionenabled(FdtProgram* prg, const char* name)
 {
   if (!prg)
     return false;
 
-  FdtProgramOption *opt = fdt_program_getoption(prg, name);
+  FdtProgramOption* opt = fdt_program_getoption(prg, name);
   if (!opt)
     return false;
-  
+
   return fdt_program_option_isenabled(opt);
+}
+
+const char* fdt_program_getoptionstring(FdtProgram* prg, const char* name)
+{
+  return fdt_program_option_getparameter(fdt_program_getoption(prg, name));
 }
 
 void fdt_program_printoptionusages(FdtProgram* prg)
