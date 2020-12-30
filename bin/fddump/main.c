@@ -136,7 +136,6 @@ int main(int argc, char* argv[])
 
   fdt_image_delete(src_img);
 
-
   print_message("exporting .....");
   if (!fdt_image_export(dst_img, err)) {
     exit_error(err);

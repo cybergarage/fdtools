@@ -16,6 +16,7 @@
 #include <string.h>
 
 #include <fdtools/dev/image.h>
+#include <fdtools/img/error.h>
 
 bool fdt_device_image_delete(FdtDeviceImage*);
 bool fdt_device_image_open(FdtDeviceImage*, const char*, FdtFileMode, FdtError*);
@@ -23,7 +24,7 @@ bool fdt_device_image_close(FdtDeviceImage*, FdtError*);
 bool fdt_device_image_isopened(FdtDeviceImage* img);
 bool fdt_device_image_load(FdtDeviceImage*, FdtError*);
 bool fdt_device_image_export(FdtDeviceImage*, FdtError*);
-bool fdt_device_image_loadsector(FdtDeviceImage*, FdtImageSector*, FdtError*);
+bool fdt_device_image_readsector(FdtDeviceImage*, FdtImageSector*, FdtError*);
 
 FdtImage* fdt_device_image_new(void)
 {
@@ -106,7 +107,8 @@ bool fdt_device_image_load(FdtDeviceImage* img, FdtError* err)
 
   bool all_sector_status = true;
   for (FdtImageSector* sector = fdt_device_image_getsectors(img); sector; sector = fdt_image_sector_next(sector)) {
-    if (!fdt_device_image_loadsector(img, sector, err)) {
+    if (!fdt_device_image_readsector(img, sector, err)) {
+      fdt_error_setmessage(err, "%s " FDT_IMAGE_SECTOR_SIZE_PRINTF_FORMAT, fdt_device_image_getname(img), fdt_image_sector_getcylindernumber(sector), fdt_image_sector_getheadnumber(sector), fdt_image_sector_getnumber(sector), fdt_image_sector_getsize(sector));
       all_sector_status = false;
     }
   }
@@ -114,7 +116,7 @@ bool fdt_device_image_load(FdtDeviceImage* img, FdtError* err)
   return all_sector_status;
 }
 
-bool fdt_device_image_loadsector(FdtDeviceImage* img, FdtImageSector* sector, FdtError* err)
+bool fdt_device_image_readsector(FdtDeviceImage* img, FdtImageSector* sector, FdtError* err)
 {
   if (!img || !sector)
     return false;
