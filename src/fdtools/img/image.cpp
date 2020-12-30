@@ -33,6 +33,7 @@ bool fdt_image_init(FdtImage* img)
 {
   fdt_image_settype(img, FDT_IMAGE_TYPE_UNKNOWN);
 
+  img->name = fdt_string_new();
   img->config = fdt_image_config_new();
   img->sectors = fdt_image_sectors_new();
 
@@ -56,12 +57,9 @@ bool fdt_image_clear(FdtImage* img)
   if (!img)
     return false;
 
-  if (img->config) {
-    fdt_image_config_delete(img->config);
-  }
-  if (img->sectors) {
-    fdt_image_sectors_delete(img->sectors);
-  }
+  fdt_string_delete(img->name);
+  fdt_image_config_delete(img->config);
+  fdt_image_sectors_delete(img->sectors);
 
   return true;
 }

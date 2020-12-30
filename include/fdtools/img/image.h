@@ -45,6 +45,7 @@ typedef bool (*FDT_IMAGE_DESTRUCTOR)(void*);
 
 #define FDT_IMAGE_STRUCT_MEMBERS          \
   FdtImageType type;                      \
+  FdtString* name;                        \
   FdtImageConfig* config;                 \
   FdtImageSectors* sectors;               \
   FDT_IMAGE_OPENER image_opener;          \
@@ -88,7 +89,8 @@ void fdt_image_print(FdtImage* img);
 #define fdt_image_setdestructor(img, fn) (img->image_destructor = (FDT_IMAGE_DESTRUCTOR)fn)
 
 #define fdt_image_settype(img, v) (img->type = v)
-#define fdt_image_setname(img, v) fdt_image_config_setname(img->config, v)
+#define fdt_image_setname(img, v) fdt_string_setvalue(img->name, v)
+#define fdt_image_setconfigname(img, v) fdt_image_config_setname(img->config, v)
 #define fdt_image_setsize(img, v) fdt_image_config_setsize(img->config, v)
 #define fdt_image_setdensity(img, v) fdt_image_config_setdensity(img->config, v)
 #define fdt_image_setnumberofhead(img, v) fdt_image_config_setnumberofhead(img->config, v)
@@ -99,8 +101,10 @@ void fdt_image_print(FdtImage* img);
 #define fdt_image_setwriteprotect(img, v) fdt_image_config_setwriteprotect(img->config, v)
 
 #define fdt_image_gettype(img) (img->type)
-#define fdt_image_hasname(img) fdt_image_config_hasname(img->config)
-#define fdt_image_getname(img) fdt_image_config_getname(img->config)
+#define fdt_image_hasname(img) ((0 < fdt_string_length(img->name)) ? true : false)
+#define fdt_image_getname(img) fdt_string_getvalue(img->name)
+#define fdt_image_hasconfigname(img) fdt_image_config_hasname(img->config)
+#define fdt_image_getconfigname(img) fdt_image_config_getname(img->config)
 #define fdt_image_getsize(img) fdt_image_config_getsize(img->config)
 #define fdt_image_getdensity(img) fdt_image_config_getdensity(img->config)
 #define fdt_image_getnumberofhead(img) fdt_image_config_getnumberofhead(img->config)
