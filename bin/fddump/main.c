@@ -15,6 +15,7 @@
 #include <stdarg.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 
 #include <fdtools/dev/device.h>
 #include <fdtools/dev/image.h>
@@ -28,6 +29,7 @@ const char* OPT_SSIZE = "s";
 const char* OPT_VERBOSE = "v";
 
 bool verbose_enabled = false;
+time_t start_time;
 
 void print_message(const char* format, ...)
 {
@@ -72,19 +74,46 @@ void cursor_setenabled(bool flag)
     fputs("\e[?25l", stdout);
 }
 
-void print_progress(FdtImageSector* sector, size_t dev_read_sector_cnt, size_t dev_sector_cnt)
+void print_progress(FdtDeviceImage* img, FdtImageSector* sector, size_t dev_read_sector_cnt, size_t dev_sector_cnt)
 {
   if (dev_sector_cnt <= 0)
     return;
 
+  printf("\e[2K\e[G");
+  if (verbose_enabled) {
+    printf("\e[1A\e[2K\e[G");
+  }
+
   int PROGRESS_BLOCK_MAX = 40;
+  if (verbose_enabled) {
+    PROGRESS_BLOCK_MAX = 60;
+  }
+
   int read_percent = (dev_read_sector_cnt * 100) / dev_sector_cnt;
-  printf("\rT:%03ld:%03ld H:%ld [", fdt_image_sector_getcylindernumber(sector), fdt_image_sector_getnumber(sector), fdt_image_sector_getheadnumber(sector));
+  printf("T:%03ld:%03ld H:%ld [", fdt_image_sector_getcylindernumber(sector), fdt_image_sector_getnumber(sector), fdt_image_sector_getheadnumber(sector));
   for (int n = 0; n < PROGRESS_BLOCK_MAX; n++) {
     int block_percent = (n * 100) / PROGRESS_BLOCK_MAX;
     printf("%c", ((block_percent <= read_percent) ? '#' : ' '));
   }
   printf("] (%d%%)", read_percent);
+
+  if (verbose_enabled) {
+    int read_sector_cnt = 0;
+    int err_sector_cnt = 0;
+    int error_cnt = 0;
+    for (FdtImageSectors* sector = fdt_device_image_getsectors(img); sector; sector = fdt_image_sector_next(sector)) {
+      if (fdt_image_sector_hasdata(sector)) {
+        read_sector_cnt++;
+      }
+      int sector_err_cnt = fdt_image_sector_geterrorcount(sector);
+      if (0 < sector_err_cnt) {
+        err_sector_cnt++;
+        error_cnt += sector_err_cnt;
+      }
+    }
+    time_t elapsed_time = time(NULL) - start_time;
+    printf("\nruntime:% 4lds,   read sectors: % 4d,   error sectors: % 4d,   read errors: % 4d", elapsed_time, read_sector_cnt, err_sector_cnt, error_cnt);
+  }
 
   fflush(stdout);
 }
@@ -164,7 +193,7 @@ int main(int argc, char* argv[])
     fdt_device_delete(dev);
     fdt_floppy_params_delete(fdparams);
 
-    print_message("cyl=%ld head=%ld sect=%ld ssize=%ld\n", fdt_image_getnumberofcylinder(src_img), fdt_image_getnumberofhead(src_img), fdt_image_getnumberofsector(src_img), fdt_image_getsectorsize(src_img));
+    print_message("cyl=%ld head=%ld sect=%ld ssize=%ld", fdt_image_getnumberofcylinder(src_img), fdt_image_getnumberofhead(src_img), fdt_image_getnumberofsector(src_img), fdt_image_getsectorsize(src_img));
   } break;
   case FDT_IMAGE_TYPE_RAW:
     // TODO: Set parameters
@@ -183,18 +212,19 @@ int main(int argc, char* argv[])
     }
     size_t dev_sector_cnt = fdt_device_image_getnsectors(dev_img);
     size_t dev_read_sector_cnt = 0;
+    start_time = time(NULL);
     FdtImageSector* sector = fdt_device_image_geterrorsector(dev_img);
     FdtImageSector* last_sector;
     while (sector) {
       last_sector = sector;
-      print_progress(sector, dev_read_sector_cnt, dev_sector_cnt);
+      print_progress(dev_img, sector, dev_read_sector_cnt, dev_sector_cnt);
       if (fdt_device_image_readsector(dev_img, sector, err)) {
         dev_read_sector_cnt++;
       }
       sector = fdt_device_image_geterrorsector(dev_img);
     }
     if (last_sector) {
-      print_progress(last_sector, dev_read_sector_cnt, dev_sector_cnt);
+      print_progress(dev_img, last_sector, dev_read_sector_cnt, dev_sector_cnt);
     }
     if (!fdt_device_image_close(dev_img, err)) {
       exit_error(err);
