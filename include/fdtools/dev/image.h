@@ -28,11 +28,19 @@ typedef struct FDT_ATTR_PACKED {
 } FdtDeviceImage;
 
 FdtImage* fdt_device_image_new(void);
+bool fdt_device_image_delete(FdtDeviceImage*);
+bool fdt_device_image_open(FdtDeviceImage*, const char*, FdtFileMode, FdtError*);
+bool fdt_device_image_close(FdtDeviceImage*, FdtError*);
+bool fdt_device_image_isopened(FdtDeviceImage*);
+bool fdt_device_image_load(FdtDeviceImage*, FdtError*);
+bool fdt_device_image_export(FdtDeviceImage*, FdtError*);
+bool fdt_device_image_readsector(FdtDeviceImage*, FdtImageSector*, FdtError*);
 
 #define fdt_device_image_getname(img) fdt_image_getname(((FdtImage*)img))
 #define fdt_device_image_generatesectors(img, err) fdt_image_generatesectors((FdtImage*)img, err)
 #define fdt_device_image_getsectoroffset(img, sector) fdt_image_getsectoroffset((FdtImage*)img, sector)
 #define fdt_device_image_getsectors(img) fdt_image_getsectors((FdtImage*)img)
+#define fdt_device_image_getnsectors(img) fdt_image_getnsectors((FdtImage*)img)
 #define fdt_device_image_getsector(img, c, h, n) fdt_image_getsector((FdtImage*)img, c, h, n)
 #define fdt_device_image_geterrorsector(img) fdt_image_sectors_geterrorsector((FdtImage*)img)
 
