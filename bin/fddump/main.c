@@ -53,14 +53,41 @@ void exit_error(FdtError* err)
   exit(EXIT_FAILURE);
 }
 
+void cursor_setenabled(bool flag)
+{
+  if (flag)
+    fputs("\e[?25h", stdout);
+  else
+    fputs("\e[?25l", stdout);
+}
+
 void print_progress(FdtImageSector* sector, size_t dev_read_sector_cnt, size_t dev_sector_cnt)
 {
-  int read_per = (dev_sector_cnt * 100) / dev_read_sector_cnt;
-  printf("\rT:%03ld:%03ld H:%ld (%d%%)", fdt_image_sector_getcylindernumber(sector), fdt_image_sector_getnumber(sector), fdt_image_sector_getheadnumber(sector), read_per);
+  if (dev_sector_cnt <= 0)
+    return;
+
+  int PROGRESS_BLOCK_MAX = 40;
+  int read_percent = (dev_read_sector_cnt * 100) / dev_sector_cnt;
+  printf("\rT:%03ld:%03ld H:%ld [", fdt_image_sector_getcylindernumber(sector), fdt_image_sector_getnumber(sector), fdt_image_sector_getheadnumber(sector));
+  for (int n = 0; n < PROGRESS_BLOCK_MAX; n++) {
+    int block_percent = (n * 100) / PROGRESS_BLOCK_MAX;
+    printf("%c", ((block_percent <= read_percent) ? '#' : ' '));
+  }
+  printf("] (%d%%)", read_percent);
+
+  fflush(stdout);
+}
+
+void exit_program()
+{
+  cursor_setenabled(true);
 }
 
 int main(int argc, char* argv[])
 {
+  atexit(exit_program);
+  cursor_setenabled(false);
+
   FdtError* err = fdt_error_new();
   if (!err) {
     panic();
