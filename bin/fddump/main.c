@@ -21,8 +21,19 @@
 #include <fdtools/img/image.h>
 #include <fdtools/util/program.h>
 
+const char* OPT_CYLINDERS = "c";
+const char* OPT_HEADS = "h";
+const char* OPT_SECTORS = "n";
+const char* OPT_SSIZE = "s";
+const char* OPT_VERBOSE = "v";
+
+bool verbose_enabled = false;
+
 void print_message(const char* format, ...)
 {
+  if (!verbose_enabled)
+    return;
+
   char msg[512];
   va_list list;
   va_start(list, format);
@@ -93,15 +104,17 @@ int main(int argc, char* argv[])
     panic();
   }
 
+  // Parses command line arguments
+
   FdtProgram* prg = fdt_program_new();
   if (!prg) {
     panic();
   }
-  fdt_program_addoption(prg, "c", "number of cylinders", true, "");
-  fdt_program_addoption(prg, "h", "number of heads", true, "");
-  fdt_program_addoption(prg, "n", "number of sectors", true, "");
-  fdt_program_addoption(prg, "s", "sector size", true, "");
-  fdt_program_addoption(prg, "v", "enable verbose messages", false, "");
+  fdt_program_addoption(prg, OPT_CYLINDERS, "number of cylinders", true, "");
+  fdt_program_addoption(prg, OPT_HEADS, "number of heads", true, "");
+  fdt_program_addoption(prg, OPT_SECTORS, "number of sectors", true, "");
+  fdt_program_addoption(prg, OPT_SSIZE, "sector size", true, "");
+  fdt_program_addoption(prg, OPT_VERBOSE, "enable verbose messages", false, "");
 
   if (!fdt_program_parse(prg, argc, argv, err)) {
     print_error(err);
@@ -114,7 +127,13 @@ int main(int argc, char* argv[])
     return EXIT_FAILURE;
   }
 
-  // Load source file image
+  // Sets command line options
+
+  if (fdt_program_isoptionenabled(prg, OPT_VERBOSE)) {
+    verbose_enabled = true;
+  }
+
+  // Loads source file image
 
   const char* src_img_name = fdt_program_getargument(prg, 0);
   FdtImage* src_img = fdt_image_name_new(src_img_name, err);
@@ -188,7 +207,7 @@ int main(int argc, char* argv[])
   }
   }
 
-  // Export source file image
+  // Exports source file image
 
   const char* dst_img_name = fdt_program_getargument(prg, 1);
   print_message("exporting %s ....", dst_img_name);
@@ -212,7 +231,7 @@ int main(int argc, char* argv[])
 
   fdt_image_delete(dst_img);
 
-  // Cleanup
+  // Cleanups
 
   fdt_program_delete(prg);
   fdt_error_delete(err);
