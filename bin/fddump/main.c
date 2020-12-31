@@ -82,6 +82,7 @@ void print_progress(FdtDeviceImage* img, FdtImageSector* sector, size_t dev_read
   printf("\e[2K\e[G");
   if (verbose_enabled) {
     printf("\e[1A\e[2K\e[G");
+    printf("\e[1A\e[2K\e[G");
   }
 
   int PROGRESS_BLOCK_MAX = 40;
@@ -112,7 +113,8 @@ void print_progress(FdtDeviceImage* img, FdtImageSector* sector, size_t dev_read
       }
     }
     time_t elapsed_time = time(NULL) - start_time;
-    printf("\nruntime:% 4lds,   read sectors: % 4d,   error sectors: % 4d,   read errors: % 4d", elapsed_time, read_sector_cnt, err_sector_cnt, error_cnt);
+    printf("\ncyl=%ld, head=%ld, sect=%ld, ssize=%ld", fdt_image_getnumberofcylinder(img), fdt_image_getnumberofhead(img), fdt_image_getnumberofsector(img), fdt_image_getsectorsize(img));
+    printf("\nruntime: % 4lds,   read sectors: % 4d,   error sectors: % 4d,   read errors: % 4d", elapsed_time, read_sector_cnt, err_sector_cnt, error_cnt);
   }
 
   fflush(stdout);
@@ -192,8 +194,6 @@ int main(int argc, char* argv[])
     fdt_image_setsectorsize(src_img, fdt_floppy_params_getssize(fdparams));
     fdt_device_delete(dev);
     fdt_floppy_params_delete(fdparams);
-
-    print_message("cyl=%ld head=%ld sect=%ld ssize=%ld", fdt_image_getnumberofcylinder(src_img), fdt_image_getnumberofhead(src_img), fdt_image_getnumberofsector(src_img), fdt_image_getsectorsize(src_img));
   } break;
   case FDT_IMAGE_TYPE_RAW:
     // TODO: Set parameters
