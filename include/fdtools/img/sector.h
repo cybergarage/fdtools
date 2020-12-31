@@ -49,6 +49,7 @@ size_t fdt_image_sectors_getnumberoftracksector(FdtImageSectors*, FdtCylinderNum
 size_t fdt_image_sectors_getmaxsectorsize(FdtImageSectors*);
 size_t fdt_image_sectors_gettotaldatasize(FdtImageSectors*);
 size_t fdt_image_sectors_gettracksize(FdtImageSectors*, FdtCylinderNumber, FdtHeadNumber);
+int fdt_image_sectors_getnerrorsectors(FdtImageSectors*);
 
 FdtImageSectors* fdt_image_sectors_copy(FdtImageSectors* sectors, FdtError* err);
 bool fdt_image_sectors_equals(FdtImageSectors*, FdtImageSectors*, FdtError*);
@@ -75,7 +76,7 @@ FdtImageSector* fdt_image_sector_copy(FdtImageSector* sector);
 #define fdt_image_sector_setnumber(sector, n) (sector->number = n)
 #define fdt_image_sector_setsize(sector, n) (sector->size = n)
 #define fdt_image_sector_seterrorcount(sector, n) (sector->error_count = n)
-#define fdt_image_sector_incrementerrorcount(sector, n) (sector->error_count++)
+#define fdt_image_sector_incrementerrorcount(sector) (sector->error_count++)
 
 #define fdt_image_sector_getcylindernumber(sector) (sector->cylinder_number)
 #define fdt_image_sector_getheadnumber(sector) (sector->head_number)
