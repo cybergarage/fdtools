@@ -17,6 +17,7 @@
 #include <stdlib.h>
 
 #include <fdtools/dev/device.h>
+#include <fdtools/dev/image.h>
 #include <fdtools/img/image.h>
 #include <fdtools/util/program.h>
 
@@ -50,6 +51,12 @@ void exit_error(FdtError* err)
 {
   print_error(err);
   exit(EXIT_FAILURE);
+}
+
+void print_progress(FdtImageSector* sector, size_t dev_read_sector_cnt, size_t dev_sector_cnt)
+{
+  int read_per = (dev_sector_cnt * 100) / dev_read_sector_cnt;
+  printf("\rT:%03ld:%03ld H:%ld (%d%%)", fdt_image_sector_getcylindernumber(sector), fdt_image_sector_getnumber(sector), fdt_image_sector_getheadnumber(sector), read_per);
 }
 
 int main(int argc, char* argv[])
@@ -87,7 +94,10 @@ int main(int argc, char* argv[])
   if (!src_img) {
     exit_error(err);
   }
-  switch (fdt_image_gettype(src_img)) {
+
+  FdtImageType src_img_type = fdt_image_gettype(src_img);
+
+  switch (src_img_type) {
   case FDT_IMAGE_TYPE_DEV: {
     // Gets current device parameters, and set the parameters to image.
     FdtDevice* dev = fdt_device_new();
@@ -115,9 +125,40 @@ int main(int argc, char* argv[])
     break;
   }
 
-  print_message("loading %s ....", src_img_name);
-  if (!fdt_image_load(src_img, err)) {
-    exit_error(err);
+  switch (src_img_type) {
+  // Shows progress infomation for device image types
+  case FDT_IMAGE_TYPE_DEV: {
+    FdtDeviceImage* dev_img = (FdtDeviceImage*)src_img;
+    if (!fdt_device_image_open(dev_img, src_img_name, FDT_FILE_READ, err)) {
+      exit_error(err);
+    }
+    if (!fdt_device_image_generatesectors(dev_img, err)) {
+      exit_error(err);
+    }
+    size_t dev_sector_cnt = fdt_device_image_getnsectors(dev_img);
+    size_t dev_read_sector_cnt = 0;
+    FdtImageSector* sector = fdt_device_image_geterrorsector(dev_img);
+    FdtImageSector* last_sector;
+    while (sector) {
+      last_sector = sector;
+      print_progress(sector, dev_read_sector_cnt, dev_sector_cnt);
+      if (fdt_device_image_readsector(dev_img, sector, err)) {
+        dev_read_sector_cnt++;
+      }
+      sector = fdt_device_image_geterrorsector(dev_img);
+    }
+    if (last_sector) {
+      print_progress(last_sector, dev_read_sector_cnt, dev_sector_cnt);
+    }
+    if (!fdt_device_image_close(dev_img, err)) {
+      exit_error(err);
+    }
+  } break;
+  default: {
+    if (!fdt_image_load(src_img, err)) {
+      exit_error(err);
+    }
+  }
   }
 
   // Export source file image
