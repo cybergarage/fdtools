@@ -35,6 +35,7 @@ typedef struct {
   FdtSectorNumber number;
   size_t size;
   byte_t* data;
+  int error_count;
 } FdtImageSector, FdtImageSectors;
 
 FdtImageSectors* fdt_image_sectors_new();
@@ -73,12 +74,15 @@ FdtImageSector* fdt_image_sector_copy(FdtImageSector* sector);
 #define fdt_image_sector_setheadnumber(sector, n) (sector->head_number = n)
 #define fdt_image_sector_setnumber(sector, n) (sector->number = n)
 #define fdt_image_sector_setsize(sector, n) (sector->size = n)
+#define fdt_image_sector_seterrorcount(sector, n) (sector->error_count = n)
+#define fdt_image_sector_incrementerrorcount(sector, n) (sector->error_count++)
 
 #define fdt_image_sector_getcylindernumber(sector) (sector->cylinder_number)
 #define fdt_image_sector_getheadnumber(sector) (sector->head_number)
 #define fdt_image_sector_getnumber(sector) (sector->number)
 #define fdt_image_sector_getsize(sector) (sector->size)
 #define fdt_image_sector_getdata(sector) (sector->data)
+#define fdt_image_sector_geterrorcount(sector) (sector->error_count)
 
 #ifdef __cplusplus
 } /* extern C */

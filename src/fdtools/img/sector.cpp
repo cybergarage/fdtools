@@ -31,6 +31,7 @@ FdtImageSector* fdt_image_sector_new()
   fdt_image_sector_setnumber(sector, 0);
   fdt_image_sector_setsize(sector, 0);
   fdt_image_sector_setdata(sector, NULL);
+  fdt_image_sector_seterrorcount(sector, 0);
 
   return sector;
 }
