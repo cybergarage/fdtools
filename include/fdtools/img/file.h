@@ -31,7 +31,7 @@ typedef struct FDT_ATTR_PACKED {
 
 FdtImage* fdt_image_file_new(void);
 
-#define fdt_image_file_isvalid(img, err) fdt_image_isvalid((FdtImage*)img, err)
+#define fdt_image_file_isvalid(img, err) fdt_image_isvalid(((FdtImage*)img), err)
 #define fdt_image_file_setfile(img, v) (((FdtFileImage*)img)->fp = v)
 #define fdt_image_file_getfile(img) (img->fp)
 
