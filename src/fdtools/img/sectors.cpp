@@ -135,6 +135,16 @@ size_t fdt_image_sectors_gettracksize(FdtImageSectors* sectors, FdtCylinderNumbe
   return track_total_sector_size;
 }
 
+FdtImageSector* fdt_image_sectors_geterrorsector(FdtImageSectors* sectors)
+{
+  for (FdtImageSector* sector = fdt_image_sectors_gets(sectors); sector; sector = fdt_image_sector_next(sector)) {
+    if (fdt_image_sector_hasdata(sector))
+      continue;
+    return sector;
+  }
+  return NULL;
+}
+
 int fdt_image_sectors_getnerrorsectors(FdtImageSectors* sectors)
 {
   int error_cnt = 0;
