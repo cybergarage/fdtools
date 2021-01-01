@@ -192,7 +192,7 @@ bool fdt_image_sectors_equals(FdtImageSectors* sectors, FdtImageSectors* others,
     size_t s = fdt_image_sector_getnumber(sector);
     FdtImageSector* other = fdt_image_sectors_getsector(others, c, h, s);
     if (!other) {
-      fdt_error_setmessage(err, "Not found " FDT_IMAGE_SECTOR_PRINTF_FORMAT, c, h, s);
+      fdt_error_setmessage(err, "Not found " FDT_IMAGE_MESSAGE_SECTOR_PRINTF_FORMAT, c, h, s);
       return false;
     }
     if (!fdt_image_sector_equals(sector, other, err))
@@ -205,7 +205,7 @@ void fdt_image_sectors_print(FdtImageSectors* sectors)
 {
   int n = 0;
   for (FdtImageSector* sector = fdt_image_sectors_gets(sectors); sector; sector = fdt_image_sector_next(sector)) {
-    printf("[%04d] " FDT_IMAGE_SECTOR_SIZE_PRINTF_FORMAT "\n",
+    printf("[%04d] " FDT_IMAGE_MESSAGE_SECTOR_SIZE_PRINTF_FORMAT "\n",
         n,
         fdt_image_sector_getcylindernumber(sector),
         fdt_image_sector_getheadnumber(sector),

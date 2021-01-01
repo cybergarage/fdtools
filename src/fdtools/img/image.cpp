@@ -190,16 +190,16 @@ bool fdt_image_isvalid(FdtImage* img, FdtError* err)
       for (size_t s = 1; s <= number_of_sector; s++) {
         FdtImageSector* sector = fdt_image_getsector(img, c, h, s);
         if (!sector) {
-          fdt_error_setmessage(err, "Not found sector " FDT_IMAGE_SECTOR_PRINTF_FORMAT, c, h, s);
+          fdt_error_setmessage(err, "Not found sector " FDT_IMAGE_MESSAGE_SECTOR_PRINTF_FORMAT, c, h, s);
           return false;
         }
         if (!fdt_image_sector_hasdata(sector)) {
-          fdt_error_setmessage(err, "No sector data " FDT_IMAGE_SECTOR_PRINTF_FORMAT, c, h, s);
+          fdt_error_setmessage(err, "No sector data " FDT_IMAGE_MESSAGE_SECTOR_PRINTF_FORMAT, c, h, s);
           return false;
         }
         size_t sector_size = fdt_image_sector_getsize(sector);
         if (sector_size != config_sector_size) {
-          fdt_error_setmessage(err, "Invalid sector size " FDT_IMAGE_SECTOR_PRINTF_FORMAT "%ld != %ld", c, h, s, sector_size, config_sector_size);
+          fdt_error_setmessage(err, "Invalid sector size " FDT_IMAGE_MESSAGE_SECTOR_PRINTF_FORMAT "%ld != %ld", c, h, s, sector_size, config_sector_size);
           return false;
         }
       }

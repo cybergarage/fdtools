@@ -25,6 +25,7 @@ bool fdt_device_image_isopened(FdtDeviceImage* img);
 bool fdt_device_image_load(FdtDeviceImage*, FdtError*);
 bool fdt_device_image_export(FdtDeviceImage*, FdtError*);
 bool fdt_device_image_readsector(FdtDeviceImage*, FdtImageSector*, FdtError*);
+bool fdt_device_image_writesector(FdtDeviceImage*, FdtImageSector*, FdtError*);
 
 FdtImage* fdt_device_image_new(void)
 {
@@ -108,7 +109,7 @@ bool fdt_device_image_load(FdtDeviceImage* img, FdtError* err)
   bool all_sector_status = true;
   for (FdtImageSector* sector = fdt_device_image_getsectors(img); sector; sector = fdt_image_sector_next(sector)) {
     if (!fdt_device_image_readsector(img, sector, err)) {
-      fdt_error_setmessage(err, "%s " FDT_IMAGE_SECTOR_SIZE_PRINTF_FORMAT, fdt_device_image_getname(img), fdt_image_sector_getcylindernumber(sector), fdt_image_sector_getheadnumber(sector), fdt_image_sector_getnumber(sector), fdt_image_sector_getsize(sector));
+      fdt_error_setmessage(err, "Read error" FDT_IMAGE_MESSAGE_SECTOR_SIZE_PRINTF_FORMAT, fdt_image_sector_getcylindernumber(sector), fdt_image_sector_getheadnumber(sector), fdt_image_sector_getnumber(sector), fdt_image_sector_getsize(sector));
       all_sector_status = false;
     }
   }
@@ -143,6 +144,41 @@ bool fdt_device_image_export(FdtDeviceImage* img, FdtError* err)
 {
   if (!img)
     return false;
+
+  if (!fdt_image_issectorssorted(img)) {
+    if (!fdt_image_sortsectors(img)) {
+      fdt_error_setmessage(err, FDT_IMAGE_MESSAGE_NOT_SORTED, fdt_image_getname(img));
+      return false;
+    }
+  }
+
+  if (!fdt_device_image_isopened(img))
+    return false;
+
+  for (FdtImageSector* sector = fdt_device_image_getsectors(img); sector; sector = fdt_image_sector_next(sector)) {
+    if (!fdt_device_image_writesector(img, sector, err))
+      return false;
+  }
+
+  return true;
+}
+
+bool fdt_device_image_writesector(FdtDeviceImage* img, FdtImageSector* sector, FdtError* err)
+{
+  if (!img || !sector)
+    return false;
+
+  size_t sector_size = fdt_image_sector_getsize(sector);
+  byte_t* sector_data = fdt_image_sector_getdata(sector);
+  if ((sector_size <= 0) || !sector_data) {
+    fdt_error_setmessage(err, "Bad sector " FDT_IMAGE_MESSAGE_SECTOR_SIZE_PRINTF_FORMAT, fdt_image_sector_getcylindernumber(sector), fdt_image_sector_getheadnumber(sector), fdt_image_sector_getnumber(sector), fdt_image_sector_getsize(sector));
+    return false;
+  }
+
+  if (!fdt_device_writeblock(img->dev, sector_data, sector_size, err)) {
+    fdt_error_setmessage(err, "Write error" FDT_IMAGE_MESSAGE_SECTOR_SIZE_PRINTF_FORMAT, fdt_image_sector_getcylindernumber(sector), fdt_image_sector_getheadnumber(sector), fdt_image_sector_getnumber(sector), fdt_image_sector_getsize(sector));
+    return false;
+  }
 
   return true;
 }

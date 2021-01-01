@@ -142,7 +142,7 @@ bool fdt_image_sector_equals(FdtImageSector* sector, FdtImageSector* other, FdtE
     return false;
 
   if ((sector->cylinder_number != other->cylinder_number) || (sector->head_number != other->head_number) || (sector->number != other->number) || (sector->size != other->size) || (!sector->data) || (!other->data) || (memcmp(sector->data, other->data, sector->size) != 0)) {
-    fdt_error_setmessage(err, FDT_IMAGE_SECTOR_SIZE_PRINTF_FORMAT " != " FDT_IMAGE_SECTOR_SIZE_PRINTF_FORMAT, sector->cylinder_number, sector->head_number, sector->number, sector->size, other->cylinder_number, other->head_number, other->number, other->size);
+    fdt_error_setmessage(err, FDT_IMAGE_MESSAGE_SECTOR_SIZE_PRINTF_FORMAT " != " FDT_IMAGE_MESSAGE_SECTOR_SIZE_PRINTF_FORMAT, sector->cylinder_number, sector->head_number, sector->number, sector->size, other->cylinder_number, other->head_number, other->number, other->size);
     return false;
   }
 

@@ -35,6 +35,7 @@ bool fdt_device_image_isopened(FdtDeviceImage*);
 bool fdt_device_image_load(FdtDeviceImage*, FdtError*);
 bool fdt_device_image_export(FdtDeviceImage*, FdtError*);
 bool fdt_device_image_readsector(FdtDeviceImage*, FdtImageSector*, FdtError*);
+bool fdt_device_image_writesector(FdtDeviceImage*, FdtImageSector*, FdtError*);
 
 #define fdt_device_image_getname(img) fdt_image_getname(((FdtImage*)img))
 #define fdt_device_image_generatesectors(img, err) fdt_image_generatesectors(((FdtImage*)img), err)
