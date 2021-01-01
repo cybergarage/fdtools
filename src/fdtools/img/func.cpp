@@ -75,6 +75,17 @@ FdtImageType fdt_image_name_gettype(const char* filename)
 
   // Identify image file type by the filename extention
 
+  return fdt_image_name_gettypebyonlyname(filename);
+}
+
+FdtImageType fdt_image_name_gettypebyonlyname(const char* filename)
+{
+  if (!filename || (fdt_strlen(filename) <= 0))
+    return FDT_IMAGE_TYPE_UNKNOWN;
+
+  if (fdt_file_hasprefix(filename, FDT_DEVICE_PREFIX))
+    return FDT_IMAGE_TYPE_DEV;
+
   if (fdt_file_hasextension(filename, D88_EXTENTION_D88))
     return FDT_IMAGE_TYPE_D88;
   if (fdt_file_hasextension(filename, D88_EXTENTION_88D))
