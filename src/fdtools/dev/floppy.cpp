@@ -46,3 +46,13 @@ bool fdt_floppy_params_delete(FdtFloppyParams* params)
 
   return true;
 }
+
+size_t fdt_floppy_params_getssize(FdtFloppyParams* params)
+{
+  size_t ssize = (((params->rate & 0x38) >> 3) + 2) % 8;
+  if (ssize < 2)
+    return (128 << ssize);
+  if (ssize > 2)
+    return (1 << (ssize - 3)) * 1024;
+  return 512;
+}

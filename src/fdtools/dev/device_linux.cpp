@@ -63,16 +63,6 @@ bool fdt_device_getfloppyparameters(FdtDevice* dev, FdtFloppyParams* params, Fdt
   return fdt_device_getfloppyparams(&fdprms, params, err);
 }
 
-size_t fdt_floppy_params_getssize(FdtFloppyParams* params)
-{
-  size_t ssize = (((params->rate & 0x38) >> 3) + 2) % 8;
-  if (ssize < 2)
-    return (128 << ssize);
-  if (ssize > 2)
-    return (1 << (ssize - 3)) * 1024;
-  return 512;
-}
-
 bool fdt_device_getfloppyparams(floppy_struct* fdprms, FdtFloppyParams* params, FdtError* err)
 {
   if (!fdprms || !params)
