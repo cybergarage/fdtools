@@ -12,9 +12,13 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#if defined(__linux__)
+
 #include <boost/test/unit_test.hpp>
 
 #include <fdtools/dev/device.h>
+
+const char* TEST_FLOPPY_DEV = "/dev/fd0";
 
 BOOST_AUTO_TEST_CASE(FloppyParamsTest)
 {
@@ -25,7 +29,6 @@ BOOST_AUTO_TEST_CASE(FloppyParamsTest)
 
 BOOST_AUTO_TEST_CASE(FloppyGetParamsTest)
 {
-  const char* TEST_DEV = "/dev/fd0";
   FdtDevice* dev = fdt_device_new();
   BOOST_CHECK(dev);
   FdtError* err = fdt_error_new();
@@ -33,7 +36,7 @@ BOOST_AUTO_TEST_CASE(FloppyGetParamsTest)
   FdtFloppyParams* fdparams = fdt_floppy_params_new();
   BOOST_CHECK(fdparams);
 
-  if (!fdt_device_open(dev, TEST_DEV, FDT_FILE_READ, err)) {
+  if (!fdt_device_open(dev, TEST_FLOPPY_DEV, FDT_FILE_READ, err)) {
     BOOST_CHECK(fdt_error_delete(err));
     return;
   }
@@ -44,3 +47,27 @@ BOOST_AUTO_TEST_CASE(FloppyGetParamsTest)
   BOOST_CHECK(fdt_floppy_params_delete(fdparams));
   BOOST_CHECK(fdt_error_delete(err));
 }
+
+BOOST_AUTO_TEST_CASE(FloppyImportTest)
+{
+  const char* TEST_FLOPPY_DEV = "/dev/fd0";
+  FdtDevice* dev = fdt_device_new();
+  BOOST_CHECK(dev);
+  FdtError* err = fdt_error_new();
+  BOOST_CHECK(err);
+  FdtFloppyParams* fdparams = fdt_floppy_params_new();
+  BOOST_CHECK(fdparams);
+
+  if (!fdt_device_open(dev, TEST_FLOPPY_DEV, FDT_FILE_READ, err)) {
+    BOOST_CHECK(fdt_error_delete(err));
+    return;
+  }
+
+  BOOST_CHECK(fdt_device_getfloppyparameters(dev, fdparams, err));
+
+  BOOST_CHECK(fdt_device_delete(dev));
+  BOOST_CHECK(fdt_floppy_params_delete(fdparams));
+  BOOST_CHECK(fdt_error_delete(err));
+}
+
+#endif
