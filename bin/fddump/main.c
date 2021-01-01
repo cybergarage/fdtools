@@ -44,6 +44,8 @@ void print_message(const char* format, ...)
   vsnprintf(msg, sizeof(msg), format, list);
   va_end(list);
   printf("%s\n", msg);
+
+  fflush(stdout);
 }
 
 void print_usage(FdtProgram* prg)
@@ -55,6 +57,7 @@ void print_usage(FdtProgram* prg)
 void print_error(FdtError* err)
 {
   printf("%s\n", debug_enabled ? fdt_error_getdebugmessage(err) : fdt_error_getmessage(err));
+  fflush(stdout);
 }
 
 void panic()
