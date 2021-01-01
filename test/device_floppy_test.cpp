@@ -17,6 +17,7 @@
 #include <boost/test/unit_test.hpp>
 
 #include <fdtools/dev/device.h>
+#include <fdtools/dev/image.h>
 
 const char* TEST_FLOPPY_DEV = "/dev/fd0";
 
@@ -54,21 +55,30 @@ BOOST_AUTO_TEST_CASE(FloppyImportTest)
   FdtError* err = fdt_error_new();
   BOOST_REQUIRE(err);
 
-  FdtDevice* dev = fdt_device_new();
-  BOOST_REQUIRE(dev);
   FdtFloppyParams* fdparams = fdt_floppy_params_new();
   BOOST_CHECK(fdparams);
 
-  if (!fdt_device_open(dev, TEST_FLOPPY_DEV, FDT_FILE_READ, err)) {
-    BOOST_CHECK(fdt_error_delete(err));
+  // Gets current floppy parameters
+
+  FdtDevice* dev = fdt_device_new();
+  BOOST_REQUIRE(dev);
+  if (!fdt_device_open(dev, TEST_FLOPPY_DEV, FDT_FILE_READ, err))
     return;
-  }
 
-  BOOST_CHECK(fdt_device_getfloppyparameters(dev, fdparams, err));
-
+  BOOST_REQUIRE_MESSAGE(fdt_device_getfloppyparameters(dev, fdparams, err), fdt_error_getdebugmessage(err));
   BOOST_CHECK(fdt_device_delete(dev));
-  BOOST_CHECK(fdt_floppy_params_delete(fdparams));
 
+  // Imports floppy image
+
+  FdtDeviceImage* dev_img = (FdtDeviceImage*)fdt_device_image_new();
+  BOOST_REQUIRE(dev_img);
+  BOOST_REQUIRE_MESSAGE(fdt_device_image_setfloppyparams(dev_img, fdparams, err), fdt_error_getdebugmessage(err));
+  BOOST_REQUIRE_MESSAGE(fdt_device_image_generatesectors(dev_img, err), fdt_error_getdebugmessage(err));
+  BOOST_REQUIRE_MESSAGE(fdt_device_image_open(dev_img, TEST_FLOPPY_DEV, FDT_FILE_READ, err), fdt_error_getdebugmessage(err));
+  BOOST_REQUIRE_MESSAGE(fdt_device_image_load(dev_img, err), fdt_error_getdebugmessage(err));
+  BOOST_CHECK_MESSAGE(fdt_device_image_close(dev_img, err), fdt_error_getdebugmessage(err));
+
+  BOOST_CHECK(fdt_floppy_params_delete(fdparams));
   BOOST_CHECK(fdt_error_delete(err));
 }
 
