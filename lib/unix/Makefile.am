@@ -24,8 +24,8 @@ fdtools_sources = \
 	../../src/fdtools/dev/device.cpp \
 	../../src/fdtools/dev/device_unix.cpp \
 	../../src/fdtools/dev/image.cpp \
-	../../src/fdtools/dev/floppy_linux.cpp \
 	../../src/fdtools/dev/device_linux.cpp \
+	../../src/fdtools/dev/floppy.cpp \
 	../../src/fdtools/util/string_func.cpp \
 	../../src/fdtools/util/dictionary.cpp \
 	../../src/fdtools/util/option.cpp \
