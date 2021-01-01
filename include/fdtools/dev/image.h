@@ -16,6 +16,7 @@
 #define _FDTOOLS_DEVICE_IMAGE_H_
 
 #include <fdtools/dev/device.h>
+#include <fdtools/dev/floppy.h>
 #include <fdtools/img/image.h>
 
 #ifdef __cplusplus
@@ -36,6 +37,9 @@ bool fdt_device_image_load(FdtDeviceImage*, FdtError*);
 bool fdt_device_image_export(FdtDeviceImage*, FdtError*);
 bool fdt_device_image_readsector(FdtDeviceImage*, FdtImageSector*, FdtError*);
 bool fdt_device_image_writesector(FdtDeviceImage*, FdtImageSector*, FdtError*);
+
+bool fdt_image_setfloppyparams(FdtImage*, FdtFloppyParams*, FdtError*);
+#define fdt_device_image_setfloppyparams(img,params,err) fdt_image_setfloppyparams((FdtImage*)img,params,err)
 
 #define fdt_device_image_getname(img) fdt_image_getname(((FdtImage*)img))
 #define fdt_device_image_generatesectors(img, err) fdt_image_generatesectors(((FdtImage*)img), err)

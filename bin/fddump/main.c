@@ -193,10 +193,9 @@ int main(int argc, char* argv[])
     if (!fdt_device_getfloppyparameters(dev, fdparams, err)) {
       exit_error(err);
     }
-    fdt_image_setnumberofcylinder(src_img, fdt_floppy_params_gettrack(fdparams));
-    fdt_image_setnumberofhead(src_img, fdt_floppy_params_gethead(fdparams));
-    fdt_image_setnumberofsector(src_img, fdt_floppy_params_getsect(fdparams));
-    fdt_image_setsectorsize(src_img, fdt_floppy_params_getssize(fdparams));
+    if (!fdt_device_image_setfloppyparams(src_img, fdparams, err)) {
+      exit_error(err);
+    }
     fdt_device_delete(dev);
     fdt_floppy_params_delete(fdparams);
   } break;

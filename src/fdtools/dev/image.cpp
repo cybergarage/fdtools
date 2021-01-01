@@ -95,6 +95,17 @@ bool fdt_device_image_isopened(FdtDeviceImage* img)
   return fdt_device_isopened(img->dev);
 }
 
+bool fdt_image_setfloppyparams(FdtImage* img, FdtFloppyParams* fdparams, FdtError* err)
+{
+  if (!img || !fdparams)
+    return false;
+  fdt_image_setnumberofcylinder(img, fdt_floppy_params_gettrack(fdparams));
+  fdt_image_setnumberofhead(img, fdt_floppy_params_gethead(fdparams));
+  fdt_image_setnumberofsector(img, fdt_floppy_params_getsect(fdparams));
+  fdt_image_setsectorsize(img, fdt_floppy_params_getssize(fdparams));
+  return true;
+}
+
 bool fdt_device_image_load(FdtDeviceImage* img, FdtError* err)
 {
   if (!img)
