@@ -41,6 +41,8 @@ FILE* fdt_file_open(const char* filename, FdtFileMode mode)
 
 bool fdt_file_close(FILE* fp)
 {
+  if (!fp)
+    return false;
   return (fclose(fp) == 0) ? true : false;
 }
 
