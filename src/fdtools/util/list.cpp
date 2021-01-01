@@ -14,6 +14,27 @@
 
 #include <fdtools/util/list.h>
 
+FdtList* fdt_list_new();
+bool fdt_list_delete(FdtList*);
+FdtListNode* fdt_list_getminnode(FdtList*, FDT_LIST_COMPAREFUNC);
+
+FdtList* fdt_list_new()
+{
+  FdtList* list = (FdtList*)malloc(sizeof(FdtList));
+  if (!list)
+    return NULL;
+  fdt_list_header_init(list);
+  return list;
+}
+
+bool fdt_list_delete(FdtList* list)
+{
+  if (!list)
+    return false;
+  free(list);
+  return true;
+}
+
 void fdt_list_header_init(FdtList* list)
 {
   if (!list)
@@ -175,10 +196,44 @@ FdtListNode* fdt_list_next(
   return node->next;
 }
 
+FdtListNode* fdt_list_getminnode(FdtList* list, FDT_LIST_COMPAREFUNC comparefn)
+{
+  if (!list || !comparefn)
+    return NULL;
+
+  FdtListNode* min_node = fdt_list_gets(list);
+  if (!min_node)
+    return NULL;
+
+  FdtListNode* node = fdt_list_next(min_node);
+  while (node) {
+    if (comparefn(node, min_node) < 0) {
+      min_node = node;
+    }
+    node = fdt_list_next(node);
+  }
+
+  return min_node;
+}
+
 bool fdt_list_sort(FdtList* list, FDT_LIST_COMPAREFUNC comparefn)
 {
   if (!list || !comparefn)
     return false;
+
+  FdtList* tmp_list = fdt_list_new();
+  if (!tmp_list)
+    return false;
+
+  fdt_list_move(list, tmp_list);
+  FdtListNode* min_node = fdt_list_getminnode(tmp_list, comparefn);
+  while (min_node) {
+    fdt_list_remove(min_node);
+    fdt_list_add(list, min_node);
+    min_node = fdt_list_getminnode(tmp_list, comparefn);
+  }
+
+  fdt_list_delete(tmp_list);
 
   return true;
 }

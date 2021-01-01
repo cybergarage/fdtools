@@ -73,6 +73,11 @@ bool test_list_delete(TestList* list)
   return true;
 }
 
+size_t test_list_size(TestList* list)
+{
+  return fdt_list_size((FdtList*)list);
+}
+
 BOOST_AUTO_TEST_CASE(ListSortTest)
 {
   TestList* list = test_list_new();
@@ -81,9 +86,12 @@ BOOST_AUTO_TEST_CASE(ListSortTest)
   BOOST_REQUIRE(test_list_addnode(list, test_node_new(3)));
   BOOST_REQUIRE(test_list_addnode(list, test_node_new(2)));
   BOOST_REQUIRE(test_list_addnode(list, test_node_new(1)));
+  BOOST_REQUIRE(!fdt_list_issorted((FdtList*)list, (FDT_LIST_COMPAREFUNC)test_node_compare));
+  BOOST_REQUIRE_EQUAL(test_list_size(list), 3);
 
   BOOST_CHECK(fdt_list_sort((FdtList*)list, (FDT_LIST_COMPAREFUNC)test_node_compare));
   BOOST_CHECK(fdt_list_issorted((FdtList*)list, (FDT_LIST_COMPAREFUNC)test_node_compare));
+  BOOST_REQUIRE_EQUAL(test_list_size(list), 3);
 
   BOOST_CHECK(test_list_delete(list));
 }
