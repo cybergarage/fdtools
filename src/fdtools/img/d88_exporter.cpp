@@ -69,7 +69,9 @@ bool fdt_d88_header_setconfig(FdtD88Header* d88_header, FdtFileImage* img)
 {
   memset(d88_header, 0, sizeof(FdtD88Header));
 
-  fdt_strncpy(d88_header->name, fdt_image_getname(img), D88_NAME_MAXLEN);
+  if (fdt_image_hasname(img)) {
+    fdt_strncpy(d88_header->name, fdt_image_getname(img), D88_NAME_MAXLEN);
+  }
   d88_header->write_protect = fdt_image_getwriteprotect(img) ? D88_WRITE_PROTECT_ENABLED : D88_WRITE_PROTECT_NONE;
   d88_header->disk_size = (uint32_t)fdt_image_getsize(img);
 
