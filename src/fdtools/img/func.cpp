@@ -57,6 +57,25 @@ FdtImageType fdt_image_name_gettype(const char* filename)
 
   // Identify image file type by the header signature
 
+  FdtImageType file_type = fdt_image_name_gettypebysignature(filename);
+  if (file_type != FDT_IMAGE_TYPE_UNKNOWN)
+    return file_type;
+
+  // Identify image file type by the filename extention
+
+  return fdt_image_name_gettypebyname(filename);
+}
+
+FdtImageType fdt_image_name_gettypebysignature(const char* filename)
+{
+  if (!filename || (fdt_strlen(filename) <= 0))
+    return FDT_IMAGE_TYPE_UNKNOWN;
+
+  if (fdt_file_hasprefix(filename, FDT_DEVICE_PREFIX))
+    return FDT_IMAGE_TYPE_DEV;
+
+  // Identify image file type by the header signature
+
   FILE* fp = fdt_file_open(filename, FDT_FILE_READ);
   if (!fp)
     return FDT_IMAGE_TYPE_UNKNOWN;
@@ -75,10 +94,10 @@ FdtImageType fdt_image_name_gettype(const char* filename)
 
   // Identify image file type by the filename extention
 
-  return fdt_image_name_gettypebyonlyname(filename);
+  return FDT_IMAGE_TYPE_UNKNOWN;
 }
 
-FdtImageType fdt_image_name_gettypebyonlyname(const char* filename)
+FdtImageType fdt_image_name_gettypebyname(const char* filename)
 {
   if (!filename || (fdt_strlen(filename) <= 0))
     return FDT_IMAGE_TYPE_UNKNOWN;

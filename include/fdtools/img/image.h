@@ -127,7 +127,8 @@ void fdt_image_print(FdtImage* img);
 
 FdtImage* fdt_image_name_new(const char* filename, FdtError* err);
 FdtImageType fdt_image_name_gettype(const char* filename);
-FdtImageType fdt_image_name_gettypebyonlyname(const char* filename);
+FdtImageType fdt_image_name_gettypebysignature(const char* filename);
+FdtImageType fdt_image_name_gettypebyname(const char* filename);
 
 #ifdef __cplusplus
 } /* extern C */
