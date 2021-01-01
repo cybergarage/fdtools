@@ -86,6 +86,8 @@ FdtImageSector* fdt_image_sector_copy(FdtImageSector* sector);
 #define fdt_image_sector_getdata(sector) (sector->data)
 #define fdt_image_sector_geterrorcount(sector) (sector->error_count)
 
+bool fdt_list_issorted(FdtList* list, FDT_LIST_COMPAREFUNC comparefn);
+
 #ifdef __cplusplus
 } /* extern C */
 #endif

@@ -21,13 +21,6 @@ typedef struct {
   int value;
 } TestList, TestNode;
 
-TestList* test_list_new()
-{
-  TestList* list = (TestList*)calloc(sizeof(TestList), 1);
-  fdt_list_header_init((FdtList*)list);
-  return list;
-}
-
 TestNode* test_node_new(int value)
 {
   TestNode* node = (TestNode*)calloc(sizeof(TestNode), 1);
@@ -48,15 +41,34 @@ int test_node_compare(TestNode* t, TestNode* o)
   return 1;
 }
 
-bool fdt_test_node_delete(TestList* node)
+bool test_node_delete(TestList* node)
 {
   fdt_list_remove((FdtListNode*)node);
   free(node);
   return true;
 }
 
+TestList* test_list_new()
+{
+  TestList* list = (TestList*)calloc(sizeof(TestList), 1);
+  fdt_list_header_init((FdtList*)list);
+  return list;
+}
+
+void test_list_addnode(TestList* list, TestNode* node)
+{
+  fdt_list_add((FdtList*)list, (FdtListNode*)node);
+}
+
+bool test_list_clear(TestList* list)
+{
+  fdt_list_clear((FdtList*)list, (FDT_LIST_DESTRUCTORFUNC)test_node_delete);
+  return true;
+}
+
 bool test_list_delete(TestList* list)
 {
+  test_list_clear(list);
   free(list);
   return true;
 }
@@ -64,5 +76,13 @@ bool test_list_delete(TestList* list)
 BOOST_AUTO_TEST_CASE(ListSortTest)
 {
   TestList* list = test_list_new();
+  BOOST_REQUIRE(list);
+
+  test_list_addnode(list, test_node_new(3));
+  test_list_addnode(list, test_node_new(2));
+  test_list_addnode(list, test_node_new(1));
+
+  BOOST_CHECK(fdt_list_issorted((FdtList*)list, (FDT_LIST_COMPAREFUNC)test_node_compare));
+
   BOOST_CHECK(test_list_delete(list));
 }

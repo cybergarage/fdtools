@@ -158,6 +158,26 @@ FdtListNode* fdt_list_next(
   return node->next;
 }
 
+bool fdt_list_issorted(FdtList* list, FDT_LIST_COMPAREFUNC comparefn)
+{
+  if (!list || !comparefn)
+    return false;
+
+  FdtListNode* prev_node = fdt_list_gets(list);
+  if (!prev_node)
+    return true;
+
+  FdtListNode* node = fdt_list_next(prev_node);
+  while (node) {
+    if (0 < comparefn(prev_node, node))
+      return false;
+    prev_node = node;
+    node = fdt_list_next(node);
+  }
+
+  return true;
+}
+
 void fdt_list_clear(FdtList* list, FDT_LIST_DESTRUCTORFUNC destructorFunc)
 {
   if (!list)

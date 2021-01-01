@@ -22,6 +22,7 @@ extern "C" {
 #endif
 
 typedef bool (*FDT_LIST_DESTRUCTORFUNC)(void*);
+typedef int (*FDT_LIST_COMPAREFUNC)(void*, void*);
 
 #define FDT_LIST_STRUCT_MEMBERS \
   bool headFlag;                \
@@ -46,6 +47,8 @@ FdtListNode* fdt_list_next(FdtListNode*);
 void fdt_list_clear(FdtList*, FDT_LIST_DESTRUCTORFUNC destructorFunc);
 
 inline FdtListNode* fdt_list_gets(FdtList* list) { return fdt_list_next(list); }
+
+bool fdt_list_issorted(FdtList* list, FDT_LIST_COMPAREFUNC comparefn);
 
 #ifdef __cplusplus
 } /* extern "C" */
