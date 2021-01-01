@@ -23,6 +23,7 @@ extern "C" {
 
 #define FDT_IMAGE_SECTOR_PRINTF_FORMAT "C:%02ld H:%01ld R:%02ld"
 #define FDT_IMAGE_SECTOR_SIZE_PRINTF_FORMAT FDT_IMAGE_SECTOR_PRINTF_FORMAT " SIZE:%ld"
+#define FDT_IMAGE_UNKNOWN_TYPE "Unknown image type: %s"
 
 #ifdef __cplusplus
 } /* extern C */

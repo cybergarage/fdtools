@@ -125,10 +125,12 @@ void fdt_image_print(FdtImage* img);
 
 #define fdt_image_addsector(img, sector) fdt_list_add((FdtList*)img->sectors, (FdtList*)sector)
 
-FdtImage* fdt_image_name_new(const char* filename, FdtError* err);
-FdtImageType fdt_image_name_gettype(const char* filename);
-FdtImageType fdt_image_name_gettypebysignature(const char* filename);
-FdtImageType fdt_image_name_gettypebyname(const char* filename);
+FdtImage* fdt_image_name_new(const char*, FdtError*);
+FdtImage* fdt_image_name_new_byname(const char*, FdtError*);
+FdtImage* fdt_image_name_new_bytype(FdtImageType);
+FdtImageType fdt_image_name_gettype(const char*);
+FdtImageType fdt_image_name_gettypebysignature(const char*);
+FdtImageType fdt_image_name_gettypebyname(const char*);
 
 #ifdef __cplusplus
 } /* extern C */

@@ -241,7 +241,7 @@ int main(int argc, char* argv[])
 
   const char* dst_img_name = fdt_program_getargument(prg, 1);
   print_message("exporting %s ....", dst_img_name);
-  FdtImage* dst_img = fdt_image_name_new(dst_img_name, err);
+  FdtImage* dst_img = fdt_image_name_new_byname(dst_img_name, err);
   if (!dst_img) {
     exit_error(err);
   }
