@@ -63,6 +63,8 @@ bool fdt_file_memclose(FILE* fp)
 
 bool fdt_file_read(FILE* fp, void* buf, size_t n)
 {
+  if (!fp || !buf)
+    return false;
   return (fread(buf, 1, n, fp) == n) ? true : false;
 }
 
