@@ -40,6 +40,7 @@ bool fdt_list_insert(FdtList*, FdtList*);
 FdtListNode* fdt_list_get(FdtList*, int index);
 bool fdt_list_add(FdtList*, FdtListNode*);
 size_t fdt_list_size(FdtList*);
+bool fdt_list_move(FdtList*, FdtList*);
 void fdt_list_clear(FdtList*, FDT_LIST_DESTRUCTORFUNC destructorFunc);
 
 FdtListNode* fdt_list_prev_circular(FdtListNode*);
