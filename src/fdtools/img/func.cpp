@@ -47,12 +47,23 @@ FdtImage* fdt_image_name_new(const char* filename, FdtError* err)
   return img;
 }
 
+bool fdt_image_name_isdevice(const char* filename)
+{
+  if (!filename || (fdt_strlen(filename) <= 0))
+    return false;
+
+  if (!fdt_file_hasprefix(filename, FDT_DEVICE_PREFIX))
+    return false;
+
+  return true;
+}
+
 FdtImageType fdt_image_name_gettype(const char* filename)
 {
   if (!filename || (fdt_strlen(filename) <= 0))
     return FDT_IMAGE_TYPE_UNKNOWN;
 
-  if (fdt_file_hasprefix(filename, FDT_DEVICE_PREFIX))
+  if (fdt_image_name_isdevice(filename))
     return FDT_IMAGE_TYPE_DEV;
 
   // Identify image file type by the header signature
@@ -70,9 +81,6 @@ FdtImageType fdt_image_name_gettypebysignature(const char* filename)
 {
   if (!filename || (fdt_strlen(filename) <= 0))
     return FDT_IMAGE_TYPE_UNKNOWN;
-
-  if (fdt_file_hasprefix(filename, FDT_DEVICE_PREFIX))
-    return FDT_IMAGE_TYPE_DEV;
 
   // Identify image file type by the header signature
 
@@ -102,7 +110,7 @@ FdtImageType fdt_image_name_gettypebyname(const char* filename)
   if (!filename || (fdt_strlen(filename) <= 0))
     return FDT_IMAGE_TYPE_UNKNOWN;
 
-  if (fdt_file_hasprefix(filename, FDT_DEVICE_PREFIX))
+  if (fdt_image_name_isdevice(filename))
     return FDT_IMAGE_TYPE_DEV;
 
   if (fdt_file_hasextension(filename, D88_EXTENTION_D88))
