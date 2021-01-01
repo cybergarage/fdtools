@@ -28,7 +28,7 @@ const char* fdt_file_mode2str(FdtFileMode mode)
     return "wb";
     break;
   }
-  return "";
+  return NULL;
 }
 
 FILE* fdt_file_open(const char* filename, FdtFileMode mode)
