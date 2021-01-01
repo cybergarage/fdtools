@@ -16,8 +16,8 @@
 #include <string.h>
 
 #include <fdtools/dev/image.h>
-#include <fdtools/img/error.h>
 #include <fdtools/img/d88.h>
+#include <fdtools/img/error.h>
 #include <fdtools/img/hfe.h>
 #include <fdtools/img/raw.h>
 
