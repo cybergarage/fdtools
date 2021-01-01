@@ -39,6 +39,6 @@ bool fdt_program_arguments_add(FdtProgramArguments* args, const char* value)
   if (!arg)
     return false;
   fdt_program_argument_setvalue(arg, value);
-  fdt_list_add((FdtList*)args, (FdtList*)arg);
+  fdt_list_add((FdtList*)args, (FdtListNode*)arg);
   return true;
 }

@@ -58,7 +58,7 @@ void fdt_image_sectors_print(FdtImageSectors*);
 
 #define fdt_image_sectors_size(sectors) fdt_list_size((FdtList*)sectors)
 #define fdt_image_sectors_gets(sectors) (FdtImageSector*)fdt_list_gets((FdtList*)sectors)
-#define fdt_image_sectors_addsector(sectors, sector) fdt_list_add((FdtList*)sectors, (FdtList*)sector)
+#define fdt_image_sectors_addsector(sectors, sector) fdt_list_add((FdtList*)sectors, (FdtListNode*)sector)
 #define fdt_image_sectors_clear(sectors) fdt_list_clear((FdtList*)sectors, (FDT_LIST_DESTRUCTORFUNC)fdt_image_sector_delete)
 
 FdtImageSector* fdt_image_sector_new();
@@ -70,7 +70,7 @@ bool fdt_image_sector_hasdata(FdtImageSector*);
 bool fdt_image_sector_equals(FdtImageSector*, FdtImageSector*, FdtError*);
 FdtImageSector* fdt_image_sector_copy(FdtImageSector* sector);
 
-#define fdt_image_sector_next(sector) (FdtImageSector*)fdt_list_next((FdtList*)sector)
+#define fdt_image_sector_next(sector) (FdtImageSector*)fdt_list_next((FdtListNode*)sector)
 
 #define fdt_image_sector_setcylindernumber(sector, n) (sector->cylinder_number = n)
 #define fdt_image_sector_setheadnumber(sector, n) (sector->head_number = n)

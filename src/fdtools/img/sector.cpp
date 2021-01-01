@@ -24,7 +24,7 @@ FdtImageSector* fdt_image_sector_new()
     return NULL;
   }
 
-  fdt_list_node_init((FdtList*)sector);
+  fdt_list_node_init((FdtListNode*)sector);
 
   fdt_image_sector_setcylindernumber(sector, 0);
   fdt_image_sector_setheadnumber(sector, 0);
@@ -41,7 +41,7 @@ bool fdt_image_sector_delete(FdtImageSector* sector)
   if (!sector)
     return false;
 
-  fdt_list_remove((FdtList*)sector);
+  fdt_list_remove((FdtListNode*)sector);
   if (sector->data) {
     free(sector->data);
   }

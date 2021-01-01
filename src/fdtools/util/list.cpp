@@ -23,156 +23,156 @@ void fdt_list_header_init(FdtList* list)
   list->prev = list->next = list;
 }
 
-void fdt_list_node_init(FdtList* list)
+void fdt_list_node_init(FdtListNode* node)
 {
-  if (!list)
+  if (!node)
     return;
 
-  list->headFlag = false;
-  list->prev = list->next = list;
+  node->headFlag = false;
+  node->prev = node->next = node;
 }
 
-size_t fdt_list_size(FdtList* headList)
+size_t fdt_list_size(FdtList* list)
 {
-  if (!headList)
+  if (!list)
     return 0;
 
-  size_t listCnt = 0;
-  for (FdtList* list = fdt_list_next(headList); list; list = fdt_list_next(list))
-    listCnt++;
+  size_t list_cnt = 0;
+  for (FdtList* node = fdt_list_next(list); node; node = fdt_list_next(node))
+    list_cnt++;
 
-  return listCnt;
+  return list_cnt;
 }
 
-FdtList* fdt_list_get(FdtList* headList, int index)
+FdtListNode* fdt_list_get(FdtList* list, int index)
 {
-  if (!headList)
+  if (!list)
     return NULL;
 
-  FdtList* list = fdt_list_next(headList);
+  FdtList* node = fdt_list_next(list);
   for (int n = 0; n < index; n++) {
-    if (!list)
+    if (!node)
       break;
-    list = fdt_list_next(list);
+    node = fdt_list_next(node);
   }
 
-  return list;
+  return node;
 }
 
 void fdt_list_insert(
-    FdtList* prevList,
+    FdtList* plist,
     FdtList* list)
 {
-  if ((!prevList) || (!list))
+  if ((!plist) || (!list))
     return;
 
-  list->prev = prevList;
-  list->next = prevList->next;
-  prevList->next->prev = list;
-  prevList->next = list;
+  list->prev = plist;
+  list->next = plist->next;
+  plist->next->prev = list;
+  plist->next = list;
 }
 
 void fdt_list_add(
-    FdtList* headList,
-    FdtList* list)
+    FdtList* list,
+    FdtList* node)
 {
-  if ((!headList) || (!list))
+  if ((!list) || (!node))
     return;
-
-  if (!headList->prev)
-    return;
-
-  fdt_list_insert(headList->prev, list);
-}
-
-void fdt_list_remove(FdtList* list)
-{
-  if (!list)
-    return;
-
-  if ((!list->prev) || (!list->next))
-    return;
-
-  list->prev->next = list->next;
-  list->next->prev = list->prev;
-  list->prev = list->next = list;
-}
-
-FdtList* fdt_list_prev_circular(
-    FdtList* list)
-{
-  if (!list)
-    return NULL;
 
   if (!list->prev)
-    return NULL;
-
-  if (list->prev->headFlag)
-    list = list->prev;
-
-  return list->prev;
-}
-
-FdtList* fdt_list_prev(
-    FdtList* list)
-{
-  if (!list)
-    return NULL;
-
-  if (!list->prev)
-    return NULL;
-
-  if (list->prev->headFlag == true)
-    return NULL;
-
-  return list->prev;
-}
-
-FdtList* fdt_list_next_circular(
-    FdtList* list)
-{
-  if (!list)
-    return NULL;
-
-  if (!list->next)
-    return NULL;
-
-  if (list->next->headFlag == true)
-    list = list->next;
-
-  return list->next;
-}
-
-FdtList* fdt_list_next(
-    FdtList* list)
-{
-  if (!list)
-    return NULL;
-
-  if (!list->next)
-    return NULL;
-
-  if (list->next->headFlag == true)
-    return NULL;
-
-  return list->next;
-}
-
-void fdt_list_clear(FdtList* headList, FDT_LIST_DESTRUCTORFUNC destructorFunc)
-{
-  if (!headList)
     return;
 
-  FdtList* list = fdt_list_next(headList);
-  while (list) {
-    FdtList* nextList = fdt_list_next(list);
-    fdt_list_remove(list);
+  fdt_list_insert(list->prev, node);
+}
+
+void fdt_list_remove(FdtListNode* node)
+{
+  if (!node)
+    return;
+
+  if ((!node->prev) || (!node->next))
+    return;
+
+  node->prev->next = node->next;
+  node->next->prev = node->prev;
+  node->prev = node->next = node;
+}
+
+FdtListNode* fdt_node_prev_circular(
+    FdtListNode* node)
+{
+  if (!node)
+    return NULL;
+
+  if (!node->prev)
+    return NULL;
+
+  if (node->prev->headFlag)
+    node = node->prev;
+
+  return node->prev;
+}
+
+FdtListNode* fdt_node_prev(
+    FdtListNode* node)
+{
+  if (!node)
+    return NULL;
+
+  if (!node->prev)
+    return NULL;
+
+  if (node->prev->headFlag == true)
+    return NULL;
+
+  return node->prev;
+}
+
+FdtListNode* fdt_node_next_circular(
+    FdtListNode* node)
+{
+  if (!node)
+    return NULL;
+
+  if (!node->next)
+    return NULL;
+
+  if (node->next->headFlag == true)
+    node = node->next;
+
+  return node->next;
+}
+
+FdtListNode* fdt_list_next(
+    FdtListNode* node)
+{
+  if (!node)
+    return NULL;
+
+  if (!node->next)
+    return NULL;
+
+  if (node->next->headFlag == true)
+    return NULL;
+
+  return node->next;
+}
+
+void fdt_list_clear(FdtList* list, FDT_LIST_DESTRUCTORFUNC destructorFunc)
+{
+  if (!list)
+    return;
+
+  FdtList* node = fdt_list_next(list);
+  while (node) {
+    FdtList* next_node = fdt_list_next(node);
+    fdt_list_remove(node);
     if (destructorFunc) {
-      destructorFunc(list);
+      destructorFunc(node);
     }
     else {
-      free(list);
+      free(node);
     }
-    list = nextList;
+    node = next_node;
   }
 }

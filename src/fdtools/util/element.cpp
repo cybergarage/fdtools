@@ -22,7 +22,7 @@ FdtDictionaryElement* fdt_dictionary_element_new()
   if (!elem)
     return NULL;
 
-  fdt_list_node_init((FdtList*)elem);
+  fdt_list_node_init((FdtListNode*)elem);
   elem->key = fdt_string_new();
   elem->value = NULL;
   elem->destructor = NULL;
@@ -35,7 +35,7 @@ bool fdt_dictionary_element_delete(FdtDictionaryElement* elem)
   if (!elem)
     return false;
 
-  fdt_list_remove((FdtList*)elem);
+  fdt_list_remove((FdtListNode*)elem);
 
   fdt_string_delete(elem->key);
   fdt_dictionary_element_clear_value(elem);

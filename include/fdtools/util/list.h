@@ -30,22 +30,22 @@ typedef bool (*FDT_LIST_DESTRUCTORFUNC)(void*);
 
 typedef struct _FdtList {
   FDT_LIST_STRUCT_MEMBERS
-} FdtList;
+} FdtList, FdtListNode;
 
-void fdt_list_header_init(FdtList* list);
-void fdt_list_node_init(FdtList* list);
-void fdt_list_insert(FdtList* prevList, FdtList* list);
-void fdt_list_add(FdtList* headList, FdtList* list);
-void fdt_list_remove(FdtList* list);
-size_t fdt_list_size(FdtList* headList);
-FdtList* fdt_list_get(FdtList* headList, int index);
-FdtList* fdt_list_prev_circular(FdtList* list);
-FdtList* fdt_list_prev(FdtList* list);
-FdtList* fdt_list_next_circular(FdtList* list);
-FdtList* fdt_list_next(FdtList* list);
-void fdt_list_clear(FdtList* headList, FDT_LIST_DESTRUCTORFUNC destructorFunc);
+void fdt_list_header_init(FdtList*);
+void fdt_list_node_init(FdtListNode*);
+void fdt_list_insert(FdtList*, FdtList*);
+void fdt_list_add(FdtList*, FdtListNode*);
+void fdt_list_remove(FdtListNode*);
+size_t fdt_list_size(FdtList*);
+FdtListNode* fdt_list_get(FdtList*, int index);
+FdtListNode* fdt_list_prev_circular(FdtListNode*);
+FdtListNode* fdt_list_prev(FdtListNode*);
+FdtListNode* fdt_list_next_circular(FdtListNode*);
+FdtListNode* fdt_list_next(FdtListNode*);
+void fdt_list_clear(FdtList*, FDT_LIST_DESTRUCTORFUNC destructorFunc);
 
-inline FdtList* fdt_list_gets(FdtList* headList) { return fdt_list_next(headList); }
+inline FdtListNode* fdt_list_gets(FdtList* list) { return fdt_list_next(list); }
 
 #ifdef __cplusplus
 } /* extern "C" */
