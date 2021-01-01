@@ -25,7 +25,7 @@ FdtImage* fdt_image_name_new(const char* filename, FdtError* err)
 {
   FdtImage* img = fdt_image_name_new_bytype(fdt_image_name_gettype(filename));
   if (!img) {
-    fdt_error_setmessage(err, FDT_IMAGE_UNKNOWN_TYPE, filename);
+    fdt_error_setmessage(err, FDT_IMAGE_MESSAGE_UNKNOWN_TYPE_FORMAT, filename);
     return NULL;
   }
   fdt_image_setname(img, filename);
@@ -36,7 +36,7 @@ FdtImage* fdt_image_name_new_byname(const char* filename, FdtError* err)
 {
   FdtImage* img = fdt_image_name_new_bytype(fdt_image_name_gettypebyname(filename));
   if (!img) {
-    fdt_error_setmessage(err, FDT_IMAGE_UNKNOWN_TYPE, filename);
+    fdt_error_setmessage(err, FDT_IMAGE_MESSAGE_UNKNOWN_TYPE_FORMAT, filename);
     return NULL;
   }
   fdt_image_setname(img, filename);
@@ -60,6 +60,7 @@ FdtImage* fdt_image_name_new_bytype(FdtImageType img_type)
   case FDT_IMAGE_TYPE_D88:
     img = fdt_d88_image_new();
     break;
+  default:
     return NULL;
   }
 
