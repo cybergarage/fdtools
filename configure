@@ -4722,6 +4722,8 @@ if  test "$enable_debug" = yes ; then
 
 $as_echo "#define DEBUG 1" >>confdefs.h
 
+        as_fn_append CFLAGS " -O0"
+        as_fn_append CPPFLAGS " -O0"
 fi
 
 ##############################
