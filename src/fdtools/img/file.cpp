@@ -56,12 +56,12 @@ bool fdt_image_file_delete(FdtFileImage* img)
 
 bool fdt_image_file_open(FdtFileImage* img, const char* name, FdtFileMode mode, FdtError* err)
 {
-  if (!img)
+  if (!img || !name)
     return false;
 
   img->fp = fdt_file_open(name, mode);
   if (!img->fp) {
-    fdt_error_setlasterror(err, "");
+    fdt_error_setlasterror(err, name);
     return false;
   }
 
