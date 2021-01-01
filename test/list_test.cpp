@@ -55,9 +55,9 @@ TestList* test_list_new()
   return list;
 }
 
-void test_list_addnode(TestList* list, TestNode* node)
+bool test_list_addnode(TestList* list, TestNode* node)
 {
-  fdt_list_add((FdtList*)list, (FdtListNode*)node);
+  return fdt_list_add((FdtList*)list, (FdtListNode*)node);
 }
 
 bool test_list_clear(TestList* list)
@@ -78,10 +78,11 @@ BOOST_AUTO_TEST_CASE(ListSortTest)
   TestList* list = test_list_new();
   BOOST_REQUIRE(list);
 
-  test_list_addnode(list, test_node_new(3));
-  test_list_addnode(list, test_node_new(2));
-  test_list_addnode(list, test_node_new(1));
+  BOOST_REQUIRE(test_list_addnode(list, test_node_new(3)));
+  BOOST_REQUIRE(test_list_addnode(list, test_node_new(2)));
+  BOOST_REQUIRE(test_list_addnode(list, test_node_new(1)));
 
+  BOOST_CHECK(fdt_list_sort((FdtList*)list, (FDT_LIST_COMPAREFUNC)test_node_compare));
   BOOST_CHECK(fdt_list_issorted((FdtList*)list, (FDT_LIST_COMPAREFUNC)test_node_compare));
 
   BOOST_CHECK(test_list_delete(list));

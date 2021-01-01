@@ -35,19 +35,22 @@ typedef struct _FdtList {
 
 void fdt_list_header_init(FdtList*);
 void fdt_list_node_init(FdtListNode*);
-void fdt_list_insert(FdtList*, FdtList*);
-void fdt_list_add(FdtList*, FdtListNode*);
-void fdt_list_remove(FdtListNode*);
-size_t fdt_list_size(FdtList*);
+bool fdt_list_insert(FdtList*, FdtList*);
+
 FdtListNode* fdt_list_get(FdtList*, int index);
+bool fdt_list_add(FdtList*, FdtListNode*);
+size_t fdt_list_size(FdtList*);
+void fdt_list_clear(FdtList*, FDT_LIST_DESTRUCTORFUNC destructorFunc);
+
 FdtListNode* fdt_list_prev_circular(FdtListNode*);
 FdtListNode* fdt_list_prev(FdtListNode*);
 FdtListNode* fdt_list_next_circular(FdtListNode*);
 FdtListNode* fdt_list_next(FdtListNode*);
-void fdt_list_clear(FdtList*, FDT_LIST_DESTRUCTORFUNC destructorFunc);
+bool fdt_list_remove(FdtListNode*);
 
 inline FdtListNode* fdt_list_gets(FdtList* list) { return fdt_list_next(list); }
 
+bool fdt_list_sort(FdtList* list, FDT_LIST_COMPAREFUNC comparefn);
 bool fdt_list_issorted(FdtList* list, FDT_LIST_COMPAREFUNC comparefn);
 
 #ifdef __cplusplus

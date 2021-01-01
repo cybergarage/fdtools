@@ -59,43 +59,47 @@ FdtListNode* fdt_list_get(FdtList* list, int index)
   return node;
 }
 
-void fdt_list_insert(
+bool fdt_list_insert(
     FdtList* plist,
     FdtList* list)
 {
   if ((!plist) || (!list))
-    return;
+    return false;
 
   list->prev = plist;
   list->next = plist->next;
   plist->next->prev = list;
   plist->next = list;
+
+  return true;
 }
 
-void fdt_list_add(
+bool fdt_list_add(
     FdtList* list,
     FdtList* node)
 {
   if ((!list) || (!node))
-    return;
+    return false;
 
   if (!list->prev)
-    return;
+    return false;
 
-  fdt_list_insert(list->prev, node);
+  return fdt_list_insert(list->prev, node);
 }
 
-void fdt_list_remove(FdtListNode* node)
+bool fdt_list_remove(FdtListNode* node)
 {
   if (!node)
-    return;
+    return false;
 
   if ((!node->prev) || (!node->next))
-    return;
+    return false;
 
   node->prev->next = node->next;
   node->next->prev = node->prev;
   node->prev = node->next = node;
+
+  return true;
 }
 
 FdtListNode* fdt_node_prev_circular(
@@ -156,6 +160,14 @@ FdtListNode* fdt_list_next(
     return NULL;
 
   return node->next;
+}
+
+bool fdt_list_sort(FdtList* list, FDT_LIST_COMPAREFUNC comparefn)
+{
+  if (!list || !comparefn)
+    return false;
+
+  return true;
 }
 
 bool fdt_list_issorted(FdtList* list, FDT_LIST_COMPAREFUNC comparefn)
