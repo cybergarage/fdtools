@@ -104,7 +104,7 @@ void fdt_error_setdebugmessage(FdtError* err, const char* file, int line_no, con
   fdt_string_setvalue(err->message, msg);
 }
 
-void fdt_error_addmessage(FdtError* err, const char* format, ...)
+void fdt_error_appendmessage(FdtError* err, const char* format, ...)
 {
   if (!err)
     return;

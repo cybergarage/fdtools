@@ -187,7 +187,7 @@ bool fdt_device_image_writesector(FdtDeviceImage* img, FdtImageSector* sector, F
   }
 
   if (!fdt_device_writeblock(img->dev, sector_data, sector_size, err)) {
-    fdt_error_addmessage(err, FDT_IMAGE_MESSAGE_SECTOR_SIZE_PRINTF_FORMAT, fdt_image_sector_getcylindernumber(sector), fdt_image_sector_getheadnumber(sector), fdt_image_sector_getnumber(sector), fdt_image_sector_getsize(sector));
+    fdt_error_appendmessage(err, FDT_IMAGE_MESSAGE_SECTOR_SIZE_PRINTF_FORMAT, fdt_image_sector_getcylindernumber(sector), fdt_image_sector_getheadnumber(sector), fdt_image_sector_getnumber(sector), fdt_image_sector_getsize(sector));
     return false;
   }
 
