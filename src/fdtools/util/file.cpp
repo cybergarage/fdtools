@@ -25,7 +25,7 @@ const char* fdt_file_mode2str(FdtFileMode mode)
     return "rb";
     break;
   case FDT_FILE_WRITE:
-    return "rb";
+    return "wb";
     break;
   }
   return "";
