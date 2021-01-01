@@ -124,6 +124,8 @@ void fdt_image_print(FdtImage* img);
 #define fdt_image_getnerrorsectors(img) fdt_image_sectors_getnerrorsectors(img->sectors)
 
 #define fdt_image_addsector(img, sector) fdt_list_add((FdtList*)img->sectors, (FdtListNode*)sector)
+#define fdt_image_issectorssorted(img) fdt_image_sectors_issorted(img->sectors)
+#define fdt_image_sortsectors(img) fdt_image_sectors_sort(img->sectors)
 
 FdtImage* fdt_image_name_new(const char*, FdtError*);
 FdtImage* fdt_image_name_new_byname(const char*, FdtError*);

@@ -114,6 +114,28 @@ FdtImageSector* fdt_image_sector_copy(FdtImageSector* sector)
   return other;
 }
 
+int fdt_image_sector_compare(FdtImageSector* sector, FdtImageSector* other)
+{
+  if (!sector || !other)
+    return 0;
+
+  if (other->cylinder_number < sector->cylinder_number)
+    return 1;
+
+  if (other->cylinder_number == sector->cylinder_number) {
+    if (other->head_number < sector->head_number)
+      return 1;
+    if (other->head_number == sector->head_number) {
+      if (other->number < sector->number)
+        return 1;
+      if (other->number == sector->number)
+        return 0;
+    }
+  }
+
+  return -1;
+}
+
 bool fdt_image_sector_equals(FdtImageSector* sector, FdtImageSector* other, FdtError* err)
 {
   if (!sector || !other)

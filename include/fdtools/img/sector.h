@@ -53,6 +53,8 @@ FdtImageSector* fdt_image_sectors_geterrorsector(FdtImageSectors*);
 int fdt_image_sectors_getnerrorsectors(FdtImageSectors*);
 
 FdtImageSectors* fdt_image_sectors_copy(FdtImageSectors* sectors, FdtError* err);
+bool fdt_image_sectors_issorted(FdtImageSectors*);
+bool fdt_image_sectors_sort(FdtImageSectors*);
 bool fdt_image_sectors_equals(FdtImageSectors*, FdtImageSectors*, FdtError*);
 void fdt_image_sectors_print(FdtImageSectors*);
 
@@ -67,6 +69,7 @@ bool fdt_image_sector_delete(FdtImageSector*);
 bool fdt_image_sector_isvalid(FdtImageSector*);
 bool fdt_image_sector_setdata(FdtImageSector*, byte_t*);
 bool fdt_image_sector_hasdata(FdtImageSector*);
+int fdt_image_sector_compare(FdtImageSector*, FdtImageSector*);
 bool fdt_image_sector_equals(FdtImageSector*, FdtImageSector*, FdtError*);
 FdtImageSector* fdt_image_sector_copy(FdtImageSector* sector);
 
@@ -85,8 +88,6 @@ FdtImageSector* fdt_image_sector_copy(FdtImageSector* sector);
 #define fdt_image_sector_getsize(sector) (sector->size)
 #define fdt_image_sector_getdata(sector) (sector->data)
 #define fdt_image_sector_geterrorcount(sector) (sector->error_count)
-
-bool fdt_list_issorted(FdtList* list, FDT_LIST_COMPAREFUNC comparefn);
 
 #ifdef __cplusplus
 } /* extern C */

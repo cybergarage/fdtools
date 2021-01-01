@@ -174,6 +174,16 @@ FdtImageSectors* fdt_image_sectors_copy(FdtImageSectors* sectors, FdtError* err)
   return others;
 }
 
+bool fdt_image_sectors_issorted(FdtImageSectors* sectors)
+{
+  return fdt_list_issorted((FdtList*)sectors, (FDT_LIST_COMPAREFUNC)fdt_image_sector_compare);
+}
+
+bool fdt_image_sectors_sort(FdtImageSectors* sectors)
+{
+  return fdt_list_sort((FdtList*)sectors, (FDT_LIST_COMPAREFUNC)fdt_image_sector_compare);
+}
+
 bool fdt_image_sectors_equals(FdtImageSectors* sectors, FdtImageSectors* others, FdtError* err)
 {
   for (FdtImageSector* sector = fdt_image_sectors_gets(sectors); sector; sector = fdt_image_sector_next(sector)) {
