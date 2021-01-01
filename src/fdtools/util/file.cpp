@@ -70,6 +70,8 @@ bool fdt_file_read(FILE* fp, void* buf, size_t n)
 
 bool fdt_file_write(FILE* fp, void* buf, size_t n)
 {
+  if (!fp || !buf)
+    return false;
   return (fwrite(buf, 1, n, fp) == n) ? true : false;
 }
 
