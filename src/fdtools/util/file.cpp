@@ -77,6 +77,8 @@ bool fdt_file_write(FILE* fp, void* buf, size_t n)
 
 bool fdt_file_seek(FILE* fp, long offset, int whence)
 {
+  if (!fp)
+    return false;
   return (fseek(fp, offset, whence) == 0) ? true : false;
 }
 
