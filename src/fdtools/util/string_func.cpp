@@ -21,7 +21,7 @@
 
 char* fdt_strdup(const char* str)
 {
-  if (str == NULL)
+  if (!str)
     return NULL;
 
 #if defined(HAVE_STRDUP)
@@ -36,40 +36,44 @@ char* fdt_strdup(const char* str)
 
 size_t fdt_strlen(const char* str)
 {
-  return (str == NULL) ? 0 : strlen(str);
+  return (!str) ? 0 : strlen(str);
 }
 
 char* fdt_strcpy(char* dest, const char* src)
 {
+  if (!dest || !src)
+    return dest;
   return strcpy(dest, src);
 }
 
 char* fdt_strcat(char* dest, const char* src)
 {
+  if (!dest || !src)
+    return dest;
   return strcat(dest, src);
 }
 
 int fdt_strcmp(const char* str1, const char* str2)
 {
-  if (str1 == NULL)
+  if (!str1)
     return -1;
-  if (str2 == NULL)
+  if (!str2)
     return 1;
   return strcmp(str1, str2);
 }
 
 int fdt_strncmp(const char* str1, const char* str2, size_t nchars)
 {
-  if (str1 == NULL)
+  if (!str1)
     return -1;
-  if (str2 == NULL)
+  if (!str2)
     return 1;
   return strncmp(str1, str2, nchars);
 }
 
 int fdt_strcasecmp(const char* str1, const char* str2)
 {
-  if (str1 == NULL || str2 == NULL)
+  if (!str1 || !str2)
     return -1;
 #if !defined(WIN32)
   return strcasecmp(str1, str2);
@@ -84,34 +88,31 @@ int fdt_strcasecmp(const char* str1, const char* str2)
 
 bool fdt_streq(const char* str1, const char* str2)
 {
-  if (str1 == NULL || str2 == NULL)
+  if (!str1 || !str2)
     return false;
-
   return ((fdt_strcmp(str1, str2) == 0) ? true : false);
 }
 
 bool fdt_strcaseeq(const char* str1, const char* str2)
 {
-  if (str1 == NULL || str2 == NULL)
+  if (!str1 || !str2)
     return false;
-
   return ((fdt_strcasecmp(str1, str2) == 0) ? true : false);
 }
 
 ssize_t fdt_strstr(const char* haystack, const char* needle)
 {
-
-  if (haystack == NULL || needle == NULL)
+  if (!haystack || !needle)
     return -1;
   const char* strPos = strstr(haystack, needle);
-  if (strPos == NULL)
+  if (!strPos)
     return -1;
   return (strPos - haystack);
 }
 
 ssize_t fdt_strchr(const char* str, const char* chars, size_t nchars)
 {
-  if (str == NULL || chars == NULL)
+  if (!str || !chars)
     return -1;
   size_t strLen = fdt_strlen(str);
   for (ssize_t i = 0; i < strLen; i++) {
@@ -125,7 +126,7 @@ ssize_t fdt_strchr(const char* str, const char* chars, size_t nchars)
 
 ssize_t fdt_strrchr(const char* str, const char* chars, size_t nchars)
 {
-  if (str == NULL || chars == NULL)
+  if (!str || !chars)
     return -1;
   size_t strLen = fdt_strlen(str);
   for (ssize_t i = (strLen - 1); 0 <= i; i--) {
@@ -160,7 +161,7 @@ char* fdt_strtrimwhite(char* str)
 
 char* fdt_strtrim(char* str, char* delim, size_t ndelim)
 {
-  if (str == NULL || delim == NULL)
+  if (!str || !delim)
     return NULL;
   fdt_strrtrim(str, delim, ndelim);
   return fdt_strltrim(str, delim, ndelim);
@@ -201,16 +202,17 @@ char* fdt_strrtrim(char* str, char* delim, size_t ndelim)
   return str;
 }
 
-char* fdt_strncpy(char* str1, const char* str2, size_t cnt)
+char* fdt_strncpy(char* dest, const char* src, size_t cnt)
 {
-  strncpy(str1, str2, cnt);
-  return str1;
+  if (!dest || !src || (cnt == 0))
+    return dest;
+  return strncpy(dest, src, cnt);
 }
 
-char* fdt_strncat(char* str1, const char* str2, size_t cnt)
+char* fdt_strncat(char* dest, const char* src, size_t cnt)
 {
-  size_t str1Len = fdt_strlen(str1);
-  return fdt_strncpy((str1 + str1Len), str2, cnt);
+  size_t destLen = fdt_strlen(dest);
+  return fdt_strncpy((dest + destLen), src, cnt);
 }
 
 const char* fdt_int2str(int value, char* buf, size_t bufSize)
