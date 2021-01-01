@@ -56,6 +56,8 @@ FILE* fdt_file_memopen(byte_t* buf, size_t n, FdtFileMode mode)
 
 bool fdt_file_memclose(FILE* fp)
 {
+  if (!fp)
+    return false;
   return (fclose(fp) == 0) ? true : false;
 }
 
