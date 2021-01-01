@@ -34,7 +34,7 @@ const char* fdt_file_mode2str(FdtFileMode mode)
 FILE* fdt_file_open(const char* filename, FdtFileMode mode)
 {
   const char* fmode = fdt_file_mode2str(mode);
-  if (!fmode)
+  if (!filename || !fmode)
     return NULL;
   return fopen(filename, fmode);
 }
