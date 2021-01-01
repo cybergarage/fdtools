@@ -65,18 +65,7 @@ size_t fdt_list_size(FdtList* list)
   return list_cnt;
 }
 
-bool fdt_list_move(FdtList* from, FdtList* to)
-{
-  FdtList* node = fdt_list_gets(from);
-  while (node) {
-    if (!fdt_list_remove(node))
-      return false;
-    if (!fdt_list_add(to, node))
-      return false;
-    node = fdt_list_gets(from);
-  }
-  return true;
-}
+FdtListNode* fdt_list_gets(FdtList* list) { return fdt_list_next(list); }
 
 FdtListNode* fdt_list_get(FdtList* list, int index)
 {
@@ -119,6 +108,19 @@ bool fdt_list_add(
     return false;
 
   return fdt_list_insert(list->prev, node);
+}
+
+bool fdt_list_move(FdtList* from, FdtList* to)
+{
+  FdtList* node = fdt_list_gets(from);
+  while (node) {
+    if (!fdt_list_remove(node))
+      return false;
+    if (!fdt_list_add(to, node))
+      return false;
+    node = fdt_list_gets(from);
+  }
+  return true;
 }
 
 bool fdt_list_remove(FdtListNode* node)
