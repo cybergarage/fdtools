@@ -27,8 +27,10 @@ const char* OPT_HEADS = "h";
 const char* OPT_SECTORS = "n";
 const char* OPT_SSIZE = "s";
 const char* OPT_VERBOSE = "v";
+const char* OPT_DEBUG = "d";
 
 bool verbose_enabled = false;
+bool debug_enabled = false;
 time_t start_time;
 
 void print_message(const char* format, ...)
@@ -52,7 +54,7 @@ void print_usage(FdtProgram* prg)
 
 void print_error(FdtError* err)
 {
-  printf("Error: %s\n", fdt_error_getmessage(err));
+  printf("%s\n", debug_enabled ? fdt_error_getdebugmessage(err) : fdt_error_getmessage(err));
 }
 
 void panic()
@@ -162,6 +164,9 @@ int main(int argc, char* argv[])
 
   if (fdt_program_isoptionenabled(prg, OPT_VERBOSE)) {
     verbose_enabled = true;
+  }
+  if (fdt_program_isoptionenabled(prg, OPT_DEBUG)) {
+    debug_enabled = true;
   }
 
   // Loads source file image
