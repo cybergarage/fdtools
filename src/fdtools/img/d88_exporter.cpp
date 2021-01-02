@@ -86,7 +86,7 @@ bool fdt_d88_header_setconfig(FdtD88Header* d88_header, FdtFileImage* img, FdtEr
 
   FdtDensity density = fdt_image_getdensity(img);
   switch (density) {
-  case FDT_DENSITY_SD:
+  case FDT_IMAGE_DENSITY_SD:
     switch (fdt_image_getnumberofhead(img)) {
     case 1:
       d88_header->disk_type = D88_DISK_TYPE_1D;
@@ -99,7 +99,7 @@ bool fdt_d88_header_setconfig(FdtD88Header* d88_header, FdtFileImage* img, FdtEr
       return false;
     }
     break;
-  case FDT_DENSITY_DD:
+  case FDT_IMAGE_DENSITY_DD:
     switch (fdt_image_getnumberofhead(img)) {
     case 1:
       d88_header->disk_type = D88_DISK_TYPE_1DD;
@@ -112,7 +112,7 @@ bool fdt_d88_header_setconfig(FdtD88Header* d88_header, FdtFileImage* img, FdtEr
       return false;
     }
     break;
-  case FDT_DENSITY_HD:
+  case FDT_IMAGE_DENSITY_HD:
     switch (fdt_image_getnumberofhead(img)) {
     case 2:
       d88_header->disk_type = D88_DISK_TYPE_2HD;
@@ -159,13 +159,13 @@ bool fdt_d88_sector_header_setconfig(FdtD88SectorHeader* d88_sector_header, FdtI
   d88_sector_header->number_of_sector = (uint16_t)number_of_sector;
 
   switch (density) {
-  case FDT_DENSITY_SD:
+  case FDT_IMAGE_DENSITY_SD:
     d88_sector_header->density = D88_SECTOR_DENSITY_SINGLE;
     break;
-  case FDT_DENSITY_DD:
+  case FDT_IMAGE_DENSITY_DD:
     d88_sector_header->density = D88_SECTOR_DENSITY_DOUBLE;
     break;
-  case FDT_DENSITY_HD:
+  case FDT_IMAGE_DENSITY_HD:
     d88_sector_header->density = D88_SECTOR_DENSITY_HIGH;
     break;
   default:

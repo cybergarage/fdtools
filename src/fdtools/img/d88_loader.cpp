@@ -144,14 +144,14 @@ bool fdt_image_setd88headerinfo(FdtFileImage* img, FdtD88Header* header)
   switch (header->disk_type) {
   case D88_DISK_TYPE_1D:
   case D88_DISK_TYPE_2D:
-    fdt_image_setdensity(img, FDT_DENSITY_SD);
+    fdt_image_setdensity(img, FDT_IMAGE_DENSITY_SD);
     break;
   case D88_DISK_TYPE_1DD:
   case D88_DISK_TYPE_2DD:
-    fdt_image_setdensity(img, FDT_DENSITY_DD);
+    fdt_image_setdensity(img, FDT_IMAGE_DENSITY_DD);
     break;
   case D88_DISK_TYPE_2HD:
-    fdt_image_setdensity(img, FDT_DENSITY_HD);
+    fdt_image_setdensity(img, FDT_IMAGE_DENSITY_HD);
     break;
   }
 

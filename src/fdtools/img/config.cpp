@@ -34,7 +34,7 @@ FdtImageConfig* fdt_image_config_new()
 
   fdt_image_config_setname(config, "");
   fdt_image_config_setsize(config, 0);
-  fdt_image_config_setdensity(config, FDT_DENSITY_UNKNOWN);
+  fdt_image_config_setdensity(config, FDT_IMAGE_DENSITY_UNKNOWN);
   fdt_image_config_setnumberofhead(config, 0);
   fdt_image_config_setnumberofsector(config, 0);
   fdt_image_config_setnumberofcylinder(config, 0);
@@ -64,17 +64,17 @@ bool fdt_image_config_delete(FdtImageConfig* config)
 const char* fdt_image_density_getstring(FdtDensity density)
 {
   switch (density) {
-  case FDT_DENSITY_SD:
+  case FDT_IMAGE_DENSITY_SD:
     return "SD";
-  case FDT_DENSITY_DD:
+  case FDT_IMAGE_DENSITY_DD:
     return "DD";
-  case FDT_DENSITY_HD:
+  case FDT_IMAGE_DENSITY_HD:
     return "HD";
-  case FDT_DENSITY_QD:
+  case FDT_IMAGE_DENSITY_QD:
     return "QD";
-  case FDT_DENSITY_ED:
+  case FDT_IMAGE_DENSITY_ED:
     return "ED";
-  case FDT_DENSITY_UNKNOWN:
+  case FDT_IMAGE_DENSITY_UNKNOWN:
     return "";
   }
   return "";

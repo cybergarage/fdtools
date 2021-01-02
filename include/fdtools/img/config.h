@@ -26,12 +26,12 @@ extern "C" {
 #endif
 
 typedef enum {
-  FDT_DENSITY_UNKNOWN = 0,
-  FDT_DENSITY_SD = 1,
-  FDT_DENSITY_DD = 2,
-  FDT_DENSITY_HD = 3,
-  FDT_DENSITY_QD = 4,
-  FDT_DENSITY_ED = 5,
+  FDT_IMAGE_DENSITY_UNKNOWN = 0,
+  FDT_IMAGE_DENSITY_SD = 1,
+  FDT_IMAGE_DENSITY_DD = 2,
+  FDT_IMAGE_DENSITY_HD = 3,
+  FDT_IMAGE_DENSITY_QD = 4,
+  FDT_IMAGE_DENSITY_ED = 5,
 } FdtDensity;
 
 const char* fdt_image_density_getstring(FdtDensity);
