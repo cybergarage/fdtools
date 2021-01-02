@@ -43,7 +43,7 @@ void flush_message()
 
 void print_message2buffer(const char* msg)
 {
-  fdt_string_append(out_msg_buf, msg);
+  fdt_string_appendvalue(out_msg_buf, msg);
 }
 
 void print_lf2buffer()
