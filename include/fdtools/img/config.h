@@ -34,6 +34,8 @@ typedef enum {
   FDT_DENSITY_ED = 5,
 } FdtDensity;
 
+const char* fdt_image_density_getstring(FdtDensity);
+
 typedef struct FDT_ATTR_PACKED {
   FdtString* name;
   FdtString* desc;
@@ -72,14 +74,13 @@ void fdt_image_config_print(FdtImageConfig*);
 #define fdt_image_config_getname(config) fdt_string_getvalue(config->name)
 #define fdt_image_config_getsize(config) (config->size)
 #define fdt_image_config_getdensity(config) (config->density)
+#define fdt_image_config_getdensitystring(config) fdt_image_density_getstring(config->density)
 #define fdt_image_config_getnumberofhead(config) (config->number_of_head)
 #define fdt_image_config_getnumberofsector(config) (config->number_of_sector)
 #define fdt_image_config_getnumberofcylinder(config) (config->number_of_cylinder)
 #define fdt_image_config_getsectorsize(config) (config->sector_size)
 #define fdt_image_config_getrpm(config) (config->rpm)
 #define fdt_image_config_getwriteprotect(config) (config->write_protect)
-
-const char* fdt_image_config_getdensitystring(FdtImageConfig*);
 
 #ifdef __cplusplus
 } /* extern C */
