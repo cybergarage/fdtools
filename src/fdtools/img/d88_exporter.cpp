@@ -20,7 +20,7 @@
 #include <fdtools/util/file.h>
 #include <fdtools/util/string.h>
 
-bool fdt_d88_header_setimageconfig(FdtD88Header*, FdtFileImage*, FdtError* err);
+bool fdt_d88_header_setimageconfig(FdtD88Header*, FdtImage*, FdtError* err);
 bool fdt_d88_sector_header_setconfig(FdtD88SectorHeader*, FdtImageSector*, FdtImageDensity, size_t, FdtError* err);
 
 bool fdt_d88_image_export(FdtFileImage* img, FdtError* err)
@@ -33,7 +33,7 @@ bool fdt_d88_image_export(FdtFileImage* img, FdtError* err)
     return false;
 
   FdtD88Header d88_header;
-  if (!fdt_d88_header_setimageconfig(&d88_header, img, err))
+  if (!fdt_d88_header_setimageconfig(&d88_header, (FdtImage*)img, err))
     return false;
 
   if (!fdt_file_write(fp, &d88_header, sizeof(d88_header))) {
@@ -72,7 +72,7 @@ bool fdt_d88_image_export(FdtFileImage* img, FdtError* err)
   return true;
 }
 
-bool fdt_d88_header_setimageconfig(FdtD88Header* d88_header, FdtFileImage* img, FdtError* err)
+bool fdt_d88_header_setimageconfig(FdtD88Header* d88_header, FdtImage* img, FdtError* err)
 {
   memset(d88_header, 0, sizeof(FdtD88Header));
 
