@@ -107,6 +107,7 @@ void fdt_image_print(FdtImage* img);
 #define fdt_image_getconfigname(img) fdt_image_config_getname(img->config)
 #define fdt_image_getsize(img) fdt_image_config_getsize(img->config)
 #define fdt_image_getdensity(img) fdt_image_config_getdensity(img->config)
+#define fdt_image_getsupposeddensity(img) fdt_image_config_getsupposeddensity(img->config)
 #define fdt_image_getdensitystring(img) fdt_image_config_getdensitystring(img->config)
 #define fdt_image_getnumberofhead(img) fdt_image_config_getnumberofhead(img->config)
 #define fdt_image_getnumberofsector(img) fdt_image_config_getnumberofsector(img->config)
