@@ -36,8 +36,10 @@ bool fdt_d88_image_export(FdtFileImage* img, FdtError* err)
   if (!fdt_d88_header_setconfig(&d88_header, img, err))
     return false;
 
-  if (!fdt_file_write(fp, &d88_header, sizeof(d88_header)))
+  if (!fdt_file_write(fp, &d88_header, sizeof(d88_header))) {
+    fdt_error_setlasterror(err, "");
     return false;
+  }
 
   FdtDensity img_density = fdt_image_getdensity(img);
   for (int c = 0; c < (D88_HEADER_NUMBER_OF_SECTOR / D88_HEADER_NUMBER_OF_HEADER); c++) {
@@ -53,12 +55,16 @@ bool fdt_d88_image_export(FdtFileImage* img, FdtError* err)
           FdtD88SectorHeader d88_sector_header;
           if (!fdt_d88_sector_header_setconfig(&d88_sector_header, sector, img_density, number_of_sector))
             return false;
-          if (!fdt_file_write(fp, &d88_sector_header, sizeof(FdtD88SectorHeader)))
+          if (!fdt_file_write(fp, &d88_sector_header, sizeof(FdtD88SectorHeader))) {
+            fdt_error_setlasterror(err, "");
             return false;
+          }
         }
         size_t sector_size = fdt_image_sector_getsize(sector);
-        if (!fdt_file_write(fp, fdt_image_sector_getdata(sector), sector_size))
+        if (!fdt_file_write(fp, fdt_image_sector_getdata(sector), sector_size)) {
+          fdt_error_setlasterror(err, "");
           return false;
+        }
       }
     }
   }
@@ -117,8 +123,8 @@ bool fdt_d88_header_setconfig(FdtD88Header* d88_header, FdtFileImage* img, FdtEr
     }
     break;
   default:
-      fdt_error_setmessage(err, FDT_IMAGE_MESSAGE_UNKNOWN_DENSITY_FORMAT, fdt_image_getdensitystring(img));
-      return false;
+    fdt_error_setmessage(err, FDT_IMAGE_MESSAGE_UNKNOWN_DENSITY_FORMAT, fdt_image_getdensitystring(img));
+    return false;
   }
 
   // Sets track offsets
