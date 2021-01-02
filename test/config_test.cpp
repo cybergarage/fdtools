@@ -39,3 +39,33 @@ BOOST_AUTO_TEST_CASE(ConfigCopyTest)
 
   BOOST_CHECK(fdt_error_delete(err));
 }
+
+void TEST_CHECK_DENSITY_EQUAL(FdtImageConfig* config, int c, int h, int s, int ssize, FdtImageDensity density)
+{
+  fdt_image_config_setnumberofcylinder(config, c);
+  fdt_image_config_setnumberofhead(config, h);
+  fdt_image_config_setnumberofsector(config, s);
+  fdt_image_config_setsectorsize(config, ssize);
+
+  char msg[256];
+  snprintf(msg, sizeof(msg), "(%d, %d, %d, %d) != %s", c, h, s, ssize, fdt_image_density_getstring(density));
+  BOOST_CHECK_MESSAGE((fdt_image_config_getsupposeddensity(config) == density), msg);
+}
+
+BOOST_AUTO_TEST_CASE(ConfigSupposedDensityTest)
+{
+  FdtImageConfig* config = fdt_image_config_new();
+  BOOST_REQUIRE(config);
+
+  TEST_CHECK_DENSITY_EQUAL(config, 40, 2, 16, 256, FDT_IMAGE_DENSITY_DD);
+  TEST_CHECK_DENSITY_EQUAL(config, 77, 2, 16, 256, FDT_IMAGE_DENSITY_HD);
+  TEST_CHECK_DENSITY_EQUAL(config, 80, 2, 16, 256, FDT_IMAGE_DENSITY_DD);
+  TEST_CHECK_DENSITY_EQUAL(config, 77, 2, 8, 1024, FDT_IMAGE_DENSITY_HD);
+  TEST_CHECK_DENSITY_EQUAL(config, 80, 2, 9, 512, FDT_IMAGE_DENSITY_DD);
+  TEST_CHECK_DENSITY_EQUAL(config, 80, 1, 9, 512, FDT_IMAGE_DENSITY_DD);
+  TEST_CHECK_DENSITY_EQUAL(config, 80, 2, 26, 256, FDT_IMAGE_DENSITY_HD);
+  TEST_CHECK_DENSITY_EQUAL(config, 80, 2, 15, 512, FDT_IMAGE_DENSITY_HD);
+  TEST_CHECK_DENSITY_EQUAL(config, 80, 2, 18, 512, FDT_IMAGE_DENSITY_HD);
+
+  BOOST_CHECK(fdt_image_config_delete(config));
+}

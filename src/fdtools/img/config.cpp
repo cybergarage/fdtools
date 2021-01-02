@@ -80,6 +80,62 @@ const char* fdt_image_density_getstring(FdtImageDensity density)
   return "";
 }
 
+FdtImageDensity fdt_image_config_getsupposeddensity(FdtImageConfig* config)
+{
+  switch (config->number_of_cylinder) {
+  case 80:
+    switch (config->number_of_sector) {
+    case 9:
+      switch (config->sector_size) {
+      case 512:
+        return FDT_IMAGE_DENSITY_DD;
+      }
+    case 15:
+      switch (config->sector_size) {
+      case 512:
+        return FDT_IMAGE_DENSITY_HD;
+      }
+    case 16:
+      switch (config->sector_size) {
+      case 256:
+        return FDT_IMAGE_DENSITY_DD;
+      }
+    case 18:
+      switch (config->sector_size) {
+      case 512:
+        return FDT_IMAGE_DENSITY_HD;
+      }
+    case 26:
+      switch (config->sector_size) {
+      case 256:
+        return FDT_IMAGE_DENSITY_HD;
+      }
+    }
+  case 40:
+    switch (config->number_of_sector) {
+    case 16:
+      switch (config->sector_size) {
+      case 256:
+        return FDT_IMAGE_DENSITY_DD;
+      }
+    }
+  case 77:
+    switch (config->number_of_sector) {
+    case 8:
+      switch (config->sector_size) {
+      case 1024:
+        return FDT_IMAGE_DENSITY_HD;
+      }
+    case 16:
+      switch (config->sector_size) {
+      case 256:
+        return FDT_IMAGE_DENSITY_HD;
+      }
+    }
+  }
+  return FDT_IMAGE_DENSITY_UNKNOWN;
+}
+
 bool fdt_image_config_isvalid(FdtImageConfig* config, FdtError* err)
 {
   if (!config)
