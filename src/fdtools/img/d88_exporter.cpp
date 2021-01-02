@@ -85,6 +85,10 @@ bool fdt_d88_header_setconfig(FdtD88Header* d88_header, FdtFileImage* img, FdtEr
   // Sets a disk type
 
   FdtImageDensity density = fdt_image_getdensity(img);
+  if (density == FDT_IMAGE_DENSITY_UNKNOWN) {
+    density = fdt_image_getsupposeddensity(img);
+  }
+
   switch (density) {
   case FDT_IMAGE_DENSITY_SD:
     switch (fdt_image_getnumberofhead(img)) {
