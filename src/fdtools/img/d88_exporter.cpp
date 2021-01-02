@@ -187,6 +187,7 @@ bool fdt_d88_sector_header_setconfig(FdtD88SectorHeader* d88_sector_header, FdtI
     d88_sector_header->n = D88_SECTOR_N_1024;
     break;
   default:
+    fdt_error_setmessage(err, FDT_IMAGE_MESSAGE_UNKNOWN_SSIZE_FORMAT, sector_size);
     return false;
   }
 
