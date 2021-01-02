@@ -16,10 +16,11 @@
 #include <string.h>
 
 #include <fdtools/img/d88.h>
+#include <fdtools/img/error.h>
 #include <fdtools/util/file.h>
 #include <fdtools/util/string.h>
 
-bool fdt_d88_header_setconfig(FdtD88Header*, FdtFileImage*);
+bool fdt_d88_header_setconfig(FdtD88Header*, FdtFileImage*, FdtError* err);
 bool fdt_d88_sector_header_setconfig(FdtD88SectorHeader*, FdtImageSector*, FdtDensity, size_t);
 
 bool fdt_d88_image_export(FdtFileImage* img, FdtError* err)
@@ -32,7 +33,7 @@ bool fdt_d88_image_export(FdtFileImage* img, FdtError* err)
     return false;
 
   FdtD88Header d88_header;
-  if (!fdt_d88_header_setconfig(&d88_header, img))
+  if (!fdt_d88_header_setconfig(&d88_header, img, err))
     return false;
 
   if (!fdt_file_write(fp, &d88_header, sizeof(d88_header)))
@@ -65,7 +66,7 @@ bool fdt_d88_image_export(FdtFileImage* img, FdtError* err)
   return true;
 }
 
-bool fdt_d88_header_setconfig(FdtD88Header* d88_header, FdtFileImage* img)
+bool fdt_d88_header_setconfig(FdtD88Header* d88_header, FdtFileImage* img, FdtError* err)
 {
   memset(d88_header, 0, sizeof(FdtD88Header));
 
@@ -77,7 +78,8 @@ bool fdt_d88_header_setconfig(FdtD88Header* d88_header, FdtFileImage* img)
 
   // Sets a disk type
 
-  switch (fdt_image_getdensity(img)) {
+  FdtDensity density = fdt_image_getdensity(img);
+  switch (density) {
   case FDT_DENSITY_SD:
     switch (fdt_image_getnumberofhead(img)) {
     case 1:
@@ -87,6 +89,7 @@ bool fdt_d88_header_setconfig(FdtD88Header* d88_header, FdtFileImage* img)
       d88_header->disk_type = D88_DISK_TYPE_2D;
       break;
     default:
+      fdt_error_setmessage(err, FDT_IMAGE_MESSAGE_UNKNOWN_DENSITY_FORMAT, fdt_image_getdensitystring(img));
       return false;
     }
     break;
@@ -99,6 +102,7 @@ bool fdt_d88_header_setconfig(FdtD88Header* d88_header, FdtFileImage* img)
       d88_header->disk_type = D88_DISK_TYPE_2DD;
       break;
     default:
+      fdt_error_setmessage(err, FDT_IMAGE_MESSAGE_UNKNOWN_DENSITY_FORMAT, fdt_image_getdensitystring(img));
       return false;
     }
     break;
@@ -108,11 +112,13 @@ bool fdt_d88_header_setconfig(FdtD88Header* d88_header, FdtFileImage* img)
       d88_header->disk_type = D88_DISK_TYPE_2HD;
       break;
     default:
+      fdt_error_setmessage(err, FDT_IMAGE_MESSAGE_UNKNOWN_DENSITY_FORMAT, fdt_image_getdensitystring(img));
       return false;
     }
     break;
   default:
-    return false;
+      fdt_error_setmessage(err, FDT_IMAGE_MESSAGE_UNKNOWN_DENSITY_FORMAT, fdt_image_getdensitystring(img));
+      return false;
   }
 
   // Sets track offsets
