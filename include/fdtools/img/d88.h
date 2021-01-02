@@ -88,7 +88,8 @@ typedef struct FDT_ATTR_PACKED {
 
 FdtImage* fdt_d88_image_new(void);
 
-bool fdt_d88_header_setimageconfig(FdtD88Header*, FdtImage*, FdtError*);
+bool fdt_d88_header_setconfig(FdtD88Header*, FdtImage*, FdtError* err);
+bool fdt_d88_sector_header_setconfig(FdtD88SectorHeader*, FdtImageSector*, FdtImageDensity, size_t, FdtError* err);
 
 #ifdef __cplusplus
 } /* extern C */

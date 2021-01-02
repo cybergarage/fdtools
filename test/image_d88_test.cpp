@@ -33,7 +33,7 @@ void TEST_CHECK_D88_DISKTYPE_EQUAL(FdtImage* img, int c, int h, int s, int ssize
   fdt_image_setsectorsize(img, ssize);
 
   FdtD88Header d88_header;
-  fdt_d88_header_setimageconfig(&d88_header, img, NULL);
+  fdt_d88_header_setconfig(&d88_header, img, NULL);
 
   char msg[256];
   snprintf(msg, sizeof(msg), "(%d, %d, %d, %d) != %d", c, h, s, ssize, d88_disk_type);
