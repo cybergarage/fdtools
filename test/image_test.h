@@ -15,11 +15,13 @@
 #include <boost/filesystem.hpp>
 #include <boost/test/unit_test.hpp>
 
+#include <fdtools/img/d88.h>
 #include <fdtools/img/image.h>
+#include <fdtools/img/raw.h>
 
 typedef FdtImage* (*FDT_TEST_IMAGE_NEW_FUNC)();
 
 const std::string TEST_IMAGE_DIRECTORY = "./img";
 
 void ImageLoarderExporterCompareTest(boost::filesystem::path&, FDT_TEST_IMAGE_NEW_FUNC);
-void ImageExportTest(FdtImage *img, FDT_TEST_IMAGE_NEW_FUNC export_image_new_func);
+void ImageExportTest(FdtImage* img, FDT_TEST_IMAGE_NEW_FUNC export_image_new_func);
