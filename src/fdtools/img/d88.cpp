@@ -20,8 +20,6 @@
 #include <fdtools/util/file.h>
 #include <fdtools/util/string.h>
 
-#define FDT_D88_MESSAGE_HEADER "D88 "
-
 bool fdt_d88_image_load(FdtFileImage*, FdtError* err);
 bool fdt_d88_image_export(FdtFileImage*, FdtError* err);
 

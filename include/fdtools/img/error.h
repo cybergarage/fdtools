@@ -28,6 +28,8 @@ extern "C" {
 #define FDT_IMAGE_MESSAGE_UNKNOWN_DENSITY_FORMAT "Not supported density: %s"
 #define FDT_IMAGE_MESSAGE_UNKNOWN_SSIZE_FORMAT "Not supported ssize: %d"
 
+#define FDT_D88_MESSAGE_HEADER "[D88] "
+
 #ifdef __cplusplus
 } /* extern C */
 #endif
