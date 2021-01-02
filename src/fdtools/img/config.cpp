@@ -61,7 +61,7 @@ bool fdt_image_config_delete(FdtImageConfig* config)
   return true;
 }
 
-const char* fdt_image_density_getstring(FdtDensity density)
+const char* fdt_image_density_getstring(FdtImageDensity density)
 {
   switch (density) {
   case FDT_IMAGE_DENSITY_SD:

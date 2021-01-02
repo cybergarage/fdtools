@@ -32,14 +32,14 @@ typedef enum {
   FDT_IMAGE_DENSITY_HD = 3,
   FDT_IMAGE_DENSITY_QD = 4,
   FDT_IMAGE_DENSITY_ED = 5,
-} FdtDensity;
+} FdtImageDensity;
 
-const char* fdt_image_density_getstring(FdtDensity);
+const char* fdt_image_density_getstring(FdtImageDensity);
 
 typedef struct FDT_ATTR_PACKED {
   FdtString* name;
   FdtString* desc;
-  FdtDensity density;
+  FdtImageDensity density;
   size_t size;
   size_t number_of_head;
   size_t number_of_sector;

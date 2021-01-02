@@ -21,7 +21,7 @@
 #include <fdtools/util/string.h>
 
 bool fdt_d88_header_setconfig(FdtD88Header*, FdtFileImage*, FdtError* err);
-bool fdt_d88_sector_header_setconfig(FdtD88SectorHeader*, FdtImageSector*, FdtDensity, size_t, FdtError* err);
+bool fdt_d88_sector_header_setconfig(FdtD88SectorHeader*, FdtImageSector*, FdtImageDensity, size_t, FdtError* err);
 
 bool fdt_d88_image_export(FdtFileImage* img, FdtError* err)
 {
@@ -41,7 +41,7 @@ bool fdt_d88_image_export(FdtFileImage* img, FdtError* err)
     return false;
   }
 
-  FdtDensity img_density = fdt_image_getdensity(img);
+  FdtImageDensity img_density = fdt_image_getdensity(img);
   for (int c = 0; c < (D88_HEADER_NUMBER_OF_SECTOR / D88_HEADER_NUMBER_OF_HEADER); c++) {
     for (int h = 0; h < D88_HEADER_NUMBER_OF_HEADER; h++) {
       size_t number_of_sector = fdt_image_getnumberoftracksector(img, c, h);
@@ -84,7 +84,7 @@ bool fdt_d88_header_setconfig(FdtD88Header* d88_header, FdtFileImage* img, FdtEr
 
   // Sets a disk type
 
-  FdtDensity density = fdt_image_getdensity(img);
+  FdtImageDensity density = fdt_image_getdensity(img);
   switch (density) {
   case FDT_IMAGE_DENSITY_SD:
     switch (fdt_image_getnumberofhead(img)) {
@@ -147,7 +147,7 @@ bool fdt_d88_header_setconfig(FdtD88Header* d88_header, FdtFileImage* img, FdtEr
   return true;
 }
 
-bool fdt_d88_sector_header_setconfig(FdtD88SectorHeader* d88_sector_header, FdtImageSector* sector, FdtDensity density, size_t number_of_sector, FdtError* err)
+bool fdt_d88_sector_header_setconfig(FdtD88SectorHeader* d88_sector_header, FdtImageSector* sector, FdtImageDensity density, size_t number_of_sector, FdtError* err)
 {
   memset(d88_sector_header, 0, sizeof(FdtD88SectorHeader));
 
