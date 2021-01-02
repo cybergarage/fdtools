@@ -158,7 +158,7 @@ bool fdt_device_image_export(FdtDeviceImage* img, FdtError* err)
 
   if (!fdt_image_issectorssorted(img)) {
     if (!fdt_image_sortsectors(img)) {
-      fdt_error_setmessage(err, FDT_IMAGE_MESSAGE_NOT_SORTED, fdt_image_getname(img));
+      fdt_error_setmessage(err, FDT_IMAGE_MESSAGE_SECTORS_NOT_SORTED, fdt_image_getname(img));
       return false;
     }
   }
