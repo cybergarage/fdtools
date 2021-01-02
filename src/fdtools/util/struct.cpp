@@ -12,23 +12,21 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef _FDTOOLS_UTIL_STRUCT_H_
-#define _FDTOOLS_UTIL_STRUCT_H_
+#include <string.h>
 
-#include <stdio.h>
-#include <stdlib.h>
+#include <fdtools/util/struct.h>
 
-#include <fdtools/typedef.h>
+bool fdt_structcmp(void* t, void* o, off_t offset, size_t size)
+{
+  if (!t || !o)
+    return false;
+  return (memcmp((((byte_t*)t) + offset), (((byte_t*)o) + offset), size) == 0) ? true : false;
+}
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-bool fdt_structcmp(void* t, void* o, off_t offset, size_t size);
-bool fdt_structcpy(void* dest, void* src, off_t offset, size_t size);
-
-#ifdef __cplusplus
-} /* extern "C" */
-#endif
-
-#endif /* _FDTOOLS_UTIL_STRUCT_H_ */
+bool fdt_structcpy(void* dest, void* src, off_t offset, size_t size)
+{
+  if (!dest || !src)
+    return false;
+  memcpy((((byte_t*)dest) + offset), (((byte_t*)src) + offset), size);
+  return true;
+}
