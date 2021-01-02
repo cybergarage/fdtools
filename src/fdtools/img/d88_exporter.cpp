@@ -37,7 +37,7 @@ bool fdt_d88_image_export(FdtFileImage* img, FdtError* err)
     return false;
   }
 
-  FdtImageDensity img_density = fdt_image_getdensity(img);
+  FdtImageDensity img_density = fdt_image_getsupposeddensity(img);
   for (int c = 0; c < (D88_HEADER_NUMBER_OF_SECTOR / D88_HEADER_NUMBER_OF_HEADER); c++) {
     for (int h = 0; h < D88_HEADER_NUMBER_OF_HEADER; h++) {
       size_t number_of_sector = fdt_image_getnumberoftracksector(img, c, h);
