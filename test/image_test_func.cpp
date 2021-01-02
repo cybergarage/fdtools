@@ -56,9 +56,21 @@ void ImageLoarderCompareTest(boost::filesystem::path& filepath, FDT_TEST_IMAGE_N
 
   free(dst_img_buf);
 
-  // Clean up
+  // Cleanup
 
   BOOST_CHECK(fdt_image_delete(dst_img));
   BOOST_CHECK(fdt_image_delete(src_img));
+  BOOST_CHECK(fdt_error_delete(err));
+}
+
+void ImageExportCompareTest(FdtImage *img, FDT_TEST_IMAGE_NEW_FUNC export_image_new_func)
+{
+  FdtError* err = fdt_error_new();
+  BOOST_REQUIRE(err);
+
+  FdtImage* export_img = export_image_new_func();
+  BOOST_REQUIRE_MESSAGE(fdt_image_import(export_img, img, err), fdt_error_getdebugmessage(err)); 
+  BOOST_CHECK(fdt_image_delete(export_img));
+
   BOOST_CHECK(fdt_error_delete(err));
 }
