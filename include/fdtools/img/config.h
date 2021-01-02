@@ -21,20 +21,11 @@
 #include <fdtools/typedef.h>
 #include <fdtools/util/string.h>
 
+#include <fdtools/img/density.h>
+
 #ifdef __cplusplus
 extern "C" {
 #endif
-
-typedef enum {
-  FDT_IMAGE_DENSITY_UNKNOWN = 0,
-  FDT_IMAGE_DENSITY_SD = 1,
-  FDT_IMAGE_DENSITY_DD = 2,
-  FDT_IMAGE_DENSITY_HD = 3,
-  FDT_IMAGE_DENSITY_QD = 4,
-  FDT_IMAGE_DENSITY_ED = 5,
-} FdtImageDensity;
-
-const char* fdt_image_density_getstring(FdtImageDensity);
 
 typedef struct FDT_ATTR_PACKED {
   FdtString* name;

@@ -61,30 +61,11 @@ bool fdt_image_config_delete(FdtImageConfig* config)
   return true;
 }
 
-const char* fdt_image_density_getstring(FdtImageDensity density)
-{
-  switch (density) {
-  case FDT_IMAGE_DENSITY_SD:
-    return "SD";
-  case FDT_IMAGE_DENSITY_DD:
-    return "DD";
-  case FDT_IMAGE_DENSITY_HD:
-    return "HD";
-  case FDT_IMAGE_DENSITY_QD:
-    return "QD";
-  case FDT_IMAGE_DENSITY_ED:
-    return "ED";
-  case FDT_IMAGE_DENSITY_UNKNOWN:
-    return "??";
-  }
-  return "??";
-}
-
 FdtImageDensity fdt_image_config_getsupposeddensity(FdtImageConfig* config)
 {
   if (config->density != FDT_IMAGE_DENSITY_UNKNOWN)
     return config->density;
-  
+
   switch (config->number_of_cylinder) {
   case 80:
     switch (config->number_of_sector) {
