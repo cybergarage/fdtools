@@ -82,6 +82,9 @@ const char* fdt_image_density_getstring(FdtImageDensity density)
 
 FdtImageDensity fdt_image_config_getsupposeddensity(FdtImageConfig* config)
 {
+  if (config->density != FDT_IMAGE_DENSITY_UNKNOWN)
+    return config->density;
+  
   switch (config->number_of_cylinder) {
   case 80:
     switch (config->number_of_sector) {
