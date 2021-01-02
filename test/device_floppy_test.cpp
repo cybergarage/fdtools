@@ -19,6 +19,8 @@
 #include <fdtools/dev/device.h>
 #include <fdtools/dev/image.h>
 
+#include "image_test.h"
+
 const char* TEST_FLOPPY_DEV = "/dev/fd0";
 
 BOOST_AUTO_TEST_CASE(FloppyParamsTest)
@@ -78,6 +80,12 @@ BOOST_AUTO_TEST_CASE(FloppyImportTest)
   BOOST_REQUIRE_MESSAGE(fdt_device_image_load(dev_img, err), fdt_error_getdebugmessage(err));
   BOOST_CHECK_MESSAGE(fdt_device_image_close(dev_img, err), fdt_error_getdebugmessage(err));
 
+  // Export Test
+
+  ImageExportTest((FdtImage*)dev_img, fdt_raw_image_new);
+  ImageExportTest((FdtImage*)dev_img, fdt_d88_image_new);
+
+  // Cleanup
   BOOST_CHECK(fdt_floppy_params_delete(fdparams));
   BOOST_CHECK(fdt_error_delete(err));
 }
