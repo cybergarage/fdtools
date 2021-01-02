@@ -79,10 +79,10 @@ bool fdt_program_parse(FdtProgram* prg, int argc, char* argv[], FdtError* err)
   for (FdtDictionaryElement* elem = fdt_program_getoptionelements(prg); elem; elem = fdt_program_optionelement_next(elem)) {
     FdtProgramOption* opt = fdt_program_getelementoption(elem);
 
-    if (!fdt_string_addvalue(opt_strs, fdt_program_option_getname(opt)))
+    if (!fdt_string_appendvalue(opt_strs, fdt_program_option_getname(opt)))
       return false;
     if (fdt_program_option_isparameterrequired(opt)) {
-      if (!fdt_string_addvalue(opt_strs, ":"))
+      if (!fdt_string_appendvalue(opt_strs, ":"))
         return false;
     }
   }

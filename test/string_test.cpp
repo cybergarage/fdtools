@@ -27,7 +27,7 @@ BOOST_AUTO_TEST_CASE(StringAddValueTest)
   char ch[2] = { 0x00, 0x00 };
   for (int n = 0; n < fdt_array_countof(TEST_STRINGS); n++) {
     ch[0] = TEST_STRINGS[n];
-    BOOST_CHECK(fdt_string_addvalue(str, ch));
+    BOOST_CHECK(fdt_string_appendvalue(str, ch));
   }
 
   BOOST_CHECK_EQUAL(fdt_string_getvalue(str), TEST_STRINGS);

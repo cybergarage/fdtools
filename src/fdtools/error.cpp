@@ -115,8 +115,8 @@ void fdt_error_appendmessage(FdtError* err, const char* format, ...)
   vsnprintf(msg, sizeof(msg), format, list);
   va_end(list);
 
-  fdt_string_addvalue(err->message, " ");
-  fdt_string_addvalue(err->message, msg);
+  fdt_string_appendvalue(err->message, " ");
+  fdt_string_appendvalue(err->message, msg);
 }
 
 const char* fdt_error_getdebugmessage(FdtError* err)

@@ -21,6 +21,7 @@
 #include <fdtools/dev/image.h>
 #include <fdtools/img/image.h>
 #include <fdtools/util/program.h>
+#include <fdtools/util/string.h>
 
 const char* OPT_CYLINDERS = "c";
 const char* OPT_HEADS = "h";
@@ -32,11 +33,30 @@ const char* OPT_DEBUG = "d";
 bool verbose_enabled = false;
 bool debug_enabled = false;
 time_t start_time;
+FdtString* out_msg_buf;
+
+void flush_message()
+{
+  printf("%s", fdt_string_getvalue(out_msg_buf));
+  fdt_string_clear(out_msg_buf);
+}
+
+void print_message2buffer(const char* msg)
+{
+  fdt_string_append(out_msg_buf, msg);
+}
+
+void print_lf2buffer()
+{
+  print_message2buffer("\n");
+}
 
 void print_message(const char* format, ...)
 {
   if (!verbose_enabled)
     return;
+
+  flush_message();
 
   char msg[512];
   va_list list;
@@ -50,12 +70,16 @@ void print_message(const char* format, ...)
 
 void print_usage(FdtProgram* prg)
 {
+  flush_message();
+
   printf("Usage: %s [OPTIONS] <source file name> <destination file name>\n", fdt_program_getname(prg));
   fdt_program_printoptionusages(prg);
 }
 
 void print_error(FdtError* err)
 {
+  flush_message();
+
   printf("%s\n", debug_enabled ? fdt_error_getdebugmessage(err) : fdt_error_getmessage(err));
   fflush(stdout);
 }
@@ -136,7 +160,8 @@ int main(int argc, char* argv[])
   cursor_setenabled(false);
 
   FdtError* err = fdt_error_new();
-  if (!err) {
+  out_msg_buf = fdt_string_new();
+  if (!err || !out_msg_buf) {
     panic();
   }
 
@@ -244,6 +269,10 @@ int main(int argc, char* argv[])
   }
   }
 
+  // Print line field to message buffer
+
+  print_lf2buffer();
+
   // Exports source file image
 
   const char* dst_img_name = fdt_program_getargument(prg, 1);
@@ -272,6 +301,7 @@ int main(int argc, char* argv[])
 
   fdt_program_delete(prg);
   fdt_error_delete(err);
+  fdt_string_delete(out_msg_buf);
 
   return 0;
 }

@@ -108,7 +108,7 @@ bool fdt_string_equals(FdtString* str, FdtString* other)
   return fdt_streq(fdt_string_getvalue(str), fdt_string_getvalue(other));
 }
 
-bool fdt_string_addvalue(FdtString* str, const char* value)
+bool fdt_string_appendvalue(FdtString* str, const char* value)
 {
   return fdt_string_naddvalue(str, value, fdt_strlen(value));
 }

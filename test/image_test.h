@@ -18,7 +18,6 @@
 #include <fdtools/img/d88.h>
 #include <fdtools/img/image.h>
 #include <fdtools/img/raw.h>
-#include <fdtools/img/d88.h>
 
 typedef FdtImage* (*FDT_TEST_IMAGE_NEW_FUNC)();
 

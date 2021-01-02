@@ -71,7 +71,7 @@ bool fdt_string_clear(FdtString* str);
 void fdt_string_setvalue(FdtString* str, const char* value);
 void fdt_string_setnvalue(FdtString* str, const char* value, size_t len);
 void fdt_string_setvaluef(FdtString* str, const char* format, ...);
-bool fdt_string_addvalue(FdtString* str, const char* value);
+bool fdt_string_appendvalue(FdtString* str, const char* value);
 bool fdt_string_naddvalue(FdtString* str, const char* value, size_t valueLen);
 const char* fdt_string_getvalue(FdtString* str);
 bool fdt_string_equals(FdtString* str, FdtString* other);
