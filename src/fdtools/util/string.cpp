@@ -110,7 +110,7 @@ bool fdt_string_equals(FdtString* str, FdtString* other)
 
 bool fdt_string_appendvalue(FdtString* str, const char* value)
 {
-  return fdt_string_naddvalue(str, value, fdt_strlen(value));
+  return fdt_string_appendnvalue(str, value, fdt_strlen(value));
 }
 
 void fdt_string_setvaluef(FdtString* str, const char* format, ...)
@@ -127,7 +127,7 @@ void fdt_string_setvaluef(FdtString* str, const char* format, ...)
   fdt_string_setvalue(str, value);
 }
 
-bool fdt_string_naddvalue(FdtString* str, const char* value, size_t valueLen)
+bool fdt_string_appendnvalue(FdtString* str, const char* value, size_t valueLen)
 {
   if (!str)
     return false;
