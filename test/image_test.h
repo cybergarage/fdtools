@@ -21,4 +21,4 @@ typedef FdtImage* (*FDT_TEST_IMAGE_NEW_FUNC)();
 
 const std::string TEST_IMAGE_DIRECTORY = "./img";
 
-void ImageLoarderCompareTest(boost::filesystem::path&, FDT_TEST_IMAGE_NEW_FUNC);
+void ImageLoarderExporterCompareTest(boost::filesystem::path&, FDT_TEST_IMAGE_NEW_FUNC);
