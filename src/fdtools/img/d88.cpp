@@ -38,11 +38,7 @@ FdtImage* fdt_d88_image_new(void)
 
 void fdt_d88_header_setconfigerror(FdtD88Header* d88_header, FdtImage* img, FdtError* err)
 {
-  FdtImageDensity density = fdt_image_getdensity(img);
-  if (density == FDT_IMAGE_DENSITY_UNKNOWN) {
-    density = fdt_image_getsupposeddensity(img);
-  }
-
+  FdtImageDensity density = fdt_image_getsupposeddensity(img);
   fdt_error_setmessage(err, FDT_D88_MESSAGE_HEADER FDT_IMAGE_MESSAGE_UNKNOWN_DENSITY_FORMAT " (%ld:%ld:%ld:%ld)", fdt_image_density_getstring(density), fdt_image_getnumberofcylinder(img), fdt_image_getnumberofhead(img), fdt_image_getnumberofsector(img), fdt_image_getsectorsize(img));
 }
 
@@ -58,11 +54,7 @@ bool fdt_d88_header_setconfig(FdtD88Header* d88_header, FdtImage* img, FdtError*
 
   // Sets a disk type
 
-  FdtImageDensity density = fdt_image_getdensity(img);
-  if (density == FDT_IMAGE_DENSITY_UNKNOWN) {
-    density = fdt_image_getsupposeddensity(img);
-  }
-
+  FdtImageDensity density = fdt_image_getsupposeddensity(img);
   switch (density) {
   case FDT_IMAGE_DENSITY_SD:
     switch (fdt_image_getnumberofhead(img)) {
