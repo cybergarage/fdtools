@@ -21,7 +21,7 @@
 #include <fdtools/util/string.h>
 
 bool fdt_d88_header_setconfig(FdtD88Header*, FdtFileImage*, FdtError* err);
-bool fdt_d88_sector_header_setconfig(FdtD88SectorHeader*, FdtImageSector*, FdtDensity, size_t);
+bool fdt_d88_sector_header_setconfig(FdtD88SectorHeader*, FdtImageSector*, FdtDensity, size_t, FdtError* err);
 
 bool fdt_d88_image_export(FdtFileImage* img, FdtError* err)
 {
@@ -53,7 +53,7 @@ bool fdt_d88_image_export(FdtFileImage* img, FdtError* err)
           return false;
         if (r == 1) {
           FdtD88SectorHeader d88_sector_header;
-          if (!fdt_d88_sector_header_setconfig(&d88_sector_header, sector, img_density, number_of_sector))
+          if (!fdt_d88_sector_header_setconfig(&d88_sector_header, sector, img_density, number_of_sector, err))
             return false;
           if (!fdt_file_write(fp, &d88_sector_header, sizeof(FdtD88SectorHeader))) {
             fdt_error_setlasterror(err, "");
@@ -95,7 +95,7 @@ bool fdt_d88_header_setconfig(FdtD88Header* d88_header, FdtFileImage* img, FdtEr
       d88_header->disk_type = D88_DISK_TYPE_2D;
       break;
     default:
-      fdt_error_setmessage(err, FDT_IMAGE_MESSAGE_UNKNOWN_DENSITY_FORMAT, fdt_image_getdensitystring(img));
+      fdt_error_setmessage(err, FDT_IMAGE_MESSAGE_UNKNOWN_DENSITY_FORMAT, fdt_image_density_getstring(density));
       return false;
     }
     break;
@@ -108,7 +108,7 @@ bool fdt_d88_header_setconfig(FdtD88Header* d88_header, FdtFileImage* img, FdtEr
       d88_header->disk_type = D88_DISK_TYPE_2DD;
       break;
     default:
-      fdt_error_setmessage(err, FDT_IMAGE_MESSAGE_UNKNOWN_DENSITY_FORMAT, fdt_image_getdensitystring(img));
+      fdt_error_setmessage(err, FDT_IMAGE_MESSAGE_UNKNOWN_DENSITY_FORMAT, fdt_image_density_getstring(density));
       return false;
     }
     break;
@@ -118,12 +118,12 @@ bool fdt_d88_header_setconfig(FdtD88Header* d88_header, FdtFileImage* img, FdtEr
       d88_header->disk_type = D88_DISK_TYPE_2HD;
       break;
     default:
-      fdt_error_setmessage(err, FDT_IMAGE_MESSAGE_UNKNOWN_DENSITY_FORMAT, fdt_image_getdensitystring(img));
+      fdt_error_setmessage(err, FDT_IMAGE_MESSAGE_UNKNOWN_DENSITY_FORMAT, fdt_image_density_getstring(density));
       return false;
     }
     break;
   default:
-    fdt_error_setmessage(err, FDT_IMAGE_MESSAGE_UNKNOWN_DENSITY_FORMAT, fdt_image_getdensitystring(img));
+    fdt_error_setmessage(err, FDT_IMAGE_MESSAGE_UNKNOWN_DENSITY_FORMAT, fdt_image_density_getstring(density));
     return false;
   }
 
@@ -147,7 +147,7 @@ bool fdt_d88_header_setconfig(FdtD88Header* d88_header, FdtFileImage* img, FdtEr
   return true;
 }
 
-bool fdt_d88_sector_header_setconfig(FdtD88SectorHeader* d88_sector_header, FdtImageSector* sector, FdtDensity density, size_t number_of_sector)
+bool fdt_d88_sector_header_setconfig(FdtD88SectorHeader* d88_sector_header, FdtImageSector* sector, FdtDensity density, size_t number_of_sector, FdtError* err)
 {
   memset(d88_sector_header, 0, sizeof(FdtD88SectorHeader));
 
@@ -169,6 +169,7 @@ bool fdt_d88_sector_header_setconfig(FdtD88SectorHeader* d88_sector_header, FdtI
     d88_sector_header->density = D88_SECTOR_DENSITY_HIGH;
     break;
   default:
+    fdt_error_setmessage(err, FDT_IMAGE_MESSAGE_UNKNOWN_DENSITY_FORMAT, fdt_image_density_getstring(density));
     return false;
   }
 
