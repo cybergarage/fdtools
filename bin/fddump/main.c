@@ -299,6 +299,7 @@ int main(int argc, char* argv[])
 
   // Cleanups
 
+  flush_message();
   fdt_program_delete(prg);
   fdt_error_delete(err);
   fdt_string_delete(out_msg_buf);
