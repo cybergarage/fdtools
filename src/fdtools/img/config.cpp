@@ -75,9 +75,9 @@ const char* fdt_image_density_getstring(FdtImageDensity density)
   case FDT_IMAGE_DENSITY_ED:
     return "ED";
   case FDT_IMAGE_DENSITY_UNKNOWN:
-    return "";
+    return "??";
   }
-  return "";
+  return "??";
 }
 
 FdtImageDensity fdt_image_config_getsupposeddensity(FdtImageConfig* config)
