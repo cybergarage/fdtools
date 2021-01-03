@@ -37,6 +37,8 @@ FdtString* out_msg_buf;
 
 void flush_message()
 {
+  if (fdt_string_length(out_msg_buf) == 0)
+    return;
   printf("%s", fdt_string_getvalue(out_msg_buf));
   fdt_string_clear(out_msg_buf);
 }
