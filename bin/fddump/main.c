@@ -32,20 +32,20 @@ const char* OPT_DEBUG = "d";
 
 bool verbose_enabled = false;
 bool debug_enabled = false;
-time_t start_time;
-FdtString* out_msg_buf;
+time_t progress_start_time;
+FdtString* msg_outbuf;
 
 void flush_message()
 {
-  if (fdt_string_length(out_msg_buf) == 0)
+  if (fdt_string_length(msg_outbuf) == 0)
     return;
-  printf("%s", fdt_string_getvalue(out_msg_buf));
-  fdt_string_clear(out_msg_buf);
+  printf("%s", fdt_string_getvalue(msg_outbuf));
+  fdt_string_clear(msg_outbuf);
 }
 
 void print_message2buffer(const char* msg)
 {
-  fdt_string_appendvalue(out_msg_buf, msg);
+  fdt_string_appendvalue(msg_outbuf, msg);
 }
 
 void print_lf2buffer()
@@ -143,7 +143,7 @@ void print_progress(FdtDeviceImage* img, FdtImageSector* sector, size_t dev_read
         error_cnt += sector_err_cnt;
       }
     }
-    time_t elapsed_time = time(NULL) - start_time;
+    time_t elapsed_time = time(NULL) - progress_start_time;
     printf("\ncyl=%ld, head=%ld, sect=%ld, ssize=%ld", fdt_image_getnumberofcylinder(img), fdt_image_getnumberofhead(img), fdt_image_getnumberofsector(img), fdt_image_getsectorsize(img));
     printf("\nruntime: % 4lds,   read sectors: % 4d,   error sectors: % 4d,   read errors: % 4d", elapsed_time, read_sector_cnt, err_sector_cnt, error_cnt);
   }
@@ -162,8 +162,8 @@ int main(int argc, char* argv[])
   cursor_setenabled(false);
 
   FdtError* err = fdt_error_new();
-  out_msg_buf = fdt_string_new();
-  if (!err || !out_msg_buf) {
+  msg_outbuf = fdt_string_new();
+  if (!err || !msg_outbuf) {
     panic();
   }
 
@@ -235,8 +235,9 @@ int main(int argc, char* argv[])
   }
 
   switch (src_img_type) {
-  // Shows progress infomation for device image types
   case FDT_IMAGE_TYPE_DEV: {
+    // Shows progress infomation for device image types
+    // TODO: Sets image parameters to device
     FdtDeviceImage* dev_img = (FdtDeviceImage*)src_img;
     if (!fdt_device_image_open(dev_img, src_img_name, FDT_FILE_READ, err)) {
       exit_error(err);
@@ -246,7 +247,7 @@ int main(int argc, char* argv[])
     }
     size_t dev_sector_cnt = fdt_device_image_getnsectors(dev_img);
     size_t dev_read_sector_cnt = 0;
-    start_time = time(NULL);
+    progress_start_time = time(NULL);
     FdtImageSector* sector = fdt_device_image_geterrorsector(dev_img);
     FdtImageSector* last_sector;
     while (sector) {
@@ -275,27 +276,53 @@ int main(int argc, char* argv[])
 
   print_lf2buffer();
 
-  // Exports source file image
+  // Imports source file image to dest file image
 
   const char* dst_img_name = fdt_program_getargument(prg, 1);
-  print_message("exporting %s ....", dst_img_name);
   FdtImage* dst_img = fdt_image_name_new_byname(dst_img_name, err);
   if (!dst_img) {
     exit_error(err);
   }
-  print_message("importing %s ....", dst_img_name);
   if (!fdt_image_import(dst_img, src_img, err)) {
     exit_error(err);
   }
-  print_message("imported");
+
+  // Delete imported source image
 
   fdt_image_delete(src_img);
 
-  print_message("exporting .....");
-  if (!fdt_image_export(dst_img, err)) {
-    exit_error(err);
+  // Exports source file image to dest file image
+
+  switch (src_img_type) {
+  case FDT_IMAGE_TYPE_DEV: {
+    // Shows progress infomation for device image types
+    FdtDeviceImage* dev_img = (FdtDeviceImage*)src_img;
+    if (!fdt_device_image_open(dev_img, src_img_name, FDT_FILE_WRITE, err)) {
+      exit_error(err);
+    }
+    size_t dev_sector_cnt = fdt_device_image_getnsectors(dev_img);
+    size_t dev_wrote_sector_cnt = 0;
+    progress_start_time = time(NULL);
+    FdtImageSector* last_sector;
+    for (FdtImageSector* sector = fdt_device_image_getsectors(dev_img); sector; sector = fdt_image_sector_next(sector)) {
+      last_sector = sector;
+      print_progress(dev_img, sector, dev_wrote_sector_cnt, dev_sector_cnt);
+      if (!fdt_device_image_writesector(dev_img, sector, err))
+        return false;
+    }
+    if (last_sector) {
+      print_progress(dev_img, last_sector, dev_wrote_sector_cnt, dev_sector_cnt);
+    }
+    if (!fdt_device_image_close(dev_img, err)) {
+      exit_error(err);
+    }
+  } break;
+  default: {
+    if (!fdt_image_export(dst_img, err)) {
+      exit_error(err);
+    }
   }
-  print_message("exported");
+  }
 
   fdt_image_delete(dst_img);
 
@@ -304,7 +331,7 @@ int main(int argc, char* argv[])
   flush_message();
   fdt_program_delete(prg);
   fdt_error_delete(err);
-  fdt_string_delete(out_msg_buf);
+  fdt_string_delete(msg_outbuf);
 
   return 0;
 }
