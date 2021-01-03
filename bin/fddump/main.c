@@ -293,11 +293,13 @@ int main(int argc, char* argv[])
 
   // Exports source file image to dest file image
 
-  switch (src_img_type) {
+  FdtImageType dst_img_type = fdt_image_gettype(dst_img);
+
+  switch (dst_img_type) {
   case FDT_IMAGE_TYPE_DEV: {
     // Shows progress infomation for device image types
-    FdtDeviceImage* dev_img = (FdtDeviceImage*)src_img;
-    if (!fdt_device_image_open(dev_img, src_img_name, FDT_FILE_WRITE, err)) {
+    FdtDeviceImage* dev_img = (FdtDeviceImage*)dst_img;
+    if (!fdt_device_image_open(dev_img, dst_img_name, FDT_FILE_WRITE, err)) {
       exit_error(err);
     }
     size_t dev_sector_cnt = fdt_device_image_getnsectors(dev_img);
