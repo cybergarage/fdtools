@@ -283,7 +283,7 @@ int main(int argc, char* argv[])
   if (!dst_img) {
     exit_error(err);
   }
-  if (!fdt_image_import(dst_img, src_img, err)) {
+  if (!fdt_image_importwithsorting(dst_img, src_img, err)) {
     exit_error(err);
   }
 
