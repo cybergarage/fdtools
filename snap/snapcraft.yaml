@@ -11,8 +11,9 @@ grade: stable
 confinement: strict
 
 apps:
-  fdtools:
+  fddump:
     command: bin/fddump
+  fdinfo:
     command: bin/fdinfo
 
 parts:
