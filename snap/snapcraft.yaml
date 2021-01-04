@@ -11,10 +11,8 @@ grade: stable
 confinement: strict
 
 apps:
-  fddump:
-    command: /usr/local/bin/fddump
-  fdinfo:
-    command: /usr/local/bin/fdinfo
+  fdtools:
+    command: [/usr/local/bin/fddump, /usr/local/bin/fdinfo]
 
 parts:
   fdtools:
