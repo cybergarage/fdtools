@@ -45,3 +45,4 @@ xcuserdata/
 
 # UNIX Binaries
 bin/*/unix/*
+test/unix/*
