@@ -12,9 +12,9 @@ confinement: strict
 
 apps:
   fddump:
-    command: bin/fddump/unix/fddump
+    command: bin/fddump
   fdinfo:
-    command: bin/fdinfo/unix/fdinfo
+    command: bin/fdinfo
 
 parts:
   fdtools:
