@@ -10,7 +10,7 @@ Note these utilities access read floppy drives directly, and so these might not 
 
 ## Installation
 
-Fdtools is distributed as a Snap package in the Snap Store, and so You can install it by running:
+Fdtools is distributed as a Snap package in the Snap Store, and so you can install it by running:
 
 ```
 sudo snap install fdtools
