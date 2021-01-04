@@ -15,51 +15,115 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include <fdtools/dev/device.h>
+#include <fdtools/dev/image.h>
+#include <fdtools/img/image.h>
+#include <fdtools/util/program.h>
+
+const char* OPT_VERBOSE = "v";
+const char* OPT_DEBUG = "d";
+
+bool verbose_enabled = false;
+bool debug_enabled = false;
+
+void print_usage(FdtProgram* prg)
+{
+  printf("Usage: %s [OPTIONS] <device or file name> \n", fdt_program_getname(prg));
+  fdt_program_printoptionusages(prg);
+}
+
+void print_error(FdtError* err)
+{
+  printf("%s\n", debug_enabled ? fdt_error_getdebugmessage(err) : fdt_error_getmessage(err));
+  fflush(stdout);
+}
+
+void panic()
+{
+  exit(EXIT_FAILURE);
+}
+
+void exit_error(FdtError* err)
+{
+  print_error(err);
+  exit(EXIT_FAILURE);
+}
 
 int main(int argc, char* argv[])
 {
-  const char* dev_name = "/dev/fd0";
-  if (1 < argc) {
-    dev_name = argv[1];
-  }
-
-  FdtDevice* dev = fdt_device_new();
-  if (!dev)
-    return 1;
-
   FdtError* err = fdt_error_new();
-  if (!err)
-    return 1;
-
-  FdtFloppyParams* fdparams = fdt_floppy_params_new();
-  if (!fdparams)
-    return 1;
-
-  if (fdt_device_open(dev, dev_name, FDT_FILE_READ, err)) {
-    if (fdt_device_getfloppyparameters(dev, fdparams, err)) {
-      printf("device  : %s\n", dev_name);
-      printf("size    : %ld\n", fdt_floppy_params_getsize(fdparams));
-      printf("head    : %ld\n", fdt_floppy_params_gethead(fdparams));
-      printf("track   : %ld\n", fdt_floppy_params_gettrack(fdparams));
-      printf("sect    : %ld\n", fdt_floppy_params_getsect(fdparams));
-      printf("ssize   : %ld\n", fdt_floppy_params_getssize(fdparams));
-      printf("stretch : %ld\n", fdt_floppy_params_getstretch(fdparams));
-      printf("gap     : %02X\n", fdt_floppy_params_getgap(fdparams));
-      printf("rate    : %02X\n", fdt_floppy_params_getrate(fdparams));
-      printf("spec1   : %02X\n", fdt_floppy_params_getspec1(fdparams));
-      printf("fmt gap : %02X\n", fdt_floppy_params_getfmtgap(fdparams));
-    }
-    else {
-      printf("%s\n", fdt_error_getdebugmessage(err));
-    }
-  }
-  else {
-    printf("%s\n", fdt_error_getdebugmessage(err));
+  if (!err) {
+    panic();
   }
 
-  fdt_device_delete(dev);
-  fdt_floppy_params_delete(fdparams);
+  // Parses command line arguments
+
+  FdtProgram* prg = fdt_program_new();
+  if (!prg) {
+    panic();
+  }
+  fdt_program_addoption(prg, OPT_VERBOSE, "enable verbose messages", false, "");
+
+  if (!fdt_program_parse(prg, argc, argv, err)) {
+    print_error(err);
+    print_usage(prg);
+    return EXIT_FAILURE;
+  }
+
+  if (fdt_program_getnarguments(prg) < 2) {
+    print_usage(prg);
+    return EXIT_FAILURE;
+  }
+
+  // Sets command line options
+
+  if (fdt_program_isoptionenabled(prg, OPT_VERBOSE)) {
+    verbose_enabled = true;
+  }
+  if (fdt_program_isoptionenabled(prg, OPT_DEBUG)) {
+    debug_enabled = true;
+  }
+
+  // Loads source file image
+
+  const char* img_name = fdt_program_getargument(prg, 0);
+  FdtImage* img = fdt_image_name_new(img_name, err);
+  if (!img) {
+    exit_error(err);
+  }
+
+  FdtImageType img_type = fdt_image_gettype(img);
+
+  switch (img_type) {
+  case FDT_IMAGE_TYPE_DEV: {
+    // Gets current device parameters, and set the parameters to image.
+    FdtDevice* dev = fdt_device_new();
+    FdtFloppyParams* fdparams = fdt_floppy_params_new();
+    if (!dev || !fdparams) {
+      panic();
+    }
+    if (!fdt_device_open(dev, img_name, FDT_FILE_READ, err)) {
+      exit_error(err);
+    }
+    if (!fdt_device_getfloppyparameters(dev, fdparams, err)) {
+      exit_error(err);
+    }
+    if (!fdt_device_image_setfloppyparams(img, fdparams, err)) {
+      exit_error(err);
+    }
+    fdt_device_delete(dev);
+    fdt_floppy_params_delete(fdparams);
+  } break;
+  case FDT_IMAGE_TYPE_RAW:
+    break;
+  }
+
+  // Prints image parameters
+
+  printf("\ncyl=%ld, head=%ld, sect=%ld, ssize=%ld", fdt_image_getnumberofcylinder(img), fdt_image_getnumberofhead(img), fdt_image_getnumberofsector(img), fdt_image_getsectorsize(img));
+
+  // Cleanups
+
+  fdt_image_delete(img);
   fdt_error_delete(err);
 
   return 0;
