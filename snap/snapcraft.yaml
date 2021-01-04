@@ -20,3 +20,4 @@ parts:
   fdtools:
     plugin: autotools
     source: https://github.com/cybergarage/fdtools
+    source-type: git
