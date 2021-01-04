@@ -1,7 +1,7 @@
 name: fdtools
 type: app
 base: core20
-version: '0.8.0'
+version: git
 summary: Fdtools is a utility package for floppy disk drives and images.
 description: |
   Fdtools is a utility package for floppy disk drives and images on multi-platform.
