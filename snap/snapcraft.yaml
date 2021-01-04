@@ -12,8 +12,8 @@ confinement: strict
 
 apps:
   fdtools:
-    command: fddump ${SNAP}/parts/fdtools/install/usr/local/bin/fddump
-    command: fdinfo ${SNAP}/parts/fdtools/install/usr/local/bin/fdinfo
+    command: bin/fddump
+    command: bin/fdinfo
 
 parts:
   fdtools:
