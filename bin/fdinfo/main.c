@@ -12,6 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#include <stdarg.h>
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -29,6 +30,18 @@ void print_usage(FdtProgram* prg)
 {
   printf("Usage: %s [OPTIONS] <device or file name> \n", fdt_program_getname(prg));
   fdt_program_printoptionusages(prg);
+}
+
+void print_message(const char* format, ...)
+{
+  char msg[512];
+  va_list list;
+  va_start(list, format);
+  vsnprintf(msg, sizeof(msg), format, list);
+  va_end(list);
+  printf("%s\n", msg);
+
+  fflush(stdout);
 }
 
 void print_error(FdtError* err)
@@ -69,7 +82,7 @@ int main(int argc, char* argv[])
     return EXIT_FAILURE;
   }
 
-  if (fdt_program_getnarguments(prg) < 2) {
+  if (fdt_program_getnarguments(prg) < 1) {
     print_usage(prg);
     return EXIT_FAILURE;
   }
@@ -113,13 +126,21 @@ int main(int argc, char* argv[])
     fdt_device_delete(dev);
     fdt_floppy_params_delete(fdparams);
   } break;
-  case FDT_IMAGE_TYPE_RAW:
-    break;
+  default: {
+    if (!fdt_image_load(img, err)) {
+      exit_error(err);
+    }
+  }
   }
 
   // Prints image parameters
 
-  printf("\ncyl=%ld, head=%ld, sect=%ld, ssize=%ld", fdt_image_getnumberofcylinder(img), fdt_image_getnumberofhead(img), fdt_image_getnumberofsector(img), fdt_image_getsectorsize(img));
+  const char* type = fdt_image_gettypestring(img);
+  size_t cyl = fdt_image_getnumberofcylinder(img);
+  size_t head = fdt_image_getnumberofhead(img);
+  size_t sec = fdt_image_getnumberofsector(img);
+  size_t ssize = fdt_image_getsectorsize(img);
+  print_message("%s cyl=%ld, head=%ld, sect=%ld, ssize=%ld", type, cyl, head, sec, ssize);
 
   // Cleanups
 
