@@ -34,6 +34,8 @@ typedef enum {
   FDT_IMAGE_TYPE_D88,
 } FdtImageType;
 
+const char* fdt_image_type_getstring(FdtImageType);
+
 const int FDT_IMAGE_HEADER_SIGNATURE_MAX = 8;
 
 typedef bool (*FDT_IMAGE_OPENER)(void*, const char*, FdtFileMode, FdtError*);

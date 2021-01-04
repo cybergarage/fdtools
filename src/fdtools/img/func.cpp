@@ -21,6 +21,23 @@
 #include <fdtools/img/hfe.h>
 #include <fdtools/img/raw.h>
 
+const char* fdt_image_type_getstring(FdtImageType t)
+{
+  switch (t) {
+  case FDT_IMAGE_TYPE_DEV:
+    return "dev";
+  case FDT_IMAGE_TYPE_RAW:
+    return "RAW";
+  case FDT_IMAGE_TYPE_HFE:
+    return "HFE";
+  case FDT_IMAGE_TYPE_D88:
+    return "D88";
+  case FDT_IMAGE_TYPE_UNKNOWN:
+    return "??";
+  }
+  return "??";
+}
+
 FdtImage* fdt_image_name_new(const char* filename, FdtError* err)
 {
   FdtImage* img = fdt_image_name_new_bytype(fdt_image_name_gettype(filename));
