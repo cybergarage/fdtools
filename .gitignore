@@ -32,7 +32,6 @@
 config/
 config.*
 Makefile
-Makefile.in
 stamp-h2
 aclocal.m4
 autom4te.cache/
