@@ -18,6 +18,8 @@ apps:
 
 parts:
   fdtools:
-    plugin: autotools
-    source: https://github.com/cybergarage/fdtools
     source-type: git
+    source: https://github.com/cybergarage/fdtools
+    plugin: autotools
+    autotools-configure-parameters:
+      - --prefix=
