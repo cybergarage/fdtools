@@ -1,0 +1,22 @@
+name: fdtools
+type: app
+base: core20
+version: '0.8.0'
+summary: Fdtools is a utility package for floppy disk drives and images.
+description: |
+  Fdtools is a utility package for floppy disk drives and images on multi-platform.
+license: "Apache-2.0"
+
+grade: stable
+confinement: strict
+
+apps:
+  fddump:
+    command: bin/fddump/unix/fddump
+  fdinfo:
+    command: bin/fdinfo/unix/fdinfo
+
+parts:
+  fdtools:
+    plugin: autotools
+    source: https://github.com/cybergarage/fdtools
