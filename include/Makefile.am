@@ -13,30 +13,30 @@
 # limitations under the License.
 
 fdtoolsheaders = \
-	./fdtools/error.h \
-	./fdtools/img/file.h \
-	./fdtools/img/error.h \
-	./fdtools/img/density.h \
-	./fdtools/img/hfe.h \
-	./fdtools/img/d88.h \
+	./fdtools/typedef.h \
 	./fdtools/img/image.h \
 	./fdtools/img/fdx.h \
 	./fdtools/img/raw.h \
-	./fdtools/img/sector.h \
+	./fdtools/img/d88.h \
+	./fdtools/img/hfe.h \
+	./fdtools/img/file.h \
+	./fdtools/img/density.h \
+	./fdtools/img/error.h \
 	./fdtools/img/config.h \
-	./fdtools/dev/floppy.h \
-	./fdtools/dev/device.h \
-	./fdtools/dev/image.h \
-	./fdtools/typedef.h \
-	./fdtools/util/file.h \
+	./fdtools/img/sector.h \
+	./fdtools/error.h \
+	./fdtools/util/dictionary.h \
+	./fdtools/util/array.h \
 	./fdtools/util/program.h \
+	./fdtools/util/file.h \
+	./fdtools/util/logic.h \
+	./fdtools/util/string.h \
 	./fdtools/util/hexdump.h \
 	./fdtools/util/struct.h \
-	./fdtools/util/array.h \
-	./fdtools/util/dictionary.h \
-	./fdtools/util/logic.h \
 	./fdtools/util/list.h \
-	./fdtools/util/string.h
+	./fdtools/dev/image.h \
+	./fdtools/dev/floppy.h \
+	./fdtools/dev/device.h
 
 nobase_include_HEADERS = \
 	$(fdtoolsheaders)
