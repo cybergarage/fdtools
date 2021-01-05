@@ -213,12 +213,10 @@ int main(int argc, char* argv[])
   case FDT_IMAGE_TYPE_DEV: {
     // Gets current device parameters, and set the parameters to image.
     FdtDevice* dev = fdt_device_new();
+    fdt_device_setname(dev, src_img_name);
     FdtFloppyParams* fdparams = fdt_floppy_params_new();
     if (!dev || !fdparams) {
       panic();
-    }
-    if (!fdt_device_open(dev, src_img_name, FDT_FILE_READ, err)) {
-      exit_error(err);
     }
     if (!fdt_device_getfloppyparameters(dev, fdparams, err)) {
       exit_error(err);

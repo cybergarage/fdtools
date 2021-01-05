@@ -50,6 +50,13 @@ bool fdt_device_getfloppyparameters(FdtDevice* dev, FdtFloppyParams* params, Fdt
   if (!dev)
     return false;
 
+  bool is_already_opened = fdt_device_isopened(dev);
+  if (!is_already_opened) {
+    if (!fdt_device_open(dev, fdt_device_getname(dev), FDT_FILE_READ, err)) {
+      return false;
+    }
+  }
+
   int fd = fdt_device_getfileno(dev);
   if (fd == -1)
     return false;
@@ -60,7 +67,14 @@ bool fdt_device_getfloppyparameters(FdtDevice* dev, FdtFloppyParams* params, Fdt
     return false;
   }
 
-  return fdt_device_getfloppyparams(&fdprms, params, err);
+  bool is_success = fdt_device_getfloppyparams(&fdprms, params, err);
+
+  if (!is_already_opened) {
+    if (!fdt_device_close(dev, err))
+      return false;
+  }
+
+  return is_success;
 }
 
 bool fdt_device_getfloppyparams(floppy_struct* fdprms, FdtFloppyParams* params, FdtError* err)
