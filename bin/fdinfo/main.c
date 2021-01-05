@@ -138,7 +138,7 @@ int main(int argc, char* argv[])
   size_t head = fdt_image_getnumberofhead(img);
   size_t sec = fdt_image_getnumberofsector(img);
   size_t ssize = fdt_image_getsectorsize(img);
-  print_message("%s cyl=%ld, head=%ld, sect=%ld, ssize=%ld", type, cyl, head, sec, ssize);
+  print_message("type=%s cyl=%ld, head=%ld, sect=%ld, ssize=%ld", type, cyl, head, sec, ssize);
 
   // Cleanups
 
