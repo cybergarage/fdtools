@@ -29,7 +29,6 @@
 *.hex
 
 # Automake files
-config.h
 config.h.in~
 config.*
 Makefile
