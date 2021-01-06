@@ -81,10 +81,17 @@ bool fdt_device_getfloppyparameters(FdtDevice* dev, FdtFloppyParams* params, Fdt
     return false;
   }
 
+  // Reset  FDGETPRM parameters (Operation not permitted)
+
+  // if (ioctl(fd, FDRESET, FD_RESET_ALWAYS) < 0) {
+  //   fdt_error_setlasterror(err, "");
+  //   return false;
+  // }
+
   // Check FDGETPRM parameters
 
   struct floppy_struct fdprms;
-  if (ioctl(fd, FDGETPRM, &fdprms) < 0) {
+  if (ioctl(fd, FDGETPRM, &fdprms) != 0) {
     fdt_error_setlasterror(err, "");
     return false;
   }
