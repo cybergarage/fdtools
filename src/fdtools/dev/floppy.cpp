@@ -18,6 +18,12 @@
 
 #include <fdtools/dev/device.h>
 
+// See <linux/fd.h>
+#define FD_2M 0x4
+#define FD_SIZECODEMASK 0x38
+#define FD_SIZECODE(params) (((((params)->rate & FD_SIZECODEMASK) >> 3) + 2) % 8)
+#define FD_SECTSIZE(params) ((params)->rate & FD_2M ? 512 : 128 << FD_SIZECODE(params))
+
 FdtFloppyParams* fdt_floppy_params_new()
 {
   FdtFloppyParams* params = (FdtFloppyParams*)calloc(sizeof(FdtFloppyParams), 1);
@@ -49,10 +55,5 @@ bool fdt_floppy_params_delete(FdtFloppyParams* params)
 
 size_t fdt_floppy_params_getssize(FdtFloppyParams* params)
 {
-  size_t ssize = (((params->rate & 0x38) >> 3) + 2) % 8;
-  if (ssize < 2)
-    return (128 << ssize);
-  if (ssize > 2)
-    return (1 << (ssize - 3)) * 1024;
-  return 512;
+  return FD_SECTSIZE(params);
 }
