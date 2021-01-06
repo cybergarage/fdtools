@@ -32,7 +32,7 @@
 
 #include <fdtools/dev/device.h>
 
-bool fdt_device_getfloppyparams(floppy_struct* fdprms, FdtFloppyParams* params, FdtError* err);
+bool fdt_floppy_params_setfloppystruct(FdtFloppyParams* params, floppy_struct* fdprms, FdtError* err);
 
 bool fdt_device_setparameters(FdtDevice* dev, FdtError* err)
 {
@@ -96,7 +96,7 @@ bool fdt_device_getfloppyparameters(FdtDevice* dev, FdtFloppyParams* params, Fdt
     return false;
   }
 
-  bool is_success = fdt_device_getfloppyparams(&fdprms, params, err);
+  bool is_success = fdt_floppy_params_setfloppystruct(params, &fdprms, err);
 
   if (!is_already_opened) {
     if (!fdt_device_close(dev, err))
@@ -106,7 +106,7 @@ bool fdt_device_getfloppyparameters(FdtDevice* dev, FdtFloppyParams* params, Fdt
   return is_success;
 }
 
-bool fdt_device_getfloppyparams(floppy_struct* fdprms, FdtFloppyParams* params, FdtError* err)
+bool fdt_floppy_params_setfloppystruct(FdtFloppyParams* params, floppy_struct* fdprms, FdtError* err)
 {
   if (!fdprms || !params)
     return false;
