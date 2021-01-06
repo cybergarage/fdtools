@@ -14,12 +14,19 @@
 
 #if defined(__linux__)
 
+#include <errno.h>
 #include <fcntl.h>
+#include <unistd.h>
 
-#include <linux/fd.h>
 #include <sys/ioctl.h>
 #include <sys/stat.h>
+#include <sys/sysmacros.h>
+#include <sys/time.h>
 #include <sys/types.h>
+
+#include <linux/fd.h>
+#include <linux/fdreg.h>
+#include <linux/major.h>
 
 #include <fdtools/error.h>
 
@@ -60,6 +67,21 @@ bool fdt_device_getfloppyparameters(FdtDevice* dev, FdtFloppyParams* params, Fdt
   int fd = fdt_device_getfileno(dev);
   if (fd == -1)
     return false;
+
+  // Check fstat parameters
+
+  struct stat stat;
+  if (fstat(fd, &stat) < 0) {
+    fdt_error_setlasterror(err, "");
+    return false;
+  }
+
+  if (!S_ISBLK(stat.st_mode) || major(stat.st_rdev) != FLOPPY_MAJOR) {
+    fdt_error_setlasterror(err, "Not floppy device");
+    return false;
+  }
+
+  // Check FDGETPRM parameters
 
   struct floppy_struct fdprms;
   if (ioctl(fd, FDGETPRM, &fdprms) < 0) {
