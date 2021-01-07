@@ -118,6 +118,7 @@ int main(int argc, char* argv[])
     if (!fdt_device_getfloppyparameters(dev, fdparams, err)) {
       exit_error(err);
     }
+    print_message("%s", fdt_floppy_params_getdescription(fdparams));
     if (!fdt_device_image_setfloppyparams(img, fdparams, err)) {
       exit_error(err);
     }
@@ -128,17 +129,16 @@ int main(int argc, char* argv[])
     if (!fdt_image_load(img, err)) {
       exit_error(err);
     }
+    const char* type = fdt_image_gettypestring(img);
+    size_t cyl = fdt_image_getnumberofcylinder(img);
+    size_t head = fdt_image_getnumberofhead(img);
+    size_t sec = fdt_image_getnumberofsector(img);
+    size_t ssize = fdt_image_getsectorsize(img);
+    print_message("type=%s cyl=%ld, head=%ld, sect=%ld, ssize=%ld", type, cyl, head, sec, ssize);
   }
   }
 
   // Prints image parameters
-
-  const char* type = fdt_image_gettypestring(img);
-  size_t cyl = fdt_image_getnumberofcylinder(img);
-  size_t head = fdt_image_getnumberofhead(img);
-  size_t sec = fdt_image_getnumberofsector(img);
-  size_t ssize = fdt_image_getsectorsize(img);
-  print_message("type=%s cyl=%ld, head=%ld, sect=%ld, ssize=%ld", type, cyl, head, sec, ssize);
 
   // Cleanups
 
