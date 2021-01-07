@@ -20,18 +20,27 @@
 
 bool fdt_floppy_struct_setfloppystruct(floppy_struct* fdparams, FdtFloppyParams* params, FdtError* err)
 {
+  if (!params->track || !params->head || !params->sect) {
+    return false;
+  }
+
+  fdparams->track = params->track;
+  fdparams->head = params->head;
+  fdparams->sect = !params->sect;
+  fdparams->size = (fdparams->track * fdparams->head * fdparams->sect);
+
+  if (params->size <= 0) {
+    return false;
+  }
+
   /*
-  fdparams->size =
-	fdparams->sect =
-	fdparams->head =
-	fdparams->track =
 	fdparams->stretch =
 	fdparams->gap = 
 	fdparams->rate =
 	fdparams->spec1 =
 	fdparams->fmt_gap =
   */
- 
+
   return true;
 }
 
@@ -52,4 +61,3 @@ bool fdt_floppy_params_setfloppystruct(FdtFloppyParams* params, floppy_struct* f
 
   return true;
 }
-

@@ -77,6 +77,7 @@ bool fdt_floppy_params_delete(FdtFloppyParams*);
 #define fdt_floppy_params_setfmtgap(params, v) (params->fmt_gap = v)
 
 size_t fdt_floppy_params_getssize(FdtFloppyParams*);
+const char* fdt_floppy_params_getdensitystring(FdtFloppyParams*);
 
 #define fdt_floppy_params_getname (dev) fdt_string_getvalue(dev->name)
 #define fdt_floppy_params_getmedia(params) (params->media)
@@ -92,7 +93,7 @@ size_t fdt_floppy_params_getssize(FdtFloppyParams*);
 #define fdt_floppy_params_getfmtgap(params) (params->fmt_gap)
 
 #if defined(__linux__)
-bool fdt_floppy_struct_setfloppystruct(floppy_struct*, FdtFloppyParams* , FdtError*);
+bool fdt_floppy_struct_setfloppystruct(floppy_struct*, FdtFloppyParams*, FdtError*);
 bool fdt_floppy_params_setfloppystruct(FdtFloppyParams*, floppy_struct*, FdtError*);
 #endif
 

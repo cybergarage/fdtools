@@ -57,3 +57,23 @@ size_t fdt_floppy_params_getssize(FdtFloppyParams* params)
 {
   return FD_SECTSIZE(params);
 }
+
+const char* fdt_floppy_params_getdensitystring(FdtFloppyParams* params)
+{
+  switch (params->density) {
+  case FDT_FLOPPY_DENSITY_SD:
+    return "SD";
+  case FDT_FLOPPY_DENSITY_DD:
+    return "DD";
+  case FDT_FLOPPY_DENSITY_QD:
+    return "QD";
+  case FDT_FLOPPY_DENSITY_HD:
+    return "HD";
+  case FDT_FLOPPY_DENSITY_ED:
+    return "ED";
+  default:
+    return "??";
+  }
+
+  return "??";
+}
