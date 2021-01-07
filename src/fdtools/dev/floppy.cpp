@@ -13,16 +13,24 @@
 // limitations under the License.
 
 #include <fcntl.h>
+#include <stdio.h>
 #include <sys/stat.h>
 #include <sys/types.h>
 
 #include <fdtools/dev/device.h>
 
+#if defined(__linux__)
+#define FDT_FD_2M FD_2M
+#define FDT_FD_SIZECODEMASK FD_SIZECODEMASK
+#define FDT_FD_SIZECODE(params) FD_SIZECODE(params)
+#define FDT_FD_SECTSIZE(params) FD_SECTSIZE(params)
+#else
 // See <linux/fd.h>
-#define FD_2M 0x4
-#define FD_SIZECODEMASK 0x38
-#define FD_SIZECODE(params) (((((params)->rate & FD_SIZECODEMASK) >> 3) + 2) % 8)
-#define FD_SECTSIZE(params) ((params)->rate & FD_2M ? 512 : 128 << FD_SIZECODE(params))
+#define FDT_FD_2M 0x4
+#define FDT_FD_SIZECODEMASK 0x38
+#define FDT_FD_SIZECODE(params) (((((params)->rate & FDT_FD_SIZECODEMASK) >> 3) + 2) % 8)
+#define FDT_FD_SECTSIZE(params) ((params)->rate & FDT_FD_2M ? 512 : 128 << FDT_FD_SIZECODE(params))
+#endif
 
 FdtFloppyParams* fdt_floppy_params_new()
 {
@@ -31,7 +39,9 @@ FdtFloppyParams* fdt_floppy_params_new()
     return NULL;
 
   params->name = fdt_string_new();
-  if (!params->name) {
+  params->desc = fdt_string_new();
+
+  if (!params->name || !params->desc) {
     fdt_floppy_params_delete(params);
     return NULL;
   }
@@ -44,9 +54,8 @@ bool fdt_floppy_params_delete(FdtFloppyParams* params)
   if (!params)
     return false;
 
-  if (params->name) {
-    fdt_string_delete(params->name);
-  }
+  fdt_string_delete(params->name);
+  fdt_string_delete(params->desc);
 
   free(params);
 
@@ -55,7 +64,7 @@ bool fdt_floppy_params_delete(FdtFloppyParams* params)
 
 size_t fdt_floppy_params_getssize(FdtFloppyParams* params)
 {
-  return FD_SECTSIZE(params);
+  return FDT_FD_SECTSIZE(params);
 }
 
 const char* fdt_floppy_params_getdensitystring(FdtFloppyParams* params)
@@ -77,3 +86,21 @@ const char* fdt_floppy_params_getdensitystring(FdtFloppyParams* params)
 
   return "??";
 }
+
+const char* fdt_floppy_params_getdescription(FdtFloppyParams* params)
+{
+  if (!params)
+    return "";
+
+  char desc[128];
+  const char* density = fdt_floppy_params_getdensitystring(params);
+  snprintf(desc, sizeof(desc), "%s, size=%ld track=%ld head=%ld sect=%ld stretch=%02X gap=%02X rate=%02X spec1=%02X, gap2=%02X", density, params->size, params->track, params->head, params->sect, params->stretch, params->rate, params->gap, params->spec1, params->fmt_gap);
+  fdt_string_setvalue(params->desc, desc);
+  return fdt_string_getvalue(params->desc);
+}
+
+int stretch;
+unsigned char gap;
+unsigned char rate;
+unsigned char spec1;
+unsigned char fmt_gap;
