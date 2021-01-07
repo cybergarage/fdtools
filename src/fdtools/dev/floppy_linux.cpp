@@ -22,7 +22,7 @@
 bool fdt_floppy_struct_setfloppystruct(floppy_struct* fdparams, FdtFloppyParams* params, FdtError* err)
 {
   if (!params->track || !params->head || !params->sect) {
-    fdt_error_setmessage(err, FDT_DEVICE_FOLPPY_INVALID_PARAMETORE_FORMAT, fdt_floppy_params_getdescription(params));
+    fdt_error_setmessage(err, FDT_DEVICE_FOLPPY_ERROR_INVALID_PARAMETORE_FORMAT, fdt_floppy_params_getdescription(params));
     return false;
   }
 
@@ -32,11 +32,11 @@ bool fdt_floppy_struct_setfloppystruct(floppy_struct* fdparams, FdtFloppyParams*
   fdparams->size = (fdparams->track * fdparams->head * fdparams->sect);
 
   if (params->size <= 0) {
-    fdt_error_setmessage(err, FDT_DEVICE_FOLPPY_INVALID_PARAMETORE_FORMAT, fdt_floppy_params_getdescription(params));
+    fdt_error_setmessage(err, FDT_DEVICE_FOLPPY_ERROR_INVALID_PARAMETORE_FORMAT, fdt_floppy_params_getdescription(params));
     return false;
   }
 
-	fdparams->stretch = params->stretch;
+  fdparams->stretch = params->stretch;
   /*
 	fdparams->gap = 
 	fdparams->rate =
@@ -47,9 +47,45 @@ bool fdt_floppy_struct_setfloppystruct(floppy_struct* fdparams, FdtFloppyParams*
   return true;
 }
 
+bool fdt_floppy_params_setfloppydriveparams(FdtFloppyParams* params, floppy_drive_params* fddprms, FdtError* err)
+{
+  if (!params || !fddprms)
+    return false;
+
+  int cmos = fddprms->cmos;
+  switch (cmos) {
+  case 1: //5 1/4 DD
+    fdt_floppy_params_setmedia(params, FDT_FLOPPY_MEDIA_525);
+    fdt_floppy_params_setdensity(params, FDT_FLOPPY_DENSITY_DD);
+    break;
+  case 2: // 5 1/4 HD
+    fdt_floppy_params_setmedia(params, FDT_FLOPPY_MEDIA_525);
+    fdt_floppy_params_setdensity(params, FDT_FLOPPY_DENSITY_HD);
+    break;
+  case 3: // 3 1/2 DD
+    fdt_floppy_params_setmedia(params, FDT_FLOPPY_MEDIA_35);
+    fdt_floppy_params_setdensity(params, FDT_FLOPPY_DENSITY_DD);
+    break;
+  case 4: // 3 1/2 HD
+    fdt_floppy_params_setmedia(params, FDT_FLOPPY_MEDIA_35);
+    fdt_floppy_params_setdensity(params, FDT_FLOPPY_DENSITY_HD);
+    break;
+  case 5: //  3 1/2 ED
+  case 6: // 3 1/2 ED
+    fdt_floppy_params_setmedia(params, FDT_FLOPPY_MEDIA_35);
+    fdt_floppy_params_setdensity(params, FDT_FLOPPY_DENSITY_ED);
+    break;
+  default:
+    fdt_error_setmessage(err, FDT_DEVICE_FOLPPY_ERROR_UNKNOWN_CMOS_FORMAT, cmos);
+    return false;
+  }
+
+  return true;
+}
+
 bool fdt_floppy_params_setfloppystruct(FdtFloppyParams* params, floppy_struct* fdprms, FdtError* err)
 {
-  if (!fdprms || !params)
+  if (!params || !fdprms)
     return false;
 
   fdt_floppy_params_setsize(params, fdprms->size);
