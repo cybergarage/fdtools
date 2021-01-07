@@ -83,6 +83,16 @@ bool fdt_device_getfloppyparameters(FdtDevice* dev, FdtFloppyParams* params, Fdt
   //   return false;
   // }
 
+  // Check FDGETDRVPRM parameters
+
+  struct floppy_drive_params fddprms;
+  if (ioctl(fd, FDGETDRVPRM, &fddprms) != 0) {
+    fdt_error_setlasterror(err, "");
+    return false;
+  }
+
+  bool is_success = fdt_floppy_params_setfloppydriveparams(params, &fddprms, err);
+
   // Check FDGETPRM parameters
 
   struct floppy_struct fdprms;
@@ -91,7 +101,9 @@ bool fdt_device_getfloppyparameters(FdtDevice* dev, FdtFloppyParams* params, Fdt
     return false;
   }
 
-  bool is_success = fdt_floppy_params_setfloppystruct(params, &fdprms, err);
+  if (!fdt_floppy_params_setfloppystruct(params, &fdprms, err)) {
+    is_success = false;
+  }
 
   if (!is_already_opened) {
     if (!fdt_device_close(dev, err))
