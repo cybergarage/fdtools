@@ -98,9 +98,3 @@ const char* fdt_floppy_params_getdescription(FdtFloppyParams* params)
   fdt_string_setvalue(params->desc, desc);
   return fdt_string_getvalue(params->desc);
 }
-
-int stretch;
-unsigned char gap;
-unsigned char rate;
-unsigned char spec1;
-unsigned char fmt_gap;
