@@ -81,6 +81,7 @@ bool fdt_floppy_params_delete(FdtFloppyParams*);
 #define fdt_floppy_params_setfmtgap(params, v) (params->fmt_gap = v)
 
 size_t fdt_floppy_params_getssize(FdtFloppyParams*);
+const char* fdt_floppy_params_getmediastring(FdtFloppyParams*);
 const char* fdt_floppy_params_getdensitystring(FdtFloppyParams*);
 const char* fdt_floppy_params_getdescription(FdtFloppyParams*);
 
