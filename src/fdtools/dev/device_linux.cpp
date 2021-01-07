@@ -24,15 +24,10 @@
 #include <sys/time.h>
 #include <sys/types.h>
 
-#include <linux/fd.h>
-#include <linux/fdreg.h>
-#include <linux/major.h>
-
 #include <fdtools/error.h>
 
 #include <fdtools/dev/device.h>
-
-bool fdt_floppy_params_setfloppystruct(FdtFloppyParams* params, floppy_struct* fdprms, FdtError* err);
+#include <fdtools/dev/floppy.h>
 
 bool fdt_device_setparameters(FdtDevice* dev, FdtError* err)
 {
@@ -104,24 +99,6 @@ bool fdt_device_getfloppyparameters(FdtDevice* dev, FdtFloppyParams* params, Fdt
   }
 
   return is_success;
-}
-
-bool fdt_floppy_params_setfloppystruct(FdtFloppyParams* params, floppy_struct* fdprms, FdtError* err)
-{
-  if (!fdprms || !params)
-    return false;
-
-  fdt_floppy_params_setsize(params, fdprms->size);
-  fdt_floppy_params_setsect(params, fdprms->sect);
-  fdt_floppy_params_sethead(params, fdprms->head);
-  fdt_floppy_params_settrack(params, fdprms->track);
-  fdt_floppy_params_setstretch(params, fdprms->stretch);
-  fdt_floppy_params_setgap(params, fdprms->gap);
-  fdt_floppy_params_setrate(params, fdprms->rate);
-  fdt_floppy_params_setspec1(params, fdprms->spec1);
-  fdt_floppy_params_setfmtgap(params, fdprms->fmt_gap);
-
-  return true;
 }
 
 #endif

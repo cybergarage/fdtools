@@ -15,6 +15,12 @@
 #ifndef _FDTOOLS_DEV_FLOPPY_H_
 #define _FDTOOLS_DEV_FLOPPY_H_
 
+#if defined(__linux__)
+#include <linux/fd.h>
+#include <linux/fdreg.h>
+#include <linux/major.h>
+#endif
+
 #include <fdtools/error.h>
 #include <fdtools/typedef.h>
 #include <fdtools/util/string.h>
@@ -85,7 +91,13 @@ size_t fdt_floppy_params_getssize(FdtFloppyParams*);
 #define fdt_floppy_params_getspec1(params) (params->spec1)
 #define fdt_floppy_params_getfmtgap(params) (params->fmt_gap)
 
+#if defined(__linux__)
+bool fdt_floppy_struct_setfloppystruct(floppy_struct*, FdtFloppyParams* , FdtError*);
+bool fdt_floppy_params_setfloppystruct(FdtFloppyParams*, floppy_struct*, FdtError*);
+#endif
+
 #ifdef __cplusplus
+
 } /* extern C */
 #endif
 
