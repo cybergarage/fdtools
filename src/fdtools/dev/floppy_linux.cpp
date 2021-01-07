@@ -17,10 +17,12 @@
 #include <sys/types.h>
 
 #include <fdtools/dev/floppy.h>
+#include <fdtools/dev/error.h>
 
 bool fdt_floppy_struct_setfloppystruct(floppy_struct* fdparams, FdtFloppyParams* params, FdtError* err)
 {
   if (!params->track || !params->head || !params->sect) {
+    fdt_error_setmessage(err, FDT_DEVICE_FOLPPY_INVALID_PARAMETORE_FORMAT, fdt_floppy_params_getdescription(params));
     return false;
   }
 
@@ -30,6 +32,7 @@ bool fdt_floppy_struct_setfloppystruct(floppy_struct* fdparams, FdtFloppyParams*
   fdparams->size = (fdparams->track * fdparams->head * fdparams->sect);
 
   if (params->size <= 0) {
+    fdt_error_setmessage(err, FDT_DEVICE_FOLPPY_INVALID_PARAMETORE_FORMAT, fdt_floppy_params_getdescription(params));
     return false;
   }
 
