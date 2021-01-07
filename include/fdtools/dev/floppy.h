@@ -61,6 +61,9 @@ typedef struct {
   FdtString* desc;
 } FdtFloppyParams;
 
+#define FDT_FLOPPY_STRETCH_DOUBLE_STEPS 0x01
+#define FDT_FLOPPY_STRETCH_SWAP_SIDES 0x02
+
 FdtFloppyParams* fdt_floppy_params_new();
 bool fdt_floppy_params_delete(FdtFloppyParams*);
 
@@ -89,6 +92,7 @@ const char* fdt_floppy_params_getdescription(FdtFloppyParams*);
 #define fdt_floppy_params_gethead(params) (params->head)
 #define fdt_floppy_params_gettrack(params) (params->track)
 #define fdt_floppy_params_getstretch(params) (params->stretch)
+#define fdt_floppy_params_isdoublesteps(params) ((params->stretch & FDT_FLOPPY_STRETCH_DOUBLE_STEPS) ? true : false)
 #define fdt_floppy_params_getgap(params) (params->gap)
 #define fdt_floppy_params_getrate(params) (params->rate)
 #define fdt_floppy_params_getspec1(params) (params->spec1)

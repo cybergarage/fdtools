@@ -16,8 +16,8 @@
 #include <sys/stat.h>
 #include <sys/types.h>
 
-#include <fdtools/dev/floppy.h>
 #include <fdtools/dev/error.h>
+#include <fdtools/dev/floppy.h>
 
 bool fdt_floppy_struct_setfloppystruct(floppy_struct* fdparams, FdtFloppyParams* params, FdtError* err)
 {
