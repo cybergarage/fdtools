@@ -93,6 +93,7 @@ const char* fdt_floppy_params_getdescription(FdtFloppyParams*);
 #define fdt_floppy_params_gettrack(params) (params->track)
 #define fdt_floppy_params_getstretch(params) (params->stretch)
 #define fdt_floppy_params_isdoublesteps(params) ((params->stretch & FDT_FLOPPY_STRETCH_DOUBLE_STEPS) ? true : false)
+#define fdt_floppy_params_isswapsides(params) ((params->stretch & FDT_FLOPPY_STRETCH_SWAP_SIDES) ? true : false)
 #define fdt_floppy_params_getgap(params) (params->gap)
 #define fdt_floppy_params_getrate(params) (params->rate)
 #define fdt_floppy_params_getspec1(params) (params->spec1)
