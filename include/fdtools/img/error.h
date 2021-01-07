@@ -33,4 +33,4 @@ extern "C" {
 } /* extern C */
 #endif
 
-#endif /* _FDTOOLS_IMG_CONFIG_H_ */
+#endif /* _FDTOOLS_IMG_ERROR_H_ */
