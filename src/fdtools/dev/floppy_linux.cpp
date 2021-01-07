@@ -36,8 +36,8 @@ bool fdt_floppy_struct_setfloppystruct(floppy_struct* fdparams, FdtFloppyParams*
     return false;
   }
 
+	fdparams->stretch = params->stretch;
   /*
-	fdparams->stretch =
 	fdparams->gap = 
 	fdparams->rate =
 	fdparams->spec1 =
