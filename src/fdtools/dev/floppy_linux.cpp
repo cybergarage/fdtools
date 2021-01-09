@@ -72,14 +72,14 @@ bool fdt_floppy_params_setfloppydriveparams(FdtFloppyParams* params, floppy_driv
     fdt_floppy_params_setmedia(params, FDT_FLOPPY_MEDIA_35);
     fdt_floppy_params_setmaxdensity(params, FDT_FLOPPY_DENSITY_DD);
     fdt_floppy_params_setdensity(params, FDT_FLOPPY_DENSITY_DD);
-    fdt_floppy_params_settpi(params, 135);
+    fdt_floppy_params_settpi(params, 96);
     fdt_floppy_params_setrpm(params, 300);
     break;
   case 4: // 3 1/2 HD
     fdt_floppy_params_setmedia(params, FDT_FLOPPY_MEDIA_35);
     fdt_floppy_params_setmaxdensity(params, FDT_FLOPPY_DENSITY_HD);
     fdt_floppy_params_setdensity(params, FDT_FLOPPY_DENSITY_HD);
-    fdt_floppy_params_settpi(params, 135);
+    fdt_floppy_params_settpi(params, 96);
     fdt_floppy_params_setrpm(params, 300);
     break;
   case 5: // 3 1/2 ED
@@ -87,7 +87,7 @@ bool fdt_floppy_params_setfloppydriveparams(FdtFloppyParams* params, floppy_driv
     fdt_floppy_params_setmedia(params, FDT_FLOPPY_MEDIA_35);
     fdt_floppy_params_setmaxdensity(params, FDT_FLOPPY_DENSITY_ED);
     fdt_floppy_params_setdensity(params, FDT_FLOPPY_DENSITY_ED);
-    fdt_floppy_params_settpi(params, 135);
+    fdt_floppy_params_settpi(params, 96);
     fdt_floppy_params_setrpm(params, 300);
     break;
   default:
