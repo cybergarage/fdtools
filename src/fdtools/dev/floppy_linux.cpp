@@ -56,23 +56,28 @@ bool fdt_floppy_params_setfloppydriveparams(FdtFloppyParams* params, floppy_driv
   switch (cmos) {
   case 1: //5 1/4 DD
     fdt_floppy_params_setmedia(params, FDT_FLOPPY_MEDIA_525);
+    fdt_floppy_params_setmaxdensity(params, FDT_FLOPPY_DENSITY_DD);
     fdt_floppy_params_setdensity(params, FDT_FLOPPY_DENSITY_DD);
     break;
   case 2: // 5 1/4 HD
     fdt_floppy_params_setmedia(params, FDT_FLOPPY_MEDIA_525);
+    fdt_floppy_params_setmaxdensity(params, FDT_FLOPPY_DENSITY_HD);
     fdt_floppy_params_setdensity(params, FDT_FLOPPY_DENSITY_HD);
     break;
   case 3: // 3 1/2 DD
     fdt_floppy_params_setmedia(params, FDT_FLOPPY_MEDIA_35);
+    fdt_floppy_params_setmaxdensity(params, FDT_FLOPPY_DENSITY_DD);
     fdt_floppy_params_setdensity(params, FDT_FLOPPY_DENSITY_DD);
     break;
   case 4: // 3 1/2 HD
     fdt_floppy_params_setmedia(params, FDT_FLOPPY_MEDIA_35);
+    fdt_floppy_params_setmaxdensity(params, FDT_FLOPPY_DENSITY_HD);
     fdt_floppy_params_setdensity(params, FDT_FLOPPY_DENSITY_HD);
     break;
-  case 5: //  3 1/2 ED
+  case 5: // 3 1/2 ED
   case 6: // 3 1/2 ED
     fdt_floppy_params_setmedia(params, FDT_FLOPPY_MEDIA_35);
+    fdt_floppy_params_setmaxdensity(params, FDT_FLOPPY_DENSITY_ED);
     fdt_floppy_params_setdensity(params, FDT_FLOPPY_DENSITY_ED);
     break;
   default:
