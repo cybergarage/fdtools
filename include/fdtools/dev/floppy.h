@@ -50,6 +50,7 @@ typedef struct {
   FdtFloppyMedia media;
   FdtFloppyDensity density;
   FdtFloppyDensity max_density;
+  int tpi;
   size_t size;
   size_t sect;
   size_t head;
@@ -72,6 +73,7 @@ bool fdt_floppy_params_delete(FdtFloppyParams*);
 #define fdt_floppy_params_setmedia(params, v) (params->media = v)
 #define fdt_floppy_params_setmaxdensity(params, v) (params->max_density = v)
 #define fdt_floppy_params_setdensity(params, v) (params->density = v)
+#define fdt_floppy_params_settpi(params, v) (params->tpi = v)
 #define fdt_floppy_params_setsize(params, v) (params->size = v)
 #define fdt_floppy_params_setsect(params, v) (params->sect = v)
 #define fdt_floppy_params_sethead(params, v) (params->head = v)
@@ -91,6 +93,7 @@ const char* fdt_floppy_params_getdescription(FdtFloppyParams*);
 #define fdt_floppy_params_getmedia(params) (params->media)
 #define fdt_floppy_params_getmaxdensity(params) (params->max_density)
 #define fdt_floppy_params_getdensity(params) (params->density)
+#define fdt_floppy_params_gettpi(params) (params->tpi)
 #define fdt_floppy_params_getsize(params) (params->size)
 #define fdt_floppy_params_getsect(params) (params->sect)
 #define fdt_floppy_params_gethead(params) (params->head)
