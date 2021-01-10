@@ -46,6 +46,18 @@ typedef enum {
 } FdtFloppyDensity;
 
 typedef enum {
+  FDT_FLOPPY_DTR_UNKNOWN,
+  FDT_FLOPPY_DTR_FM_250KB = 1,
+  FDT_FLOPPY_DTR_FM_150KB = 2,
+  FDT_FLOPPY_DTR_FM_125KB = 3,
+  FDT_FLOPPY_DTR_FM_500KB = 4,
+  FDT_FLOPPY_DTR_MFM_500KB = 1,
+  FDT_FLOPPY_DTR_MFM_300KB = 2,
+  FDT_FLOPPY_DTR_MFM_250KB = 3,
+  FDT_FLOPPY_DTR_MFM_1000KB = 4
+} FdtFloppyDataTransferRate;
+
+typedef enum {
   FDT_FLOPPY_DRIVE_UNKNOWN,
   FDT_FLOPPY_DRIVE_525_DD,
   FDT_FLOPPY_DRIVE_525_HD,
@@ -59,6 +71,7 @@ typedef struct {
   FdtFloppyMedia media;
   FdtFloppyDensity density;
   FdtFloppyDensity max_density;
+  FdtFloppyDataTransferRate dtr;
   int tpi;
   int rpm;
   size_t size;
@@ -85,6 +98,7 @@ bool fdt_floppy_params_setdrivetype(FdtFloppyParams*, FdtFloppyDriveType, FdtErr
 #define fdt_floppy_params_setmedia(params, v) (params->media = v)
 #define fdt_floppy_params_setmaxdensity(params, v) (params->max_density = v)
 #define fdt_floppy_params_setdensity(params, v) (params->density = v)
+#define fdt_floppy_params_setdtr(params, v) (params->dtr = v)
 #define fdt_floppy_params_settpi(params, v) (params->tpi = v)
 #define fdt_floppy_params_setrpm(params, v) (params->rpm = v)
 #define fdt_floppy_params_setsize(params, v) (params->size = v)
@@ -106,6 +120,7 @@ const char* fdt_floppy_params_getdescription(FdtFloppyParams*);
 #define fdt_floppy_params_getmedia(params) (params->media)
 #define fdt_floppy_params_getmaxdensity(params) (params->max_density)
 #define fdt_floppy_params_getdensity(params) (params->density)
+#define fdt_floppy_params_getdtr(params) (params->dtr)
 #define fdt_floppy_params_gettpi(params) (params->tpi)
 #define fdt_floppy_params_getrpm(params) (params->rpm)
 #define fdt_floppy_params_getsize(params) (params->size)
