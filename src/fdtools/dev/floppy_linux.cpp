@@ -88,10 +88,10 @@ bool fdt_floppy_params_setfloppystruct(FdtFloppyParams* params, floppy_struct* f
   fdt_floppy_params_sethead(params, fdprms->head);
   fdt_floppy_params_settrack(params, fdprms->track);
   fdt_floppy_params_setstretch(params, fdprms->stretch);
-  fdt_floppy_params_setgap1(params, fdprms->gap);
+  fdt_floppy_params_setgap1size(params, fdprms->gap);
   fdt_floppy_params_setrate(params, fdprms->rate);
   fdt_floppy_params_setspec1(params, fdprms->spec1);
-  fdt_floppy_params_setfmtgap(params, fdprms->fmt_gap);
+  fdt_floppy_params_setgap2size(params, fdprms->fmt_gap);
 
   return true;
 }
