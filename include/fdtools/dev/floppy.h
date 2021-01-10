@@ -93,12 +93,12 @@ FdtFloppyParams* fdt_floppy_params_new();
 bool fdt_floppy_params_delete(FdtFloppyParams*);
 
 bool fdt_floppy_params_setdrivetype(FdtFloppyParams*, FdtFloppyDriveType, FdtError*);
+bool fdt_floppy_params_setdtr(FdtFloppyParams*, FdtFloppyDataTransferRate, FdtError*);
 
 #define fdt_floppy_params_setname(dev, v) fdt_string_setvalue(dev->name = v)
 #define fdt_floppy_params_setmedia(params, v) (params->media = v)
 #define fdt_floppy_params_setmaxdensity(params, v) (params->max_density = v)
 #define fdt_floppy_params_setdensity(params, v) (params->density = v)
-#define fdt_floppy_params_setdtr(params, v) (params->dtr = v)
 #define fdt_floppy_params_settpi(params, v) (params->tpi = v)
 #define fdt_floppy_params_setrpm(params, v) (params->rpm = v)
 #define fdt_floppy_params_setsize(params, v) (params->size = v)
