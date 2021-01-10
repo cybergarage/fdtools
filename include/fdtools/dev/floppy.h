@@ -79,7 +79,7 @@ typedef struct {
   size_t head;
   size_t track;
   int stretch;
-  unsigned char gap;
+  unsigned char gap1;
   unsigned char rate;
   unsigned char spec1;
   unsigned char fmt_gap;
@@ -106,7 +106,7 @@ bool fdt_floppy_params_setdrivetype(FdtFloppyParams*, FdtFloppyDriveType, FdtErr
 #define fdt_floppy_params_sethead(params, v) (params->head = v)
 #define fdt_floppy_params_settrack(params, v) (params->track = v)
 #define fdt_floppy_params_setstretch(params, v) (params->stretch = v)
-#define fdt_floppy_params_setgap(params, v) (params->gap = v)
+#define fdt_floppy_params_setgap1(params, v) (params->gap1 = v)
 #define fdt_floppy_params_setrate(params, v) (params->rate = v)
 #define fdt_floppy_params_setspec1(params, v) (params->spec1 = v)
 #define fdt_floppy_params_setfmtgap(params, v) (params->fmt_gap = v)
@@ -130,7 +130,7 @@ const char* fdt_floppy_params_getdescription(FdtFloppyParams*);
 #define fdt_floppy_params_getstretch(params) (params->stretch)
 #define fdt_floppy_params_isdoublesteps(params) ((params->stretch & FDT_FLOPPY_STRETCH_DOUBLE_STEPS) ? true : false)
 #define fdt_floppy_params_isswapsides(params) ((params->stretch & FDT_FLOPPY_STRETCH_SWAP_SIDES) ? true : false)
-#define fdt_floppy_params_getgap(params) (params->gap)
+#define fdt_floppy_params_getgap1(params) (params->gap1)
 #define fdt_floppy_params_getrate(params) (params->rate)
 #define fdt_floppy_params_getspec1(params) (params->spec1)
 #define fdt_floppy_params_getfmtgap(params) (params->fmt_gap)

@@ -167,7 +167,7 @@ const char* fdt_floppy_params_getdescription(FdtFloppyParams* params)
   char desc[128];
   const char* media = fdt_floppy_params_getmediastring(params);
   const char* density = fdt_floppy_params_getdensitystring(params);
-  snprintf(desc, sizeof(desc), "%s/%s, size=%ld track=%ld head=%ld sect=%ld stretch=%02X gap=%02X rate=%02X spec1=%02X, gap2=%02X", media, density, params->size, params->track, params->head, params->sect, params->stretch, params->rate, params->gap, params->spec1, params->fmt_gap);
+  snprintf(desc, sizeof(desc), "%s/%s, size=%ld track=%ld head=%ld sect=%ld stretch=%02X gap1=%02X rate=%02X spec1=%02X, gap2=%02X", media, density, params->size, params->track, params->head, params->sect, params->stretch, params->rate, params->gap1, params->spec1, params->fmt_gap);
   fdt_string_setvalue(params->desc, desc);
   return fdt_string_getvalue(params->desc);
 }
