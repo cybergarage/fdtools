@@ -82,7 +82,7 @@ typedef struct {
   unsigned char gap1;
   unsigned char rate;
   unsigned char spec1;
-  unsigned char fmt_gap;
+  unsigned char gap2;
   FdtString* desc;
 } FdtFloppyParams;
 
@@ -109,7 +109,7 @@ bool fdt_floppy_params_setdrivetype(FdtFloppyParams*, FdtFloppyDriveType, FdtErr
 #define fdt_floppy_params_setgap1(params, v) (params->gap1 = v)
 #define fdt_floppy_params_setrate(params, v) (params->rate = v)
 #define fdt_floppy_params_setspec1(params, v) (params->spec1 = v)
-#define fdt_floppy_params_setfmtgap(params, v) (params->fmt_gap = v)
+#define fdt_floppy_params_setgap2(params, v) (params->gap2 = v)
 
 size_t fdt_floppy_params_getssize(FdtFloppyParams*);
 const char* fdt_floppy_params_getmediastring(FdtFloppyParams*);
@@ -133,7 +133,7 @@ const char* fdt_floppy_params_getdescription(FdtFloppyParams*);
 #define fdt_floppy_params_getgap1(params) (params->gap1)
 #define fdt_floppy_params_getrate(params) (params->rate)
 #define fdt_floppy_params_getspec1(params) (params->spec1)
-#define fdt_floppy_params_getfmtgap(params) (params->fmt_gap)
+#define fdt_floppy_params_getfgap2(params) (params->gap2)
 
 #if defined(__linux__)
 bool fdt_floppy_struct_setfloppystruct(struct floppy_struct*, FdtFloppyParams*, FdtError*);
