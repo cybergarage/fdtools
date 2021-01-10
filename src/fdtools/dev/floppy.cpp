@@ -18,6 +18,7 @@
 #include <sys/types.h>
 
 #include <fdtools/dev/device.h>
+#include <fdtools/dev/error.h>
 
 #if defined(__linux__)
 #define FDT_FD_2M FD_2M
@@ -58,6 +59,55 @@ bool fdt_floppy_params_delete(FdtFloppyParams* params)
   fdt_string_delete(params->desc);
 
   free(params);
+
+  return true;
+}
+
+bool fdt_floppy_params_setdrivetype(FdtFloppyParams* params, FdtFloppyDriveType drive_type, FdtError* err)
+{
+  if (!params)
+    return false;
+
+  switch (drive_type) {
+  case FDT_FLOPPY_DRIVE_525_DD:
+    fdt_floppy_params_setmedia(params, FDT_FLOPPY_MEDIA_525);
+    fdt_floppy_params_setmaxdensity(params, FDT_FLOPPY_DENSITY_DD);
+    fdt_floppy_params_setdensity(params, FDT_FLOPPY_DENSITY_DD);
+    fdt_floppy_params_settpi(params, 48);
+    fdt_floppy_params_setrpm(params, 300);
+    break;
+  case FDT_FLOPPY_DRIVE_525_HD:
+    fdt_floppy_params_setmedia(params, FDT_FLOPPY_MEDIA_525);
+    fdt_floppy_params_setmaxdensity(params, FDT_FLOPPY_DENSITY_HD);
+    fdt_floppy_params_setdensity(params, FDT_FLOPPY_DENSITY_HD);
+    fdt_floppy_params_settpi(params, 96);
+    fdt_floppy_params_setrpm(params, 360);
+    break;
+  case FDT_FLOPPY_DRIVE_35_DD:
+    fdt_floppy_params_setmedia(params, FDT_FLOPPY_MEDIA_35);
+    fdt_floppy_params_setmaxdensity(params, FDT_FLOPPY_DENSITY_DD);
+    fdt_floppy_params_setdensity(params, FDT_FLOPPY_DENSITY_DD);
+    fdt_floppy_params_settpi(params, 96);
+    fdt_floppy_params_setrpm(params, 300);
+    break;
+  case FDT_FLOPPY_DRIVE_35_HD:
+    fdt_floppy_params_setmedia(params, FDT_FLOPPY_MEDIA_35);
+    fdt_floppy_params_setmaxdensity(params, FDT_FLOPPY_DENSITY_HD);
+    fdt_floppy_params_setdensity(params, FDT_FLOPPY_DENSITY_HD);
+    fdt_floppy_params_settpi(params, 96);
+    fdt_floppy_params_setrpm(params, 300);
+    break;
+  case FDT_FLOPPY_DRIVE_35_ED:
+    fdt_floppy_params_setmedia(params, FDT_FLOPPY_MEDIA_35);
+    fdt_floppy_params_setmaxdensity(params, FDT_FLOPPY_DENSITY_ED);
+    fdt_floppy_params_setdensity(params, FDT_FLOPPY_DENSITY_ED);
+    fdt_floppy_params_settpi(params, 96);
+    fdt_floppy_params_setrpm(params, 300);
+    break;
+  default:
+    fdt_error_setmessage(err, FDT_DEVICE_FOLPPY_ERROR_UNKNOWN_DRIVE_TYPE_FORMAT, drive_type);
+    return false;
+  }
 
   return true;
 }

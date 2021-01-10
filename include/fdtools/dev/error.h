@@ -22,6 +22,7 @@ extern "C" {
 #endif
 
 #define FDT_DEVICE_FOLPPY_ERROR_UNKNOWN_CMOS_FORMAT "Unknown CMOS type: %d"
+#define FDT_DEVICE_FOLPPY_ERROR_UNKNOWN_DRIVE_TYPE_FORMAT "Unknown drive type: %d"
 #define FDT_DEVICE_FOLPPY_ERROR_INVALID_PARAMETORE_FORMAT "Invalid floppy parameters: %s"
 
 #ifdef __cplusplus

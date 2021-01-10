@@ -45,6 +45,15 @@ typedef enum {
   FDT_FLOPPY_DENSITY_ED
 } FdtFloppyDensity;
 
+typedef enum {
+  FDT_FLOPPY_DRIVE_UNKNOWN,
+  FDT_FLOPPY_DRIVE_525_DD,
+  FDT_FLOPPY_DRIVE_525_HD,
+  FDT_FLOPPY_DRIVE_35_DD,
+  FDT_FLOPPY_DRIVE_35_HD,
+  FDT_FLOPPY_DRIVE_35_ED,
+} FdtFloppyDriveType;
+
 typedef struct {
   FdtString* name;
   FdtFloppyMedia media;
@@ -69,6 +78,8 @@ typedef struct {
 
 FdtFloppyParams* fdt_floppy_params_new();
 bool fdt_floppy_params_delete(FdtFloppyParams*);
+
+bool fdt_floppy_params_setdrivetype(FdtFloppyParams*, FdtFloppyDriveType, FdtError*);
 
 #define fdt_floppy_params_setname(dev, v) fdt_string_setvalue(dev->name = v)
 #define fdt_floppy_params_setmedia(params, v) (params->media = v)

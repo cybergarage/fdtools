@@ -55,40 +55,20 @@ bool fdt_floppy_params_setfloppydriveparams(FdtFloppyParams* params, floppy_driv
   int cmos = fddprms->cmos;
   switch (cmos) {
   case 1: //5 1/4 DD
-    fdt_floppy_params_setmedia(params, FDT_FLOPPY_MEDIA_525);
-    fdt_floppy_params_setmaxdensity(params, FDT_FLOPPY_DENSITY_DD);
-    fdt_floppy_params_setdensity(params, FDT_FLOPPY_DENSITY_DD);
-    fdt_floppy_params_settpi(params, 48);
-    fdt_floppy_params_setrpm(params, 300);
+    fdt_floppy_params_setdrivetype(params, FDT_FLOPPY_DRIVE_525_DD, err);
     break;
   case 2: // 5 1/4 HD
-    fdt_floppy_params_setmedia(params, FDT_FLOPPY_MEDIA_525);
-    fdt_floppy_params_setmaxdensity(params, FDT_FLOPPY_DENSITY_HD);
-    fdt_floppy_params_setdensity(params, FDT_FLOPPY_DENSITY_HD);
-    fdt_floppy_params_settpi(params, 96);
-    fdt_floppy_params_setrpm(params, 360);
+    fdt_floppy_params_setdrivetype(params, FDT_FLOPPY_DRIVE_525_HD, err);
     break;
   case 3: // 3 1/2 DD
-    fdt_floppy_params_setmedia(params, FDT_FLOPPY_MEDIA_35);
-    fdt_floppy_params_setmaxdensity(params, FDT_FLOPPY_DENSITY_DD);
-    fdt_floppy_params_setdensity(params, FDT_FLOPPY_DENSITY_DD);
-    fdt_floppy_params_settpi(params, 96);
-    fdt_floppy_params_setrpm(params, 300);
+    fdt_floppy_params_setdrivetype(params, FDT_FLOPPY_DRIVE_35_DD, err);
     break;
   case 4: // 3 1/2 HD
-    fdt_floppy_params_setmedia(params, FDT_FLOPPY_MEDIA_35);
-    fdt_floppy_params_setmaxdensity(params, FDT_FLOPPY_DENSITY_HD);
-    fdt_floppy_params_setdensity(params, FDT_FLOPPY_DENSITY_HD);
-    fdt_floppy_params_settpi(params, 96);
-    fdt_floppy_params_setrpm(params, 300);
+    fdt_floppy_params_setdrivetype(params, FDT_FLOPPY_DRIVE_35_HD, err);
     break;
   case 5: // 3 1/2 ED
   case 6: // 3 1/2 ED
-    fdt_floppy_params_setmedia(params, FDT_FLOPPY_MEDIA_35);
-    fdt_floppy_params_setmaxdensity(params, FDT_FLOPPY_DENSITY_ED);
-    fdt_floppy_params_setdensity(params, FDT_FLOPPY_DENSITY_ED);
-    fdt_floppy_params_settpi(params, 96);
-    fdt_floppy_params_setrpm(params, 300);
+    fdt_floppy_params_setdrivetype(params, FDT_FLOPPY_DRIVE_35_ED, err);
     break;
   default:
     fdt_error_setmessage(err, FDT_DEVICE_FOLPPY_ERROR_UNKNOWN_CMOS_FORMAT, cmos);
