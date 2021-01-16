@@ -112,15 +112,16 @@ CONFIG_HEADER = $(top_builddir)/config.h
 CONFIG_CLEAN_FILES =
 CONFIG_CLEAN_VPATH_FILES =
 am__dirstamp = $(am__leading_dot)dirstamp
-am_fdtoolstest_OBJECTS = ../device_floppy_test.$(OBJEXT) \
-	../error_test.$(OBJEXT) ../image_hfe_test.$(OBJEXT) \
-	../image_test_func.$(OBJEXT) ../image_raw_test.$(OBJEXT) \
-	../sector_test.$(OBJEXT) ../main.$(OBJEXT) \
-	../image_test.$(OBJEXT) ../dictionary_test.$(OBJEXT) \
-	../program_test.$(OBJEXT) ../list_test.$(OBJEXT) \
-	../config_test.$(OBJEXT) ../logic_test.$(OBJEXT) \
-	../image_file_test.$(OBJEXT) ../string_test.$(OBJEXT) \
-	../device_test.$(OBJEXT) ../image_d88_test.$(OBJEXT)
+am_fdtoolstest_OBJECTS = ../program_test.$(OBJEXT) \
+	../list_test.$(OBJEXT) ../device_test.$(OBJEXT) \
+	../image_hfe_test.$(OBJEXT) ../main.$(OBJEXT) \
+	../sector_test.$(OBJEXT) ../dictionary_test.$(OBJEXT) \
+	../config_test.$(OBJEXT) ../image_d88_test.$(OBJEXT) \
+	../string_test.$(OBJEXT) ../image_test_func.$(OBJEXT) \
+	../device_floppy_test.$(OBJEXT) \
+	../device_floppy_params_test.$(OBJEXT) ../error_test.$(OBJEXT) \
+	../image_test.$(OBJEXT) ../logic_test.$(OBJEXT) \
+	../image_raw_test.$(OBJEXT) ../image_file_test.$(OBJEXT)
 fdtoolstest_OBJECTS = $(am_fdtoolstest_OBJECTS)
 fdtoolstest_DEPENDENCIES = ../../lib/unix/libfdtools.a
 AM_V_P = $(am__v_P_@AM_V@)
@@ -139,6 +140,7 @@ DEFAULT_INCLUDES = -I.@am__isrc@ -I$(top_builddir)
 depcomp = $(SHELL) $(top_srcdir)/config/depcomp
 am__maybe_remake_depfiles = depfiles
 am__depfiles_remade = ../$(DEPDIR)/config_test.Po \
+	../$(DEPDIR)/device_floppy_params_test.Po \
 	../$(DEPDIR)/device_floppy_test.Po ../$(DEPDIR)/device_test.Po \
 	../$(DEPDIR)/dictionary_test.Po ../$(DEPDIR)/error_test.Po \
 	../$(DEPDIR)/image_d88_test.Po ../$(DEPDIR)/image_file_test.Po \
@@ -489,23 +491,24 @@ top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
 AM_CPPFLAGS = -I$(top_builddir)/include -I../
 fdtoolstest_SOURCES = \
-	../device_floppy_test.cpp \
-	../error_test.cpp \
-	../image_hfe_test.cpp \
-	../image_test_func.cpp \
-	../image_raw_test.cpp \
-	../sector_test.cpp \
-	../main.cpp \
-	../image_test.cpp \
-	../dictionary_test.cpp \
 	../program_test.cpp \
 	../list_test.cpp \
-	../config_test.cpp \
-	../logic_test.cpp \
-	../image_file_test.cpp \
-	../string_test.cpp \
 	../device_test.cpp \
-	../image_d88_test.cpp
+	../image_hfe_test.cpp \
+	../main.cpp \
+	../sector_test.cpp \
+	../dictionary_test.cpp \
+	../config_test.cpp \
+	../image_d88_test.cpp \
+	../string_test.cpp \
+	../image_test_func.cpp \
+	../device_floppy_test.cpp \
+	../device_floppy_params_test.cpp \
+	../error_test.cpp \
+	../image_test.cpp \
+	../logic_test.cpp \
+	../image_raw_test.cpp \
+	../image_file_test.cpp
 
 
 #if HAVE_LIBTOOL
@@ -554,38 +557,40 @@ clean-checkPROGRAMS:
 ../$(DEPDIR)/$(am__dirstamp):
 	@$(MKDIR_P) ../$(DEPDIR)
 	@: > ../$(DEPDIR)/$(am__dirstamp)
-../device_floppy_test.$(OBJEXT): ../$(am__dirstamp) \
-	../$(DEPDIR)/$(am__dirstamp)
-../error_test.$(OBJEXT): ../$(am__dirstamp) \
-	../$(DEPDIR)/$(am__dirstamp)
-../image_hfe_test.$(OBJEXT): ../$(am__dirstamp) \
-	../$(DEPDIR)/$(am__dirstamp)
-../image_test_func.$(OBJEXT): ../$(am__dirstamp) \
-	../$(DEPDIR)/$(am__dirstamp)
-../image_raw_test.$(OBJEXT): ../$(am__dirstamp) \
-	../$(DEPDIR)/$(am__dirstamp)
-../sector_test.$(OBJEXT): ../$(am__dirstamp) \
-	../$(DEPDIR)/$(am__dirstamp)
-../main.$(OBJEXT): ../$(am__dirstamp) ../$(DEPDIR)/$(am__dirstamp)
-../image_test.$(OBJEXT): ../$(am__dirstamp) \
-	../$(DEPDIR)/$(am__dirstamp)
-../dictionary_test.$(OBJEXT): ../$(am__dirstamp) \
-	../$(DEPDIR)/$(am__dirstamp)
 ../program_test.$(OBJEXT): ../$(am__dirstamp) \
 	../$(DEPDIR)/$(am__dirstamp)
 ../list_test.$(OBJEXT): ../$(am__dirstamp) \
 	../$(DEPDIR)/$(am__dirstamp)
+../device_test.$(OBJEXT): ../$(am__dirstamp) \
+	../$(DEPDIR)/$(am__dirstamp)
+../image_hfe_test.$(OBJEXT): ../$(am__dirstamp) \
+	../$(DEPDIR)/$(am__dirstamp)
+../main.$(OBJEXT): ../$(am__dirstamp) ../$(DEPDIR)/$(am__dirstamp)
+../sector_test.$(OBJEXT): ../$(am__dirstamp) \
+	../$(DEPDIR)/$(am__dirstamp)
+../dictionary_test.$(OBJEXT): ../$(am__dirstamp) \
+	../$(DEPDIR)/$(am__dirstamp)
 ../config_test.$(OBJEXT): ../$(am__dirstamp) \
 	../$(DEPDIR)/$(am__dirstamp)
-../logic_test.$(OBJEXT): ../$(am__dirstamp) \
-	../$(DEPDIR)/$(am__dirstamp)
-../image_file_test.$(OBJEXT): ../$(am__dirstamp) \
+../image_d88_test.$(OBJEXT): ../$(am__dirstamp) \
 	../$(DEPDIR)/$(am__dirstamp)
 ../string_test.$(OBJEXT): ../$(am__dirstamp) \
 	../$(DEPDIR)/$(am__dirstamp)
-../device_test.$(OBJEXT): ../$(am__dirstamp) \
+../image_test_func.$(OBJEXT): ../$(am__dirstamp) \
 	../$(DEPDIR)/$(am__dirstamp)
-../image_d88_test.$(OBJEXT): ../$(am__dirstamp) \
+../device_floppy_test.$(OBJEXT): ../$(am__dirstamp) \
+	../$(DEPDIR)/$(am__dirstamp)
+../device_floppy_params_test.$(OBJEXT): ../$(am__dirstamp) \
+	../$(DEPDIR)/$(am__dirstamp)
+../error_test.$(OBJEXT): ../$(am__dirstamp) \
+	../$(DEPDIR)/$(am__dirstamp)
+../image_test.$(OBJEXT): ../$(am__dirstamp) \
+	../$(DEPDIR)/$(am__dirstamp)
+../logic_test.$(OBJEXT): ../$(am__dirstamp) \
+	../$(DEPDIR)/$(am__dirstamp)
+../image_raw_test.$(OBJEXT): ../$(am__dirstamp) \
+	../$(DEPDIR)/$(am__dirstamp)
+../image_file_test.$(OBJEXT): ../$(am__dirstamp) \
 	../$(DEPDIR)/$(am__dirstamp)
 
 fdtoolstest$(EXEEXT): $(fdtoolstest_OBJECTS) $(fdtoolstest_DEPENDENCIES) $(EXTRA_fdtoolstest_DEPENDENCIES) 
@@ -600,6 +605,7 @@ distclean-compile:
 	-rm -f *.tab.c
 
 @AMDEP_TRUE@@am__include@ @am__quote@../$(DEPDIR)/config_test.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@../$(DEPDIR)/device_floppy_params_test.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@../$(DEPDIR)/device_floppy_test.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@../$(DEPDIR)/device_test.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@../$(DEPDIR)/dictionary_test.Po@am__quote@ # am--include-marker
@@ -934,6 +940,7 @@ clean-am: clean-checkPROGRAMS clean-generic mostlyclean-am
 
 distclean: distclean-am
 		-rm -f ../$(DEPDIR)/config_test.Po
+	-rm -f ../$(DEPDIR)/device_floppy_params_test.Po
 	-rm -f ../$(DEPDIR)/device_floppy_test.Po
 	-rm -f ../$(DEPDIR)/device_test.Po
 	-rm -f ../$(DEPDIR)/dictionary_test.Po
@@ -996,6 +1003,7 @@ installcheck-am:
 
 maintainer-clean: maintainer-clean-am
 		-rm -f ../$(DEPDIR)/config_test.Po
+	-rm -f ../$(DEPDIR)/device_floppy_params_test.Po
 	-rm -f ../$(DEPDIR)/device_floppy_test.Po
 	-rm -f ../$(DEPDIR)/device_test.Po
 	-rm -f ../$(DEPDIR)/dictionary_test.Po
