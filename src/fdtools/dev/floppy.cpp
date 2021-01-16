@@ -73,6 +73,7 @@ bool fdt_floppy_params_setdrivetype(FdtFloppyParams* params, FdtFloppyDriveType 
     fdt_floppy_params_setmedia(params, FDT_FLOPPY_MEDIA_525);
     fdt_floppy_params_setmaxdensity(params, FDT_FLOPPY_DENSITY_DD);
     fdt_floppy_params_setdensity(params, FDT_FLOPPY_DENSITY_DD);
+    fdt_floppy_params_setcapacity(params, FDT_FLOPPY_TRACK_CAPACITY_6250);
     fdt_floppy_params_setdtr(params, FDT_FLOPPY_DTR_MFM_250KB, err);
     fdt_floppy_params_settpi(params, 48);
     fdt_floppy_params_setrpm(params, 300);
@@ -81,6 +82,7 @@ bool fdt_floppy_params_setdrivetype(FdtFloppyParams* params, FdtFloppyDriveType 
     fdt_floppy_params_setmedia(params, FDT_FLOPPY_MEDIA_525);
     fdt_floppy_params_setmaxdensity(params, FDT_FLOPPY_DENSITY_HD);
     fdt_floppy_params_setdensity(params, FDT_FLOPPY_DENSITY_HD);
+    fdt_floppy_params_setcapacity(params, FDT_FLOPPY_TRACK_CAPACITY_10416);
     fdt_floppy_params_setdtr(params, FDT_FLOPPY_DTR_MFM_500KB, err);
     fdt_floppy_params_settpi(params, 96);
     fdt_floppy_params_setrpm(params, 360);
@@ -89,6 +91,7 @@ bool fdt_floppy_params_setdrivetype(FdtFloppyParams* params, FdtFloppyDriveType 
     fdt_floppy_params_setmedia(params, FDT_FLOPPY_MEDIA_35);
     fdt_floppy_params_setmaxdensity(params, FDT_FLOPPY_DENSITY_DD);
     fdt_floppy_params_setdensity(params, FDT_FLOPPY_DENSITY_DD);
+    fdt_floppy_params_setcapacity(params, FDT_FLOPPY_TRACK_CAPACITY_6250);
     fdt_floppy_params_setdtr(params, FDT_FLOPPY_DTR_MFM_250KB, err);
     fdt_floppy_params_settpi(params, 96);
     fdt_floppy_params_setrpm(params, 300);
@@ -97,6 +100,7 @@ bool fdt_floppy_params_setdrivetype(FdtFloppyParams* params, FdtFloppyDriveType 
     fdt_floppy_params_setmedia(params, FDT_FLOPPY_MEDIA_35);
     fdt_floppy_params_setmaxdensity(params, FDT_FLOPPY_DENSITY_HD);
     fdt_floppy_params_setdensity(params, FDT_FLOPPY_DENSITY_HD);
+    fdt_floppy_params_setcapacity(params, FDT_FLOPPY_TRACK_CAPACITY_12500);
     fdt_floppy_params_setdtr(params, FDT_FLOPPY_DTR_MFM_500KB, err);
     fdt_floppy_params_settpi(params, 96);
     fdt_floppy_params_setrpm(params, 300);
@@ -105,6 +109,7 @@ bool fdt_floppy_params_setdrivetype(FdtFloppyParams* params, FdtFloppyDriveType 
     fdt_floppy_params_setmedia(params, FDT_FLOPPY_MEDIA_35);
     fdt_floppy_params_setmaxdensity(params, FDT_FLOPPY_DENSITY_ED);
     fdt_floppy_params_setdensity(params, FDT_FLOPPY_DENSITY_ED);
+    fdt_floppy_params_setcapacity(params, FDT_FLOPPY_TRACK_CAPACITY_25000);
     fdt_floppy_params_setdtr(params, FDT_FLOPPY_DTR_MFM_1000KB, err);
     fdt_floppy_params_settpi(params, 96);
     fdt_floppy_params_setrpm(params, 300);
@@ -141,6 +146,39 @@ bool fdt_floppy_params_setdtr(FdtFloppyParams* params, FdtFloppyDataTransferRate
   }
 
   return true;
+}
+
+FdtFloppyDriveType fdt_floppy_params_getdrivetype(FdtFloppyParams* params)
+{
+  if (!params)
+    return FDT_FLOPPY_DRIVE_UNKNOWN;
+
+  switch (params->media) {
+  case FDT_FLOPPY_MEDIA_525:
+    switch (params->density) {
+    case FDT_FLOPPY_DENSITY_DD:
+      return FDT_FLOPPY_DRIVE_525_DD;
+    case FDT_FLOPPY_DENSITY_HD:
+      return FDT_FLOPPY_DRIVE_525_HD;
+    default:
+      return FDT_FLOPPY_DRIVE_UNKNOWN;
+    }
+  case FDT_FLOPPY_MEDIA_35:
+    switch (params->density) {
+    case FDT_FLOPPY_DENSITY_DD:
+      return FDT_FLOPPY_DRIVE_35_DD;
+    case FDT_FLOPPY_DENSITY_HD:
+      return FDT_FLOPPY_DRIVE_35_HD;
+    case FDT_FLOPPY_DENSITY_ED:
+      return FDT_FLOPPY_DRIVE_35_ED;
+    default:
+      return FDT_FLOPPY_DRIVE_UNKNOWN;
+    }
+  default:
+    return FDT_FLOPPY_DRIVE_UNKNOWN;
+  }
+
+  return FDT_FLOPPY_DRIVE_UNKNOWN;
 }
 
 size_t fdt_floppy_params_getssize(FdtFloppyParams* params)
