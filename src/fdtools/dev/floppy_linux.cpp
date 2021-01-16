@@ -19,7 +19,7 @@
 #include <fdtools/dev/error.h>
 #include <fdtools/dev/floppy.h>
 
-bool fdt_floppy_struct_setfloppystruct(floppy_struct* fdparams, FdtFloppyParams* params, FdtError* err)
+bool fdt_floppy_struct_setfloppyparams(floppy_struct* fdparams, FdtFloppyParams* params, FdtError* err)
 {
   if (!params->track || !params->head || !params->sect) {
     fdt_error_setmessage(err, FDT_DEVICE_FOLPPY_ERROR_INVALID_PARAMETORE_FORMAT, fdt_floppy_params_getdescription(params));
