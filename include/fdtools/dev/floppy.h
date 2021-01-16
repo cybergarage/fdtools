@@ -120,6 +120,7 @@ bool fdt_floppy_params_setdtr(FdtFloppyParams*, FdtFloppyDataTransferRate, FdtEr
 #define fdt_floppy_params_setspec1(params, v) (params->spec1 = v)
 
 FdtFloppyDriveType fdt_floppy_params_getdrivetype(FdtFloppyParams*);
+size_t fdt_floppy_params_gettrackcapacity(FdtFloppyParams* params);
 size_t fdt_floppy_params_getsize(FdtFloppyParams*);
 size_t fdt_floppy_params_getssize(FdtFloppyParams*);
 const char* fdt_floppy_params_getmediastring(FdtFloppyParams*);
