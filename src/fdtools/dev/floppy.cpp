@@ -148,6 +148,16 @@ size_t fdt_floppy_params_getssize(FdtFloppyParams* params)
   return FDT_FD_SECTSIZE(params);
 }
 
+size_t fdt_floppy_params_getsize(FdtFloppyParams* params)
+{
+  size_t cyl = fdt_floppy_params_gettrack(params);
+  size_t head = fdt_floppy_params_gethead(params);
+  size_t sect = fdt_floppy_params_getsect(params);
+  size_t ssize = fdt_floppy_params_getssize(params);
+  size_t track_data_size = sect * ssize;
+  return ((cyl * head * track_data_size) / 512);
+}
+
 const char* fdt_floppy_params_getmediastring(FdtFloppyParams* params)
 
 {
@@ -193,7 +203,7 @@ const char* fdt_floppy_params_getdescription(FdtFloppyParams* params)
   char desc[128];
   const char* media = fdt_floppy_params_getmediastring(params);
   const char* density = fdt_floppy_params_getdensitystring(params);
-  snprintf(desc, sizeof(desc), "%s/%s, size=%ld track=%ld head=%ld sect=%ld stretch=%02X rate=%02X gap1=%ld gap2=%ld spec1=%02X", media, density, params->size, params->track, params->head, params->sect, params->stretch, params->rate, params->gap1, params->gap2, params->spec1);
+  snprintf(desc, sizeof(desc), "%s/%s, size=%ld track=%ld head=%ld sect=%ld stretch=%02X rate=%02X gap1=%ld gap2=%ld spec1=%02X", media, density, fdt_floppy_params_getsize(params), params->track, params->head, params->sect, params->stretch, params->rate, params->gap1, params->gap2, params->spec1);
   fdt_string_setvalue(params->desc, desc);
   return fdt_string_getvalue(params->desc);
 }

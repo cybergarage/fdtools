@@ -74,7 +74,6 @@ typedef struct {
   FdtFloppyDataTransferRate dtr;
   int tpi;
   int rpm;
-  size_t size;
   size_t sect;
   size_t head;
   size_t track;
@@ -101,7 +100,6 @@ bool fdt_floppy_params_setdtr(FdtFloppyParams*, FdtFloppyDataTransferRate, FdtEr
 #define fdt_floppy_params_setdensity(params, v) (params->density = v)
 #define fdt_floppy_params_settpi(params, v) (params->tpi = v)
 #define fdt_floppy_params_setrpm(params, v) (params->rpm = v)
-#define fdt_floppy_params_setsize(params, v) (params->size = v)
 #define fdt_floppy_params_setsect(params, v) (params->sect = v)
 #define fdt_floppy_params_sethead(params, v) (params->head = v)
 #define fdt_floppy_params_settrack(params, v) (params->track = v)
@@ -111,6 +109,7 @@ bool fdt_floppy_params_setdtr(FdtFloppyParams*, FdtFloppyDataTransferRate, FdtEr
 #define fdt_floppy_params_setrate(params, v) (params->rate = v)
 #define fdt_floppy_params_setspec1(params, v) (params->spec1 = v)
 
+size_t fdt_floppy_params_getsize(FdtFloppyParams*);
 size_t fdt_floppy_params_getssize(FdtFloppyParams*);
 const char* fdt_floppy_params_getmediastring(FdtFloppyParams*);
 const char* fdt_floppy_params_getdensitystring(FdtFloppyParams*);
@@ -123,7 +122,6 @@ const char* fdt_floppy_params_getdescription(FdtFloppyParams*);
 #define fdt_floppy_params_getdtr(params) (params->dtr)
 #define fdt_floppy_params_gettpi(params) (params->tpi)
 #define fdt_floppy_params_getrpm(params) (params->rpm)
-#define fdt_floppy_params_getsize(params) (params->size)
 #define fdt_floppy_params_getsect(params) (params->sect)
 #define fdt_floppy_params_gethead(params) (params->head)
 #define fdt_floppy_params_gettrack(params) (params->track)
