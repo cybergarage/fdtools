@@ -36,13 +36,13 @@ bool fdt_floppy_struct_setfloppystruct(floppy_struct* fdparams, FdtFloppyParams*
     return false;
   }
 
-  fdparams->stretch = params->stretch;
+  fdparams->stretch = fdt_floppy_params_getstretch(params);
+	fdparams->gap = fdt_floppy_params_getgap1size(params);
   /*
-	fdparams->gap = 
 	fdparams->rate =
 	fdparams->spec1 =
-	fdparams->fmt_gap =
   */
+	fdparams->fmt_gap = fdt_floppy_params_getgap2size(params);
 
   return true;
 }
