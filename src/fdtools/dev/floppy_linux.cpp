@@ -26,12 +26,12 @@ bool fdt_floppy_struct_setfloppystruct(floppy_struct* fdparams, FdtFloppyParams*
     return false;
   }
 
-  fdparams->track = params->track;
-  fdparams->head = params->head;
-  fdparams->sect = !params->sect;
-  fdparams->size = (fdparams->track * fdparams->head * fdparams->sect);
+  fdparams->track = fdt_floppy_params_gettrack(params);
+  fdparams->head = fdt_floppy_params_gethead(params);
+  fdparams->sect = fdt_floppy_params_getsect(params);
+  fdparams->size = fdt_floppy_params_getsize(params);
 
-  if (params->size <= 0) {
+  if (fdparams->size <= 0) {
     fdt_error_setmessage(err, FDT_DEVICE_FOLPPY_ERROR_INVALID_PARAMETORE_FORMAT, fdt_floppy_params_getdescription(params));
     return false;
   }
@@ -83,7 +83,6 @@ bool fdt_floppy_params_setfloppystruct(FdtFloppyParams* params, floppy_struct* f
   if (!params || !fdprms)
     return false;
 
-  fdt_floppy_params_setsize(params, fdprms->size);
   fdt_floppy_params_setsect(params, fdprms->sect);
   fdt_floppy_params_sethead(params, fdprms->head);
   fdt_floppy_params_settrack(params, fdprms->track);
