@@ -13,6 +13,9 @@
         "variant": "c",
         "*.tcc": "cpp",
         "typeindex": "cpp",
-        "typeinfo": "cpp"
+        "typeinfo": "cpp",
+        "bitset": "cpp",
+        "string_view": "cpp",
+        "initializer_list": "cpp"
     }
 }
