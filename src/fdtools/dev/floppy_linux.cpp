@@ -1,7 +1,7 @@
 // Copyright (C) 2020 Satoshi Konno. All rights reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
-// you may not use this file except in compliance with the License.
+// you may not use t file except in compliance with the License.
 // You may obtain a copy of the License at
 //
 //    http://www.apache.org/licenses/LICENSE-2.0
@@ -18,6 +18,28 @@
 
 #include <fdtools/dev/error.h>
 #include <fdtools/dev/floppy.h>
+
+bool fdt_floppy_struct_equals(struct floppy_struct* t, struct floppy_struct* o)
+{
+  if (t->size != o->size)
+    return false;
+  if (t->size != o->sect)
+    return false;
+  if (t->head != o->head)
+    return false;
+  if (t->track != o->track)
+    return false;
+  if (t->stretch != o->stretch)
+    return false;
+  if (t->gap != o->gap)
+    return false;
+  if (t->spec1 != o->spec1)
+    return false;
+  if (t->fmt_gap != o->fmt_gap)
+    return false;
+
+  return true;
+}
 
 bool fdt_floppy_struct_setfloppyparams(floppy_struct* fdparams, FdtFloppyParams* params, FdtError* err)
 {
@@ -37,12 +59,12 @@ bool fdt_floppy_struct_setfloppyparams(floppy_struct* fdparams, FdtFloppyParams*
   }
 
   fdparams->stretch = fdt_floppy_params_getstretch(params);
-	fdparams->gap = fdt_floppy_params_getgap1size(params);
+  fdparams->gap = fdt_floppy_params_getgap1size(params);
   /*
 	fdparams->rate =
   */
-	fdparams->spec1 = 0;
-	fdparams->fmt_gap = fdt_floppy_params_getgap2size(params);
+  fdparams->spec1 = 0;
+  fdparams->fmt_gap = fdt_floppy_params_getgap2size(params);
 
   return true;
 }
