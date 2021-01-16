@@ -19,8 +19,15 @@
 #include <fdtools/dev/device.h>
 #include <fdtools/dev/image.h>
 
-BOOST_AUTO_TEST_CASE(FloppySetParamsTest)
+BOOST_AUTO_TEST_CASE(FloppySet525InchParamsTest)
 {
+  // getfdprm parameters
+  // DS HD tpi=96 size=2400 sect=15 dtr=0 perp=0 fm=0 cyl=80 ssize=512 gap=0x1b fmt_gap=0x6c spec1=0x00 (AT/HD)
+  // DS HD tpi=96 size=2464 sect=8 dtr=0 perp=0 fm=0 cyl=77 ssize=1KB gap=0x1b fmt_gap=0x6c spec1=0x00  (98/HD)
+  // DS DD tpi=48 size=640 sect=16 dtr=1 perp=0 fm=0 cyl=40 ssize=256 gap=0x23 fmt_gap=0x46 spec1=0x00 (X68/HD)
+  // DS DD tpi=48 size=640 sect=16 dtr=1 perp=0 fm=0 cyl=40 ssize=256 gap=0x23 fmt_gap=0x46 spec1=0x00 (X1,88/2D)
+  // DS HD tpi=96 size=2080 sect=26 dtr=0 perp=0 fm=0 cyl=80 ssize=256 gap=0x1b fmt_gap=0x50 spec1=0x00 (88/HD)
+  // DS HD tpi=96 size=1232 sect=16 dtr=0 perp=0 fm=0 cyl=77 ssize=256 gap=0x1b fmt_gap=0x6c spec1=0x00 (88/X1)
   FdtError* err = fdt_error_new();
   BOOST_REQUIRE(err);
 
