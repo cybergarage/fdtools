@@ -125,12 +125,15 @@ bool fdt_floppy_params_setdtr(FdtFloppyParams* params, FdtFloppyDataTransferRate
   case FDT_FLOPPY_DTR_MFM_500KB:
   case FDT_FLOPPY_DTR_MFM_1000KB:
     fdt_floppy_params_setgap1size(params, 27 /* 0x1b */);
+    fdt_floppy_params_setgap2size(params, 108 /* 0x6c */);
     break;
   case FDT_FLOPPY_DTR_MFM_300KB:
     fdt_floppy_params_setgap1size(params, 35 /* 0x23 */);
+    fdt_floppy_params_setgap2size(params, 108 /* 0x6c */);
     break;
   case FDT_FLOPPY_DTR_MFM_250KB:
     fdt_floppy_params_setgap1size(params, 42 /* 0x2a */);
+    fdt_floppy_params_setgap2size(params, 108 /* 0x6c */);
     break;
   default:
     fdt_error_setmessage(err, FDT_DEVICE_FOLPPY_ERROR_UNKNOWN_DATA_TRANSFER_RATE_TYPE_FORMAT, dtr);
