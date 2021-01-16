@@ -40,8 +40,8 @@ bool fdt_floppy_struct_setfloppystruct(floppy_struct* fdparams, FdtFloppyParams*
 	fdparams->gap = fdt_floppy_params_getgap1size(params);
   /*
 	fdparams->rate =
-	fdparams->spec1 =
   */
+	fdparams->spec1 = 0;
 	fdparams->fmt_gap = fdt_floppy_params_getgap2size(params);
 
   return true;
