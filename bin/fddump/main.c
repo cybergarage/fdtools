@@ -29,6 +29,7 @@ const char* OPT_SECTORS = "n";
 const char* OPT_SSIZE = "s";
 const char* OPT_VERBOSE = "v";
 const char* OPT_DEBUG = "d";
+const char* OPT_RETRY_PASSES = "r";
 
 bool verbose_enabled = false;
 bool debug_enabled = false;
@@ -178,6 +179,7 @@ int main(int argc, char* argv[])
   fdt_program_addoption(prg, OPT_SECTORS, "number of sectors", true, "");
   fdt_program_addoption(prg, OPT_SSIZE, "sector size", true, "");
   fdt_program_addoption(prg, OPT_VERBOSE, "enable verbose messages", false, "");
+  fdt_program_addoption(prg, OPT_RETRY_PASSES, "number of retry passes", false, "");
 
   if (!fdt_program_parse(prg, argc, argv, err)) {
     print_error(err);
