@@ -38,7 +38,7 @@ const char* fdt_image_type_getstring(FdtImageType);
 
 const int FDT_IMAGE_HEADER_SIGNATURE_MAX = 8;
 
-typedef bool (*FDT_IMAGE_HASEXTENTION)(void*, const char*);
+typedef bool (*FDT_IMAGE_HASEXT)(void*, const char*);
 typedef bool (*FDT_IMAGE_OPENER)(void*, const char*, FdtFileMode, FdtError*);
 typedef bool (*FDT_IMAGE_CLOSER)(void*, FdtError*);
 typedef bool (*FDT_IMAGE_ISOPENED)(void*);
@@ -46,17 +46,17 @@ typedef bool (*FDT_IMAGE_LOADER)(void*, FdtError*);
 typedef bool (*FDT_IMAGE_EXPORTER)(void*, FdtError*);
 typedef bool (*FDT_IMAGE_DESTRUCTOR)(void*);
 
-#define FDT_IMAGE_STRUCT_MEMBERS          \
-  FdtImageType type;                      \
-  FdtString* name;                        \
-  FdtImageConfig* config;                 \
-  FdtImageSectors* sectors;               \
-  FDT_IMAGE_OPENER image_hasext;          \
-  FDT_IMAGE_OPENER image_opener;          \
-  FDT_IMAGE_CLOSER image_closer;          \
+#define FDT_IMAGE_STRUCT_MEMBERS     \
+  FdtImageType type;                 \
+  FdtString* name;                   \
+  FdtImageConfig* config;            \
+  FdtImageSectors* sectors;          \
+  FDT_IMAGE_HASEXT image_hasext;     \
+  FDT_IMAGE_OPENER image_opener;     \
+  FDT_IMAGE_CLOSER image_closer;     \
   FDT_IMAGE_ISOPENED image_isopened; \
-  FDT_IMAGE_LOADER image_loader;          \
-  FDT_IMAGE_EXPORTER image_exporter;      \
+  FDT_IMAGE_LOADER image_loader;     \
+  FDT_IMAGE_EXPORTER image_exporter; \
   FDT_IMAGE_DESTRUCTOR image_destructor;
 
 typedef struct FDT_ATTR_PACKED {
@@ -88,7 +88,7 @@ void fdt_image_print(FdtImage* img);
 
 #define fdt_image_getconfig(img) (img->config)
 
-#define fdt_image_setextention(img, fn) (img->image_hasext = (FDT_IMAGE_HASEXTENTION)fn)
+#define fdt_image_setextention(img, fn) (img->image_hasext = (FDT_IMAGE_HASEXT)fn)
 #define fdt_image_setopener(img, fn) (img->image_opener = (FDT_IMAGE_OPENER)fn)
 #define fdt_image_setcloser(img, fn) (img->image_closer = (FDT_IMAGE_CLOSER)fn)
 #define fdt_image_setopenchecker(img, fn) (img->image_isopened = (FDT_IMAGE_ISOPENED)fn)

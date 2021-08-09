@@ -65,6 +65,13 @@ bool fdt_image_clear(FdtImage* img)
   return true;
 }
 
+bool fdt_image_hasextention(FdtImage* img, const char* filename)
+{
+  if (!img)
+    return false;
+  return img->image_hasext(img, filename);
+}
+
 bool fdt_image_open(FdtImage* img, const char* name, FdtFileMode mode, FdtError* err)
 {
   if (!img)
