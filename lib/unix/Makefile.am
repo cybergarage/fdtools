@@ -16,10 +16,11 @@
 lib_LIBRARIES = libfdtools.a
 #endif
 
-AM_CFLAGS = -I$(top_builddir)/include
-AM_CPPFLAGS = -I$(top_builddir)/include
+AM_CFLAGS = -I$(top_builddir)/include -I$(top_builddir)/src
+AM_CPPFLAGS = -I$(top_builddir)/include -I$(top_builddir)/src
 
 fdtools_sources = \
+	../../src/fdtools/plugins/lorder.cpp \
 	../../src/fdtools/img/plugins.cpp \
 	../../src/fdtools/img/sector.cpp \
 	../../src/fdtools/img/raw_loader.cpp \

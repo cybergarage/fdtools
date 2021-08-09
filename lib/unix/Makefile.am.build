@@ -18,8 +18,8 @@ print<<HEADER;
 lib_LIBRARIES = libfdtools.a
 #endif
 
-AM_CFLAGS = -I\$(top_builddir)/include
-AM_CPPFLAGS = -I\$(top_builddir)/include
+AM_CFLAGS = -I\$(top_builddir)/include -I\$(top_builddir)/src
+AM_CPPFLAGS = -I\$(top_builddir)/include -I\$(top_builddir)/src
 
 fdtools_sources = \\
 HEADER
