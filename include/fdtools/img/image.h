@@ -40,7 +40,7 @@ const int FDT_IMAGE_HEADER_SIGNATURE_MAX = 8;
 
 typedef bool (*FDT_IMAGE_OPENER)(void*, const char*, FdtFileMode, FdtError*);
 typedef bool (*FDT_IMAGE_CLOSER)(void*, FdtError*);
-typedef bool (*FDT_IMAGE_OPENCHECKER)(void*);
+typedef bool (*FDT_IMAGE_ISOPENED)(void*);
 typedef bool (*FDT_IMAGE_LOADER)(void*, FdtError*);
 typedef bool (*FDT_IMAGE_EXPORTER)(void*, FdtError*);
 typedef bool (*FDT_IMAGE_DESTRUCTOR)(void*);
@@ -52,7 +52,7 @@ typedef bool (*FDT_IMAGE_DESTRUCTOR)(void*);
   FdtImageSectors* sectors;               \
   FDT_IMAGE_OPENER image_opener;          \
   FDT_IMAGE_CLOSER image_closer;          \
-  FDT_IMAGE_OPENCHECKER image_openchcker; \
+  FDT_IMAGE_ISOPENED image_isopened; \
   FDT_IMAGE_LOADER image_loader;          \
   FDT_IMAGE_EXPORTER image_exporter;      \
   FDT_IMAGE_DESTRUCTOR image_destructor;
@@ -88,7 +88,7 @@ void fdt_image_print(FdtImage* img);
 
 #define fdt_image_setopener(img, fn) (img->image_opener = (FDT_IMAGE_OPENER)fn)
 #define fdt_image_setcloser(img, fn) (img->image_closer = (FDT_IMAGE_CLOSER)fn)
-#define fdt_image_setopenchecker(img, fn) (img->image_openchcker = (FDT_IMAGE_OPENCHECKER)fn)
+#define fdt_image_setopenchecker(img, fn) (img->image_isopened = (FDT_IMAGE_ISOPENED)fn)
 #define fdt_image_setloader(img, fn) (img->image_loader = (FDT_IMAGE_LOADER)fn)
 #define fdt_image_setexporter(img, fn) (img->image_exporter = (FDT_IMAGE_EXPORTER)fn)
 #define fdt_image_setdestructor(img, fn) (img->image_destructor = (FDT_IMAGE_DESTRUCTOR)fn)

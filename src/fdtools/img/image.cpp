@@ -84,7 +84,7 @@ bool fdt_image_load(FdtImage* img, FdtError* err)
   if (!img)
     return false;
 
-  bool is_already_opened = img->image_openchcker(img);
+  bool is_already_opened = img->image_isopened(img);
   if (!is_already_opened) {
     if (!fdt_image_open(img, fdt_image_getname(img), FDT_FILE_READ, err))
       return false;
@@ -139,7 +139,7 @@ bool fdt_image_export(FdtImage* img, FdtError* err)
   if (!img)
     return false;
 
-  bool is_already_opened = img->image_openchcker(img);
+  bool is_already_opened = img->image_isopened(img);
   if (!is_already_opened) {
     if (!fdt_image_open(img, fdt_image_getname(img), FDT_FILE_WRITE, err))
       return false;
