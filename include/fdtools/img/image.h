@@ -93,7 +93,8 @@ void fdt_image_print(FdtImage* img);
 
 #define fdt_image_getconfig(img) (img->config)
 
-#define fdt_image_setextention(img, fn) (img->image_hasext = (FDT_IMAGE_HASEXT)fn)
+#define fdt_image_sethasext(img, fn) (img->image_hasext = (FDT_IMAGE_HASEXT)fn)
+#define fdt_image_sethassig(img, fn) (img->image_hassig = (FDT_IMAGE_HASSIG)fn)
 #define fdt_image_setopener(img, fn) (img->image_opener = (FDT_IMAGE_OPENER)fn)
 #define fdt_image_setcloser(img, fn) (img->image_closer = (FDT_IMAGE_CLOSER)fn)
 #define fdt_image_setopenchecker(img, fn) (img->image_isopened = (FDT_IMAGE_ISOPENED)fn)
