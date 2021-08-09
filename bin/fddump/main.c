@@ -74,7 +74,7 @@ void print_usage(FdtProgram* prg)
 {
   flush_message();
 
-  printf("Usage: %s [OPTIONS] <source file name> <destination file name>\n", fdt_program_getname(prg));
+  printf("Usage: %s [OPTIONS] <source device or file name> <destination device or file name>\n", fdt_program_getname(prg));
   fdt_program_printoptionusages(prg);
 }
 
