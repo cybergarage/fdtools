@@ -65,7 +65,7 @@ bool fdt_image_clear(FdtImage* img)
   return true;
 }
 
-bool fdt_image_hasextention(FdtImage* img, const char* filename)
+bool fdt_image_hasext(FdtImage* img, const char* filename)
 {
   if (!img || !img->image_hasext)
     return false;
