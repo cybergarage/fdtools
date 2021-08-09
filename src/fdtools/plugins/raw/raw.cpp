@@ -21,13 +21,14 @@ FdtImage* fdt_raw_image_new(void)
     return NULL;
 
   fdt_image_settype(img, FDT_IMAGE_TYPE_RAW);
+  fdt_image_sethasext(img, fdt_raw_image_hasext);
   fdt_image_setloader(img, fdt_raw_image_load);
   fdt_image_setexporter(img, fdt_raw_image_export);
 
   return img;
 }
 
-bool fdt_raw_image_hasext(FdtImage* img, const char* filename)
+bool fdt_raw_image_hasext(FdtFileImage* img, const char* filename)
 {
   if (fdt_file_hasextension(filename, FDT_RAW_EXTENTION_RAW))
     return true;
