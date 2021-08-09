@@ -17,9 +17,6 @@
 
 #include <fdtools/plugins/d88/d88.h>
 
-bool fdt_d88_image_load(FdtFileImage*, FdtError* err);
-bool fdt_d88_image_export(FdtFileImage*, FdtError* err);
-
 FdtImage* fdt_d88_image_new(void)
 {
   FdtImage* img = fdt_image_file_new();
@@ -27,10 +24,30 @@ FdtImage* fdt_d88_image_new(void)
     return NULL;
 
   fdt_image_settype(img, FDT_IMAGE_TYPE_D88);
+  fdt_image_sethasext(img, fdt_d88_image_hasext);
   fdt_image_setloader(img, fdt_d88_image_load);
   fdt_image_setexporter(img, fdt_d88_image_export);
 
   return img;
+}
+
+bool fdt_d88_image_hasext(FdtFileImage* img, const char* filename)
+{
+  if (fdt_file_hasextension(filename, D88_EXTENTION_D88))
+    return true;
+  if (fdt_file_hasextension(filename, D88_EXTENTION_88D))
+    return true;
+  if (fdt_file_hasextension(filename, D88_EXTENTION_D77))
+    return true;
+  if (fdt_file_hasextension(filename, D88_EXTENTION_D68))
+    return true;
+  if (fdt_file_hasextension(filename, D88_EXTENTION_D98))
+    return true;
+  if (fdt_file_hasextension(filename, D88_EXTENTION_D8U))
+    return true;
+  if (fdt_file_hasextension(filename, D88_EXTENTION_1DD))
+    return true;
+  return false;
 }
 
 void fdt_d88_header_setconfigerror(FdtD88Header* d88_header, FdtImage* img, FdtError* err)

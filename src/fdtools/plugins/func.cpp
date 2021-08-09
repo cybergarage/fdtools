@@ -147,19 +147,7 @@ FdtImageType fdt_image_name_gettypebyname(const char* filename)
   if (fdt_image_name_isdevice(filename))
     return FDT_IMAGE_TYPE_DEV;
 
-  if (fdt_file_hasextension(filename, D88_EXTENTION_D88))
-    return FDT_IMAGE_TYPE_D88;
-  if (fdt_file_hasextension(filename, D88_EXTENTION_88D))
-    return FDT_IMAGE_TYPE_D88;
-  if (fdt_file_hasextension(filename, D88_EXTENTION_D77))
-    return FDT_IMAGE_TYPE_D88;
-  if (fdt_file_hasextension(filename, D88_EXTENTION_D68))
-    return FDT_IMAGE_TYPE_D88;
-  if (fdt_file_hasextension(filename, D88_EXTENTION_D98))
-    return FDT_IMAGE_TYPE_D88;
-  if (fdt_file_hasextension(filename, D88_EXTENTION_D8U))
-    return FDT_IMAGE_TYPE_D88;
-  if (fdt_file_hasextension(filename, D88_EXTENTION_1DD))
+  if (fdt_d88_image_hasext(NULL, filename))
     return FDT_IMAGE_TYPE_D88;
 
   if (fdt_file_hasextension(filename, FDT_RAW_EXTENTION_RAW))
