@@ -112,15 +112,16 @@ CONFIG_HEADER = $(top_builddir)/config.h
 CONFIG_CLEAN_FILES =
 CONFIG_CLEAN_VPATH_FILES =
 am__dirstamp = $(am__leading_dot)dirstamp
-am_fdtoolstest_OBJECTS = ../device_floppy_test.$(OBJEXT) \
-	../error_test.$(OBJEXT) ../image_hfe_test.$(OBJEXT) \
-	../image_test_func.$(OBJEXT) ../image_raw_test.$(OBJEXT) \
-	../sector_test.$(OBJEXT) ../main.$(OBJEXT) \
-	../image_test.$(OBJEXT) ../dictionary_test.$(OBJEXT) \
-	../program_test.$(OBJEXT) ../list_test.$(OBJEXT) \
-	../config_test.$(OBJEXT) ../logic_test.$(OBJEXT) \
-	../image_file_test.$(OBJEXT) ../string_test.$(OBJEXT) \
-	../device_test.$(OBJEXT) ../image_d88_test.$(OBJEXT)
+am_fdtoolstest_OBJECTS = ../config_test.$(OBJEXT) \
+	../image_test.$(OBJEXT) ../image_test_func.$(OBJEXT) \
+	../error_test.$(OBJEXT) ../logic_test.$(OBJEXT) \
+	../string_test.$(OBJEXT) ../sector_test.$(OBJEXT) \
+	../device_test.$(OBJEXT) ../dictionary_test.$(OBJEXT) \
+	../list_test.$(OBJEXT) ../image_plugin_test.$(OBJEXT) \
+	../image_hfe_test.$(OBJEXT) ../main.$(OBJEXT) \
+	../image_file_test.$(OBJEXT) ../device_floppy_test.$(OBJEXT) \
+	../image_raw_test.$(OBJEXT) ../image_d88_test.$(OBJEXT) \
+	../program_test.$(OBJEXT)
 fdtoolstest_OBJECTS = $(am_fdtoolstest_OBJECTS)
 fdtoolstest_DEPENDENCIES = ../../lib/unix/libfdtools.a
 AM_V_P = $(am__v_P_@AM_V@)
@@ -142,11 +143,13 @@ am__depfiles_remade = ../$(DEPDIR)/config_test.Po \
 	../$(DEPDIR)/device_floppy_test.Po ../$(DEPDIR)/device_test.Po \
 	../$(DEPDIR)/dictionary_test.Po ../$(DEPDIR)/error_test.Po \
 	../$(DEPDIR)/image_d88_test.Po ../$(DEPDIR)/image_file_test.Po \
-	../$(DEPDIR)/image_hfe_test.Po ../$(DEPDIR)/image_raw_test.Po \
-	../$(DEPDIR)/image_test.Po ../$(DEPDIR)/image_test_func.Po \
-	../$(DEPDIR)/list_test.Po ../$(DEPDIR)/logic_test.Po \
-	../$(DEPDIR)/main.Po ../$(DEPDIR)/program_test.Po \
-	../$(DEPDIR)/sector_test.Po ../$(DEPDIR)/string_test.Po
+	../$(DEPDIR)/image_hfe_test.Po \
+	../$(DEPDIR)/image_plugin_test.Po \
+	../$(DEPDIR)/image_raw_test.Po ../$(DEPDIR)/image_test.Po \
+	../$(DEPDIR)/image_test_func.Po ../$(DEPDIR)/list_test.Po \
+	../$(DEPDIR)/logic_test.Po ../$(DEPDIR)/main.Po \
+	../$(DEPDIR)/program_test.Po ../$(DEPDIR)/sector_test.Po \
+	../$(DEPDIR)/string_test.Po
 am__mv = mv -f
 CXXCOMPILE = $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) \
 	$(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS)
@@ -489,23 +492,24 @@ top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
 AM_CPPFLAGS = -I$(top_builddir)/include -I../
 fdtoolstest_SOURCES = \
-	../device_floppy_test.cpp \
-	../error_test.cpp \
-	../image_hfe_test.cpp \
-	../image_test_func.cpp \
-	../image_raw_test.cpp \
-	../sector_test.cpp \
-	../main.cpp \
-	../image_test.cpp \
-	../dictionary_test.cpp \
-	../program_test.cpp \
-	../list_test.cpp \
 	../config_test.cpp \
+	../image_test.cpp \
+	../image_test_func.cpp \
+	../error_test.cpp \
 	../logic_test.cpp \
-	../image_file_test.cpp \
 	../string_test.cpp \
+	../sector_test.cpp \
 	../device_test.cpp \
-	../image_d88_test.cpp
+	../dictionary_test.cpp \
+	../list_test.cpp \
+	../image_plugin_test.cpp \
+	../image_hfe_test.cpp \
+	../main.cpp \
+	../image_file_test.cpp \
+	../device_floppy_test.cpp \
+	../image_raw_test.cpp \
+	../image_d88_test.cpp \
+	../program_test.cpp
 
 
 #if HAVE_LIBTOOL
@@ -554,38 +558,40 @@ clean-checkPROGRAMS:
 ../$(DEPDIR)/$(am__dirstamp):
 	@$(MKDIR_P) ../$(DEPDIR)
 	@: > ../$(DEPDIR)/$(am__dirstamp)
-../device_floppy_test.$(OBJEXT): ../$(am__dirstamp) \
+../config_test.$(OBJEXT): ../$(am__dirstamp) \
 	../$(DEPDIR)/$(am__dirstamp)
-../error_test.$(OBJEXT): ../$(am__dirstamp) \
-	../$(DEPDIR)/$(am__dirstamp)
-../image_hfe_test.$(OBJEXT): ../$(am__dirstamp) \
+../image_test.$(OBJEXT): ../$(am__dirstamp) \
 	../$(DEPDIR)/$(am__dirstamp)
 ../image_test_func.$(OBJEXT): ../$(am__dirstamp) \
 	../$(DEPDIR)/$(am__dirstamp)
-../image_raw_test.$(OBJEXT): ../$(am__dirstamp) \
-	../$(DEPDIR)/$(am__dirstamp)
-../sector_test.$(OBJEXT): ../$(am__dirstamp) \
-	../$(DEPDIR)/$(am__dirstamp)
-../main.$(OBJEXT): ../$(am__dirstamp) ../$(DEPDIR)/$(am__dirstamp)
-../image_test.$(OBJEXT): ../$(am__dirstamp) \
-	../$(DEPDIR)/$(am__dirstamp)
-../dictionary_test.$(OBJEXT): ../$(am__dirstamp) \
-	../$(DEPDIR)/$(am__dirstamp)
-../program_test.$(OBJEXT): ../$(am__dirstamp) \
-	../$(DEPDIR)/$(am__dirstamp)
-../list_test.$(OBJEXT): ../$(am__dirstamp) \
-	../$(DEPDIR)/$(am__dirstamp)
-../config_test.$(OBJEXT): ../$(am__dirstamp) \
+../error_test.$(OBJEXT): ../$(am__dirstamp) \
 	../$(DEPDIR)/$(am__dirstamp)
 ../logic_test.$(OBJEXT): ../$(am__dirstamp) \
 	../$(DEPDIR)/$(am__dirstamp)
-../image_file_test.$(OBJEXT): ../$(am__dirstamp) \
-	../$(DEPDIR)/$(am__dirstamp)
 ../string_test.$(OBJEXT): ../$(am__dirstamp) \
+	../$(DEPDIR)/$(am__dirstamp)
+../sector_test.$(OBJEXT): ../$(am__dirstamp) \
 	../$(DEPDIR)/$(am__dirstamp)
 ../device_test.$(OBJEXT): ../$(am__dirstamp) \
 	../$(DEPDIR)/$(am__dirstamp)
+../dictionary_test.$(OBJEXT): ../$(am__dirstamp) \
+	../$(DEPDIR)/$(am__dirstamp)
+../list_test.$(OBJEXT): ../$(am__dirstamp) \
+	../$(DEPDIR)/$(am__dirstamp)
+../image_plugin_test.$(OBJEXT): ../$(am__dirstamp) \
+	../$(DEPDIR)/$(am__dirstamp)
+../image_hfe_test.$(OBJEXT): ../$(am__dirstamp) \
+	../$(DEPDIR)/$(am__dirstamp)
+../main.$(OBJEXT): ../$(am__dirstamp) ../$(DEPDIR)/$(am__dirstamp)
+../image_file_test.$(OBJEXT): ../$(am__dirstamp) \
+	../$(DEPDIR)/$(am__dirstamp)
+../device_floppy_test.$(OBJEXT): ../$(am__dirstamp) \
+	../$(DEPDIR)/$(am__dirstamp)
+../image_raw_test.$(OBJEXT): ../$(am__dirstamp) \
+	../$(DEPDIR)/$(am__dirstamp)
 ../image_d88_test.$(OBJEXT): ../$(am__dirstamp) \
+	../$(DEPDIR)/$(am__dirstamp)
+../program_test.$(OBJEXT): ../$(am__dirstamp) \
 	../$(DEPDIR)/$(am__dirstamp)
 
 fdtoolstest$(EXEEXT): $(fdtoolstest_OBJECTS) $(fdtoolstest_DEPENDENCIES) $(EXTRA_fdtoolstest_DEPENDENCIES) 
@@ -607,6 +613,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@../$(DEPDIR)/image_d88_test.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@../$(DEPDIR)/image_file_test.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@../$(DEPDIR)/image_hfe_test.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@../$(DEPDIR)/image_plugin_test.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@../$(DEPDIR)/image_raw_test.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@../$(DEPDIR)/image_test.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@../$(DEPDIR)/image_test_func.Po@am__quote@ # am--include-marker
@@ -941,6 +948,7 @@ distclean: distclean-am
 	-rm -f ../$(DEPDIR)/image_d88_test.Po
 	-rm -f ../$(DEPDIR)/image_file_test.Po
 	-rm -f ../$(DEPDIR)/image_hfe_test.Po
+	-rm -f ../$(DEPDIR)/image_plugin_test.Po
 	-rm -f ../$(DEPDIR)/image_raw_test.Po
 	-rm -f ../$(DEPDIR)/image_test.Po
 	-rm -f ../$(DEPDIR)/image_test_func.Po
@@ -1003,6 +1011,7 @@ maintainer-clean: maintainer-clean-am
 	-rm -f ../$(DEPDIR)/image_d88_test.Po
 	-rm -f ../$(DEPDIR)/image_file_test.Po
 	-rm -f ../$(DEPDIR)/image_hfe_test.Po
+	-rm -f ../$(DEPDIR)/image_plugin_test.Po
 	-rm -f ../$(DEPDIR)/image_raw_test.Po
 	-rm -f ../$(DEPDIR)/image_test.Po
 	-rm -f ../$(DEPDIR)/image_test_func.Po
