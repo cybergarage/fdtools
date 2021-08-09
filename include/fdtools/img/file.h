@@ -18,9 +18,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include <fdtools/util/file.h>
-#include <fdtools/img/image.h>
 #include <fdtools/img/error.h>
+#include <fdtools/img/image.h>
+#include <fdtools/util/file.h>
 
 #ifdef __cplusplus
 extern "C" {
