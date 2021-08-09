@@ -14,8 +14,6 @@
 
 #include <fdtools/plugins/hfe/hfe.h>
 
-bool fdt_hfe_image_load(FdtFileImage* img, FdtError* err);
-
 FdtImage* fdt_hfe_image_new(void)
 {
   FdtImage* img = fdt_image_file_new();
@@ -23,7 +21,17 @@ FdtImage* fdt_hfe_image_new(void)
     return NULL;
 
   fdt_image_settype(img, FDT_IMAGE_TYPE_HFE);
+  fdt_image_sethassig(img, fdt_hfe_image_hassig);
   fdt_image_setloader(img, fdt_hfe_image_load);
 
   return img;
+}
+
+bool fdt_hfe_image_hassig(FdtFileImage* img, byte_t* header, size_t header_size)
+{
+  if (header_size < fdt_strlen(HFE_IMAGE_HEADER_SIGNATURE))
+    return false;
+  if (fdt_strncmp((char*)header, HFE_IMAGE_HEADER_SIGNATURE, fdt_strlen(HFE_IMAGE_HEADER_SIGNATURE)) == 0)
+    return true;
+  return false;
 }

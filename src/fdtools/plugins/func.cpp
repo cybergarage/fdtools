@@ -130,9 +130,8 @@ FdtImageType fdt_image_name_gettypebysignature(const char* filename)
     return FDT_IMAGE_TYPE_UNKNOWN;
   }
 
-  if (fdt_strncmp(sig, HFE_IMAGE_HEADER_SIGNATURE, fdt_strlen(HFE_IMAGE_HEADER_SIGNATURE)) == 0) {
+  if (fdt_hfe_image_hassig(NULL, (byte_t*)sig, FDT_IMAGE_HEADER_SIGNATURE_MAX))
     return FDT_IMAGE_TYPE_HFE;
-  }
 
   // Identify image file type by the filename extention
 
