@@ -72,7 +72,7 @@ bool fdt_image_hasext(FdtImage* img, const char* filename)
   return img->image_hasext(img, filename);
 }
 
-bool fdt_image_hassignature(FdtImage* img, byte_t* header, size_t header_size)
+bool fdt_image_hassig(FdtImage* img, byte_t* header, size_t header_size)
 {
   if (!img || img->image_hassig)
     return false;
