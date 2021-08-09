@@ -12,33 +12,10 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include <fdtools/img/plugin.h>
+#include <fdtools/plugins/loader.h>
 
-FdtImagePlugins* fdt_image_plugins_new()
-{
-  FdtImagePlugin* plgs = (FdtImagePlugins*)malloc(sizeof(FdtImagePlugins));
-  if (!plgs) {
-    return NULL;
-  }
-  fdt_list_header_init((FdtList*)plgs);
-  return plgs;
-}
-
-bool fdt_image_plugins_delete(FdtImagePlugins* plgs)
-{
-  if (!plgs)
-    return true;
-  fdt_image_plugins_clear(plgs);
-  free(plgs);
-  return true;
-}
-
-bool fdt_image_plugins_add(FdtImagePlugins* plgs, FDT_IMAGE_IMAGER fn)
+FdtImagePlugins* fdt_plugins_getallimagers()
 {
   FdtImagePlugin* plg = fdt_image_plugin_new();
-  if (!plg)
-    return false;
-  fdt_image_plugin_setimager(plg, fn);
-  fdt_list_add((FdtList*)plgs, (FdtListNode*)plg);
-  return true;
+  return plg;
 }

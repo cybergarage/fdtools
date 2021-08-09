@@ -137,7 +137,7 @@ am__v_AR_1 =
 libfdtools_a_AR = $(AR) $(ARFLAGS)
 libfdtools_a_LIBADD =
 am__dirstamp = $(am__leading_dot)dirstamp
-am__objects_1 = ../../src/fdtools/plugins/lorder.$(OBJEXT) \
+am__objects_1 = ../../src/fdtools/plugins/loader.$(OBJEXT) \
 	../../src/fdtools/img/plugins.$(OBJEXT) \
 	../../src/fdtools/img/sector.$(OBJEXT) \
 	../../src/fdtools/img/raw_loader.$(OBJEXT) \
@@ -215,7 +215,7 @@ am__depfiles_remade = ../../src/fdtools/$(DEPDIR)/error.Po \
 	../../src/fdtools/img/$(DEPDIR)/raw_loader.Po \
 	../../src/fdtools/img/$(DEPDIR)/sector.Po \
 	../../src/fdtools/img/$(DEPDIR)/sectors.Po \
-	../../src/fdtools/plugins/$(DEPDIR)/lorder.Po \
+	../../src/fdtools/plugins/$(DEPDIR)/loader.Po \
 	../../src/fdtools/util/$(DEPDIR)/argument.Po \
 	../../src/fdtools/util/$(DEPDIR)/arguments.Po \
 	../../src/fdtools/util/$(DEPDIR)/dictionary.Po \
@@ -385,7 +385,7 @@ lib_LIBRARIES = libfdtools.a
 AM_CFLAGS = -I$(top_builddir)/include -I$(top_builddir)/src
 AM_CPPFLAGS = -I$(top_builddir)/include -I$(top_builddir)/src
 fdtools_sources = \
-	../../src/fdtools/plugins/lorder.cpp \
+	../../src/fdtools/plugins/loader.cpp \
 	../../src/fdtools/img/plugins.cpp \
 	../../src/fdtools/img/sector.cpp \
 	../../src/fdtools/img/raw_loader.cpp \
@@ -507,7 +507,7 @@ clean-libLIBRARIES:
 ../../src/fdtools/plugins/$(DEPDIR)/$(am__dirstamp):
 	@$(MKDIR_P) ../../src/fdtools/plugins/$(DEPDIR)
 	@: > ../../src/fdtools/plugins/$(DEPDIR)/$(am__dirstamp)
-../../src/fdtools/plugins/lorder.$(OBJEXT):  \
+../../src/fdtools/plugins/loader.$(OBJEXT):  \
 	../../src/fdtools/plugins/$(am__dirstamp) \
 	../../src/fdtools/plugins/$(DEPDIR)/$(am__dirstamp)
 ../../src/fdtools/img/$(am__dirstamp):
@@ -682,7 +682,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@../../src/fdtools/img/$(DEPDIR)/raw_loader.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@../../src/fdtools/img/$(DEPDIR)/sector.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@../../src/fdtools/img/$(DEPDIR)/sectors.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@../../src/fdtools/plugins/$(DEPDIR)/lorder.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@../../src/fdtools/plugins/$(DEPDIR)/loader.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@../../src/fdtools/util/$(DEPDIR)/argument.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@../../src/fdtools/util/$(DEPDIR)/arguments.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@../../src/fdtools/util/$(DEPDIR)/dictionary.Po@am__quote@ # am--include-marker
@@ -903,7 +903,7 @@ distclean: distclean-am
 	-rm -f ../../src/fdtools/img/$(DEPDIR)/raw_loader.Po
 	-rm -f ../../src/fdtools/img/$(DEPDIR)/sector.Po
 	-rm -f ../../src/fdtools/img/$(DEPDIR)/sectors.Po
-	-rm -f ../../src/fdtools/plugins/$(DEPDIR)/lorder.Po
+	-rm -f ../../src/fdtools/plugins/$(DEPDIR)/loader.Po
 	-rm -f ../../src/fdtools/util/$(DEPDIR)/argument.Po
 	-rm -f ../../src/fdtools/util/$(DEPDIR)/arguments.Po
 	-rm -f ../../src/fdtools/util/$(DEPDIR)/dictionary.Po
@@ -985,7 +985,7 @@ maintainer-clean: maintainer-clean-am
 	-rm -f ../../src/fdtools/img/$(DEPDIR)/raw_loader.Po
 	-rm -f ../../src/fdtools/img/$(DEPDIR)/sector.Po
 	-rm -f ../../src/fdtools/img/$(DEPDIR)/sectors.Po
-	-rm -f ../../src/fdtools/plugins/$(DEPDIR)/lorder.Po
+	-rm -f ../../src/fdtools/plugins/$(DEPDIR)/loader.Po
 	-rm -f ../../src/fdtools/util/$(DEPDIR)/argument.Po
 	-rm -f ../../src/fdtools/util/$(DEPDIR)/arguments.Po
 	-rm -f ../../src/fdtools/util/$(DEPDIR)/dictionary.Po

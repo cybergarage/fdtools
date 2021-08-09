@@ -18,8 +18,8 @@
 #include <stdio.h>
 
 #include <fdtools/error.h>
-#include <fdtools/util/list.h>
 #include <fdtools/img/image.h>
+#include <fdtools/util/list.h>
 
 #ifdef __cplusplus
 extern "C" {
