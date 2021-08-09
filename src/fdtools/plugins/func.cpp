@@ -12,11 +12,11 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include <fdtools/img/image.h>
 #include <fdtools/dev/image.h>
+#include <fdtools/img/image.h>
 #include <fdtools/plugins/d88/d88.h>
-#include <fdtools/plugins/raw/raw.h>
 #include <fdtools/plugins/hfe/hfe.h>
+#include <fdtools/plugins/raw/raw.h>
 
 const char* fdt_image_type_getstring(FdtImageType t)
 {

@@ -12,8 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include <fdtools/util/hexdump.h>
 #include <fdtools/plugins/d88/d88.h>
+#include <fdtools/util/hexdump.h>
 
 bool fdt_d88_image_load(FdtFileImage*, FILE*);
 bool fdt_d88_header_parse(FdtD88Header*, byte_t*);
