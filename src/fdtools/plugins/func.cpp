@@ -150,9 +150,7 @@ FdtImageType fdt_image_name_gettypebyname(const char* filename)
   if (fdt_d88_image_hasext(NULL, filename))
     return FDT_IMAGE_TYPE_D88;
 
-  if (fdt_file_hasextension(filename, FDT_RAW_EXTENTION_RAW))
-    return FDT_IMAGE_TYPE_RAW;
-  if (fdt_file_hasextension(filename, FDT_RAW_EXTENTION_IMG))
+  if (fdt_raw_image_hasext(NULL, filename))
     return FDT_IMAGE_TYPE_RAW;
 
   return FDT_IMAGE_TYPE_UNKNOWN;
