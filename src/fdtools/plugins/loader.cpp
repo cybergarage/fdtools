@@ -13,9 +13,21 @@
 // limitations under the License.
 
 #include <fdtools/plugins/loader.h>
+#include <fdtools/plugins/raw/raw.h>
+
+#include <fdtools/plugins/d88/d88.h>
 
 FdtImagePlugins* fdt_plugins_getallimagers()
 {
-  FdtImagePlugin* plg = fdt_image_plugin_new();
-  return plg;
+  FdtImagePlugin* plgs = fdt_image_plugin_new();
+
+  // Adds your image plugins
+
+  fdt_image_plugins_add(plgs, fdt_d88_image_new);
+
+  // Adds the raw image plugin because the plugin has no file header
+
+  fdt_image_plugins_add(plgs, fdt_raw_image_new);
+
+  return plgs;
 }
