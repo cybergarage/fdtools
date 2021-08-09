@@ -67,9 +67,16 @@ bool fdt_image_clear(FdtImage* img)
 
 bool fdt_image_hasextention(FdtImage* img, const char* filename)
 {
-  if (!img)
+  if (!img || !img->image_hasext)
     return false;
   return img->image_hasext(img, filename);
+}
+
+bool fdt_image_hassignature(FdtImage* img, byte_t* header, size_t header_size)
+{
+  if (!img || img->image_hassig)
+    return false;
+  return img->image_hassig(img, header, header_size);
 }
 
 bool fdt_image_open(FdtImage* img, const char* name, FdtFileMode mode, FdtError* err)

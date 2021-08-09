@@ -20,6 +20,7 @@
 #include <fdtools/error.h>
 #include <fdtools/img/config.h>
 #include <fdtools/img/sector.h>
+#include <fdtools/typedef.h>
 #include <fdtools/util/file.h>
 
 #ifdef __cplusplus
@@ -39,6 +40,7 @@ const char* fdt_image_type_getstring(FdtImageType);
 const int FDT_IMAGE_HEADER_SIGNATURE_MAX = 8;
 
 typedef bool (*FDT_IMAGE_HASEXT)(void*, const char*);
+typedef bool (*FDT_IMAGE_HASSIG)(void*, byte_t*, size_t);
 typedef bool (*FDT_IMAGE_OPENER)(void*, const char*, FdtFileMode, FdtError*);
 typedef bool (*FDT_IMAGE_CLOSER)(void*, FdtError*);
 typedef bool (*FDT_IMAGE_ISOPENED)(void*);
@@ -52,6 +54,7 @@ typedef bool (*FDT_IMAGE_DESTRUCTOR)(void*);
   FdtImageConfig* config;            \
   FdtImageSectors* sectors;          \
   FDT_IMAGE_HASEXT image_hasext;     \
+  FDT_IMAGE_HASSIG image_hassig;     \
   FDT_IMAGE_OPENER image_opener;     \
   FDT_IMAGE_CLOSER image_closer;     \
   FDT_IMAGE_ISOPENED image_isopened; \
@@ -71,6 +74,8 @@ bool fdt_image_delete(FdtImage*);
 bool fdt_image_init(FdtImage*);
 bool fdt_image_clear(FdtImage*);
 
+bool fdt_image_hasextention(FdtImage*, const char);
+bool fdt_image_hassignature(FdtImage*, byte_t*, size_t);
 bool fdt_image_open(FdtImage*, const char*, FdtFileMode, FdtError*);
 bool fdt_image_close(FdtImage*, FdtError*);
 bool fdt_image_isopened(FdtImage*);
