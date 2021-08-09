@@ -61,6 +61,8 @@ typedef struct FDT_ATTR_PACKED {
   FDT_IMAGE_STRUCT_MEMBERS
 } FdtImage;
 
+typedef FdtImage* (*FDT_IMAGE_IMAGER)(void);
+
 FdtImage* fdt_image_new();
 bool fdt_image_delete(FdtImage*);
 

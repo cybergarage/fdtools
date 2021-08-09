@@ -20,6 +20,7 @@ AM_CFLAGS = -I$(top_builddir)/include
 AM_CPPFLAGS = -I$(top_builddir)/include
 
 fdtools_sources = \
+	../../src/fdtools/img/plugins.cpp \
 	../../src/fdtools/img/sector.cpp \
 	../../src/fdtools/img/raw_loader.cpp \
 	../../src/fdtools/img/plugin.cpp \

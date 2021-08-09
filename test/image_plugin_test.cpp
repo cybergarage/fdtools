@@ -17,7 +17,7 @@
 
 BOOST_AUTO_TEST_CASE(ImagePluginTest)
 {
-  FdtImagePlugin *plg = fdt_image_plugin_new();
+  FdtImagePlugin* plg = fdt_image_plugin_new();
   BOOST_CHECK(plg);
   BOOST_CHECK(fdt_image_plugin_delete(plg));
 }

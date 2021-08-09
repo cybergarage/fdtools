@@ -14,23 +14,31 @@
 
 #include <fdtools/img/plugin.h>
 
-FdtImagePlugin* fdt_image_plugin_new()
+FdtImagePlugins* fdt_image_plugins_new()
 {
-  FdtImagePlugin* plg = (FdtImagePlugin*)malloc(sizeof(FdtImagePlugin));
-  if (!plg) {
+  FdtImagePlugin* plgs = (FdtImagePlugins*)malloc(sizeof(FdtImagePlugins));
+  if (!plgs) {
     return NULL;
   }
-
-  fdt_list_node_init((FdtListNode*)plg);
-
-  return plg;
+  fdt_list_header_init((FdtList*)plgs);
+  return plgs;
 }
 
-bool fdt_image_plugin_delete(FdtImagePlugin* plg)
+bool fdt_image_plugins_delete(FdtImagePlugins* plgs)
 {
-  if (!plg)
+  if (!plgs)
     return true;
-  fdt_list_remove((FdtListNode*)plg);
-  free(plg);
+  fdt_image_plugins_clear(plgs);
+  free(plgs);
+  return true;
+}
+
+bool fdt_image_plugins_add(FdtImagePlugins*plgs, FDT_IMAGE_IMAGER fn)
+{
+  FdtImagePlugin* plg = fdt_image_plugin_new();
+  if (!plg)
+    return false;
+  fdt_image_plugin_setimager(plg, fn);
+  fdt_list_add((FdtList*)plgs, (FdtListNode*)plg);
   return true;
 }

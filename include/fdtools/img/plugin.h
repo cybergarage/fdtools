@@ -18,19 +18,32 @@
 #include <stdio.h>
 
 #include <fdtools/error.h>
-#include <fdtools/util/dictionary.h>
+#include <fdtools/util/list.h>
+#include <fdtools/img/image.h>
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
+typedef struct {
+  FDT_LIST_STRUCT_MEMBERS
+  FDT_IMAGE_IMAGER imager;
+} FdtImagePlugin, FdtImagePlugins;
 
-typedef struct FDT_ATTR_PACKED {
-  FdtDictionary* imagers;
-} FdtImagePlugin;
+FdtImagePlugins* fdt_image_plugins_new();
+bool fdt_image_plugins_delete(FdtImagePlugins*);
+bool fdt_image_plugins_add(FdtImagePlugins*, FDT_IMAGE_IMAGER);
+
+#define fdt_image_plugins_size(plgs) fdt_list_size((FdtList*)plgs)
+#define fdt_image_plugins_gets(plgs) ((FdtImagePlugin*)fdt_list_gets((FdtList*)plgs))
+#define fdt_image_plugins_get(plgs, n) ((FdtImagePlugin*)fdt_list_get((FdtList*)plgs, n))
+#define fdt_image_plugins_clear(plgs) fdt_list_clear((FdtList*)plgs, (FDT_LIST_DESTRUCTORFUNC)fdt_image_plugin_delete)
 
 FdtImagePlugin* fdt_image_plugin_new();
 bool fdt_image_plugin_delete(FdtImagePlugin*);
+
+#define fdt_image_plugin_setimager(plg, v) (plg->imager = v)
+#define fdt_image_plugin_getimager(plg) (plg->imager)
 
 #ifdef __cplusplus
 } /* extern C */
