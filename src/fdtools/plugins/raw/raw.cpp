@@ -14,9 +14,6 @@
 
 #include <fdtools/plugins/raw/raw.h>
 
-bool fdt_raw_image_load(FdtFileImage*, FdtError* err);
-bool fdt_raw_image_export(FdtFileImage*, FdtError* err);
-
 FdtImage* fdt_raw_image_new(void)
 {
   FdtImage* img = fdt_image_file_new();
@@ -28,4 +25,13 @@ FdtImage* fdt_raw_image_new(void)
   fdt_image_setexporter(img, fdt_raw_image_export);
 
   return img;
+}
+
+bool fdt_raw_image_hasext(FdtImage* img, const char* filename)
+{
+  if (fdt_file_hasextension(filename, FDT_RAW_EXTENTION_RAW))
+    return true;
+  if (fdt_file_hasextension(filename, FDT_RAW_EXTENTION_IMG))
+    return true;
+  return false;
 }

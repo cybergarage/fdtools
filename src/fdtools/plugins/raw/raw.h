@@ -26,6 +26,10 @@ const char FDT_RAW_EXTENTION_IMG[] = "img";
 
 FdtImage* fdt_raw_image_new(void);
 
+bool fdt_raw_image_hasext(FdtImage*, const char);
+bool fdt_raw_image_load(FdtFileImage*, FdtError* err);
+bool fdt_raw_image_export(FdtFileImage*, FdtError* err);
+
 #ifdef __cplusplus
 } /* extern C */
 #endif
