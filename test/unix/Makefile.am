@@ -29,6 +29,7 @@ fdtoolstest_SOURCES = \
 	../sector_test.cpp \
 	../device_test.cpp \
 	../dictionary_test.cpp \
+	../device_floppy_params_test.cpp \
 	../list_test.cpp \
 	../image_plugin_test.cpp \
 	../image_hfe_test.cpp \

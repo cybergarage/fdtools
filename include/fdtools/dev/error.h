@@ -12,8 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef _FDTOOLS_IMG_ERROR_H_
-#define _FDTOOLS_IMG_ERROR_H_
+#ifndef _FDTOOLS_DEV_ERROR_H_
+#define _FDTOOLS_DEV_ERROR_H_
 
 #include <fdtools/error.h>
 
@@ -21,16 +21,13 @@
 extern "C" {
 #endif
 
-#define FDT_IMAGE_MESSAGE_SECTOR_PRINTF_FORMAT "C:%02ld H:%01ld R:%02ld"
-#define FDT_IMAGE_MESSAGE_SECTOR_SIZE_PRINTF_FORMAT FDT_IMAGE_MESSAGE_SECTOR_PRINTF_FORMAT " SIZE:%ld"
-#define FDT_IMAGE_MESSAGE_UNKNOWN_TYPE_FORMAT "Unknown image type: %s"
-#define FDT_IMAGE_MESSAGE_SECTORS_NOT_SORTED "Sectors aren't sorted: %s"
-#define FDT_IMAGE_MESSAGE_UNKNOWN_DENSITY_FORMAT "Unknown density: %s"
-
-#define FDT_D88_MESSAGE_HEADER "[D88] "
+#define FDT_DEVICE_FOLPPY_ERROR_UNKNOWN_CMOS_FORMAT "Unknown CMOS type: %d"
+#define FDT_DEVICE_FOLPPY_ERROR_UNKNOWN_DRIVE_TYPE_FORMAT "Unknown drive type: %d"
+#define FDT_DEVICE_FOLPPY_ERROR_INVALID_PARAMETORE_FORMAT "Invalid floppy parameters: %s"
+#define FDT_DEVICE_FOLPPY_ERROR_UNKNOWN_DATA_TRANSFER_RATE_TYPE_FORMAT "Unknown data transfer rate type: %d"
 
 #ifdef __cplusplus
 } /* extern C */
 #endif
 
-#endif /* _FDTOOLS_IMG_ERROR_H_ */
+#endif /* _FDTOOLS_DEV_ERROR_H_ */

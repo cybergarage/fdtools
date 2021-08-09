@@ -117,11 +117,11 @@ am_fdtoolstest_OBJECTS = ../config_test.$(OBJEXT) \
 	../error_test.$(OBJEXT) ../logic_test.$(OBJEXT) \
 	../string_test.$(OBJEXT) ../sector_test.$(OBJEXT) \
 	../device_test.$(OBJEXT) ../dictionary_test.$(OBJEXT) \
-	../list_test.$(OBJEXT) ../image_plugin_test.$(OBJEXT) \
-	../image_hfe_test.$(OBJEXT) ../main.$(OBJEXT) \
-	../image_file_test.$(OBJEXT) ../device_floppy_test.$(OBJEXT) \
-	../image_raw_test.$(OBJEXT) ../image_d88_test.$(OBJEXT) \
-	../program_test.$(OBJEXT)
+	../device_floppy_params_test.$(OBJEXT) ../list_test.$(OBJEXT) \
+	../image_plugin_test.$(OBJEXT) ../image_hfe_test.$(OBJEXT) \
+	../main.$(OBJEXT) ../image_file_test.$(OBJEXT) \
+	../device_floppy_test.$(OBJEXT) ../image_raw_test.$(OBJEXT) \
+	../image_d88_test.$(OBJEXT) ../program_test.$(OBJEXT)
 fdtoolstest_OBJECTS = $(am_fdtoolstest_OBJECTS)
 fdtoolstest_DEPENDENCIES = ../../lib/unix/libfdtools.a
 AM_V_P = $(am__v_P_@AM_V@)
@@ -140,6 +140,7 @@ DEFAULT_INCLUDES = -I.@am__isrc@ -I$(top_builddir)
 depcomp = $(SHELL) $(top_srcdir)/config/depcomp
 am__maybe_remake_depfiles = depfiles
 am__depfiles_remade = ../$(DEPDIR)/config_test.Po \
+	../$(DEPDIR)/device_floppy_params_test.Po \
 	../$(DEPDIR)/device_floppy_test.Po ../$(DEPDIR)/device_test.Po \
 	../$(DEPDIR)/dictionary_test.Po ../$(DEPDIR)/error_test.Po \
 	../$(DEPDIR)/image_d88_test.Po ../$(DEPDIR)/image_file_test.Po \
@@ -501,6 +502,7 @@ fdtoolstest_SOURCES = \
 	../sector_test.cpp \
 	../device_test.cpp \
 	../dictionary_test.cpp \
+	../device_floppy_params_test.cpp \
 	../list_test.cpp \
 	../image_plugin_test.cpp \
 	../image_hfe_test.cpp \
@@ -576,6 +578,8 @@ clean-checkPROGRAMS:
 	../$(DEPDIR)/$(am__dirstamp)
 ../dictionary_test.$(OBJEXT): ../$(am__dirstamp) \
 	../$(DEPDIR)/$(am__dirstamp)
+../device_floppy_params_test.$(OBJEXT): ../$(am__dirstamp) \
+	../$(DEPDIR)/$(am__dirstamp)
 ../list_test.$(OBJEXT): ../$(am__dirstamp) \
 	../$(DEPDIR)/$(am__dirstamp)
 ../image_plugin_test.$(OBJEXT): ../$(am__dirstamp) \
@@ -606,6 +610,7 @@ distclean-compile:
 	-rm -f *.tab.c
 
 @AMDEP_TRUE@@am__include@ @am__quote@../$(DEPDIR)/config_test.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@../$(DEPDIR)/device_floppy_params_test.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@../$(DEPDIR)/device_floppy_test.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@../$(DEPDIR)/device_test.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@../$(DEPDIR)/dictionary_test.Po@am__quote@ # am--include-marker
@@ -941,6 +946,7 @@ clean-am: clean-checkPROGRAMS clean-generic mostlyclean-am
 
 distclean: distclean-am
 		-rm -f ../$(DEPDIR)/config_test.Po
+	-rm -f ../$(DEPDIR)/device_floppy_params_test.Po
 	-rm -f ../$(DEPDIR)/device_floppy_test.Po
 	-rm -f ../$(DEPDIR)/device_test.Po
 	-rm -f ../$(DEPDIR)/dictionary_test.Po
@@ -1004,6 +1010,7 @@ installcheck-am:
 
 maintainer-clean: maintainer-clean-am
 		-rm -f ../$(DEPDIR)/config_test.Po
+	-rm -f ../$(DEPDIR)/device_floppy_params_test.Po
 	-rm -f ../$(DEPDIR)/device_floppy_test.Po
 	-rm -f ../$(DEPDIR)/device_test.Po
 	-rm -f ../$(DEPDIR)/dictionary_test.Po

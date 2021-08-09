@@ -11,6 +11,11 @@
         "type_traits": "c",
         "utility": "c",
         "variant": "c",
-        "*.tcc": "cpp"
+        "*.tcc": "cpp",
+        "typeindex": "cpp",
+        "typeinfo": "cpp",
+        "bitset": "cpp",
+        "string_view": "cpp",
+        "initializer_list": "cpp"
     }
 }

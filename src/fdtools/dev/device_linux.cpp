@@ -14,18 +14,20 @@
 
 #if defined(__linux__)
 
+#include <errno.h>
 #include <fcntl.h>
+#include <unistd.h>
 
-#include <linux/fd.h>
 #include <sys/ioctl.h>
 #include <sys/stat.h>
+#include <sys/sysmacros.h>
+#include <sys/time.h>
 #include <sys/types.h>
 
 #include <fdtools/error.h>
 
 #include <fdtools/dev/device.h>
-
-bool fdt_device_getfloppyparams(floppy_struct* fdprms, FdtFloppyParams* params, FdtError* err);
+#include <fdtools/dev/floppy.h>
 
 bool fdt_device_setparameters(FdtDevice* dev, FdtError* err)
 {
@@ -61,13 +63,47 @@ bool fdt_device_getfloppyparameters(FdtDevice* dev, FdtFloppyParams* params, Fdt
   if (fd == -1)
     return false;
 
-  struct floppy_struct fdprms;
-  if (ioctl(fd, FDGETPRM, &fdprms) < 0) {
+  // Check fstat parameters
+
+  struct stat stat;
+  if (fstat(fd, &stat) < 0) {
     fdt_error_setlasterror(err, "");
     return false;
   }
 
-  bool is_success = fdt_device_getfloppyparams(&fdprms, params, err);
+  if (!S_ISBLK(stat.st_mode) || major(stat.st_rdev) != FLOPPY_MAJOR) {
+    fdt_error_setlasterror(err, "Not floppy device");
+    return false;
+  }
+
+  // Reset  FDGETPRM parameters (Operation not permitted)
+
+  // if (ioctl(fd, FDRESET, FD_RESET_ALWAYS) < 0) {
+  //   fdt_error_setlasterror(err, "");
+  //   return false;
+  // }
+
+  // Check FDGETDRVPRM parameters
+
+  struct floppy_drive_params fddprms;
+  if (ioctl(fd, FDGETDRVPRM, &fddprms) != 0) {
+    fdt_error_setlasterror(err, "");
+    return false;
+  }
+
+  bool is_success = fdt_floppy_params_setfloppydriveparams(params, &fddprms, err);
+
+  // Check FDGETPRM parameters
+
+  struct floppy_struct fdprms;
+  if (ioctl(fd, FDGETPRM, &fdprms) != 0) {
+    fdt_error_setlasterror(err, "");
+    return false;
+  }
+
+  if (!fdt_floppy_params_setfloppystruct(params, &fdprms, err)) {
+    is_success = false;
+  }
 
   if (!is_already_opened) {
     if (!fdt_device_close(dev, err))
@@ -75,24 +111,6 @@ bool fdt_device_getfloppyparameters(FdtDevice* dev, FdtFloppyParams* params, Fdt
   }
 
   return is_success;
-}
-
-bool fdt_device_getfloppyparams(floppy_struct* fdprms, FdtFloppyParams* params, FdtError* err)
-{
-  if (!fdprms || !params)
-    return false;
-
-  fdt_floppy_params_setsize(params, fdprms->size);
-  fdt_floppy_params_setsect(params, fdprms->sect);
-  fdt_floppy_params_sethead(params, fdprms->head);
-  fdt_floppy_params_settrack(params, fdprms->track);
-  fdt_floppy_params_setstretch(params, fdprms->stretch);
-  fdt_floppy_params_setgap(params, fdprms->gap);
-  fdt_floppy_params_setrate(params, fdprms->rate);
-  fdt_floppy_params_setspec1(params, fdprms->spec1);
-  fdt_floppy_params_setfmtgap(params, fdprms->fmt_gap);
-
-  return true;
 }
 
 #endif

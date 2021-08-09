@@ -155,6 +155,7 @@ am__objects_1 = ../../src/fdtools/img/sector.$(OBJEXT) \
 	../../src/fdtools/img/file.$(OBJEXT) \
 	../../src/fdtools/dev/device_linux.$(OBJEXT) \
 	../../src/fdtools/dev/image.$(OBJEXT) \
+	../../src/fdtools/dev/floppy_linux.$(OBJEXT) \
 	../../src/fdtools/dev/device_unix.$(OBJEXT) \
 	../../src/fdtools/dev/floppy.$(OBJEXT) \
 	../../src/fdtools/dev/device.$(OBJEXT) \
@@ -193,6 +194,7 @@ am__depfiles_remade = ../../src/fdtools/$(DEPDIR)/error.Po \
 	../../src/fdtools/dev/$(DEPDIR)/device_linux.Po \
 	../../src/fdtools/dev/$(DEPDIR)/device_unix.Po \
 	../../src/fdtools/dev/$(DEPDIR)/floppy.Po \
+	../../src/fdtools/dev/$(DEPDIR)/floppy_linux.Po \
 	../../src/fdtools/dev/$(DEPDIR)/image.Po \
 	../../src/fdtools/img/$(DEPDIR)/config.Po \
 	../../src/fdtools/img/$(DEPDIR)/d88.Po \
@@ -397,6 +399,7 @@ fdtools_sources = \
 	../../src/fdtools/img/file.cpp \
 	../../src/fdtools/dev/device_linux.cpp \
 	../../src/fdtools/dev/image.cpp \
+	../../src/fdtools/dev/floppy_linux.cpp \
 	../../src/fdtools/dev/device_unix.cpp \
 	../../src/fdtools/dev/floppy.cpp \
 	../../src/fdtools/dev/device.cpp \
@@ -558,6 +561,9 @@ clean-libLIBRARIES:
 ../../src/fdtools/dev/image.$(OBJEXT):  \
 	../../src/fdtools/dev/$(am__dirstamp) \
 	../../src/fdtools/dev/$(DEPDIR)/$(am__dirstamp)
+../../src/fdtools/dev/floppy_linux.$(OBJEXT):  \
+	../../src/fdtools/dev/$(am__dirstamp) \
+	../../src/fdtools/dev/$(DEPDIR)/$(am__dirstamp)
 ../../src/fdtools/dev/device_unix.$(OBJEXT):  \
 	../../src/fdtools/dev/$(am__dirstamp) \
 	../../src/fdtools/dev/$(DEPDIR)/$(am__dirstamp)
@@ -638,6 +644,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@../../src/fdtools/dev/$(DEPDIR)/device_linux.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@../../src/fdtools/dev/$(DEPDIR)/device_unix.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@../../src/fdtools/dev/$(DEPDIR)/floppy.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@../../src/fdtools/dev/$(DEPDIR)/floppy_linux.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@../../src/fdtools/dev/$(DEPDIR)/image.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@../../src/fdtools/img/$(DEPDIR)/config.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@../../src/fdtools/img/$(DEPDIR)/d88.Po@am__quote@ # am--include-marker
@@ -854,6 +861,7 @@ distclean: distclean-am
 	-rm -f ../../src/fdtools/dev/$(DEPDIR)/device_linux.Po
 	-rm -f ../../src/fdtools/dev/$(DEPDIR)/device_unix.Po
 	-rm -f ../../src/fdtools/dev/$(DEPDIR)/floppy.Po
+	-rm -f ../../src/fdtools/dev/$(DEPDIR)/floppy_linux.Po
 	-rm -f ../../src/fdtools/dev/$(DEPDIR)/image.Po
 	-rm -f ../../src/fdtools/img/$(DEPDIR)/config.Po
 	-rm -f ../../src/fdtools/img/$(DEPDIR)/d88.Po
@@ -933,6 +941,7 @@ maintainer-clean: maintainer-clean-am
 	-rm -f ../../src/fdtools/dev/$(DEPDIR)/device_linux.Po
 	-rm -f ../../src/fdtools/dev/$(DEPDIR)/device_unix.Po
 	-rm -f ../../src/fdtools/dev/$(DEPDIR)/floppy.Po
+	-rm -f ../../src/fdtools/dev/$(DEPDIR)/floppy_linux.Po
 	-rm -f ../../src/fdtools/dev/$(DEPDIR)/image.Po
 	-rm -f ../../src/fdtools/img/$(DEPDIR)/config.Po
 	-rm -f ../../src/fdtools/img/$(DEPDIR)/d88.Po

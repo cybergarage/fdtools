@@ -25,6 +25,7 @@ fdtoolsheaders = \
 	./fdtools/img/sector.h \
 	./fdtools/img/plugin.h \
 	./fdtools/img/config.h \
+	./fdtools/dev/error.h \
 	./fdtools/dev/floppy.h \
 	./fdtools/dev/device.h \
 	./fdtools/dev/image.h \
