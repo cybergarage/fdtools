@@ -17,11 +17,7 @@ fdtoolsheaders = \
 	./fdtools/img/file.h \
 	./fdtools/img/error.h \
 	./fdtools/img/density.h \
-	./fdtools/img/hfe.h \
-	./fdtools/img/d88.h \
 	./fdtools/img/image.h \
-	./fdtools/img/fdx.h \
-	./fdtools/img/raw.h \
 	./fdtools/img/sector.h \
 	./fdtools/img/plugin.h \
 	./fdtools/img/config.h \

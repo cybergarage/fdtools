@@ -12,13 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include <stdio.h>
-#include <string.h>
-
-#include <fdtools/img/raw.h>
-#include <fdtools/util/file.h>
-#include <fdtools/util/hexdump.h>
-#include <fdtools/util/string.h>
+#include <fdtools/plugins/raw/raw.h>
 
 bool fdt_raw_image_load(FdtFileImage* img, FdtError* err)
 {

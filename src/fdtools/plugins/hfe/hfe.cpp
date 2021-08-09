@@ -12,11 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include <stdio.h>
-#include <string.h>
-
-#include <fdtools/img/hfe.h>
-#include <fdtools/util/string.h>
+#include <fdtools/plugins/hfe/hfe.h>
 
 bool fdt_hfe_image_load(FdtFileImage* img, FdtError* err);
 

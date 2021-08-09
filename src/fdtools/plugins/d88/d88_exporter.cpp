@@ -12,12 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include <stdio.h>
-#include <string.h>
-
-#include <fdtools/img/d88.h>
-#include <fdtools/util/file.h>
-#include <fdtools/util/string.h>
+#include <fdtools/plugins/d88/d88.h>
 
 bool fdt_d88_image_export(FdtFileImage* img, FdtError* err)
 {

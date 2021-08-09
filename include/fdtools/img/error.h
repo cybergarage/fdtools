@@ -27,8 +27,6 @@ extern "C" {
 #define FDT_IMAGE_MESSAGE_SECTORS_NOT_SORTED "Sectors aren't sorted: %s"
 #define FDT_IMAGE_MESSAGE_UNKNOWN_DENSITY_FORMAT "Unknown density: %s"
 
-#define FDT_D88_MESSAGE_HEADER "[D88] "
-
 #ifdef __cplusplus
 } /* extern C */
 #endif

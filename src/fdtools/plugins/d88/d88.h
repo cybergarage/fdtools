@@ -21,6 +21,8 @@
 extern "C" {
 #endif
 
+#define FDT_D88_MESSAGE_HEADER "[D88] "
+
 const char D88_EXTENTION_D88[] = "d88";
 const char D88_EXTENTION_88D[] = "88d";
 const char D88_EXTENTION_D77[] = "d77";

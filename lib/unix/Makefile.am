@@ -20,22 +20,22 @@ AM_CFLAGS = -I$(top_builddir)/include -I$(top_builddir)/src
 AM_CPPFLAGS = -I$(top_builddir)/include -I$(top_builddir)/src
 
 fdtools_sources = \
+	../../src/fdtools/plugins/raw/raw_loader.cpp \
+	../../src/fdtools/plugins/raw/raw_exporter.cpp \
+	../../src/fdtools/plugins/raw/raw.cpp \
+	../../src/fdtools/plugins/func.cpp \
+	../../src/fdtools/plugins/d88/d88_exporter.cpp \
+	../../src/fdtools/plugins/d88/d88_loader.cpp \
+	../../src/fdtools/plugins/d88/d88.cpp \
+	../../src/fdtools/plugins/hfe/hfe.cpp \
+	../../src/fdtools/plugins/hfe/hfe_loader.cpp \
 	../../src/fdtools/plugins/loader.cpp \
 	../../src/fdtools/img/plugins.cpp \
 	../../src/fdtools/img/sector.cpp \
-	../../src/fdtools/img/raw_loader.cpp \
 	../../src/fdtools/img/plugin.cpp \
-	../../src/fdtools/img/raw_exporter.cpp \
-	../../src/fdtools/img/d88_exporter.cpp \
 	../../src/fdtools/img/density.cpp \
-	../../src/fdtools/img/raw.cpp \
-	../../src/fdtools/img/func.cpp \
-	../../src/fdtools/img/d88_loader.cpp \
-	../../src/fdtools/img/d88.cpp \
 	../../src/fdtools/img/image.cpp \
 	../../src/fdtools/img/sectors.cpp \
-	../../src/fdtools/img/hfe.cpp \
-	../../src/fdtools/img/hfe_loader.cpp \
 	../../src/fdtools/img/config.cpp \
 	../../src/fdtools/img/file.cpp \
 	../../src/fdtools/dev/device_linux.cpp \

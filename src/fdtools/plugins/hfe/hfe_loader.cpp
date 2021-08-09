@@ -12,11 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include <stdio.h>
-#include <string.h>
-
 #include <fdtools/img/file.h>
-#include <fdtools/img/hfe.h>
+#include <fdtools/plugins/hfe/hfe.h>
 #include <fdtools/util/hexdump.h>
 #include <fdtools/util/logic.h>
 #include <fdtools/util/string.h>

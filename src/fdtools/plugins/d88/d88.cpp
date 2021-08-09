@@ -15,10 +15,7 @@
 #include <stdio.h>
 #include <string.h>
 
-#include <fdtools/img/d88.h>
-#include <fdtools/img/error.h>
-#include <fdtools/util/file.h>
-#include <fdtools/util/string.h>
+#include <fdtools/plugins/d88/d88.h>
 
 bool fdt_d88_image_load(FdtFileImage*, FdtError* err);
 bool fdt_d88_image_export(FdtFileImage*, FdtError* err);
