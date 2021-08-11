@@ -16,6 +16,7 @@
 #include <boost/test/unit_test.hpp>
 
 #include <fdtools/img/file.h>
+#include <fdtools/plugins/plugin.h>
 #include <fdtools/plugins/hfe/hfe.h>
 #include <fdtools/util/array.h>
 

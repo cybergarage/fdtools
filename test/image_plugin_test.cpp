@@ -13,7 +13,7 @@
 // limitations under the License.
 
 #include <boost/test/unit_test.hpp>
-#include <fdtools/img/plugin.h>
+#include <fdtools/plugins/plugin.h>
 
 BOOST_AUTO_TEST_CASE(ImagePluginTest)
 {

@@ -20,9 +20,11 @@ AM_CFLAGS = -I$(top_builddir)/include -I$(top_builddir)/src
 AM_CPPFLAGS = -I$(top_builddir)/include -I$(top_builddir)/src
 
 fdtools_sources = \
+	../../src/fdtools/plugins/plugins.cpp \
 	../../src/fdtools/plugins/raw/raw_loader.cpp \
 	../../src/fdtools/plugins/raw/raw_exporter.cpp \
 	../../src/fdtools/plugins/raw/raw.cpp \
+	../../src/fdtools/plugins/plugin.cpp \
 	../../src/fdtools/plugins/func.cpp \
 	../../src/fdtools/plugins/d88/d88_exporter.cpp \
 	../../src/fdtools/plugins/d88/d88_loader.cpp \
@@ -30,9 +32,7 @@ fdtools_sources = \
 	../../src/fdtools/plugins/hfe/hfe.cpp \
 	../../src/fdtools/plugins/hfe/hfe_loader.cpp \
 	../../src/fdtools/plugins/loader.cpp \
-	../../src/fdtools/img/plugins.cpp \
 	../../src/fdtools/img/sector.cpp \
-	../../src/fdtools/img/plugin.cpp \
 	../../src/fdtools/img/density.cpp \
 	../../src/fdtools/img/image.cpp \
 	../../src/fdtools/img/sectors.cpp \

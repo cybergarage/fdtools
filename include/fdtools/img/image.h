@@ -144,13 +144,6 @@ void fdt_image_print(FdtImage* img);
 #define fdt_image_issectorssorted(img) fdt_image_sectors_issorted(img->sectors)
 #define fdt_image_sortsectors(img) fdt_image_sectors_sort(img->sectors)
 
-FdtImage* fdt_image_name_new(const char*, FdtError*);
-FdtImage* fdt_image_name_new_byname(const char*, FdtError*);
-FdtImage* fdt_image_name_new_bytype(FdtImageType);
-FdtImageType fdt_image_name_gettype(const char*);
-FdtImageType fdt_image_name_gettypebysignature(const char*);
-FdtImageType fdt_image_name_gettypebyname(const char*);
-
 #ifdef __cplusplus
 } /* extern C */
 #endif

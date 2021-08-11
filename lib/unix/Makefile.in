@@ -137,9 +137,11 @@ am__v_AR_1 =
 libfdtools_a_AR = $(AR) $(ARFLAGS)
 libfdtools_a_LIBADD =
 am__dirstamp = $(am__leading_dot)dirstamp
-am__objects_1 = ../../src/fdtools/plugins/raw/raw_loader.$(OBJEXT) \
+am__objects_1 = ../../src/fdtools/plugins/plugins.$(OBJEXT) \
+	../../src/fdtools/plugins/raw/raw_loader.$(OBJEXT) \
 	../../src/fdtools/plugins/raw/raw_exporter.$(OBJEXT) \
 	../../src/fdtools/plugins/raw/raw.$(OBJEXT) \
+	../../src/fdtools/plugins/plugin.$(OBJEXT) \
 	../../src/fdtools/plugins/func.$(OBJEXT) \
 	../../src/fdtools/plugins/d88/d88_exporter.$(OBJEXT) \
 	../../src/fdtools/plugins/d88/d88_loader.$(OBJEXT) \
@@ -147,9 +149,7 @@ am__objects_1 = ../../src/fdtools/plugins/raw/raw_loader.$(OBJEXT) \
 	../../src/fdtools/plugins/hfe/hfe.$(OBJEXT) \
 	../../src/fdtools/plugins/hfe/hfe_loader.$(OBJEXT) \
 	../../src/fdtools/plugins/loader.$(OBJEXT) \
-	../../src/fdtools/img/plugins.$(OBJEXT) \
 	../../src/fdtools/img/sector.$(OBJEXT) \
-	../../src/fdtools/img/plugin.$(OBJEXT) \
 	../../src/fdtools/img/density.$(OBJEXT) \
 	../../src/fdtools/img/image.$(OBJEXT) \
 	../../src/fdtools/img/sectors.$(OBJEXT) \
@@ -202,12 +202,12 @@ am__depfiles_remade = ../../src/fdtools/$(DEPDIR)/error.Po \
 	../../src/fdtools/img/$(DEPDIR)/density.Po \
 	../../src/fdtools/img/$(DEPDIR)/file.Po \
 	../../src/fdtools/img/$(DEPDIR)/image.Po \
-	../../src/fdtools/img/$(DEPDIR)/plugin.Po \
-	../../src/fdtools/img/$(DEPDIR)/plugins.Po \
 	../../src/fdtools/img/$(DEPDIR)/sector.Po \
 	../../src/fdtools/img/$(DEPDIR)/sectors.Po \
 	../../src/fdtools/plugins/$(DEPDIR)/func.Po \
 	../../src/fdtools/plugins/$(DEPDIR)/loader.Po \
+	../../src/fdtools/plugins/$(DEPDIR)/plugin.Po \
+	../../src/fdtools/plugins/$(DEPDIR)/plugins.Po \
 	../../src/fdtools/plugins/d88/$(DEPDIR)/d88.Po \
 	../../src/fdtools/plugins/d88/$(DEPDIR)/d88_exporter.Po \
 	../../src/fdtools/plugins/d88/$(DEPDIR)/d88_loader.Po \
@@ -385,9 +385,11 @@ lib_LIBRARIES = libfdtools.a
 AM_CFLAGS = -I$(top_builddir)/include -I$(top_builddir)/src
 AM_CPPFLAGS = -I$(top_builddir)/include -I$(top_builddir)/src
 fdtools_sources = \
+	../../src/fdtools/plugins/plugins.cpp \
 	../../src/fdtools/plugins/raw/raw_loader.cpp \
 	../../src/fdtools/plugins/raw/raw_exporter.cpp \
 	../../src/fdtools/plugins/raw/raw.cpp \
+	../../src/fdtools/plugins/plugin.cpp \
 	../../src/fdtools/plugins/func.cpp \
 	../../src/fdtools/plugins/d88/d88_exporter.cpp \
 	../../src/fdtools/plugins/d88/d88_loader.cpp \
@@ -395,9 +397,7 @@ fdtools_sources = \
 	../../src/fdtools/plugins/hfe/hfe.cpp \
 	../../src/fdtools/plugins/hfe/hfe_loader.cpp \
 	../../src/fdtools/plugins/loader.cpp \
-	../../src/fdtools/img/plugins.cpp \
 	../../src/fdtools/img/sector.cpp \
-	../../src/fdtools/img/plugin.cpp \
 	../../src/fdtools/img/density.cpp \
 	../../src/fdtools/img/image.cpp \
 	../../src/fdtools/img/sectors.cpp \
@@ -501,6 +501,15 @@ uninstall-libLIBRARIES:
 
 clean-libLIBRARIES:
 	-test -z "$(lib_LIBRARIES)" || rm -f $(lib_LIBRARIES)
+../../src/fdtools/plugins/$(am__dirstamp):
+	@$(MKDIR_P) ../../src/fdtools/plugins
+	@: > ../../src/fdtools/plugins/$(am__dirstamp)
+../../src/fdtools/plugins/$(DEPDIR)/$(am__dirstamp):
+	@$(MKDIR_P) ../../src/fdtools/plugins/$(DEPDIR)
+	@: > ../../src/fdtools/plugins/$(DEPDIR)/$(am__dirstamp)
+../../src/fdtools/plugins/plugins.$(OBJEXT):  \
+	../../src/fdtools/plugins/$(am__dirstamp) \
+	../../src/fdtools/plugins/$(DEPDIR)/$(am__dirstamp)
 ../../src/fdtools/plugins/raw/$(am__dirstamp):
 	@$(MKDIR_P) ../../src/fdtools/plugins/raw
 	@: > ../../src/fdtools/plugins/raw/$(am__dirstamp)
@@ -516,12 +525,9 @@ clean-libLIBRARIES:
 ../../src/fdtools/plugins/raw/raw.$(OBJEXT):  \
 	../../src/fdtools/plugins/raw/$(am__dirstamp) \
 	../../src/fdtools/plugins/raw/$(DEPDIR)/$(am__dirstamp)
-../../src/fdtools/plugins/$(am__dirstamp):
-	@$(MKDIR_P) ../../src/fdtools/plugins
-	@: > ../../src/fdtools/plugins/$(am__dirstamp)
-../../src/fdtools/plugins/$(DEPDIR)/$(am__dirstamp):
-	@$(MKDIR_P) ../../src/fdtools/plugins/$(DEPDIR)
-	@: > ../../src/fdtools/plugins/$(DEPDIR)/$(am__dirstamp)
+../../src/fdtools/plugins/plugin.$(OBJEXT):  \
+	../../src/fdtools/plugins/$(am__dirstamp) \
+	../../src/fdtools/plugins/$(DEPDIR)/$(am__dirstamp)
 ../../src/fdtools/plugins/func.$(OBJEXT):  \
 	../../src/fdtools/plugins/$(am__dirstamp) \
 	../../src/fdtools/plugins/$(DEPDIR)/$(am__dirstamp)
@@ -561,13 +567,7 @@ clean-libLIBRARIES:
 ../../src/fdtools/img/$(DEPDIR)/$(am__dirstamp):
 	@$(MKDIR_P) ../../src/fdtools/img/$(DEPDIR)
 	@: > ../../src/fdtools/img/$(DEPDIR)/$(am__dirstamp)
-../../src/fdtools/img/plugins.$(OBJEXT):  \
-	../../src/fdtools/img/$(am__dirstamp) \
-	../../src/fdtools/img/$(DEPDIR)/$(am__dirstamp)
 ../../src/fdtools/img/sector.$(OBJEXT):  \
-	../../src/fdtools/img/$(am__dirstamp) \
-	../../src/fdtools/img/$(DEPDIR)/$(am__dirstamp)
-../../src/fdtools/img/plugin.$(OBJEXT):  \
 	../../src/fdtools/img/$(am__dirstamp) \
 	../../src/fdtools/img/$(DEPDIR)/$(am__dirstamp)
 ../../src/fdtools/img/density.$(OBJEXT):  \
@@ -690,12 +690,12 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@../../src/fdtools/img/$(DEPDIR)/density.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@../../src/fdtools/img/$(DEPDIR)/file.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@../../src/fdtools/img/$(DEPDIR)/image.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@../../src/fdtools/img/$(DEPDIR)/plugin.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@../../src/fdtools/img/$(DEPDIR)/plugins.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@../../src/fdtools/img/$(DEPDIR)/sector.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@../../src/fdtools/img/$(DEPDIR)/sectors.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@../../src/fdtools/plugins/$(DEPDIR)/func.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@../../src/fdtools/plugins/$(DEPDIR)/loader.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@../../src/fdtools/plugins/$(DEPDIR)/plugin.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@../../src/fdtools/plugins/$(DEPDIR)/plugins.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@../../src/fdtools/plugins/d88/$(DEPDIR)/d88.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@../../src/fdtools/plugins/d88/$(DEPDIR)/d88_exporter.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@../../src/fdtools/plugins/d88/$(DEPDIR)/d88_loader.Po@am__quote@ # am--include-marker
@@ -917,12 +917,12 @@ distclean: distclean-am
 	-rm -f ../../src/fdtools/img/$(DEPDIR)/density.Po
 	-rm -f ../../src/fdtools/img/$(DEPDIR)/file.Po
 	-rm -f ../../src/fdtools/img/$(DEPDIR)/image.Po
-	-rm -f ../../src/fdtools/img/$(DEPDIR)/plugin.Po
-	-rm -f ../../src/fdtools/img/$(DEPDIR)/plugins.Po
 	-rm -f ../../src/fdtools/img/$(DEPDIR)/sector.Po
 	-rm -f ../../src/fdtools/img/$(DEPDIR)/sectors.Po
 	-rm -f ../../src/fdtools/plugins/$(DEPDIR)/func.Po
 	-rm -f ../../src/fdtools/plugins/$(DEPDIR)/loader.Po
+	-rm -f ../../src/fdtools/plugins/$(DEPDIR)/plugin.Po
+	-rm -f ../../src/fdtools/plugins/$(DEPDIR)/plugins.Po
 	-rm -f ../../src/fdtools/plugins/d88/$(DEPDIR)/d88.Po
 	-rm -f ../../src/fdtools/plugins/d88/$(DEPDIR)/d88_exporter.Po
 	-rm -f ../../src/fdtools/plugins/d88/$(DEPDIR)/d88_loader.Po
@@ -999,12 +999,12 @@ maintainer-clean: maintainer-clean-am
 	-rm -f ../../src/fdtools/img/$(DEPDIR)/density.Po
 	-rm -f ../../src/fdtools/img/$(DEPDIR)/file.Po
 	-rm -f ../../src/fdtools/img/$(DEPDIR)/image.Po
-	-rm -f ../../src/fdtools/img/$(DEPDIR)/plugin.Po
-	-rm -f ../../src/fdtools/img/$(DEPDIR)/plugins.Po
 	-rm -f ../../src/fdtools/img/$(DEPDIR)/sector.Po
 	-rm -f ../../src/fdtools/img/$(DEPDIR)/sectors.Po
 	-rm -f ../../src/fdtools/plugins/$(DEPDIR)/func.Po
 	-rm -f ../../src/fdtools/plugins/$(DEPDIR)/loader.Po
+	-rm -f ../../src/fdtools/plugins/$(DEPDIR)/plugin.Po
+	-rm -f ../../src/fdtools/plugins/$(DEPDIR)/plugins.Po
 	-rm -f ../../src/fdtools/plugins/d88/$(DEPDIR)/d88.Po
 	-rm -f ../../src/fdtools/plugins/d88/$(DEPDIR)/d88_exporter.Po
 	-rm -f ../../src/fdtools/plugins/d88/$(DEPDIR)/d88_loader.Po

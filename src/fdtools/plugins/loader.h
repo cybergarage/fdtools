@@ -15,7 +15,7 @@
 #ifndef _FDTOOLS_PLUGINS_LOADER_H_
 #define _FDTOOLS_PLUGINS_LOADER_H_
 
-#include <fdtools/img/plugin.h>
+#include <fdtools/plugins/plugin.h>
 #include <stdio.h>
 
 #ifdef __cplusplus

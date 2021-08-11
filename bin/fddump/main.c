@@ -22,6 +22,7 @@
 #include <fdtools/img/image.h>
 #include <fdtools/util/program.h>
 #include <fdtools/util/string.h>
+#include <fdtools/plugins/plugin.h>
 
 const char* OPT_CYLINDERS = "c";
 const char* OPT_HEADS = "h";

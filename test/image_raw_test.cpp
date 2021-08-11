@@ -15,6 +15,7 @@
 #include <boost/test/unit_test.hpp>
 
 #include <fdtools/img/file.h>
+#include <fdtools/plugins/plugin.h>
 #include <fdtools/plugins/raw/raw.h>
 #include <fdtools/util/array.h>
 

@@ -19,7 +19,6 @@ fdtoolsheaders = \
 	./fdtools/img/density.h \
 	./fdtools/img/image.h \
 	./fdtools/img/sector.h \
-	./fdtools/img/plugin.h \
 	./fdtools/img/config.h \
 	./fdtools/dev/error.h \
 	./fdtools/dev/floppy.h \

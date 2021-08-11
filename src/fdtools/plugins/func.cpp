@@ -17,6 +17,7 @@
 #include <fdtools/plugins/d88/d88.h>
 #include <fdtools/plugins/hfe/hfe.h>
 #include <fdtools/plugins/raw/raw.h>
+#include <fdtools/plugins/plugin.h>
 
 const char* fdt_image_type_getstring(FdtImageType t)
 {

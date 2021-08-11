@@ -19,6 +19,7 @@
 #include <fdtools/dev/image.h>
 #include <fdtools/img/image.h>
 #include <fdtools/util/program.h>
+#include <fdtools/plugins/plugin.h>
 
 const char* OPT_VERBOSE = "v";
 const char* OPT_DEBUG = "d";
