@@ -17,17 +17,22 @@
 
 #include <fdtools/plugins/d88/d88.h>
 
+static FdtImagePlugins* img_plgs;
+
 FdtImagePlugins* fdt_plugins_getallimagers()
 {
-  FdtImagePlugin* plgs = fdt_image_plugin_new();
+  if (img_plgs)
+    return img_plgs;
+
+  img_plgs = fdt_image_plugin_new();
 
   // Adds your image plugins
 
-  fdt_image_plugins_add(plgs, fdt_d88_image_new);
+  fdt_image_plugins_add(img_plgs, fdt_d88_image_new);
 
   // Adds the raw image plugin because the plugin has no file header
 
-  fdt_image_plugins_add(plgs, fdt_raw_image_new);
+  fdt_image_plugins_add(img_plgs, fdt_raw_image_new);
 
-  return plgs;
+  return img_plgs;
 }

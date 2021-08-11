@@ -15,9 +15,9 @@
 #include <boost/filesystem.hpp>
 #include <boost/test/unit_test.hpp>
 
-#include <fdtools/img/d88.h>
+#include <fdtools/plugins/d88/d88.h>
 #include <fdtools/img/image.h>
-#include <fdtools/img/raw.h>
+#include <fdtools/plugins/raw/raw.h>
 
 typedef FdtImage* (*FDT_TEST_IMAGE_NEW_FUNC)();
 

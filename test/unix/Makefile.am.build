@@ -18,7 +18,7 @@ TESTS = fdtoolstest
 
 check_PROGRAMS = fdtoolstest
 
-AM_CPPFLAGS = -I\$(top_builddir)/include -I../
+AM_CPPFLAGS = -I\$(top_builddir)/include -I\$(top_builddir)/src -I../
 HEADER
 
 my @find_files = `find ../ -name *.h`;
