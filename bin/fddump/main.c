@@ -20,9 +20,9 @@
 #include <fdtools/dev/device.h>
 #include <fdtools/dev/image.h>
 #include <fdtools/img/image.h>
+#include <fdtools/plugins/image.h>
 #include <fdtools/util/program.h>
 #include <fdtools/util/string.h>
-#include <fdtools/plugins/plugin.h>
 
 const char* OPT_CYLINDERS = "c";
 const char* OPT_HEADS = "h";
@@ -205,7 +205,7 @@ int main(int argc, char* argv[])
   // Loads source file image
 
   const char* src_img_name = fdt_program_getargument(prg, 0);
-  FdtImage* src_img = fdt_image_name_new(src_img_name, err);
+  FdtImage* src_img = fdt_image_plugins_getimager(src_img_name, err);
   if (!src_img) {
     exit_error(err);
   }
@@ -280,7 +280,7 @@ int main(int argc, char* argv[])
   // Imports source file image to dest file image
 
   const char* dst_img_name = fdt_program_getargument(prg, 1);
-  FdtImage* dst_img = fdt_image_name_new_byname(dst_img_name, err);
+  FdtImage* dst_img = fdt_image_plugins_getimager(dst_img_name, err);
   if (!dst_img) {
     exit_error(err);
   }

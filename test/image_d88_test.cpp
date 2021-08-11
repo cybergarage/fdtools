@@ -14,8 +14,8 @@
 
 #include <boost/test/unit_test.hpp>
 
-#include <fdtools/plugins/plugin.h>
 #include <fdtools/plugins/d88/d88.h>
+#include <fdtools/plugins/plugin.h>
 #include <fdtools/util/array.h>
 
 #include "image_test.h"

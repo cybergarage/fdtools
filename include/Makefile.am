@@ -14,6 +14,7 @@
 
 fdtoolsheaders = \
 	./fdtools/error.h \
+	./fdtools/plugins/image.h \
 	./fdtools/img/file.h \
 	./fdtools/img/error.h \
 	./fdtools/img/density.h \

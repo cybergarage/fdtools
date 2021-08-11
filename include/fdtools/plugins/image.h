@@ -12,27 +12,19 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include <fdtools/plugins/loader.h>
-#include <fdtools/plugins/raw/raw.h>
+#ifndef _FDTOOLS_PLUGIN_IMAGE_H_
+#define _FDTOOLS_PLUGIN_IMAGE_H_
 
-#include <fdtools/plugins/d88/d88.h>
+#include <fdtools/img/image.h>
 
-static FdtImagePlugins* img_plgs;
+#ifdef __cplusplus
+extern "C" {
+#endif
 
-FdtImagePlugins* fdt_image_plugins_getallimagers()
-{
-  if (img_plgs)
-    return img_plgs;
+FdtImage* fdt_image_plugins_getimager(const char*, FdtError*);
 
-  img_plgs = fdt_image_plugin_new();
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
-  // Adds your image plugins
-
-  fdt_image_plugins_add(img_plgs, fdt_d88_image_new);
-
-  // Adds the raw image plugin because the plugin has no file header
-
-  fdt_image_plugins_add(img_plgs, fdt_raw_image_new);
-
-  return img_plgs;
-}
+#endif /* _FDTOOLS_PLUGIN_IMAGE_H_ */

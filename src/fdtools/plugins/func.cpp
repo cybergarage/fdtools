@@ -16,54 +16,9 @@
 #include <fdtools/img/image.h>
 #include <fdtools/plugins/d88/d88.h>
 #include <fdtools/plugins/hfe/hfe.h>
-#include <fdtools/plugins/raw/raw.h>
+#include <fdtools/plugins/loader.h>
 #include <fdtools/plugins/plugin.h>
-
-FdtImage* fdt_image_name_new(const char* filename, FdtError* err)
-{
-  FdtImage* img = fdt_image_name_new_bytype(fdt_image_name_gettype(filename));
-  if (!img) {
-    fdt_error_setmessage(err, FDT_IMAGE_MESSAGE_UNKNOWN_TYPE_FORMAT, filename);
-    return NULL;
-  }
-  fdt_image_setname(img, filename);
-  return img;
-}
-
-FdtImage* fdt_image_name_new_byname(const char* filename, FdtError* err)
-{
-  FdtImage* img = fdt_image_name_new_bytype(fdt_image_name_gettypebyname(filename));
-  if (!img) {
-    fdt_error_setmessage(err, FDT_IMAGE_MESSAGE_UNKNOWN_TYPE_FORMAT, filename);
-    return NULL;
-  }
-  fdt_image_setname(img, filename);
-  return img;
-}
-
-FdtImage* fdt_image_name_new_bytype(FdtImageType img_type)
-{
-  FdtImage* img;
-
-  switch (img_type) {
-  case FDT_IMAGE_TYPE_DEV:
-    img = fdt_device_image_new();
-    break;
-  case FDT_IMAGE_TYPE_RAW:
-    img = fdt_raw_image_new();
-    break;
-  case FDT_IMAGE_TYPE_HFE:
-    img = fdt_hfe_image_new();
-    break;
-  case FDT_IMAGE_TYPE_D88:
-    img = fdt_d88_image_new();
-    break;
-  default:
-    return NULL;
-  }
-
-  return img;
-}
+#include <fdtools/plugins/raw/raw.h>
 
 bool fdt_image_name_isdevice(const char* filename)
 {
@@ -76,65 +31,76 @@ bool fdt_image_name_isdevice(const char* filename)
   return true;
 }
 
-FdtImageType fdt_image_name_gettype(const char* filename)
+FdtImage* fdt_image_plugins_getimagerbysignature(const char* filename)
 {
   if (!filename || (fdt_strlen(filename) <= 0))
-    return FDT_IMAGE_TYPE_UNKNOWN;
-
-  if (fdt_image_name_isdevice(filename))
-    return FDT_IMAGE_TYPE_DEV;
-
-  // Identify image file type by the header signature
-
-  FdtImageType file_type = fdt_image_name_gettypebysignature(filename);
-  if (file_type != FDT_IMAGE_TYPE_UNKNOWN)
-    return file_type;
-
-  // Identify image file type by the filename extention
-
-  return fdt_image_name_gettypebyname(filename);
-}
-
-FdtImageType fdt_image_name_gettypebysignature(const char* filename)
-{
-  if (!filename || (fdt_strlen(filename) <= 0))
-    return FDT_IMAGE_TYPE_UNKNOWN;
-
-  // Identify image file type by the header signature
+    return NULL;
 
   FILE* fp = fdt_file_open(filename, FDT_FILE_READ);
   if (!fp)
-    return FDT_IMAGE_TYPE_UNKNOWN;
+    return NULL;
 
   char sig[FDT_IMAGE_HEADER_SIGNATURE_MAX];
   size_t n_read = fread(sig, sizeof(char), FDT_IMAGE_HEADER_SIGNATURE_MAX, fp);
   fdt_file_close(fp);
 
   if (n_read != FDT_IMAGE_HEADER_SIGNATURE_MAX) {
-    return FDT_IMAGE_TYPE_UNKNOWN;
+    return NULL;
   }
 
-  if (fdt_hfe_image_hassig(NULL, (byte_t*)sig, FDT_IMAGE_HEADER_SIGNATURE_MAX))
-    return FDT_IMAGE_TYPE_HFE;
+  for (FdtImagePlugin* plg = fdt_image_plugins_getallimagers(); plg; plg = fdt_image_plugin_next(plg)) {
+    FdtImage* img = fdt_image_plugin_getimager(plg);
+    if (fdt_image_hassig(img, (byte_t*)&sig, n_read)) {
+      return img;
+    }
+    fdt_image_delete(img);
+  }
 
-  // Identify image file type by the filename extention
-
-  return FDT_IMAGE_TYPE_UNKNOWN;
+  return NULL;
 }
 
-FdtImageType fdt_image_name_gettypebyname(const char* filename)
+FdtImage* fdt_image_plugins_getimagerbyfileext(const char* filename)
+{
+  for (FdtImagePlugin* plg = fdt_image_plugins_getallimagers(); plg; plg = fdt_image_plugin_next(plg)) {
+    FdtImage* img = fdt_image_plugin_getimager(plg);
+    if (fdt_image_hasext(img, filename)) {
+      return img;
+    }
+    fdt_image_delete(img);
+  }
+  return NULL;
+}
+
+FdtImage* fdt_image_plugins_getimagerbyfile(const char* filename, FdtError* err)
 {
   if (!filename || (fdt_strlen(filename) <= 0))
-    return FDT_IMAGE_TYPE_UNKNOWN;
+    return NULL;
 
   if (fdt_image_name_isdevice(filename))
-    return FDT_IMAGE_TYPE_DEV;
+    return fdt_device_image_new();
 
-  if (fdt_d88_image_hasext(NULL, filename))
-    return FDT_IMAGE_TYPE_D88;
+  FdtImage* img;
+  img = fdt_image_plugins_getimagerbysignature(filename);
+  if (img)
+    return img;
 
-  if (fdt_raw_image_hasext(NULL, filename))
-    return FDT_IMAGE_TYPE_RAW;
+  img = fdt_image_plugins_getimagerbyfileext(filename);
+  if (img)
+    return img;
 
-  return FDT_IMAGE_TYPE_UNKNOWN;
+  return NULL;
+}
+
+FdtImage* fdt_image_plugins_getimager(const char* filename, FdtError* err)
+{
+  if (!filename || (fdt_strlen(filename) <= 0))
+    return NULL;
+
+  FdtImage* img = fdt_image_plugins_getimagerbyfile(filename, err);
+  if (!img) {
+    fdt_error_setmessage(err, FDT_IMAGE_MESSAGE_UNKNOWN_TYPE_FORMAT, filename);
+    return NULL;
+  }
+  fdt_image_setname(img, filename);
+  return img;
 }
