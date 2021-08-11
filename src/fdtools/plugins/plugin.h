@@ -12,19 +12,16 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef _FDTOOLS_IMG_PLUGIN_H_
-#define _FDTOOLS_IMG_PLUGIN_H_
+#ifndef _FDTOOLS_PLUGINS_IMAGE_H_
+#define _FDTOOLS_PLUGINS_IMAGE_H_
 
-#include <stdio.h>
-
-#include <fdtools/error.h>
 #include <fdtools/img/image.h>
 #include <fdtools/util/list.h>
+#include <stdio.h>
 
 #ifdef __cplusplus
 extern "C" {
 #endif
-
 typedef struct {
   FDT_LIST_STRUCT_MEMBERS
   FDT_IMAGE_IMAGER imager;
@@ -43,17 +40,11 @@ FdtImagePlugin* fdt_image_plugin_new();
 bool fdt_image_plugin_delete(FdtImagePlugin*);
 
 #define fdt_image_plugin_setimager(plg, v) (plg->imager = v)
-#define fdt_image_plugin_getimager(plg) (plg->imager)
-
-FdtImage* fdt_image_name_new(const char*, FdtError*);
-FdtImage* fdt_image_name_new_byname(const char*, FdtError*);
-FdtImage* fdt_image_name_new_bytype(FdtImageType);
-FdtImageType fdt_image_name_gettype(const char*);
-FdtImageType fdt_image_name_gettypebysignature(const char*);
-FdtImageType fdt_image_name_gettypebyname(const char*);
+#define fdt_image_plugin_getimager(plg) (plg->imager())
+#define fdt_image_plugin_next(plg) (FdtImagePlugin*)fdt_list_next((FdtListNode*)plg)
 
 #ifdef __cplusplus
 } /* extern C */
 #endif
 
-#endif /* _FDTOOLS_IMG_PLUGIN_H_ */
+#endif /* _FDTOOLS_PLUGINS_IMAGE_H_ */

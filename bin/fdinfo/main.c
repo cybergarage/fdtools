@@ -18,8 +18,8 @@
 
 #include <fdtools/dev/image.h>
 #include <fdtools/img/image.h>
+#include <fdtools/plugins/image.h>
 #include <fdtools/util/program.h>
-#include <fdtools/plugins/plugin.h>
 
 const char* OPT_VERBOSE = "v";
 const char* OPT_DEBUG = "d";
@@ -100,7 +100,7 @@ int main(int argc, char* argv[])
   // Loads source file image
 
   const char* img_name = fdt_program_getargument(prg, 0);
-  FdtImage* img = fdt_image_name_new(img_name, err);
+  FdtImage* img = fdt_image_plugins_getimager(img_name, err);
   if (!img) {
     exit_error(err);
   }
