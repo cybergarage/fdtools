@@ -72,7 +72,7 @@ bool fdt_image_delete(FdtImage*);
 bool fdt_image_init(FdtImage*);
 bool fdt_image_clear(FdtImage*);
 
-bool fdt_image_hasext(FdtImage*, const char);
+bool fdt_image_hasext(FdtImage*, const char*);
 bool fdt_image_hassig(FdtImage*, byte_t*, size_t);
 bool fdt_image_open(FdtImage*, const char*, FdtFileMode, FdtError*);
 bool fdt_image_close(FdtImage*, FdtError*);
