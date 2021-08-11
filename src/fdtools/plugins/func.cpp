@@ -59,7 +59,7 @@ FdtImage* fdt_image_plugins_getimagerbysignature(const char* filename)
   return NULL;
 }
 
-FdtImage* fdt_image_plugins_getimagerbyfileext(const char* filename)
+FdtImage* fdt_image_plugins_getimagerbyextention(const char* filename)
 {
   for (FdtImagePlugin* plg = fdt_image_plugins_getallimagers(); plg; plg = fdt_image_plugin_next(plg)) {
     FdtImage* img = fdt_image_plugin_getimager(plg);
@@ -84,7 +84,7 @@ FdtImage* fdt_image_plugins_getimagerbyfile(const char* filename, FdtError* err)
   if (img)
     return img;
 
-  img = fdt_image_plugins_getimagerbyfileext(filename);
+  img = fdt_image_plugins_getimagerbyextention(filename);
   if (img)
     return img;
 
