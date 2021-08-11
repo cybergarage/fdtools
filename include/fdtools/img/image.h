@@ -35,8 +35,6 @@ typedef enum {
   FDT_IMAGE_TYPE_D88,
 } FdtImageType;
 
-const char* fdt_image_type_getstring(FdtImageType);
-
 const int FDT_IMAGE_HEADER_SIGNATURE_MAX = 8;
 
 typedef bool (*FDT_IMAGE_HASEXT)(void*, const char*);
@@ -115,7 +113,6 @@ void fdt_image_print(FdtImage* img);
 #define fdt_image_setwriteprotect(img, v) fdt_image_config_setwriteprotect(img->config, v)
 
 #define fdt_image_gettype(img) (img->type)
-#define fdt_image_gettypestring(img) fdt_image_type_getstring(img->type)
 #define fdt_image_hasname(img) ((0 < fdt_string_length(img->name)) ? true : false)
 #define fdt_image_getname(img) fdt_string_getvalue(img->name)
 #define fdt_image_hasconfigname(img) fdt_image_config_hasname(img->config)

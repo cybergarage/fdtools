@@ -130,7 +130,7 @@ int main(int argc, char* argv[])
     if (!fdt_image_load(img, err)) {
       exit_error(err);
     }
-    const char* type = fdt_image_gettypestring(img);
+    const char* type = ""; // TODO: Sets type string
     size_t cyl = fdt_image_getnumberofcylinder(img);
     size_t head = fdt_image_getnumberofhead(img);
     size_t sec = fdt_image_getnumberofsector(img);
