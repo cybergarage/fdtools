@@ -16,12 +16,25 @@
 		21403C10255F02C80022389D /* string_func.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 21403C0F255F02C80022389D /* string_func.cpp */; };
 		2151DF46256989AC009FC0E0 /* file.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2151DF45256989AC009FC0E0 /* file.cpp */; };
 		2151DF4C256A4B40009FC0E0 /* sector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2151DF4B256A4B40009FC0E0 /* sector.cpp */; };
-		21587B7725973A8700F98743 /* func.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 21587B7625973A8700F98743 /* func.cpp */; };
-		21587B8C25989ACC00F98743 /* raw_exporter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 21587B8925989ACC00F98743 /* raw_exporter.cpp */; };
-		21587B8D25989ACC00F98743 /* raw.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 21587B8A25989ACC00F98743 /* raw.cpp */; };
-		21587B8E25989ACC00F98743 /* raw_loader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 21587B8B25989ACC00F98743 /* raw_loader.cpp */; };
 		21641A81258E2C490062AD50 /* device_unix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 21641A80258E2C490062AD50 /* device_unix.cpp */; };
 		21641A84258EF8240062AD50 /* image.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 21641A83258EF8240062AD50 /* image.cpp */; };
+		2193147926C580CD00310C6D /* plugins.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2193146F26C580CD00310C6D /* plugins.cpp */; };
+		2193147A26C580CD00310C6D /* plugin.h in Headers */ = {isa = PBXBuildFile; fileRef = 2193147026C580CD00310C6D /* plugin.h */; };
+		2193147B26C580CD00310C6D /* loader.h in Headers */ = {isa = PBXBuildFile; fileRef = 2193147126C580CD00310C6D /* loader.h */; };
+		2193147C26C580CD00310C6D /* plugin.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2193147226C580CD00310C6D /* plugin.cpp */; };
+		2193147D26C580CD00310C6D /* func.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2193147326C580CD00310C6D /* func.cpp */; };
+		2193147E26C580CD00310C6D /* loader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2193147426C580CD00310C6D /* loader.cpp */; };
+		2193148726C5818300310C6D /* d88_loader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2193148326C5818200310C6D /* d88_loader.cpp */; };
+		2193148826C5818300310C6D /* d88.h in Headers */ = {isa = PBXBuildFile; fileRef = 2193148426C5818300310C6D /* d88.h */; };
+		2193148926C5818300310C6D /* d88_exporter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2193148526C5818300310C6D /* d88_exporter.cpp */; };
+		2193148A26C5818300310C6D /* d88.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2193148626C5818300310C6D /* d88.cpp */; };
+		2193149026C581A600310C6D /* raw_exporter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2193148C26C581A600310C6D /* raw_exporter.cpp */; };
+		2193149126C581A600310C6D /* raw_loader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2193148D26C581A600310C6D /* raw_loader.cpp */; };
+		2193149226C581A600310C6D /* raw.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2193148E26C581A600310C6D /* raw.cpp */; };
+		2193149326C581A600310C6D /* raw.h in Headers */ = {isa = PBXBuildFile; fileRef = 2193148F26C581A600310C6D /* raw.h */; };
+		2193149826C581DC00310C6D /* hfe.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2193149526C581DC00310C6D /* hfe.cpp */; };
+		2193149926C581DC00310C6D /* hfe.h in Headers */ = {isa = PBXBuildFile; fileRef = 2193149626C581DC00310C6D /* hfe.h */; };
+		2193149A26C581DC00310C6D /* hfe_loader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2193149726C581DC00310C6D /* hfe_loader.cpp */; };
 		219F7D4A255FC8B000827D5C /* config.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 219F7D48255FC8B000827D5C /* config.cpp */; };
 		21B0912125865DB800036CC5 /* device_linux.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 21B0911F25865DB800036CC5 /* device_linux.cpp */; };
 		21B0AB40259F7F7C00B064A3 /* floppy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 21B0AB3E259F7F7B00B064A3 /* floppy.cpp */; };
@@ -35,11 +48,6 @@
 		21E15B05256A742700029338 /* list.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 21E15B04256A742700029338 /* list.cpp */; };
 		21E15B08256A955A00029338 /* image.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 21E15B07256A955A00029338 /* image.cpp */; };
 		21E15B0C256BB09100029338 /* string.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 21E15B0B256BB09100029338 /* string.cpp */; };
-		21E15B11256C0AAD00029338 /* d88_exporter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 21E15B0E256C0AAD00029338 /* d88_exporter.cpp */; };
-		21E15B12256C0AAD00029338 /* hfe_loader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 21E15B0F256C0AAD00029338 /* hfe_loader.cpp */; };
-		21E15B13256C0AAD00029338 /* d88_loader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 21E15B10256C0AAD00029338 /* d88_loader.cpp */; };
-		21E15B17256C0AF800029338 /* d88.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 21E15B15256C0AF800029338 /* d88.cpp */; };
-		21E15B18256C0AF800029338 /* hfe.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 21E15B16256C0AF800029338 /* hfe.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,13 +61,26 @@
 		21403C0F255F02C80022389D /* string_func.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = string_func.cpp; path = ../../../src/fdtools/util/string_func.cpp; sourceTree = "<group>"; };
 		2151DF45256989AC009FC0E0 /* file.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = file.cpp; path = ../../../src/fdtools/util/file.cpp; sourceTree = "<group>"; };
 		2151DF4B256A4B40009FC0E0 /* sector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = sector.cpp; path = ../../../src/fdtools/img/sector.cpp; sourceTree = "<group>"; };
-		21587B7625973A8700F98743 /* func.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = func.cpp; path = ../../../src/fdtools/img/func.cpp; sourceTree = "<group>"; };
-		21587B8925989ACC00F98743 /* raw_exporter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = raw_exporter.cpp; path = ../../../src/fdtools/img/raw_exporter.cpp; sourceTree = "<group>"; };
-		21587B8A25989ACC00F98743 /* raw.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = raw.cpp; path = ../../../src/fdtools/img/raw.cpp; sourceTree = "<group>"; };
-		21587B8B25989ACC00F98743 /* raw_loader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = raw_loader.cpp; path = ../../../src/fdtools/img/raw_loader.cpp; sourceTree = "<group>"; };
 		21641A80258E2C490062AD50 /* device_unix.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = device_unix.cpp; path = ../../../src/fdtools/dev/device_unix.cpp; sourceTree = "<group>"; };
 		21641A83258EF8240062AD50 /* image.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = image.cpp; path = ../../../src/fdtools/dev/image.cpp; sourceTree = "<group>"; };
 		216F3666255DB161004507DF /* fdtools */ = {isa = PBXFileReference; lastKnownFileType = folder; name = fdtools; path = ../../../include/fdtools; sourceTree = "<group>"; };
+		2193146F26C580CD00310C6D /* plugins.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = plugins.cpp; path = ../../../src/fdtools/plugins/plugins.cpp; sourceTree = "<group>"; };
+		2193147026C580CD00310C6D /* plugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = plugin.h; path = ../../../src/fdtools/plugins/plugin.h; sourceTree = "<group>"; };
+		2193147126C580CD00310C6D /* loader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = loader.h; path = ../../../src/fdtools/plugins/loader.h; sourceTree = "<group>"; };
+		2193147226C580CD00310C6D /* plugin.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = plugin.cpp; path = ../../../src/fdtools/plugins/plugin.cpp; sourceTree = "<group>"; };
+		2193147326C580CD00310C6D /* func.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = func.cpp; path = ../../../src/fdtools/plugins/func.cpp; sourceTree = "<group>"; };
+		2193147426C580CD00310C6D /* loader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = loader.cpp; path = ../../../src/fdtools/plugins/loader.cpp; sourceTree = "<group>"; };
+		2193148326C5818200310C6D /* d88_loader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = d88_loader.cpp; path = ../../../src/fdtools/plugins/d88/d88_loader.cpp; sourceTree = "<group>"; };
+		2193148426C5818300310C6D /* d88.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = d88.h; path = ../../../src/fdtools/plugins/d88/d88.h; sourceTree = "<group>"; };
+		2193148526C5818300310C6D /* d88_exporter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = d88_exporter.cpp; path = ../../../src/fdtools/plugins/d88/d88_exporter.cpp; sourceTree = "<group>"; };
+		2193148626C5818300310C6D /* d88.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = d88.cpp; path = ../../../src/fdtools/plugins/d88/d88.cpp; sourceTree = "<group>"; };
+		2193148C26C581A600310C6D /* raw_exporter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = raw_exporter.cpp; path = ../../../src/fdtools/plugins/raw/raw_exporter.cpp; sourceTree = "<group>"; };
+		2193148D26C581A600310C6D /* raw_loader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = raw_loader.cpp; path = ../../../src/fdtools/plugins/raw/raw_loader.cpp; sourceTree = "<group>"; };
+		2193148E26C581A600310C6D /* raw.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = raw.cpp; path = ../../../src/fdtools/plugins/raw/raw.cpp; sourceTree = "<group>"; };
+		2193148F26C581A600310C6D /* raw.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = raw.h; path = ../../../src/fdtools/plugins/raw/raw.h; sourceTree = "<group>"; };
+		2193149526C581DC00310C6D /* hfe.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = hfe.cpp; path = ../../../src/fdtools/plugins/hfe/hfe.cpp; sourceTree = "<group>"; };
+		2193149626C581DC00310C6D /* hfe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = hfe.h; path = ../../../src/fdtools/plugins/hfe/hfe.h; sourceTree = "<group>"; };
+		2193149726C581DC00310C6D /* hfe_loader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = hfe_loader.cpp; path = ../../../src/fdtools/plugins/hfe/hfe_loader.cpp; sourceTree = "<group>"; };
 		219F7D48255FC8B000827D5C /* config.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = config.cpp; path = ../../../src/fdtools/img/config.cpp; sourceTree = "<group>"; };
 		21B0911F25865DB800036CC5 /* device_linux.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = device_linux.cpp; path = ../../../src/fdtools/dev/device_linux.cpp; sourceTree = "<group>"; };
 		21B0AB3E259F7F7B00B064A3 /* floppy.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = floppy.cpp; path = ../../../src/fdtools/dev/floppy.cpp; sourceTree = "<group>"; };
@@ -73,11 +94,6 @@
 		21E15B04256A742700029338 /* list.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = list.cpp; path = ../../../src/fdtools/util/list.cpp; sourceTree = "<group>"; };
 		21E15B07256A955A00029338 /* image.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = image.cpp; path = ../../../src/fdtools/img/image.cpp; sourceTree = "<group>"; };
 		21E15B0B256BB09100029338 /* string.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = string.cpp; path = ../../../src/fdtools/util/string.cpp; sourceTree = "<group>"; };
-		21E15B0E256C0AAD00029338 /* d88_exporter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = d88_exporter.cpp; path = ../../../src/fdtools/img/d88_exporter.cpp; sourceTree = "<group>"; };
-		21E15B0F256C0AAD00029338 /* hfe_loader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = hfe_loader.cpp; path = ../../../src/fdtools/img/hfe_loader.cpp; sourceTree = "<group>"; };
-		21E15B10256C0AAD00029338 /* d88_loader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = d88_loader.cpp; path = ../../../src/fdtools/img/d88_loader.cpp; sourceTree = "<group>"; };
-		21E15B15256C0AF800029338 /* d88.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = d88.cpp; path = ../../../src/fdtools/img/d88.cpp; sourceTree = "<group>"; };
-		21E15B16256C0AF800029338 /* hfe.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = hfe.cpp; path = ../../../src/fdtools/img/hfe.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,6 +161,54 @@
 			name = Sources;
 			sourceTree = "<group>";
 		};
+		2193146D26C580A500310C6D /* plugins */ = {
+			isa = PBXGroup;
+			children = (
+				2193149426C581C600310C6D /* hfe */,
+				2193148B26C5818D00310C6D /* raw */,
+				2193148226C5816200310C6D /* d88 */,
+				2193147326C580CD00310C6D /* func.cpp */,
+				2193147426C580CD00310C6D /* loader.cpp */,
+				2193147126C580CD00310C6D /* loader.h */,
+				2193147226C580CD00310C6D /* plugin.cpp */,
+				2193147026C580CD00310C6D /* plugin.h */,
+				2193146F26C580CD00310C6D /* plugins.cpp */,
+			);
+			name = plugins;
+			sourceTree = "<group>";
+		};
+		2193148226C5816200310C6D /* d88 */ = {
+			isa = PBXGroup;
+			children = (
+				2193148526C5818300310C6D /* d88_exporter.cpp */,
+				2193148326C5818200310C6D /* d88_loader.cpp */,
+				2193148626C5818300310C6D /* d88.cpp */,
+				2193148426C5818300310C6D /* d88.h */,
+			);
+			name = d88;
+			sourceTree = "<group>";
+		};
+		2193148B26C5818D00310C6D /* raw */ = {
+			isa = PBXGroup;
+			children = (
+				2193148C26C581A600310C6D /* raw_exporter.cpp */,
+				2193148D26C581A600310C6D /* raw_loader.cpp */,
+				2193148E26C581A600310C6D /* raw.cpp */,
+				2193148F26C581A600310C6D /* raw.h */,
+			);
+			name = raw;
+			sourceTree = "<group>";
+		};
+		2193149426C581C600310C6D /* hfe */ = {
+			isa = PBXGroup;
+			children = (
+				2193149726C581DC00310C6D /* hfe_loader.cpp */,
+				2193149526C581DC00310C6D /* hfe.cpp */,
+				2193149626C581DC00310C6D /* hfe.h */,
+			);
+			name = hfe;
+			sourceTree = "<group>";
+		};
 		21DC2015257B563B004F3363 /* dev */ = {
 			isa = PBXGroup;
 			children = (
@@ -160,6 +224,7 @@
 		21E273BF255DB2D5008AC447 /* fdtools */ = {
 			isa = PBXGroup;
 			children = (
+				2193146D26C580A500310C6D /* plugins */,
 				21DC2015257B563B004F3363 /* dev */,
 				21C2E0C6257299DF00305F1A /* error.cpp */,
 				21403C0E255F02B00022389D /* util */,
@@ -172,17 +237,8 @@
 			isa = PBXGroup;
 			children = (
 				21B0AB4525A0ED1F00B064A3 /* density.cpp */,
-				21587B8925989ACC00F98743 /* raw_exporter.cpp */,
-				21587B8B25989ACC00F98743 /* raw_loader.cpp */,
-				21587B8A25989ACC00F98743 /* raw.cpp */,
-				21587B7625973A8700F98743 /* func.cpp */,
 				219F7D48255FC8B000827D5C /* config.cpp */,
-				21E15B0E256C0AAD00029338 /* d88_exporter.cpp */,
-				21E15B10256C0AAD00029338 /* d88_loader.cpp */,
-				21E15B15256C0AF800029338 /* d88.cpp */,
 				21403C0B255EFF060022389D /* file.cpp */,
-				21E15B0F256C0AAD00029338 /* hfe_loader.cpp */,
-				21E15B16256C0AF800029338 /* hfe.cpp */,
 				21E15B07256A955A00029338 /* image.cpp */,
 				2151DF4B256A4B40009FC0E0 /* sector.cpp */,
 				21E15B01256A70D200029338 /* sectors.cpp */,
@@ -197,6 +253,11 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2193149926C581DC00310C6D /* hfe.h in Headers */,
+				2193148826C5818300310C6D /* d88.h in Headers */,
+				2193149326C581A600310C6D /* raw.h in Headers */,
+				2193147A26C580CD00310C6D /* plugin.h in Headers */,
+				2193147B26C580CD00310C6D /* loader.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -257,34 +318,37 @@
 			buildActionMask = 2147483647;
 			files = (
 				21403C10255F02C80022389D /* string_func.cpp in Sources */,
-				21E15B11256C0AAD00029338 /* d88_exporter.cpp in Sources */,
-				21E15B17256C0AF800029338 /* d88.cpp in Sources */,
+				2193149126C581A600310C6D /* raw_loader.cpp in Sources */,
+				2193148926C5818300310C6D /* d88_exporter.cpp in Sources */,
 				211D484E257BD13100895CFE /* option.cpp in Sources */,
+				2193149026C581A600310C6D /* raw_exporter.cpp in Sources */,
+				2193147D26C580CD00310C6D /* func.cpp in Sources */,
 				2151DF4C256A4B40009FC0E0 /* sector.cpp in Sources */,
 				21E15B0C256BB09100029338 /* string.cpp in Sources */,
 				21E15B05256A742700029338 /* list.cpp in Sources */,
-				21E15B13256C0AAD00029338 /* d88_loader.cpp in Sources */,
+				2193149826C581DC00310C6D /* hfe.cpp in Sources */,
 				21352E2125768FA7007E05A4 /* hexdump.cpp in Sources */,
+				2193148A26C5818300310C6D /* d88.cpp in Sources */,
 				21B0912125865DB800036CC5 /* device_linux.cpp in Sources */,
-				21E15B12256C0AAD00029338 /* hfe_loader.cpp in Sources */,
 				211D4859257BE46A00895CFE /* arguments.cpp in Sources */,
 				21E15B02256A70D200029338 /* sectors.cpp in Sources */,
+				2193149226C581A600310C6D /* raw.cpp in Sources */,
 				211D4852257BD66400895CFE /* argument.cpp in Sources */,
+				2193147C26C580CD00310C6D /* plugin.cpp in Sources */,
 				21B0AB40259F7F7C00B064A3 /* floppy.cpp in Sources */,
 				211D4845257BB31900895CFE /* program.cpp in Sources */,
-				21E15B18256C0AF800029338 /* hfe.cpp in Sources */,
+				2193147E26C580CD00310C6D /* loader.cpp in Sources */,
 				21DC2023257BA110004F3363 /* element.cpp in Sources */,
+				2193148726C5818300310C6D /* d88_loader.cpp in Sources */,
 				2151DF46256989AC009FC0E0 /* file.cpp in Sources */,
 				21DC2017257B5656004F3363 /* device.cpp in Sources */,
-				21587B8E25989ACC00F98743 /* raw_loader.cpp in Sources */,
 				219F7D4A255FC8B000827D5C /* config.cpp in Sources */,
+				2193147926C580CD00310C6D /* plugins.cpp in Sources */,
 				21641A81258E2C490062AD50 /* device_unix.cpp in Sources */,
+				2193149A26C581DC00310C6D /* hfe_loader.cpp in Sources */,
 				21DC2020257B9EEA004F3363 /* dictionary.cpp in Sources */,
-				21587B8D25989ACC00F98743 /* raw.cpp in Sources */,
 				21E15B08256A955A00029338 /* image.cpp in Sources */,
-				21587B8C25989ACC00F98743 /* raw_exporter.cpp in Sources */,
 				21B0AB4925A0EE6F00B064A3 /* struct.cpp in Sources */,
-				21587B7725973A8700F98743 /* func.cpp in Sources */,
 				21B0AB4625A0ED1F00B064A3 /* density.cpp in Sources */,
 				21641A84258EF8240062AD50 /* image.cpp in Sources */,
 				21403C0C255EFF060022389D /* file.cpp in Sources */,
@@ -349,6 +413,7 @@
 				HEADER_SEARCH_PATHS = (
 					/usr/local/include,
 					../../../include,
+					../../../src,
 				);
 				LIBRARY_SEARCH_PATHS = /usr/local/lib;
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
@@ -407,6 +472,7 @@
 				HEADER_SEARCH_PATHS = (
 					/usr/local/include,
 					../../../include,
+					../../../src,
 				);
 				LIBRARY_SEARCH_PATHS = /usr/local/lib;
 				MACOSX_DEPLOYMENT_TARGET = 10.15;

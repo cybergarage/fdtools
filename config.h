@@ -9,14 +9,14 @@
 
 /* Define to 1 if you have the `boost_filesystem' library
    (-lboost_filesystem). */
-#define HAVE_LIBBOOST_FILESYSTEM 1
+/* #undef HAVE_LIBBOOST_FILESYSTEM */
 
 /* Define to 1 if you have the `boost_filesystem-mt' library
    (-lboost_filesystem-mt). */
 /* #undef HAVE_LIBBOOST_FILESYSTEM_MT */
 
 /* Define to 1 if you have the `boost_system' library (-lboost_system). */
-#define HAVE_LIBBOOST_SYSTEM 1
+/* #undef HAVE_LIBBOOST_SYSTEM */
 
 /* Define to 1 if you have the `boost_system-mt' library (-lboost_system-mt).
    */
@@ -24,7 +24,7 @@
 
 /* Define to 1 if you have the `boost_unit_test_framework' library
    (-lboost_unit_test_framework). */
-#define HAVE_LIBBOOST_UNIT_TEST_FRAMEWORK 1
+/* #undef HAVE_LIBBOOST_UNIT_TEST_FRAMEWORK */
 
 /* Define to 1 if you have the `boost_unit_test_framework-mt' library
    (-lboost_unit_test_framework-mt). */
