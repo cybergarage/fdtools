@@ -50,7 +50,7 @@ FdtImage* fdt_image_plugins_getimagerbysignature(const char* filename)
   }
 
   for (FdtImagePlugin* plg = fdt_image_plugins_getallimagers(); plg; plg = fdt_image_plugin_next(plg)) {
-    FdtImage* img = fdt_image_plugin_getimager(plg);
+    FdtImage* img = fdt_image_plugin_createimage(plg);
     if (fdt_image_hassig(img, (byte_t*)&sig, n_read)) {
       return img;
     }
@@ -63,7 +63,7 @@ FdtImage* fdt_image_plugins_getimagerbysignature(const char* filename)
 FdtImage* fdt_image_plugins_getimagerbyextention(const char* filename)
 {
   for (FdtImagePlugin* plg = fdt_image_plugins_getallimagers(); plg; plg = fdt_image_plugin_next(plg)) {
-    FdtImage* img = fdt_image_plugin_getimager(plg);
+    FdtImage* img = fdt_image_plugin_createimage(plg);
     if (fdt_image_hasext(img, filename)) {
       return img;
     }
