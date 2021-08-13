@@ -98,16 +98,16 @@
 		211519B5255DA6C200B747E1 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				2171E46B26C5839300781921 /* device_floppy_params_test.cpp */,
-				2171E46826C5828C00781921 /* error_test.cpp */,
-				2171E46726C5828C00781921 /* image_plugin_test.cpp */,
 				213114A9259C38D100C3C8F6 /* config_test.cpp */,
+				2171E46B26C5839300781921 /* device_floppy_params_test.cpp */,
 				21B0AB38259F607D00B064A3 /* device_floppy_test.cpp */,
 				21DC201C257B6B81004F3363 /* device_test.cpp */,
 				21DC2025257BA4A1004F3363 /* dictionary_test.cpp */,
+				2171E46826C5828C00781921 /* error_test.cpp */,
 				219F7D512568F68700827D5C /* image_d88_test.cpp */,
 				21403C08255EF3360022389D /* image_file_test.cpp */,
 				219F7D4D255FD26600827D5C /* image_hfe_test.cpp */,
+				2171E46726C5828C00781921 /* image_plugin_test.cpp */,
 				21587B862598978B00F98743 /* image_raw_test.cpp */,
 				213114AF259C5AEE00C3C8F6 /* image_test_func.cpp */,
 				21587B7E259798C800F98743 /* image_test.cpp */,
