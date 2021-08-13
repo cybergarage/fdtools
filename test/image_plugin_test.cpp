@@ -16,12 +16,11 @@
 #include <boost/test/unit_test.hpp>
 
 #include "image_test.h"
-#include <fdtools/plugins/plugin.h>
+#include <fdtools/plugins/image.h>
 
 BOOST_AUTO_TEST_CASE(ImagePluginTest)
 {
-  FdtImagePlugin* plg = fdt_image_plugin_new();
-  BOOST_CHECK(plg);
+  FdtError* err = fdt_error_new();
 
   boost::filesystem::path test_img_path(TEST_IMAGE_DIRECTORY);
   boost::filesystem::recursive_directory_iterator end;
@@ -29,8 +28,10 @@ BOOST_AUTO_TEST_CASE(ImagePluginTest)
     const boost::filesystem::path test_img_file = (*it);
     if (!boost::filesystem::exists(test_img_file))
       continue;
+    FdtImage* test_img = fdt_image_plugins_getimager(test_img_file.c_str(), err);
+    if (!test_img)
+      continue;
     BOOST_TEST_MESSAGE(test_img_file);
+    BOOST_CHECK(fdt_image_delete(test_img));
   }
-
-  BOOST_CHECK(fdt_image_plugin_delete(plg));
 }

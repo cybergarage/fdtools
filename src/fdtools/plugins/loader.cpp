@@ -21,12 +21,12 @@ static FdtImagePlugins* img_plgs;
 
 FdtImagePlugins* fdt_image_plugins_getallimagers()
 {
-  if (img_plgs)
-    return img_plgs;
+  if (!img_plgs)
+    return fdt_image_plugin_next(img_plgs);
 
-  img_plgs = fdt_image_plugin_new();
+  img_plgs = fdt_image_plugins_new();
 
-  // Adds your image plugins
+  // Adds your new image plugins
 
   fdt_image_plugins_add(img_plgs, fdt_d88_image_new);
 
@@ -34,5 +34,5 @@ FdtImagePlugins* fdt_image_plugins_getallimagers()
 
   fdt_image_plugins_add(img_plgs, fdt_raw_image_new);
 
-  return img_plgs;
+  return fdt_image_plugin_next(img_plgs);
 }
