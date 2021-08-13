@@ -13,14 +13,14 @@
 
 /* Define to 1 if you have the `boost_filesystem-mt' library
    (-lboost_filesystem-mt). */
-/* #undef HAVE_LIBBOOST_FILESYSTEM_MT */
+#define HAVE_LIBBOOST_FILESYSTEM_MT 1
 
 /* Define to 1 if you have the `boost_system' library (-lboost_system). */
 /* #undef HAVE_LIBBOOST_SYSTEM */
 
 /* Define to 1 if you have the `boost_system-mt' library (-lboost_system-mt).
    */
-/* #undef HAVE_LIBBOOST_SYSTEM_MT */
+#define HAVE_LIBBOOST_SYSTEM_MT 1
 
 /* Define to 1 if you have the `boost_unit_test_framework' library
    (-lboost_unit_test_framework). */
@@ -28,7 +28,7 @@
 
 /* Define to 1 if you have the `boost_unit_test_framework-mt' library
    (-lboost_unit_test_framework-mt). */
-/* #undef HAVE_LIBBOOST_UNIT_TEST_FRAMEWORK_MT */
+#define HAVE_LIBBOOST_UNIT_TEST_FRAMEWORK_MT 1
 
 /* Define to 1 if you have the <memory.h> header file. */
 #define HAVE_MEMORY_H 1
