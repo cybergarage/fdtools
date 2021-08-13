@@ -33,7 +33,6 @@ fdtoolstest_SOURCES = \
 	..//list_test.cpp \
 	..//logic_test.cpp \
 	..//image_test_func.cpp \
-	..//image_raw_test.cpp \
 	..//image_test.cpp \
 	..//image_d88_test.cpp \
 	..//device_floppy_params_test.cpp \

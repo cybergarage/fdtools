@@ -26,31 +26,3 @@ BOOST_AUTO_TEST_CASE(HfeHeaderSizeTest)
 {
   BOOST_CHECK_EQUAL(sizeof(FdtHfeHeader), HFE_HEADER_SIZE);
 }
-
-BOOST_AUTO_TEST_CASE(HfeImageLoaderTest)
-{
-  const char TEST_HFE_IMAGES[][64] = {
-    "test-001.hfe",
-    "test-002.hfe",
-    "test-003.hfe",
-  };
-
-  FdtError* err = fdt_error_new();
-
-  for (int n = 0; n < fdt_array_countof(TEST_HFE_IMAGES); n++) {
-    std::string filename = TEST_IMAGE_DIRECTORY + "/" + TEST_HFE_IMAGES[n];
-    boost::filesystem::path filepath(filename);
-    if (!boost::filesystem::exists(filepath))
-      continue;
-
-    FdtImage* img = fdt_hfe_image_new();
-    BOOST_CHECK(img);
-    BOOST_CHECK(fdt_image_open(img, filename.c_str(), FDT_FILE_READ, err));
-    BOOST_CHECK(fdt_image_load(img, err));
-    //fdt_image_print(img);
-    BOOST_CHECK(fdt_image_close(img, err));
-    fdt_image_delete(img);
-  }
-
-  fdt_error_delete(err);
-}

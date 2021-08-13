@@ -58,22 +58,3 @@ BOOST_AUTO_TEST_CASE(D88ConfigTest)
 
   BOOST_CHECK(fdt_image_delete(img));
 }
-
-BOOST_AUTO_TEST_CASE(D88ImageLoaderTest)
-{
-  const char TEST_D88_IMAGES[][64] = {
-    "test-001.d88",
-    "test-002.d88",
-    "test-003.d88",
-    "test-004.d88",
-  };
-
-  for (int n = 0; n < fdt_array_countof(TEST_D88_IMAGES); n++) {
-    std::string filename = TEST_IMAGE_DIRECTORY + "/" + TEST_D88_IMAGES[n];
-    boost::filesystem::path filepath(filename);
-    if (!boost::filesystem::exists(filepath))
-      continue;
-
-    ImageLoarderExporterCompareTest(filepath, fdt_d88_image_new);
-  }
-}
