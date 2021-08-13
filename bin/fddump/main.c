@@ -205,7 +205,7 @@ int main(int argc, char* argv[])
   // Loads source file image
 
   const char* src_img_name = fdt_program_getargument(prg, 0);
-  FdtImage* src_img = fdt_image_plugins_getimager(src_img_name, err);
+  FdtImage* src_img = fdt_image_plugins_create(src_img_name, err);
   if (!src_img) {
     exit_error(err);
   }
@@ -271,7 +271,7 @@ int main(int argc, char* argv[])
   // Imports source file image to dest file image
 
   const char* dst_img_name = fdt_program_getargument(prg, 1);
-  FdtImage* dst_img = fdt_image_plugins_getimager(dst_img_name, err);
+  FdtImage* dst_img = fdt_image_plugins_create(dst_img_name, err);
   if (!dst_img) {
     exit_error(err);
   }
