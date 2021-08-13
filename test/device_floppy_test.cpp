@@ -90,4 +90,4 @@ BOOST_AUTO_TEST_CASE(FloppyImportTest)
   BOOST_CHECK(fdt_error_delete(err));
 }
 
-#endif
+#endif /* __linux__ */
