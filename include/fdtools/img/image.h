@@ -120,6 +120,7 @@ void fdt_image_print(FdtImage* img);
 #define fdt_image_setrpm(img, v) fdt_image_config_setrpm(img->config, v)
 #define fdt_image_setwriteprotect(img, v) fdt_image_config_setwriteprotect(img->config, v)
 
+#define fdt_image_isdevice(img) ((fdt_image_gettype(img) == FDT_IMAGE_TYPE_DEV) ? true : false)
 #define fdt_image_hasname(img) ((0 < fdt_string_length(img->name)) ? true : false)
 #define fdt_image_getname(img) fdt_string_getvalue(img->name)
 #define fdt_image_hasconfigname(img) fdt_image_config_hasname(img->config)

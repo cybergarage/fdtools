@@ -210,10 +210,7 @@ int main(int argc, char* argv[])
     exit_error(err);
   }
 
-  FdtImageType src_img_type = fdt_image_gettype(src_img);
-
-  switch (src_img_type) {
-  case FDT_IMAGE_TYPE_DEV: {
+  if (fdt_image_isdevice(src_img)) {
     // Gets current device parameters, and set the parameters to image.
     FdtDevice* dev = fdt_device_new();
     fdt_device_setname(dev, src_img_name);
@@ -229,14 +226,9 @@ int main(int argc, char* argv[])
     }
     fdt_device_delete(dev);
     fdt_floppy_params_delete(fdparams);
-  } break;
-  case FDT_IMAGE_TYPE_RAW:
-    // TODO: Set parameters
-    break;
   }
 
-  switch (src_img_type) {
-  case FDT_IMAGE_TYPE_DEV: {
+  if (fdt_image_isdevice(src_img)) {
     // Shows progress infomation for device image types
     // TODO: Sets image parameters to device
     FdtDeviceImage* dev_img = (FdtDeviceImage*)src_img;
@@ -265,12 +257,11 @@ int main(int argc, char* argv[])
     if (!fdt_device_image_close(dev_img, err)) {
       exit_error(err);
     }
-  } break;
-  default: {
+  }
+  else {
     if (!fdt_image_load(src_img, err)) {
       exit_error(err);
     }
-  }
   }
 
   // Print line field to message buffer
@@ -294,10 +285,7 @@ int main(int argc, char* argv[])
 
   // Exports source file image to dest file image
 
-  FdtImageType dst_img_type = fdt_image_gettype(dst_img);
-
-  switch (dst_img_type) {
-  case FDT_IMAGE_TYPE_DEV: {
+  if (fdt_image_isdevice(dst_img)) {
     // Shows progress infomation for device image types
     FdtDeviceImage* dev_img = (FdtDeviceImage*)dst_img;
     if (!fdt_device_image_open(dev_img, dst_img_name, FDT_FILE_WRITE, err)) {
@@ -323,12 +311,11 @@ int main(int argc, char* argv[])
     if (!fdt_device_image_close(dev_img, err)) {
       exit_error(err);
     }
-  } break;
-  default: {
+  }
+  else {
     if (!fdt_image_export(dst_img, err)) {
       exit_error(err);
     }
-  }
   }
 
   fdt_image_delete(dst_img);
