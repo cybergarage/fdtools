@@ -12,6 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#if defined(__linux__)
+
 #include <fcntl.h>
 #include <sys/stat.h>
 #include <sys/types.h>
@@ -116,3 +118,5 @@ bool fdt_floppy_params_setfloppystruct(FdtFloppyParams* params, floppy_struct* f
 
   return true;
 }
+
+#endif /* __linux__ */

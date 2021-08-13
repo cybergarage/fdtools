@@ -113,4 +113,4 @@ bool fdt_device_getfloppyparameters(FdtDevice* dev, FdtFloppyParams* params, Fdt
   return is_success;
 }
 
-#endif
+#endif /* __linux__ */
