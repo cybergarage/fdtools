@@ -23,12 +23,17 @@ FdtImage* fdt_d88_image_new(void)
   if (!img)
     return NULL;
 
-  fdt_image_settype(img, FDT_IMAGE_TYPE_D88);
+  fdt_image_setgettypeid(img, fdt_d88_image_gettypeid);
   fdt_image_sethasext(img, fdt_d88_image_hasext);
   fdt_image_setloader(img, fdt_d88_image_load);
   fdt_image_setexporter(img, fdt_d88_image_export);
 
   return img;
+}
+
+const char* fdt_d88_image_gettypeid(FdtImage* img)
+{
+  return "D88";
 }
 
 bool fdt_d88_image_hasext(FdtFileImage* img, const char* filename)

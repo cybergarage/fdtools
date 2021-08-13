@@ -30,6 +30,7 @@ extern "C" {
 typedef enum {
   FDT_IMAGE_TYPE_UNKNOWN,
   FDT_IMAGE_TYPE_DEV,
+  FDT_IMAGE_TYPE_FILE,
   FDT_IMAGE_TYPE_RAW,
   FDT_IMAGE_TYPE_HFE,
   FDT_IMAGE_TYPE_D88,
@@ -37,6 +38,8 @@ typedef enum {
 
 const int FDT_IMAGE_HEADER_SIGNATURE_MAX = 8;
 
+typedef FdtImageType (*FDT_IMAGE_GETTYPE)(void*);
+typedef const char* (*FDT_IMAGE_GETTYPEID)(void*);
 typedef bool (*FDT_IMAGE_HASEXT)(void*, const char*);
 typedef bool (*FDT_IMAGE_HASSIG)(void*, byte_t*, size_t);
 typedef bool (*FDT_IMAGE_OPENER)(void*, const char*, FdtFileMode, FdtError*);
@@ -46,18 +49,19 @@ typedef bool (*FDT_IMAGE_LOADER)(void*, FdtError*);
 typedef bool (*FDT_IMAGE_EXPORTER)(void*, FdtError*);
 typedef bool (*FDT_IMAGE_DESTRUCTOR)(void*);
 
-#define FDT_IMAGE_STRUCT_MEMBERS     \
-  FdtImageType type;                 \
-  FdtString* name;                   \
-  FdtImageConfig* config;            \
-  FdtImageSectors* sectors;          \
-  FDT_IMAGE_HASEXT image_hasext;     \
-  FDT_IMAGE_HASSIG image_hassig;     \
-  FDT_IMAGE_OPENER image_opener;     \
-  FDT_IMAGE_CLOSER image_closer;     \
-  FDT_IMAGE_ISOPENED image_isopened; \
-  FDT_IMAGE_LOADER image_loader;     \
-  FDT_IMAGE_EXPORTER image_exporter; \
+#define FDT_IMAGE_STRUCT_MEMBERS       \
+  FdtString* name;                     \
+  FdtImageConfig* config;              \
+  FdtImageSectors* sectors;            \
+  FDT_IMAGE_GETTYPE image_gettype;     \
+  FDT_IMAGE_GETTYPEID image_gettypeid; \
+  FDT_IMAGE_HASEXT image_hasext;       \
+  FDT_IMAGE_HASSIG image_hassig;       \
+  FDT_IMAGE_OPENER image_opener;       \
+  FDT_IMAGE_CLOSER image_closer;       \
+  FDT_IMAGE_ISOPENED image_isopened;   \
+  FDT_IMAGE_LOADER image_loader;       \
+  FDT_IMAGE_EXPORTER image_exporter;   \
   FDT_IMAGE_DESTRUCTOR image_destructor;
 
 typedef struct FDT_ATTR_PACKED {
@@ -72,6 +76,9 @@ bool fdt_image_delete(FdtImage*);
 bool fdt_image_init(FdtImage*);
 bool fdt_image_clear(FdtImage*);
 
+FdtImageType fdt_image_gettype(FdtImage*);
+const char* fdt_image_gettypeid(FdtImage*);
+bool fdt_image_hasext(FdtImage*, const char*);
 bool fdt_image_hasext(FdtImage*, const char*);
 bool fdt_image_hassig(FdtImage*, byte_t*, size_t);
 bool fdt_image_open(FdtImage*, const char*, FdtFileMode, FdtError*);
@@ -91,6 +98,8 @@ void fdt_image_print(FdtImage* img);
 
 #define fdt_image_getconfig(img) (img->config)
 
+#define fdt_image_setgettype(img, fn) (img->image_gettype = (FDT_IMAGE_GETTYPE)fn)
+#define fdt_image_setgettypeid(img, fn) (img->image_gettypeid = (FDT_IMAGE_GETTYPEID)fn)
 #define fdt_image_sethasext(img, fn) (img->image_hasext = (FDT_IMAGE_HASEXT)fn)
 #define fdt_image_sethassig(img, fn) (img->image_hassig = (FDT_IMAGE_HASSIG)fn)
 #define fdt_image_setopener(img, fn) (img->image_opener = (FDT_IMAGE_OPENER)fn)
@@ -100,7 +109,6 @@ void fdt_image_print(FdtImage* img);
 #define fdt_image_setexporter(img, fn) (img->image_exporter = (FDT_IMAGE_EXPORTER)fn)
 #define fdt_image_setdestructor(img, fn) (img->image_destructor = (FDT_IMAGE_DESTRUCTOR)fn)
 
-#define fdt_image_settype(img, v) (img->type = v)
 #define fdt_image_setname(img, v) fdt_string_setvalue(img->name, v)
 #define fdt_image_setconfigname(img, v) fdt_image_config_setname(img->config, v)
 #define fdt_image_setsize(img, v) fdt_image_config_setsize(img->config, v)
@@ -112,7 +120,6 @@ void fdt_image_print(FdtImage* img);
 #define fdt_image_setrpm(img, v) fdt_image_config_setrpm(img->config, v)
 #define fdt_image_setwriteprotect(img, v) fdt_image_config_setwriteprotect(img->config, v)
 
-#define fdt_image_gettype(img) (img->type)
 #define fdt_image_hasname(img) ((0 < fdt_string_length(img->name)) ? true : false)
 #define fdt_image_getname(img) fdt_string_getvalue(img->name)
 #define fdt_image_hasconfigname(img) fdt_image_config_hasname(img->config)

@@ -20,12 +20,17 @@ FdtImage* fdt_raw_image_new(void)
   if (!img)
     return NULL;
 
-  fdt_image_settype(img, FDT_IMAGE_TYPE_RAW);
+  fdt_image_setgettypeid(img, fdt_raw_image_gettypeid);
   fdt_image_sethasext(img, fdt_raw_image_hasext);
   fdt_image_setloader(img, fdt_raw_image_load);
   fdt_image_setexporter(img, fdt_raw_image_export);
 
   return img;
+}
+
+const char* fdt_raw_image_gettypeid(FdtImage* img)
+{
+  return "RAW";
 }
 
 bool fdt_raw_image_hasext(FdtFileImage* img, const char* filename)

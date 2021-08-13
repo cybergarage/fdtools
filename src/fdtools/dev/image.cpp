@@ -19,6 +19,8 @@
 #include <fdtools/img/error.h>
 
 bool fdt_device_image_delete(FdtDeviceImage*);
+FdtImageType fdt_device_image_gettype(FdtImage*);
+const char* fdt_device_image_gettypeid(FdtImage* img);
 bool fdt_device_image_open(FdtDeviceImage*, const char*, FdtFileMode, FdtError*);
 bool fdt_device_image_close(FdtDeviceImage*, FdtError*);
 bool fdt_device_image_isopened(FdtDeviceImage* img);
@@ -44,7 +46,8 @@ FdtImage* fdt_device_image_new(void)
     return NULL;
   }
 
-  fdt_image_settype(img, FDT_IMAGE_TYPE_DEV);
+  fdt_image_setgettype(img, fdt_device_image_gettype);
+  fdt_image_setgettypeid(img, fdt_device_image_gettypeid);
   fdt_image_setopener(img, fdt_device_image_open);
   fdt_image_setcloser(img, fdt_device_image_close);
   fdt_image_setopenchecker(img, fdt_device_image_isopened);
@@ -71,6 +74,16 @@ bool fdt_device_image_delete(FdtDeviceImage* img)
     return false;
 
   return true;
+}
+
+FdtImageType fdt_device_image_gettype(FdtImage* img)
+{
+  return FDT_IMAGE_TYPE_DEV;
+}
+
+const char* fdt_device_image_gettypeid(FdtImage* img)
+{
+  return "DEV";
 }
 
 bool fdt_device_image_open(FdtDeviceImage* img, const char* name, FdtFileMode mode, FdtError* err)

@@ -32,8 +32,6 @@ FdtImage* fdt_image_new()
 
 bool fdt_image_init(FdtImage* img)
 {
-  fdt_image_settype(img, FDT_IMAGE_TYPE_UNKNOWN);
-
   img->name = fdt_string_new();
   img->config = fdt_image_config_new();
   img->sectors = fdt_image_sectors_new();
@@ -63,6 +61,20 @@ bool fdt_image_clear(FdtImage* img)
   fdt_image_sectors_delete(img->sectors);
 
   return true;
+}
+
+FdtImageType fdt_image_gettype(FdtImage* img)
+{
+  if (!img || !img->image_gettype)
+    return FDT_IMAGE_TYPE_UNKNOWN;
+  return img->image_gettype(img);
+}
+
+const char* fdt_image_gettypeid(FdtImage* img)
+{
+  if (!img || !img->image_gettypeid)
+    return "";
+  return img->image_gettypeid(img);
 }
 
 bool fdt_image_hasext(FdtImage* img, const char* filename)

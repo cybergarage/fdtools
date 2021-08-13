@@ -20,11 +20,16 @@ FdtImage* fdt_hfe_image_new(void)
   if (!img)
     return NULL;
 
-  fdt_image_settype(img, FDT_IMAGE_TYPE_HFE);
+  fdt_image_setgettypeid(img, fdt_hfe_image_gettypeid);
   fdt_image_sethassig(img, fdt_hfe_image_hassig);
   fdt_image_setloader(img, fdt_hfe_image_load);
 
   return img;
+}
+
+const char* fdt_hfe_image_gettypeid(FdtImage* img)
+{
+  return "HFE";
 }
 
 bool fdt_hfe_image_hassig(FdtFileImage* img, byte_t* header, size_t header_size)

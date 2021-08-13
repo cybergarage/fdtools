@@ -90,6 +90,7 @@ typedef struct FDT_ATTR_PACKED {
 
 FdtImage* fdt_d88_image_new(void);
 
+const char* fdt_d88_image_gettypeid(FdtImage* img);
 bool fdt_d88_image_hasext(FdtFileImage*, const char*);
 bool fdt_d88_image_load(FdtFileImage*, FdtError*);
 bool fdt_d88_image_export(FdtFileImage*, FdtError*);
