@@ -19,9 +19,7 @@
 #include <fdtools/plugins/d88/d88.h>
 #include <fdtools/plugins/raw/raw.h>
 
-typedef FdtImage* (*FDT_TEST_IMAGE_NEW_FUNC)();
-
 const std::string TEST_IMAGE_DIRECTORY = "./img";
 
-void ImageLoarderExporterCompareTest(boost::filesystem::path&, FDT_TEST_IMAGE_NEW_FUNC);
-void ImageExportTest(FdtImage* img, FDT_TEST_IMAGE_NEW_FUNC export_image_new_func);
+void ImageLoarderExporterCompareTest(boost::filesystem::path&, FDT_IMAGE_IMAGER);
+void ImageExportTest(FdtImage* img, FDT_IMAGE_IMAGER export_image_new_func);

@@ -19,14 +19,14 @@
 
 #include "image_test.h"
 
-void ImageLoarderExporterCompareTest(boost::filesystem::path& filepath, FDT_TEST_IMAGE_NEW_FUNC image_new_func)
+void ImageLoarderExporterCompareTest(boost::filesystem::path& filepath, FDT_IMAGE_IMAGER imager)
 {
   FdtError* err = fdt_error_new();
   BOOST_REQUIRE(err);
 
   // Loader test
 
-  FdtImage* src_img = image_new_func();
+  FdtImage* src_img = imager();
   BOOST_REQUIRE(src_img);
   fdt_image_setname(src_img, filepath.c_str());
   BOOST_REQUIRE_MESSAGE(fdt_image_load(src_img, err), fdt_error_getdebugmessage(err));
@@ -47,7 +47,7 @@ void ImageLoarderExporterCompareTest(boost::filesystem::path& filepath, FDT_TEST
 
   mem_fp = fdt_file_memopen(dst_img_buf, img_size, FDT_FILE_READ);
   BOOST_REQUIRE(mem_fp);
-  FdtImage* dst_img = image_new_func();
+  FdtImage* dst_img = imager();
   BOOST_REQUIRE(dst_img);
   fdt_image_file_setfile(dst_img, mem_fp);
   BOOST_REQUIRE_MESSAGE(fdt_image_load(dst_img, err), fdt_error_getdebugmessage(err));
@@ -63,7 +63,7 @@ void ImageLoarderExporterCompareTest(boost::filesystem::path& filepath, FDT_TEST
   BOOST_CHECK(fdt_error_delete(err));
 }
 
-void ImageExportTest(FdtImage* img, FDT_TEST_IMAGE_NEW_FUNC export_image_new_func)
+void ImageExportTest(FdtImage* img, FDT_IMAGE_IMAGER export_imager)
 {
   const int EXPORT_IMGSIZE_MAX = 8 * 1024 * 1024;
 
@@ -77,7 +77,7 @@ void ImageExportTest(FdtImage* img, FDT_TEST_IMAGE_NEW_FUNC export_image_new_fun
 
   // Import test
 
-  FdtImage* export_img = export_image_new_func();
+  FdtImage* export_img = export_imager();
   BOOST_REQUIRE_MESSAGE(fdt_image_import(export_img, img, err), fdt_error_getdebugmessage(err));
 
   // Export test

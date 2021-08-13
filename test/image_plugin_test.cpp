@@ -28,10 +28,13 @@ BOOST_AUTO_TEST_CASE(ImagePluginTest)
     const boost::filesystem::path test_img_file = (*it);
     if (!boost::filesystem::exists(test_img_file))
       continue;
-    FdtImage* test_img = fdt_image_plugins_create(test_img_file.c_str(), err);
-    if (!test_img)
+
+    FDT_IMAGE_IMAGER test_imager = fdt_image_plugins_getimager(test_img_file.c_str(), err);
+    if (!test_imager)
       continue;
+
     BOOST_TEST_MESSAGE(test_img_file);
-    BOOST_CHECK(fdt_image_delete(test_img));
+
+    ImageLoarderExporterCompareTest(test_img_file, test_imager);
   }
 }
