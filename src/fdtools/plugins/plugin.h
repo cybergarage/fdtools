@@ -40,7 +40,7 @@ FdtImagePlugin* fdt_image_plugin_new();
 bool fdt_image_plugin_delete(FdtImagePlugin*);
 
 #define fdt_image_plugin_setimager(plg, v) (plg->imager = v)
-#define fdt_image_plugin_getimager(plg, v) (plg->imager)
+#define fdt_image_plugin_getimager(plg) (plg->imager)
 #define fdt_image_plugin_createimage(plg) (plg->imager())
 #define fdt_image_plugin_next(plg) (FdtImagePlugin*)fdt_list_next((FdtListNode*)plg)
 

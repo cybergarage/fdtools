@@ -32,7 +32,7 @@ bool fdt_image_name_isdevice(const char* filename)
   return true;
 }
 
-FdtImage* fdt_image_plugins_createbysignature(const char* filename)
+FDT_IMAGE_IMAGER fdt_image_plugins_getimagerbysignature(const char* filename)
 {
   if (!filename || (fdt_strlen(filename) <= 0))
     return NULL;
@@ -52,7 +52,8 @@ FdtImage* fdt_image_plugins_createbysignature(const char* filename)
   for (FdtImagePlugin* plg = fdt_image_plugins_getallimagers(); plg; plg = fdt_image_plugin_next(plg)) {
     FdtImage* img = fdt_image_plugin_createimage(plg);
     if (fdt_image_hassig(img, (byte_t*)&sig, n_read)) {
-      return img;
+      fdt_image_delete(img);
+      return fdt_image_plugin_getimager(plg);
     }
     fdt_image_delete(img);
   }
@@ -60,36 +61,50 @@ FdtImage* fdt_image_plugins_createbysignature(const char* filename)
   return NULL;
 }
 
-FdtImage* fdt_image_plugins_createbyextention(const char* filename)
+FDT_IMAGE_IMAGER fdt_image_plugins_getimagerbyextention(const char* filename)
 {
   for (FdtImagePlugin* plg = fdt_image_plugins_getallimagers(); plg; plg = fdt_image_plugin_next(plg)) {
     FdtImage* img = fdt_image_plugin_createimage(plg);
     if (fdt_image_hasext(img, filename)) {
-      return img;
+      fdt_image_delete(img);
+      return fdt_image_plugin_getimager(plg);
     }
     fdt_image_delete(img);
   }
   return NULL;
 }
 
-FdtImage* fdt_image_plugins_createbyfile(const char* filename, FdtError* err)
+FDT_IMAGE_IMAGER fdt_image_plugins_getimagerbyfile(const char* filename, FdtError* err)
 {
   if (!filename || (fdt_strlen(filename) <= 0))
     return NULL;
 
   if (fdt_image_name_isdevice(filename))
-    return fdt_device_image_new();
+    return fdt_device_image_new;
 
-  FdtImage* img;
-  img = fdt_image_plugins_createbysignature(filename);
-  if (img)
-    return img;
+  FDT_IMAGE_IMAGER imager;
+  imager = fdt_image_plugins_getimagerbysignature(filename);
+  if (imager)
+    return imager;
 
-  img = fdt_image_plugins_createbyextention(filename);
-  if (img)
-    return img;
+  imager = fdt_image_plugins_getimagerbyextention(filename);
+  if (imager)
+    return imager;
 
   return NULL;
+}
+
+FDT_IMAGE_IMAGER fdt_image_plugins_getimager(const char* filename, FdtError* err)
+{
+  if (!filename || (fdt_strlen(filename) <= 0))
+    return NULL;
+
+  FDT_IMAGE_IMAGER imager = fdt_image_plugins_getimagerbyfile(filename, err);
+  if (!imager) {
+    fdt_error_setmessage(err, FDT_IMAGE_MESSAGE_UNKNOWN_TYPE_FORMAT, filename);
+    return NULL;
+  }
+  return imager;
 }
 
 FdtImage* fdt_image_plugins_create(const char* filename, FdtError* err)
@@ -97,11 +112,11 @@ FdtImage* fdt_image_plugins_create(const char* filename, FdtError* err)
   if (!filename || (fdt_strlen(filename) <= 0))
     return NULL;
 
-  FdtImage* img = fdt_image_plugins_createbyfile(filename, err);
-  if (!img) {
-    fdt_error_setmessage(err, FDT_IMAGE_MESSAGE_UNKNOWN_TYPE_FORMAT, filename);
+  FDT_IMAGE_IMAGER imager = fdt_image_plugins_getimager(filename, err);
+  if (!imager)
     return NULL;
-  }
+
+  FdtImage* img = imager();
   fdt_image_setname(img, filename);
   return img;
 }
