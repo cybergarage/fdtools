@@ -21,7 +21,7 @@ static FdtImagePlugins* img_plgs;
 
 FdtImagePlugins* fdt_image_plugins_getallimagers()
 {
-  if (!img_plgs)
+  if (img_plgs)
     return fdt_image_plugin_next(img_plgs);
 
   img_plgs = fdt_image_plugins_new();
