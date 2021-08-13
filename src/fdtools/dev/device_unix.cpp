@@ -187,3 +187,17 @@ ssize_t fdt_device_getsize(FdtDevice* dev, FdtError* err)
 
   return size;
 }
+
+#if !defined(__linux__)
+
+bool fdt_device_setparameters(FdtDevice* dev, FdtError* err)
+{
+  return true;
+}
+
+bool fdt_device_getfloppyparameters(FdtDevice* dev, FdtFloppyParams* params, FdtError* err)
+{
+  return true;
+}
+
+#endif /* __linux__ */
