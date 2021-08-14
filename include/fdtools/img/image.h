@@ -83,7 +83,6 @@ bool fdt_image_close(FdtImage*, FdtError*);
 bool fdt_image_isopened(FdtImage*);
 bool fdt_image_load(FdtImage*, FdtError*);
 bool fdt_image_import(FdtImage*, FdtImage*, FdtError*);
-bool fdt_image_importwithsorting(FdtImage*, FdtImage*, FdtError*);
 bool fdt_image_export(FdtImage*, FdtError*);
 
 bool fdt_image_isvalid(FdtImage*, FdtError*);

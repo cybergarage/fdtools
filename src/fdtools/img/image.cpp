@@ -144,16 +144,8 @@ bool fdt_image_import(FdtImage* img, FdtImage* src, FdtError* err)
   fdt_image_sectors_delete(img->sectors);
   img->sectors = src_sectors;
 
-  return true;
-}
-
-bool fdt_image_importwithsorting(FdtImage* img, FdtImage* src, FdtError* err)
-{
-  if (!fdt_image_import(img, src, err))
-    return false;
-
   if (!fdt_image_sortsectors(img)) {
-    fdt_error_setmessage(err, FDT_IMAGE_MESSAGE_SECTORS_NOT_SORTED, fdt_image_gettarget(img));
+    fdt_error_setmessage(err, FDT_IMAGE_MESSAGE_SECTORS_NOT_SORTED, fdt_image_getname(img));
     return false;
   }
 
