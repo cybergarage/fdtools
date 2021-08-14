@@ -19,7 +19,7 @@
 
 #include "image_test.h"
 
-void ImageLoarderExporterCompareTest(boost::filesystem::path& filepath, FDT_IMAGE_IMAGER imager)
+void ImageLoarderExporterCompareTest(const boost::filesystem::path& filepath, FDT_IMAGE_IMAGER imager)
 {
   FdtError* err = fdt_error_new();
   BOOST_REQUIRE(err);

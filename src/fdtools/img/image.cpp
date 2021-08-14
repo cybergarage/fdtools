@@ -86,7 +86,7 @@ bool fdt_image_hasext(FdtImage* img, const char* filename)
 
 bool fdt_image_hassig(FdtImage* img, byte_t* header, size_t header_size)
 {
-  if (!img || img->image_hassig)
+  if (!img || !img->image_hassig)
     return false;
   return img->image_hassig(img, header, header_size);
 }
