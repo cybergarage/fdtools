@@ -21,5 +21,5 @@
 
 const std::string TEST_IMAGE_DIRECTORY = "./img";
 
-void ImageLoarderExporterCompareTest(const boost::filesystem::path&, FDT_IMAGE_IMAGER);
-void ImageExportTest(FdtImage* img, FDT_IMAGE_IMAGER export_image_new_func);
+void ImageLoarderExporterCompareTest(FdtImage*, FDT_IMAGE_IMAGER);
+void ImageExportTest(FdtImage*, FDT_IMAGE_IMAGER);
