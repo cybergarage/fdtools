@@ -82,8 +82,8 @@ BOOST_AUTO_TEST_CASE(FloppyImportTest)
 
   // Export Test
 
-  ImageExportTest((FdtImage*)dev_img, fdt_raw_image_new);
-  ImageExportTest((FdtImage*)dev_img, fdt_d88_image_new);
+  ImageExportCompareTest((FdtImage*)dev_img, fdt_raw_image_new);
+  ImageExportCompareTest((FdtImage*)dev_img, fdt_d88_image_new);
 
   // Cleanup
   BOOST_CHECK(fdt_floppy_params_delete(fdparams));

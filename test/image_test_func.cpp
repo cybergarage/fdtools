@@ -19,7 +19,7 @@
 
 #include "image_test.h"
 
-void ImageLoarderExporterCompareTest(FdtImage* img, FDT_IMAGE_IMAGER convert_imager)
+void ImageExportCompareTest(FdtImage* img, FDT_IMAGE_IMAGER convert_imager)
 {
   const size_t EXPORT_IMGSIZE_MAX = 8 * 1024 * 1024;
 
@@ -47,9 +47,9 @@ void ImageLoarderExporterCompareTest(FdtImage* img, FDT_IMAGE_IMAGER convert_ima
 
   BOOST_TEST_MESSAGE("Expoted   " << fdt_image_getname(img) << " (" << fdt_image_gettypeid(img) << "/MEM)");
 
-  BOOST_TEST_MESSAGE("Loading   " << fdt_image_getname(img) << " (MEM)");
-
   // Loads the exported memory file
+
+  BOOST_TEST_MESSAGE("Loading   " << fdt_image_getname(img) << " (MEM)");
 
   mem_fp = fdt_file_memopen(export_img_buf, export_img_buf_size, FDT_FILE_READ);
   BOOST_REQUIRE(mem_fp);
@@ -66,42 +66,12 @@ void ImageLoarderExporterCompareTest(FdtImage* img, FDT_IMAGE_IMAGER convert_ima
   BOOST_CHECK_MESSAGE(fdt_image_equals(export_img, exported_img, err), fdt_error_getdebugmessage(err));
 
   BOOST_TEST_MESSAGE("Compared  " << fdt_image_getname(img) << " (" << fdt_image_gettypeid(img) << ")");
-
+  
   // Cleaning
 
   BOOST_REQUIRE(fdt_image_delete(export_img));
   BOOST_REQUIRE(fdt_image_delete(exported_img));
   free(export_img_buf);
-
-  BOOST_CHECK(fdt_error_delete(err));
-}
-
-void ImageExportTest(FdtImage* img, FDT_IMAGE_IMAGER export_imager)
-{
-  const int EXPORT_IMGSIZE_MAX = 8 * 1024 * 1024;
-
-  FdtError* err = fdt_error_new();
-  BOOST_REQUIRE(err);
-
-  byte_t* export_img_buf = (byte_t*)malloc(EXPORT_IMGSIZE_MAX);
-  BOOST_REQUIRE(export_img_buf);
-  FILE* mem_fp = fdt_file_memopen(export_img_buf, EXPORT_IMGSIZE_MAX, FDT_FILE_WRITE);
-  BOOST_REQUIRE(mem_fp);
-
-  // Import test
-
-  FdtImage* exported_img = export_imager();
-  BOOST_REQUIRE_MESSAGE(fdt_image_import(exported_img, img, err), fdt_error_getdebugmessage(err));
-
-  // Export test
-
-  fdt_image_file_setfile(exported_img, mem_fp);
-  BOOST_CHECK(fdt_image_delete(exported_img));
-  BOOST_REQUIRE_MESSAGE(fdt_image_export(exported_img, err), fdt_error_getdebugmessage(err));
-  BOOST_CHECK_MESSAGE(fdt_image_close(exported_img, err), fdt_error_getdebugmessage(err));
-  free(export_img_buf);
-
-  // Cleanup
 
   BOOST_CHECK(fdt_error_delete(err));
 }

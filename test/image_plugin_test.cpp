@@ -50,7 +50,7 @@ BOOST_AUTO_TEST_CASE(ImagePluginTest)
 
     // Exports the loaded image to a memory file
 
-    ImageLoarderExporterCompareTest(test_img, test_imager);
+    ImageExportCompareTest(test_img, test_imager);
 
     BOOST_CHECK(fdt_image_delete(test_img));
   }
