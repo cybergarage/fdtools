@@ -132,7 +132,7 @@ bool fdt_d88_header_parse(FdtD88Header* header, byte_t* header_buf)
 
 bool fdt_image_setd88headerinfo(FdtFileImage* img, FdtD88Header* header)
 {
-  fdt_image_setname(img, header->name);
+  fdt_image_settarget(img, header->name);
   fdt_image_setsize(img, header->disk_size);
   fdt_image_setwriteprotect(img, header->write_protect ? true : false);
 

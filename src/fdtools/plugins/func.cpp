@@ -117,6 +117,6 @@ FdtImage* fdt_image_plugins_create(const char* filename, FdtError* err)
     return NULL;
 
   FdtImage* img = imager();
-  fdt_image_setname(img, filename);
+  fdt_image_settarget(img, filename);
   return img;
 }

@@ -32,7 +32,7 @@ FdtImage* fdt_image_new()
 
 bool fdt_image_init(FdtImage* img)
 {
-  img->name = fdt_string_new();
+  img->target = fdt_string_new();
   img->config = fdt_image_config_new();
   img->sectors = fdt_image_sectors_new();
 
@@ -56,7 +56,7 @@ bool fdt_image_clear(FdtImage* img)
   if (!img)
     return false;
 
-  fdt_string_delete(img->name);
+  fdt_string_delete(img->target);
   fdt_image_config_delete(img->config);
   fdt_image_sectors_delete(img->sectors);
 
@@ -112,7 +112,7 @@ bool fdt_image_load(FdtImage* img, FdtError* err)
 
   bool is_already_opened = img->image_isopened(img);
   if (!is_already_opened) {
-    if (!fdt_image_open(img, fdt_image_getname(img), FDT_FILE_READ, err))
+    if (!fdt_image_open(img, fdt_image_gettarget(img), FDT_FILE_READ, err))
       return false;
   }
 
@@ -153,7 +153,7 @@ bool fdt_image_importwithsorting(FdtImage* img, FdtImage* src, FdtError* err)
     return false;
 
   if (!fdt_image_sortsectors(img)) {
-    fdt_error_setmessage(err, FDT_IMAGE_MESSAGE_SECTORS_NOT_SORTED, fdt_image_getname(img));
+    fdt_error_setmessage(err, FDT_IMAGE_MESSAGE_SECTORS_NOT_SORTED, fdt_image_gettarget(img));
     return false;
   }
 
@@ -167,7 +167,7 @@ bool fdt_image_export(FdtImage* img, FdtError* err)
 
   bool is_already_opened = img->image_isopened(img);
   if (!is_already_opened) {
-    if (!fdt_image_open(img, fdt_image_getname(img), FDT_FILE_WRITE, err))
+    if (!fdt_image_open(img, fdt_image_gettarget(img), FDT_FILE_WRITE, err))
       return false;
   }
 

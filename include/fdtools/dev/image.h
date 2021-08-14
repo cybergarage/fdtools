@@ -41,7 +41,7 @@ bool fdt_device_image_writesector(FdtDeviceImage*, FdtImageSector*, FdtError*);
 bool fdt_image_setfloppyparams(FdtImage*, FdtFloppyParams*, FdtError*);
 #define fdt_device_image_setfloppyparams(img, params, err) fdt_image_setfloppyparams((FdtImage*)img, params, err)
 
-#define fdt_device_image_getname(img) fdt_image_getname(((FdtImage*)img))
+#define fdt_device_image_getname(img) fdt_image_gettarget(((FdtImage*)img))
 #define fdt_device_image_generatesectors(img, err) fdt_image_generatesectors(((FdtImage*)img), err)
 #define fdt_device_image_getsectoroffset(img, sector) fdt_image_getsectoroffset(((FdtImage*)img), sector)
 #define fdt_device_image_getsectors(img) fdt_image_getsectors((FdtImage*)img)

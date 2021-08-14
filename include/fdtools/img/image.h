@@ -47,7 +47,7 @@ typedef bool (*FDT_IMAGE_EXPORTER)(void*, FdtError*);
 typedef bool (*FDT_IMAGE_DESTRUCTOR)(void*);
 
 #define FDT_IMAGE_STRUCT_MEMBERS       \
-  FdtString* name;                     \
+  FdtString* target;                   \
   FdtImageConfig* config;              \
   FdtImageSectors* sectors;            \
   FDT_IMAGE_GETTYPE image_gettype;     \
@@ -106,7 +106,7 @@ void fdt_image_print(FdtImage* img);
 #define fdt_image_setexporter(img, fn) (img->image_exporter = (FDT_IMAGE_EXPORTER)fn)
 #define fdt_image_setdestructor(img, fn) (img->image_destructor = (FDT_IMAGE_DESTRUCTOR)fn)
 
-#define fdt_image_setname(img, v) fdt_string_setvalue(img->name, v)
+#define fdt_image_settarget(img, v) fdt_string_setvalue(img->target, v)
 #define fdt_image_setconfigname(img, v) fdt_image_config_setname(img->config, v)
 #define fdt_image_setsize(img, v) fdt_image_config_setsize(img->config, v)
 #define fdt_image_setdensity(img, v) fdt_image_config_setdensity(img->config, v)
@@ -118,8 +118,8 @@ void fdt_image_print(FdtImage* img);
 #define fdt_image_setwriteprotect(img, v) fdt_image_config_setwriteprotect(img->config, v)
 
 #define fdt_image_isdevice(img) ((fdt_image_gettype(img) == FDT_IMAGE_TYPE_DEV) ? true : false)
-#define fdt_image_hasname(img) ((0 < fdt_string_length(img->name)) ? true : false)
-#define fdt_image_getname(img) fdt_string_getvalue(img->name)
+#define fdt_image_hasname(img) ((0 < fdt_string_length(img->target)) ? true : false)
+#define fdt_image_gettarget(img) fdt_string_getvalue(img->target)
 #define fdt_image_hasconfigname(img) fdt_image_config_hasname(img->config)
 #define fdt_image_getconfigname(img) fdt_image_config_getname(img->config)
 #define fdt_image_getsize(img) fdt_image_config_getsize(img->config)

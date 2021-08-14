@@ -28,7 +28,7 @@ void ImageLoarderExporterCompareTest(const boost::filesystem::path& filepath, FD
 
   FdtImage* src_img = imager();
   BOOST_REQUIRE(src_img);
-  fdt_image_setname(src_img, filepath.c_str());
+  fdt_image_settarget(src_img, filepath.c_str());
   BOOST_REQUIRE_MESSAGE(fdt_image_load(src_img, err), fdt_error_getdebugmessage(err));
 
   // Exporter test

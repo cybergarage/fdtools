@@ -21,20 +21,32 @@
 BOOST_AUTO_TEST_CASE(ImagePluginTest)
 {
   FdtError* err = fdt_error_new();
+  BOOST_REQUIRE(err);
 
   boost::filesystem::path test_img_path(TEST_IMAGE_DIRECTORY);
   boost::filesystem::recursive_directory_iterator end;
   for (boost::filesystem::recursive_directory_iterator it(test_img_path); it != end; ++it) {
-    const boost::filesystem::path test_img_file = (*it);
-    if (!boost::filesystem::exists(test_img_file))
+    const boost::filesystem::path test_img_filepath = (*it);
+    if (!boost::filesystem::exists(test_img_filepath))
       continue;
 
-    FDT_IMAGE_IMAGER test_imager = fdt_image_plugins_getimager(test_img_file.c_str(), err);
+    FDT_IMAGE_IMAGER test_imager = fdt_image_plugins_getimager(test_img_filepath.c_str(), err);
     if (!test_imager)
       continue;
 
-    BOOST_TEST_MESSAGE(test_img_file);
+    BOOST_TEST_MESSAGE(test_img_filepath);
 
-    ImageLoarderExporterCompareTest(test_img_file, test_imager);
+    // Loader test
+
+    FdtImage* test_img = test_imager();
+    BOOST_REQUIRE(test_img);
+    fdt_image_settarget(test_img, test_img_filepath.c_str());
+    BOOST_REQUIRE_MESSAGE(fdt_image_load(test_img, err), fdt_error_getdebugmessage(err));
+
+    // ImageLoarderExporterCompareTest(test_img_file, test_imager);
+
+    BOOST_CHECK(fdt_image_delete(test_img));
   }
+
+  BOOST_CHECK(fdt_error_delete(err));
 }
