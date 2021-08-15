@@ -34,7 +34,7 @@ void ImageExportCompareTest(FdtImage* img, FDT_IMAGE_IMAGER convert_imager)
 
   // Exports the loaded image to a memory file
 
-  BOOST_TEST_MESSAGE("Exporting " << fdt_image_getname(img));
+  BOOST_TEST_MESSAGE("Exporting -> " << fdt_image_getname(img) << "(" << fdt_image_gettypeid(img) << "/MEM)");
 
   FdtImage* export_img = convert_imager();
   BOOST_REQUIRE(export_img);
@@ -45,11 +45,11 @@ void ImageExportCompareTest(FdtImage* img, FDT_IMAGE_IMAGER convert_imager)
   BOOST_REQUIRE_MESSAGE(fdt_image_export(export_img, err), fdt_error_getdebugmessage(err));
   BOOST_CHECK_MESSAGE(fdt_image_close(export_img, err), fdt_error_getdebugmessage(err));
 
-  BOOST_TEST_MESSAGE("Expoted   " << fdt_image_getname(img) << " (" << fdt_image_gettypeid(img) << "/MEM)");
+  BOOST_TEST_MESSAGE("Expoted   -> " << fdt_image_getname(img) << "(" << fdt_image_gettypeid(img) << "/MEM)");
 
   // Loads the exported memory file
 
-  BOOST_TEST_MESSAGE("Loading   " << fdt_image_getname(img) << " (MEM)");
+  BOOST_TEST_MESSAGE("Loading   <- " << fdt_image_getname(img) << "(" << fdt_image_gettypeid(img) << "/MEM)");
 
   mem_fp = fdt_file_memopen(export_img_buf, export_img_buf_size, FDT_FILE_READ);
   BOOST_REQUIRE(mem_fp);
@@ -59,14 +59,14 @@ void ImageExportCompareTest(FdtImage* img, FDT_IMAGE_IMAGER convert_imager)
   BOOST_REQUIRE_MESSAGE(fdt_image_load(exported_img, err), fdt_error_getdebugmessage(err));
   BOOST_CHECK_MESSAGE(fdt_image_close(exported_img, err), fdt_error_getdebugmessage(err));
 
-  BOOST_TEST_MESSAGE("Loaded    " << fdt_image_getname(img) << " (" << fdt_image_gettypeid(img) << "/MEM)");
+  BOOST_TEST_MESSAGE("Loaded    <- " << fdt_image_getname(img) << "(" << fdt_image_gettypeid(img) << "/MEM)");
 
   // Compare test
 
-  BOOST_CHECK_MESSAGE(fdt_image_equals(export_img, exported_img, err), fdt_error_getdebugmessage(err));
+  BOOST_CHECK_MESSAGE(fdt_image_equals(img, exported_img, err), fdt_error_getdebugmessage(err));
 
-  BOOST_TEST_MESSAGE("Compared  " << fdt_image_getname(img) << " (" << fdt_image_gettypeid(img) << ")");
-  
+  BOOST_TEST_MESSAGE("Compared     " << fdt_image_getname(img) << "(" << fdt_image_gettypeid(img) << ")<->" << fdt_image_getname(exported_img) << "(" << fdt_image_gettypeid(exported_img) << "/MEM)");
+
   // Cleaning
 
   BOOST_REQUIRE(fdt_image_delete(export_img));

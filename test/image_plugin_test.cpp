@@ -38,14 +38,14 @@ BOOST_AUTO_TEST_CASE(ImagePluginTest)
 
     // Loads a found test disk image
 
-    BOOST_TEST_MESSAGE("Loading   " << test_img_filename);
+    BOOST_TEST_MESSAGE("Loading   <- " << test_img_filename);
 
     FdtImage* test_img = test_imager();
     BOOST_REQUIRE(test_img);
     fdt_image_settarget(test_img, test_img_filepath.c_str());
     BOOST_REQUIRE_MESSAGE(fdt_image_load(test_img, err), fdt_error_getdebugmessage(err));
 
-    BOOST_TEST_MESSAGE("Loaded    " << fdt_image_getname(test_img) << " (" << fdt_image_gettypeid(test_img) << ")");
+    BOOST_TEST_MESSAGE("Loaded    <- " << test_img_filename << "(" << fdt_image_gettypeid(test_img) << ")");
 
     // Exports the loaded image to a memory file, and compare the exported image with the original image
 
