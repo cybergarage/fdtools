@@ -80,10 +80,12 @@ BOOST_AUTO_TEST_CASE(FloppyImportTest)
   BOOST_REQUIRE_MESSAGE(fdt_device_image_load(dev_img, err), fdt_error_getdebugmessage(err));
   BOOST_CHECK_MESSAGE(fdt_device_image_close(dev_img, err), fdt_error_getdebugmessage(err));
 
-  // Export Test
+  // Exports a imported floppy image to all plugin images
 
-  ImageExportCompareTest((FdtImage*)dev_img, fdt_raw_image_new);
-  ImageExportCompareTest((FdtImage*)dev_img, fdt_d88_image_new);
+  for (FdtImagePlugin* plg = fdt_image_plugins_getallimagers(); plg; plg = fdt_image_plugin_next(plg)) {
+    FDT_IMAGE_IMAGER imager = fdt_image_plugin_getimager(plg);
+    ImageExportCompareTest((FdtImage*)dev_img, imager);
+  }
 
   // Cleanup
   BOOST_CHECK(fdt_floppy_params_delete(fdparams));
