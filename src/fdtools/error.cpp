@@ -106,10 +106,10 @@ bool fdt_error_setdebugmessage(FdtError* err, const char* file, int line_no, con
   return true;
 }
 
-void fdt_error_appendmessage(FdtError* err, const char* format, ...)
+bool fdt_error_appendmessage(FdtError* err, const char* format, ...)
 {
   if (!err)
-    return;
+    return false;
 
   char msg[FDT_ERROR_MESSAGE_MAX];
   va_list list;
@@ -119,6 +119,8 @@ void fdt_error_appendmessage(FdtError* err, const char* format, ...)
 
   fdt_string_appendvalue(err->message, " ");
   fdt_string_appendvalue(err->message, msg);
+
+  return true;
 }
 
 const char* fdt_error_getdebugmessage(FdtError* err)
