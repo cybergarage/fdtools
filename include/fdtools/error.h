@@ -51,7 +51,7 @@ bool fdt_error_iserror(FdtError*);
 
 #define fdt_error_getmessage(err) fdt_string_getvalue(err->message)
 
-void fdt_error_setdebugmessage(FdtError*, const char*, int, const char*, const char*, const char*, ...);
+bool fdt_error_setdebugmessage(FdtError*, const char*, int, const char*, const char*, const char*, ...);
 void fdt_error_appendmessage(FdtError* err, const char* format, ...);
 const char* fdt_error_getdebugmessage(FdtError*);
 

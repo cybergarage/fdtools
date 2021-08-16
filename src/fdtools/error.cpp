@@ -81,10 +81,10 @@ bool fdt_error_iserror(FdtError* err)
   return true;
 }
 
-void fdt_error_setdebugmessage(FdtError* err, const char* file, int line_no, const char* function, const char* prefix, const char* format, ...)
+bool fdt_error_setdebugmessage(FdtError* err, const char* file, int line_no, const char* function, const char* prefix, const char* format, ...)
 {
   if (!err)
-    return;
+    return false;
 
   fdt_string_setvalue(err->file_name, file);
   err->line_no = line_no;
@@ -102,6 +102,8 @@ void fdt_error_setdebugmessage(FdtError* err, const char* file, int line_no, con
   va_end(list);
 
   fdt_string_setvalue(err->message, msg);
+
+  return true;
 }
 
 void fdt_error_appendmessage(FdtError* err, const char* format, ...)
