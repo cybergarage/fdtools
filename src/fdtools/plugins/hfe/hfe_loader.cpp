@@ -48,7 +48,7 @@ bool fdt_hfe_image_load(FdtFileImage* img, FdtError* err)
 
   // Read second part: Track offset LUT
 
-  size_t track_list_offset = hfe_header.track_list_offset * 512;
+  size_t track_list_offset = hfe_header.track_list_offset * HFE_TRACK_BLOCK_SIZE;
   if (!fdt_file_seek(fp, track_list_offset, SEEK_SET))
     return false;
 
@@ -70,55 +70,48 @@ bool fdt_hfe_image_load(FdtFileImage* img, FdtError* err)
 
   for (size_t t = 0; t < number_of_track; t++) {
     size_t track_offset = hfe_track_offsets[t].offset;
-    size_t track_data_offset = 512 * track_offset;
+    size_t track_data_offset = track_offset * HFE_TRACK_BLOCK_SIZE;
     if (!fdt_file_seek(fp, track_data_offset, SEEK_SET))
       return false;
 
-    size_t track_len = hfe_track_offsets[t].track_len;
-    byte_t* track_buf = (byte_t*)malloc(track_len);
-    if (!fdt_file_read(fp, track_buf, track_len)) {
-      free(track_buf);
-      return false;
-    }
-    //fdt_hexdump_print(track_buf, track_len);
-
-    for (size_t h = 0; h < number_of_head; h++) {
-      size_t sector_data_size = track_len / 2;
-
-      byte_t* sector_data = (byte_t*)malloc(sector_data_size);
-      if (!sector_data) {
-        free(track_buf);
+    byte_t track_block_data[HFE_TRACK_BLOCK_SIZE];
+    size_t track_block_data_offset = 0;
+    while (track_block_data_offset < hfe_track_offsets[t].track_len) {
+      if (!fdt_file_read(fp, track_block_data, HFE_TRACK_BLOCK_SIZE)) {
         return false;
       }
 
-      FdtImageSector* sector = fdt_image_sector_new();
-      if (!sector) {
-        free(track_buf);
-        return false;
-      }
-
-      size_t block_len = sector_data_size / 256;
-      for (int b = 0; b < block_len; b++) {
-        for (int n = 0; n < 256; n++) {
-          size_t track_buf_offset = (b * 512) + n + (256 * h);
-          sector_data[n] = fdt_swapbyte(track_buf[track_buf_offset]);
+      for (size_t h = 0; h < number_of_head; h++) {
+        FdtImageSector* sector = fdt_image_sector_new();
+        if (!sector) {
+          return false;
         }
+
+        size_t sector_data_size = HFE_TRACK_BLOCK_SIZE / 2;
+        byte_t* sector_data = (byte_t*)malloc(sector_data_size);
+        if (!sector_data) {
+          fdt_image_sector_delete(sector);
+          return false;
+        }
+
+        byte_t* track_block_sector_data = track_block_data + (sector_data_size * h);
+        for (size_t b = 0; b < sector_data_size; b++) {
+          sector_data[b] = fdt_swapbyte(track_block_sector_data[b]);
+        }
+
+        fdt_image_sector_setcylindernumber(sector, t);
+        fdt_image_sector_setheadnumber(sector, h);
+        fdt_image_sector_setnumber(sector, 0 /*TODO*/);
+        fdt_image_sector_setsize(sector, sector_data_size);
+        fdt_image_sector_setdata(sector, sector_data);
+
+        fdt_image_addsector(img, sector);
+
+        //fdt_hexdump_print(sector_data, sector_data_size);
       }
 
-      fdt_image_sector_setcylindernumber(sector, t);
-      fdt_image_sector_setheadnumber(sector, h);
-      fdt_image_sector_setnumber(sector, 0 /*TODO*/);
-      fdt_image_sector_setsize(sector, sector_data_size);
-      fdt_image_sector_setdata(sector, sector_data);
-
-      fdt_image_addsector(img, sector);
-
-      //fdt_hexdump_print(sector_data, sector_data_size);
-
-      return true;
+      track_block_data_offset += HFE_TRACK_BLOCK_SIZE;
     }
-
-    free(track_buf);
   }
 
   return true;
