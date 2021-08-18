@@ -114,7 +114,7 @@ bool fdt_image_load(FdtImage* img, FdtError* err)
     fdt_error_setmessage(err, FDT_IMAGE_MESSAGE_LOADER_NOT_SUPPORTED, fdt_image_gettypeid(img));
     return false;
   }
-  
+
   bool is_already_opened = img->image_isopened(img);
   if (!is_already_opened) {
     if (!fdt_image_open(img, fdt_image_gettarget(img), FDT_FILE_READ, err))
@@ -133,6 +133,9 @@ bool fdt_image_load(FdtImage* img, FdtError* err)
 
 bool fdt_image_import(FdtImage* img, FdtImage* src, FdtError* err)
 {
+  if (!img || !src)
+    return false;
+
   FdtImageConfig* src_config = fdt_image_config_copy(src->config);
   if (!src_config)
     return false;
@@ -161,6 +164,11 @@ bool fdt_image_export(FdtImage* img, FdtError* err)
 {
   if (!img)
     return false;
+
+  if (!img->image_exporter) {
+    fdt_error_setmessage(err, FDT_IMAGE_MESSAGE_EXPORTER_NOT_SUPPORTED, fdt_image_gettypeid(img));
+    return false;
+  }
 
   bool is_already_opened = img->image_isopened(img);
   if (!is_already_opened) {
