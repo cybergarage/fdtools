@@ -17,13 +17,13 @@
 #include <fdtools/util/array.h>
 #include <fdtools/util/logic.h>
 
-BOOST_AUTO_TEST_CASE(BitSwapTest)
+BOOST_AUTO_TEST_CASE(ByteReverseTest)
 {
   byte_t b[] = { 0x00, 0x01, 0x02, 0x04, 0x08, 0x10, 0x20, 0x40, 0x80 };
   byte_t eb[] = { 0x00, 0x80, 0x40, 0x20, 0x10, 0x08, 0x04, 0x02, 0x01 };
 
   for (int n = 0; n < fdt_array_countof(b); n++) {
-    byte_t rb = fdt_swapbyte(b[n]);
+    byte_t rb = fdt_byte_reverse(b[n]);
     BOOST_CHECK_EQUAL(rb, eb[n]);
   }
 }

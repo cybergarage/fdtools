@@ -96,7 +96,7 @@ bool fdt_hfe_image_load(FdtFileImage* img, FdtError* err)
 
         byte_t* track_block_sector_data = track_block_data + (sector_data_size * h);
         for (size_t b = 0; b < sector_data_size; b++) {
-          sector_data[b] = fdt_swapbyte(track_block_sector_data[b]);
+          sector_data[b] = fdt_byte_reverse(track_block_sector_data[b]);
         }
 
         fdt_image_sector_setcylindernumber(sector, t);
