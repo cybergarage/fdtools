@@ -23,13 +23,10 @@ extern "C" {
 
 inline byte_t fdt_swapbyte(byte_t x)
 {
-  byte_t r = 0;
-  for (int n = 0; n < 8; n++) {
-    r <<= 1;
-    r |= (x & 0x01);
-    x >>= 1;
-  }
-  return r;
+  x = ((x & 0xF0) >> 4 | ((x & 0x0F) << 4) & 0x0F);
+  x = ((x & 0xCC) >> 2 | ((x & 0x33) << 2) & 0x33);
+  x = ((x & 0xAA) >> 1 | ((x & 0x55) << 1) & 0x55);
+  return x;
 }
 
 #ifdef __cplusplus
