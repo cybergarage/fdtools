@@ -16,6 +16,7 @@
 #include <fdtools/plugins/raw/raw.h>
 
 #include <fdtools/plugins/d88/d88.h>
+#include <fdtools/plugins/hfe/hfe.h>
 
 static FdtImagePlugins* img_plgs;
 
@@ -29,6 +30,7 @@ FdtImagePlugins* fdt_image_plugins_getallimagers()
   // Adds your new image plugins
 
   fdt_image_plugins_add(img_plgs, fdt_d88_image_new);
+  fdt_image_plugins_add(img_plgs, fdt_hfe_image_new);
 
   // Adds the raw image plugin because the plugin has no file header
 
