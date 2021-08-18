@@ -110,6 +110,11 @@ bool fdt_image_load(FdtImage* img, FdtError* err)
   if (!img)
     return false;
 
+  if (!img->image_loader) {
+    fdt_error_setmessage(err, FDT_IMAGE_MESSAGE_LOADER_NOT_SUPPORTED, fdt_image_gettypeid(img));
+    return false;
+  }
+  
   bool is_already_opened = img->image_isopened(img);
   if (!is_already_opened) {
     if (!fdt_image_open(img, fdt_image_gettarget(img), FDT_FILE_READ, err))

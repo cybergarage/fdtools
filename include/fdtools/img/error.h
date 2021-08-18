@@ -26,6 +26,7 @@ extern "C" {
 #define FDT_IMAGE_MESSAGE_UNKNOWN_TYPE_FORMAT "Unknown image type: %s"
 #define FDT_IMAGE_MESSAGE_SECTORS_NOT_SORTED "Sectors aren't sorted: %s"
 #define FDT_IMAGE_MESSAGE_UNKNOWN_DENSITY_FORMAT "Unknown density: %s"
+#define FDT_IMAGE_MESSAGE_LOADER_NOT_SUPPORTED "%s : Loader is not supported"
 
 #ifdef __cplusplus
 } /* extern C */
