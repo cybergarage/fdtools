@@ -12,32 +12,16 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#include <fdtools/img/file.h>
 #include <fdtools/plugins/hfe/hfe.h>
+#include <fdtools/util/hexdump.h>
+#include <fdtools/util/logic.h>
+#include <fdtools/util/string.h>
 
-FdtImage* fdt_hfe_image_new(void)
+bool fdt_hfe_image_export(FdtFileImage* img, FdtError* err)
 {
-  FdtImage* img = fdt_image_file_new();
   if (!img)
-    return NULL;
-
-  fdt_image_setgettypeid(img, fdt_hfe_image_gettypeid);
-  fdt_image_sethassig(img, fdt_hfe_image_hassig);
-  fdt_image_setloader(img, fdt_hfe_image_load);
-  fdt_image_setexporter(img, fdt_hfe_image_export);
-  
-  return img;
-}
-
-const char* fdt_hfe_image_gettypeid(FdtImage* img)
-{
-  return "HFE";
-}
-
-bool fdt_hfe_image_hassig(FdtFileImage* img, byte_t* header, size_t header_size)
-{
-  if (header_size < fdt_strlen(HFE_IMAGE_HEADER_SIGNATURE))
     return false;
-  if (fdt_strncmp((char*)header, HFE_IMAGE_HEADER_SIGNATURE, fdt_strlen(HFE_IMAGE_HEADER_SIGNATURE)) == 0)
-    return true;
+
   return false;
 }

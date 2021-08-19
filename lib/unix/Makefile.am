@@ -34,6 +34,7 @@ fdtools_sources = \
 	../../src/fdtools/util/dictionary.cpp \
 	../../src/fdtools/error.cpp \
 	../../src/fdtools/plugins/func.cpp \
+	../../src/fdtools/plugins/hfe/hfe_exporter.cpp \
 	../../src/fdtools/plugins/hfe/hfe.cpp \
 	../../src/fdtools/plugins/hfe/hfe_loader.cpp \
 	../../src/fdtools/plugins/plugin.cpp \

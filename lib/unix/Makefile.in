@@ -151,6 +151,7 @@ am__objects_1 = ../../src/fdtools/util/struct.$(OBJEXT) \
 	../../src/fdtools/util/dictionary.$(OBJEXT) \
 	../../src/fdtools/error.$(OBJEXT) \
 	../../src/fdtools/plugins/func.$(OBJEXT) \
+	../../src/fdtools/plugins/hfe/hfe_exporter.$(OBJEXT) \
 	../../src/fdtools/plugins/hfe/hfe.$(OBJEXT) \
 	../../src/fdtools/plugins/hfe/hfe_loader.$(OBJEXT) \
 	../../src/fdtools/plugins/plugin.$(OBJEXT) \
@@ -212,6 +213,7 @@ am__depfiles_remade = ../../src/fdtools/$(DEPDIR)/error.Po \
 	../../src/fdtools/plugins/d88/$(DEPDIR)/d88_exporter.Po \
 	../../src/fdtools/plugins/d88/$(DEPDIR)/d88_loader.Po \
 	../../src/fdtools/plugins/hfe/$(DEPDIR)/hfe.Po \
+	../../src/fdtools/plugins/hfe/$(DEPDIR)/hfe_exporter.Po \
 	../../src/fdtools/plugins/hfe/$(DEPDIR)/hfe_loader.Po \
 	../../src/fdtools/plugins/raw/$(DEPDIR)/raw.Po \
 	../../src/fdtools/plugins/raw/$(DEPDIR)/raw_exporter.Po \
@@ -398,6 +400,7 @@ fdtools_sources = \
 	../../src/fdtools/util/dictionary.cpp \
 	../../src/fdtools/error.cpp \
 	../../src/fdtools/plugins/func.cpp \
+	../../src/fdtools/plugins/hfe/hfe_exporter.cpp \
 	../../src/fdtools/plugins/hfe/hfe.cpp \
 	../../src/fdtools/plugins/hfe/hfe_loader.cpp \
 	../../src/fdtools/plugins/plugin.cpp \
@@ -565,6 +568,9 @@ clean-libLIBRARIES:
 ../../src/fdtools/plugins/hfe/$(DEPDIR)/$(am__dirstamp):
 	@$(MKDIR_P) ../../src/fdtools/plugins/hfe/$(DEPDIR)
 	@: > ../../src/fdtools/plugins/hfe/$(DEPDIR)/$(am__dirstamp)
+../../src/fdtools/plugins/hfe/hfe_exporter.$(OBJEXT):  \
+	../../src/fdtools/plugins/hfe/$(am__dirstamp) \
+	../../src/fdtools/plugins/hfe/$(DEPDIR)/$(am__dirstamp)
 ../../src/fdtools/plugins/hfe/hfe.$(OBJEXT):  \
 	../../src/fdtools/plugins/hfe/$(am__dirstamp) \
 	../../src/fdtools/plugins/hfe/$(DEPDIR)/$(am__dirstamp)
@@ -699,6 +705,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@../../src/fdtools/plugins/d88/$(DEPDIR)/d88_exporter.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@../../src/fdtools/plugins/d88/$(DEPDIR)/d88_loader.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@../../src/fdtools/plugins/hfe/$(DEPDIR)/hfe.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@../../src/fdtools/plugins/hfe/$(DEPDIR)/hfe_exporter.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@../../src/fdtools/plugins/hfe/$(DEPDIR)/hfe_loader.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@../../src/fdtools/plugins/raw/$(DEPDIR)/raw.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@../../src/fdtools/plugins/raw/$(DEPDIR)/raw_exporter.Po@am__quote@ # am--include-marker
@@ -926,6 +933,7 @@ distclean: distclean-am
 	-rm -f ../../src/fdtools/plugins/d88/$(DEPDIR)/d88_exporter.Po
 	-rm -f ../../src/fdtools/plugins/d88/$(DEPDIR)/d88_loader.Po
 	-rm -f ../../src/fdtools/plugins/hfe/$(DEPDIR)/hfe.Po
+	-rm -f ../../src/fdtools/plugins/hfe/$(DEPDIR)/hfe_exporter.Po
 	-rm -f ../../src/fdtools/plugins/hfe/$(DEPDIR)/hfe_loader.Po
 	-rm -f ../../src/fdtools/plugins/raw/$(DEPDIR)/raw.Po
 	-rm -f ../../src/fdtools/plugins/raw/$(DEPDIR)/raw_exporter.Po
@@ -1008,6 +1016,7 @@ maintainer-clean: maintainer-clean-am
 	-rm -f ../../src/fdtools/plugins/d88/$(DEPDIR)/d88_exporter.Po
 	-rm -f ../../src/fdtools/plugins/d88/$(DEPDIR)/d88_loader.Po
 	-rm -f ../../src/fdtools/plugins/hfe/$(DEPDIR)/hfe.Po
+	-rm -f ../../src/fdtools/plugins/hfe/$(DEPDIR)/hfe_exporter.Po
 	-rm -f ../../src/fdtools/plugins/hfe/$(DEPDIR)/hfe_loader.Po
 	-rm -f ../../src/fdtools/plugins/raw/$(DEPDIR)/raw.Po
 	-rm -f ../../src/fdtools/plugins/raw/$(DEPDIR)/raw_exporter.Po
