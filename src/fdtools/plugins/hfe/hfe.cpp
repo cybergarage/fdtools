@@ -24,7 +24,7 @@ FdtImage* fdt_hfe_image_new(void)
   fdt_image_sethassig(img, fdt_hfe_image_hassig);
   fdt_image_setloader(img, fdt_hfe_image_load);
   fdt_image_setexporter(img, fdt_hfe_image_export);
-  
+
   return img;
 }
 
