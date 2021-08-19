@@ -119,7 +119,6 @@ bool fdt_hfe_image_load(FdtFileImage* img, FdtError* err)
 
 bool fdt_hfe_header_parse(FdtHfeHeader* header, byte_t* header_buf)
 {
-  // TODO: Support Big-endian architecture
   memcpy(header, header_buf, sizeof(FdtHfeHeader));
   return true;
 }
@@ -129,6 +128,7 @@ bool fdt_image_sethfeheaderinfo(FdtFileImage* img, FdtHfeHeader* header)
   fdt_image_setwriteprotect(img, header->write_allowed ? true : false);
   fdt_image_setnumberofcylinder(img, header->number_of_track);
   fdt_image_setnumberofhead(img, header->number_of_side);
+  fdt_image_setbitrate(img, header->bitRate);
   fdt_image_setrpm(img, header->floppyRPM);
 
   return true;

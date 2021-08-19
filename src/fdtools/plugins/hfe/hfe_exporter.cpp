@@ -48,7 +48,7 @@ bool fdt_hfe_header_setconfig(FdtHfeHeader* hfe_header, FdtImage* img, FdtError*
   hfe_header->number_of_track = fdt_image_getnumberofcylinder(img);
   hfe_header->number_of_side = fdt_image_getnumberofhead(img);
   hfe_header->track_encoding = HFE_ISOIBM_MFM_ENCODING;
-  hfe_header->bitRate = 0; // TODO
+  hfe_header->bitRate = fdt_image_getbitrate(img);
   hfe_header->floppyRPM = fdt_image_getrpm(img);
   switch (fdt_image_getdensity(img)) {
   case FDT_IMAGE_DENSITY_HD:
@@ -61,9 +61,9 @@ bool fdt_hfe_header_setconfig(FdtHfeHeader* hfe_header, FdtImage* img, FdtError*
   hfe_header->write_allowed = fdt_image_getwriteprotect(img) ? 0x00 : 0xFF;
   hfe_header->single_step = HFE_SINGLE_STEP;
   hfe_header->track0s0_altencoding = HFE_UNKNOWN_ENCODING;
-  hfe_header->track0s0_encoding = 0x00;
+  hfe_header->track0s0_encoding = 0xFF;
   hfe_header->track0s1_altencoding = HFE_UNKNOWN_ENCODING;
-  hfe_header->track0s1_encoding = 0x00;
+  hfe_header->track0s1_encoding = 0xFF;
 
   return true;
 }

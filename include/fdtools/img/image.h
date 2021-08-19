@@ -113,6 +113,7 @@ void fdt_image_print(FdtImage* img);
 #define fdt_image_setnumberofsector(img, v) fdt_image_config_setnumberofsector(img->config, v)
 #define fdt_image_setnumberofcylinder(img, v) fdt_image_config_setnumberofcylinder(img->config, v)
 #define fdt_image_setsectorsize(img, v) fdt_image_config_setsectorsize(img->config, v)
+#define fdt_image_setbitrate(img, v) fdt_image_config_setbitrate(img->config, v)
 #define fdt_image_setrpm(img, v) fdt_image_config_setrpm(img->config, v)
 #define fdt_image_setwriteprotect(img, v) fdt_image_config_setwriteprotect(img->config, v)
 
@@ -128,6 +129,7 @@ void fdt_image_print(FdtImage* img);
 #define fdt_image_getnumberofsector(img) fdt_image_config_getnumberofsector(img->config)
 #define fdt_image_getnumberofcylinder(img) fdt_image_config_getnumberofcylinder(img->config)
 #define fdt_image_getsectorsize(img) fdt_image_config_getsectorsize(img->config)
+#define fdt_image_getbitrate(img) fdt_image_config_getbitrate(img->config)
 #define fdt_image_getrpm(img) fdt_image_config_getrpm(img->config)
 #define fdt_image_getwriteprotect(img) fdt_image_config_getwriteprotect(img->config)
 #define fdt_image_calculaterawsize(img) fdt_image_config_calculaterawsize(img->config)
