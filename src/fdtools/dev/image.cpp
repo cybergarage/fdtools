@@ -116,6 +116,7 @@ bool fdt_image_setfloppyparams(FdtImage* img, FdtFloppyParams* fdparams, FdtErro
   fdt_image_setnumberofhead(img, fdt_floppy_params_gethead(fdparams));
   fdt_image_setnumberofsector(img, fdt_floppy_params_getsect(fdparams));
   fdt_image_setsectorsize(img, fdt_floppy_params_getssize(fdparams));
+  fdt_image_setrpm(img, fdt_floppy_params_getrpm(fdparams));
   return true;
 }
 
