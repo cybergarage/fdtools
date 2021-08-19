@@ -36,6 +36,7 @@ typedef struct FDT_ATTR_PACKED {
   size_t number_of_sector;
   size_t number_of_cylinder;
   size_t sector_size;
+  int bitrate;
   int rpm;
   bool write_protect;
 } FdtImageConfig;
@@ -59,6 +60,7 @@ void fdt_image_config_print(FdtImageConfig*);
 #define fdt_image_config_setnumberofsector(config, v) (config->number_of_sector = v)
 #define fdt_image_config_setnumberofcylinder(config, v) (config->number_of_cylinder = v)
 #define fdt_image_config_setsectorsize(config, v) (config->sector_size = v)
+#define fdt_image_config_setbitrate(config, v) (config->bitrate = v)
 #define fdt_image_config_setrpm(config, v) (config->rpm = v)
 #define fdt_image_config_setwriteprotect(config, v) (config->write_protect = v)
 
@@ -71,6 +73,7 @@ void fdt_image_config_print(FdtImageConfig*);
 #define fdt_image_config_getnumberofsector(config) (config->number_of_sector)
 #define fdt_image_config_getnumberofcylinder(config) (config->number_of_cylinder)
 #define fdt_image_config_getsectorsize(config) (config->sector_size)
+#define fdt_image_config_getbitrate(config) (config->bitrate)
 #define fdt_image_config_getrpm(config) (config->rpm)
 #define fdt_image_config_getwriteprotect(config) (config->write_protect)
 
