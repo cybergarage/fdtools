@@ -58,7 +58,7 @@ bool fdt_hfe_header_setconfig(FdtHfeHeader* hfe_header, FdtImage* img, FdtError*
   }
   hfe_header->dnu = 0x01; /* Undifined? */
   hfe_header->track_list_offset = 1; /* 0x200 */
-  hfe_header->write_allowed = fdt_image_getwriteprotect(img) ? 0x00 : 0xFF;
+  hfe_header->write_allowed = fdt_image_iswriteprotectenabled(img) ? 0x00 : 0xFF;
   hfe_header->single_step = HFE_SINGLE_STEP;
   hfe_header->track0s0_altencoding = HFE_UNKNOWN_ENCODING;
   hfe_header->track0s0_encoding = 0xFF;
