@@ -29,13 +29,42 @@ bool fdt_hfe_image_export(FdtFileImage* img, FdtError* err)
   if (!fp)
     return false;
 
-  FdtHfeHeader hfe_header;
-  if (!fdt_hfe_header_setconfig(&hfe_header, (FdtImage*)img, err))
+  size_t number_of_track = fdt_image_getnumberofcylinder(img);
+  size_t number_of_side = fdt_image_getnumberofhead(img);
+
+  // First part : 0x0000-0x0200 (512 bytes) : File header
+
+  byte_t hfe_header_buf[HFE_HEADER_BLOCK_SIZE];
+  memset(hfe_header_buf, 0x00, sizeof(hfe_header_buf));
+
+  FdtHfeHeader* hfe_header = (FdtHfeHeader*)hfe_header_buf;
+  if (!fdt_hfe_header_setconfig(hfe_header, (FdtImage*)img, err))
     return false;
 
-  if (!fdt_file_write(fp, &hfe_header, sizeof(hfe_header))) {
+  if (!fdt_file_write(fp, hfe_header, sizeof(hfe_header))) {
     fdt_error_setlasterror(err, "");
     return false;
+  }
+
+  // Second part : (up to 1024 bytes) : Track offset LUT
+
+  byte_t track_offset_lut_buf[HFE_TRACK_OFFSET_LUT_SIZE];
+  memset(hfe_header_buf, 0x00, sizeof(track_offset_lut_buf));
+
+  FdtHfeTrackOffsets* track_offsets = (FdtHfeTrackOffsets*)track_offset_lut_buf;
+  size_t track_offset_block_no = (HFE_HEADER_BLOCK_SIZE + HFE_TRACK_OFFSET_LUT_SIZE) / 512;
+  for (size_t c = 0; c < number_of_track; c++) {
+    track_offsets[c].offset = track_offset_block_no;
+  }
+
+  if (!fdt_file_write(fp, track_offset_lut_buf, sizeof(track_offset_lut_buf))) {
+    fdt_error_setlasterror(err, "");
+    return false;
+  }
+
+  // Third part : Track data
+
+  for (size_t c = 0; c < number_of_track; c++) {
   }
 
   return false;
