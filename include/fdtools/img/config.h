@@ -75,7 +75,7 @@ void fdt_image_config_print(FdtImageConfig*);
 #define fdt_image_config_getsectorsize(config) (config->sector_size)
 #define fdt_image_config_getbitrate(config) (config->bitrate)
 #define fdt_image_config_getrpm(config) (config->rpm)
-#define fdt_image_config_getwriteprotect(config) (config->write_protect)
+#define fdt_image_config_iswriteprotectenabled(config) (config->write_protect)
 
 #ifdef __cplusplus
 } /* extern C */

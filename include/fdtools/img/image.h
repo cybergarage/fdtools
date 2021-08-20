@@ -131,7 +131,7 @@ void fdt_image_print(FdtImage* img);
 #define fdt_image_getsectorsize(img) fdt_image_config_getsectorsize(img->config)
 #define fdt_image_getbitrate(img) fdt_image_config_getbitrate(img->config)
 #define fdt_image_getrpm(img) fdt_image_config_getrpm(img->config)
-#define fdt_image_iswriteprotectenabled(img) fdt_image_config_getwriteprotect(img->config)
+#define fdt_image_iswriteprotectenabled(img) fdt_image_config_iswriteprotectenabled(img->config)
 #define fdt_image_calculaterawsize(img) fdt_image_config_calculaterawsize(img->config)
 
 #define fdt_image_getsectors(img) fdt_image_sectors_gets(img->sectors)
