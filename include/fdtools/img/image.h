@@ -138,6 +138,7 @@ void fdt_image_print(FdtImage* img);
 #define fdt_image_getsector(img, c, h, r) fdt_image_sectors_getsector(img->sectors, c, h, r)
 #define fdt_image_getnumberoftracksector(img, c, h) fdt_image_sectors_getnumberoftracksector(img->sectors, c, h)
 #define fdt_image_gettracksize(img, c, h) fdt_image_sectors_gettracksize(img->sectors, c, h)
+#define fdt_image_gettrackbytes(img, c, h) fdt_image_sectors_gettrackbytes(img->sectors, c, h)
 #define fdt_image_getnsectors(img) fdt_image_sectors_size(img->sectors)
 #define fdt_image_sectors_geterrorsector(img) fdt_image_sectors_geterrorsector(img->sectors)
 #define fdt_image_getnerrorsectors(img) fdt_image_sectors_getnerrorsectors(img->sectors)
