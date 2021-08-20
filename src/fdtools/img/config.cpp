@@ -41,7 +41,7 @@ FdtImageConfig* fdt_image_config_new()
   fdt_image_config_setsectorsize(config, 0);
   fdt_image_config_setbitrate(config, 0);
   fdt_image_config_setrpm(config, 0);
-  fdt_image_config_setwriteprotect(config, false);
+  fdt_image_config_setwriteprotectenabled(config, false);
 
   return config;
 }
