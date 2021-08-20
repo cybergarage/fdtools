@@ -135,6 +135,30 @@ size_t fdt_image_sectors_gettracksize(FdtImageSectors* sectors, FdtCylinderNumbe
   return track_total_sector_size;
 }
 
+byte_t* fdt_image_sectors_gettrackbytes(FdtImageSectors* sectors, FdtCylinderNumber c, FdtHeadNumber h)
+{
+  size_t track_size = fdt_image_sectors_gettracksize(sectors, c, h);
+  byte_t* track_data = (byte_t*)calloc(track_size, sizeof(byte_t));
+  if (!track_data)
+    return NULL;
+
+  size_t track_offset = 0;
+  for (FdtImageSector* sector = fdt_image_sectors_gets(sectors); sector; sector = fdt_image_sector_next(sector)) {
+    if (fdt_image_sector_getcylindernumber(sector) != c)
+      continue;
+    if (fdt_image_sector_getheadnumber(sector) != h)
+      continue;
+    size_t sector_size = fdt_image_sector_getsize(sector);
+    byte_t* sector_bytes = fdt_image_sector_getdata(sector);
+    if (sector_size == 0 || !sector_bytes)
+      continue;
+    memcpy(track_data + track_offset, sector_bytes, sector_size);
+    track_offset += sector_size;
+  }
+
+  return track_data;
+}
+
 FdtImageSector* fdt_image_sectors_geterrorsector(FdtImageSectors* sectors)
 {
   for (FdtImageSector* sector = fdt_image_sectors_gets(sectors); sector; sector = fdt_image_sector_next(sector)) {
