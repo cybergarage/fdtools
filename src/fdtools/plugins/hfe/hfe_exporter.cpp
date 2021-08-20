@@ -42,7 +42,7 @@ bool fdt_hfe_image_export(FdtFileImage* img, FdtError* err)
   if (!fdt_hfe_header_setconfig(hfe_header, (FdtImage*)img, err))
     return false;
 
-  if (!fdt_file_write(fp, hfe_header, sizeof(hfe_header))) {
+  if (!fdt_file_write(fp, hfe_header_buf, sizeof(hfe_header_buf))) {
     fdt_error_setlasterror(err, "");
     return false;
   }
