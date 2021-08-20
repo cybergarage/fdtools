@@ -48,11 +48,21 @@ bool fdt_hfe_image_export(FdtFileImage* img, FdtError* err)
 
   // Second part : (up to 1024 bytes) : Track offset LUT
 
-  byte_t track_offset_lut_buf[HFE_TRACK_OFFSET_LUT_SIZE];
+  size_t track_offset_lut_size = HFE_TRACK_OFFSET_LUT_SIZE;
+  size_t track_offset_lut_track_max = track_offset_lut_size / sizeof(FdtHfeTrackOffsets);
+  if (track_offset_lut_track_max < number_of_track) {
+    track_offset_lut_size += HFE_TRACK_OFFSET_LUT_SIZE;
+    if (track_offset_lut_track_max < number_of_track) {
+      fdt_error_setmessage(err, "number of track is so big (%d)", number_of_track);
+      return false;
+    }
+  }
+
+  byte_t track_offset_lut_buf[track_offset_lut_size];
   memset(hfe_header_buf, 0x00, sizeof(track_offset_lut_buf));
 
   FdtHfeTrackOffsets* track_offsets = (FdtHfeTrackOffsets*)track_offset_lut_buf;
-  size_t track_offset_block_no = (HFE_HEADER_BLOCK_SIZE + HFE_TRACK_OFFSET_LUT_SIZE) / 512;
+  size_t track_offset_block_no = (HFE_HEADER_BLOCK_SIZE + track_offset_lut_size) / 512;
   for (size_t c = 0; c < number_of_track; c++) {
     track_offsets[c].offset = track_offset_block_no;
   }
@@ -90,9 +100,9 @@ bool fdt_hfe_header_setconfig(FdtHfeHeader* hfe_header, FdtImage* img, FdtError*
   hfe_header->write_allowed = fdt_image_iswriteprotectenabled(img) ? 0x00 : 0xFF;
   hfe_header->single_step = HFE_SINGLE_STEP;
   hfe_header->track0s0_altencoding = HFE_UNKNOWN_ENCODING;
-  hfe_header->track0s0_encoding = 0xFF;
+  hfe_header->track0s0_encoding = HFE_UNKNOWN_ENCODING;
   hfe_header->track0s1_altencoding = HFE_UNKNOWN_ENCODING;
-  hfe_header->track0s1_encoding = 0xFF;
+  hfe_header->track0s1_encoding = HFE_UNKNOWN_ENCODING;
 
   return true;
 }
