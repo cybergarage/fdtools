@@ -138,7 +138,7 @@ void fdt_hfe_header_print(FdtHfeHeader* header)
 {
   printf("formatrevision:       %d\n", header->formatrevision);
   printf("number_of_track:      %d\n", header->number_of_track);
-  printf("number_of_side:       %d\n", header->number_of_side);
+  printf("number_of_head:       %d\n", header->number_of_side);
   printf("track_encoding:       %d\n", header->track_encoding);
   printf("bitRate:              %d\n", header->bitRate);
   printf("floppyRPM:            %d\n", header->floppyRPM);
