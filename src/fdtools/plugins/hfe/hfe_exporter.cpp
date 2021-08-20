@@ -17,6 +17,7 @@
 #include <fdtools/util/hexdump.h>
 #include <fdtools/util/logic.h>
 #include <fdtools/util/string.h>
+#include <math.h>
 
 bool fdt_hfe_header_setconfig(FdtHfeHeader* hfe_header, FdtImage* img, FdtError* err);
 
@@ -30,7 +31,7 @@ bool fdt_hfe_image_export(FdtFileImage* img, FdtError* err)
     return false;
 
   size_t number_of_track = fdt_image_getnumberofcylinder(img);
-  size_t number_of_side = fdt_image_getnumberofhead(img);
+  size_t number_of_head = fdt_image_getnumberofhead(img);
 
   // First part : 0x0000-0x0200 (512 bytes) : File header
 
@@ -50,7 +51,7 @@ bool fdt_hfe_image_export(FdtFileImage* img, FdtError* err)
 
   size_t track_offset_lut_size = HFE_TRACK_OFFSET_LUT_SIZE;
   size_t track_offset_lut_track_max = track_offset_lut_size / sizeof(FdtHfeTrackOffsets);
-  if (track_offset_lut_track_max < number_of_track) {
+  if (track_offset_lut_track_max < number_of_track) { // 512 or 1024 ?
     track_offset_lut_size += HFE_TRACK_OFFSET_LUT_SIZE;
     if (track_offset_lut_track_max < number_of_track) {
       fdt_error_setmessage(err, "number of track is so big (%d)", number_of_track);
@@ -65,6 +66,12 @@ bool fdt_hfe_image_export(FdtFileImage* img, FdtError* err)
   size_t track_offset_block_no = (HFE_HEADER_BLOCK_SIZE + track_offset_lut_size) / 512;
   for (size_t c = 0; c < number_of_track; c++) {
     track_offsets[c].offset = track_offset_block_no;
+    size_t track_max_size = 0;
+    for (size_t h = 0; h < number_of_head; h++) {
+      size_t track_size = fdt_image_gettracksize(img, c, h);
+      track_max_size = (track_max_size < track_size) ? track_size : track_max_size;
+    }
+    track_offsets[c].track_len = track_max_size * 2;
   }
 
   if (!fdt_file_write(fp, track_offset_lut_buf, sizeof(track_offset_lut_buf))) {
@@ -75,6 +82,8 @@ bool fdt_hfe_image_export(FdtFileImage* img, FdtError* err)
   // Third part : Track data
 
   for (size_t c = 0; c < number_of_track; c++) {
+    for (size_t h = 0; h < number_of_head; h++) {
+    }
   }
 
   return false;
