@@ -51,8 +51,9 @@ bool fdt_hfe_image_export(FdtFileImage* img, FdtError* err)
 
   size_t track_offset_lut_size = HFE_TRACK_OFFSET_LUT_SIZE;
   size_t track_offset_lut_track_max = track_offset_lut_size / sizeof(FdtHfeTrackOffsets);
-  if (track_offset_lut_track_max < number_of_track) { // 512 or 1024 ?
+  if (track_offset_lut_track_max < number_of_track) { // Up to 1024 ?
     track_offset_lut_size += HFE_TRACK_OFFSET_LUT_SIZE;
+    track_offset_lut_track_max = track_offset_lut_size / sizeof(FdtHfeTrackOffsets);
     if (track_offset_lut_track_max < number_of_track) {
       fdt_error_setmessage(err, "number of track is so big (%d)", number_of_track);
       return false;
@@ -61,8 +62,8 @@ bool fdt_hfe_image_export(FdtFileImage* img, FdtError* err)
 
   byte_t track_offset_lut_buf[track_offset_lut_size];
   memset(hfe_header_buf, 0x00, sizeof(track_offset_lut_buf));
-
   FdtHfeTrackOffsets* track_offsets = (FdtHfeTrackOffsets*)track_offset_lut_buf;
+
   size_t track_offset_block_no = (HFE_HEADER_BLOCK_SIZE + track_offset_lut_size) / 512;
   for (size_t c = 0; c < number_of_track; c++) {
     track_offsets[c].offset = track_offset_block_no;
@@ -72,6 +73,7 @@ bool fdt_hfe_image_export(FdtFileImage* img, FdtError* err)
       track_max_size = (track_max_size < track_size) ? track_size : track_max_size;
     }
     track_offsets[c].track_len = track_max_size * 2;
+    track_offset_block_no += size_t(ceil((double)track_offsets[c].track_len / 512.0));
   }
 
   if (!fdt_file_write(fp, track_offset_lut_buf, sizeof(track_offset_lut_buf))) {
@@ -82,11 +84,38 @@ bool fdt_hfe_image_export(FdtFileImage* img, FdtError* err)
   // Third part : Track data
 
   for (size_t c = 0; c < number_of_track; c++) {
+    size_t track_sizes[number_of_head];
+    byte_t* track_bytes[number_of_head];
     for (size_t h = 0; h < number_of_head; h++) {
+      track_sizes[h] = fdt_image_gettracksize(img, c, h);
+      track_bytes[h] = fdt_image_gettrackbytes(img, c, h);
+    }
+
+    byte_t track_block[512];
+    size_t track_block_count = size_t(ceil((double)track_offsets[c].track_len / 256.0));
+    for (size_t b = 0; b < track_block_count; b++) {
+      memset(track_block, 0, sizeof(track_block));
+      for (size_t h = 0; ((h < number_of_head) && (h < 2)); h++) {
+        size_t left_bytes = track_sizes[h] - (b * 256);
+        memcpy(track_block + (h * 256), track_bytes[h] + (b * 256), ((256 <= left_bytes) ? 256 : left_bytes));
+      }
+
+      for (size_t n = 0; n < sizeof(track_block); n++) {
+        track_block[n] = fdt_byte_reverse(track_block[n]);
+      }
+
+      if (!fdt_file_write(fp, track_block, sizeof(track_block))) {
+        fdt_error_setlasterror(err, "");
+        return false;
+      }
+    }
+
+    for (size_t h = 0; h < number_of_head; h++) {
+      free(track_bytes[h]);
     }
   }
 
-  return false;
+  return true;
 }
 
 bool fdt_hfe_header_setconfig(FdtHfeHeader* hfe_header, FdtImage* img, FdtError* err)
