@@ -92,12 +92,12 @@ bool fdt_hfe_image_export(FdtFileImage* img, FdtError* err)
     }
 
     byte_t track_block[512];
-    size_t track_block_count = size_t(ceil((double)track_offsets[t].track_len / 256.0));
+    size_t track_block_count = size_t(ceil((double)track_offsets[t].track_len / (double)HFE_TRACK_BLOCK_SIDE_SIZE));
     for (size_t b = 0; b < track_block_count; b++) {
       memset(track_block, 0, sizeof(track_block));
       for (size_t h = 0; ((h < number_of_head) && (h < 2)); h++) {
-        size_t left_bytes = track_sizes[h] - (b * 256);
-        memcpy(track_block + (h * 256), track_bytes[h] + (b * 256), ((256 <= left_bytes) ? 256 : left_bytes));
+        size_t left_bytes = track_sizes[h] - (b * HFE_TRACK_BLOCK_SIDE_SIZE);
+        memcpy(track_block + (h * HFE_TRACK_BLOCK_SIDE_SIZE), track_bytes[h] + (b * HFE_TRACK_BLOCK_SIDE_SIZE), ((HFE_TRACK_BLOCK_SIDE_SIZE <= left_bytes) ?HFE_TRACK_BLOCK_SIDE_SIZE : left_bytes));
       }
 
       for (size_t n = 0; n < sizeof(track_block); n++) {
