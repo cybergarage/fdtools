@@ -58,7 +58,7 @@ bool fdt_d88_image_hasext(FdtFileImage* img, const char* filename)
 void fdt_d88_header_setconfigerror(FdtD88Header* d88_header, FdtImage* img, FdtError* err)
 {
   FdtImageDensity density = fdt_image_getsupposeddensity(img);
-  fdt_error_setmessage(err, FDT_D88_MESSAGE_HEADER FDT_IMAGE_MESSAGE_UNKNOWN_DENSITY_FORMAT " (%ld:%ld:%ld:%ld)", fdt_image_density_getstring(density), fdt_image_getnumberofcylinder(img), fdt_image_getnumberofhead(img), fdt_image_getnumberofsector(img), fdt_image_getsectorsize(img));
+  fdt_error_setmessage(err, FDT_D88_MESSAGE_HEADER FDT_IMAGE_MESSAGE_UNKNOWN_DENSITY_FORMAT " (%ld:%ld:%ld:%ld)", fdt_image_density_getstring(density), fdt_image_getnumberoftrack(img), fdt_image_getnumberofhead(img), fdt_image_getnumberofsector(img), fdt_image_getsectorsize(img));
 }
 
 bool fdt_d88_header_setconfig(FdtD88Header* d88_header, FdtImage* img, FdtError* err)
@@ -147,7 +147,7 @@ bool fdt_d88_sector_header_setconfig(FdtD88SectorHeader* d88_sector_header, FdtI
 
   size_t sector_size = fdt_image_sector_getsize(sector);
 
-  d88_sector_header->c = fdt_image_sector_getcylindernumber(sector);
+  d88_sector_header->c = fdt_image_sector_gettracknumber(sector);
   d88_sector_header->h = fdt_image_sector_getheadnumber(sector);
   d88_sector_header->r = 1;
   d88_sector_header->number_of_sector = (uint16_t)number_of_sector;

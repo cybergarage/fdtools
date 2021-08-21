@@ -112,7 +112,7 @@ bool fdt_image_setfloppyparams(FdtImage* img, FdtFloppyParams* fdparams, FdtErro
 {
   if (!img || !fdparams)
     return false;
-  fdt_image_setnumberofcylinder(img, fdt_floppy_params_gettrack(fdparams));
+  fdt_image_setnumberoftrack(img, fdt_floppy_params_gettrack(fdparams));
   fdt_image_setnumberofhead(img, fdt_floppy_params_gethead(fdparams));
   fdt_image_setnumberofsector(img, fdt_floppy_params_getsect(fdparams));
   fdt_image_setsectorsize(img, fdt_floppy_params_getssize(fdparams));
@@ -134,7 +134,7 @@ bool fdt_device_image_load(FdtDeviceImage* img, FdtError* err)
   bool all_sector_status = true;
   for (FdtImageSector* sector = fdt_device_image_getsectors(img); sector; sector = fdt_image_sector_next(sector)) {
     if (!fdt_device_image_readsector(img, sector, err)) {
-      fdt_error_setmessage(err, "Read error" FDT_IMAGE_MESSAGE_SECTOR_SIZE_PRINTF_FORMAT, fdt_image_sector_getcylindernumber(sector), fdt_image_sector_getheadnumber(sector), fdt_image_sector_getnumber(sector), fdt_image_sector_getsize(sector));
+      fdt_error_setmessage(err, "Read error" FDT_IMAGE_MESSAGE_SECTOR_SIZE_PRINTF_FORMAT, fdt_image_sector_gettracknumber(sector), fdt_image_sector_getheadnumber(sector), fdt_image_sector_getnumber(sector), fdt_image_sector_getsize(sector));
       all_sector_status = false;
     }
   }
@@ -196,12 +196,12 @@ bool fdt_device_image_writesector(FdtDeviceImage* img, FdtImageSector* sector, F
   size_t sector_size = fdt_image_sector_getsize(sector);
   byte_t* sector_data = fdt_image_sector_getdata(sector);
   if ((sector_size <= 0) || !sector_data) {
-    fdt_error_setmessage(err, "Bad sector " FDT_IMAGE_MESSAGE_SECTOR_SIZE_PRINTF_FORMAT, fdt_image_sector_getcylindernumber(sector), fdt_image_sector_getheadnumber(sector), fdt_image_sector_getnumber(sector), fdt_image_sector_getsize(sector));
+    fdt_error_setmessage(err, "Bad sector " FDT_IMAGE_MESSAGE_SECTOR_SIZE_PRINTF_FORMAT, fdt_image_sector_gettracknumber(sector), fdt_image_sector_getheadnumber(sector), fdt_image_sector_getnumber(sector), fdt_image_sector_getsize(sector));
     return false;
   }
 
   if (!fdt_device_writeblock(img->dev, sector_data, sector_size, err)) {
-    fdt_error_appendmessage(err, FDT_IMAGE_MESSAGE_SECTOR_SIZE_PRINTF_FORMAT, fdt_image_sector_getcylindernumber(sector), fdt_image_sector_getheadnumber(sector), fdt_image_sector_getnumber(sector), fdt_image_sector_getsize(sector));
+    fdt_error_appendmessage(err, FDT_IMAGE_MESSAGE_SECTOR_SIZE_PRINTF_FORMAT, fdt_image_sector_gettracknumber(sector), fdt_image_sector_getheadnumber(sector), fdt_image_sector_getnumber(sector), fdt_image_sector_getsize(sector));
     return false;
   }
 

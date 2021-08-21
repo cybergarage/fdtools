@@ -108,7 +108,7 @@ bool fdt_hfe_image_load(FdtFileImage* img, FdtError* err)
           sector_data[b] = fdt_byte_reverse(track_block_sector_data[b]);
         }
 
-        fdt_image_sector_setcylindernumber(sector, t);
+        fdt_image_sector_settracknumber(sector, t);
         fdt_image_sector_setheadnumber(sector, h);
         fdt_image_sector_setnumber(sector, track_block_no);
         fdt_image_sector_setsize(sector, sector_data_size);
@@ -136,7 +136,7 @@ bool fdt_hfe_header_parse(FdtHfeHeader* header, byte_t* header_buf)
 bool fdt_image_sethfeheaderinfo(FdtFileImage* img, FdtHfeHeader* header)
 {
   fdt_image_setwriteprotectenabled(img, header->write_allowed ? false : true);
-  fdt_image_setnumberofcylinder(img, header->number_of_track);
+  fdt_image_setnumberoftrack(img, header->number_of_track);
   fdt_image_setnumberofhead(img, header->number_of_side);
   fdt_image_setbitrate(img, header->bitRate);
   fdt_image_setrpm(img, header->floppyRPM);

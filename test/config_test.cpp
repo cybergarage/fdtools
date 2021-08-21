@@ -24,7 +24,7 @@ BOOST_AUTO_TEST_CASE(ConfigCopyTest)
   FdtImageConfig* config = fdt_image_config_new();
   BOOST_REQUIRE(config);
   fdt_image_config_setname(config, "/dev/fd0");
-  fdt_image_config_setnumberofcylinder(config, 80);
+  fdt_image_config_setnumberoftrack(config, 80);
   fdt_image_config_setnumberofhead(config, 2);
   fdt_image_config_setnumberofsector(config, 18);
   fdt_image_config_setsectorsize(config, 512);
@@ -42,7 +42,7 @@ BOOST_AUTO_TEST_CASE(ConfigCopyTest)
 
 void TEST_CHECK_DENSITY_EQUAL(FdtImageConfig* config, int c, int h, int s, int ssize, FdtImageDensity density)
 {
-  fdt_image_config_setnumberofcylinder(config, c);
+  fdt_image_config_setnumberoftrack(config, c);
   fdt_image_config_setnumberofhead(config, h);
   fdt_image_config_setnumberofsector(config, s);
   fdt_image_config_setsectorsize(config, ssize);

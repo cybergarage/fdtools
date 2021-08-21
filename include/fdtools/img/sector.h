@@ -24,13 +24,13 @@
 extern "C" {
 #endif
 
-typedef size_t FdtCylinderNumber;
+typedef size_t FdtTrackNumber;
 typedef size_t FdtHeadNumber;
 typedef size_t FdtSectorNumber;
 
 typedef struct {
   FDT_LIST_STRUCT_MEMBERS
-  FdtCylinderNumber cylinder_number;
+  FdtTrackNumber track_number;
   FdtHeadNumber head_number;
   FdtSectorNumber number;
   size_t size;
@@ -41,15 +41,15 @@ typedef struct {
 FdtImageSectors* fdt_image_sectors_new();
 void fdt_image_sectors_delete(FdtImageSectors*);
 
-FdtImageSector* fdt_image_sectors_getsector(FdtImageSectors*, FdtCylinderNumber, FdtHeadNumber, FdtSectorNumber);
-size_t fdt_image_sectors_getnumberofcylinder(FdtImageSectors*);
+FdtImageSector* fdt_image_sectors_getsector(FdtImageSectors*, FdtTrackNumber, FdtHeadNumber, FdtSectorNumber);
+size_t fdt_image_sectors_getnumberoftrack(FdtImageSectors*);
 size_t fdt_image_sectors_getnumberofhead(FdtImageSectors*);
 size_t fdt_image_sectors_getnumberofsector(FdtImageSectors*);
-size_t fdt_image_sectors_getnumberoftracksector(FdtImageSectors*, FdtCylinderNumber, FdtHeadNumber);
+size_t fdt_image_sectors_getnumberoftracksector(FdtImageSectors*, FdtTrackNumber, FdtHeadNumber);
 size_t fdt_image_sectors_getmaxsectorsize(FdtImageSectors*);
 size_t fdt_image_sectors_gettotaldatasize(FdtImageSectors*);
-size_t fdt_image_sectors_gettracksize(FdtImageSectors*, FdtCylinderNumber, FdtHeadNumber);
-byte_t* fdt_image_sectors_gettrackbytes(FdtImageSectors*, FdtCylinderNumber, FdtHeadNumber);
+size_t fdt_image_sectors_gettracksize(FdtImageSectors*, FdtTrackNumber, FdtHeadNumber);
+byte_t* fdt_image_sectors_gettrackbytes(FdtImageSectors*, FdtTrackNumber, FdtHeadNumber);
 FdtImageSector* fdt_image_sectors_geterrorsector(FdtImageSectors*);
 int fdt_image_sectors_getnerrorsectors(FdtImageSectors*);
 
@@ -76,14 +76,14 @@ FdtImageSector* fdt_image_sector_copy(FdtImageSector* sector);
 
 #define fdt_image_sector_next(sector) (FdtImageSector*)fdt_list_next((FdtListNode*)sector)
 
-#define fdt_image_sector_setcylindernumber(sector, n) (sector->cylinder_number = n)
+#define fdt_image_sector_settracknumber(sector, n) (sector->track_number = n)
 #define fdt_image_sector_setheadnumber(sector, n) (sector->head_number = n)
 #define fdt_image_sector_setnumber(sector, n) (sector->number = n)
 #define fdt_image_sector_setsize(sector, n) (sector->size = n)
 #define fdt_image_sector_seterrorcount(sector, n) (sector->error_count = n)
 #define fdt_image_sector_incrementerrorcount(sector) (sector->error_count++)
 
-#define fdt_image_sector_getcylindernumber(sector) (sector->cylinder_number)
+#define fdt_image_sector_gettracknumber(sector) (sector->track_number)
 #define fdt_image_sector_getheadnumber(sector) (sector->head_number)
 #define fdt_image_sector_getnumber(sector) (sector->number)
 #define fdt_image_sector_getsize(sector) (sector->size)

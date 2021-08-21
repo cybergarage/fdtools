@@ -30,14 +30,14 @@ bool fdt_raw_image_export(FdtFileImage* img, FdtError* err)
   if (!config)
     return false;
 
-  size_t number_of_cylinder = fdt_image_config_getnumberofcylinder(config);
+  size_t number_of_track = fdt_image_config_getnumberoftrack(config);
   size_t number_of_head = fdt_image_config_getnumberofhead(config);
   size_t number_of_sector = fdt_image_config_getnumberofsector(config);
 
-  for (size_t c = 0; c < number_of_cylinder; c++) {
+  for (size_t t = 0; t < number_of_track; t++) {
     for (size_t h = 0; h < number_of_head; h++) {
       for (size_t s = 1; s <= number_of_sector; s++) {
-        FdtImageSector* sector = fdt_image_getsector(img, c, h, s);
+        FdtImageSector* sector = fdt_image_getsector(img, t, h, s);
         if (!sector)
           return false;
         if (!fdt_file_write(fp, fdt_image_sector_getdata(sector), fdt_image_sector_getsize(sector))) {

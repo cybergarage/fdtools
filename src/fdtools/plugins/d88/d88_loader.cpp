@@ -98,7 +98,7 @@ bool fdt_d88_image_load(FdtFileImage* img, FdtError* err)
         return false;
       }
 
-      fdt_image_sector_setcylindernumber(sector, d88_sector_header.c);
+      fdt_image_sector_settracknumber(sector, d88_sector_header.c);
       fdt_image_sector_setheadnumber(sector, d88_sector_header.h);
       fdt_image_sector_setnumber(sector, sector_no + 1);
       fdt_image_sector_setsize(sector, sector_size);
@@ -114,7 +114,7 @@ bool fdt_d88_image_load(FdtFileImage* img, FdtError* err)
   }
 
   fdt_image_setsize(img, d88_image_file_size);
-  fdt_image_setnumberofcylinder(img, fdt_image_sectors_getnumberofcylinder(img->sectors));
+  fdt_image_setnumberoftrack(img, fdt_image_sectors_getnumberoftrack(img->sectors));
   fdt_image_setnumberofhead(img, fdt_image_sectors_getnumberofhead(img->sectors));
   fdt_image_setnumberofsector(img, fdt_image_sectors_getnumberofsector(img->sectors));
   fdt_image_setsectorsize(img, fdt_image_sectors_getmaxsectorsize(img->sectors));

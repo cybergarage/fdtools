@@ -30,7 +30,7 @@ bool fdt_hfe_image_export(FdtFileImage* img, FdtError* err)
   if (!fp)
     return false;
 
-  size_t number_of_track = fdt_image_getnumberofcylinder(img);
+  size_t number_of_track = fdt_image_getnumberoftrack(img);
   size_t number_of_head = fdt_image_getnumberofhead(img);
 
   // First part : 0x0000-0x0200 (512 bytes) : File header
@@ -122,7 +122,7 @@ bool fdt_hfe_header_setconfig(FdtHfeHeader* hfe_header, FdtImage* img, FdtError*
 {
   memcpy(hfe_header->HEADERSIGNATURE, HFE_IMAGE_HEADER_SIGNATURE, 8);
   hfe_header->formatrevision = 0;
-  hfe_header->number_of_track = fdt_image_getnumberofcylinder(img);
+  hfe_header->number_of_track = fdt_image_getnumberoftrack(img);
   hfe_header->number_of_side = fdt_image_getnumberofhead(img);
   hfe_header->track_encoding = HFE_ISOIBM_MFM_ENCODING;
   hfe_header->bitRate = fdt_image_getbitrate(img);

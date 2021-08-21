@@ -197,14 +197,14 @@ off_t fdt_image_getsectoroffset(FdtImage* img, FdtImageSector* sector)
   size_t sector_size = fdt_image_getsectorsize(img);
   size_t number_of_head = fdt_image_getnumberofhead(img);
   size_t number_of_sector = fdt_image_getnumberofsector(img);
-  size_t cylinder_no = fdt_image_sector_getcylindernumber(sector);
+  size_t track_no = fdt_image_sector_gettracknumber(sector);
   size_t header_no = fdt_image_sector_getheadnumber(sector);
   size_t sector_no = fdt_image_sector_getnumber(sector) - 1; // Sector no stats from 1
 
-  if ((cylinder_no < 0) || (cylinder_no < 0) || (sector_no < 0))
+  if ((track_no < 0) || (track_no < 0) || (sector_no < 0))
     return -1;
 
-  size_t offset = (cylinder_no * number_of_head * number_of_sector) * sector_size;
+  size_t offset = (track_no * number_of_head * number_of_sector) * sector_size;
   offset += (header_no * number_of_sector) * sector_size;
   offset += sector_no * sector_size;
 
@@ -224,12 +224,12 @@ bool fdt_image_isvalid(FdtImage* img, FdtError* err)
     return false;
   }
 
-  size_t number_of_cylinder = fdt_image_config_getnumberofcylinder(config);
+  size_t number_of_track = fdt_image_config_getnumberoftrack(config);
   size_t number_of_head = fdt_image_config_getnumberofhead(config);
   size_t number_of_sector = fdt_image_config_getnumberofsector(config);
   size_t config_sector_size = fdt_image_config_getsectorsize(config);
 
-  for (size_t c = 0; c < number_of_cylinder; c++) {
+  for (size_t c = 0; c < number_of_track; c++) {
     for (size_t h = 0; h < number_of_head; h++) {
       for (size_t s = 1; s <= number_of_sector; s++) {
         FdtImageSector* sector = fdt_image_getsector(img, c, h, s);
@@ -261,19 +261,19 @@ bool fdt_image_generatesectors(FdtImage* img, FdtError* err)
   if (!fdt_image_config_isvalid(img->config, err))
     return false;
 
-  size_t number_of_cylinder = fdt_image_getnumberofcylinder(img);
+  size_t number_of_track = fdt_image_getnumberoftrack(img);
   size_t number_of_head = fdt_image_getnumberofhead(img);
   size_t number_of_sector = fdt_image_getnumberofsector(img);
   size_t sector_size = fdt_image_getsectorsize(img);
 
-  for (size_t c = 0; c < number_of_cylinder; c++) {
+  for (size_t c = 0; c < number_of_track; c++) {
     for (size_t h = 0; h < number_of_head; h++) {
       for (size_t s = 1; s <= number_of_sector; s++) {
         FdtImageSector* sector = fdt_image_sector_new();
         if (!sector) {
           return false;
         }
-        fdt_image_sector_setcylindernumber(sector, c);
+        fdt_image_sector_settracknumber(sector, c);
         fdt_image_sector_setheadnumber(sector, h);
         fdt_image_sector_setnumber(sector, s);
         fdt_image_sector_setsize(sector, sector_size);

@@ -30,14 +30,14 @@ bool fdt_raw_image_load(FdtFileImage* img, FdtError* err)
   if (!fdt_image_config_isvalid(config, err))
     return false;
 
-  size_t number_of_cylinder = fdt_image_config_getnumberofcylinder(config);
+  size_t number_of_track = fdt_image_config_getnumberoftrack(config);
   size_t number_of_head = fdt_image_config_getnumberofhead(config);
   size_t number_of_sector = fdt_image_config_getnumberofsector(config);
   size_t sector_size = fdt_image_config_getsectorsize(config);
 
   size_t total_image_size = 0;
 
-  for (size_t c = 0; c < number_of_cylinder; c++) {
+  for (size_t c = 0; c < number_of_track; c++) {
     for (size_t h = 0; h < number_of_head; h++) {
       for (size_t s = 1; s <= number_of_sector; s++) {
         byte_t* sector_data = (byte_t*)malloc(sector_size);
@@ -57,7 +57,7 @@ bool fdt_raw_image_load(FdtFileImage* img, FdtError* err)
           return false;
         }
 
-        fdt_image_sector_setcylindernumber(sector, c);
+        fdt_image_sector_settracknumber(sector, c);
         fdt_image_sector_setheadnumber(sector, h);
         fdt_image_sector_setnumber(sector, s);
         fdt_image_sector_setsize(sector, sector_size);
