@@ -65,15 +65,15 @@ bool fdt_hfe_image_export(FdtFileImage* img, FdtError* err)
   FdtHfeTrackOffsets* track_offsets = (FdtHfeTrackOffsets*)track_offset_lut_buf;
 
   size_t track_offset_block_no = (HFE_HEADER_BLOCK_SIZE + track_offset_lut_size) / 512;
-  for (size_t c = 0; c < number_of_track; c++) {
-    track_offsets[c].offset = track_offset_block_no;
+  for (size_t t = 0; t < number_of_track; t++) {
+    track_offsets[t].offset = track_offset_block_no;
     size_t track_max_size = 0;
     for (size_t h = 0; h < number_of_head; h++) {
-      size_t track_size = fdt_image_gettracksize(img, c, h);
+      size_t track_size = fdt_image_gettracksize(img, t, h);
       track_max_size = (track_max_size < track_size) ? track_size : track_max_size;
     }
-    track_offsets[c].track_len = track_max_size * 2;
-    track_offset_block_no += size_t(ceil((double)track_offsets[c].track_len / 512.0));
+    track_offsets[t].track_len = track_max_size * 2;
+    track_offset_block_no += size_t(ceil((double)track_offsets[t].track_len / 512.0));
   }
 
   if (!fdt_file_write(fp, track_offset_lut_buf, sizeof(track_offset_lut_buf))) {
@@ -83,16 +83,16 @@ bool fdt_hfe_image_export(FdtFileImage* img, FdtError* err)
 
   // Third part : Track data
 
-  for (size_t c = 0; c < number_of_track; c++) {
+  for (size_t t = 0; t < number_of_track; t++) {
     size_t track_sizes[number_of_head];
     byte_t* track_bytes[number_of_head];
     for (size_t h = 0; h < number_of_head; h++) {
-      track_sizes[h] = fdt_image_gettracksize(img, c, h);
-      track_bytes[h] = fdt_image_gettrackbytes(img, c, h);
+      track_sizes[h] = fdt_image_gettracksize(img, t, h);
+      track_bytes[h] = fdt_image_gettrackbytes(img, t, h);
     }
 
     byte_t track_block[512];
-    size_t track_block_count = size_t(ceil((double)track_offsets[c].track_len / 256.0));
+    size_t track_block_count = size_t(ceil((double)track_offsets[t].track_len / 256.0));
     for (size_t b = 0; b < track_block_count; b++) {
       memset(track_block, 0, sizeof(track_block));
       for (size_t h = 0; ((h < number_of_head) && (h < 2)); h++) {
