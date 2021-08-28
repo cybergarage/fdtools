@@ -35,10 +35,10 @@ void fdt_image_sectors_delete(FdtImageSectors* sectors)
   free(sectors);
 }
 
-FdtImageSector* fdt_image_sectors_getsector(FdtImageSectors* sectors, FdtTrackNumber c, FdtHeadNumber h, FdtSectorNumber n)
+FdtImageSector* fdt_image_sectors_getsector(FdtImageSectors* sectors, FdtTrackNumber t, FdtHeadNumber h, FdtSectorNumber n)
 {
   for (FdtImageSector* sector = fdt_image_sectors_gets(sectors); sector; sector = fdt_image_sector_next(sector)) {
-    if (fdt_image_sector_gettracknumber(sector) != c)
+    if (fdt_image_sector_gettracknumber(sector) != t)
       continue;
     if (fdt_image_sector_getheadnumber(sector) != h)
       continue;
@@ -85,11 +85,11 @@ size_t fdt_image_sectors_getnumberofsector(FdtImageSectors* sectors)
   return max_sector_no;
 }
 
-size_t fdt_image_sectors_getnumberoftracksector(FdtImageSectors* sectors, FdtTrackNumber c, FdtHeadNumber h)
+size_t fdt_image_sectors_getnumberoftracksector(FdtImageSectors* sectors, FdtTrackNumber t, FdtHeadNumber h)
 {
   size_t max_sector_no = 0;
   for (FdtImageSector* sector = fdt_image_sectors_gets(sectors); sector; sector = fdt_image_sector_next(sector)) {
-    if (fdt_image_sector_gettracknumber(sector) != c)
+    if (fdt_image_sector_gettracknumber(sector) != t)
       continue;
     if (fdt_image_sector_getheadnumber(sector) != h)
       continue;
@@ -122,11 +122,11 @@ size_t fdt_image_sectors_gettotaldatasize(FdtImageSectors* sectors)
   return total_sector_size;
 }
 
-size_t fdt_image_sectors_gettracksize(FdtImageSectors* sectors, FdtTrackNumber c, FdtHeadNumber h)
+size_t fdt_image_sectors_gettracksize(FdtImageSectors* sectors, FdtTrackNumber t, FdtHeadNumber h)
 {
   size_t track_total_sector_size = 0;
   for (FdtImageSector* sector = fdt_image_sectors_gets(sectors); sector; sector = fdt_image_sector_next(sector)) {
-    if (fdt_image_sector_gettracknumber(sector) != c)
+    if (fdt_image_sector_gettracknumber(sector) != t)
       continue;
     if (fdt_image_sector_getheadnumber(sector) != h)
       continue;
@@ -135,16 +135,16 @@ size_t fdt_image_sectors_gettracksize(FdtImageSectors* sectors, FdtTrackNumber c
   return track_total_sector_size;
 }
 
-byte_t* fdt_image_sectors_gettrackbytes(FdtImageSectors* sectors, FdtTrackNumber c, FdtHeadNumber h)
+byte_t* fdt_image_sectors_gettrackbytes(FdtImageSectors* sectors, FdtTrackNumber t, FdtHeadNumber h)
 {
-  size_t track_size = fdt_image_sectors_gettracksize(sectors, c, h);
+  size_t track_size = fdt_image_sectors_gettracksize(sectors, t, h);
   byte_t* track_data = (byte_t*)calloc(track_size, sizeof(byte_t));
   if (!track_data)
     return NULL;
 
   size_t track_offset = 0;
   for (FdtImageSector* sector = fdt_image_sectors_gets(sectors); sector; sector = fdt_image_sector_next(sector)) {
-    if (fdt_image_sector_gettracknumber(sector) != c)
+    if (fdt_image_sector_gettracknumber(sector) != t)
       continue;
     if (fdt_image_sector_getheadnumber(sector) != h)
       continue;
@@ -211,12 +211,12 @@ bool fdt_image_sectors_sort(FdtImageSectors* sectors)
 bool fdt_image_sectors_equals(FdtImageSectors* sectors, FdtImageSectors* others, FdtError* err)
 {
   for (FdtImageSector* sector = fdt_image_sectors_gets(sectors); sector; sector = fdt_image_sector_next(sector)) {
-    size_t c = fdt_image_sector_gettracknumber(sector);
+    size_t t = fdt_image_sector_gettracknumber(sector);
     size_t h = fdt_image_sector_getheadnumber(sector);
     size_t s = fdt_image_sector_getnumber(sector);
-    FdtImageSector* other = fdt_image_sectors_getsector(others, c, h, s);
+    FdtImageSector* other = fdt_image_sectors_getsector(others, t, h, s);
     if (!other) {
-      fdt_error_setmessage(err, "Not found " FDT_IMAGE_MESSAGE_SECTOR_PRINTF_FORMAT, c, h, s);
+      fdt_error_setmessage(err, "Not found " FDT_IMAGE_MESSAGE_SECTOR_PRINTF_FORMAT, t, h, s);
       return false;
     }
     if (!fdt_image_sector_equals(sector, other, err))
