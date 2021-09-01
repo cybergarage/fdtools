@@ -64,7 +64,6 @@ void ImageExportCompareTest(FdtImage* img, FDT_IMAGE_IMAGER convert_imager)
   // Compare test
 
   BOOST_CHECK_MESSAGE(fdt_image_equals(img, exported_img, err), fdt_error_getdebugmessage(err));
-
   BOOST_TEST_MESSAGE("Compared     " << fdt_image_getname(img) << "(" << fdt_image_gettypeid(img) << ")<->" << fdt_image_getname(exported_img) << "(" << fdt_image_gettypeid(exported_img) << "/MEM)");
 
   // Cleaning

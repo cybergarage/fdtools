@@ -79,13 +79,18 @@ bool fdt_hfe_image_load(FdtFileImage* img, FdtError* err)
     size_t track_data_len = hfe_track_offsets[t].track_len;
     size_t track_block_no = 0;
     size_t track_block_data_offset = 0;
+    size_t track_read_data_len[number_of_head];
+
+    for (size_t h = 0; h < number_of_head; h++) {
+      track_read_data_len[h] = 0;
+    }
 
     while (track_block_data_offset < track_data_len) {
       if (!fdt_file_read(fp, track_block_data, HFE_TRACK_BLOCK_SIZE)) {
         return false;
       }
 
-      size_t track_block_side_data_size = track_data_len - track_block_data_offset;
+      size_t track_block_side_data_size = (track_data_len - track_block_data_offset) / 2;
       if (HFE_TRACK_BLOCK_SIDE_SIZE < track_block_side_data_size) {
         track_block_side_data_size = HFE_TRACK_BLOCK_SIDE_SIZE;
       }
@@ -115,6 +120,8 @@ bool fdt_hfe_image_load(FdtFileImage* img, FdtError* err)
         fdt_image_sector_setdata(sector, sector_data);
 
         fdt_image_addsector(img, sector);
+
+        track_read_data_len[h] += sector_data_size;
 
         //fdt_hexdump_print(sector_data, sector_data_size);
       }
