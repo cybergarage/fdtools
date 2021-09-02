@@ -37,3 +37,7 @@ aclocal
 autoheader
 automake --foreign --add-missing --copy
 autoconf 
+
+if [ ! -L test/unix/img ]; then
+    ln -s ../img test/unix/img
+fi
