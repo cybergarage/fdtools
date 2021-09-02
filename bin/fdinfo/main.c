@@ -131,7 +131,7 @@ int main(int argc, char* argv[])
       exit_error(err);
     }
     const char* type = fdt_image_gettypeid(img);
-    size_t cyl = fdt_image_getnumberofcylinder(img);
+    size_t cyl = fdt_image_getnumberoftrack(img);
     size_t head = fdt_image_getnumberofhead(img);
     size_t sec = fdt_image_getnumberofsector(img);
     size_t ssize = fdt_image_getsectorsize(img);
