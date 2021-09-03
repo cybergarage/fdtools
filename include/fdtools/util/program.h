@@ -79,6 +79,7 @@ bool fdt_program_delete(FdtProgram*);
 bool fdt_program_addoption(FdtProgram*, const char*, const char*, bool, const char*);
 bool fdt_program_parse(FdtProgram*, int argc, char* argv[], FdtError*);
 bool fdt_program_isoptionenabled(FdtProgram*, const char*);
+const char* fdt_program_getname(FdtProgram*);
 const char* fdt_program_getoptionstring(FdtProgram*, const char*);
 int fdt_program_getoptioninteger(FdtProgram*, const char*);
 void fdt_program_printoptionusages(FdtProgram*);
@@ -86,7 +87,6 @@ void fdt_program_printoptionusages(FdtProgram*);
 #define fdt_program_setname(prg, v) fdt_string_setvalue(prg->name, v)
 #define fdt_program_addargument(prg, v) fdt_program_arguments_add(prg->args, v)
 
-#define fdt_program_getname(prg) fdt_string_getvalue(prg->name)
 #define fdt_program_getarguments(prg) fdt_program_arguments_gets(prg->args)
 #define fdt_program_getnarguments(prg) fdt_program_arguments_size(prg->args)
 #define fdt_program_getargument(prg, n) fdt_program_argument_getvalue(fdt_program_arguments_get(prg->args, n))

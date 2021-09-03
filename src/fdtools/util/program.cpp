@@ -49,6 +49,18 @@ bool fdt_program_delete(FdtProgram* prg)
   return true;
 }
 
+const char* fdt_program_getname(FdtProgram* prg)
+{
+  if (!prg)
+    return "";
+  const char* prg_name = fdt_string_getvalue(prg->name);
+  ssize_t path_idx = fdt_strrchr(prg_name, "./", 2);
+  if (path_idx < 0) {
+    return prg_name;
+  }
+  return (prg_name + (path_idx + 1));
+}
+
 bool fdt_program_addoption(FdtProgram* prg, const char* name, const char* desc, bool hasParam, const char* default_value)
 {
   if (!prg)
