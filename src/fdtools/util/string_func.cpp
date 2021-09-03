@@ -138,7 +138,7 @@ ssize_t fdt_strrchr(const char* str, const char* chars, size_t nchars)
   return -1;
 }
 
-char* fdt_strtrimwhite(char* str)
+char* fdt_strtrimspaces(char* str)
 {
   size_t strLen = fdt_strlen(str);
   if (strLen == 0)

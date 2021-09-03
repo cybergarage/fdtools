@@ -35,7 +35,7 @@ bool fdt_strcaseeq(const char* str1, const char* str2);
 ssize_t fdt_strchr(const char* str, const char* chars, size_t nchars);
 ssize_t fdt_strrchr(const char* str, const char* chars, size_t nchars);
 ssize_t fdt_strstr(const char* haystack, const char* needle);
-char* fdt_strtrimwhite(char* str);
+char* fdt_strtrimspaces(char* str);
 char* fdt_strtrim(char* str, char* delim, size_t ndelim);
 char* fdt_strltrim(char* str, char* delim, size_t ndelim);
 char* fdt_strrtrim(char* str, char* delim, size_t ndelim);
