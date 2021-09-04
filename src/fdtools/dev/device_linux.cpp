@@ -113,4 +113,9 @@ bool fdt_device_getfloppyparameters(FdtDevice* dev, FdtFloppyParams* params, Fdt
   return is_success;
 }
 
+bool fdt_device_detectfloppyformat(FdtDevice* dev, FdtFloppyParams* params, FdtError* err)
+{
+  return false;
+}
+
 #endif /* __linux__ */

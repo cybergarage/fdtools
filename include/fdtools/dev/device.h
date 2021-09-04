@@ -53,6 +53,7 @@ ssize_t fdt_device_getsize(FdtDevice*, FdtError*);
 #define fdt_device_getfileno(dev) (dev->fd)
 
 bool fdt_device_getfloppyparameters(FdtDevice*, FdtFloppyParams*, FdtError*);
+bool fdt_device_detectfloppyformat(FdtDevice*, FdtFloppyParams*, FdtError*);
 
 #ifdef __cplusplus
 } /* extern C */

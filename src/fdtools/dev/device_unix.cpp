@@ -192,12 +192,17 @@ ssize_t fdt_device_getsize(FdtDevice* dev, FdtError* err)
 
 bool fdt_device_setparameters(FdtDevice* dev, FdtError* err)
 {
-  return true;
+  return false;
 }
 
 bool fdt_device_getfloppyparameters(FdtDevice* dev, FdtFloppyParams* params, FdtError* err)
 {
-  return true;
+  return false;
+}
+
+bool fdt_device_detectfloppyformat(FdtDevice* dev, FdtFloppyParams* params, FdtError* err)
+{
+  return false;
 }
 
 #endif /* __linux__ */
