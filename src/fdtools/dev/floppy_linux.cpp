@@ -17,6 +17,7 @@
 #include <fcntl.h>
 #include <sys/stat.h>
 #include <sys/types.h>
+#include <sys/ioctl.h>
 
 #include <fdtools/dev/error.h>
 #include <fdtools/dev/floppy.h>
@@ -115,6 +116,23 @@ bool fdt_floppy_params_setfloppystruct(FdtFloppyParams* params, floppy_struct* f
   fdt_floppy_params_setrate(params, fdprms->rate);
   fdt_floppy_params_setspec1(params, fdprms->spec1);
   fdt_floppy_params_setgap2size(params, fdprms->fmt_gap);
+
+  return true;
+}
+
+bool fdt_floppy_rawcmd_readid(int fd, int drive, int rate, int track)
+{
+  struct floppy_raw_cmd raw_cmd;
+
+  raw_cmd.cmd_count = 2;
+  raw_cmd.cmd[0] = FD_READID; /* format command */
+  raw_cmd.cmd[1] = drive /* drive */;
+  raw_cmd.flags = FD_RAW_INTR | FD_RAW_NEED_SEEK | FD_RAW_NEED_DISK;
+  raw_cmd.rate = rate;
+  raw_cmd.track = track;
+
+  if (ioctl(fd, FDRAWCMD, &raw_cmd) < 0)
+    return false;
 
   return true;
 }
