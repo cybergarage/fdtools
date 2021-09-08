@@ -136,7 +136,7 @@ bool fdt_floppy_rawcmd_readid(int fd, int drive, int rate, int track, floppy_raw
   return true;
 }
 
-void fdt_floppy_rawcmd_print(int fd, int drive, int rate, int track, floppy_raw_cmd* raw_cmd)
+void fdt_floppy_rawcmd_print(floppy_raw_cmd* raw_cmd)
 {
   int reply_cound = (int)raw_cmd->reply_count;
   printf("[%d] ", reply_cound);

@@ -152,6 +152,11 @@ bool fdt_floppy_params_setfloppydriveparams(FdtFloppyParams*, struct floppy_driv
 bool fdt_floppy_params_setfloppystruct(FdtFloppyParams*, struct floppy_struct*, FdtError*);
 #endif
 
+#if defined(__linux__)
+bool fdt_floppy_rawcmd_readid(int, int, int, int, floppy_raw_cmd*);
+void fdt_floppy_rawcmd_print(floppy_raw_cmd* raw_cmd);
+#endif
+
 #ifdef __cplusplus
 
 } /* extern C */
