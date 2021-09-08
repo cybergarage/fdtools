@@ -73,6 +73,21 @@ bool fdt_floppy_struct_setfloppyparams(floppy_struct* fdparams, FdtFloppyParams*
   return true;
 }
 
+bool fdt_floppy_params_setstat(FdtFloppyParams* params, struct stat* stat, FdtError* err)
+{
+  if (!S_ISBLK(stat->st_mode) || major(stat->st_rdev) != FLOPPY_MAJOR) {
+    fdt_error_setlasterror(err, "Not floppy device");
+    return false;
+  }
+
+  int drive_no = minor(buf.st_rdev);
+  drive_no = (drive_no & 3) + ((drive_no & 0x80) >> 5);
+
+  fdt_floppy_params_setdeviceno(params, drive_no);
+
+  return true;
+}
+
 bool fdt_floppy_params_setfloppydriveparams(FdtFloppyParams* params, floppy_drive_params* fddprms, FdtError* err)
 {
   if (!params || !fddprms)

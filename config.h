@@ -2,33 +2,33 @@
 /* config.h.in.  Generated from configure.ac by autoheader.  */
 
 /* Define to 1 if you want to debug */
-#define DEBUG 1
+/* #undef DEBUG */
 
 /* Define to 1 if you have the <inttypes.h> header file. */
 #define HAVE_INTTYPES_H 1
 
 /* Define to 1 if you have the `boost_filesystem' library
    (-lboost_filesystem). */
-#define HAVE_LIBBOOST_FILESYSTEM 1
+/* #undef HAVE_LIBBOOST_FILESYSTEM */
 
 /* Define to 1 if you have the `boost_filesystem-mt' library
    (-lboost_filesystem-mt). */
-/* #undef HAVE_LIBBOOST_FILESYSTEM_MT */
+#define HAVE_LIBBOOST_FILESYSTEM_MT 1
 
 /* Define to 1 if you have the `boost_system' library (-lboost_system). */
-#define HAVE_LIBBOOST_SYSTEM 1
+/* #undef HAVE_LIBBOOST_SYSTEM */
 
 /* Define to 1 if you have the `boost_system-mt' library (-lboost_system-mt).
    */
-/* #undef HAVE_LIBBOOST_SYSTEM_MT */
+#define HAVE_LIBBOOST_SYSTEM_MT 1
 
 /* Define to 1 if you have the `boost_unit_test_framework' library
    (-lboost_unit_test_framework). */
-#define HAVE_LIBBOOST_UNIT_TEST_FRAMEWORK 1
+/* #undef HAVE_LIBBOOST_UNIT_TEST_FRAMEWORK */
 
 /* Define to 1 if you have the `boost_unit_test_framework-mt' library
    (-lboost_unit_test_framework-mt). */
-/* #undef HAVE_LIBBOOST_UNIT_TEST_FRAMEWORK_MT */
+#define HAVE_LIBBOOST_UNIT_TEST_FRAMEWORK_MT 1
 
 /* Define to 1 if you have the <memory.h> header file. */
 #define HAVE_MEMORY_H 1

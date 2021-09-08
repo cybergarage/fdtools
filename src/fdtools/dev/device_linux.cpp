@@ -71,10 +71,8 @@ bool fdt_device_getfloppyparameters(FdtDevice* dev, FdtFloppyParams* params, Fdt
     return false;
   }
 
-  if (!S_ISBLK(stat.st_mode) || major(stat.st_rdev) != FLOPPY_MAJOR) {
-    fdt_error_setlasterror(err, "Not floppy device");
+  if (!fdt_floppy_params_setstat(params, &stat, err))
     return false;
-  }
 
   // Reset  FDGETPRM parameters (Operation not permitted)
 

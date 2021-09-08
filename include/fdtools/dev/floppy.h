@@ -151,6 +151,7 @@ const char* fdt_floppy_params_getdescription(FdtFloppyParams*);
 #if defined(__linux__)
 bool fdt_floppy_struct_equals(struct floppy_struct*, struct floppy_struct*);
 bool fdt_floppy_struct_setfloppyparams(struct floppy_struct*, FdtFloppyParams*, FdtError*);
+bool fdt_floppy_params_setstat(FdtFloppyParams*, struct stat*, FdtError*);
 bool fdt_floppy_params_setfloppydriveparams(FdtFloppyParams*, struct floppy_drive_params*, FdtError*);
 bool fdt_floppy_params_setfloppystruct(FdtFloppyParams*, struct floppy_struct*, FdtError*);
 #endif
