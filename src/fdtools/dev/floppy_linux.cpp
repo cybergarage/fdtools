@@ -15,9 +15,10 @@
 #if defined(__linux__)
 
 #include <fcntl.h>
+#include <stdio.h>
+#include <sys/ioctl.h>
 #include <sys/stat.h>
 #include <sys/types.h>
-#include <sys/ioctl.h>
 
 #include <fdtools/dev/error.h>
 #include <fdtools/dev/floppy.h>
@@ -120,10 +121,8 @@ bool fdt_floppy_params_setfloppystruct(FdtFloppyParams* params, floppy_struct* f
   return true;
 }
 
-bool fdt_floppy_rawcmd_readid(int fd, int drive, int rate, int track, floppy_raw_cmd *raw_cmd)
+bool fdt_floppy_rawcmd_readid(int fd, int drive, int rate, int track, floppy_raw_cmd* raw_cmd)
 {
-   raw_cmd;
-
   raw_cmd->cmd_count = 2;
   raw_cmd->cmd[0] = FD_READID; /* format command */
   raw_cmd->cmd[1] = drive /* drive */;
@@ -135,6 +134,16 @@ bool fdt_floppy_rawcmd_readid(int fd, int drive, int rate, int track, floppy_raw
     return false;
 
   return true;
+}
+
+void fdt_floppy_rawcmd_print(int fd, int drive, int rate, int track, floppy_raw_cmd* raw_cmd)
+{
+  int reply_cound = (int)raw_cmd->reply_count;
+  printf("[%d] ", reply_cound);
+  for (int n = 0; n < reply_cound; n++) {
+    printf("%d ", raw_cmd->reply[n]);
+  }
+  printf("\n");
 }
 
 #endif /* __linux__ */
