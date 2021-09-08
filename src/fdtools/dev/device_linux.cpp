@@ -113,6 +113,16 @@ bool fdt_device_getfloppyparameters(FdtDevice* dev, FdtFloppyParams* params, Fdt
   return is_success;
 }
 
+bool fdt_device_detecttransferrate(int fd, FdtFloppyParams* params, FdtError* err)
+{
+  floppy_raw_cmd raw_cmd;
+  if (!fdt_floppy_rawcmd_readid(fd, 0, 0, 0, &raw_cmd))
+    return false;
+
+  fdt_floppy_rawcmd_print(&raw_cmd);
+  return true;
+}
+
 bool fdt_device_detectfloppyformat(FdtDevice* dev, FdtFloppyParams* params, FdtError* err)
 {
   if (!dev)
@@ -133,6 +143,9 @@ bool fdt_device_detectfloppyformat(FdtDevice* dev, FdtFloppyParams* params, FdtE
     if (!fdt_device_close(dev, err))
       return false;
   }
+
+  if (!fdt_device_detecttransferrate(fd, params, err))
+    return false;
 
   return true;
 }
