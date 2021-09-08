@@ -20,7 +20,6 @@
 
 #include <sys/ioctl.h>
 #include <sys/stat.h>
-#include <sys/sysmacros.h>
 #include <sys/time.h>
 #include <sys/types.h>
 
@@ -114,7 +113,7 @@ bool fdt_device_getfloppyparameters(FdtDevice* dev, FdtFloppyParams* params, Fdt
 bool fdt_device_detecttransferrate(int fd, FdtFloppyParams* params, FdtError* err)
 {
   floppy_raw_cmd raw_cmd;
-  if (!fdt_floppy_rawcmd_readid(fd, 0, 0, 0, &raw_cmd))
+  if (!fdt_floppy_rawcmd_readid(fd, fdt_floppy_params_getdeviceno(params), 0, 0, &raw_cmd))
     return false;
 
   fdt_floppy_rawcmd_print(&raw_cmd);
@@ -124,6 +123,9 @@ bool fdt_device_detecttransferrate(int fd, FdtFloppyParams* params, FdtError* er
 bool fdt_device_detectfloppyformat(FdtDevice* dev, FdtFloppyParams* params, FdtError* err)
 {
   if (!dev)
+    return false;
+
+  if (!fdt_device_getfloppyparameters(dev, params, err))
     return false;
 
   bool is_already_opened = fdt_device_isopened(dev);

@@ -18,6 +18,7 @@
 #include <stdio.h>
 #include <sys/ioctl.h>
 #include <sys/stat.h>
+#include <sys/sysmacros.h>
 #include <sys/types.h>
 
 #include <fdtools/dev/error.h>
@@ -80,7 +81,7 @@ bool fdt_floppy_params_setstat(FdtFloppyParams* params, struct stat* stat, FdtEr
     return false;
   }
 
-  int drive_no = minor(buf.st_rdev);
+  int drive_no = minor(stat->st_rdev);
   drive_no = (drive_no & 3) + ((drive_no & 0x80) >> 5);
 
   fdt_floppy_params_setdeviceno(params, drive_no);
