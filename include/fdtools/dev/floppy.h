@@ -82,6 +82,7 @@ typedef struct {
   FdtFloppyDensity density;
   FdtFloppyDensity max_density;
   FdtFloppyDataTransferRate dtr;
+  int deviceno;
   int tpi;
   int rpm;
   size_t sect;
@@ -108,6 +109,7 @@ bool fdt_floppy_params_setdtr(FdtFloppyParams*, FdtFloppyDataTransferRate, FdtEr
 #define fdt_floppy_params_setmedia(params, v) (params->media = v)
 #define fdt_floppy_params_setmaxdensity(params, v) (params->max_density = v)
 #define fdt_floppy_params_setdensity(params, v) (params->density = v)
+#define fdt_floppy_params_setdeviceno(params, v) (params->deviceno = v)
 #define fdt_floppy_params_settpi(params, v) (params->tpi = v)
 #define fdt_floppy_params_setrpm(params, v) (params->rpm = v)
 #define fdt_floppy_params_setsect(params, v) (params->sect = v)
@@ -131,6 +133,7 @@ const char* fdt_floppy_params_getdescription(FdtFloppyParams*);
 #define fdt_floppy_params_getmedia(params) (params->media)
 #define fdt_floppy_params_getmaxdensity(params) (params->max_density)
 #define fdt_floppy_params_getdensity(params) (params->density)
+#define fdt_floppy_params_getdeviceno(params) (params->deviceno)
 #define fdt_floppy_params_getdtr(params) (params->dtr)
 #define fdt_floppy_params_gettpi(params) (params->tpi)
 #define fdt_floppy_params_getrpm(params) (params->rpm)
