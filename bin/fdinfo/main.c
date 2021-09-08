@@ -109,22 +109,23 @@ int main(int argc, char* argv[])
 
   switch (img_type) {
   case FDT_IMAGE_TYPE_DEV: {
-    // Gets current device parameters, and set the parameters to image.
+    // Gets current device parameters, and sets the parameters to image.
     FdtDevice* dev = fdt_device_new();
     fdt_device_setname(dev, img_name);
     FdtFloppyParams* fdparams = fdt_floppy_params_new();
     if (!dev || !fdparams) {
       panic();
     }
-    if (!fdt_device_getfloppyparameters(dev, fdparams, err)) {
-      exit_error(err);
+    // Checks the floppy format when a floppy disk is inserted in the device.
+    if (!fdt_device_detectfloppyformat(dev, fdparams, err)) {
+      // The device has no floppy disk, and so gets only current floppy settings.
+      if (!fdt_device_getfloppyparameters(dev, fdparams, err)) {
+        exit_error(err);
+      }
     }
     print_message("%s", fdt_floppy_params_getdescription(fdparams));
-    if (!fdt_device_image_setfloppyparams(img, fdparams, err)) {
-      exit_error(err);
-    }
-    fdt_device_delete(dev);
     fdt_floppy_params_delete(fdparams);
+    fdt_device_delete(dev);
   } break;
   default: {
     if (!fdt_image_load(img, err)) {
