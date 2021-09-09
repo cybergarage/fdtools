@@ -142,7 +142,7 @@ bool fdt_floppy_rawcmd_readid(int fd, int drive, int rate, int track, floppy_raw
   raw_cmd->cmd_count = 2;
   raw_cmd->cmd[0] = FD_READID; /* format command */
   raw_cmd->cmd[1] = drive /* drive */;
-  raw_cmd->flags = FD_RAW_INTR | FD_RAW_NEED_SEEK | FD_RAW_NEED_DISK;
+  raw_cmd->flags = FD_RAW_INTR | FD_RAW_NEED_SEEK;
   raw_cmd->rate = rate;
   raw_cmd->track = track;
 
