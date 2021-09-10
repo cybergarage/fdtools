@@ -45,6 +45,11 @@ static const char* fdt_log_type2string(int type)
   return "";
 }
 
+void fdt_log_setlevel(int level)
+{
+  fdt_log_level = level;
+}
+
 void fdt_log_output(int level, const char* file, int line_n, const char* function, const char* format, ...)
 {
   if (fdt_log_level < level)
