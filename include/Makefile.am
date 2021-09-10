@@ -14,27 +14,28 @@
 
 fdtoolsheaders = \
 	./fdtools/error.h \
-	./fdtools/plugins/image.h \
-	./fdtools/img/file.h \
-	./fdtools/img/error.h \
-	./fdtools/img/density.h \
-	./fdtools/img/image.h \
-	./fdtools/img/sector.h \
-	./fdtools/img/config.h \
-	./fdtools/dev/error.h \
-	./fdtools/dev/floppy.h \
-	./fdtools/dev/device.h \
-	./fdtools/dev/image.h \
-	./fdtools/typedef.h \
 	./fdtools/util/file.h \
+	./fdtools/util/struct.h \
+	./fdtools/util/list.h \
+	./fdtools/util/dictionary.h \
+	./fdtools/util/log.h \
+	./fdtools/util/logic.h \
+	./fdtools/util/array.h \
 	./fdtools/util/program.h \
 	./fdtools/util/hexdump.h \
-	./fdtools/util/struct.h \
-	./fdtools/util/array.h \
-	./fdtools/util/dictionary.h \
-	./fdtools/util/logic.h \
-	./fdtools/util/list.h \
-	./fdtools/util/string.h
+	./fdtools/util/string.h \
+	./fdtools/plugins/image.h \
+	./fdtools/img/error.h \
+	./fdtools/img/sector.h \
+	./fdtools/img/config.h \
+	./fdtools/img/file.h \
+	./fdtools/img/density.h \
+	./fdtools/img/image.h \
+	./fdtools/dev/error.h \
+	./fdtools/dev/device.h \
+	./fdtools/dev/floppy.h \
+	./fdtools/dev/image.h \
+	./fdtools/typedef.h
 
 nobase_include_HEADERS = \
 	$(fdtoolsheaders)
