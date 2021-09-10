@@ -19,6 +19,7 @@
 #include <fdtools/dev/image.h>
 #include <fdtools/img/image.h>
 #include <fdtools/plugins/image.h>
+#include <fdtools/util/log.h>
 #include <fdtools/util/program.h>
 
 const char* OPT_VERBOSE = "v";
@@ -95,6 +96,7 @@ int main(int argc, char* argv[])
   }
   if (fdt_program_isoptionenabled(prg, OPT_DEBUG)) {
     debug_enabled = true;
+    fdt_log_setlevel(FDT_LOG_DEBUG);
   }
 
   // Loads source file image
