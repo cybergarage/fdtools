@@ -20,36 +20,36 @@
 
 #include <fdtools/util/log.h>
 
-static const char* log_error_s = LOG_ERROR_S;
-static const char* log_warning_s = LOG_WARNING_S;
-static const char* log_info_s = LOG_INFO_S;
-static const char* log_debug_s = LOG_DEBUG_S;
+static int fdt_log_level = LOG_NONE;
 
 static const char* fdt_log_type2string(int type)
 {
   switch (type) {
   case LOG_ERROR:
-    return log_error_s;
+    return LOG_ERROR_PREFIX;
     break;
 
   case LOG_WARNING:
-    return log_warning_s;
+    return LOG_WARNING_PREFIX;
     break;
 
   case LOG_INFO:
-    return log_info_s;
+    return LOG_INFO_PREFIX;
     break;
 
   case LOG_DEBUG:
-    return log_debug_s;
+    return LOG_DEBUG_PREFIX;
     break;
   }
 
   return "";
 }
 
-void fdt_log_output(int severity, const char* file, int line_n, const char* function, const char* format, ...)
+void fdt_log_output(int level, const char* file, int line_n, const char* function, const char* format, ...)
 {
+  if (fdt_log_level < level)
+    return;
+
   va_list list;
 
   char msg[MAX_LOG_BUF], tsPrefix[MAX_LOG_BUF];
@@ -62,7 +62,7 @@ void fdt_log_output(int severity, const char* file, int line_n, const char* func
 
   strftime(tsPrefix, MAX_LOG_BUF, "%c", localts);
 
-  prefixLen = snprintf(msg, MAX_LOG_BUF, "%s : %s ", tsPrefix, fdt_log_type2string(severity));
+  prefixLen = snprintf(msg, MAX_LOG_BUF, "%s : %s ", tsPrefix, fdt_log_type2string(level));
 
   va_start(list, format);
   vsnprintf(msg + prefixLen, MAX_LOG_BUF - prefixLen, format, list);

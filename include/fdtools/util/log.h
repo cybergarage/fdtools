@@ -25,19 +25,21 @@ extern "C" {
 
 #define MAX_LOG_BUF 2048
 
+#define LOG_NONE 0
 #define LOG_ERROR 1
 #define LOG_WARNING 2
 #define LOG_INFO 4
 #define LOG_DEBUG 8
 
-#define LOG_ERROR_S "ERROR"
-#define LOG_WARNING_S "WARN"
-#define LOG_INFO_S "INFO"
-#define LOG_DEBUG_S "DEBUG"
+#define LOG_ERROR_PREFIX "ERROR"
+#define LOG_WARNING_PREFIX "WARN"
+#define LOG_INFO_PREFIX "INFO"
+#define LOG_DEBUG_PREFIX "DEBUG"
 
 #define LOG_ALL (LOG_ERROR | LOG_WARNING | LOG_INFO | LOG_DEBUG)
 
-void fdt_log_output(int severity, const char* file, int line_n, const char* function, const char* format, ...);
+void fdt_log_setlevel(int level);
+void fdt_log_output(int level, const char* file, int line_n, const char* function, const char* format, ...);
 
 #if defined(DEBUG)
 
