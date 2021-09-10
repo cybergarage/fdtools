@@ -20,25 +20,25 @@
 
 #include <fdtools/util/log.h>
 
-static int fdt_log_level = LOG_NONE;
+static int fdt_log_level = FDT_LOG_NONE;
 
 static const char* fdt_log_type2string(int type)
 {
   switch (type) {
-  case LOG_ERROR:
-    return LOG_ERROR_PREFIX;
+  case FDT_LOG_ERROR:
+    return FDT_LOG_ERROR_PREFIX;
     break;
 
-  case LOG_WARNING:
-    return LOG_WARNING_PREFIX;
+  case FDT_LOG_WARN:
+    return FDT_LOG_WARN_PREFIX;
     break;
 
-  case LOG_INFO:
-    return LOG_INFO_PREFIX;
+  case FDT_LOG_INFO:
+    return FDT_LOG_INFO_PREFIX;
     break;
 
-  case LOG_DEBUG:
-    return LOG_DEBUG_PREFIX;
+  case FDT_LOG_DEBUG:
+    return FDT_LOG_DEBUG_PREFIX;
     break;
   }
 

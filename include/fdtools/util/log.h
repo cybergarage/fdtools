@@ -25,18 +25,18 @@ extern "C" {
 
 #define MAX_LOG_BUF 2048
 
-#define LOG_NONE 0
-#define LOG_ERROR 1
-#define LOG_WARNING 2
-#define LOG_INFO 4
-#define LOG_DEBUG 8
+#define FDT_LOG_NONE 0
+#define FDT_LOG_ERROR 1
+#define FDT_LOG_WARN 2
+#define FDT_LOG_INFO 4
+#define FDT_LOG_DEBUG 8
 
-#define LOG_ERROR_PREFIX "ERROR"
-#define LOG_WARNING_PREFIX "WARN"
-#define LOG_INFO_PREFIX "INFO"
-#define LOG_DEBUG_PREFIX "DEBUG"
+#define FDT_LOG_ERROR_PREFIX "ERROR"
+#define FDT_LOG_WARN_PREFIX "WARN"
+#define FDT_LOG_INFO_PREFIX "INFO"
+#define FDT_LOG_DEBUG_PREFIX "DEBUG"
 
-#define LOG_ALL (LOG_ERROR | LOG_WARNING | LOG_INFO | LOG_DEBUG)
+#define LOG_ALL (FDT_LOG_ERROR | FDT_LOG_WARN | FDT_LOG_INFO | FDT_LOG_DEBUG)
 
 void fdt_log_setlevel(int level);
 void fdt_log_output(int level, const char* file, int line_n, const char* function, const char* format, ...);
@@ -44,15 +44,15 @@ void fdt_log_output(int level, const char* file, int line_n, const char* functio
 #if defined(DEBUG)
 
 #if defined(__USE_ISOC99)
-#define fdt_log_error(format, ...) fdt_log_output(LOG_ERROR, __FILE__, __LINE__, __PRETTY_FUNCTION__, format, __VA_ARGS__)
-#define fdt_log_warn(format, ...) fdt_log_output(LOG_WARNING, __FILE__, __LINE__, __PRETTY_FUNCTION__, format, __VA_ARGS__)
-#define fdt_log_info(format, ...) fdt_log_output(LOG_INFO, __FILE__, __LINE__, __PRETTY_FUNCTION__, format, __VA_ARGS__)
-#define fdt_log_debug(format, ...) fdt_log_output(LOG_DEBUG, __FILE__, __LINE__, __PRETTY_FUNCTION__, format, __VA_ARGS__)
+#define fdt_log_error(format, ...) fdt_log_output(FDT_LOG_ERROR, __FILE__, __LINE__, __PRETTY_FUNCTION__, format, __VA_ARGS__)
+#define fdt_log_warn(format, ...) fdt_log_output(FDT_LOG_WARN, __FILE__, __LINE__, __PRETTY_FUNCTION__, format, __VA_ARGS__)
+#define fdt_log_info(format, ...) fdt_log_output(FDT_LOG_INFO, __FILE__, __LINE__, __PRETTY_FUNCTION__, format, __VA_ARGS__)
+#define fdt_log_debug(format, ...) fdt_log_output(FDT_LOG_DEBUG, __FILE__, __LINE__, __PRETTY_FUNCTION__, format, __VA_ARGS__)
 #else
-#define fdt_log_error(format...) fdt_log_output(LOG_ERROR, __FILE__, __LINE__, __PRETTY_FUNCTION__, format)
-#define fdt_log_warn(format...) fdt_log_output(LOG_WARNING, __FILE__, __LINE__, __PRETTY_FUNCTION__, format)
-#define fdt_log_info(format...) fdt_log_output(LOG_INFO, __FILE__, __LINE__, __PRETTY_FUNCTION__, format)
-#define fdt_log_debug(format...) fdt_log_output(LOG_DEBUG, __FILE__, __LINE__, __PRETTY_FUNCTION__, format)
+#define fdt_log_error(format...) fdt_log_output(FDT_LOG_ERROR, __FILE__, __LINE__, __PRETTY_FUNCTION__, format)
+#define fdt_log_warn(format...) fdt_log_output(FDT_LOG_WARN, __FILE__, __LINE__, __PRETTY_FUNCTION__, format)
+#define fdt_log_info(format...) fdt_log_output(FDT_LOG_INFO, __FILE__, __LINE__, __PRETTY_FUNCTION__, format)
+#define fdt_log_debug(format...) fdt_log_output(FDT_LOG_DEBUG, __FILE__, __LINE__, __PRETTY_FUNCTION__, format)
 #endif
 
 #else
