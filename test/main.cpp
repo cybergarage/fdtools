@@ -16,3 +16,25 @@
 #define BOOST_TEST_DYN_LINK
 
 #include <boost/test/unit_test.hpp>
+
+#include <fdtools/util/log.h>
+
+struct FdToolsFixture {
+  FdToolsFixture()
+  {
+  }
+  ~FdToolsFixture()
+  {
+  }
+  void setup()
+  {
+#if defined(DEBUG)
+    fdt_log_setlevel(FDT_LOG_DEBUG);
+#endif
+  }
+  void teardown()
+  {
+  }
+};
+
+BOOST_TEST_GLOBAL_FIXTURE(FdToolsFixture);
