@@ -723,8 +723,8 @@ ac_user_opts='
 enable_option_checking
 enable_silent_rules
 enable_dependency_tracking
-enable_debug
 enable_test
+enable_debug
 '
       ac_precious_vars='build_alias
 host_alias
@@ -1369,8 +1369,8 @@ Optional Features:
                           do not reject slow dependency extractors
   --disable-dependency-tracking
                           speeds up one-time build
-  --enable-debug          enable debugging (default = no)
   --enable-test           build tests (default = no)
+  --enable-debug          enable debugging (default = no)
 
 Some influential environment variables:
   CC          C compiler command
@@ -4707,26 +4707,6 @@ done
 
 
 ##############################
-# Debug
-##############################
-
-# Check whether --enable-debug was given.
-if test "${enable_debug+set}" = set; then :
-  enableval=$enable_debug; case "${enableval}" in
-    	yes | no ) enable_debug="${enableval}" ;;
-	esac
-fi
-
-
-if  test "$enable_debug" = yes ; then
-
-$as_echo "#define DEBUG 1" >>confdefs.h
-
-        as_fn_append CFLAGS " -O0"
-        as_fn_append CPPFLAGS " -O0"
-fi
-
-##############################
 # Testing
 ##############################
 
@@ -4990,6 +4970,26 @@ fi
 
 fi
 
+fi
+
+##############################
+# Debug
+##############################
+
+# Check whether --enable-debug was given.
+if test "${enable_debug+set}" = set; then :
+  enableval=$enable_debug; case "${enableval}" in
+    	yes | no ) enable_debug="${enableval}" ;;
+	esac
+fi
+
+
+if  test "$enable_debug" = yes -o "$build_test" = yes ; then
+
+$as_echo "#define DEBUG 1" >>confdefs.h
+
+        as_fn_append CFLAGS " -O0"
+        as_fn_append CPPFLAGS " -O0"
 fi
 
 ##############################

@@ -37,25 +37,6 @@ AC_CHECK_HEADERS([stdbool.h])
 AC_CHECK_HEADERS([stdint.h])
 
 ##############################
-# Debug
-##############################
-
-AC_ARG_ENABLE(
- 	[debug],
-	AC_HELP_STRING([--enable-debug], [ enable debugging (default = no) ]),
-	[case "${enableval}" in
-    	yes | no ) enable_debug="${enableval}" ;;
-	esac],
-	[]
-)
-
-if [ test "$enable_debug" = yes ]; then
-	AC_DEFINE([DEBUG],1,[Define to 1 if you want to debug])
-        AS_VAR_APPEND([CFLAGS], [" -O0"])
-        AS_VAR_APPEND([CPPFLAGS], [" -O0"])
-fi
-
-##############################
 # Testing
 ##############################
 
@@ -76,6 +57,25 @@ if [ test "$build_test" = yes ]; then
                 [AC_CHECK_LIB([boost_unit_test_framework],[main],,[AC_MSG_ERROR(fdtools needs boost::unit_test_framework)])])
         AC_CHECK_LIB([boost_filesystem-mt],[main],,
                 [AC_CHECK_LIB([boost_filesystem],[main],,[AC_MSG_ERROR(fdtools needs boost::filesystem)])])
+fi
+
+##############################
+# Debug
+##############################
+
+AC_ARG_ENABLE(
+ 	[debug],
+	AC_HELP_STRING([--enable-debug], [ enable debugging (default = no) ]),
+	[case "${enableval}" in
+    	yes | no ) enable_debug="${enableval}" ;;
+	esac],
+	[]
+)
+
+if [ test "$enable_debug" = yes -o "$build_test" = yes ]; then
+	AC_DEFINE([DEBUG],1,[Define to 1 if you want to debug])
+        AS_VAR_APPEND([CFLAGS], [" -O0"])
+        AS_VAR_APPEND([CPPFLAGS], [" -O0"])
 fi
 
 ##############################

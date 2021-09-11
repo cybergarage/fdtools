@@ -20,45 +20,45 @@ AM_CFLAGS = -I$(top_builddir)/include -I$(top_builddir)/src
 AM_CPPFLAGS = -I$(top_builddir)/include -I$(top_builddir)/src
 
 fdtools_sources = \
-	../../src/fdtools/util/struct.cpp \
 	../../src/fdtools/util/program.cpp \
-	../../src/fdtools/util/log.cpp \
-	../../src/fdtools/util/string_func.cpp \
 	../../src/fdtools/util/arguments.cpp \
 	../../src/fdtools/util/string.cpp \
+	../../src/fdtools/util/struct.cpp \
+	../../src/fdtools/util/list.cpp \
+	../../src/fdtools/util/argument.cpp \
 	../../src/fdtools/util/option.cpp \
 	../../src/fdtools/util/file.cpp \
-	../../src/fdtools/util/list.cpp \
-	../../src/fdtools/util/element.cpp \
-	../../src/fdtools/util/argument.cpp \
-	../../src/fdtools/util/hexdump.cpp \
+	../../src/fdtools/util/log.cpp \
+	../../src/fdtools/util/string_func.cpp \
 	../../src/fdtools/util/dictionary.cpp \
-	../../src/fdtools/error.cpp \
-	../../src/fdtools/plugins/func.cpp \
+	../../src/fdtools/util/element.cpp \
+	../../src/fdtools/util/hexdump.cpp \
+	../../src/fdtools/img/image.cpp \
+	../../src/fdtools/img/density.cpp \
+	../../src/fdtools/img/config.cpp \
+	../../src/fdtools/img/file.cpp \
+	../../src/fdtools/img/sector.cpp \
+	../../src/fdtools/img/sectors.cpp \
+	../../src/fdtools/dev/image.cpp \
+	../../src/fdtools/dev/floppy_linux.cpp \
+	../../src/fdtools/dev/device_unix.cpp \
+	../../src/fdtools/dev/device.cpp \
+	../../src/fdtools/dev/device_linux.cpp \
+	../../src/fdtools/dev/floppy.cpp \
 	../../src/fdtools/plugins/hfe/hfe_exporter.cpp \
 	../../src/fdtools/plugins/hfe/hfe.cpp \
 	../../src/fdtools/plugins/hfe/hfe_loader.cpp \
 	../../src/fdtools/plugins/plugin.cpp \
-	../../src/fdtools/plugins/d88/d88.cpp \
-	../../src/fdtools/plugins/d88/d88_loader.cpp \
-	../../src/fdtools/plugins/d88/d88_exporter.cpp \
-	../../src/fdtools/plugins/plugins.cpp \
-	../../src/fdtools/plugins/loader.cpp \
-	../../src/fdtools/plugins/raw/raw_loader.cpp \
-	../../src/fdtools/plugins/raw/raw.cpp \
 	../../src/fdtools/plugins/raw/raw_exporter.cpp \
-	../../src/fdtools/img/image.cpp \
-	../../src/fdtools/img/sector.cpp \
-	../../src/fdtools/img/file.cpp \
-	../../src/fdtools/img/config.cpp \
-	../../src/fdtools/img/sectors.cpp \
-	../../src/fdtools/img/density.cpp \
-	../../src/fdtools/dev/device_unix.cpp \
-	../../src/fdtools/dev/image.cpp \
-	../../src/fdtools/dev/floppy_linux.cpp \
-	../../src/fdtools/dev/device.cpp \
-	../../src/fdtools/dev/device_linux.cpp \
-	../../src/fdtools/dev/floppy.cpp
+	../../src/fdtools/plugins/raw/raw.cpp \
+	../../src/fdtools/plugins/raw/raw_loader.cpp \
+	../../src/fdtools/plugins/func.cpp \
+	../../src/fdtools/plugins/plugins.cpp \
+	../../src/fdtools/plugins/d88/d88.cpp \
+	../../src/fdtools/plugins/d88/d88_exporter.cpp \
+	../../src/fdtools/plugins/d88/d88_loader.cpp \
+	../../src/fdtools/plugins/loader.cpp \
+	../../src/fdtools/error.cpp
 
 libfdtoolsincludedir = $(includedir)/fdtools
 nobase_libfdtoolsinclude_HEADERS =  \
