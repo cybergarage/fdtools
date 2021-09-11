@@ -72,7 +72,7 @@ AC_ARG_ENABLE(
 	[]
 )
 
-if [ test "$enable_debug" = yes -o "$build_test" = yes ]; then
+if [ test "$enable_debug" = yes ]; then
 	AC_DEFINE([DEBUG],1,[Define to 1 if you want to debug])
         AS_VAR_APPEND([CFLAGS], [" -O0"])
         AS_VAR_APPEND([CPPFLAGS], [" -O0"])
