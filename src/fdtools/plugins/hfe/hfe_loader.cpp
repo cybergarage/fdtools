@@ -35,8 +35,10 @@ bool fdt_hfe_image_load(FdtFileImage* img, FdtError* err)
   // First part : 0x0000-0x0200 (512 bytes) : File header
 
   byte_t header_buf[sizeof(FdtHfeHeader)];
-  if (!fdt_file_read(fp, header_buf, sizeof(header_buf)))
+  if (!fdt_file_read(fp, header_buf, sizeof(header_buf))) {
+    fdt_error_setlasterror(err, "");
     return false;
+  }
 
   FdtHfeHeader hfe_header;
   if (!fdt_hfe_header_parse(&hfe_header, header_buf))
@@ -49,8 +51,10 @@ bool fdt_hfe_image_load(FdtFileImage* img, FdtError* err)
   // Second part : (up to 1024 bytes) : Track offset LUT
 
   size_t track_list_offset = hfe_header.track_list_offset * HFE_TRACK_BLOCK_SIZE;
-  if (!fdt_file_seek(fp, track_list_offset, SEEK_SET))
+  if (!fdt_file_seek(fp, track_list_offset, SEEK_SET)) {
+    fdt_error_setlasterror(err, "");
     return false;
+  }
 
   size_t number_of_track = hfe_header.number_of_track;
   size_t number_of_head = hfe_header.number_of_side;
@@ -71,8 +75,10 @@ bool fdt_hfe_image_load(FdtFileImage* img, FdtError* err)
   for (size_t t = 0; t < number_of_track; t++) {
     size_t track_offset = hfe_track_offsets[t].offset;
     size_t track_data_offset = track_offset * HFE_TRACK_BLOCK_SIZE;
-    if (!fdt_file_seek(fp, track_data_offset, SEEK_SET))
+    if (!fdt_file_seek(fp, track_data_offset, SEEK_SET)) {
+      fdt_error_setlasterror(err, FDT_IMAGE_MESSAGE_SECTOR_PRINTF_FORMAT, t, 0, 0);
       return false;
+    }
 
     byte_t track_block_data[HFE_TRACK_BLOCK_SIZE];
 
@@ -87,6 +93,7 @@ bool fdt_hfe_image_load(FdtFileImage* img, FdtError* err)
 
     while (track_block_data_offset < track_data_len) {
       if (!fdt_file_read(fp, track_block_data, HFE_TRACK_BLOCK_SIZE)) {
+        fdt_error_setlasterror(err, FDT_IMAGE_MESSAGE_SECTOR_PRINTF_FORMAT, t, 0, track_block_data_offset);
         return false;
       }
 
