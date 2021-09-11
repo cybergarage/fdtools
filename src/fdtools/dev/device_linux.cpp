@@ -118,12 +118,8 @@ bool fdt_device_detecttransferratewithrate(int fd, int rate, FdtFloppyParams* pa
   // For this, you try out fdrawcmd readid 0 rate=x, where x is 0, 1, 2, 3 If no rate is supplied, fdrawcmd assumes rate=0
 
   floppy_raw_cmd raw_cmd;
-  if (!fdt_floppy_rawcmd_readid(fd, fdt_floppy_params_getdeviceno(params), rate, 0, &raw_cmd)) {
-    fdt_floppy_rawcmd_print(&raw_cmd);
+  if (!fdt_floppy_rawcmd_readid(fd, fdt_floppy_params_getdeviceno(params), rate, 0, &raw_cmd))
     return false;
-  }
-
-  fdt_floppy_rawcmd_print(&raw_cmd);
 
   if (raw_cmd.reply_count < 7)
     return false;
@@ -155,7 +151,7 @@ bool fdt_device_detecttransferrate(int fd, FdtFloppyParams* params, FdtError* er
     0x100,
   };
 
-  for (int n = 0; n < 4; n++) {
+  for (int n = 0; n < 5; n++) {
     if (fdt_device_detecttransferratewithrate(fd, rates[n], params, err))
       return true;
   }
