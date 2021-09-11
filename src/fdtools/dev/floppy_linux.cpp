@@ -87,6 +87,8 @@ bool fdt_floppy_params_setstat(FdtFloppyParams* params, struct stat* stat, FdtEr
 
   fdt_floppy_params_setdeviceno(params, drive_no);
 
+  fdt_log_info("stat major = %d, minor = %d, dn = %d", major(stat->st_rdev), minor(stat->st_rdev), drive_no);
+
   return true;
 }
 
@@ -149,7 +151,7 @@ bool fdt_floppy_rawcmd_readid(int fd, int drive, int rate, int track, floppy_raw
 
   int ret = ioctl(fd, FDRAWCMD, raw_cmd);
 
-  fdt_log_info("READID(%d): dn = %d, rate = %d, track = %d", ret, drive, rate, track);
+  fdt_log_info("readid(%d) dn = %d, rate = %d, track = %d", ret, drive, rate, track);
 
   return (ret == 0) ? true : false;
 }
