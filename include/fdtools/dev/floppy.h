@@ -19,6 +19,7 @@
 #include <linux/fd.h>
 #include <linux/fdreg.h>
 #include <linux/major.h>
+#include <sys/stat.h>
 #endif
 
 #include <fdtools/error.h>
