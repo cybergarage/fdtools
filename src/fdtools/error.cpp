@@ -17,6 +17,7 @@
 #include <stdlib.h>
 
 #include <fdtools/error.h>
+#include <fdtools/util/log.h>
 
 const size_t FDT_ERROR_MESSAGE_MAX = 256;
 
@@ -136,6 +137,12 @@ const char* fdt_error_getdebugmessage(FdtError* err)
   else {
     fdt_string_setvalue(err->debug_message, "");
   }
+
+#if defined(DEBUG)
+  if (fdt_error_iserror(err)) {
+    fdt_log_error("%s", fdt_string_getvalue(err->debug_message));
+  }
+#endif
 
   return fdt_string_getvalue(err->debug_message);
 }
