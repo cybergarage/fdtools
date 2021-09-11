@@ -16,6 +16,7 @@
 #define _FDTOOLS_IMG_D88_H_
 
 #include <fdtools/img/file.h>
+#include <fdtools/util/log.h>
 
 #ifdef __cplusplus
 extern "C" {
@@ -97,6 +98,9 @@ bool fdt_d88_image_export(FdtFileImage*, FdtError*);
 
 bool fdt_d88_header_setconfig(FdtD88Header*, FdtImage*, FdtError* err);
 bool fdt_d88_sector_header_setconfig(FdtD88SectorHeader*, FdtImageSector*, FdtImageDensity, size_t, FdtError* err);
+
+void fdt_d88_header_log_debug(FdtD88Header*);
+void fdt_d88_sector_header_log_debug(FdtD88SectorHeader*);
 
 #ifdef __cplusplus
 } /* extern C */

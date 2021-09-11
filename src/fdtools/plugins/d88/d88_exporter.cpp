@@ -19,6 +19,8 @@ bool fdt_d88_image_export(FdtFileImage* img, FdtError* err)
   if (!img)
     return false;
 
+  fdt_log_debug(FDT_D88_MESSAGE_HEADER "exporting %s", fdt_image_getname(img));
+
   FILE* fp = fdt_image_file_getfile(img);
   if (!fp)
     return false;

@@ -189,5 +189,21 @@ bool fdt_d88_sector_header_setconfig(FdtD88SectorHeader* d88_sector_header, FdtI
   d88_sector_header->status = D88_SECTOR_STATUS_NORMAL;
   d88_sector_header->size_of_data = sector_size;
 
+  fdt_d88_sector_header_log_debug(d88_sector_header);
+
   return true;
+}
+
+void fdt_d88_header_log_debug(FdtD88Header* header)
+{
+  fdt_log_debug(FDT_D88_MESSAGE_HEADER "name:          %s", header->name);
+  fdt_log_debug(FDT_D88_MESSAGE_HEADER "reserve:       %02X%02X%02X%02X%02X%02X%02X%02X%02X", header->reserve[0], header->reserve[1], header->reserve[2], header->reserve[3], header->reserve[4], header->reserve[5], header->reserve[6], header->reserve[7], header->reserve[8]);
+  fdt_log_debug(FDT_D88_MESSAGE_HEADER "write_protect: %02X", header->write_protect);
+  fdt_log_debug(FDT_D88_MESSAGE_HEADER "disk_type:     %02X", header->disk_type);
+  fdt_log_debug(FDT_D88_MESSAGE_HEADER "disk_size:     %d", header->disk_size);
+}
+
+void fdt_d88_sector_header_log_debug(FdtD88SectorHeader* sector)
+{
+  fdt_log_debug(FDT_D88_MESSAGE_HEADER "C:%02d H:%d R:%d N:%d SNUM:%d SSIZE:%d", sector->c, sector->h, sector->r, sector->n, sector->number_of_sector, sector->size_of_data);
 }

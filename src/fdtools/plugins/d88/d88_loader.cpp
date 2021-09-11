@@ -14,14 +14,11 @@
 
 #include <fdtools/plugins/d88/d88.h>
 #include <fdtools/util/hexdump.h>
-#include <fdtools/util/log.h>
 
 bool fdt_d88_image_load(FdtFileImage*, FILE*);
 bool fdt_d88_header_parse(FdtD88Header*, byte_t*);
-void fdt_d88_header_log_debug(FdtD88Header*);
 bool fdt_d88_sector_header_read(FdtD88SectorHeader*, FILE* fp, int n, size_t offset);
 bool fdt_d88_sector_header_parse(FdtD88SectorHeader*, int, size_t, byte_t*);
-void fdt_d88_sector_header_log_debug(FdtD88SectorHeader*, int n, size_t offset);
 bool fdt_d88_sector_data_read(FdtD88SectorHeader*, FILE* fp, size_t offset, byte_t* buf, size_t buf_size);
 bool fdt_image_setd88headerinfo(FdtFileImage* img, FdtD88Header* header);
 
@@ -163,15 +160,6 @@ bool fdt_image_setd88headerinfo(FdtFileImage* img, FdtD88Header* header)
   return true;
 }
 
-void fdt_d88_header_log_debug(FdtD88Header* header)
-{
-  fdt_log_debug(FDT_D88_MESSAGE_HEADER "name:          %s", header->name);
-  fdt_log_debug(FDT_D88_MESSAGE_HEADER "reserve:       %02X%02X%02X%02X%02X%02X%02X%02X%02X", header->reserve[0], header->reserve[1], header->reserve[2], header->reserve[3], header->reserve[4], header->reserve[5], header->reserve[6], header->reserve[7], header->reserve[8]);
-  fdt_log_debug(FDT_D88_MESSAGE_HEADER "write_protect: %02X", header->write_protect);
-  fdt_log_debug(FDT_D88_MESSAGE_HEADER "disk_type:     %02X", header->disk_type);
-  fdt_log_debug(FDT_D88_MESSAGE_HEADER "disk_size:     %d", header->disk_size);
-}
-
 bool fdt_d88_sector_header_read(FdtD88SectorHeader* sector, FILE* fp, int n, size_t offset)
 {
   if (!fdt_file_seek(fp, offset, SEEK_SET))
@@ -191,13 +179,8 @@ bool fdt_d88_sector_header_parse(FdtD88SectorHeader* sector, int n, size_t offse
 {
   // TODO: Support Big-endian architecture
   memcpy(sector, sector_buf, sizeof(FdtD88SectorHeader));
-  fdt_d88_sector_header_log_debug(sector, n, offset);
+  fdt_d88_sector_header_log_debug(sector);
   return true;
-}
-
-void fdt_d88_sector_header_log_debug(FdtD88SectorHeader* sector, int n, size_t offset)
-{
-  fdt_log_debug(FDT_D88_MESSAGE_HEADER "[%02d] %06X C:%02d H:%d R:%d N:%d SNUM:%d SSIZE:%d", n, (int)offset, sector->c, sector->h, sector->r, sector->n, sector->number_of_sector, sector->size_of_data);
 }
 
 bool fdt_d88_sector_data_read(FdtD88SectorHeader*, FILE* fp, size_t offset, byte_t* buf, size_t buf_size)
