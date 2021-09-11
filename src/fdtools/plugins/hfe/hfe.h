@@ -19,6 +19,7 @@
 
 #include <fdtools/img/file.h>
 #include <fdtools/img/image.h>
+#include <fdtools/util/log.h>
 
 #ifdef __cplusplus
 extern "C" {

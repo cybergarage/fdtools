@@ -26,6 +26,8 @@ bool fdt_hfe_image_export(FdtFileImage* img, FdtError* err)
   if (!img)
     return false;
 
+  fdt_log_debug(FDT_HFE_MESSAGE_HEADER "exporting %s", fdt_image_getname(img));
+
   FILE* fp = fdt_image_file_getfile(img);
   if (!fp)
     return false;
@@ -84,6 +86,8 @@ bool fdt_hfe_image_export(FdtFileImage* img, FdtError* err)
   // Third part : Track data
 
   for (size_t t = 0; t < number_of_track; t++) {
+    fdt_log_debug(FDT_HFE_MESSAGE_HEADER FDT_IMAGE_MESSAGE_SECTOR_PRINTF_FORMAT, t, 0, 0);
+
     size_t track_sizes[number_of_head];
     byte_t* track_bytes[number_of_head];
     for (size_t h = 0; h < number_of_head; h++) {

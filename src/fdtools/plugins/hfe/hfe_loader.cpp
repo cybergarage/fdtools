@@ -15,7 +15,6 @@
 #include <fdtools/img/file.h>
 #include <fdtools/plugins/hfe/hfe.h>
 #include <fdtools/util/hexdump.h>
-#include <fdtools/util/log.h>
 #include <fdtools/util/logic.h>
 #include <fdtools/util/string.h>
 
@@ -97,8 +96,6 @@ bool fdt_hfe_image_load(FdtFileImage* img, FdtError* err)
     }
 
     while (track_block_data_offset < track_data_len) {
-      fdt_log_debug(FDT_HFE_MESSAGE_HEADER FDT_IMAGE_MESSAGE_SECTOR_PRINTF_FORMAT, t, 0, track_block_data_offset);
-
       if (!fdt_file_read(fp, track_block_data, HFE_TRACK_BLOCK_SIZE)) {
         fdt_error_setlasterror(err, FDT_IMAGE_MESSAGE_SECTOR_PRINTF_FORMAT, t, 0, track_block_data_offset);
         return false;
