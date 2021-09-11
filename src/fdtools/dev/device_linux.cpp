@@ -53,7 +53,7 @@ bool fdt_device_getfloppyparameters(FdtDevice* dev, FdtFloppyParams* params, Fdt
 
   bool is_already_opened = fdt_device_isopened(dev);
   if (!is_already_opened) {
-    if (!fdt_device_open(dev, fdt_device_getname(dev), FDT_FILE_READ, err)) {
+    if (!fdt_device_open(dev, FDT_FILE_READ, err)) {
       return false;
     }
   }
@@ -169,7 +169,7 @@ bool fdt_device_detectfloppyformat(FdtDevice* dev, FdtFloppyParams* params, FdtE
 
   bool is_already_opened = fdt_device_isopened(dev);
   if (!is_already_opened) {
-    if (!fdt_device_open(dev, fdt_device_getname(dev), FDT_FILE_READ, err)) {
+    if (!fdt_device_open(dev, FDT_FILE_READ, err)) {
       return false;
     }
   }

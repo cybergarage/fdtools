@@ -21,25 +21,25 @@
 
 const mode_t FDT_DEVICE_WMODE = S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH | S_IWOTH;
 
-bool fdt_device_open(FdtDevice* dev, const char* name, FdtFileMode mode, FdtError* err)
+bool fdt_device_open(FdtDevice* dev, FdtFileMode mode, FdtError* err)
 {
   if (!dev)
     return false;
 
-  fdt_device_setname(dev, name);
-  
+  const char* device_name = fdt_device_getname(dev);
+
   int fd = -1;
   switch (mode) {
   case FDT_FILE_READ:
-    fd = open(name, O_RDONLY);
+    fd = open(device_name, O_RDONLY);
     break;
   case FDT_FILE_WRITE:
-    fd = open(name, O_WRONLY | O_CREAT | O_TRUNC, FDT_DEVICE_WMODE);
+    fd = open(device_name, O_WRONLY | O_CREAT | O_TRUNC, FDT_DEVICE_WMODE);
     break;
   }
 
   if (fd == -1) {
-    fdt_error_setlasterror(err, name);
+    fdt_error_setlasterror(err, device_name);
     return false;
   }
 

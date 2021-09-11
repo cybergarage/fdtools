@@ -90,7 +90,8 @@ bool fdt_device_image_open(FdtDeviceImage* img, const char* name, FdtFileMode mo
 {
   if (!img)
     return false;
-  return fdt_device_open(img->dev, name, mode, err);
+  fdt_device_setname(img->dev, name);
+  return fdt_device_open(img->dev, mode, err);
 }
 
 bool fdt_device_image_close(FdtDeviceImage* img, FdtError* err)
