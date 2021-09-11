@@ -76,10 +76,16 @@ bool fdt_error_iserror(FdtError* err)
   if (!err)
     return false;
 
-  if (fdt_string_length(err->func_name) <= 0)
-    return false;
+  if (0 < err->line_no)
+    return true;
 
-  return true;
+  if (0 < fdt_string_length(err->func_name))
+    return true;
+
+  if (0 < fdt_string_length(err->message))
+    return true;
+
+  return false;
 }
 
 bool fdt_error_setdebugmessage(FdtError* err, const char* file, int line_no, const char* function, const char* prefix, const char* format, ...)
