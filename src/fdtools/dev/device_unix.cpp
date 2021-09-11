@@ -26,6 +26,8 @@ bool fdt_device_open(FdtDevice* dev, const char* name, FdtFileMode mode, FdtErro
   if (!dev)
     return false;
 
+  fdt_device_setname(dev, name);
+  
   int fd = -1;
   switch (mode) {
   case FDT_FILE_READ:

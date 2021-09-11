@@ -23,6 +23,7 @@
 
 #include <fdtools/dev/error.h>
 #include <fdtools/dev/floppy.h>
+#include <fdtools/util/log.h>
 
 bool fdt_floppy_struct_equals(struct floppy_struct* t, struct floppy_struct* o)
 {
@@ -146,10 +147,11 @@ bool fdt_floppy_rawcmd_readid(int fd, int drive, int rate, int track, floppy_raw
   raw_cmd->rate = rate;
   raw_cmd->track = track;
 
-  if (ioctl(fd, FDRAWCMD, raw_cmd) < 0)
-    return false;
+  int ret = ioctl(fd, FDRAWCMD, raw_cmd);
 
-  return true;
+  fdt_log_info("READID(%d): dn = %d, rate = %d, track = %d", ret, drive, rate, track);
+
+  return (ret == 0) ? true : false;
 }
 
 void fdt_floppy_rawcmd_print(floppy_raw_cmd* raw_cmd)
