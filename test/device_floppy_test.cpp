@@ -35,12 +35,13 @@ BOOST_AUTO_TEST_CASE(FloppyGetParamsTest)
   FdtError* err = fdt_error_new();
   BOOST_REQUIRE(err);
 
-  FdtDevice* dev = fdt_device_new();
-  BOOST_REQUIRE(dev);
   FdtFloppyParams* fdparams = fdt_floppy_params_new();
   BOOST_REQUIRE(fdparams);
 
-  if (!fdt_device_open(dev, TEST_FLOPPY_DEV, FDT_FILE_READ, err)) {
+  FdtDevice* dev = fdt_device_new();
+  BOOST_REQUIRE(dev);
+  fdt_device_setname(dev, TEST_FLOPPY_DEV);
+  if (!fdt_device_open(dev, FDT_FILE_READ, err)) {
     BOOST_CHECK(fdt_error_delete(err));
     return;
   }
@@ -64,7 +65,8 @@ BOOST_AUTO_TEST_CASE(FloppyImportTest)
 
   FdtDevice* dev = fdt_device_new();
   BOOST_REQUIRE(dev);
-  if (!fdt_device_open(dev, TEST_FLOPPY_DEV, FDT_FILE_READ, err))
+  fdt_device_setname(dev, TEST_FLOPPY_DEV);
+  if (!fdt_device_open(dev, FDT_FILE_READ, err))
     return;
 
   BOOST_REQUIRE_MESSAGE(fdt_device_getfloppyparameters(dev, fdparams, err), fdt_error_getdebugmessage(err));

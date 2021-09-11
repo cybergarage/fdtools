@@ -53,7 +53,7 @@ bool fdt_device_getfloppyparameters(FdtDevice* dev, FdtFloppyParams* params, Fdt
 
   bool is_already_opened = fdt_device_isopened(dev);
   if (!is_already_opened) {
-    if (!fdt_device_open(dev, fdt_device_getname(dev), FDT_FILE_READ, err)) {
+    if (!fdt_device_open(dev, FDT_FILE_READ, err)) {
       return false;
     }
   }
@@ -121,9 +121,7 @@ bool fdt_device_detecttransferratewithrate(int fd, int rate, FdtFloppyParams* pa
   if (!fdt_floppy_rawcmd_readid(fd, fdt_floppy_params_getdeviceno(params), rate, 0, &raw_cmd))
     return false;
 
-  fdt_floppy_rawcmd_print(&raw_cmd);
-
-  if (raw_cmd->reply_count < 7)
+  if (raw_cmd.reply_count < 7)
     return false;
 
   // The first 3 output bytes are error codes. The first byte should be below 7 (i.e. the example above succeeded).
@@ -145,7 +143,7 @@ bool fdt_device_detecttransferrate(int fd, FdtFloppyParams* params, FdtError* er
   // for double density 5 1/4 disks (or 2 Mbps tapes, if the  appropriate rate table is selected),
   // and 2 for double density 3 1/2 disks.
 
-  int rates = {
+  int rates[] = {
     0x000,
     0x001,
     0x002,
@@ -153,12 +151,12 @@ bool fdt_device_detecttransferrate(int fd, FdtFloppyParams* params, FdtError* er
     0x100,
   };
 
-  for (int n = 0; n < 4; n++) {
+  for (int n = 0; n < 5; n++) {
     if (fdt_device_detecttransferratewithrate(fd, rates[n], params, err))
       return true;
   }
 
-  return false
+  return false;
 }
 
 bool fdt_device_detectfloppyformat(FdtDevice* dev, FdtFloppyParams* params, FdtError* err)
@@ -171,7 +169,7 @@ bool fdt_device_detectfloppyformat(FdtDevice* dev, FdtFloppyParams* params, FdtE
 
   bool is_already_opened = fdt_device_isopened(dev);
   if (!is_already_opened) {
-    if (!fdt_device_open(dev, fdt_device_getname(dev), FDT_FILE_READ, err)) {
+    if (!fdt_device_open(dev, FDT_FILE_READ, err)) {
       return false;
     }
   }

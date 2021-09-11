@@ -115,10 +115,15 @@ int main(int argc, char* argv[])
     // Gets current device parameters, and sets the parameters to image.
     FdtDevice* dev = fdt_device_new();
     fdt_device_setname(dev, img_name);
+    if (!fdt_device_open(dev, FDT_FILE_READ, err)) {
+      exit_error(err);
+    }
+
     FdtFloppyParams* fdparams = fdt_floppy_params_new();
     if (!dev || !fdparams) {
       panic();
     }
+
     // Checks the floppy format when a floppy disk is inserted in the device.
     if (!fdt_device_detectfloppyformat(dev, fdparams, err)) {
       // The device has no floppy disk, and so gets only current floppy settings.
@@ -127,7 +132,11 @@ int main(int argc, char* argv[])
       }
     }
     print_message("%s", fdt_floppy_params_getdescription(fdparams));
+
     fdt_floppy_params_delete(fdparams);
+    if (!fdt_device_close(dev, err)) {
+      exit_error(err);
+    }
     fdt_device_delete(dev);
   } break;
   default: {
