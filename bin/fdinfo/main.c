@@ -77,6 +77,7 @@ int main(int argc, char* argv[])
     panic();
   }
   fdt_program_addoption(prg, OPT_VERBOSE, "enable verbose messages", false, "");
+  fdt_program_addoption(prg, OPT_DEBUG, "enable debug messages", false, "");
 
   if (!fdt_program_parse(prg, argc, argv, err)) {
     print_error(err);

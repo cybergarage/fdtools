@@ -180,8 +180,9 @@ int main(int argc, char* argv[])
   fdt_program_addoption(prg, OPT_HEADS, "number of heads", true, "");
   fdt_program_addoption(prg, OPT_SECTORS, "number of sectors", true, "");
   fdt_program_addoption(prg, OPT_SSIZE, "sector size", true, "");
-  fdt_program_addoption(prg, OPT_VERBOSE, "enable verbose messages", false, "");
   fdt_program_addoption(prg, OPT_RETRY_PASSES, "number of retry passes", false, "");
+  fdt_program_addoption(prg, OPT_VERBOSE, "enable verbose messages", false, "");
+  fdt_program_addoption(prg, OPT_DEBUG, "enable debug messages", false, "");
 
   if (!fdt_program_parse(prg, argc, argv, err)) {
     print_error(err);
