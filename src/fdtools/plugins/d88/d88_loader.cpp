@@ -34,8 +34,10 @@ bool fdt_d88_image_load(FdtFileImage* img, FdtError* err)
     return false;
 
   byte_t header_buf[sizeof(FdtD88Header)];
-  if (!fdt_file_read(fp, header_buf, sizeof(header_buf)))
+  if (!fdt_file_read(fp, header_buf, sizeof(header_buf))) {
+    fdt_error_setlasterror(err, "");
     return false;
+  }
 
   // Read a raw header
 
@@ -56,8 +58,10 @@ bool fdt_d88_image_load(FdtFileImage* img, FdtError* err)
     // Read a raw sectors
 
     FdtD88SectorHeader d88_sector_header;
-    if (!fdt_d88_sector_header_read(&d88_sector_header, fp, n, sector_header_offset))
+    if (!fdt_d88_sector_header_read(&d88_sector_header, fp, n, sector_header_offset)) {
+      fdt_error_setlasterror(err, "");
       return false;
+    }
     d88_image_file_size += sizeof(FdtD88SectorHeader);
 
     size_t sector_size = d88_sector_header.size_of_data;
@@ -84,10 +88,12 @@ bool fdt_d88_image_load(FdtFileImage* img, FdtError* err)
     for (int sector_no = 0; sector_no < number_of_sector; sector_no++) {
       byte_t* sector_data = (byte_t*)malloc(sector_size);
       if (!sector_data) {
+        fdt_error_setlasterror(err, FDT_IMAGE_MESSAGE_SECTOR_PRINTF_FORMAT, d88_sector_header.c, d88_sector_header.h, sector_no);
         return false;
       }
 
       if (!fdt_d88_sector_data_read(&d88_sector_header, fp, sector_data_offset, sector_data, sector_size)) {
+        fdt_error_setlasterror(err, FDT_IMAGE_MESSAGE_SECTOR_PRINTF_FORMAT, d88_sector_header.c, d88_sector_header.h, sector_no);
         free(sector_data);
         return false;
       }
