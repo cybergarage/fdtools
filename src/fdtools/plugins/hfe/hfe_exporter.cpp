@@ -61,7 +61,7 @@ bool fdt_hfe_image_export(FdtFileImage* img, FdtError* err)
   }
 
   byte_t track_offset_lut_buf[track_offset_lut_size];
-  memset(hfe_header_buf, 0x00, sizeof(track_offset_lut_buf));
+  memset(track_offset_lut_buf, 0x00, sizeof(track_offset_lut_buf));
   FdtHfeTrackOffsets* track_offsets = (FdtHfeTrackOffsets*)track_offset_lut_buf;
 
   size_t track_offset_block_no = (HFE_HEADER_BLOCK_SIZE + track_offset_lut_size) / 512;
