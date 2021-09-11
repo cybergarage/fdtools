@@ -65,9 +65,9 @@ void fdt_log_output(int level, const char* file, int line_n, const char* functio
   ts = time(NULL);
   localts = localtime(&ts);
 
-  strftime(tsPrefix, MAX_LOG_BUF, "%c", localts);
+  strftime(tsPrefix, MAX_LOG_BUF, "%Y-%m-%d %H:%M:%S", localts);
 
-  prefixLen = snprintf(msg, MAX_LOG_BUF, "%s : %s ", tsPrefix, fdt_log_type2string(level));
+  prefixLen = snprintf(msg, MAX_LOG_BUF, "%s [%s] ", tsPrefix, fdt_log_type2string(level));
 
   va_start(list, format);
   vsnprintf(msg + prefixLen, MAX_LOG_BUF - prefixLen, format, list);
