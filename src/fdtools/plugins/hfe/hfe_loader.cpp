@@ -15,6 +15,7 @@
 #include <fdtools/img/file.h>
 #include <fdtools/plugins/hfe/hfe.h>
 #include <fdtools/util/hexdump.h>
+#include <fdtools/util/log.h>
 #include <fdtools/util/logic.h>
 #include <fdtools/util/string.h>
 
@@ -27,6 +28,8 @@ bool fdt_hfe_image_load(FdtFileImage* img, FdtError* err)
 {
   if (!img)
     return false;
+
+  fdt_log_debug(FDT_HFE_MESSAGE_HEADER "loading %s", fdt_image_getname(img));
 
   FILE* fp = fdt_image_file_getfile(img);
   if (!fp)
@@ -73,6 +76,8 @@ bool fdt_hfe_image_load(FdtFileImage* img, FdtError* err)
   // Third part : Track data
 
   for (size_t t = 0; t < number_of_track; t++) {
+    fdt_log_debug(FDT_HFE_MESSAGE_HEADER FDT_IMAGE_MESSAGE_SECTOR_PRINTF_FORMAT, t, 0, 0);
+
     size_t track_offset = hfe_track_offsets[t].offset;
     size_t track_data_offset = track_offset * HFE_TRACK_BLOCK_SIZE;
     if (!fdt_file_seek(fp, track_data_offset, SEEK_SET)) {
@@ -92,6 +97,8 @@ bool fdt_hfe_image_load(FdtFileImage* img, FdtError* err)
     }
 
     while (track_block_data_offset < track_data_len) {
+      fdt_log_debug(FDT_HFE_MESSAGE_HEADER FDT_IMAGE_MESSAGE_SECTOR_PRINTF_FORMAT, t, 0, track_block_data_offset);
+
       if (!fdt_file_read(fp, track_block_data, HFE_TRACK_BLOCK_SIZE)) {
         fdt_error_setlasterror(err, FDT_IMAGE_MESSAGE_SECTOR_PRINTF_FORMAT, t, 0, track_block_data_offset);
         return false;

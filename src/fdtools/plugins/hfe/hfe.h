@@ -24,6 +24,8 @@
 extern "C" {
 #endif
 
+#define FDT_HFE_MESSAGE_HEADER "[HFE] "
+
 #define HFE_IMAGE_HEADER_SIGNATURE "HXCPICFE"
 #define HFE_HEADER_SIZE 26
 #define HFE_HEADER_BLOCK_SIZE 512
