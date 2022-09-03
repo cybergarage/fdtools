@@ -1,7 +1,7 @@
 # Fdtools
 
 [![test](https://github.com/cybergarage/fdtools/actions/workflows/make.yml/badge.svg)](https://github.com/cybergarage/fdtools/actions/workflows/make.yml)
-[![doxygen](https://github.com/cybergarage/fdtools/actions/workflows/doxygen.yml/badge.svg)](https://github.com/cybergarage/fdtools/actions/workflows/doxygen.yml)
+[![doxygen](https://github.com/cybergarage/fdtools/actions/workflows/doxygen.yml/badge.svg)](https://cybergarage.github.io/fdtools/)
 
 Fdtools is a utility package for floppy disk drives and images on multi-platform. The package includes the following commands:
 
