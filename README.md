@@ -1,5 +1,7 @@
 # Fdtools
 
+[![test](https://github.com/cybergarage/fdtools/actions/workflows/make.yml/badge.svg)](https://github.com/cybergarage/fdtools/actions/workflows/make.yml)
+
 Fdtools is a utility package for floppy disk drives and images on multi-platform. The package includes the following commands:
 
 - [fddump](doc/ffdump.md): dumps an image from floppy disk drives or image files, and copies the images to other target devices or files. It supports to dump a file image to other images, and so you can use the utility as a floppy image converters too.
