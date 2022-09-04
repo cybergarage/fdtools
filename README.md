@@ -17,6 +17,7 @@ The package includes the following commands:
 
 Note these utilities access read floppy drives directly, and so these might not work for USB floppy drives when you specify the physical floppy drive options.
 
+<!--
 ## Installation
 
 Fdtools is distributed as a Snap package in the Snap Store, and so you can install it by running:
@@ -24,3 +25,4 @@ Fdtools is distributed as a Snap package in the Snap Store, and so you can insta
 ```
 sudo snap install fdtools
 ```
+-->
