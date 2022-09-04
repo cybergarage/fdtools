@@ -1,5 +1,6 @@
 # fdtools
 
+![GitHub tag (latest SemVer)](https://img.shields.io/github/v/tag/cybergarage/fdtools)
 [![test](https://github.com/cybergarage/fdtools/actions/workflows/make.yml/badge.svg)](https://github.com/cybergarage/fdtools/actions/workflows/make.yml)
 [![doxygen](https://github.com/cybergarage/fdtools/actions/workflows/doxygen.yml/badge.svg)](https://cybergarage.github.io/fdtools/)
 
