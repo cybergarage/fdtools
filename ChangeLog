@@ -1,4 +1,4 @@
 2022-09-04 Satoshi Konno <skonno@cybergarage.org>
-	* v1.0.0
+	* v0.9.0
         * The first public release.
 		* Include fddump and fdinfo using the framework
