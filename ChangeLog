@@ -1,4 +1,10 @@
-2022-09-04 Satoshi Konno <skonno@cybergarage.org>
-	* v0.9.0
-        * The first public release.
-		* Include fddump and fdinfo using the framework
+2022-xx-xx v1.0.0
+	* Add more useful disk image utilities for retro computers like mtools
+    * Support major floppy disk file formats such as HFE
+	* Support Windows platform
+
+2022-09-04 v0.9.0
+    * The first public release
+	* Support raw floppy device on Linux platform
+	* Support HFE andD88 image formats
+	* Include fddump and fdinfo utilities using the framework

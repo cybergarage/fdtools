@@ -169,8 +169,9 @@ am__define_uniq_tagged_files = \
 DIST_SUBDIRS = include lib bin test
 am__DIST_COMMON = $(srcdir)/Makefile.in $(srcdir)/config.h.in \
 	$(top_srcdir)/config/compile $(top_srcdir)/config/install-sh \
-	$(top_srcdir)/config/missing COPYING INSTALL README.md \
-	config/compile config/depcomp config/install-sh config/missing
+	$(top_srcdir)/config/missing COPYING ChangeLog INSTALL \
+	README.md config/compile config/depcomp config/install-sh \
+	config/missing
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
 distdir = $(PACKAGE)-$(VERSION)
 top_distdir = $(distdir)
