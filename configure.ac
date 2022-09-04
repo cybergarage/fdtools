@@ -15,7 +15,7 @@
 AC_CONFIG_AUX_DIR(config)
 AM_CONFIG_HEADER(config.h)
 
-AC_INIT([fdtools], [0.1])
+AC_INIT([fdtools], [0.9.0])
 AC_CONFIG_SRCDIR([include/fdtools/typedef.h])
 AM_INIT_AUTOMAKE([subdir-objects])
 
