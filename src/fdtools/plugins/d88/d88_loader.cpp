@@ -116,7 +116,7 @@ bool fdt_d88_image_load(FdtFileImage* img, FdtError* err)
 
       fdt_image_addsector(img, sector);
 
-      //fdt_hexdump_print(fdt_image_sector_getdata(sector), fdt_image_sector_getsize(sector));
+      // fdt_hexdump_print(fdt_image_sector_getdata(sector), fdt_image_sector_getsize(sector));
     }
   }
 

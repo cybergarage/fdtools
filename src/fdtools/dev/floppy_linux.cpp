@@ -67,7 +67,7 @@ bool fdt_floppy_struct_setfloppyparams(floppy_struct* fdparams, FdtFloppyParams*
   fdparams->stretch = fdt_floppy_params_getstretch(params);
   fdparams->gap = fdt_floppy_params_getgap1size(params);
   /*
-	fdparams->rate =
+        fdparams->rate =
   */
   fdparams->spec1 = 0;
   fdparams->fmt_gap = fdt_floppy_params_getgap2size(params);
@@ -99,7 +99,7 @@ bool fdt_floppy_params_setfloppydriveparams(FdtFloppyParams* params, floppy_driv
 
   int cmos = fddprms->cmos;
   switch (cmos) {
-  case 1: //5 1/4 DD
+  case 1: // 5 1/4 DD
     fdt_floppy_params_setdrivetype(params, FDT_FLOPPY_DRIVE_525_DD, err);
     break;
   case 2: // 3 1/2 DD

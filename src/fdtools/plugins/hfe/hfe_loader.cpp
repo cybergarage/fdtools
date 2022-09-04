@@ -48,7 +48,7 @@ bool fdt_hfe_image_load(FdtFileImage* img, FdtError* err)
   if (!fdt_image_sethfeheaderinfo(img, &hfe_header))
     return false;
 
-  //fdt_hfe_header_print(&hfe_header);
+  // fdt_hfe_header_print(&hfe_header);
 
   // Second part : (up to 1024 bytes) : Track offset LUT
 
@@ -70,7 +70,7 @@ bool fdt_hfe_image_load(FdtFileImage* img, FdtError* err)
     return false;
   }
 
-  //fdt_hfe_header_print(hfe_track_offsets, number_of_track);
+  // fdt_hfe_header_print(hfe_track_offsets, number_of_track);
 
   // Third part : Track data
 
@@ -134,7 +134,7 @@ bool fdt_hfe_image_load(FdtFileImage* img, FdtError* err)
 
         track_read_data_len[h] += sector_data_size;
 
-        //fdt_hexdump_print(sector_data, sector_data_size);
+        // fdt_hexdump_print(sector_data, sector_data_size);
       }
 
       track_block_no++;
