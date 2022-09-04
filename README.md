@@ -7,6 +7,8 @@ The fdtools is a multi-platform framework for easy development of floppy disk ut
 
 ![](doc/img/framework.png)
 
+## Utilities
+
 The package includes the following commands:
 
 - [fddump](doc/ffdump.md): dumps an image from floppy disk drives or image files, and copies the images to other target devices or files. It supports to dump a file image to other images, and so you can use the utility as a floppy image converters too.
