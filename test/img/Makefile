@@ -14,7 +14,7 @@
 
 SHELL := bash
 
-all: raw hfe
+all: raw hfe fdx
 
 raw: 120m/x86BOOT.img 144m/x86BOOT.img
 120m/x86BOOT.img: freedos
@@ -25,6 +25,12 @@ hfe: samdisk 120m/x86BOOT.hfe 144m/x86BOOT.hfe
 	./samdisk $< $@
 144m/x86BOOT.hfe: 144m/x86BOOT.img
 	./samdisk $< $@
+
+fdx: 120m/x86BOOT.fdx 144m/x86BOOT.fdx
+120m/x86BOOT.fdx: 120m/x86BOOT.img
+	./fdxconv -i $< -o $@
+144m/x86BOOT.fdx: 144m/x86BOOT.img
+	./fdxconv -i $< -o $@
 
 freedos:
 	@wget -c https://www.ibiblio.org/pub/micro/pc-stuff/freedos/files/distributions/1.3/official/FD13-FloppyEdition.zip
