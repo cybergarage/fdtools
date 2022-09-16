@@ -1,5 +1,6 @@
 var NAVTREEINDEX3 =
 {
+"structFdtFloppyParams.html#aa93fd115cfacbba3d4f842f9f90fb223":[0,0,4,10],
 "structFdtFloppyParams.html#ab383eefda1aa17eaaee9a22ea41ddab7":[0,0,4,11],
 "structFdtFloppyParams.html#ab6826d4c9178fe381b6401608b27860f":[0,0,4,2],
 "structFdtFloppyParams.html#aba4f03d831f401da126a0c30e289fdee":[0,0,4,3],
