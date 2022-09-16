@@ -14,12 +14,12 @@
 
 #include <fdtools/dev/image.h>
 #include <fdtools/img/image.h>
-#include <fdtools/plugins/d88/d88.h>
-#include <fdtools/plugins/hfe/hfe.h>
+#include <fdtools/plugins/img/d88/d88.h>
+#include <fdtools/plugins/img/hfe/hfe.h>
 #include <fdtools/plugins/image.h>
-#include <fdtools/plugins/loader.h>
-#include <fdtools/plugins/plugin.h>
-#include <fdtools/plugins/raw/raw.h>
+#include <fdtools/plugins/img/loader.h>
+#include <fdtools/plugins/img/plugin.h>
+#include <fdtools/plugins/img/raw/raw.h>
 
 bool fdt_image_name_isdevice(const char* filename)
 {

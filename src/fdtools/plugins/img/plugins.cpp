@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include <fdtools/plugins/plugin.h>
+#include <fdtools/plugins/img/plugin.h>
 
 FdtImagePlugins* fdt_image_plugins_new()
 {

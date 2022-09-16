@@ -12,11 +12,11 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include <fdtools/plugins/loader.h>
-#include <fdtools/plugins/raw/raw.h>
+#include <fdtools/plugins/img/loader.h>
+#include <fdtools/plugins/img/raw/raw.h>
 
-#include <fdtools/plugins/d88/d88.h>
-#include <fdtools/plugins/hfe/hfe.h>
+#include <fdtools/plugins/img/d88/d88.h>
+#include <fdtools/plugins/img/hfe/hfe.h>
 
 static FdtImagePlugins* img_plgs;
 

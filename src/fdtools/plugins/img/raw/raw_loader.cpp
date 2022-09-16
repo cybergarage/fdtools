@@ -12,14 +12,11 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include <fdtools/plugins/raw/raw.h>
+#include <fdtools/plugins/img/raw/raw.h>
 
-bool fdt_raw_image_export(FdtFileImage* img, FdtError* err)
+bool fdt_raw_image_load(FdtFileImage* img, FdtError* err)
 {
   if (!img)
-    return false;
-
-  if (!fdt_image_file_isvalid(img, err))
     return false;
 
   FILE* fp = fdt_image_file_getfile(img);
@@ -30,23 +27,50 @@ bool fdt_raw_image_export(FdtFileImage* img, FdtError* err)
   if (!config)
     return false;
 
+  if (!fdt_image_config_isvalid(config, err))
+    return false;
+
   size_t number_of_track = fdt_image_config_getnumberoftrack(config);
   size_t number_of_head = fdt_image_config_getnumberofhead(config);
   size_t number_of_sector = fdt_image_config_getnumberofsector(config);
+  size_t sector_size = fdt_image_config_getsectorsize(config);
 
-  for (size_t t = 0; t < number_of_track; t++) {
+  size_t total_image_size = 0;
+
+  for (size_t c = 0; c < number_of_track; c++) {
     for (size_t h = 0; h < number_of_head; h++) {
       for (size_t s = 1; s <= number_of_sector; s++) {
-        FdtImageSector* sector = fdt_image_getsector(img, t, h, s);
-        if (!sector)
-          return false;
-        if (!fdt_file_write(fp, fdt_image_sector_getdata(sector), fdt_image_sector_getsize(sector))) {
-          fdt_error_setlasterror(err, "");
+        byte_t* sector_data = (byte_t*)malloc(sector_size);
+        if (!sector_data) {
           return false;
         }
+
+        if (!fdt_file_read(fp, sector_data, sector_size)) {
+          fdt_error_setlasterror(err, "");
+          free(sector_data);
+          return false;
+        }
+
+        FdtImageSector* sector = fdt_image_sector_new();
+        if (!sector) {
+          free(sector_data);
+          return false;
+        }
+
+        fdt_image_sector_settracknumber(sector, c);
+        fdt_image_sector_setheadnumber(sector, h);
+        fdt_image_sector_setnumber(sector, s);
+        fdt_image_sector_setsize(sector, sector_size);
+        fdt_image_sector_setdata(sector, sector_data);
+
+        fdt_image_addsector(img, sector);
+
+        total_image_size += sector_size;
       }
     }
   }
+
+  fdt_image_setsize(img, total_image_size);
 
   return true;
 }

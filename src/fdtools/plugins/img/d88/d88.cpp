@@ -15,7 +15,7 @@
 #include <stdio.h>
 #include <string.h>
 
-#include <fdtools/plugins/d88/d88.h>
+#include <fdtools/plugins/img/d88/d88.h>
 
 FdtImage* fdt_d88_image_new(void)
 {

@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include <fdtools/plugins/hfe/hfe.h>
+#include <fdtools/plugins/img/hfe/hfe.h>
 
 FdtImage* fdt_hfe_image_new(void)
 {

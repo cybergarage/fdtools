@@ -17,7 +17,7 @@
 
 #include <fdtools/img/image.h>
 #include <fdtools/plugins/image.h>
-#include <fdtools/plugins/loader.h>
+#include <fdtools/plugins/img/loader.h>
 
 const std::string TEST_IMAGE_DIRECTORY = "./img";
 

@@ -12,32 +12,25 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include <fdtools/plugins/raw/raw.h>
+#include <fdtools/plugins/img/plugin.h>
 
-FdtImage* fdt_raw_image_new(void)
+FdtImagePlugin* fdt_image_plugin_new()
 {
-  FdtImage* img = fdt_image_file_new();
-  if (!img)
+  FdtImagePlugin* plg = (FdtImagePlugin*)malloc(sizeof(FdtImagePlugin));
+  if (!plg) {
     return NULL;
+  }
 
-  fdt_image_setgettypeid(img, fdt_raw_image_gettypeid);
-  fdt_image_sethasext(img, fdt_raw_image_hasext);
-  fdt_image_setloader(img, fdt_raw_image_load);
-  fdt_image_setexporter(img, fdt_raw_image_export);
+  fdt_list_node_init((FdtListNode*)plg);
 
-  return img;
+  return plg;
 }
 
-const char* fdt_raw_image_gettypeid(FdtImage* img)
+bool fdt_image_plugin_delete(FdtImagePlugin* plg)
 {
-  return "RAW";
-}
-
-bool fdt_raw_image_hasext(FdtFileImage* img, const char* filename)
-{
-  if (fdt_file_hasextension(filename, FDT_RAW_EXTENTION_RAW))
+  if (!plg)
     return true;
-  if (fdt_file_hasextension(filename, FDT_RAW_EXTENTION_IMG))
-    return true;
-  return false;
+  fdt_list_remove((FdtListNode*)plg);
+  free(plg);
+  return true;
 }

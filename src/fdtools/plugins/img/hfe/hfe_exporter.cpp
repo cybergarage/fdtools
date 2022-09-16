@@ -13,7 +13,7 @@
 // limitations under the License.
 
 #include <fdtools/img/file.h>
-#include <fdtools/plugins/hfe/hfe.h>
+#include <fdtools/plugins/img/hfe/hfe.h>
 #include <fdtools/util/hexdump.h>
 #include <fdtools/util/logic.h>
 #include <fdtools/util/string.h>
