@@ -16,16 +16,17 @@
 
 FdtFormat* fdt_cpm_format_new(void)
 {
-  FdtFormat* img = fdt_format_new();
-  if (!img)
+  FdtFormat* fmt = fdt_format_new();
+  if (!fmt)
     return NULL;
 
-  fdt_format_setgettypeid(img, fdt_cpm_format_gettypeid);
+  fmt->type = FDT_FORMAT_TYPE_CPM;
+  fdt_format_setgettypeid(fmt, fdt_cpm_format_gettypeid);
 
-  return img;
+  return fmt;
 }
 
-const char* fdt_cpm_format_gettypeid(FdtFormat* img)
+const char* fdt_cpm_format_gettypeid(FdtFormat* fmt)
 {
   return "RAW";
 }
