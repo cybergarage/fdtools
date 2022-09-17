@@ -168,6 +168,8 @@ am__objects_1 = ../../src/fdtools/img/config.$(OBJEXT) \
 	../../src/fdtools/plugins/fmt/loader.$(OBJEXT) \
 	../../src/fdtools/plugins/fmt/plugins.$(OBJEXT) \
 	../../src/fdtools/fmt/format.$(OBJEXT) \
+	../../src/fdtools/fmt/files.$(OBJEXT) \
+	../../src/fdtools/fmt/file.$(OBJEXT) \
 	../../src/fdtools/error.$(OBJEXT) \
 	../../src/fdtools/util/struct.$(OBJEXT) \
 	../../src/fdtools/util/arguments.$(OBJEXT) \
@@ -206,6 +208,8 @@ am__depfiles_remade = ../../src/fdtools/$(DEPDIR)/error.Po \
 	../../src/fdtools/dev/$(DEPDIR)/floppy.Po \
 	../../src/fdtools/dev/$(DEPDIR)/floppy_linux.Po \
 	../../src/fdtools/dev/$(DEPDIR)/image.Po \
+	../../src/fdtools/fmt/$(DEPDIR)/file.Po \
+	../../src/fdtools/fmt/$(DEPDIR)/files.Po \
 	../../src/fdtools/fmt/$(DEPDIR)/format.Po \
 	../../src/fdtools/img/$(DEPDIR)/config.Po \
 	../../src/fdtools/img/$(DEPDIR)/density.Po \
@@ -430,6 +434,8 @@ fdtools_sources = \
 	../../src/fdtools/plugins/fmt/loader.cpp \
 	../../src/fdtools/plugins/fmt/plugins.cpp \
 	../../src/fdtools/fmt/format.cpp \
+	../../src/fdtools/fmt/files.cpp \
+	../../src/fdtools/fmt/file.cpp \
 	../../src/fdtools/error.cpp \
 	../../src/fdtools/util/struct.cpp \
 	../../src/fdtools/util/arguments.cpp \
@@ -676,6 +682,12 @@ clean-libLIBRARIES:
 ../../src/fdtools/fmt/format.$(OBJEXT):  \
 	../../src/fdtools/fmt/$(am__dirstamp) \
 	../../src/fdtools/fmt/$(DEPDIR)/$(am__dirstamp)
+../../src/fdtools/fmt/files.$(OBJEXT):  \
+	../../src/fdtools/fmt/$(am__dirstamp) \
+	../../src/fdtools/fmt/$(DEPDIR)/$(am__dirstamp)
+../../src/fdtools/fmt/file.$(OBJEXT):  \
+	../../src/fdtools/fmt/$(am__dirstamp) \
+	../../src/fdtools/fmt/$(DEPDIR)/$(am__dirstamp)
 ../../src/fdtools/$(am__dirstamp):
 	@$(MKDIR_P) ../../src/fdtools
 	@: > ../../src/fdtools/$(am__dirstamp)
@@ -760,6 +772,8 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@../../src/fdtools/dev/$(DEPDIR)/floppy.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@../../src/fdtools/dev/$(DEPDIR)/floppy_linux.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@../../src/fdtools/dev/$(DEPDIR)/image.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@../../src/fdtools/fmt/$(DEPDIR)/file.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@../../src/fdtools/fmt/$(DEPDIR)/files.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@../../src/fdtools/fmt/$(DEPDIR)/format.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@../../src/fdtools/img/$(DEPDIR)/config.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@../../src/fdtools/img/$(DEPDIR)/density.Po@am__quote@ # am--include-marker
@@ -1002,6 +1016,8 @@ distclean: distclean-am
 	-rm -f ../../src/fdtools/dev/$(DEPDIR)/floppy.Po
 	-rm -f ../../src/fdtools/dev/$(DEPDIR)/floppy_linux.Po
 	-rm -f ../../src/fdtools/dev/$(DEPDIR)/image.Po
+	-rm -f ../../src/fdtools/fmt/$(DEPDIR)/file.Po
+	-rm -f ../../src/fdtools/fmt/$(DEPDIR)/files.Po
 	-rm -f ../../src/fdtools/fmt/$(DEPDIR)/format.Po
 	-rm -f ../../src/fdtools/img/$(DEPDIR)/config.Po
 	-rm -f ../../src/fdtools/img/$(DEPDIR)/density.Po
@@ -1092,6 +1108,8 @@ maintainer-clean: maintainer-clean-am
 	-rm -f ../../src/fdtools/dev/$(DEPDIR)/floppy.Po
 	-rm -f ../../src/fdtools/dev/$(DEPDIR)/floppy_linux.Po
 	-rm -f ../../src/fdtools/dev/$(DEPDIR)/image.Po
+	-rm -f ../../src/fdtools/fmt/$(DEPDIR)/file.Po
+	-rm -f ../../src/fdtools/fmt/$(DEPDIR)/files.Po
 	-rm -f ../../src/fdtools/fmt/$(DEPDIR)/format.Po
 	-rm -f ../../src/fdtools/img/$(DEPDIR)/config.Po
 	-rm -f ../../src/fdtools/img/$(DEPDIR)/density.Po
