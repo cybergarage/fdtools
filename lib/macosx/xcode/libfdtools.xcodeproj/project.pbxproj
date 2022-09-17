@@ -21,6 +21,10 @@
 		215C210928D5572C00C21A1F /* loader.h in Headers */ = {isa = PBXBuildFile; fileRef = 215C210328D5572C00C21A1F /* loader.h */; };
 		215C210A28D5572C00C21A1F /* plugin.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 215C210428D5572C00C21A1F /* plugin.cpp */; };
 		215C210B28D5572C00C21A1F /* plugin.h in Headers */ = {isa = PBXBuildFile; fileRef = 215C210528D5572C00C21A1F /* plugin.h */; };
+		215C210F28D55E8400C21A1F /* dos.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 215C210D28D55E8400C21A1F /* dos.cpp */; };
+		215C211028D55E8400C21A1F /* dos.h in Headers */ = {isa = PBXBuildFile; fileRef = 215C210E28D55E8400C21A1F /* dos.h */; };
+		215C211428D55EA400C21A1F /* cpm.h in Headers */ = {isa = PBXBuildFile; fileRef = 215C211228D55EA400C21A1F /* cpm.h */; };
+		215C211528D55EA400C21A1F /* cpm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 215C211328D55EA400C21A1F /* cpm.cpp */; };
 		2161939B26EB9841007FA97A /* log.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2161939A26EB9841007FA97A /* log.cpp */; };
 		21641A81258E2C490062AD50 /* device_unix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 21641A80258E2C490062AD50 /* device_unix.cpp */; };
 		21641A84258EF8240062AD50 /* image.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 21641A83258EF8240062AD50 /* image.cpp */; };
@@ -76,6 +80,10 @@
 		215C210328D5572C00C21A1F /* loader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = loader.h; path = ../../../src/fdtools/plugins/fmt/loader.h; sourceTree = "<group>"; };
 		215C210428D5572C00C21A1F /* plugin.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = plugin.cpp; path = ../../../src/fdtools/plugins/fmt/plugin.cpp; sourceTree = "<group>"; };
 		215C210528D5572C00C21A1F /* plugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = plugin.h; path = ../../../src/fdtools/plugins/fmt/plugin.h; sourceTree = "<group>"; };
+		215C210D28D55E8400C21A1F /* dos.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = dos.cpp; path = ../../../src/fdtools/plugins/fmt/dos/dos.cpp; sourceTree = "<group>"; };
+		215C210E28D55E8400C21A1F /* dos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = dos.h; path = ../../../src/fdtools/plugins/fmt/dos/dos.h; sourceTree = "<group>"; };
+		215C211228D55EA400C21A1F /* cpm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = cpm.h; path = ../../../src/fdtools/plugins/fmt/cpm/cpm.h; sourceTree = "<group>"; };
+		215C211328D55EA400C21A1F /* cpm.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = cpm.cpp; path = ../../../src/fdtools/plugins/fmt/cpm/cpm.cpp; sourceTree = "<group>"; };
 		2161939A26EB9841007FA97A /* log.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = log.cpp; path = ../../../src/fdtools/util/log.cpp; sourceTree = "<group>"; };
 		21641A80258E2C490062AD50 /* device_unix.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = device_unix.cpp; path = ../../../src/fdtools/dev/device_unix.cpp; sourceTree = "<group>"; };
 		21641A83258EF8240062AD50 /* image.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = image.cpp; path = ../../../src/fdtools/dev/image.cpp; sourceTree = "<group>"; };
@@ -169,6 +177,8 @@
 		215C20FF28D5570D00C21A1F /* fmt */ = {
 			isa = PBXGroup;
 			children = (
+				215C211128D55E8B00C21A1F /* cpm */,
+				215C210C28D55E3400C21A1F /* dos */,
 				215C210128D5572C00C21A1F /* loader.cpp */,
 				215C210328D5572C00C21A1F /* loader.h */,
 				215C210428D5572C00C21A1F /* plugin.cpp */,
@@ -176,6 +186,24 @@
 				215C210028D5572C00C21A1F /* plugins.cpp */,
 			);
 			name = fmt;
+			sourceTree = "<group>";
+		};
+		215C210C28D55E3400C21A1F /* dos */ = {
+			isa = PBXGroup;
+			children = (
+				215C210D28D55E8400C21A1F /* dos.cpp */,
+				215C210E28D55E8400C21A1F /* dos.h */,
+			);
+			name = dos;
+			sourceTree = "<group>";
+		};
+		215C211128D55E8B00C21A1F /* cpm */ = {
+			isa = PBXGroup;
+			children = (
+				215C211328D55EA400C21A1F /* cpm.cpp */,
+				215C211228D55EA400C21A1F /* cpm.h */,
+			);
+			name = cpm;
 			sourceTree = "<group>";
 		};
 		216F3665255DB14E004507DF /* Headers */ = {
@@ -315,6 +343,8 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				215C211028D55E8400C21A1F /* dos.h in Headers */,
+				215C211428D55EA400C21A1F /* cpm.h in Headers */,
 				21BD0E4728D4D6D000826636 /* hfe.h in Headers */,
 				21BD0E2F28D4D67700826636 /* fdx.h in Headers */,
 				21BD0E4128D4D6B300826636 /* raw.h in Headers */,
@@ -352,7 +382,7 @@
 		213AA821255DB05700C00188 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 1210;
+				LastUpgradeCheck = 1400;
 				TargetAttributes = {
 					213AA828255DB05700C00188 = {
 						CreatedOnToolsVersion = 12.1;
@@ -388,6 +418,7 @@
 				21BD0E4828D4D6D000826636 /* hfe_exporter.cpp in Sources */,
 				2151DF4C256A4B40009FC0E0 /* sector.cpp in Sources */,
 				21E15B0C256BB09100029338 /* string.cpp in Sources */,
+				215C211528D55EA400C21A1F /* cpm.cpp in Sources */,
 				21E15B05256A742700029338 /* list.cpp in Sources */,
 				21352E2125768FA7007E05A4 /* hexdump.cpp in Sources */,
 				21B0912125865DB800036CC5 /* device_linux.cpp in Sources */,
@@ -416,6 +447,7 @@
 				21B0AB4925A0EE6F00B064A3 /* struct.cpp in Sources */,
 				21BD0E4928D4D6D000826636 /* hfe.cpp in Sources */,
 				215C210A28D5572C00C21A1F /* plugin.cpp in Sources */,
+				215C210F28D55E8400C21A1F /* dos.cpp in Sources */,
 				21BD0E2B28D4D64800826636 /* func.cpp in Sources */,
 				21BD0E4A28D4D6D000826636 /* hfe_loader.cpp in Sources */,
 				21B0AB4625A0ED1F00B064A3 /* density.cpp in Sources */,
@@ -465,6 +497,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -530,6 +563,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -558,6 +592,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				DEAD_CODE_STRIPPING = YES;
 				EXECUTABLE_PREFIX = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -568,6 +603,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				DEAD_CODE_STRIPPING = YES;
 				EXECUTABLE_PREFIX = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
