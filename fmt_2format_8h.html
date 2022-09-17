@@ -70,8 +70,8 @@ $(document).ready(function(){initNavTree('fmt_2format_8h.html',''); initResizabl
 <div class="contents">
 <div class="textblock"><code>#include &lt;stdio.h&gt;</code><br />
 <code>#include &lt;<a class="el" href="error_8h.html">fdtools/error.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="fmt_2file_8h.html">fdtools/fmt/file.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="typedef_8h.html">fdtools/typedef.h</a>&gt;</code><br />
-<code>#include &lt;<a class="el" href="util_2file_8h.html">fdtools/util/file.h</a>&gt;</code><br />
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Data Structures</h2></td></tr>
@@ -82,17 +82,31 @@ Data Structures</h2></td></tr>
 Macros</h2></td></tr>
 <tr class="memitem:a8ec6e553de8b0dea58488299b726ed87"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fmt_2format_8h.html#a8ec6e553de8b0dea58488299b726ed87">FDT_FORMAT_STRUCT_MEMBERS</a></td></tr>
 <tr class="separator:a8ec6e553de8b0dea58488299b726ed87"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7cfd27d6704e255de2cace21727ccd55"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fmt_2format_8h.html#a7cfd27d6704e255de2cace21727ccd55">fdt_format_setgettypeid</a>(img,  fn)&#160;&#160;&#160;(img-&gt;image_gettypeid = (<a class="el" href="fmt_2format_8h.html#a522ad7137332648d933bc206906b9d10">FDT_FORMAT_GETTYPEID</a>)fn)</td></tr>
+<tr class="memitem:a7cfd27d6704e255de2cace21727ccd55"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fmt_2format_8h.html#a7cfd27d6704e255de2cace21727ccd55">fdt_format_setgettypeid</a>(img,  fn)&#160;&#160;&#160;(img-&gt;format_gettypeid = (<a class="el" href="fmt_2format_8h.html#a522ad7137332648d933bc206906b9d10">FDT_FORMAT_GETTYPEID</a>)fn)</td></tr>
 <tr class="separator:a7cfd27d6704e255de2cace21727ccd55"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7522945a48a0eb53599147a028dc4ba5"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fmt_2format_8h.html#a7522945a48a0eb53599147a028dc4ba5">fdt_format_setdestructor</a>(img,  fn)&#160;&#160;&#160;(img-&gt;image_destructor = (<a class="el" href="fmt_2format_8h.html#ad6a0f014c42197bedc0e47d14bb95a42">FDT_FORMAT_DESTRUCTOR</a>)fn)</td></tr>
+<tr class="memitem:ad846a2c5da591cc16fc6bc235cee6718"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fmt_2format_8h.html#ad846a2c5da591cc16fc6bc235cee6718">fdt_format_setformat</a>(img,  fn)&#160;&#160;&#160;(img-&gt;format_format = (<a class="el" href="fmt_2format_8h.html#a2ebcc76c54fb00b248c1e57061a4939e">FDT_FORMAT_FORMAT</a>)fn)</td></tr>
+<tr class="separator:ad846a2c5da591cc16fc6bc235cee6718"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aad7545af1601eb5d481721a117406567"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fmt_2format_8h.html#aad7545af1601eb5d481721a117406567">fdt_format_setlist</a>(img,  fn)&#160;&#160;&#160;(img-&gt;format_list = (<a class="el" href="fmt_2format_8h.html#a441f7d6260ab5e456f6a2446d53de6ea">FDT_FORMAT_LIST</a>)fn)</td></tr>
+<tr class="separator:aad7545af1601eb5d481721a117406567"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae7901ee5d19343999a492b88b18acf20"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fmt_2format_8h.html#ae7901ee5d19343999a492b88b18acf20">fdt_format_setadd</a>(img,  fn)&#160;&#160;&#160;(img-&gt;format_del = (<a class="el" href="fmt_2format_8h.html#a997009061adc43d001b55f808c790896">FDT_FORMAT_DEL</a>)fn)</td></tr>
+<tr class="separator:ae7901ee5d19343999a492b88b18acf20"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab26e6c99ddb74c4dc4cadcd167991ec9"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fmt_2format_8h.html#ab26e6c99ddb74c4dc4cadcd167991ec9">fdt_format_setdel</a>(img,  fn)&#160;&#160;&#160;(img-&gt;format_del = (<a class="el" href="fmt_2format_8h.html#a997009061adc43d001b55f808c790896">FDT_FORMAT_DEL</a>)fn)</td></tr>
+<tr class="separator:ab26e6c99ddb74c4dc4cadcd167991ec9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7522945a48a0eb53599147a028dc4ba5"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fmt_2format_8h.html#a7522945a48a0eb53599147a028dc4ba5">fdt_format_setdestructor</a>(img,  fn)&#160;&#160;&#160;(img-&gt;format_destructor = (<a class="el" href="fmt_2format_8h.html#ad6a0f014c42197bedc0e47d14bb95a42">FDT_FORMAT_DESTRUCTOR</a>)fn)</td></tr>
 <tr class="separator:a7522945a48a0eb53599147a028dc4ba5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:a6ceb9141746f28525f7ce4e596f9c45b"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="fmt_2format_8h.html#aea63a2674110a13b9a7fe2a66ffebc19">FdtFormatType</a>(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fmt_2format_8h.html#a6ceb9141746f28525f7ce4e596f9c45b">FDT_FORMAT_GETTYPE</a>) (void *)</td></tr>
-<tr class="separator:a6ceb9141746f28525f7ce4e596f9c45b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a522ad7137332648d933bc206906b9d10"><td class="memItemLeft" align="right" valign="top">typedef const char *(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fmt_2format_8h.html#a522ad7137332648d933bc206906b9d10">FDT_FORMAT_GETTYPEID</a>) (void *)</td></tr>
 <tr class="separator:a522ad7137332648d933bc206906b9d10"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2ebcc76c54fb00b248c1e57061a4939e"><td class="memItemLeft" align="right" valign="top">typedef bool(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fmt_2format_8h.html#a2ebcc76c54fb00b248c1e57061a4939e">FDT_FORMAT_FORMAT</a>) (void *)</td></tr>
+<tr class="separator:a2ebcc76c54fb00b248c1e57061a4939e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a441f7d6260ab5e456f6a2446d53de6ea"><td class="memItemLeft" align="right" valign="top">typedef bool(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fmt_2format_8h.html#a441f7d6260ab5e456f6a2446d53de6ea">FDT_FORMAT_LIST</a>) (void *, <a class="el" href="fmt_2file_8h.html#a98e6e2a6a14db9bdc45a39f436a8877d">FdtFiles</a> *)</td></tr>
+<tr class="separator:a441f7d6260ab5e456f6a2446d53de6ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abbc2ac347ca74b82fdccfe06147b029b"><td class="memItemLeft" align="right" valign="top">typedef bool(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fmt_2format_8h.html#abbc2ac347ca74b82fdccfe06147b029b">FDT_FORMAT_ADD</a>) (void *, <a class="el" href="fmt_2file_8h.html#a8893d1782e5270d8ab6c4d08a918682f">FdtFile</a> *)</td></tr>
+<tr class="separator:abbc2ac347ca74b82fdccfe06147b029b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a997009061adc43d001b55f808c790896"><td class="memItemLeft" align="right" valign="top">typedef bool(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fmt_2format_8h.html#a997009061adc43d001b55f808c790896">FDT_FORMAT_DEL</a>) (void *, <a class="el" href="fmt_2file_8h.html#a8893d1782e5270d8ab6c4d08a918682f">FdtFile</a> *)</td></tr>
+<tr class="separator:a997009061adc43d001b55f808c790896"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad6a0f014c42197bedc0e47d14bb95a42"><td class="memItemLeft" align="right" valign="top">typedef bool(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fmt_2format_8h.html#ad6a0f014c42197bedc0e47d14bb95a42">FDT_FORMAT_DESTRUCTOR</a>) (void *)</td></tr>
 <tr class="separator:ad6a0f014c42197bedc0e47d14bb95a42"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaef1619e756019bfb37461b0a9030e55"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structFDT__ATTR__PACKED.html">FDT_ATTR_PACKED</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fmt_2format_8h.html#aaef1619e756019bfb37461b0a9030e55">FdtFormat</a></td></tr>
@@ -114,14 +128,76 @@ Functions</h2></td></tr>
 <tr class="separator:aed764cf6e7938ec45f28551ca2a8a91a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a05c44dacdd3878213f2ad1bfa5a1d4d4"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fmt_2format_8h.html#a05c44dacdd3878213f2ad1bfa5a1d4d4">fdt_format_delete</a> (<a class="el" href="fmt_2format_8h.html#aaef1619e756019bfb37461b0a9030e55">FdtFormat</a> *)</td></tr>
 <tr class="separator:a05c44dacdd3878213f2ad1bfa5a1d4d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adc62a9497ce204708ea0fd2eec4a2ce6"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fmt_2format_8h.html#adc62a9497ce204708ea0fd2eec4a2ce6">fdt_format_init</a> (<a class="el" href="fmt_2format_8h.html#aaef1619e756019bfb37461b0a9030e55">FdtFormat</a> *)</td></tr>
-<tr class="separator:adc62a9497ce204708ea0fd2eec4a2ce6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6bd8c89e8ed02cb36b2fa2b55eead723"><td class="memItemLeft" align="right" valign="top"><a class="el" href="fmt_2format_8h.html#aea63a2674110a13b9a7fe2a66ffebc19">FdtFormatType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fmt_2format_8h.html#a6bd8c89e8ed02cb36b2fa2b55eead723">fdt_format_gettype</a> (<a class="el" href="fmt_2format_8h.html#aaef1619e756019bfb37461b0a9030e55">FdtFormat</a> *)</td></tr>
 <tr class="separator:a6bd8c89e8ed02cb36b2fa2b55eead723"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a73b049635eea0dab1a23ff7662717059"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fmt_2format_8h.html#a73b049635eea0dab1a23ff7662717059">fdt_image_gettypeid</a> (<a class="el" href="fmt_2format_8h.html#aaef1619e756019bfb37461b0a9030e55">FdtFormat</a> *)</td></tr>
-<tr class="separator:a73b049635eea0dab1a23ff7662717059"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adc5d1ea5b7eee07138e5623ebaa99343"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fmt_2format_8h.html#adc5d1ea5b7eee07138e5623ebaa99343">fdt_format_gettypeid</a> (<a class="el" href="fmt_2format_8h.html#aaef1619e756019bfb37461b0a9030e55">FdtFormat</a> *)</td></tr>
+<tr class="separator:adc5d1ea5b7eee07138e5623ebaa99343"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a166fbcc32508f0e06a4b2a9c9a2a0bd5"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fmt_2format_8h.html#a166fbcc32508f0e06a4b2a9c9a2a0bd5">fdt_format_format</a> (<a class="el" href="fmt_2format_8h.html#aaef1619e756019bfb37461b0a9030e55">FdtFormat</a> *fmt)</td></tr>
+<tr class="separator:a166fbcc32508f0e06a4b2a9c9a2a0bd5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab0a092c6c076f8886d828b9c85b7624f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fmt_2format_8h.html#ab0a092c6c076f8886d828b9c85b7624f">fdt_format_list</a> (<a class="el" href="fmt_2format_8h.html#aaef1619e756019bfb37461b0a9030e55">FdtFormat</a> *, <a class="el" href="fmt_2file_8h.html#a98e6e2a6a14db9bdc45a39f436a8877d">FdtFiles</a> *)</td></tr>
+<tr class="separator:ab0a092c6c076f8886d828b9c85b7624f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae43cd560e6fd1c771d6eeecb11a75e5e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fmt_2format_8h.html#ae43cd560e6fd1c771d6eeecb11a75e5e">fdt_format_add</a> (<a class="el" href="fmt_2format_8h.html#aaef1619e756019bfb37461b0a9030e55">FdtFormat</a> *, <a class="el" href="fmt_2file_8h.html#a8893d1782e5270d8ab6c4d08a918682f">FdtFile</a> *)</td></tr>
+<tr class="separator:ae43cd560e6fd1c771d6eeecb11a75e5e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa77c265161b4f52a3f51a0fbe0c4108f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fmt_2format_8h.html#aa77c265161b4f52a3f51a0fbe0c4108f">fdt_format_del</a> (<a class="el" href="fmt_2format_8h.html#aaef1619e756019bfb37461b0a9030e55">FdtFormat</a> *, <a class="el" href="fmt_2file_8h.html#a8893d1782e5270d8ab6c4d08a918682f">FdtFile</a> *)</td></tr>
+<tr class="separator:aa77c265161b4f52a3f51a0fbe0c4108f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Macro Definition Documentation</h2>
+<a id="ae7901ee5d19343999a492b88b18acf20" name="ae7901ee5d19343999a492b88b18acf20"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae7901ee5d19343999a492b88b18acf20">&#9670;&nbsp;</a></span>fdt_format_setadd</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define fdt_format_setadd</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">img, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">fn&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;(img-&gt;format_del = (<a class="el" href="fmt_2format_8h.html#a997009061adc43d001b55f808c790896">FDT_FORMAT_DEL</a>)fn)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab26e6c99ddb74c4dc4cadcd167991ec9" name="ab26e6c99ddb74c4dc4cadcd167991ec9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab26e6c99ddb74c4dc4cadcd167991ec9">&#9670;&nbsp;</a></span>fdt_format_setdel</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define fdt_format_setdel</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">img, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">fn&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;(img-&gt;format_del = (<a class="el" href="fmt_2format_8h.html#a997009061adc43d001b55f808c790896">FDT_FORMAT_DEL</a>)fn)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a7522945a48a0eb53599147a028dc4ba5" name="a7522945a48a0eb53599147a028dc4ba5"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a7522945a48a0eb53599147a028dc4ba5">&#9670;&nbsp;</a></span>fdt_format_setdestructor</h2>
 
@@ -143,7 +219,35 @@ Functions</h2></td></tr>
         <tr>
           <td></td>
           <td>)</td>
-          <td></td><td>&#160;&#160;&#160;(img-&gt;image_destructor = (<a class="el" href="fmt_2format_8h.html#ad6a0f014c42197bedc0e47d14bb95a42">FDT_FORMAT_DESTRUCTOR</a>)fn)</td>
+          <td></td><td>&#160;&#160;&#160;(img-&gt;format_destructor = (<a class="el" href="fmt_2format_8h.html#ad6a0f014c42197bedc0e47d14bb95a42">FDT_FORMAT_DESTRUCTOR</a>)fn)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad846a2c5da591cc16fc6bc235cee6718" name="ad846a2c5da591cc16fc6bc235cee6718"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad846a2c5da591cc16fc6bc235cee6718">&#9670;&nbsp;</a></span>fdt_format_setformat</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define fdt_format_setformat</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">img, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">fn&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;(img-&gt;format_format = (<a class="el" href="fmt_2format_8h.html#a2ebcc76c54fb00b248c1e57061a4939e">FDT_FORMAT_FORMAT</a>)fn)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -171,7 +275,35 @@ Functions</h2></td></tr>
         <tr>
           <td></td>
           <td>)</td>
-          <td></td><td>&#160;&#160;&#160;(img-&gt;image_gettypeid = (<a class="el" href="fmt_2format_8h.html#a522ad7137332648d933bc206906b9d10">FDT_FORMAT_GETTYPEID</a>)fn)</td>
+          <td></td><td>&#160;&#160;&#160;(img-&gt;format_gettypeid = (<a class="el" href="fmt_2format_8h.html#a522ad7137332648d933bc206906b9d10">FDT_FORMAT_GETTYPEID</a>)fn)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aad7545af1601eb5d481721a117406567" name="aad7545af1601eb5d481721a117406567"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aad7545af1601eb5d481721a117406567">&#9670;&nbsp;</a></span>fdt_format_setlist</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define fdt_format_setlist</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">img, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">fn&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;(img-&gt;format_list = (<a class="el" href="fmt_2format_8h.html#a441f7d6260ab5e456f6a2446d53de6ea">FDT_FORMAT_LIST</a>)fn)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -189,14 +321,46 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">  <a class="code hl_enumeration" href="fmt_2format_8h.html#aea63a2674110a13b9a7fe2a66ffebc19">FdtFormatType</a> type;                   \</div>
-<div class="line">  FDT_FORMAT_GETTYPEID image_gettypeid; \</div>
-<div class="line">  FDT_FORMAT_DESTRUCTOR image_destructor;</div>
+<b>Value:</b><div class="fragment"><div class="line">  <a class="code hl_enumeration" href="fmt_2format_8h.html#aea63a2674110a13b9a7fe2a66ffebc19">FdtFormatType</a> type;                    \</div>
+<div class="line">  FDT_FORMAT_GETTYPEID format_gettypeid; \</div>
+<div class="line">  FDT_FORMAT_FORMAT format_format;       \</div>
+<div class="line">  FDT_FORMAT_LIST format_list;           \</div>
+<div class="line">  FDT_FORMAT_ADD format_add;             \</div>
+<div class="line">  FDT_FORMAT_DEL format_del;             \</div>
+<div class="line">  FDT_FORMAT_DESTRUCTOR format_destructor;</div>
 <div class="ttc" id="afmt_2format_8h_html_aea63a2674110a13b9a7fe2a66ffebc19"><div class="ttname"><a href="fmt_2format_8h.html#aea63a2674110a13b9a7fe2a66ffebc19">FdtFormatType</a></div><div class="ttdeci">FdtFormatType</div><div class="ttdef"><b>Definition:</b> format.h:28</div></div>
 </div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Typedef Documentation</h2>
+<a id="abbc2ac347ca74b82fdccfe06147b029b" name="abbc2ac347ca74b82fdccfe06147b029b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abbc2ac347ca74b82fdccfe06147b029b">&#9670;&nbsp;</a></span>FDT_FORMAT_ADD</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef bool(* FDT_FORMAT_ADD) (void *, <a class="el" href="fmt_2file_8h.html#a8893d1782e5270d8ab6c4d08a918682f">FdtFile</a> *)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a997009061adc43d001b55f808c790896" name="a997009061adc43d001b55f808c790896"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a997009061adc43d001b55f808c790896">&#9670;&nbsp;</a></span>FDT_FORMAT_DEL</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef bool(* FDT_FORMAT_DEL) (void *, <a class="el" href="fmt_2file_8h.html#a8893d1782e5270d8ab6c4d08a918682f">FdtFile</a> *)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="ad6a0f014c42197bedc0e47d14bb95a42" name="ad6a0f014c42197bedc0e47d14bb95a42"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ad6a0f014c42197bedc0e47d14bb95a42">&#9670;&nbsp;</a></span>FDT_FORMAT_DESTRUCTOR</h2>
 
@@ -205,6 +369,20 @@ Functions</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname">typedef bool(* FDT_FORMAT_DESTRUCTOR) (void *)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2ebcc76c54fb00b248c1e57061a4939e" name="a2ebcc76c54fb00b248c1e57061a4939e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2ebcc76c54fb00b248c1e57061a4939e">&#9670;&nbsp;</a></span>FDT_FORMAT_FORMAT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef bool(* FDT_FORMAT_FORMAT) (void *)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -225,20 +403,6 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a6ceb9141746f28525f7ce4e596f9c45b" name="a6ceb9141746f28525f7ce4e596f9c45b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6ceb9141746f28525f7ce4e596f9c45b">&#9670;&nbsp;</a></span>FDT_FORMAT_GETTYPE</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef <a class="el" href="fmt_2format_8h.html#aea63a2674110a13b9a7fe2a66ffebc19">FdtFormatType</a>(* FDT_FORMAT_GETTYPE) (void *)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <a id="a522ad7137332648d933bc206906b9d10" name="a522ad7137332648d933bc206906b9d10"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a522ad7137332648d933bc206906b9d10">&#9670;&nbsp;</a></span>FDT_FORMAT_GETTYPEID</h2>
 
@@ -247,6 +411,20 @@ Functions</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname">typedef const char *(* FDT_FORMAT_GETTYPEID) (void *)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a441f7d6260ab5e456f6a2446d53de6ea" name="a441f7d6260ab5e456f6a2446d53de6ea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a441f7d6260ab5e456f6a2446d53de6ea">&#9670;&nbsp;</a></span>FDT_FORMAT_LIST</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef bool(* FDT_FORMAT_LIST) (void *, <a class="el" href="fmt_2file_8h.html#a98e6e2a6a14db9bdc45a39f436a8877d">FdtFiles</a> *)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -288,6 +466,62 @@ Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
+<a id="ae43cd560e6fd1c771d6eeecb11a75e5e" name="ae43cd560e6fd1c771d6eeecb11a75e5e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae43cd560e6fd1c771d6eeecb11a75e5e">&#9670;&nbsp;</a></span>fdt_format_add()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool fdt_format_add </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="fmt_2format_8h.html#aaef1619e756019bfb37461b0a9030e55">FdtFormat</a> *&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="fmt_2file_8h.html#a8893d1782e5270d8ab6c4d08a918682f">FdtFile</a> *&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa77c265161b4f52a3f51a0fbe0c4108f" name="aa77c265161b4f52a3f51a0fbe0c4108f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa77c265161b4f52a3f51a0fbe0c4108f">&#9670;&nbsp;</a></span>fdt_format_del()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool fdt_format_del </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="fmt_2format_8h.html#aaef1619e756019bfb37461b0a9030e55">FdtFormat</a> *&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="fmt_2file_8h.html#a8893d1782e5270d8ab6c4d08a918682f">FdtFile</a> *&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a05c44dacdd3878213f2ad1bfa5a1d4d4" name="a05c44dacdd3878213f2ad1bfa5a1d4d4"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a05c44dacdd3878213f2ad1bfa5a1d4d4">&#9670;&nbsp;</a></span>fdt_format_delete()</h2>
 
@@ -299,6 +533,24 @@ Functions</h2></td></tr>
           <td>(</td>
           <td class="paramtype"><a class="el" href="fmt_2format_8h.html#aaef1619e756019bfb37461b0a9030e55">FdtFormat</a> *&#160;</td>
           <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a166fbcc32508f0e06a4b2a9c9a2a0bd5" name="a166fbcc32508f0e06a4b2a9c9a2a0bd5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a166fbcc32508f0e06a4b2a9c9a2a0bd5">&#9670;&nbsp;</a></span>fdt_format_format()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool fdt_format_format </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="fmt_2format_8h.html#aaef1619e756019bfb37461b0a9030e55">FdtFormat</a> *&#160;</td>
+          <td class="paramname"><em>fmt</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -324,18 +576,46 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="adc62a9497ce204708ea0fd2eec4a2ce6" name="adc62a9497ce204708ea0fd2eec4a2ce6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adc62a9497ce204708ea0fd2eec4a2ce6">&#9670;&nbsp;</a></span>fdt_format_init()</h2>
+<a id="adc5d1ea5b7eee07138e5623ebaa99343" name="adc5d1ea5b7eee07138e5623ebaa99343"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adc5d1ea5b7eee07138e5623ebaa99343">&#9670;&nbsp;</a></span>fdt_format_gettypeid()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool fdt_format_init </td>
+          <td class="memname">const char * fdt_format_gettypeid </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="fmt_2format_8h.html#aaef1619e756019bfb37461b0a9030e55">FdtFormat</a> *&#160;</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab0a092c6c076f8886d828b9c85b7624f" name="ab0a092c6c076f8886d828b9c85b7624f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab0a092c6c076f8886d828b9c85b7624f">&#9670;&nbsp;</a></span>fdt_format_list()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool fdt_format_list </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="fmt_2format_8h.html#aaef1619e756019bfb37461b0a9030e55">FdtFormat</a> *&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="fmt_2file_8h.html#a98e6e2a6a14db9bdc45a39f436a8877d">FdtFiles</a> *&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -351,24 +631,6 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="fmt_2format_8h.html#aaef1619e756019bfb37461b0a9030e55">FdtFormat</a> * fdt_format_new </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a73b049635eea0dab1a23ff7662717059" name="a73b049635eea0dab1a23ff7662717059"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a73b049635eea0dab1a23ff7662717059">&#9670;&nbsp;</a></span>fdt_image_gettypeid()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">const char * fdt_image_gettypeid </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="fmt_2format_8h.html#aaef1619e756019bfb37461b0a9030e55">FdtFormat</a> *&#160;</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
