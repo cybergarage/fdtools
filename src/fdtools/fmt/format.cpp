@@ -44,9 +44,9 @@ bool fdt_format_delete(FdtFormat* fmt)
 
 FdtFormatType fdt_format_gettype(FdtFormat* fmt)
 {
-  if (!fmt || !fmt->image_gettype)
+  if (!fmt)
     return FDT_FORMAT_TYPE_UNKNOWN;
-  return fmt->image_gettype(fmt);
+  return fmt->type;
 }
 
 const char* fdt_format_gettypeid(FdtFormat* fmt)

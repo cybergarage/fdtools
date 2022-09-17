@@ -27,6 +27,8 @@ extern "C" {
 
 typedef enum {
   FDT_FORMAT_TYPE_UNKNOWN,
+  FDT_FORMAT_TYPE_DOS,
+  FDT_FORMAT_TYPE_CPM,
 } FdtFormatType;
 
 typedef FdtFormatType (*FDT_FORMAT_GETTYPE)(void*);
@@ -34,7 +36,7 @@ typedef const char* (*FDT_FORMAT_GETTYPEID)(void*);
 typedef bool (*FDT_FORMAT_DESTRUCTOR)(void*);
 
 #define FDT_FORMAT_STRUCT_MEMBERS       \
-  FDT_FORMAT_GETTYPE image_gettype;     \
+  FdtFormatType type;     \
   FDT_FORMAT_GETTYPEID image_gettypeid; \
   FDT_FORMAT_DESTRUCTOR image_destructor;
 
@@ -48,7 +50,9 @@ FdtFormat* fdt_format_new();
 bool fdt_format_delete(FdtFormat*);
 bool fdt_format_init(FdtFormat*);
 
-#define fdt_format_setgettype(img, fn) (img->image_gettype = (FDT_FORMAT_GETTYPE)fn)
+FdtFormatType fdt_format_gettype(FdtFormat*);
+const char* fdt_image_gettypeid(FdtFormat*);
+
 #define fdt_format_setgettypeid(img, fn) (img->image_gettypeid = (FDT_FORMAT_GETTYPEID)fn)
 #define fdt_format_setdestructor(img, fn) (img->image_destructor = (FDT_FORMAT_DESTRUCTOR)fn)
 
