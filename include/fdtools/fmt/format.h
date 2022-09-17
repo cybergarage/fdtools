@@ -18,8 +18,8 @@
 #include <stdio.h>
 
 #include <fdtools/error.h>
+#include <fdtools/fmt/file.h>
 #include <fdtools/typedef.h>
-#include <fdtools/util/file.h>
 
 #ifdef __cplusplus
 extern "C" {
@@ -31,14 +31,15 @@ typedef enum {
   FDT_FORMAT_TYPE_CPM,
 } FdtFormatType;
 
-typedef FdtFormatType (*FDT_FORMAT_GETTYPE)(void*);
 typedef const char* (*FDT_FORMAT_GETTYPEID)(void*);
+typedef bool (*FDT_FORMAT_LIST)(void*, FdtFiles*);
 typedef bool (*FDT_FORMAT_DESTRUCTOR)(void*);
 
-#define FDT_FORMAT_STRUCT_MEMBERS       \
-  FdtFormatType type;                   \
-  FDT_FORMAT_GETTYPEID image_gettypeid; \
-  FDT_FORMAT_DESTRUCTOR image_destructor;
+#define FDT_FORMAT_STRUCT_MEMBERS        \
+  FdtFormatType type;                    \
+  FDT_FORMAT_GETTYPEID format_gettypeid; \
+  FDT_FORMAT_LIST format_list;           \
+  FDT_FORMAT_DESTRUCTOR format_destructor;
 
 typedef struct FDT_ATTR_PACKED {
   FDT_FORMAT_STRUCT_MEMBERS
@@ -48,13 +49,13 @@ typedef FdtFormat* (*FDT_FORMAT_FORMATTER)(void);
 
 FdtFormat* fdt_format_new();
 bool fdt_format_delete(FdtFormat*);
-bool fdt_format_init(FdtFormat*);
 
 FdtFormatType fdt_format_gettype(FdtFormat*);
-const char* fdt_image_gettypeid(FdtFormat*);
+const char* fdt_format_gettypeid(FdtFormat*);
+bool fdt_format_list(FdtFormat*, FdtFiles*);
 
-#define fdt_format_setgettypeid(img, fn) (img->image_gettypeid = (FDT_FORMAT_GETTYPEID)fn)
-#define fdt_format_setdestructor(img, fn) (img->image_destructor = (FDT_FORMAT_DESTRUCTOR)fn)
+#define fdt_format_setgettypeid(img, fn) (img->format_gettypeid = (FDT_FORMAT_GETTYPEID)fn)
+#define fdt_format_setdestructor(img, fn) (img->format_destructor = (FDT_FORMAT_DESTRUCTOR)fn)
 
 #ifdef __cplusplus
 } /* extern C */

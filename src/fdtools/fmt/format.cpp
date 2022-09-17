@@ -21,23 +21,15 @@ FdtFormat* fdt_format_new()
     return NULL;
   }
 
-  if (!fdt_format_init(fmt)) {
-    fdt_format_delete(fmt);
-    return NULL;
-  }
+  fmt->type = FDT_FORMAT_TYPE_UNKNOWN;
 
   return fmt;
 }
 
-bool fdt_format_init(FdtFormat* fmt)
-{
-  return true;
-}
-
 bool fdt_format_delete(FdtFormat* fmt)
 {
-  if (fmt->image_destructor)
-    return fmt->image_destructor(fmt);
+  if (fmt->format_destructor)
+    return fmt->format_destructor(fmt);
   free(fmt);
   return true;
 }
@@ -51,7 +43,14 @@ FdtFormatType fdt_format_gettype(FdtFormat* fmt)
 
 const char* fdt_format_gettypeid(FdtFormat* fmt)
 {
-  if (!fmt || !fmt->image_gettypeid)
+  if (!fmt || !fmt->format_gettypeid)
     return "";
-  return fmt->image_gettypeid(fmt);
+  return fmt->format_gettypeid(fmt);
+}
+
+bool fdt_format_list(FdtFormat* fmt, FdtFiles* files)
+{
+  if (!fmt || !fmt->format_list)
+    return false;
+  return fmt->format_list(fmt, files);
 }
