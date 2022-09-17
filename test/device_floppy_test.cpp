@@ -84,7 +84,7 @@ BOOST_AUTO_TEST_CASE(FloppyImportTest)
 
   // Exports a imported floppy image to all plugin images
 
-  for (FdtImagePlugin* plg = fdt_image_plugins_getallimagers(); plg; plg = fdt_image_plugin_next(plg)) {
+  for (FdtImagePlugin* plg = fdt_image_plugins_getimagers(); plg; plg = fdt_image_plugin_next(plg)) {
     FDT_IMAGE_IMAGER imager = fdt_image_plugin_getimager(plg);
     ImageExportCompareTest((FdtImage*)dev_img, imager);
   }

@@ -22,7 +22,7 @@
 extern "C" {
 #endif
 
-FdtImagePlugins* fdt_image_plugins_getallimagers();
+FdtImagePlugins* fdt_image_plugins_getimagers();
 
 #ifdef __cplusplus
 } /* extern C */

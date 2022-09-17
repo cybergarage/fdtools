@@ -49,7 +49,7 @@ FDT_IMAGE_IMAGER fdt_image_plugins_getimagerbysignature(const char* filename)
     return NULL;
   }
 
-  for (FdtImagePlugin* plg = fdt_image_plugins_getallimagers(); plg; plg = fdt_image_plugin_next(plg)) {
+  for (FdtImagePlugin* plg = fdt_image_plugins_getimagers(); plg; plg = fdt_image_plugin_next(plg)) {
     FdtImage* img = fdt_image_plugin_createimage(plg);
     if (fdt_image_hassig(img, (byte_t*)&sig, n_read)) {
       fdt_image_delete(img);
@@ -63,7 +63,7 @@ FDT_IMAGE_IMAGER fdt_image_plugins_getimagerbysignature(const char* filename)
 
 FDT_IMAGE_IMAGER fdt_image_plugins_getimagerbyextention(const char* filename)
 {
-  for (FdtImagePlugin* plg = fdt_image_plugins_getallimagers(); plg; plg = fdt_image_plugin_next(plg)) {
+  for (FdtImagePlugin* plg = fdt_image_plugins_getimagers(); plg; plg = fdt_image_plugin_next(plg)) {
     FdtImage* img = fdt_image_plugin_createimage(plg);
     if (fdt_image_hasext(img, filename)) {
       fdt_image_delete(img);
