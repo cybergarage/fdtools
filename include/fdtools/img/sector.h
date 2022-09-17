@@ -38,31 +38,9 @@ typedef struct {
   int error_count;
 } FdtImageSector, FdtImageSectors;
 
-FdtImageSectors* fdt_image_sectors_new();
-void fdt_image_sectors_delete(FdtImageSectors*);
-
-FdtImageSector* fdt_image_sectors_getsector(FdtImageSectors*, FdtTrackNumber, FdtHeadNumber, FdtSectorNumber);
-size_t fdt_image_sectors_getnumberoftrack(FdtImageSectors*);
-size_t fdt_image_sectors_getnumberofhead(FdtImageSectors*);
-size_t fdt_image_sectors_getnumberofsector(FdtImageSectors*);
-size_t fdt_image_sectors_getnumberoftracksector(FdtImageSectors*, FdtTrackNumber, FdtHeadNumber);
-size_t fdt_image_sectors_getmaxsectorsize(FdtImageSectors*);
-size_t fdt_image_sectors_gettotaldatasize(FdtImageSectors*);
-size_t fdt_image_sectors_gettracksize(FdtImageSectors*, FdtTrackNumber, FdtHeadNumber);
-byte_t* fdt_image_sectors_gettrackbytes(FdtImageSectors*, FdtTrackNumber, FdtHeadNumber);
-FdtImageSector* fdt_image_sectors_geterrorsector(FdtImageSectors*);
-int fdt_image_sectors_getnerrorsectors(FdtImageSectors*);
-
-FdtImageSectors* fdt_image_sectors_copy(FdtImageSectors* sectors, FdtError* err);
-bool fdt_image_sectors_issorted(FdtImageSectors*);
-bool fdt_image_sectors_sort(FdtImageSectors*);
-bool fdt_image_sectors_equals(FdtImageSectors*, FdtImageSectors*, FdtError*);
-void fdt_image_sectors_print(FdtImageSectors*);
-
-#define fdt_image_sectors_size(sectors) fdt_list_size((FdtList*)sectors)
-#define fdt_image_sectors_gets(sectors) (FdtImageSector*)fdt_list_gets((FdtList*)sectors)
-#define fdt_image_sectors_addsector(sectors, sector) fdt_list_add((FdtList*)sectors, (FdtListNode*)sector)
-#define fdt_image_sectors_clear(sectors) fdt_list_clear((FdtList*)sectors, (FDT_LIST_DESTRUCTORFUNC)fdt_image_sector_delete)
+////////////////////////////////////////
+// fdt_image_sector_*
+////////////////////////////////////////
 
 FdtImageSector* fdt_image_sector_new();
 bool fdt_image_sector_delete(FdtImageSector*);
@@ -89,6 +67,36 @@ FdtImageSector* fdt_image_sector_copy(FdtImageSector* sector);
 #define fdt_image_sector_getsize(sector) (sector->size)
 #define fdt_image_sector_getdata(sector) (sector->data)
 #define fdt_image_sector_geterrorcount(sector) (sector->error_count)
+
+////////////////////////////////////////
+// fdt_image_sectors_*
+////////////////////////////////////////
+
+FdtImageSectors* fdt_image_sectors_new();
+void fdt_image_sectors_delete(FdtImageSectors*);
+
+FdtImageSector* fdt_image_sectors_getsector(FdtImageSectors*, FdtTrackNumber, FdtHeadNumber, FdtSectorNumber);
+size_t fdt_image_sectors_getnumberoftrack(FdtImageSectors*);
+size_t fdt_image_sectors_getnumberofhead(FdtImageSectors*);
+size_t fdt_image_sectors_getnumberofsector(FdtImageSectors*);
+size_t fdt_image_sectors_getnumberoftracksector(FdtImageSectors*, FdtTrackNumber, FdtHeadNumber);
+size_t fdt_image_sectors_getmaxsectorsize(FdtImageSectors*);
+size_t fdt_image_sectors_gettotaldatasize(FdtImageSectors*);
+size_t fdt_image_sectors_gettracksize(FdtImageSectors*, FdtTrackNumber, FdtHeadNumber);
+byte_t* fdt_image_sectors_gettrackbytes(FdtImageSectors*, FdtTrackNumber, FdtHeadNumber);
+FdtImageSector* fdt_image_sectors_geterrorsector(FdtImageSectors*);
+int fdt_image_sectors_getnerrorsectors(FdtImageSectors*);
+
+FdtImageSectors* fdt_image_sectors_copy(FdtImageSectors* sectors, FdtError* err);
+bool fdt_image_sectors_issorted(FdtImageSectors*);
+bool fdt_image_sectors_sort(FdtImageSectors*);
+bool fdt_image_sectors_equals(FdtImageSectors*, FdtImageSectors*, FdtError*);
+void fdt_image_sectors_print(FdtImageSectors*);
+
+#define fdt_image_sectors_size(sectors) fdt_list_size((FdtList*)sectors)
+#define fdt_image_sectors_gets(sectors) (FdtImageSector*)fdt_list_gets((FdtList*)sectors)
+#define fdt_image_sectors_addsector(sectors, sector) fdt_list_add((FdtList*)sectors, (FdtListNode*)sector)
+#define fdt_image_sectors_clear(sectors) fdt_list_clear((FdtList*)sectors, (FDT_LIST_DESTRUCTORFUNC)fdt_image_sector_delete)
 
 #ifdef __cplusplus
 } /* extern C */
