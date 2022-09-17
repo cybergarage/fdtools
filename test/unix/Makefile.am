@@ -36,6 +36,7 @@ fdtoolstest_SOURCES = \
 	../image_test.cpp \
 	../image_file_test.cpp \
 	../device_floppy_test.cpp \
+	../format_plugin_test.cpp \
 	../device_floppy_params_test.cpp \
 	../format_test.cpp \
 	../image_test_func.cpp
