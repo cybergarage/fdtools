@@ -16,7 +16,7 @@
 
 #include <fdtools/fmt/file.h>
 
-FdtFiles* fdt_image_files_new()
+FdtFiles* fdt_files_new()
 {
   FdtFiles* files = (FdtFiles*)malloc(sizeof(FdtFiles));
   if (!files) {
@@ -28,8 +28,8 @@ FdtFiles* fdt_image_files_new()
   return files;
 }
 
-void fdt_image_files_delete(FdtFiles* files)
+void fdt_files_delete(FdtFiles* files)
 {
-  fdt_image_files_clear(files);
+  fdt_files_clear(files);
   free(files);
 }
