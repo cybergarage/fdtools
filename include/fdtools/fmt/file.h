@@ -26,7 +26,7 @@
 extern "C" {
 #endif
 
-typedef struct FDT_ATTR_PACKED {
+typedef struct {
   FDT_LIST_STRUCT_MEMBERS
   FdtString* name;
   byte_t* data;
