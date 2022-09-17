@@ -61,3 +61,10 @@ bool fdt_format_list(FdtFormat* fmt, FdtFiles* files)
     return false;
   return fmt->format_list(fmt, files);
 }
+
+bool fdt_format_delete(FdtFormat* fmt, FdtFile* file)
+{
+  if (!fmt || !fmt->format_del)
+    return false;
+  return fmt->format_del(fmt, file);
+}
