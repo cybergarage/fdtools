@@ -34,6 +34,7 @@ typedef enum {
 typedef const char* (*FDT_FORMAT_GETTYPEID)(void*);
 typedef bool (*FDT_FORMAT_FORMAT)(void*);
 typedef bool (*FDT_FORMAT_LIST)(void*, FdtFiles*);
+typedef bool (*FDT_FORMAT_ADD)(void*, FdtFile*);
 typedef bool (*FDT_FORMAT_DEL)(void*, FdtFile*);
 typedef bool (*FDT_FORMAT_DESTRUCTOR)(void*);
 
@@ -42,6 +43,7 @@ typedef bool (*FDT_FORMAT_DESTRUCTOR)(void*);
   FDT_FORMAT_GETTYPEID format_gettypeid; \
   FDT_FORMAT_FORMAT format_format;       \
   FDT_FORMAT_LIST format_list;           \
+  FDT_FORMAT_ADD format_add;             \
   FDT_FORMAT_DEL format_del;             \
   FDT_FORMAT_DESTRUCTOR format_destructor;
 
@@ -58,11 +60,14 @@ FdtFormatType fdt_format_gettype(FdtFormat*);
 const char* fdt_format_gettypeid(FdtFormat*);
 bool fdt_format_format(FdtFormat* fmt);
 bool fdt_format_list(FdtFormat*, FdtFiles*);
+bool fdt_format_add(FdtFormat*, FdtFile*);
+bool fdt_format_del(FdtFormat*, FdtFile*);
 
 #define fdt_format_setgettypeid(img, fn) (img->format_gettypeid = (FDT_FORMAT_GETTYPEID)fn)
 #define fdt_format_setformat(img, fn) (img->format_format = (FDT_FORMAT_FORMAT)fn)
 #define fdt_format_setlist(img, fn) (img->format_list = (FDT_FORMAT_LIST)fn)
-#define fdt_format_setdelete(img, fn) (img->format_del = (FDT_FORMAT_DEL)fn)
+#define fdt_format_setadd(img, fn) (img->format_del = (FDT_FORMAT_DEL)fn)
+#define fdt_format_setdel(img, fn) (img->format_del = (FDT_FORMAT_DEL)fn)
 #define fdt_format_setdestructor(img, fn) (img->format_destructor = (FDT_FORMAT_DESTRUCTOR)fn)
 
 #ifdef __cplusplus

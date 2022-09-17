@@ -62,7 +62,14 @@ bool fdt_format_list(FdtFormat* fmt, FdtFiles* files)
   return fmt->format_list(fmt, files);
 }
 
-bool fdt_format_delete(FdtFormat* fmt, FdtFile* file)
+bool fdt_format_add(FdtFormat* fmt, FdtFile* file)
+{
+  if (!fmt || !fmt->format_add)
+    return false;
+  return fmt->format_add(fmt, file);
+}
+
+bool fdt_format_del(FdtFormat* fmt, FdtFile* file)
 {
   if (!fmt || !fmt->format_del)
     return false;
