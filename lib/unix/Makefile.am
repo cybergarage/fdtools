@@ -32,19 +32,19 @@ fdtools_sources = \
 	../../src/fdtools/dev/floppy.cpp \
 	../../src/fdtools/dev/device_unix.cpp \
 	../../src/fdtools/dev/image.cpp \
-	../../src/fdtools/plugins/raw/raw.cpp \
-	../../src/fdtools/plugins/raw/raw_loader.cpp \
-	../../src/fdtools/plugins/raw/raw_exporter.cpp \
-	../../src/fdtools/plugins/plugin.cpp \
-	../../src/fdtools/plugins/d88/d88_loader.cpp \
-	../../src/fdtools/plugins/d88/d88.cpp \
-	../../src/fdtools/plugins/d88/d88_exporter.cpp \
-	../../src/fdtools/plugins/loader.cpp \
-	../../src/fdtools/plugins/hfe/hfe_exporter.cpp \
-	../../src/fdtools/plugins/hfe/hfe.cpp \
-	../../src/fdtools/plugins/hfe/hfe_loader.cpp \
-	../../src/fdtools/plugins/plugins.cpp \
-	../../src/fdtools/plugins/func.cpp \
+	../../src/fdtools/plugins/img/raw/raw.cpp \
+	../../src/fdtools/plugins/img/raw/raw_loader.cpp \
+	../../src/fdtools/plugins/img/raw/raw_exporter.cpp \
+	../../src/fdtools/plugins/img/plugin.cpp \
+	../../src/fdtools/plugins/img/d88/d88_loader.cpp \
+	../../src/fdtools/plugins/img/d88/d88.cpp \
+	../../src/fdtools/plugins/img/d88/d88_exporter.cpp \
+	../../src/fdtools/plugins/img/loader.cpp \
+	../../src/fdtools/plugins/img/hfe/hfe_exporter.cpp \
+	../../src/fdtools/plugins/img/hfe/hfe.cpp \
+	../../src/fdtools/plugins/img/hfe/hfe_loader.cpp \
+	../../src/fdtools/plugins/img/plugins.cpp \
+	../../src/fdtools/plugins/img/func.cpp \
 	../../src/fdtools/fmt/format.cpp \
 	../../src/fdtools/error.cpp \
 	../../src/fdtools/util/struct.cpp \
