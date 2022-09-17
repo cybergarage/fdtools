@@ -48,6 +48,13 @@ const char* fdt_format_gettypeid(FdtFormat* fmt)
   return fmt->format_gettypeid(fmt);
 }
 
+bool fdt_format_format(FdtFormat* fmt)
+{
+  if (!fmt || !fmt->format_format)
+    return false;
+  return fmt->format_format(fmt);
+}
+
 bool fdt_format_list(FdtFormat* fmt, FdtFiles* files)
 {
   if (!fmt || !fmt->format_list)
