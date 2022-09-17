@@ -36,7 +36,7 @@ typedef const char* (*FDT_FORMAT_GETTYPEID)(void*);
 typedef bool (*FDT_FORMAT_DESTRUCTOR)(void*);
 
 #define FDT_FORMAT_STRUCT_MEMBERS       \
-  FdtFormatType type;     \
+  FdtFormatType type;                   \
   FDT_FORMAT_GETTYPEID image_gettypeid; \
   FDT_FORMAT_DESTRUCTOR image_destructor;
 

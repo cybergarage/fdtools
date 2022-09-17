@@ -12,9 +12,9 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include <fdtools/plugins/fmt/loader.h>
-#include <fdtools/plugins/fmt/dos/dos.h>
 #include <fdtools/plugins/fmt/cpm/cpm.h>
+#include <fdtools/plugins/fmt/dos/dos.h>
+#include <fdtools/plugins/fmt/loader.h>
 
 static FdtFormatPlugins* fmt_plgs;
 

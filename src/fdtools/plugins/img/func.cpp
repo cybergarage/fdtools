@@ -14,9 +14,9 @@
 
 #include <fdtools/dev/image.h>
 #include <fdtools/img/image.h>
+#include <fdtools/plugins/image.h>
 #include <fdtools/plugins/img/d88/d88.h>
 #include <fdtools/plugins/img/hfe/hfe.h>
-#include <fdtools/plugins/image.h>
 #include <fdtools/plugins/img/loader.h>
 #include <fdtools/plugins/img/plugin.h>
 #include <fdtools/plugins/img/raw/raw.h>
