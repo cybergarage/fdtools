@@ -17,8 +17,8 @@
 
 #include <stdio.h>
 
-#include <fdtools/typedef.h>
 #include <fdtools/error.h>
+#include <fdtools/typedef.h>
 #include <fdtools/util/list.h>
 #include <fdtools/util/string.h>
 
@@ -31,7 +31,11 @@ typedef struct FDT_ATTR_PACKED {
   FdtString* name;
   byte_t* data;
   size_t data_size;
-} FdtFile;
+} FdtFile, FdtFiles;
+
+////////////////////////////////////////
+// fdt_file_*
+////////////////////////////////////////
 
 FdtFile* fdt_file_new();
 bool fdt_file_delete(FdtFile*);
@@ -42,6 +46,18 @@ bool fdt_file_setdata(FdtFile* file, byte_t* data, size_t data_size);
 #define fdt_file_getname(file) fdt_string_getvalue(file->name)
 
 #define fdt_file_getdatasize(file) (file->data_size)
+
+////////////////////////////////////////
+// fdt_files_*
+////////////////////////////////////////
+
+FdtFiles* fdt_files_new();
+void fdt_files_delete(FdtFiles*);
+
+#define fdt_files_size(files) fdt_list_size((FdtList*)files)
+#define fdt_files_gets(files) (FdtFile*)fdt_list_gets((FdtList*)files)
+#define fdt_files_addfile(files, file) fdt_list_add((FdtList*)files, (FdtListNode*)file)
+#define fdt_files_clear(files) fdt_list_clear((FdtList*)files, (FDT_LIST_DESTRUCTORFUNC)fdt_file_delete)
 
 #ifdef __cplusplus
 } /* extern C */
