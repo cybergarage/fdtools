@@ -21,6 +21,7 @@ FdtFile* fdt_file_new()
     return NULL;
   }
 
+  fdt_list_node_init((FdtListNode*)file);
   file->name = fdt_string_new();
   file->data = NULL;
   file->data_size = 0;

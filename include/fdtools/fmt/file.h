@@ -17,8 +17,9 @@
 
 #include <stdio.h>
 
-#include <fdtools/error.h>
 #include <fdtools/typedef.h>
+#include <fdtools/error.h>
+#include <fdtools/util/list.h>
 #include <fdtools/util/string.h>
 
 #ifdef __cplusplus
@@ -26,6 +27,7 @@ extern "C" {
 #endif
 
 typedef struct FDT_ATTR_PACKED {
+  FDT_LIST_STRUCT_MEMBERS
   FdtString* name;
   byte_t* data;
   size_t data_size;
