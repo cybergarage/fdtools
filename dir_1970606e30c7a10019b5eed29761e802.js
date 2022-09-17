@@ -4,6 +4,6 @@ var dir_1970606e30c7a10019b5eed29761e802 =
     [ "fdx", "dir_bae92887cf7eb3b05b0e776298866b73.html", "dir_bae92887cf7eb3b05b0e776298866b73" ],
     [ "hfe", "dir_17ecbcb92117f732b8df00afe8bbb1d8.html", "dir_17ecbcb92117f732b8df00afe8bbb1d8" ],
     [ "raw", "dir_1c446504b656178970a41c194537e47b.html", "dir_1c446504b656178970a41c194537e47b" ],
-    [ "loader.h", "loader_8h.html", "loader_8h" ],
-    [ "plugin.h", "plugin_8h.html", "plugin_8h" ]
+    [ "loader.h", "img_2loader_8h.html", "img_2loader_8h" ],
+    [ "plugin.h", "img_2plugin_8h.html", "img_2plugin_8h" ]
 ];
