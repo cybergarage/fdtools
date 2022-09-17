@@ -45,6 +45,9 @@ fdtools_sources = \
 	../../src/fdtools/plugins/img/hfe/hfe_loader.cpp \
 	../../src/fdtools/plugins/img/plugins.cpp \
 	../../src/fdtools/plugins/img/func.cpp \
+	../../src/fdtools/plugins/fmt/plugin.cpp \
+	../../src/fdtools/plugins/fmt/loader.cpp \
+	../../src/fdtools/plugins/fmt/plugins.cpp \
 	../../src/fdtools/fmt/format.cpp \
 	../../src/fdtools/error.cpp \
 	../../src/fdtools/util/struct.cpp \

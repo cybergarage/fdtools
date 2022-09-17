@@ -162,6 +162,9 @@ am__objects_1 = ../../src/fdtools/img/config.$(OBJEXT) \
 	../../src/fdtools/plugins/img/hfe/hfe_loader.$(OBJEXT) \
 	../../src/fdtools/plugins/img/plugins.$(OBJEXT) \
 	../../src/fdtools/plugins/img/func.$(OBJEXT) \
+	../../src/fdtools/plugins/fmt/plugin.$(OBJEXT) \
+	../../src/fdtools/plugins/fmt/loader.$(OBJEXT) \
+	../../src/fdtools/plugins/fmt/plugins.$(OBJEXT) \
 	../../src/fdtools/fmt/format.$(OBJEXT) \
 	../../src/fdtools/error.$(OBJEXT) \
 	../../src/fdtools/util/struct.$(OBJEXT) \
@@ -208,6 +211,9 @@ am__depfiles_remade = ../../src/fdtools/$(DEPDIR)/error.Po \
 	../../src/fdtools/img/$(DEPDIR)/image.Po \
 	../../src/fdtools/img/$(DEPDIR)/sector.Po \
 	../../src/fdtools/img/$(DEPDIR)/sectors.Po \
+	../../src/fdtools/plugins/fmt/$(DEPDIR)/loader.Po \
+	../../src/fdtools/plugins/fmt/$(DEPDIR)/plugin.Po \
+	../../src/fdtools/plugins/fmt/$(DEPDIR)/plugins.Po \
 	../../src/fdtools/plugins/img/$(DEPDIR)/func.Po \
 	../../src/fdtools/plugins/img/$(DEPDIR)/loader.Po \
 	../../src/fdtools/plugins/img/$(DEPDIR)/plugin.Po \
@@ -414,6 +420,9 @@ fdtools_sources = \
 	../../src/fdtools/plugins/img/hfe/hfe_loader.cpp \
 	../../src/fdtools/plugins/img/plugins.cpp \
 	../../src/fdtools/plugins/img/func.cpp \
+	../../src/fdtools/plugins/fmt/plugin.cpp \
+	../../src/fdtools/plugins/fmt/loader.cpp \
+	../../src/fdtools/plugins/fmt/plugins.cpp \
 	../../src/fdtools/fmt/format.cpp \
 	../../src/fdtools/error.cpp \
 	../../src/fdtools/util/struct.cpp \
@@ -619,6 +628,21 @@ clean-libLIBRARIES:
 ../../src/fdtools/plugins/img/func.$(OBJEXT):  \
 	../../src/fdtools/plugins/img/$(am__dirstamp) \
 	../../src/fdtools/plugins/img/$(DEPDIR)/$(am__dirstamp)
+../../src/fdtools/plugins/fmt/$(am__dirstamp):
+	@$(MKDIR_P) ../../src/fdtools/plugins/fmt
+	@: > ../../src/fdtools/plugins/fmt/$(am__dirstamp)
+../../src/fdtools/plugins/fmt/$(DEPDIR)/$(am__dirstamp):
+	@$(MKDIR_P) ../../src/fdtools/plugins/fmt/$(DEPDIR)
+	@: > ../../src/fdtools/plugins/fmt/$(DEPDIR)/$(am__dirstamp)
+../../src/fdtools/plugins/fmt/plugin.$(OBJEXT):  \
+	../../src/fdtools/plugins/fmt/$(am__dirstamp) \
+	../../src/fdtools/plugins/fmt/$(DEPDIR)/$(am__dirstamp)
+../../src/fdtools/plugins/fmt/loader.$(OBJEXT):  \
+	../../src/fdtools/plugins/fmt/$(am__dirstamp) \
+	../../src/fdtools/plugins/fmt/$(DEPDIR)/$(am__dirstamp)
+../../src/fdtools/plugins/fmt/plugins.$(OBJEXT):  \
+	../../src/fdtools/plugins/fmt/$(am__dirstamp) \
+	../../src/fdtools/plugins/fmt/$(DEPDIR)/$(am__dirstamp)
 ../../src/fdtools/fmt/$(am__dirstamp):
 	@$(MKDIR_P) ../../src/fdtools/fmt
 	@: > ../../src/fdtools/fmt/$(am__dirstamp)
@@ -693,6 +717,7 @@ mostlyclean-compile:
 	-rm -f ../../src/fdtools/dev/*.$(OBJEXT)
 	-rm -f ../../src/fdtools/fmt/*.$(OBJEXT)
 	-rm -f ../../src/fdtools/img/*.$(OBJEXT)
+	-rm -f ../../src/fdtools/plugins/fmt/*.$(OBJEXT)
 	-rm -f ../../src/fdtools/plugins/img/*.$(OBJEXT)
 	-rm -f ../../src/fdtools/plugins/img/d88/*.$(OBJEXT)
 	-rm -f ../../src/fdtools/plugins/img/hfe/*.$(OBJEXT)
@@ -716,6 +741,9 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@../../src/fdtools/img/$(DEPDIR)/image.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@../../src/fdtools/img/$(DEPDIR)/sector.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@../../src/fdtools/img/$(DEPDIR)/sectors.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@../../src/fdtools/plugins/fmt/$(DEPDIR)/loader.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@../../src/fdtools/plugins/fmt/$(DEPDIR)/plugin.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@../../src/fdtools/plugins/fmt/$(DEPDIR)/plugins.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@../../src/fdtools/plugins/img/$(DEPDIR)/func.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@../../src/fdtools/plugins/img/$(DEPDIR)/loader.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@../../src/fdtools/plugins/img/$(DEPDIR)/plugin.Po@am__quote@ # am--include-marker
@@ -914,6 +942,8 @@ distclean-generic:
 	-rm -f ../../src/fdtools/fmt/$(am__dirstamp)
 	-rm -f ../../src/fdtools/img/$(DEPDIR)/$(am__dirstamp)
 	-rm -f ../../src/fdtools/img/$(am__dirstamp)
+	-rm -f ../../src/fdtools/plugins/fmt/$(DEPDIR)/$(am__dirstamp)
+	-rm -f ../../src/fdtools/plugins/fmt/$(am__dirstamp)
 	-rm -f ../../src/fdtools/plugins/img/$(DEPDIR)/$(am__dirstamp)
 	-rm -f ../../src/fdtools/plugins/img/$(am__dirstamp)
 	-rm -f ../../src/fdtools/plugins/img/d88/$(DEPDIR)/$(am__dirstamp)
@@ -947,6 +977,9 @@ distclean: distclean-am
 	-rm -f ../../src/fdtools/img/$(DEPDIR)/image.Po
 	-rm -f ../../src/fdtools/img/$(DEPDIR)/sector.Po
 	-rm -f ../../src/fdtools/img/$(DEPDIR)/sectors.Po
+	-rm -f ../../src/fdtools/plugins/fmt/$(DEPDIR)/loader.Po
+	-rm -f ../../src/fdtools/plugins/fmt/$(DEPDIR)/plugin.Po
+	-rm -f ../../src/fdtools/plugins/fmt/$(DEPDIR)/plugins.Po
 	-rm -f ../../src/fdtools/plugins/img/$(DEPDIR)/func.Po
 	-rm -f ../../src/fdtools/plugins/img/$(DEPDIR)/loader.Po
 	-rm -f ../../src/fdtools/plugins/img/$(DEPDIR)/plugin.Po
@@ -1032,6 +1065,9 @@ maintainer-clean: maintainer-clean-am
 	-rm -f ../../src/fdtools/img/$(DEPDIR)/image.Po
 	-rm -f ../../src/fdtools/img/$(DEPDIR)/sector.Po
 	-rm -f ../../src/fdtools/img/$(DEPDIR)/sectors.Po
+	-rm -f ../../src/fdtools/plugins/fmt/$(DEPDIR)/loader.Po
+	-rm -f ../../src/fdtools/plugins/fmt/$(DEPDIR)/plugin.Po
+	-rm -f ../../src/fdtools/plugins/fmt/$(DEPDIR)/plugins.Po
 	-rm -f ../../src/fdtools/plugins/img/$(DEPDIR)/func.Po
 	-rm -f ../../src/fdtools/plugins/img/$(DEPDIR)/loader.Po
 	-rm -f ../../src/fdtools/plugins/img/$(DEPDIR)/plugin.Po

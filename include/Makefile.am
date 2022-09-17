@@ -24,6 +24,7 @@ fdtoolsheaders = \
 	./fdtools/dev/error.h \
 	./fdtools/dev/floppy.h \
 	./fdtools/typedef.h \
+	./fdtools/plugins/format.h \
 	./fdtools/plugins/image.h \
 	./fdtools/fmt/format.h \
 	./fdtools/error.h \
