@@ -13,9 +13,9 @@
 # limitations under the License.
 
 AC_CONFIG_AUX_DIR(config)
-AM_CONFIG_HEADER(config.h)
+AC_CONFIG_HEADERS(config.h)
 
-AC_INIT([fdtools], [0.9.0])
+AC_INIT([fdtools],[0.9.0])
 AC_CONFIG_SRCDIR([include/fdtools/typedef.h])
 AM_INIT_AUTOMAKE([subdir-objects])
 
@@ -42,7 +42,7 @@ AC_CHECK_HEADERS([stdint.h])
 
 AC_ARG_ENABLE(
         [test],
-        AC_HELP_STRING([--enable-test], [ build tests (default = no) ]),
+        AS_HELP_STRING([--enable-test],[ build tests (default = no) ]),
         [case "${enableval}" in
         yes | no ) build_test="${enableval}" ;;
         esac],
@@ -65,7 +65,7 @@ fi
 
 AC_ARG_ENABLE(
  	[debug],
-	AC_HELP_STRING([--enable-debug], [ enable debugging (default = no) ]),
+	AS_HELP_STRING([--enable-debug],[ enable debugging (default = no) ]),
 	[case "${enableval}" in
     	yes | no ) enable_debug="${enableval}" ;;
 	esac],
@@ -82,7 +82,7 @@ fi
 # Makefiles
 ##############################
 
-AC_OUTPUT([
+AC_CONFIG_FILES([
 Makefile
 include/Makefile
 lib/Makefile
@@ -95,3 +95,4 @@ bin/fdinfo/unix/Makefile
 test/Makefile
 test/unix/Makefile
 ])
+AC_OUTPUT
