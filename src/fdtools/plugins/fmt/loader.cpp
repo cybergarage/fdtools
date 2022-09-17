@@ -13,10 +13,12 @@
 // limitations under the License.
 
 #include <fdtools/plugins/fmt/loader.h>
+#include <fdtools/plugins/fmt/dos/dos.h>
+#include <fdtools/plugins/fmt/cpm/cpm.h>
 
 static FdtFormatPlugins* fmt_plgs;
 
-FdtFormatPlugins* fdt_format_plugins_getallfomatters()
+FdtFormatPlugins* fdt_format_plugins_getfomatters()
 {
   if (fmt_plgs)
     return fdt_format_plugin_next(fmt_plgs);
@@ -24,6 +26,8 @@ FdtFormatPlugins* fdt_format_plugins_getallfomatters()
   fmt_plgs = fdt_format_plugins_new();
 
   // Adds your new format plugins
+  fdt_format_plugins_add(fmt_plgs, fdt_dos_format_new);
+  fdt_format_plugins_add(fmt_plgs, fdt_cpm_format_new);
 
   return fdt_format_plugin_next(fmt_plgs);
 }

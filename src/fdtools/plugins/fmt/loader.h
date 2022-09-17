@@ -22,7 +22,7 @@
 extern "C" {
 #endif
 
-FdtFormatPlugins* fdt_format_plugins_getallfomatters();
+FdtFormatPlugins* fdt_format_plugins_getfomatters();
 
 #ifdef __cplusplus
 } /* extern C */
