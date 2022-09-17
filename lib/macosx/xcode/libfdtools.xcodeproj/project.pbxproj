@@ -16,6 +16,11 @@
 		21403C10255F02C80022389D /* string_func.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 21403C0F255F02C80022389D /* string_func.cpp */; };
 		2151DF46256989AC009FC0E0 /* file.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2151DF45256989AC009FC0E0 /* file.cpp */; };
 		2151DF4C256A4B40009FC0E0 /* sector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2151DF4B256A4B40009FC0E0 /* sector.cpp */; };
+		215C210628D5572C00C21A1F /* plugins.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 215C210028D5572C00C21A1F /* plugins.cpp */; };
+		215C210728D5572C00C21A1F /* loader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 215C210128D5572C00C21A1F /* loader.cpp */; };
+		215C210928D5572C00C21A1F /* loader.h in Headers */ = {isa = PBXBuildFile; fileRef = 215C210328D5572C00C21A1F /* loader.h */; };
+		215C210A28D5572C00C21A1F /* plugin.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 215C210428D5572C00C21A1F /* plugin.cpp */; };
+		215C210B28D5572C00C21A1F /* plugin.h in Headers */ = {isa = PBXBuildFile; fileRef = 215C210528D5572C00C21A1F /* plugin.h */; };
 		2161939B26EB9841007FA97A /* log.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2161939A26EB9841007FA97A /* log.cpp */; };
 		21641A81258E2C490062AD50 /* device_unix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 21641A80258E2C490062AD50 /* device_unix.cpp */; };
 		21641A84258EF8240062AD50 /* image.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 21641A83258EF8240062AD50 /* image.cpp */; };
@@ -66,6 +71,11 @@
 		21403C0F255F02C80022389D /* string_func.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = string_func.cpp; path = ../../../src/fdtools/util/string_func.cpp; sourceTree = "<group>"; };
 		2151DF45256989AC009FC0E0 /* file.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = file.cpp; path = ../../../src/fdtools/util/file.cpp; sourceTree = "<group>"; };
 		2151DF4B256A4B40009FC0E0 /* sector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = sector.cpp; path = ../../../src/fdtools/img/sector.cpp; sourceTree = "<group>"; };
+		215C210028D5572C00C21A1F /* plugins.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = plugins.cpp; path = ../../../src/fdtools/plugins/fmt/plugins.cpp; sourceTree = "<group>"; };
+		215C210128D5572C00C21A1F /* loader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = loader.cpp; path = ../../../src/fdtools/plugins/fmt/loader.cpp; sourceTree = "<group>"; };
+		215C210328D5572C00C21A1F /* loader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = loader.h; path = ../../../src/fdtools/plugins/fmt/loader.h; sourceTree = "<group>"; };
+		215C210428D5572C00C21A1F /* plugin.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = plugin.cpp; path = ../../../src/fdtools/plugins/fmt/plugin.cpp; sourceTree = "<group>"; };
+		215C210528D5572C00C21A1F /* plugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = plugin.h; path = ../../../src/fdtools/plugins/fmt/plugin.h; sourceTree = "<group>"; };
 		2161939A26EB9841007FA97A /* log.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = log.cpp; path = ../../../src/fdtools/util/log.cpp; sourceTree = "<group>"; };
 		21641A80258E2C490062AD50 /* device_unix.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = device_unix.cpp; path = ../../../src/fdtools/dev/device_unix.cpp; sourceTree = "<group>"; };
 		21641A83258EF8240062AD50 /* image.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = image.cpp; path = ../../../src/fdtools/dev/image.cpp; sourceTree = "<group>"; };
@@ -156,6 +166,18 @@
 			name = util;
 			sourceTree = "<group>";
 		};
+		215C20FF28D5570D00C21A1F /* fmt */ = {
+			isa = PBXGroup;
+			children = (
+				215C210128D5572C00C21A1F /* loader.cpp */,
+				215C210328D5572C00C21A1F /* loader.h */,
+				215C210428D5572C00C21A1F /* plugin.cpp */,
+				215C210528D5572C00C21A1F /* plugin.h */,
+				215C210028D5572C00C21A1F /* plugins.cpp */,
+			);
+			name = fmt;
+			sourceTree = "<group>";
+		};
 		216F3665255DB14E004507DF /* Headers */ = {
 			isa = PBXGroup;
 			children = (
@@ -175,6 +197,7 @@
 		2193146D26C580A500310C6D /* plugins */ = {
 			isa = PBXGroup;
 			children = (
+				215C20FF28D5570D00C21A1F /* fmt */,
 				21BD0E2028D4D62C00826636 /* img */,
 			);
 			name = plugins;
@@ -297,6 +320,8 @@
 				21BD0E4128D4D6B300826636 /* raw.h in Headers */,
 				21BD0E2828D4D64800826636 /* plugin.h in Headers */,
 				21BD0E2A28D4D64800826636 /* loader.h in Headers */,
+				215C210B28D5572C00C21A1F /* plugin.h in Headers */,
+				215C210928D5572C00C21A1F /* loader.h in Headers */,
 				21BD0E3628D4D69600826636 /* d88.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -357,6 +382,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				215C210628D5572C00C21A1F /* plugins.cpp in Sources */,
 				21403C10255F02C80022389D /* string_func.cpp in Sources */,
 				211D484E257BD13100895CFE /* option.cpp in Sources */,
 				21BD0E4828D4D6D000826636 /* hfe_exporter.cpp in Sources */,
@@ -384,10 +410,12 @@
 				21ACB8E728C46EE000DFAEE6 /* format.cpp in Sources */,
 				21641A81258E2C490062AD50 /* device_unix.cpp in Sources */,
 				21BD0E3828D4D69600826636 /* d88_exporter.cpp in Sources */,
+				215C210728D5572C00C21A1F /* loader.cpp in Sources */,
 				21DC2020257B9EEA004F3363 /* dictionary.cpp in Sources */,
 				21E15B08256A955A00029338 /* image.cpp in Sources */,
 				21B0AB4925A0EE6F00B064A3 /* struct.cpp in Sources */,
 				21BD0E4928D4D6D000826636 /* hfe.cpp in Sources */,
+				215C210A28D5572C00C21A1F /* plugin.cpp in Sources */,
 				21BD0E2B28D4D64800826636 /* func.cpp in Sources */,
 				21BD0E4A28D4D6D000826636 /* hfe_loader.cpp in Sources */,
 				21B0AB4625A0ED1F00B064A3 /* density.cpp in Sources */,
