@@ -4,6 +4,7 @@ var annotated_dup =
     [ "FDT_ATTR_PACKED", "structFDT__ATTR__PACKED.html", "structFDT__ATTR__PACKED" ],
     [ "FdtDictionaryElement", "structFdtDictionaryElement.html", "structFdtDictionaryElement" ],
     [ "FdtError", "structFdtError.html", "structFdtError" ],
+    [ "FdtFile", "structFdtFile.html", "structFdtFile" ],
     [ "FdtFloppyParams", "structFdtFloppyParams.html", "structFdtFloppyParams" ],
     [ "FdtFormatPlugin", "structFdtFormatPlugin.html", "structFdtFormatPlugin" ],
     [ "FdtImagePlugin", "structFdtImagePlugin.html", "structFdtImagePlugin" ],
