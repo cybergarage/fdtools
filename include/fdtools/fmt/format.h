@@ -42,7 +42,7 @@ typedef struct FDT_ATTR_PACKED {
   FDT_FORMAT_STRUCT_MEMBERS
 } FdtFormat;
 
-typedef FdtFormat* (*FDT_FORMAT_IMAGER)(void);
+typedef FdtFormat* (*FDT_FORMAT_FORMATTER)(void);
 
 FdtFormat* fdt_format_new();
 bool fdt_format_delete(FdtFormat*);
