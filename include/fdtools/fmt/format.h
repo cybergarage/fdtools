@@ -19,6 +19,7 @@
 
 #include <fdtools/error.h>
 #include <fdtools/fmt/file.h>
+#include <fdtools/img/image.h>
 #include <fdtools/typedef.h>
 
 #ifdef __cplusplus
@@ -40,6 +41,7 @@ typedef bool (*FDT_FORMAT_DESTRUCTOR)(void*);
 
 #define FDT_FORMAT_STRUCT_MEMBERS        \
   FdtFormatType type;                    \
+  FdtImage* image;                       \
   FDT_FORMAT_GETTYPEID format_gettypeid; \
   FDT_FORMAT_FORMAT format_format;       \
   FDT_FORMAT_LIST format_list;           \
@@ -63,12 +65,15 @@ bool fdt_format_list(FdtFormat*, FdtFiles*);
 bool fdt_format_add(FdtFormat*, FdtFile*);
 bool fdt_format_del(FdtFormat*, FdtFile*);
 
-#define fdt_format_setgettypeid(img, fn) (img->format_gettypeid = (FDT_FORMAT_GETTYPEID)fn)
-#define fdt_format_setformat(img, fn) (img->format_format = (FDT_FORMAT_FORMAT)fn)
-#define fdt_format_setlist(img, fn) (img->format_list = (FDT_FORMAT_LIST)fn)
-#define fdt_format_setadd(img, fn) (img->format_del = (FDT_FORMAT_DEL)fn)
-#define fdt_format_setdel(img, fn) (img->format_del = (FDT_FORMAT_DEL)fn)
-#define fdt_format_setdestructor(img, fn) (img->format_destructor = (FDT_FORMAT_DESTRUCTOR)fn)
+#define fdt_format_setimage(fmt, img) (fmt->image = img)
+#define fdt_format_getimage(fmt) (fmt->image)
+
+#define fdt_format_setgettypeid(fmt, fn) (fmt->format_gettypeid = (FDT_FORMAT_GETTYPEID)fn)
+#define fdt_format_setformat(fmt, fn) (fmt->format_format = (FDT_FORMAT_FORMAT)fn)
+#define fdt_format_setlist(fmt, fn) (fmt->format_list = (FDT_FORMAT_LIST)fn)
+#define fdt_format_setadd(fmt, fn) (fmt->format_del = (FDT_FORMAT_DEL)fn)
+#define fdt_format_setdel(fmt, fn) (fmt->format_del = (FDT_FORMAT_DEL)fn)
+#define fdt_format_setdestructor(fmt, fn) (fmt->format_destructor = (FDT_FORMAT_DESTRUCTOR)fn)
 
 #ifdef __cplusplus
 } /* extern C */
