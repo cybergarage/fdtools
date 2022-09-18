@@ -22,7 +22,12 @@ extern "C" {
 #endif
 
 FdtFormat* fdt_cpm_format_new(void);
-const char* fdt_cpm_format_gettypeid(FdtFormat* img);
+
+const char* fdt_cpm_format_gettypeid(FdtFormat*);
+bool fdt_cpm_format_format(FdtFormat*);
+bool fdt_cpm_format_list(FdtFormat*, FdtFiles*);
+bool fdt_cpm_format_add(FdtFormat*, FdtFile*);
+bool fdt_cpm_format_del(FdtFormat*, FdtFile*);
 
 #ifdef __cplusplus
 } /* extern C */
