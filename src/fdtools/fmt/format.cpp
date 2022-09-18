@@ -50,28 +50,28 @@ const char* fdt_format_gettypeid(FdtFormat* fmt)
 
 bool fdt_format_format(FdtFormat* fmt)
 {
-  if (!fmt || !fmt->format_format)
+  if (!fmt || !fmt->format_format || !fmt->image)
     return false;
   return fmt->format_format(fmt);
 }
 
 bool fdt_format_list(FdtFormat* fmt, FdtFiles* files)
 {
-  if (!fmt || !fmt->format_list)
+  if (!fmt || !fmt->format_list || !fmt->image)
     return false;
   return fmt->format_list(fmt, files);
 }
 
 bool fdt_format_add(FdtFormat* fmt, FdtFile* file)
 {
-  if (!fmt || !fmt->format_add)
+  if (!fmt || !fmt->format_add || !fmt->image)
     return false;
   return fmt->format_add(fmt, file);
 }
 
 bool fdt_format_del(FdtFormat* fmt, FdtFile* file)
 {
-  if (!fmt || !fmt->format_del)
+  if (!fmt || !fmt->format_del || !fmt->image)
     return false;
   return fmt->format_del(fmt, file);
 }

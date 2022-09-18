@@ -28,5 +28,5 @@ FdtFormat* fdt_cpm_format_new(void)
 
 const char* fdt_cpm_format_gettypeid(FdtFormat* fmt)
 {
-  return "RAW";
+  return "CPM";
 }
