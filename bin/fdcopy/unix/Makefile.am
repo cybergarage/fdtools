@@ -18,7 +18,7 @@ AM_CFLAGS = -I$(top_builddir)/include -I../
 AM_CPPFLAGS = -I$(top_builddir)/include -I../
 
 fdcopy_SOURCES = \
-	..//main.c
+	../main.c
 
 #if HAVE_LIBTOOL
 #fdcopy_LDADD = ../../../lib/unix/libfdtools.la
