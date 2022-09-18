@@ -40,3 +40,4 @@ DITT   ,,,, cylinder, head 0 or 1
 - [D88形式フォーマット | HuDisk](https://boukichi.github.io/HuDisk/DISK.html)
 - [wii88/FORMAT.TXT](https://github.com/jpzm/wii88/blob/master/document/FORMAT.TXT)
 - [.D88形式のフロッピーディスクイメージフォーマット - （仮）](http://gra4.hatenadiary.jp/entry/20171108/1510096429)
+- [D88形式フォーマット](https://github.com/BouKiCHi/HuDisk/blob/master/docs/DISK.md)
