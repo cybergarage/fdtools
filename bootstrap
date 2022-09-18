@@ -19,6 +19,7 @@ makefiles=(
 "test/unix"
 "bin/fdinfo/unix"
 "bin/fdcopy/unix"
+"bin/fddump/unix"
 )
 
 for makefile in "${makefiles[@]}"
