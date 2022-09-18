@@ -88,8 +88,8 @@ include/Makefile
 lib/Makefile
 lib/unix/Makefile
 bin/Makefile
-bin/fddump/Makefile
-bin/fddump/unix/Makefile
+bin/fdcopy/Makefile
+bin/fdcopy/unix/Makefile
 bin/fdinfo/Makefile
 bin/fdinfo/unix/Makefile
 test/Makefile

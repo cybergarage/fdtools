@@ -18,7 +18,7 @@ makefiles=(
 "lib/unix"
 "test/unix"
 "bin/fdinfo/unix"
-"bin/fddump/unix"
+"bin/fdcopy/unix"
 )
 
 for makefile in "${makefiles[@]}"

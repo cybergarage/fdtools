@@ -7,4 +7,4 @@
 	* The first public release
 	* Support raw floppy device on Linux platform
 	* Support HFE andD88 image formats
-	* Include fddump and fdinfo utilities using the framework
+	* Include fdcopy and fdinfo utilities using the framework

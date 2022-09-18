@@ -12,16 +12,16 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-bin_PROGRAMS = fddump
+bin_PROGRAMS = fdcopy
 
 AM_CFLAGS = -I$(top_builddir)/include -I../
 AM_CPPFLAGS = -I$(top_builddir)/include -I../
 
-fddump_SOURCES = \
-	../main.c
+fdcopy_SOURCES = \
+	..//main.c
 
 #if HAVE_LIBTOOL
-#fddump_LDADD = ../../../lib/unix/libfdtools.la
+#fdcopy_LDADD = ../../../lib/unix/libfdtools.la
 #else
-fddump_LDADD = ../../../lib/unix/libfdtools.a
+fdcopy_LDADD = ../../../lib/unix/libfdtools.a
 #endif

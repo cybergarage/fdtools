@@ -12,4 +12,4 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-SUBDIRS = fddump fdinfo
+SUBDIRS = fdcopy fdinfo fddump

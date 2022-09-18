@@ -11,8 +11,8 @@ grade: stable
 confinement: strict
 
 apps:
-  fddump:
-    command: bin/fddump
+  fdcopy:
+    command: bin/fdcopy
   fdinfo:
     command: bin/fdinfo
 
