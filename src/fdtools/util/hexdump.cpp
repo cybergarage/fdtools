@@ -49,6 +49,10 @@ void fdt_hexdump_print(byte_t* buf, size_t buf_len)
     }
     printf(" ");
 
+    for (size_t n = 0; n < (FDT_HEXDUMP_LINE_BYTES - line_len); n++) {
+      printf(" ");
+    }
+
     // Dump by ASCII
 
     for (size_t n = 0; n < (line_len / 2); n++) {
