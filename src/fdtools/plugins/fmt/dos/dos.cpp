@@ -21,7 +21,12 @@ FdtFormat* fdt_dos_format_new(void)
     return NULL;
 
   fmt->type = FDT_FORMAT_TYPE_DOS;
+
   fdt_format_setgettypeid(fmt, fdt_dos_format_gettypeid);
+  fdt_format_setformat(fmt, fdt_dos_format_format);
+  fdt_format_setlist(fmt, fdt_dos_format_list);
+  fdt_format_setadd(fmt, fdt_dos_format_add);
+  fdt_format_setdel(fmt, fdt_dos_format_del);
 
   return fmt;
 }
@@ -29,4 +34,24 @@ FdtFormat* fdt_dos_format_new(void)
 const char* fdt_dos_format_gettypeid(FdtFormat* fmt)
 {
   return "DOS";
+}
+
+bool fdt_dos_format_format(FdtFormat* fmt)
+{
+  return false;
+}
+
+bool fdt_dos_format_list(FdtFormat* fmt, FdtFiles* files)
+{
+  return false;
+}
+
+bool fdt_dos_format_add(FdtFormat* fmt, FdtFile* file)
+{
+  return false;
+}
+
+bool fdt_dos_format_del(FdtFormat* fmt, FdtFile* file)
+{
+  return false;
 }
