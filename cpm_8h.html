@@ -70,12 +70,94 @@ $(document).ready(function(){initNavTree('cpm_8h.html',''); initResizable(); });
 Functions</h2></td></tr>
 <tr class="memitem:a8f4e5e7edc621b2db6393cc04c51a7d4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="fmt_2format_8h.html#aaef1619e756019bfb37461b0a9030e55">FdtFormat</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpm_8h.html#a8f4e5e7edc621b2db6393cc04c51a7d4">fdt_cpm_format_new</a> (void)</td></tr>
 <tr class="separator:a8f4e5e7edc621b2db6393cc04c51a7d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8a6dfcf9e457eccbd568e944e5ab4795"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpm_8h.html#a8a6dfcf9e457eccbd568e944e5ab4795">fdt_cpm_format_gettypeid</a> (<a class="el" href="fmt_2format_8h.html#aaef1619e756019bfb37461b0a9030e55">FdtFormat</a> *img)</td></tr>
-<tr class="separator:a8a6dfcf9e457eccbd568e944e5ab4795"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a17d19e671794667e81a6f22b9e1ffdd0"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpm_8h.html#a17d19e671794667e81a6f22b9e1ffdd0">fdt_cpm_format_gettypeid</a> (<a class="el" href="fmt_2format_8h.html#aaef1619e756019bfb37461b0a9030e55">FdtFormat</a> *)</td></tr>
+<tr class="separator:a17d19e671794667e81a6f22b9e1ffdd0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a69776f3262c6530c62a45a86956d2c00"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpm_8h.html#a69776f3262c6530c62a45a86956d2c00">fdt_cpm_format_format</a> (<a class="el" href="fmt_2format_8h.html#aaef1619e756019bfb37461b0a9030e55">FdtFormat</a> *)</td></tr>
+<tr class="separator:a69776f3262c6530c62a45a86956d2c00"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa267176bfa4b1cf3fcc6b7b87090498b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpm_8h.html#aa267176bfa4b1cf3fcc6b7b87090498b">fdt_cpm_format_list</a> (<a class="el" href="fmt_2format_8h.html#aaef1619e756019bfb37461b0a9030e55">FdtFormat</a> *, <a class="el" href="fmt_2file_8h.html#a3130601285efc0c8b6d1bc4c3441c346">FdtFiles</a> *)</td></tr>
+<tr class="separator:aa267176bfa4b1cf3fcc6b7b87090498b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a15afa01e05962bfd98b51ce7a730d4fd"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpm_8h.html#a15afa01e05962bfd98b51ce7a730d4fd">fdt_cpm_format_add</a> (<a class="el" href="fmt_2format_8h.html#aaef1619e756019bfb37461b0a9030e55">FdtFormat</a> *, <a class="el" href="structFdtFile.html">FdtFile</a> *)</td></tr>
+<tr class="separator:a15afa01e05962bfd98b51ce7a730d4fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af924f83ee21d549b7c0820f19318e8ba"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpm_8h.html#af924f83ee21d549b7c0820f19318e8ba">fdt_cpm_format_del</a> (<a class="el" href="fmt_2format_8h.html#aaef1619e756019bfb37461b0a9030e55">FdtFormat</a> *, <a class="el" href="structFdtFile.html">FdtFile</a> *)</td></tr>
+<tr class="separator:af924f83ee21d549b7c0820f19318e8ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="a8a6dfcf9e457eccbd568e944e5ab4795" name="a8a6dfcf9e457eccbd568e944e5ab4795"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8a6dfcf9e457eccbd568e944e5ab4795">&#9670;&nbsp;</a></span>fdt_cpm_format_gettypeid()</h2>
+<a id="a15afa01e05962bfd98b51ce7a730d4fd" name="a15afa01e05962bfd98b51ce7a730d4fd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a15afa01e05962bfd98b51ce7a730d4fd">&#9670;&nbsp;</a></span>fdt_cpm_format_add()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool fdt_cpm_format_add </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="fmt_2format_8h.html#aaef1619e756019bfb37461b0a9030e55">FdtFormat</a> *&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structFdtFile.html">FdtFile</a> *&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af924f83ee21d549b7c0820f19318e8ba" name="af924f83ee21d549b7c0820f19318e8ba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af924f83ee21d549b7c0820f19318e8ba">&#9670;&nbsp;</a></span>fdt_cpm_format_del()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool fdt_cpm_format_del </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="fmt_2format_8h.html#aaef1619e756019bfb37461b0a9030e55">FdtFormat</a> *&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structFdtFile.html">FdtFile</a> *&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a69776f3262c6530c62a45a86956d2c00" name="a69776f3262c6530c62a45a86956d2c00"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a69776f3262c6530c62a45a86956d2c00">&#9670;&nbsp;</a></span>fdt_cpm_format_format()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool fdt_cpm_format_format </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="fmt_2format_8h.html#aaef1619e756019bfb37461b0a9030e55">FdtFormat</a> *&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a17d19e671794667e81a6f22b9e1ffdd0" name="a17d19e671794667e81a6f22b9e1ffdd0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a17d19e671794667e81a6f22b9e1ffdd0">&#9670;&nbsp;</a></span>fdt_cpm_format_gettypeid()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -84,8 +166,36 @@ Functions</h2></td></tr>
           <td class="memname">const char * fdt_cpm_format_gettypeid </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="fmt_2format_8h.html#aaef1619e756019bfb37461b0a9030e55">FdtFormat</a> *&#160;</td>
-          <td class="paramname"><em>img</em></td><td>)</td>
+          <td class="paramname"></td><td>)</td>
           <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa267176bfa4b1cf3fcc6b7b87090498b" name="aa267176bfa4b1cf3fcc6b7b87090498b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa267176bfa4b1cf3fcc6b7b87090498b">&#9670;&nbsp;</a></span>fdt_cpm_format_list()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool fdt_cpm_format_list </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="fmt_2format_8h.html#aaef1619e756019bfb37461b0a9030e55">FdtFormat</a> *&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="fmt_2file_8h.html#a3130601285efc0c8b6d1bc4c3441c346">FdtFiles</a> *&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
