@@ -19,6 +19,13 @@
 
 const size_t FDT_HEXDUMP_LINE_BYTES = 16;
 
+byte_t fdt_hexdump_hextoascii(byte_t b)
+{
+  if ((0x20 <= b) && (b <= 0x7E)) {
+    return b;
+  }
+  return '.';
+}
 void fdt_hexdump_print(byte_t* buf, size_t buf_len)
 {
   for (size_t offset = 0; offset < buf_len; offset += FDT_HEXDUMP_LINE_BYTES) {
@@ -26,7 +33,13 @@ void fdt_hexdump_print(byte_t* buf, size_t buf_len)
     if (buf_len < (offset + line_len)) {
       line_len = buf_len % FDT_HEXDUMP_LINE_BYTES;
     }
+
+    // Offset
+
     printf("%04lX ", offset);
+
+    // Dump by HEX
+
     for (size_t n = 0; n < (line_len / 2); n++) {
       printf("%02X", buf[offset + n] & 0xFF);
     }
@@ -34,6 +47,18 @@ void fdt_hexdump_print(byte_t* buf, size_t buf_len)
     for (size_t n = (line_len / 2); n < line_len; n++) {
       printf("%02X", buf[offset + n] & 0xFF);
     }
+    printf(" ");
+
+    // Dump by ASCII
+
+    for (size_t n = 0; n < (line_len / 2); n++) {
+      printf("%c", fdt_hexdump_hextoascii(buf[offset + n] & 0xFF));
+    }
+    printf(" ");
+    for (size_t n = (line_len / 2); n < line_len; n++) {
+      printf("%c", fdt_hexdump_hextoascii(buf[offset + n] & 0xFF));
+    }
+
     printf("\n");
   }
 }
