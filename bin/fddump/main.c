@@ -21,11 +21,12 @@
 #include <fdtools/dev/image.h>
 #include <fdtools/img/image.h>
 #include <fdtools/plugins/image.h>
+#include <fdtools/util/hexdump.h>
 #include <fdtools/util/log.h>
 #include <fdtools/util/program.h>
 #include <fdtools/util/string.h>
 
-const char* OPT_CYLINDERS = "c";
+const char* OPT_trackS = "c";
 const char* OPT_HEADS = "h";
 const char* OPT_SECTORS = "n";
 const char* OPT_SSIZE = "s";
@@ -77,7 +78,7 @@ void print_usage(FdtProgram* prg)
 {
   flush_message();
 
-  printf("Usage: %s [OPTIONS] <source device or file name> <destination device or file name>\n", fdt_program_getname(prg));
+  printf("Usage: %s [OPTIONS] <source device or file name>\n", fdt_program_getname(prg));
   fdt_program_printoptionusages(prg);
 }
 
@@ -176,7 +177,7 @@ int main(int argc, char* argv[])
   if (!prg) {
     panic();
   }
-  fdt_program_addoption(prg, OPT_CYLINDERS, "number of cylinders", true, "");
+  fdt_program_addoption(prg, OPT_trackS, "number of tracks", true, "");
   fdt_program_addoption(prg, OPT_HEADS, "number of heads", true, "");
   fdt_program_addoption(prg, OPT_SECTORS, "number of sectors", true, "");
   fdt_program_addoption(prg, OPT_SSIZE, "sector size", true, "");
@@ -190,7 +191,7 @@ int main(int argc, char* argv[])
     return EXIT_FAILURE;
   }
 
-  if (fdt_program_getnarguments(prg) < 2) {
+  if (fdt_program_getnarguments(prg) < 1) {
     print_usage(prg);
     return EXIT_FAILURE;
   }
@@ -207,16 +208,17 @@ int main(int argc, char* argv[])
 
   // Loads source file image
 
-  const char* src_img_name = fdt_program_getargument(prg, 0);
-  FdtImage* src_img = fdt_image_plugins_create(src_img_name, err);
-  if (!src_img) {
+  const char* img_name = fdt_program_getargument(prg, 0);
+
+  FdtImage* img = fdt_image_plugins_create(img_name, err);
+  if (!img) {
     exit_error(err);
   }
 
-  if (fdt_image_isdevice(src_img)) {
+  if (fdt_image_isdevice(img)) {
     // Gets current device parameters, and set the parameters to image.
     FdtDevice* dev = fdt_device_new();
-    fdt_device_setname(dev, src_img_name);
+    fdt_device_setname(dev, img_name);
     FdtFloppyParams* fdparams = fdt_floppy_params_new();
     if (!dev || !fdparams) {
       panic();
@@ -224,18 +226,18 @@ int main(int argc, char* argv[])
     if (!fdt_device_getfloppyparameters(dev, fdparams, err)) {
       exit_error(err);
     }
-    if (!fdt_device_image_setfloppyparams(src_img, fdparams, err)) {
+    if (!fdt_device_image_setfloppyparams(img, fdparams, err)) {
       exit_error(err);
     }
     fdt_device_delete(dev);
     fdt_floppy_params_delete(fdparams);
   }
 
-  if (fdt_image_isdevice(src_img)) {
+  if (fdt_image_isdevice(img)) {
     // Shows progress infomation for device image types
     // TODO: Sets image parameters to device
-    FdtDeviceImage* dev_img = (FdtDeviceImage*)src_img;
-    if (!fdt_device_image_open(dev_img, src_img_name, FDT_FILE_READ, err)) {
+    FdtDeviceImage* dev_img = (FdtDeviceImage*)img;
+    if (!fdt_device_image_open(dev_img, img_name, FDT_FILE_READ, err)) {
       exit_error(err);
     }
     if (!fdt_device_image_generatesectors(dev_img, err)) {
@@ -262,7 +264,7 @@ int main(int argc, char* argv[])
     }
   }
   else {
-    if (!fdt_image_load(src_img, err)) {
+    if (!fdt_image_load(img, err)) {
       exit_error(err);
     }
   }
@@ -271,57 +273,45 @@ int main(int argc, char* argv[])
 
   print_lf2buffer();
 
-  // Imports source file image to dest file image
+  // Sets command line options
 
-  const char* dst_img_name = fdt_program_getargument(prg, 1);
-  FdtImage* dst_img = fdt_image_plugins_create(dst_img_name, err);
-  if (!dst_img) {
-    exit_error(err);
-  }
-  if (!fdt_image_import(dst_img, src_img, err)) {
-    exit_error(err);
+  int head_start_no = 0;
+  int head_end_no = fdt_image_getnumberofhead(img) - 1;
+  if (2 <= fdt_program_getnarguments(prg)) {
+    head_start_no = head_end_no = fdt_str2int(fdt_program_getargument(prg, 1));
   }
 
-  // Delete imported source image
+  int track_start_no = 0;
+  int track_end_no = fdt_image_getnumberofsector(img) - 1;
+  if (3 <= fdt_program_getnarguments(prg)) {
+    track_start_no = track_end_no = fdt_str2int(fdt_program_getargument(prg, 2));
+  }
 
-  fdt_image_delete(src_img);
+  int sector_start_no = 0;
+  int sector_end_no = fdt_image_getnumberoftrack(img) - 1;
+  if (3 <= fdt_program_getnarguments(prg)) {
+    sector_start_no = sector_end_no = fdt_str2int(fdt_program_getargument(prg, 3));
+  }
 
-  // Exports source file image to dest file image
+  // Dumps sector bytes
 
-  if (fdt_image_isdevice(dst_img)) {
-    // Shows progress infomation for device image types
-    FdtDeviceImage* dev_img = (FdtDeviceImage*)dst_img;
-    if (!fdt_device_image_open(dev_img, dst_img_name, FDT_FILE_WRITE, err)) {
-      exit_error(err);
-    }
-    size_t dev_sector_cnt = fdt_device_image_getnsectors(dev_img);
-    size_t dev_wrote_sector_cnt = 0;
-    progress_start_time = time(NULL);
-    FdtImageSector* last_sector;
-    for (FdtImageSector* sector = fdt_device_image_getsectors(dev_img); sector; sector = fdt_image_sector_next(sector)) {
-      last_sector = sector;
-      print_progress(dev_img, sector, dev_wrote_sector_cnt, dev_sector_cnt);
-      if (fdt_device_image_writesector(dev_img, sector, err)) {
-        dev_wrote_sector_cnt++;
-      }
-      else {
-        exit_error(err);
+  for (int i = head_start_no; i <= head_end_no; i++) {
+    for (int j = track_start_no; j <= track_end_no; j++) {
+      for (int k = sector_start_no; k <= sector_end_no; k++) {
+        FdtImageSector* sector = fdt_image_getsector(img, i, j, k);
+        if (!sector)
+          continue;
+        printf("HEAD:%d TRACK:%d SECTOR:%d\n", i, j, k);
+        size_t sector_size = fdt_image_sector_getsize(sector);
+        byte_t* sector_data = fdt_image_sector_getdata(sector);
+        fdt_hexdump_print(sector_data, sector_size);
+        flush_message();
       }
     }
-    if (last_sector) {
-      print_progress(dev_img, last_sector, dev_wrote_sector_cnt, dev_sector_cnt);
-    }
-    if (!fdt_device_image_close(dev_img, err)) {
-      exit_error(err);
-    }
   }
-  else {
-    if (!fdt_image_export(dst_img, err)) {
-      exit_error(err);
-    }
-  }
+  // Sets command line options
 
-  fdt_image_delete(dst_img);
+  fdt_image_delete(img);
 
   // Cleanups
 
