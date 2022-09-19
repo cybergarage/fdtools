@@ -46,7 +46,7 @@ int main(int argc, char* argv[])
     panic();
   }
   fdu_program_add_default_options(prg);
-  fdu_program_add_floppy_options(prg);
+  fdu_program_adddeviceoptions(prg);
 
   if (!fdu_program_parse_arguments(prg, argc, argv, err)) {
     fdu_console_error(err);

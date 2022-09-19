@@ -14,7 +14,7 @@
 
 #include "device.h"
 
-void fdu_program_add_floppy_options(FdtProgram* prg)
+void fdu_program_adddeviceoptions(FdtProgram* prg)
 {
   fdt_program_addoption(prg, OPT_CYLINDERS, "number of cylinders", true, "");
   fdt_program_addoption(prg, OPT_HEADS, "number of heads", true, "");

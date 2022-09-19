@@ -30,7 +30,7 @@ extern "C" {
 #define OPT_SSIZE "s"
 #define OPT_RETRY_PASSES "r"
 
-void fdu_program_add_floppy_options(FdtProgram* prg);
+void fdu_program_adddeviceoptions(FdtProgram* prg);
 
 #ifdef __cplusplus
 } /* extern C */
