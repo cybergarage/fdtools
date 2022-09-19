@@ -26,8 +26,9 @@ void fdu_program_adddeviceoptions(FdtProgram* prg)
   fdt_program_addoption(prg, OPT_CYLINDERS, "number of cylinders", true, "");
   fdt_program_addoption(prg, OPT_HEADS, "number of heads", true, "");
   fdt_program_addoption(prg, OPT_SECTORS, "number of sectors", true, "");
-  fdt_program_addoption(prg, OPT_SSIZE, "sector size", true, "");
-  fdt_program_addoption(prg, OPT_RETRY_PASSES, "number of retry passes", false, "");
+  // TODO: Support ssize
+  // fdt_program_addoption(prg, OPT_SSIZE, "sector size", true, "");
+  // fdt_program_addoption(prg, OPT_RETRY_PASSES, "number of retry passes", false, "");
 }
 
 bool fdu_device_image_setoptions(FdtImage* img, FdtProgram* prg, FdtError* err)
@@ -41,6 +42,17 @@ bool fdu_device_image_setoptions(FdtImage* img, FdtProgram* prg, FdtError* err)
   if (!fdt_device_getfloppyparameters(dev, fdparams, err)) {
     return false;
   }
+
+  if (fdt_program_isoptionenabled(prg, OPT_CYLINDERS)) {
+    fdt_floppy_params_settrack(fdparams, fdt_program_getoptioninteger(prg, OPT_CYLINDERS));
+  }
+  if (fdt_program_isoptionenabled(prg, OPT_HEADS)) {
+    fdt_floppy_params_sethead(fdparams, fdt_program_getoptioninteger(prg, OPT_HEADS));
+  }
+  if (fdt_program_isoptionenabled(prg, OPT_SECTORS)) {
+    fdt_floppy_params_setsect(fdparams, fdt_program_getoptioninteger(prg, OPT_SECTORS));
+  }
+
   if (!fdt_device_image_setfloppyparams(img, fdparams, err)) {
     return false;
   }
