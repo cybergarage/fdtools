@@ -58,7 +58,7 @@ void fdu_console_error(FdtError* err)
   fflush(stdout);
 }
 
-void exit_error(FdtError* err)
+void error(FdtError* err)
 {
   fdu_console_error(err);
   exit(EXIT_FAILURE);

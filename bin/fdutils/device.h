@@ -24,13 +24,6 @@
 extern "C" {
 #endif
 
-#define OPT_CYLINDERS "c"
-#define OPT_HEADS "h"
-#define OPT_SECTORS "n"
-#define OPT_SSIZE "s"
-#define OPT_RETRY_PASSES "r"
-
-void fdu_program_adddeviceoptions(FdtProgram* prg);
 bool fdu_device_image_setoptions(FdtImage* img, FdtProgram* prg, FdtError* err);
 bool fdu_device_image_load(FdtImage* img, FdtError* err);
 bool fdu_device_image_export(FdtImage* img, FdtError* err);

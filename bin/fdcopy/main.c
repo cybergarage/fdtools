@@ -68,20 +68,20 @@ int main(int argc, char* argv[])
   const char* src_img_name = fdt_program_getargument(prg, 0);
   FdtImage* src_img = fdt_image_plugins_create(src_img_name, err);
   if (!src_img) {
-    exit_error(err);
+    error(err);
   }
 
   if (fdt_image_isdevice(src_img)) {
     if (!fdu_device_image_setoptions(src_img, prg, err)) {
-      exit_error(err);
+      error(err);
     }
     if (!fdu_device_image_load(src_img, err)) {
-      exit_error(err);
+      error(err);
     }
   }
   else {
     if (!fdt_image_load(src_img, err)) {
-      exit_error(err);
+      error(err);
     }
   }
 
@@ -94,10 +94,10 @@ int main(int argc, char* argv[])
   const char* dst_img_name = fdt_program_getargument(prg, 1);
   FdtImage* dst_img = fdt_image_plugins_create(dst_img_name, err);
   if (!dst_img) {
-    exit_error(err);
+    error(err);
   }
   if (!fdt_image_import(dst_img, src_img, err)) {
-    exit_error(err);
+    error(err);
   }
 
   // Delete imported source image
@@ -108,12 +108,12 @@ int main(int argc, char* argv[])
 
   if (fdt_image_isdevice(dst_img)) {
     if (!fdu_device_image_export(dst_img, err)) {
-      exit_error(err);
+      error(err);
     }
   }
   else {
     if (!fdt_image_export(dst_img, err)) {
-      exit_error(err);
+      error(err);
     }
   }
 

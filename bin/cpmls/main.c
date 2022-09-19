@@ -65,11 +65,11 @@ int main(int argc, char* argv[])
 
   FdtImage* img = fdt_image_plugins_create(img_name, err);
   if (!img) {
-    exit_error(err);
+    error(err);
   }
 
   if (!fdt_image_load(img, err)) {
-    exit_error(err);
+    error(err);
   }
 
   // Cleanups

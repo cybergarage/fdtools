@@ -63,7 +63,7 @@ int main(int argc, char* argv[])
   const char* img_name = fdt_program_getargument(prg, 0);
   FdtImage* img = fdt_image_plugins_create(img_name, err);
   if (!img) {
-    exit_error(err);
+    error(err);
   }
 
   FdtImageType img_type = fdt_image_gettype(img);
@@ -74,7 +74,7 @@ int main(int argc, char* argv[])
     FdtDevice* dev = fdt_device_new();
     fdt_device_setname(dev, img_name);
     if (!fdt_device_open(dev, FDT_FILE_READ, err)) {
-      exit_error(err);
+      error(err);
     }
 
     FdtFloppyParams* fdparams = fdt_floppy_params_new();
@@ -86,20 +86,20 @@ int main(int argc, char* argv[])
     if (!fdt_device_detectfloppyformat(dev, fdparams, err)) {
       // The device has no floppy disk, and so gets only current floppy settings.
       if (!fdt_device_getfloppyparameters(dev, fdparams, err)) {
-        exit_error(err);
+        error(err);
       }
     }
     fdu_console_message("%s", fdt_floppy_params_getdescription(fdparams));
 
     fdt_floppy_params_delete(fdparams);
     if (!fdt_device_close(dev, err)) {
-      exit_error(err);
+      error(err);
     }
     fdt_device_delete(dev);
   } break;
   default: {
     if (!fdt_image_load(img, err)) {
-      exit_error(err);
+      error(err);
     }
     const char* type = fdt_image_gettypeid(img);
     size_t cyl = fdt_image_getnumberofcylinder(img);
