@@ -295,13 +295,13 @@ int main(int argc, char* argv[])
 
   // Dumps sector bytes
 
-  for (int i = head_start_no; i <= head_end_no; i++) {
-    for (int j = track_start_no; j <= track_end_no; j++) {
+  for (int i = track_start_no; i <= track_end_no; i++) {
+    for (int j = head_start_no; j <= head_end_no; j++) {
       for (int k = sector_start_no; k <= sector_end_no; k++) {
         FdtImageSector* sector = fdt_image_getsector(img, i, j, k);
         if (!sector)
           continue;
-        printf("HEAD:%d TRACK:%d SECTOR:%d\n", i, j, k);
+        printf("HEAD:%d TRACK:%d SECTOR:%d\n", j, i, k);
         size_t sector_size = fdt_image_sector_getsize(sector);
         byte_t* sector_data = fdt_image_sector_getdata(sector);
         fdt_hexdump_print(sector_data, sector_size);
