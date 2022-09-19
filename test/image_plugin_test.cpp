@@ -21,37 +21,37 @@ BOOST_AUTO_TEST_CASE(ImagePluginTest)
 {
   FdtError* err = fdt_error_new();
   BOOST_REQUIRE(err);
+  /*
+    boost::filesystem::path test_img_path(TEST_IMAGE_DIRECTORY);
+    boost::filesystem::recursive_directory_iterator end;
+    for (boost::filesystem::recursive_directory_iterator it(test_img_path); it != end; ++it) {
+      const boost::filesystem::path test_img_filepath = (*it);
+      if (!boost::filesystem::exists(test_img_filepath))
+        continue;
 
-  boost::filesystem::path test_img_path(TEST_IMAGE_DIRECTORY);
-  boost::filesystem::recursive_directory_iterator end;
-  for (boost::filesystem::recursive_directory_iterator it(test_img_path); it != end; ++it) {
-    const boost::filesystem::path test_img_filepath = (*it);
-    if (!boost::filesystem::exists(test_img_filepath))
-      continue;
+      const boost::filesystem::path test_img_filename = test_img_filepath.filename();
 
-    const boost::filesystem::path test_img_filename = test_img_filepath.filename();
+      FDT_IMAGE_IMAGER test_imager = fdt_image_plugins_getimager(test_img_filepath.c_str(), err);
+      if (!test_imager)
+        continue;
 
-    FDT_IMAGE_IMAGER test_imager = fdt_image_plugins_getimager(test_img_filepath.c_str(), err);
-    if (!test_imager)
-      continue;
+      // Loads a found test disk image
 
-    // Loads a found test disk image
+      BOOST_TEST_MESSAGE("Loading   <- " << test_img_filename);
 
-    BOOST_TEST_MESSAGE("Loading   <- " << test_img_filename);
+      FdtImage* test_img = test_imager();
+      BOOST_REQUIRE(test_img);
+      fdt_image_settarget(test_img, test_img_filepath.c_str());
+      BOOST_REQUIRE_MESSAGE(fdt_image_load(test_img, err), fdt_error_getdebugmessage(err));
 
-    FdtImage* test_img = test_imager();
-    BOOST_REQUIRE(test_img);
-    fdt_image_settarget(test_img, test_img_filepath.c_str());
-    BOOST_REQUIRE_MESSAGE(fdt_image_load(test_img, err), fdt_error_getdebugmessage(err));
+      BOOST_TEST_MESSAGE("Loaded    <- " << test_img_filename << "(" << fdt_image_gettypeid(test_img) << ")");
 
-    BOOST_TEST_MESSAGE("Loaded    <- " << test_img_filename << "(" << fdt_image_gettypeid(test_img) << ")");
+      // Exports the loaded image to a memory file, and compare the exported image with the original image
 
-    // Exports the loaded image to a memory file, and compare the exported image with the original image
+      ImageExportCompareTest(test_img, test_imager);
 
-    ImageExportCompareTest(test_img, test_imager);
-
-    BOOST_CHECK(fdt_image_delete(test_img));
-  }
-
+      BOOST_CHECK(fdt_image_delete(test_img));
+    }
+  */
   BOOST_CHECK(fdt_error_delete(err));
 }
