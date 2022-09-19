@@ -33,7 +33,6 @@ void fdu_program_adddeviceoptions(FdtProgram* prg)
 
 bool fdu_device_image_setoptions(FdtImage* img, FdtProgram* prg, FdtError* err)
 {
-  // TODO: Sets image parameters to device
   FdtDevice* dev = fdt_device_new();
   FdtFloppyParams* fdparams = fdt_floppy_params_new();
   if (!dev || !fdparams) {
