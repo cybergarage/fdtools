@@ -287,8 +287,8 @@ int main(int argc, char* argv[])
     track_start_no = track_end_no = fdt_str2int(fdt_program_getargument(prg, 2));
   }
 
-  int sector_start_no = 0;
-  int sector_end_no = fdt_image_getnumberoftrack(img) - 1;
+  int sector_start_no = 1;
+  int sector_end_no = fdt_image_getnumberoftrack(img);
   if (3 <= fdt_program_getnarguments(prg)) {
     sector_start_no = sector_end_no = fdt_str2int(fdt_program_getargument(prg, 3));
   }
