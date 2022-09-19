@@ -281,10 +281,10 @@ int main(int argc, char* argv[])
     head_start_no = head_end_no = fdt_str2int(fdt_program_getargument(prg, 1));
   }
 
-  int track_start_no = 0;
-  int track_end_no = fdt_image_getnumberofsector(img) - 1;
+  int cyclinder_start_no = 0;
+  int cyclinder_end_no = fdt_image_getnumberofsector(img) - 1;
   if (3 <= fdt_program_getnarguments(prg)) {
-    track_start_no = track_end_no = fdt_str2int(fdt_program_getargument(prg, 2));
+    cyclinder_start_no = cyclinder_end_no = fdt_str2int(fdt_program_getargument(prg, 2));
   }
 
   int sector_start_no = 1;
@@ -295,13 +295,13 @@ int main(int argc, char* argv[])
 
   // Dumps sector bytes
 
-  for (int i = track_start_no; i <= track_end_no; i++) {
-    for (int j = head_start_no; j <= head_end_no; j++) {
-      for (int k = sector_start_no; k <= sector_end_no; k++) {
-        FdtImageSector* sector = fdt_image_getsector(img, i, j, k);
+  for (int c = cyclinder_start_no; c <= cyclinder_end_no; c++) {
+    for (int h = head_start_no; h <= head_end_no; h++) {
+      for (int s = sector_start_no; s <= sector_end_no; s++) {
+        FdtImageSector* sector = fdt_image_getsector(img, c, h, s);
         if (!sector)
           continue;
-        printf("HEAD:%d TRACK:%d SECTOR:%d\n", j, i, k);
+        printf("cyl:%d head:%d sect:%d\n", c, h, s);
         size_t sector_size = fdt_image_sector_getsize(sector);
         byte_t* sector_data = fdt_image_sector_getdata(sector);
         fdt_hexdump_print(sector_data, sector_size);
