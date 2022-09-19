@@ -113,7 +113,7 @@ bool fdt_image_setfloppyparams(FdtImage* img, FdtFloppyParams* fdparams, FdtErro
 {
   if (!img || !fdparams)
     return false;
-  fdt_image_setnumberoftrack(img, fdt_floppy_params_gettrack(fdparams));
+  fdt_image_setnumberofcylinder(img, fdt_floppy_params_gettrack(fdparams));
   fdt_image_setnumberofhead(img, fdt_floppy_params_gethead(fdparams));
   fdt_image_setnumberofsector(img, fdt_floppy_params_getsect(fdparams));
   fdt_image_setsectorsize(img, fdt_floppy_params_getssize(fdparams));

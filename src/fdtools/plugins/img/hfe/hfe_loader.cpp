@@ -58,10 +58,10 @@ bool fdt_hfe_image_load(FdtFileImage* img, FdtError* err)
     return false;
   }
 
-  size_t number_of_track = hfe_header.number_of_track;
+  size_t number_of_cylinder = hfe_header.number_of_cylinder;
   size_t number_of_head = hfe_header.number_of_side;
 
-  size_t track_offsets_buf_size = sizeof(FdtHfeTrackOffsets) * number_of_track;
+  size_t track_offsets_buf_size = sizeof(FdtHfeTrackOffsets) * number_of_cylinder;
   FdtHfeTrackOffsets* hfe_track_offsets = (FdtHfeTrackOffsets*)malloc(track_offsets_buf_size);
   if (!hfe_track_offsets)
     return false;
@@ -70,11 +70,11 @@ bool fdt_hfe_image_load(FdtFileImage* img, FdtError* err)
     return false;
   }
 
-  // fdt_hfe_header_print(hfe_track_offsets, number_of_track);
+  // fdt_hfe_header_print(hfe_track_offsets, number_of_cylinder);
 
   // Third part : Track data
 
-  for (size_t t = 0; t < number_of_track; t++) {
+  for (size_t t = 0; t < number_of_cylinder; t++) {
     fdt_log_debug(FDT_HFE_MESSAGE_HEADER FDT_IMAGE_MESSAGE_SECTOR_PRINTF_FORMAT, t, 0, 0);
 
     size_t track_offset = hfe_track_offsets[t].offset;
@@ -154,7 +154,7 @@ bool fdt_hfe_header_parse(FdtHfeHeader* header, byte_t* header_buf)
 bool fdt_image_sethfeheaderinfo(FdtFileImage* img, FdtHfeHeader* header)
 {
   fdt_image_setwriteprotectenabled(img, header->write_allowed ? false : true);
-  fdt_image_setnumberoftrack(img, header->number_of_track);
+  fdt_image_setnumberofcylinder(img, header->number_of_cylinder);
   fdt_image_setnumberofhead(img, header->number_of_side);
   fdt_image_setbitrate(img, header->bitRate);
   fdt_image_setrpm(img, header->floppyRPM);
@@ -165,7 +165,7 @@ bool fdt_image_sethfeheaderinfo(FdtFileImage* img, FdtHfeHeader* header)
 void fdt_hfe_header_print(FdtHfeHeader* header)
 {
   printf("formatrevision:       %d\n", header->formatrevision);
-  printf("number_of_track:      %d\n", header->number_of_track);
+  printf("number_of_cylinder:      %d\n", header->number_of_cylinder);
   printf("number_of_head:       %d\n", header->number_of_side);
   printf("track_encoding:       %d\n", header->track_encoding);
   printf("bitRate:              %d\n", header->bitRate);
@@ -181,9 +181,9 @@ void fdt_hfe_header_print(FdtHfeHeader* header)
   printf("track0s1_encoding:    %02X\n", header->track0s1_encoding);
 }
 
-void fdt_hfe_header_print(FdtHfeTrackOffsets* track_offsets, size_t number_of_track)
+void fdt_hfe_header_print(FdtHfeTrackOffsets* track_offsets, size_t number_of_cylinder)
 {
-  for (size_t n = 0; n < number_of_track; n++) {
+  for (size_t n = 0; n < number_of_cylinder; n++) {
     printf("[%02ld] %04X %d\n", n, track_offsets[n].offset, track_offsets[n].track_len);
   }
 }

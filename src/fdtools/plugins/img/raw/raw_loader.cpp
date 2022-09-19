@@ -42,14 +42,14 @@ bool fdt_raw_image_autoconfing(FdtFileImage* img, FdtError* err)
   switch (img_size) {
   case 327680: // 5.25 CP/M
   {
-    fdt_image_config_setnumberoftrack(config, 40);
+    fdt_image_config_setnumberofcylinder(config, 40);
     fdt_image_config_setnumberofhead(config, 2);
     fdt_image_config_setnumberofsector(config, 16);
     fdt_image_config_setsectorsize(config, 256);
     return true;
   }
   case 1474560: // 3.5 inch IBM-PC
-    fdt_image_config_setnumberoftrack(config, 80);
+    fdt_image_config_setnumberofcylinder(config, 80);
     fdt_image_config_setnumberofhead(config, 2);
     fdt_image_config_setnumberofsector(config, 18);
     fdt_image_config_setsectorsize(config, 512);
@@ -80,14 +80,14 @@ bool fdt_raw_image_load(FdtFileImage* img, FdtError* err)
   if (!fdt_image_config_isvalid(config, err))
     return false;
 
-  size_t number_of_track = fdt_image_config_getnumberoftrack(config);
+  size_t number_of_cylinder = fdt_image_config_getnumberofcylinder(config);
   size_t number_of_head = fdt_image_config_getnumberofhead(config);
   size_t number_of_sector = fdt_image_config_getnumberofsector(config);
   size_t sector_size = fdt_image_config_getsectorsize(config);
 
   size_t total_image_size = 0;
 
-  for (size_t c = 0; c < number_of_track; c++) {
+  for (size_t c = 0; c < number_of_cylinder; c++) {
     for (size_t h = 0; h < number_of_head; h++) {
       for (size_t s = 1; s <= number_of_sector; s++) {
         byte_t* sector_data = (byte_t*)malloc(sector_size);

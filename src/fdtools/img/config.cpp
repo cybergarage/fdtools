@@ -37,7 +37,7 @@ FdtImageConfig* fdt_image_config_new()
   fdt_image_config_setdensity(config, FDT_IMAGE_DENSITY_UNKNOWN);
   fdt_image_config_setnumberofhead(config, 0);
   fdt_image_config_setnumberofsector(config, 0);
-  fdt_image_config_setnumberoftrack(config, 0);
+  fdt_image_config_setnumberofcylinder(config, 0);
   fdt_image_config_setsectorsize(config, 0);
   fdt_image_config_setbitrate(config, 0);
   fdt_image_config_setrpm(config, 0);
@@ -67,7 +67,7 @@ FdtImageDensity fdt_image_config_getsupposeddensity(FdtImageConfig* config)
   if (config->density != FDT_IMAGE_DENSITY_UNKNOWN)
     return config->density;
 
-  switch (config->number_of_track) {
+  switch (config->number_of_cylinder) {
   case 80:
     switch (config->number_of_sector) {
     case 9:
@@ -126,8 +126,8 @@ bool fdt_image_config_isvalid(FdtImageConfig* config, FdtError* err)
   if (!config)
     return false;
 
-  if (fdt_image_config_getnumberofhead(config) <= 0 || fdt_image_config_getnumberofsector(config) <= 0 || fdt_image_config_getnumberoftrack(config) <= 0 || fdt_image_config_getsectorsize(config) <= 0) {
-    fdt_error_setmessage(err, "Invalid Parameters track:%ld, head:%ld, sector:%ld, ssize:%ld", fdt_image_config_getnumberoftrack(config), fdt_image_config_getnumberofhead(config), fdt_image_config_getnumberofsector(config), fdt_image_config_getsectorsize(config));
+  if (fdt_image_config_getnumberofhead(config) <= 0 || fdt_image_config_getnumberofsector(config) <= 0 || fdt_image_config_getnumberofcylinder(config) <= 0 || fdt_image_config_getsectorsize(config) <= 0) {
+    fdt_error_setmessage(err, "Invalid Parameters track:%ld, head:%ld, sector:%ld, ssize:%ld", fdt_image_config_getnumberofcylinder(config), fdt_image_config_getnumberofhead(config), fdt_image_config_getnumberofsector(config), fdt_image_config_getsectorsize(config));
     return false;
   }
 
@@ -172,12 +172,12 @@ size_t fdt_image_config_calculaterawsize(FdtImageConfig* config)
 {
   if (!config)
     return 0;
-  return config->number_of_track * config->number_of_head * config->number_of_sector * config->sector_size;
+  return config->number_of_cylinder * config->number_of_head * config->number_of_sector * config->sector_size;
 }
 
 const char* fdt_image_config_getdescription(FdtImageConfig* config)
 {
-  fdt_string_setvaluef(config->desc, "track:%ld, head:%ld, sector:%ld, ssize:%ld", config->number_of_track, config->number_of_head, config->number_of_sector, config->sector_size);
+  fdt_string_setvaluef(config->desc, "track:%ld, head:%ld, sector:%ld, ssize:%ld", config->number_of_cylinder, config->number_of_head, config->number_of_sector, config->sector_size);
   return fdt_string_getvalue(config->desc);
 }
 
@@ -186,7 +186,7 @@ void fdt_image_config_print(FdtImageConfig* config)
   printf("name               : %s\n", fdt_image_config_getname(config));
   printf("size               : %ld\n", fdt_image_config_getsize(config));
   printf("density            : %s\n", fdt_image_config_getdensitystring(config));
-  printf("number of track : %ld\n", config->number_of_track);
+  printf("number of track : %ld\n", config->number_of_cylinder);
   printf("number of head     : %ld\n", config->number_of_head);
   printf("number of sector   : %ld\n", config->number_of_sector);
   printf("sector size        : %ld\n", config->sector_size);

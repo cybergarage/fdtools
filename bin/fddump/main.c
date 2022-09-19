@@ -148,7 +148,7 @@ void print_progress(FdtDeviceImage* img, FdtImageSector* sector, size_t dev_read
       }
     }
     time_t elapsed_time = time(NULL) - progress_start_time;
-    printf("\ncyl=%ld, head=%ld, sect=%ld, ssize=%ld", fdt_image_getnumberoftrack(img), fdt_image_getnumberofhead(img), fdt_image_getnumberofsector(img), fdt_image_getsectorsize(img));
+    printf("\ncyl=%ld, head=%ld, sect=%ld, ssize=%ld", fdt_image_getnumberofcylinder(img), fdt_image_getnumberofhead(img), fdt_image_getnumberofsector(img), fdt_image_getsectorsize(img));
     printf("\nruntime: % 4lds,   read sectors: % 4d,   error sectors: % 4d,   read errors: % 4d", elapsed_time, read_sector_cnt, err_sector_cnt, error_cnt);
   }
 
@@ -288,7 +288,7 @@ int main(int argc, char* argv[])
   }
 
   int sector_start_no = 1;
-  int sector_end_no = fdt_image_getnumberoftrack(img);
+  int sector_end_no = fdt_image_getnumberofcylinder(img);
   if (3 <= fdt_program_getnarguments(prg)) {
     sector_start_no = sector_end_no = fdt_str2int(fdt_program_getargument(prg, 3));
   }

@@ -28,7 +28,7 @@ BOOST_AUTO_TEST_CASE(D88HeaderSizeTest)
 void TEST_CHECK_D88_DISKTYPE_EQUAL(FdtImage* img, int c, int h, int s, int ssize, uint8_t d88_disk_type)
 {
 
-  fdt_image_setnumberoftrack(img, c);
+  fdt_image_setnumberofcylinder(img, c);
   fdt_image_setnumberofhead(img, h);
   fdt_image_setnumberofsector(img, s);
   fdt_image_setsectorsize(img, ssize);

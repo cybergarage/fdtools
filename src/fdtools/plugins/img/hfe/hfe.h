@@ -62,7 +62,7 @@ extern "C" {
 typedef struct FDT_ATTR_PACKED {
   unsigned char HEADERSIGNATURE[8];
   unsigned char formatrevision;
-  unsigned char number_of_track;
+  unsigned char number_of_cylinder;
   unsigned char number_of_side;
   unsigned char track_encoding;
   uint16_t bitRate;

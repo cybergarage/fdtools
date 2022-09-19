@@ -49,7 +49,7 @@ FdtImageSector* fdt_image_sectors_getsector(FdtImageSectors* sectors, FdtTrackNu
   return NULL;
 }
 
-size_t fdt_image_sectors_getnumberoftrack(FdtImageSectors* sectors)
+size_t fdt_image_sectors_getnumberofcylinder(FdtImageSectors* sectors)
 {
   size_t max_track_idx = 0;
   for (FdtImageSector* sector = fdt_image_sectors_gets(sectors); sector; sector = fdt_image_sector_next(sector)) {
@@ -85,7 +85,7 @@ size_t fdt_image_sectors_getnumberofsector(FdtImageSectors* sectors)
   return max_sector_no;
 }
 
-size_t fdt_image_sectors_getnumberoftracksector(FdtImageSectors* sectors, FdtTrackNumber t, FdtHeadNumber h)
+size_t fdt_image_sectors_getnumberofcylindersector(FdtImageSectors* sectors, FdtTrackNumber t, FdtHeadNumber h)
 {
   size_t max_sector_no = 0;
   for (FdtImageSector* sector = fdt_image_sectors_gets(sectors); sector; sector = fdt_image_sector_next(sector)) {

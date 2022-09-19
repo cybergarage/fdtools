@@ -224,12 +224,12 @@ bool fdt_image_isvalid(FdtImage* img, FdtError* err)
     return false;
   }
 
-  size_t number_of_track = fdt_image_config_getnumberoftrack(config);
+  size_t number_of_cylinder = fdt_image_config_getnumberofcylinder(config);
   size_t number_of_head = fdt_image_config_getnumberofhead(config);
   size_t number_of_sector = fdt_image_config_getnumberofsector(config);
   size_t config_sector_size = fdt_image_config_getsectorsize(config);
 
-  for (size_t c = 0; c < number_of_track; c++) {
+  for (size_t c = 0; c < number_of_cylinder; c++) {
     for (size_t h = 0; h < number_of_head; h++) {
       for (size_t s = 1; s <= number_of_sector; s++) {
         FdtImageSector* sector = fdt_image_getsector(img, c, h, s);
@@ -261,12 +261,12 @@ bool fdt_image_generatesectors(FdtImage* img, FdtError* err)
   if (!fdt_image_config_isvalid(img->config, err))
     return false;
 
-  size_t number_of_track = fdt_image_getnumberoftrack(img);
+  size_t number_of_cylinder = fdt_image_getnumberofcylinder(img);
   size_t number_of_head = fdt_image_getnumberofhead(img);
   size_t number_of_sector = fdt_image_getnumberofsector(img);
   size_t sector_size = fdt_image_getsectorsize(img);
 
-  for (size_t c = 0; c < number_of_track; c++) {
+  for (size_t c = 0; c < number_of_cylinder; c++) {
     for (size_t h = 0; h < number_of_head; h++) {
       for (size_t s = 1; s <= number_of_sector; s++) {
         FdtImageSector* sector = fdt_image_sector_new();

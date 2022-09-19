@@ -32,7 +32,7 @@ bool fdt_hfe_image_export(FdtFileImage* img, FdtError* err)
   if (!fp)
     return false;
 
-  size_t number_of_track = fdt_image_getnumberoftrack(img);
+  size_t number_of_cylinder = fdt_image_getnumberofcylinder(img);
   size_t number_of_head = fdt_image_getnumberofhead(img);
 
   // First part : 0x0000-0x0200 (512 bytes) : File header
@@ -53,11 +53,11 @@ bool fdt_hfe_image_export(FdtFileImage* img, FdtError* err)
 
   size_t track_offset_lut_size = HFE_TRACK_OFFSET_LUT_SIZE;
   size_t track_offset_lut_track_max = track_offset_lut_size / sizeof(FdtHfeTrackOffsets);
-  if (track_offset_lut_track_max < number_of_track) { // Up to 1024 ?
+  if (track_offset_lut_track_max < number_of_cylinder) { // Up to 1024 ?
     track_offset_lut_size += HFE_TRACK_OFFSET_LUT_SIZE;
     track_offset_lut_track_max = track_offset_lut_size / sizeof(FdtHfeTrackOffsets);
-    if (track_offset_lut_track_max < number_of_track) {
-      fdt_error_setmessage(err, "number of track is so big (%d)", number_of_track);
+    if (track_offset_lut_track_max < number_of_cylinder) {
+      fdt_error_setmessage(err, "number of track is so big (%d)", number_of_cylinder);
       return false;
     }
   }
@@ -67,7 +67,7 @@ bool fdt_hfe_image_export(FdtFileImage* img, FdtError* err)
   FdtHfeTrackOffsets* track_offsets = (FdtHfeTrackOffsets*)track_offset_lut_buf;
 
   size_t track_offset_block_no = (HFE_HEADER_BLOCK_SIZE + track_offset_lut_size) / 512;
-  for (size_t t = 0; t < number_of_track; t++) {
+  for (size_t t = 0; t < number_of_cylinder; t++) {
     track_offsets[t].offset = track_offset_block_no;
     size_t track_max_size = 0;
     for (size_t h = 0; h < number_of_head; h++) {
@@ -85,7 +85,7 @@ bool fdt_hfe_image_export(FdtFileImage* img, FdtError* err)
 
   // Third part : Track data
 
-  for (size_t t = 0; t < number_of_track; t++) {
+  for (size_t t = 0; t < number_of_cylinder; t++) {
     fdt_log_debug(FDT_HFE_MESSAGE_HEADER FDT_IMAGE_MESSAGE_SECTOR_PRINTF_FORMAT, t, 0, 0);
 
     size_t track_sizes[number_of_head];
@@ -127,7 +127,7 @@ bool fdt_hfe_header_setconfig(FdtHfeHeader* hfe_header, FdtImage* img, FdtError*
 {
   memcpy(hfe_header->HEADERSIGNATURE, HFE_IMAGE_HEADER_SIGNATURE, 8);
   hfe_header->formatrevision = 0;
-  hfe_header->number_of_track = fdt_image_getnumberoftrack(img);
+  hfe_header->number_of_cylinder = fdt_image_getnumberofcylinder(img);
   hfe_header->number_of_side = fdt_image_getnumberofhead(img);
   hfe_header->track_encoding = HFE_ISOIBM_MFM_ENCODING;
   hfe_header->bitRate = fdt_image_getbitrate(img);

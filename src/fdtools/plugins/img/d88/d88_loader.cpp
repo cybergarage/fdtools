@@ -121,7 +121,7 @@ bool fdt_d88_image_load(FdtFileImage* img, FdtError* err)
   }
 
   fdt_image_setsize(img, d88_image_file_size);
-  fdt_image_setnumberoftrack(img, fdt_image_sectors_getnumberoftrack(img->sectors));
+  fdt_image_setnumberofcylinder(img, fdt_image_sectors_getnumberofcylinder(img->sectors));
   fdt_image_setnumberofhead(img, fdt_image_sectors_getnumberofhead(img->sectors));
   fdt_image_setnumberofsector(img, fdt_image_sectors_getnumberofsector(img->sectors));
   fdt_image_setsectorsize(img, fdt_image_sectors_getmaxsectorsize(img->sectors));

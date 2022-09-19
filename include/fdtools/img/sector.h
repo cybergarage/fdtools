@@ -76,10 +76,10 @@ FdtImageSectors* fdt_image_sectors_new();
 void fdt_image_sectors_delete(FdtImageSectors*);
 
 FdtImageSector* fdt_image_sectors_getsector(FdtImageSectors*, FdtTrackNumber, FdtHeadNumber, FdtSectorNumber);
-size_t fdt_image_sectors_getnumberoftrack(FdtImageSectors*);
+size_t fdt_image_sectors_getnumberofcylinder(FdtImageSectors*);
 size_t fdt_image_sectors_getnumberofhead(FdtImageSectors*);
 size_t fdt_image_sectors_getnumberofsector(FdtImageSectors*);
-size_t fdt_image_sectors_getnumberoftracksector(FdtImageSectors*, FdtTrackNumber, FdtHeadNumber);
+size_t fdt_image_sectors_getnumberofcylindersector(FdtImageSectors*, FdtTrackNumber, FdtHeadNumber);
 size_t fdt_image_sectors_getmaxsectorsize(FdtImageSectors*);
 size_t fdt_image_sectors_gettotaldatasize(FdtImageSectors*);
 size_t fdt_image_sectors_gettracksize(FdtImageSectors*, FdtTrackNumber, FdtHeadNumber);

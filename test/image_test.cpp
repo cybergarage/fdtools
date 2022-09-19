@@ -38,7 +38,7 @@ BOOST_AUTO_TEST_CASE(ImageGenerateTest)
 
   BOOST_REQUIRE_MESSAGE(!fdt_image_generatesectors(img, err), fdt_error_getdebugmessage(err));
 
-  fdt_image_setnumberoftrack(img, 80);
+  fdt_image_setnumberofcylinder(img, 80);
   fdt_image_setnumberofhead(img, 2);
   fdt_image_setnumberofsector(img, 18);
   fdt_image_setsectorsize(img, 512);
@@ -55,11 +55,11 @@ BOOST_AUTO_TEST_CASE(ImageSortSectorsTest)
   FdtImage* img = fdt_image_new();
   BOOST_REQUIRE(img);
 
-  size_t number_of_track = 80;
+  size_t number_of_cylinder = 80;
   size_t number_of_head = 2;
   size_t number_of_sector = 18;
 
-  for (ssize_t c = (number_of_track - 1); 0 <= c; c--) {
+  for (ssize_t c = (number_of_cylinder - 1); 0 <= c; c--) {
     for (ssize_t h = (number_of_head - 1); 0 <= h; h--) {
       for (ssize_t s = number_of_sector; 1 <= s; s--) {
         FdtImageSector* sector = fdt_image_sector_new();
@@ -87,7 +87,7 @@ BOOST_AUTO_TEST_CASE(ImageImportTest)
 
   FdtImage* src_img = fdt_image_new();
   BOOST_REQUIRE(src_img);
-  fdt_image_setnumberoftrack(src_img, 80);
+  fdt_image_setnumberofcylinder(src_img, 80);
   fdt_image_setnumberofhead(src_img, 2);
   fdt_image_setnumberofsector(src_img, 18);
   fdt_image_setsectorsize(src_img, 512);
