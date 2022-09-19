@@ -30,6 +30,11 @@
 #include <fdutils/floppy.h>
 #include <fdutils/program.h>
 
+void usage(FdtProgram* prg)
+{
+  fdu_program_usage(prg, ARG_IMAGE_DEVICE_FILENAME);
+}
+
 int main(int argc, char* argv[])
 {
   fdu_console_enabled();
@@ -50,12 +55,12 @@ int main(int argc, char* argv[])
 
   if (!fdu_program_parse_arguments(prg, argc, argv, err)) {
     fdu_console_error(err);
-    fdu_program_usage(prg);
+    usage(prg);
     return EXIT_FAILURE;
   }
 
   if (fdt_program_getnarguments(prg) < 1) {
-    fdu_program_usage(prg);
+    usage(prg);
     return EXIT_FAILURE;
   }
 
