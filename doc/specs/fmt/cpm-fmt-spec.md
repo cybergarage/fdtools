@@ -7,8 +7,8 @@ Trak 2 Directory
 
 ## References
 
+- [The Unofficial CP/M Web Site](http://cpm.z80.de/)
 - [CP/M information archive : disc formats](https://www.seasip.info/Cpm/formats.html)
-- [cpm(5): CP/M disk/file system format - Linux man page](https://linux.die.net/man/5/cpm)
 - アスキー・ラーニングシステム
   - 入門CP/M―マイクロコンピュータの基本ソフトウェア
   - 実習 CP/M―マイクロコンピュータの基本ソフトウェア
