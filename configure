@@ -5513,7 +5513,7 @@ fi
 # Makefiles
 ##############################
 
-ac_config_files="$ac_config_files Makefile include/Makefile lib/Makefile lib/unix/Makefile bin/Makefile bin/fdcopy/Makefile bin/fdcopy/unix/Makefile bin/fdinfo/Makefile bin/fdinfo/unix/Makefile test/Makefile test/unix/Makefile"
+ac_config_files="$ac_config_files Makefile include/Makefile lib/Makefile lib/unix/Makefile bin/Makefile bin/fdcopy/Makefile bin/fdcopy/unix/Makefile bin/fdinfo/Makefile bin/fdinfo/unix/Makefile bin/fddump/Makefile bin/fddump/unix/Makefile test/Makefile test/unix/Makefile"
 
 cat >confcache <<\_ACEOF
 # This file is a shell script that caches the results of configure
@@ -6254,6 +6254,8 @@ do
     "bin/fdcopy/unix/Makefile") CONFIG_FILES="$CONFIG_FILES bin/fdcopy/unix/Makefile" ;;
     "bin/fdinfo/Makefile") CONFIG_FILES="$CONFIG_FILES bin/fdinfo/Makefile" ;;
     "bin/fdinfo/unix/Makefile") CONFIG_FILES="$CONFIG_FILES bin/fdinfo/unix/Makefile" ;;
+    "bin/fddump/Makefile") CONFIG_FILES="$CONFIG_FILES bin/fddump/Makefile" ;;
+    "bin/fddump/unix/Makefile") CONFIG_FILES="$CONFIG_FILES bin/fddump/unix/Makefile" ;;
     "test/Makefile") CONFIG_FILES="$CONFIG_FILES test/Makefile" ;;
     "test/unix/Makefile") CONFIG_FILES="$CONFIG_FILES test/unix/Makefile" ;;
 

@@ -92,6 +92,8 @@ bin/fdcopy/Makefile
 bin/fdcopy/unix/Makefile
 bin/fdinfo/Makefile
 bin/fdinfo/unix/Makefile
+bin/fddump/Makefile
+bin/fddump/unix/Makefile
 test/Makefile
 test/unix/Makefile
 ])
