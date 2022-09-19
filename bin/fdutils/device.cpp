@@ -17,9 +17,9 @@
 #include <fdtools/img/image.h>
 #include <fdtools/util/program.h>
 
+#include "console.h"
 #include "device.h"
 #include "program.h"
-#include "console.h"
 
 void fdu_program_adddeviceoptions(FdtProgram* prg)
 {
@@ -77,6 +77,36 @@ bool fdu_device_image_load(FdtImage* img, FdtError* err)
   }
   if (last_sector) {
     fdu_console_printdeviceprogress(dev_img, last_sector, dev_read_sector_cnt, dev_sector_cnt);
+  }
+  if (!fdt_device_image_close(dev_img, err)) {
+    return false;
+  }
+  return true;
+}
+
+bool fdu_device_image_export(FdtImage* img, FdtError* err)
+{
+  const char* dev_name = fdt_image_gettarget(img);
+  FdtDeviceImage* dev_img = (FdtDeviceImage*)img;
+  if (!fdt_device_image_open(dev_img, dev_name, FDT_FILE_WRITE, err)) {
+    return false;
+  }
+  size_t dev_sector_cnt = fdt_device_image_getnsectors(dev_img);
+  size_t dev_wrote_sector_cnt = 0;
+  fdu_console_refresh_progresstime();
+  FdtImageSector* last_sector;
+  for (FdtImageSector* sector = fdt_device_image_getsectors(dev_img); sector; sector = fdt_image_sector_next(sector)) {
+    last_sector = sector;
+    fdu_console_printdeviceprogress(dev_img, sector, dev_wrote_sector_cnt, dev_sector_cnt);
+    if (fdt_device_image_writesector(dev_img, sector, err)) {
+      dev_wrote_sector_cnt++;
+    }
+    else {
+      return false;
+    }
+  }
+  if (last_sector) {
+    fdu_console_printdeviceprogress(dev_img, last_sector, dev_wrote_sector_cnt, dev_sector_cnt);
   }
   if (!fdt_device_image_close(dev_img, err)) {
     return false;

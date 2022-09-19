@@ -107,29 +107,7 @@ int main(int argc, char* argv[])
   // Exports source file image to dest file image
 
   if (fdt_image_isdevice(dst_img)) {
-    // Shows progress infomation for device image types
-    FdtDeviceImage* dev_img = (FdtDeviceImage*)dst_img;
-    if (!fdt_device_image_open(dev_img, dst_img_name, FDT_FILE_WRITE, err)) {
-      exit_error(err);
-    }
-    size_t dev_sector_cnt = fdt_device_image_getnsectors(dev_img);
-    size_t dev_wrote_sector_cnt = 0;
-    fdu_console_refresh_progresstime();
-    FdtImageSector* last_sector;
-    for (FdtImageSector* sector = fdt_device_image_getsectors(dev_img); sector; sector = fdt_image_sector_next(sector)) {
-      last_sector = sector;
-      fdu_console_printdeviceprogress(dev_img, sector, dev_wrote_sector_cnt, dev_sector_cnt);
-      if (fdt_device_image_writesector(dev_img, sector, err)) {
-        dev_wrote_sector_cnt++;
-      }
-      else {
-        exit_error(err);
-      }
-    }
-    if (last_sector) {
-      fdu_console_printdeviceprogress(dev_img, last_sector, dev_wrote_sector_cnt, dev_sector_cnt);
-    }
-    if (!fdt_device_image_close(dev_img, err)) {
+    if (!fdu_device_image_export(dst_img, err)) {
       exit_error(err);
     }
   }

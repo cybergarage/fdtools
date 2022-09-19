@@ -33,6 +33,7 @@ extern "C" {
 void fdu_program_adddeviceoptions(FdtProgram* prg);
 bool fdu_device_image_setoptions(FdtImage* img, FdtProgram* prg, FdtError* err);
 bool fdu_device_image_load(FdtImage* img, FdtError* err);
+bool fdu_device_image_export(FdtImage* img, FdtError* err);
 
 #ifdef __cplusplus
 } /* extern C */
