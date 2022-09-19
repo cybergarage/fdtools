@@ -90,8 +90,8 @@ Macros</h2></td></tr>
 <tr class="separator:a51441d83b194923e8a635f4dce925221"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afc5bdb734029b3e5a2c370d9c0dfde46"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="config_8h.html#afc5bdb734029b3e5a2c370d9c0dfde46">fdt_image_config_setnumberofsector</a>(config,  v)&#160;&#160;&#160;(config-&gt;number_of_sector = v)</td></tr>
 <tr class="separator:afc5bdb734029b3e5a2c370d9c0dfde46"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae4f126b591c3de916b0f173d58ee62f8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="config_8h.html#ae4f126b591c3de916b0f173d58ee62f8">fdt_image_config_setnumberoftrack</a>(config,  v)&#160;&#160;&#160;(config-&gt;number_of_track = v)</td></tr>
-<tr class="separator:ae4f126b591c3de916b0f173d58ee62f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a60bda32b507fcaad9c507e090213973c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="config_8h.html#a60bda32b507fcaad9c507e090213973c">fdt_image_config_setnumberofcylinder</a>(config,  v)&#160;&#160;&#160;(config-&gt;number_of_cylinder = v)</td></tr>
+<tr class="separator:a60bda32b507fcaad9c507e090213973c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a46f6cc0ce8ddb8e3c124cd67d8672026"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="config_8h.html#a46f6cc0ce8ddb8e3c124cd67d8672026">fdt_image_config_setsectorsize</a>(config,  v)&#160;&#160;&#160;(config-&gt;sector_size = v)</td></tr>
 <tr class="separator:a46f6cc0ce8ddb8e3c124cd67d8672026"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aefcd69e4bd6cdddc2e67820efc6f518f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="config_8h.html#aefcd69e4bd6cdddc2e67820efc6f518f">fdt_image_config_setbitrate</a>(config,  v)&#160;&#160;&#160;(config-&gt;bitrate = v)</td></tr>
@@ -114,8 +114,8 @@ Macros</h2></td></tr>
 <tr class="separator:a818c1d6d568eb8c03e38f48e38f54bca"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aafc99443796c4e7082592901c50ac996"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="config_8h.html#aafc99443796c4e7082592901c50ac996">fdt_image_config_getnumberofsector</a>(config)&#160;&#160;&#160;(config-&gt;number_of_sector)</td></tr>
 <tr class="separator:aafc99443796c4e7082592901c50ac996"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a309fe2481ddb058fbbb483e17b0fabef"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="config_8h.html#a309fe2481ddb058fbbb483e17b0fabef">fdt_image_config_getnumberoftrack</a>(config)&#160;&#160;&#160;(config-&gt;number_of_track)</td></tr>
-<tr class="separator:a309fe2481ddb058fbbb483e17b0fabef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a395a9948880075e485a83ca4965fecce"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="config_8h.html#a395a9948880075e485a83ca4965fecce">fdt_image_config_getnumberofcylinder</a>(config)&#160;&#160;&#160;(config-&gt;number_of_cylinder)</td></tr>
+<tr class="separator:a395a9948880075e485a83ca4965fecce"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abdd0f4ae8c7b91a1bbfdb5fc84f79bd0"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="config_8h.html#abdd0f4ae8c7b91a1bbfdb5fc84f79bd0">fdt_image_config_getsectorsize</a>(config)&#160;&#160;&#160;(config-&gt;sector_size)</td></tr>
 <tr class="separator:abdd0f4ae8c7b91a1bbfdb5fc84f79bd0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af2d87f38b12512e7dcb496ab9e7dc017"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="config_8h.html#af2d87f38b12512e7dcb496ab9e7dc017">fdt_image_config_getbitrate</a>(config)&#160;&#160;&#160;(config-&gt;bitrate)</td></tr>
@@ -224,6 +224,24 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="a395a9948880075e485a83ca4965fecce" name="a395a9948880075e485a83ca4965fecce"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a395a9948880075e485a83ca4965fecce">&#9670;&nbsp;</a></span>fdt_image_config_getnumberofcylinder</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define fdt_image_config_getnumberofcylinder</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">config</td><td>)</td>
+          <td>&#160;&#160;&#160;(config-&gt;number_of_cylinder)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a818c1d6d568eb8c03e38f48e38f54bca" name="a818c1d6d568eb8c03e38f48e38f54bca"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a818c1d6d568eb8c03e38f48e38f54bca">&#9670;&nbsp;</a></span>fdt_image_config_getnumberofhead</h2>
 
@@ -254,24 +272,6 @@ Functions</h2></td></tr>
           <td class="paramtype">&#160;</td>
           <td class="paramname">config</td><td>)</td>
           <td>&#160;&#160;&#160;(config-&gt;number_of_sector)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a309fe2481ddb058fbbb483e17b0fabef" name="a309fe2481ddb058fbbb483e17b0fabef"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a309fe2481ddb058fbbb483e17b0fabef">&#9670;&nbsp;</a></span>fdt_image_config_getnumberoftrack</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define fdt_image_config_getnumberoftrack</td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">config</td><td>)</td>
-          <td>&#160;&#160;&#160;(config-&gt;number_of_track)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -452,6 +452,34 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="a60bda32b507fcaad9c507e090213973c" name="a60bda32b507fcaad9c507e090213973c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a60bda32b507fcaad9c507e090213973c">&#9670;&nbsp;</a></span>fdt_image_config_setnumberofcylinder</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define fdt_image_config_setnumberofcylinder</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">config, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">v&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;(config-&gt;number_of_cylinder = v)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a51441d83b194923e8a635f4dce925221" name="a51441d83b194923e8a635f4dce925221"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a51441d83b194923e8a635f4dce925221">&#9670;&nbsp;</a></span>fdt_image_config_setnumberofhead</h2>
 
@@ -502,34 +530,6 @@ Functions</h2></td></tr>
           <td></td>
           <td>)</td>
           <td></td><td>&#160;&#160;&#160;(config-&gt;number_of_sector = v)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="ae4f126b591c3de916b0f173d58ee62f8" name="ae4f126b591c3de916b0f173d58ee62f8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae4f126b591c3de916b0f173d58ee62f8">&#9670;&nbsp;</a></span>fdt_image_config_setnumberoftrack</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define fdt_image_config_setnumberoftrack</td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">config, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">v&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td>&#160;&#160;&#160;(config-&gt;number_of_track = v)</td>
         </tr>
       </table>
 </div><div class="memdoc">
