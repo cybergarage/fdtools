@@ -72,38 +72,10 @@ int main(int argc, char* argv[])
   }
 
   if (fdt_image_isdevice(src_img)) {
-    if (!fdu_image_setdeviceoptions(src_img, prg, err)) {
+    if (!fdu_device_image_setoptions(src_img, prg, err)) {
       exit_error(err);
     }
-  }
-
-  if (fdt_image_isdevice(src_img)) {
-    // Shows progress infomation for device image types
-    // TODO: Sets image parameters to device
-    FdtDeviceImage* dev_img = (FdtDeviceImage*)src_img;
-    if (!fdt_device_image_open(dev_img, src_img_name, FDT_FILE_READ, err)) {
-      exit_error(err);
-    }
-    if (!fdt_device_image_generatesectors(dev_img, err)) {
-      exit_error(err);
-    }
-    size_t dev_sector_cnt = fdt_device_image_getnsectors(dev_img);
-    size_t dev_read_sector_cnt = 0;
-    fdu_console_refresh_progresstime();
-    FdtImageSector* sector = fdt_device_image_geterrorsector(dev_img);
-    FdtImageSector* last_sector;
-    while (sector) {
-      last_sector = sector;
-      fdu_console_printdeviceprogress(dev_img, sector, dev_read_sector_cnt, dev_sector_cnt);
-      if (fdt_device_image_readsector(dev_img, sector, err)) {
-        dev_read_sector_cnt++;
-      }
-      sector = fdt_device_image_geterrorsector(dev_img);
-    }
-    if (last_sector) {
-      fdu_console_printdeviceprogress(dev_img, last_sector, dev_read_sector_cnt, dev_sector_cnt);
-    }
-    if (!fdt_device_image_close(dev_img, err)) {
+    if (!fdu_device_image_load(src_img, err)) {
       exit_error(err);
     }
   }

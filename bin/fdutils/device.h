@@ -31,7 +31,8 @@ extern "C" {
 #define OPT_RETRY_PASSES "r"
 
 void fdu_program_adddeviceoptions(FdtProgram* prg);
-bool fdu_image_setdeviceoptions(FdtImage* img, FdtProgram* prg, FdtError* err);
+bool fdu_device_image_setoptions(FdtImage* img, FdtProgram* prg, FdtError* err);
+bool fdu_device_image_load(FdtImage* img, FdtError* err);
 
 #ifdef __cplusplus
 } /* extern C */
