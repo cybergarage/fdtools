@@ -12,7 +12,13 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#include <fdtools/dev/device.h>
+#include <fdtools/dev/image.h>
+#include <fdtools/img/image.h>
+#include <fdtools/util/program.h>
+
 #include "device.h"
+#include "program.h"
 
 void fdu_program_adddeviceoptions(FdtProgram* prg)
 {
@@ -21,4 +27,23 @@ void fdu_program_adddeviceoptions(FdtProgram* prg)
   fdt_program_addoption(prg, OPT_SECTORS, "number of sectors", true, "");
   fdt_program_addoption(prg, OPT_SSIZE, "sector size", true, "");
   fdt_program_addoption(prg, OPT_RETRY_PASSES, "number of retry passes", false, "");
+}
+
+bool fdu_image_setdeviceoptions(FdtImage* img, FdtProgram* prg, FdtError* err)
+{
+  FdtDevice* dev = fdt_device_new();
+  FdtFloppyParams* fdparams = fdt_floppy_params_new();
+  if (!dev || !fdparams) {
+    panic();
+  }
+  if (!fdt_device_getfloppyparameters(dev, fdparams, err)) {
+    return false;
+  }
+  if (!fdt_device_image_setfloppyparams(img, fdparams, err)) {
+    return false;
+  }
+  fdt_device_delete(dev);
+  fdt_floppy_params_delete(fdparams);
+
+  return true;
 }

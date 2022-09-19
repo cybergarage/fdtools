@@ -72,21 +72,9 @@ int main(int argc, char* argv[])
   }
 
   if (fdt_image_isdevice(src_img)) {
-    // Gets current device parameters, and set the parameters to image.
-    FdtDevice* dev = fdt_device_new();
-    fdt_device_setname(dev, src_img_name);
-    FdtFloppyParams* fdparams = fdt_floppy_params_new();
-    if (!dev || !fdparams) {
-      panic();
-    }
-    if (!fdt_device_getfloppyparameters(dev, fdparams, err)) {
+    if (!fdu_image_setdeviceoptions(src_img, prg, err)) {
       exit_error(err);
     }
-    if (!fdt_device_image_setfloppyparams(src_img, fdparams, err)) {
-      exit_error(err);
-    }
-    fdt_device_delete(dev);
-    fdt_floppy_params_delete(fdparams);
   }
 
   if (fdt_image_isdevice(src_img)) {
