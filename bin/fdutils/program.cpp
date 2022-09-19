@@ -24,11 +24,10 @@ void fdu_program_add_default_options(FdtProgram* prg)
   fdt_program_addoption(prg, OPT_DEBUG, "enable debug messages", false, "");
 }
 
-void fdu_program_usage(FdtProgram* prg)
+void fdu_program_usage(FdtProgram* prg, const char* args)
 {
   fdu_console_flush();
-
-  printf("Usage: %s [OPTIONS] <source device or file name> <destination device or file name>\n", fdt_program_getname(prg));
+  printf("Usage: %s [OPTIONS] %s\n", fdt_program_getname(prg), args);
   fdt_program_printoptionusages(prg);
 }
 
