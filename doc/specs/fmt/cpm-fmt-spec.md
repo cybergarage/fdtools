@@ -15,7 +15,8 @@ Trak 2 Directory
 - [Z80pack - Z80 Emulator and Crossassembler for UNIX](https://www.z80cpu.eu/mirrors/www.unix4fun.org/z80pack/index.html)
   - [Understanding disk images for the CP/M emulation](https://www.z80cpu.eu/mirrors/www.unix4fun.org/z80pack/doc_cpm_disks.html)
 - [The Rogue Archive](https://britzl.github.io/roguearchive/)
-- cpmtools
+- [Cpmtools - access CP/M file systems](http://www.moria.de/~michael/cpmtools/)
   - [cpm(5) [debian man page]](https://www.unix.com/man-page/debian/5/cpm/)
   - [cpmcp(1) [debian man page]](https://www.unix.com/man-page/debian/1/cpmcp/)
   - [cpmls(1) [debian man page]](https://www.unix.com/man-page/debian/1/cpmls/)
+- [Wild Turkey - Cpmtools Executables for Windows Users](http://www.cpm8680.com/cpmtools/)

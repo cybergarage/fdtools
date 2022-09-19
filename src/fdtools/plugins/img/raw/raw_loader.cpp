@@ -14,10 +14,60 @@
 
 #include <fdtools/plugins/img/raw/raw.h>
 
+bool fdt_raw_image_autoconfing(FdtFileImage* img, FdtError* err)
+{
+  if (!img)
+    return false;
+
+  FILE* fp = fdt_image_file_getfile(img);
+  if (!fp)
+    return false;
+
+  if (fseek(fp, 0L, SEEK_END) != 0) {
+    fdt_error_setmessage(err, "seek error (SEEK_END)");
+    fseek(fp, 0L, SEEK_SET);
+    return false;
+  }
+
+  size_t img_size = ftell(fp);
+  if (fseek(fp, 0L, SEEK_SET) != 0) {
+    fdt_error_setmessage(err, "seek error (SEEK_SET)");
+    return false;
+  }
+
+  FdtImageConfig* config = fdt_image_getconfig(img);
+  if (!config)
+    return false;
+
+  switch (img_size) {
+  case 327680: // 5.25 CP/M
+  {
+    fdt_image_config_setnumberoftrack(config, 40);
+    fdt_image_config_setnumberofhead(config, 2);
+    fdt_image_config_setnumberofsector(config, 16);
+    fdt_image_config_setsectorsize(config, 256);
+    return true;
+  }
+  case 1474560: // 3.5 inch IBM-PC
+    fdt_image_config_setnumberoftrack(config, 80);
+    fdt_image_config_setnumberofhead(config, 2);
+    fdt_image_config_setnumberofsector(config, 18);
+    fdt_image_config_setsectorsize(config, 512);
+  }
+
+  fdt_error_setmessage(err, "undefined raw image size (%ld)", img_size);
+
+  return false;
+}
+
 bool fdt_raw_image_load(FdtFileImage* img, FdtError* err)
 {
   if (!img)
     return false;
+
+  if (!fdt_raw_image_autoconfing(img, err)) {
+    return false;
+  }
 
   FILE* fp = fdt_image_file_getfile(img);
   if (!fp)
