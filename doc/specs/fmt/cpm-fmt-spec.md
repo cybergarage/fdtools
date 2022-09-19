@@ -29,3 +29,5 @@ Trak 2 Directory
     - [cpmls(1) [debian man page]](https://www.unix.com/man-page/debian/1/cpmls/)
   - [cpmtools - Tools to access CP/M file systems](https://github.com/lipro-cpm4l/cpmtools)
 - [Wild Turkey - Cpmtools Executables for Windows Users](http://www.cpm8680.com/cpmtools/)
+- [CP／Mディスクイメージ作成手順メモ - neko Java Home Page](http://star.gmobb.jp/koji/cgi/wiki.cgi?page=CP%A1%BFM%A5%C7%A5%A3%A5%B9%A5%AF%A5%A4%A5%E1%A1%BC%A5%B8%BA%EE%C0%AE%BC%EA%BD%E7%A5%E1%A5%E2)
+- [CP/M-86 with VMWare Player and Virtualbox 4 ? YES ](http://www.z80.eu/blog/index.php?m=08&y=12&d=29&entry=entry120807-180000)
