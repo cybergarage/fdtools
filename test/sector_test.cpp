@@ -29,7 +29,7 @@ BOOST_AUTO_TEST_CASE(SectorCopyTest)
 
   FdtImageSector* sector = fdt_image_sector_new();
   BOOST_REQUIRE(sector);
-  fdt_image_sector_settracknumber(sector, 80);
+  fdt_image_sector_setcylindernumber(sector, 80);
   fdt_image_sector_setheadnumber(sector, 2);
   fdt_image_sector_setnumber(sector, 18);
   fdt_image_sector_setsize(sector, TEST_SECTOR_DATA_SIZE);

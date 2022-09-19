@@ -107,7 +107,7 @@ bool fdt_raw_image_load(FdtFileImage* img, FdtError* err)
           return false;
         }
 
-        fdt_image_sector_settracknumber(sector, c);
+        fdt_image_sector_setcylindernumber(sector, c);
         fdt_image_sector_setheadnumber(sector, h);
         fdt_image_sector_setnumber(sector, s);
         fdt_image_sector_setsize(sector, sector_size);

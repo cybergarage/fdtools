@@ -147,7 +147,7 @@ bool fdt_d88_sector_header_setconfig(FdtD88SectorHeader* d88_sector_header, FdtI
 
   size_t sector_size = fdt_image_sector_getsize(sector);
 
-  d88_sector_header->c = fdt_image_sector_gettracknumber(sector);
+  d88_sector_header->c = fdt_image_sector_getcylindernumber(sector);
   d88_sector_header->h = fdt_image_sector_getheadnumber(sector);
   d88_sector_header->r = 1;
   d88_sector_header->number_of_sector = (uint16_t)number_of_sector;

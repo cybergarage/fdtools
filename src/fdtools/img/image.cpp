@@ -197,7 +197,7 @@ off_t fdt_image_getsectoroffset(FdtImage* img, FdtImageSector* sector)
   size_t sector_size = fdt_image_getsectorsize(img);
   size_t number_of_head = fdt_image_getnumberofhead(img);
   size_t number_of_sector = fdt_image_getnumberofsector(img);
-  size_t track_no = fdt_image_sector_gettracknumber(sector);
+  size_t track_no = fdt_image_sector_getcylindernumber(sector);
   size_t header_no = fdt_image_sector_getheadnumber(sector);
   size_t sector_no = fdt_image_sector_getnumber(sector) - 1; // Sector no stats from 1
 
@@ -273,7 +273,7 @@ bool fdt_image_generatesectors(FdtImage* img, FdtError* err)
         if (!sector) {
           return false;
         }
-        fdt_image_sector_settracknumber(sector, c);
+        fdt_image_sector_setcylindernumber(sector, c);
         fdt_image_sector_setheadnumber(sector, h);
         fdt_image_sector_setnumber(sector, s);
         fdt_image_sector_setsize(sector, sector_size);

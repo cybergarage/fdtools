@@ -26,7 +26,7 @@ FdtImageSector* fdt_image_sector_new()
 
   fdt_list_node_init((FdtListNode*)sector);
 
-  fdt_image_sector_settracknumber(sector, 0);
+  fdt_image_sector_setcylindernumber(sector, 0);
   fdt_image_sector_setheadnumber(sector, 0);
   fdt_image_sector_setnumber(sector, 0);
   fdt_image_sector_setsize(sector, 0);
@@ -55,7 +55,7 @@ bool fdt_image_sector_isvalid(FdtImageSector* sector)
   if (!sector)
     return false;
 
-  if (fdt_image_sector_gettracknumber(sector) < 0)
+  if (fdt_image_sector_getcylindernumber(sector) < 0)
     return false;
   if (fdt_image_sector_getheadnumber(sector) < 0)
     return false;
@@ -96,7 +96,7 @@ FdtImageSector* fdt_image_sector_copy(FdtImageSector* sector)
   if (!other)
     return NULL;
 
-  fdt_image_sector_settracknumber(other, fdt_image_sector_gettracknumber(sector));
+  fdt_image_sector_setcylindernumber(other, fdt_image_sector_getcylindernumber(sector));
   fdt_image_sector_setheadnumber(other, fdt_image_sector_getheadnumber(sector));
   fdt_image_sector_setnumber(other, fdt_image_sector_getnumber(sector));
   fdt_image_sector_setsize(other, fdt_image_sector_getsize(sector));
@@ -119,10 +119,10 @@ int fdt_image_sector_compare(FdtImageSector* sector, FdtImageSector* other)
   if (!sector || !other)
     return 0;
 
-  if (other->track_number < sector->track_number)
+  if (other->cylinder_number < sector->cylinder_number)
     return 1;
 
-  if (other->track_number == sector->track_number) {
+  if (other->cylinder_number == sector->cylinder_number) {
     if (other->head_number < sector->head_number)
       return 1;
     if (other->head_number == sector->head_number) {
@@ -141,8 +141,8 @@ bool fdt_image_sector_equals(FdtImageSector* sector, FdtImageSector* other, FdtE
   if (!sector || !other)
     return false;
 
-  if ((sector->track_number != other->track_number) || (sector->head_number != other->head_number) || (sector->number != other->number) || (sector->size != other->size) || (!sector->data) || (!other->data) || (memcmp(sector->data, other->data, sector->size) != 0)) {
-    fdt_error_setmessage(err, FDT_IMAGE_MESSAGE_SECTOR_SIZE_PRINTF_FORMAT " != " FDT_IMAGE_MESSAGE_SECTOR_SIZE_PRINTF_FORMAT, sector->track_number, sector->head_number, sector->number, sector->size, other->track_number, other->head_number, other->number, other->size);
+  if ((sector->cylinder_number != other->cylinder_number) || (sector->head_number != other->head_number) || (sector->number != other->number) || (sector->size != other->size) || (!sector->data) || (!other->data) || (memcmp(sector->data, other->data, sector->size) != 0)) {
+    fdt_error_setmessage(err, FDT_IMAGE_MESSAGE_SECTOR_SIZE_PRINTF_FORMAT " != " FDT_IMAGE_MESSAGE_SECTOR_SIZE_PRINTF_FORMAT, sector->cylinder_number, sector->head_number, sector->number, sector->size, other->cylinder_number, other->head_number, other->number, other->size);
     return false;
   }
 

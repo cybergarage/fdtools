@@ -64,7 +64,7 @@ BOOST_AUTO_TEST_CASE(ImageSortSectorsTest)
       for (ssize_t s = number_of_sector; 1 <= s; s--) {
         FdtImageSector* sector = fdt_image_sector_new();
         BOOST_REQUIRE(sector);
-        fdt_image_sector_settracknumber(sector, c);
+        fdt_image_sector_setcylindernumber(sector, c);
         fdt_image_sector_setheadnumber(sector, h);
         fdt_image_sector_setnumber(sector, s);
         fdt_image_addsector(img, sector);

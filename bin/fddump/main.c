@@ -126,7 +126,7 @@ void print_progress(FdtDeviceImage* img, FdtImageSector* sector, size_t dev_read
   }
 
   int read_percent = (dev_read_sector_cnt * 100) / dev_sector_cnt;
-  printf("T:%03ld:%03ld H:%ld [", fdt_image_sector_gettracknumber(sector), fdt_image_sector_getnumber(sector), fdt_image_sector_getheadnumber(sector));
+  printf("T:%03ld:%03ld H:%ld [", fdt_image_sector_getcylindernumber(sector), fdt_image_sector_getnumber(sector), fdt_image_sector_getheadnumber(sector));
   for (int n = 0; n < PROGRESS_BLOCK_MAX; n++) {
     int block_percent = (n * 100) / PROGRESS_BLOCK_MAX;
     printf("%c", ((block_percent <= read_percent) ? '#' : ' '));
