@@ -45,7 +45,7 @@ int main(int argc, char* argv[])
   if (!prg) {
     panic();
   }
-  fdu_program_add_default_options(prg);
+  fdu_program_adddefaultoptions(prg);
   fdu_program_adddeviceoptions(prg);
 
   if (!fdu_program_parse_arguments(prg, argc, argv, err)) {

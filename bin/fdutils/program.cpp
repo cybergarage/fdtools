@@ -18,7 +18,7 @@
 bool program_verbose_enabled = false;
 bool program_debug_enabled = false;
 
-void fdu_program_add_default_options(FdtProgram* prg)
+void fdu_program_adddefaultoptions(FdtProgram* prg)
 {
   fdt_program_addoption(prg, OPT_VERBOSE, "enable verbose messages", false, "");
   fdt_program_addoption(prg, OPT_DEBUG, "enable debug messages", false, "");

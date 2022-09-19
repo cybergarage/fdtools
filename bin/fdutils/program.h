@@ -44,7 +44,7 @@ extern "C" {
 #define ARG_IMAGE_FILENAME "<file name>"
 #define ARG_IMAGE_DEVICE_FILENAME "<file or device name>"
 
-void fdu_program_add_default_options(FdtProgram* prg);
+void fdu_program_adddefaultoptions(FdtProgram* prg);
 void fdu_program_adddeviceoptions(FdtProgram* prg);
 bool fdu_program_parse_arguments(FdtProgram* prg, int argc, char* argv[], FdtError* err);
 void fdu_program_usage(FdtProgram* prg, const char* args);

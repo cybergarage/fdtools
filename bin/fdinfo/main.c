@@ -45,7 +45,7 @@ int main(int argc, char* argv[])
   if (!prg) {
     panic();
   }
-  fdu_program_add_default_options(prg);
+  fdu_program_adddefaultoptions(prg);
 
   if (!fdu_program_parse_arguments(prg, argc, argv, err)) {
     fdu_console_error(err);
