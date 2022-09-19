@@ -46,7 +46,7 @@ extern "C" {
 
 void fdu_program_adddefaultoptions(FdtProgram* prg);
 void fdu_program_adddeviceoptions(FdtProgram* prg);
-bool fdu_program_parse_arguments(FdtProgram* prg, int argc, char* argv[], FdtError* err);
+bool fdu_program_parsearguments(FdtProgram* prg, int argc, char* argv[], FdtError* err);
 void fdu_program_usage(FdtProgram* prg, const char* args);
 
 void panic(void);

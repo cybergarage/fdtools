@@ -31,7 +31,7 @@ void fdu_program_usage(FdtProgram* prg, const char* args)
   fdt_program_printoptionusages(prg);
 }
 
-bool fdu_program_parse_arguments(FdtProgram* prg, int argc, char* argv[], FdtError* err)
+bool fdu_program_parsearguments(FdtProgram* prg, int argc, char* argv[], FdtError* err)
 {
   if (!fdt_program_parse(prg, argc, argv, err)) {
     return false;
