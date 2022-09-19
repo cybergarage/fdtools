@@ -27,6 +27,11 @@
 #include <fdutils/floppy.h>
 #include <fdutils/program.h>
 
+void usage(FdtProgram* prg)
+{
+  fdu_program_usage(prg, ARG_IMAGE_FILENAME);
+}
+
 int main(int argc, char* argv[])
 {
   FdtError* err = fdt_error_new();
@@ -45,7 +50,7 @@ int main(int argc, char* argv[])
 
   if (!fdu_program_parse_arguments(prg, argc, argv, err)) {
     fdu_console_error(err);
-    fdu_program_usage(prg);
+    usage(prg);
     return EXIT_FAILURE;
   }
 
