@@ -1,4 +1,3 @@
-#!/bin/bash
 # Copyright (C) 2020 Satoshi Konno. All rights reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,33 +12,4 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-makefiles=(
-"include"
-"lib/unix"
-"test/unix"
-"bin/fdinfo/unix"
-"bin/fdcopy/unix"
-"bin/fddump/unix"
-"bin/cpmls/unix"
-)
-
-for makefile in "${makefiles[@]}"
-do
-    pushd $makefile && ./Makefile.am.build > Makefile.am && popd
-done
-
-if [ ! -d config ]; then
-    mkdir config
-fi
-if [ ! -d autom4te.cache ]; then
-	rm -rf autom4te.cache/*
-fi
-
-aclocal
-autoheader
-automake --foreign --add-missing --copy
-autoconf 
-
-if [ ! -L test/unix/img ]; then
-    ln -s ../img test/unix/img
-fi
+SUBDIRS = unix 

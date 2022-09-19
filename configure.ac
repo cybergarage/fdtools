@@ -94,6 +94,8 @@ bin/fdinfo/Makefile
 bin/fdinfo/unix/Makefile
 bin/fddump/Makefile
 bin/fddump/unix/Makefile
+bin/cpmls/Makefile
+bin/cpmls/unix/Makefile
 test/Makefile
 test/unix/Makefile
 ])

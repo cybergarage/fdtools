@@ -1,4 +1,3 @@
-#!/bin/bash
 # Copyright (C) 2020 Satoshi Konno. All rights reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,33 +12,19 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-makefiles=(
-"include"
-"lib/unix"
-"test/unix"
-"bin/fdinfo/unix"
-"bin/fdcopy/unix"
-"bin/fddump/unix"
-"bin/cpmls/unix"
-)
+bin_PROGRAMS = fddump
 
-for makefile in "${makefiles[@]}"
-do
-    pushd $makefile && ./Makefile.am.build > Makefile.am && popd
-done
+AM_CFLAGS = -I$(top_builddir)/include -I../ -I../../
+AM_CPPFLAGS = -I$(top_builddir)/include -I../ -I../../
 
-if [ ! -d config ]; then
-    mkdir config
-fi
-if [ ! -d autom4te.cache ]; then
-	rm -rf autom4te.cache/*
-fi
+fddump_SOURCES = \
+	../../fdutils/floppy.cpp \
+	../../fdutils/program.cpp \
+	../../fdutils/console.cpp \
+	../main.c
 
-aclocal
-autoheader
-automake --foreign --add-missing --copy
-autoconf 
-
-if [ ! -L test/unix/img ]; then
-    ln -s ../img test/unix/img
-fi
+#if HAVE_LIBTOOL
+#fddump_LDADD = ../../../lib/unix/libfdtools.la
+#else
+fddump_LDADD = ../../../lib/unix/libfdtools.a
+#endif
