@@ -24,7 +24,7 @@
 #include <fdtools/util/string.h>
 
 #include <fdutils/console.h>
-#include <fdutils/floppy.h>
+#include <fdutils/device.h>
 #include <fdutils/program.h>
 
 void usage(FdtProgram* prg)

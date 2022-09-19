@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "floppy.h"
+#include "device.h"
 
 void fdu_program_add_floppy_options(FdtProgram* prg)
 {
