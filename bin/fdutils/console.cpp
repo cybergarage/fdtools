@@ -99,7 +99,7 @@ void fdu_console_message(const char* format, ...)
   fflush(stdout);
 }
 
-void fdu_console_printdeviceprogress(FdtDeviceImage* img, FdtImageSector* sector, size_t dev_read_sector_cnt, size_t dev_sector_cnt)
+void fdu_console_updatedeviceprogress(FdtDeviceImage* img, FdtImageSector* sector, size_t dev_read_sector_cnt, size_t dev_sector_cnt)
 {
   if (dev_sector_cnt <= 0)
     return;

@@ -69,14 +69,14 @@ bool fdu_device_image_load(FdtImage* img, FdtError* err)
   FdtImageSector* last_sector;
   while (sector) {
     last_sector = sector;
-    fdu_console_printdeviceprogress(dev_img, sector, dev_read_sector_cnt, dev_sector_cnt);
+    fdu_console_updatedeviceprogress(dev_img, sector, dev_read_sector_cnt, dev_sector_cnt);
     if (fdt_device_image_readsector(dev_img, sector, err)) {
       dev_read_sector_cnt++;
     }
     sector = fdt_device_image_geterrorsector(dev_img);
   }
   if (last_sector) {
-    fdu_console_printdeviceprogress(dev_img, last_sector, dev_read_sector_cnt, dev_sector_cnt);
+    fdu_console_updatedeviceprogress(dev_img, last_sector, dev_read_sector_cnt, dev_sector_cnt);
   }
   if (!fdt_device_image_close(dev_img, err)) {
     return false;
@@ -97,7 +97,7 @@ bool fdu_device_image_export(FdtImage* img, FdtError* err)
   FdtImageSector* last_sector;
   for (FdtImageSector* sector = fdt_device_image_getsectors(dev_img); sector; sector = fdt_image_sector_next(sector)) {
     last_sector = sector;
-    fdu_console_printdeviceprogress(dev_img, sector, dev_wrote_sector_cnt, dev_sector_cnt);
+    fdu_console_updatedeviceprogress(dev_img, sector, dev_wrote_sector_cnt, dev_sector_cnt);
     if (fdt_device_image_writesector(dev_img, sector, err)) {
       dev_wrote_sector_cnt++;
     }
@@ -106,7 +106,7 @@ bool fdu_device_image_export(FdtImage* img, FdtError* err)
     }
   }
   if (last_sector) {
-    fdu_console_printdeviceprogress(dev_img, last_sector, dev_wrote_sector_cnt, dev_sector_cnt);
+    fdu_console_updatedeviceprogress(dev_img, last_sector, dev_wrote_sector_cnt, dev_sector_cnt);
   }
   if (!fdt_device_image_close(dev_img, err)) {
     return false;

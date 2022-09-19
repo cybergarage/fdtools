@@ -39,7 +39,7 @@ void fdu_console_message(const char* format, ...);
 void fdu_console_message2buffer(const char* msg);
 void fdu_console_lf();
 void fdu_console_error(FdtError* err);
-void fdu_console_printdeviceprogress(FdtDeviceImage* img, FdtImageSector* sector, size_t dev_read_sector_cnt, size_t dev_sector_cnt);
+void fdu_console_updatedeviceprogress(FdtDeviceImage* img, FdtImageSector* sector, size_t dev_read_sector_cnt, size_t dev_sector_cnt);
 
 #ifdef __cplusplus
 } /* extern C */
