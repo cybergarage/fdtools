@@ -78,7 +78,7 @@ void print_usage(FdtProgram* prg)
 {
   flush_message();
 
-  printf("Usage: %s [OPTIONS] <source device or file name>\n", fdt_program_getname(prg));
+  printf("Usage: %s [OPTIONS] <source device or file name> [cylinder] [head] [sector]\n", fdt_program_getname(prg));
   fdt_program_printoptionusages(prg);
 }
 
@@ -275,21 +275,22 @@ int main(int argc, char* argv[])
 
   // Sets command line options
 
-  int head_start_no = 0;
-  int head_end_no = fdt_image_getnumberofhead(img) - 1;
-  if (2 <= fdt_program_getnarguments(prg)) {
-    head_start_no = head_end_no = fdt_str2int(fdt_program_getargument(prg, 1));
-  }
-
   int cyclinder_start_no = 0;
   int cyclinder_end_no = fdt_image_getnumberofsector(img) - 1;
-  if (3 <= fdt_program_getnarguments(prg)) {
-    cyclinder_start_no = cyclinder_end_no = fdt_str2int(fdt_program_getargument(prg, 2));
+  if (2 <= fdt_program_getnarguments(prg)) {
+    cyclinder_start_no = cyclinder_end_no = fdt_str2int(fdt_program_getargument(prg, 1));
   }
+
+  int head_start_no = 0;
+  int head_end_no = fdt_image_getnumberofhead(img) - 1;
+  if (3 <= fdt_program_getnarguments(prg)) {
+    head_start_no = head_end_no = fdt_str2int(fdt_program_getargument(prg, 2));
+  }
+
 
   int sector_start_no = 1;
   int sector_end_no = fdt_image_getnumberofcylinder(img);
-  if (3 <= fdt_program_getnarguments(prg)) {
+  if (4 <= fdt_program_getnarguments(prg)) {
     sector_start_no = sector_end_no = fdt_str2int(fdt_program_getargument(prg, 3));
   }
 
