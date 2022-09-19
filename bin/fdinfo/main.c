@@ -22,49 +22,13 @@
 #include <fdtools/util/log.h>
 #include <fdtools/util/program.h>
 
-const char* OPT_VERBOSE = "v";
-const char* OPT_DEBUG = "d";
-
-bool verbose_enabled = false;
-bool debug_enabled = false;
-
-void print_usage(FdtProgram* prg)
-{
-  printf("Usage: %s [OPTIONS] <device or file name> \n", fdt_program_getname(prg));
-  fdt_program_printoptionusages(prg);
-}
-
-void print_message(const char* format, ...)
-{
-  char msg[512];
-  va_list list;
-  va_start(list, format);
-  vsnprintf(msg, sizeof(msg), format, list);
-  va_end(list);
-  printf("%s\n", msg);
-
-  fflush(stdout);
-}
-
-void print_error(FdtError* err)
-{
-  printf("%s\n", debug_enabled ? fdt_error_getdebugmessage(err) : fdt_error_getmessage(err));
-  fflush(stdout);
-}
-
-void panic()
-{
-  exit(EXIT_FAILURE);
-}
-
-void exit_error(FdtError* err)
-{
-  print_error(err);
-  exit(EXIT_FAILURE);
-}
+#include <fdutils/console.h>
+#include <fdutils/program.h>
 
 int main(int argc, char* argv[])
 {
+  fdu_console_enabled();
+
   FdtError* err = fdt_error_new();
   if (!err) {
     panic();
@@ -76,28 +40,17 @@ int main(int argc, char* argv[])
   if (!prg) {
     panic();
   }
-  fdt_program_addoption(prg, OPT_VERBOSE, "enable verbose messages", false, "");
-  fdt_program_addoption(prg, OPT_DEBUG, "enable debug messages", false, "");
+  fdu_program_add_default_options(prg);
 
-  if (!fdt_program_parse(prg, argc, argv, err)) {
-    print_error(err);
-    print_usage(prg);
+  if (!fdu_program_parse_arguments(prg, argc, argv, err)) {
+    fdu_console_error(err);
+    fdu_program_usage(prg);
     return EXIT_FAILURE;
   }
 
   if (fdt_program_getnarguments(prg) < 1) {
-    print_usage(prg);
+    fdu_program_usage(prg);
     return EXIT_FAILURE;
-  }
-
-  // Sets command line options
-
-  if (fdt_program_isoptionenabled(prg, OPT_VERBOSE)) {
-    verbose_enabled = true;
-  }
-  if (fdt_program_isoptionenabled(prg, OPT_DEBUG)) {
-    debug_enabled = true;
-    fdt_log_setlevel(FDT_LOG_DEBUG);
   }
 
   // Loads source file image
@@ -131,7 +84,7 @@ int main(int argc, char* argv[])
         exit_error(err);
       }
     }
-    print_message("%s", fdt_floppy_params_getdescription(fdparams));
+    fdu_console_message("%s", fdt_floppy_params_getdescription(fdparams));
 
     fdt_floppy_params_delete(fdparams);
     if (!fdt_device_close(dev, err)) {
@@ -148,11 +101,9 @@ int main(int argc, char* argv[])
     size_t head = fdt_image_getnumberofhead(img);
     size_t sec = fdt_image_getnumberofsector(img);
     size_t ssize = fdt_image_getsectorsize(img);
-    print_message("type=%s cyl=%ld, head=%ld, sect=%ld, ssize=%ld", type, cyl, head, sec, ssize);
+    fdu_console_message("type=%s cyl=%ld, head=%ld, sect=%ld, ssize=%ld", type, cyl, head, sec, ssize);
   }
   }
-
-  // Prints image parameters
 
   // Cleanups
 

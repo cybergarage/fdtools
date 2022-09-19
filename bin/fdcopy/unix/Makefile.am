@@ -14,10 +14,13 @@
 
 bin_PROGRAMS = fdcopy
 
-AM_CFLAGS = -I$(top_builddir)/include -I../
-AM_CPPFLAGS = -I$(top_builddir)/include -I../
+AM_CFLAGS = -I$(top_builddir)/include -I../ -I../../
+AM_CPPFLAGS = -I$(top_builddir)/include -I../ -I../../
 
 fdcopy_SOURCES = \
+	../../fdutils/floppy.cpp \
+	../../fdutils/program.cpp \
+	../../fdutils/console.cpp \
 	../main.c
 
 #if HAVE_LIBTOOL

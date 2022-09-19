@@ -114,7 +114,9 @@ CONFIG_CLEAN_VPATH_FILES =
 am__installdirs = "$(DESTDIR)$(bindir)"
 PROGRAMS = $(bin_PROGRAMS)
 am__dirstamp = $(am__leading_dot)dirstamp
-am_fdcopy_OBJECTS = ../main.$(OBJEXT)
+am_fdcopy_OBJECTS = ../../fdutils/floppy.$(OBJEXT) \
+	../../fdutils/program.$(OBJEXT) \
+	../../fdutils/console.$(OBJEXT) ../main.$(OBJEXT)
 fdcopy_OBJECTS = $(am_fdcopy_OBJECTS)
 fdcopy_DEPENDENCIES = ../../../lib/unix/libfdtools.a
 AM_V_P = $(am__v_P_@AM_V@)
@@ -132,7 +134,10 @@ am__v_at_1 =
 DEFAULT_INCLUDES = -I.@am__isrc@ -I$(top_builddir)
 depcomp = $(SHELL) $(top_srcdir)/config/depcomp
 am__maybe_remake_depfiles = depfiles
-am__depfiles_remade = ../$(DEPDIR)/main.Po
+am__depfiles_remade = ../$(DEPDIR)/main.Po \
+	../../fdutils/$(DEPDIR)/console.Po \
+	../../fdutils/$(DEPDIR)/floppy.Po \
+	../../fdutils/$(DEPDIR)/program.Po
 am__mv = mv -f
 COMPILE = $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \
 	$(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
@@ -146,6 +151,19 @@ AM_V_CCLD = $(am__v_CCLD_@AM_V@)
 am__v_CCLD_ = $(am__v_CCLD_@AM_DEFAULT_V@)
 am__v_CCLD_0 = @echo "  CCLD    " $@;
 am__v_CCLD_1 = 
+CXXCOMPILE = $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) \
+	$(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS)
+AM_V_CXX = $(am__v_CXX_@AM_V@)
+am__v_CXX_ = $(am__v_CXX_@AM_DEFAULT_V@)
+am__v_CXX_0 = @echo "  CXX     " $@;
+am__v_CXX_1 = 
+CXXLD = $(CXX)
+CXXLINK = $(CXXLD) $(AM_CXXFLAGS) $(CXXFLAGS) $(AM_LDFLAGS) $(LDFLAGS) \
+	-o $@
+AM_V_CXXLD = $(am__v_CXXLD_@AM_V@)
+am__v_CXXLD_ = $(am__v_CXXLD_@AM_DEFAULT_V@)
+am__v_CXXLD_0 = @echo "  CXXLD   " $@;
+am__v_CXXLD_1 = 
 SOURCES = $(fdcopy_SOURCES)
 DIST_SOURCES = $(fdcopy_SOURCES)
 am__can_run_installinfo = \
@@ -265,9 +283,12 @@ target_alias = @target_alias@
 top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
-AM_CFLAGS = -I$(top_builddir)/include -I../
-AM_CPPFLAGS = -I$(top_builddir)/include -I../
+AM_CFLAGS = -I$(top_builddir)/include -I../ -I../../
+AM_CPPFLAGS = -I$(top_builddir)/include -I../ -I../../
 fdcopy_SOURCES = \
+	../../fdutils/floppy.cpp \
+	../../fdutils/program.cpp \
+	../../fdutils/console.cpp \
 	../main.c
 
 
@@ -278,7 +299,7 @@ fdcopy_LDADD = ../../../lib/unix/libfdtools.a
 all: all-am
 
 .SUFFIXES:
-.SUFFIXES: .c .o .obj
+.SUFFIXES: .c .cpp .o .obj
 $(srcdir)/Makefile.in:  $(srcdir)/Makefile.am  $(am__configure_deps)
 	@for dep in $?; do \
 	  case '$(am__configure_deps)' in \
@@ -350,6 +371,18 @@ uninstall-binPROGRAMS:
 
 clean-binPROGRAMS:
 	-test -z "$(bin_PROGRAMS)" || rm -f $(bin_PROGRAMS)
+../../fdutils/$(am__dirstamp):
+	@$(MKDIR_P) ../../fdutils
+	@: > ../../fdutils/$(am__dirstamp)
+../../fdutils/$(DEPDIR)/$(am__dirstamp):
+	@$(MKDIR_P) ../../fdutils/$(DEPDIR)
+	@: > ../../fdutils/$(DEPDIR)/$(am__dirstamp)
+../../fdutils/floppy.$(OBJEXT): ../../fdutils/$(am__dirstamp) \
+	../../fdutils/$(DEPDIR)/$(am__dirstamp)
+../../fdutils/program.$(OBJEXT): ../../fdutils/$(am__dirstamp) \
+	../../fdutils/$(DEPDIR)/$(am__dirstamp)
+../../fdutils/console.$(OBJEXT): ../../fdutils/$(am__dirstamp) \
+	../../fdutils/$(DEPDIR)/$(am__dirstamp)
 ../$(am__dirstamp):
 	@$(MKDIR_P) ..
 	@: > ../$(am__dirstamp)
@@ -360,16 +393,20 @@ clean-binPROGRAMS:
 
 fdcopy$(EXEEXT): $(fdcopy_OBJECTS) $(fdcopy_DEPENDENCIES) $(EXTRA_fdcopy_DEPENDENCIES) 
 	@rm -f fdcopy$(EXEEXT)
-	$(AM_V_CCLD)$(LINK) $(fdcopy_OBJECTS) $(fdcopy_LDADD) $(LIBS)
+	$(AM_V_CXXLD)$(CXXLINK) $(fdcopy_OBJECTS) $(fdcopy_LDADD) $(LIBS)
 
 mostlyclean-compile:
 	-rm -f *.$(OBJEXT)
 	-rm -f ../*.$(OBJEXT)
+	-rm -f ../../fdutils/*.$(OBJEXT)
 
 distclean-compile:
 	-rm -f *.tab.c
 
 @AMDEP_TRUE@@am__include@ @am__quote@../$(DEPDIR)/main.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@../../fdutils/$(DEPDIR)/console.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@../../fdutils/$(DEPDIR)/floppy.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@../../fdutils/$(DEPDIR)/program.Po@am__quote@ # am--include-marker
 
 $(am__depfiles_remade):
 	@$(MKDIR_P) $(@D)
@@ -392,6 +429,22 @@ am--depfiles: $(am__depfiles_remade)
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='$<' object='$@' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(COMPILE) -c -o $@ `$(CYGPATH_W) '$<'`
+
+.cpp.o:
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)depbase=`echo $@ | sed 's|[^/]*$$|$(DEPDIR)/&|;s|\.o$$||'`;\
+@am__fastdepCXX_TRUE@	$(CXXCOMPILE) -MT $@ -MD -MP -MF $$depbase.Tpo -c -o $@ $< &&\
+@am__fastdepCXX_TRUE@	$(am__mv) $$depbase.Tpo $$depbase.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='$<' object='$@' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXXCOMPILE) -c -o $@ $<
+
+.cpp.obj:
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)depbase=`echo $@ | sed 's|[^/]*$$|$(DEPDIR)/&|;s|\.obj$$||'`;\
+@am__fastdepCXX_TRUE@	$(CXXCOMPILE) -MT $@ -MD -MP -MF $$depbase.Tpo -c -o $@ `$(CYGPATH_W) '$<'` &&\
+@am__fastdepCXX_TRUE@	$(am__mv) $$depbase.Tpo $$depbase.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='$<' object='$@' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXXCOMPILE) -c -o $@ `$(CYGPATH_W) '$<'`
 
 ID: $(am__tagged_files)
 	$(am__define_uniq_tagged_files); mkid -fID $$unique
@@ -512,6 +565,8 @@ distclean-generic:
 	-test . = "$(srcdir)" || test -z "$(CONFIG_CLEAN_VPATH_FILES)" || rm -f $(CONFIG_CLEAN_VPATH_FILES)
 	-rm -f ../$(DEPDIR)/$(am__dirstamp)
 	-rm -f ../$(am__dirstamp)
+	-rm -f ../../fdutils/$(DEPDIR)/$(am__dirstamp)
+	-rm -f ../../fdutils/$(am__dirstamp)
 
 maintainer-clean-generic:
 	@echo "This command is intended for maintainers to use"
@@ -522,6 +577,9 @@ clean-am: clean-binPROGRAMS clean-generic mostlyclean-am
 
 distclean: distclean-am
 		-rm -f ../$(DEPDIR)/main.Po
+	-rm -f ../../fdutils/$(DEPDIR)/console.Po
+	-rm -f ../../fdutils/$(DEPDIR)/floppy.Po
+	-rm -f ../../fdutils/$(DEPDIR)/program.Po
 	-rm -f Makefile
 distclean-am: clean-am distclean-compile distclean-generic \
 	distclean-tags
@@ -568,6 +626,9 @@ installcheck-am:
 
 maintainer-clean: maintainer-clean-am
 		-rm -f ../$(DEPDIR)/main.Po
+	-rm -f ../../fdutils/$(DEPDIR)/console.Po
+	-rm -f ../../fdutils/$(DEPDIR)/floppy.Po
+	-rm -f ../../fdutils/$(DEPDIR)/program.Po
 	-rm -f Makefile
 maintainer-clean-am: distclean-am maintainer-clean-generic
 
