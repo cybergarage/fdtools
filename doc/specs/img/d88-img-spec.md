@@ -1,4 +1,4 @@
-# D88
+# D88 Image Format
 
 ```
 D88_image :
