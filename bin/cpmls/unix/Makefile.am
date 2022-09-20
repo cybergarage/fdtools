@@ -12,19 +12,19 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-bin_PROGRAMS = fddump
+bin_PROGRAMS = cpmls
 
 AM_CFLAGS = -I$(top_builddir)/include -I../ -I../../
 AM_CPPFLAGS = -I$(top_builddir)/include -I../ -I../../
 
-fddump_SOURCES = \
+cpmls_SOURCES = \
 	../../fdutils/program.cpp \
 	../../fdutils/console.cpp \
 	../../fdutils/device.cpp \
 	..//main.c
 
 #if HAVE_LIBTOOL
-#fddump_LDADD = ../../../lib/unix/libfdtools.la
+#cpmls_LDADD = ../../../lib/unix/libfdtools.la
 #else
-fddump_LDADD = ../../../lib/unix/libfdtools.a
+cpmls_LDADD = ../../../lib/unix/libfdtools.a
 #endif

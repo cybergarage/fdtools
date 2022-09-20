@@ -100,7 +100,7 @@ POST_INSTALL = :
 NORMAL_UNINSTALL = :
 PRE_UNINSTALL = :
 POST_UNINSTALL = :
-bin_PROGRAMS = fddump$(EXEEXT)
+bin_PROGRAMS = cpmls$(EXEEXT)
 subdir = bin/cpmls/unix
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 am__aclocal_m4_deps = $(top_srcdir)/configure.ac
@@ -114,11 +114,11 @@ CONFIG_CLEAN_VPATH_FILES =
 am__installdirs = "$(DESTDIR)$(bindir)"
 PROGRAMS = $(bin_PROGRAMS)
 am__dirstamp = $(am__leading_dot)dirstamp
-am_fddump_OBJECTS = ../../fdutils/program.$(OBJEXT) \
+am_cpmls_OBJECTS = ../../fdutils/program.$(OBJEXT) \
 	../../fdutils/console.$(OBJEXT) ../../fdutils/device.$(OBJEXT) \
 	../main.$(OBJEXT)
-fddump_OBJECTS = $(am_fddump_OBJECTS)
-fddump_DEPENDENCIES = ../../../lib/unix/libfdtools.a
+cpmls_OBJECTS = $(am_cpmls_OBJECTS)
+cpmls_DEPENDENCIES = ../../../lib/unix/libfdtools.a
 AM_V_P = $(am__v_P_@AM_V@)
 am__v_P_ = $(am__v_P_@AM_DEFAULT_V@)
 am__v_P_0 = false
@@ -164,8 +164,8 @@ AM_V_CXXLD = $(am__v_CXXLD_@AM_V@)
 am__v_CXXLD_ = $(am__v_CXXLD_@AM_DEFAULT_V@)
 am__v_CXXLD_0 = @echo "  CXXLD   " $@;
 am__v_CXXLD_1 = 
-SOURCES = $(fddump_SOURCES)
-DIST_SOURCES = $(fddump_SOURCES)
+SOURCES = $(cpmls_SOURCES)
+DIST_SOURCES = $(cpmls_SOURCES)
 am__can_run_installinfo = \
   case $$AM_UPDATE_INFO_DIR in \
     n|no|NO) false;; \
@@ -285,7 +285,7 @@ top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
 AM_CFLAGS = -I$(top_builddir)/include -I../ -I../../
 AM_CPPFLAGS = -I$(top_builddir)/include -I../ -I../../
-fddump_SOURCES = \
+cpmls_SOURCES = \
 	../../fdutils/program.cpp \
 	../../fdutils/console.cpp \
 	../../fdutils/device.cpp \
@@ -293,9 +293,9 @@ fddump_SOURCES = \
 
 
 #if HAVE_LIBTOOL
-#fddump_LDADD = ../../../lib/unix/libfdtools.la
+#cpmls_LDADD = ../../../lib/unix/libfdtools.la
 #else
-fddump_LDADD = ../../../lib/unix/libfdtools.a
+cpmls_LDADD = ../../../lib/unix/libfdtools.a
 all: all-am
 
 .SUFFIXES:
@@ -391,9 +391,9 @@ clean-binPROGRAMS:
 	@: > ../$(DEPDIR)/$(am__dirstamp)
 ../main.$(OBJEXT): ../$(am__dirstamp) ../$(DEPDIR)/$(am__dirstamp)
 
-fddump$(EXEEXT): $(fddump_OBJECTS) $(fddump_DEPENDENCIES) $(EXTRA_fddump_DEPENDENCIES) 
-	@rm -f fddump$(EXEEXT)
-	$(AM_V_CXXLD)$(CXXLINK) $(fddump_OBJECTS) $(fddump_LDADD) $(LIBS)
+cpmls$(EXEEXT): $(cpmls_OBJECTS) $(cpmls_DEPENDENCIES) $(EXTRA_cpmls_DEPENDENCIES) 
+	@rm -f cpmls$(EXEEXT)
+	$(AM_V_CXXLD)$(CXXLINK) $(cpmls_OBJECTS) $(cpmls_LDADD) $(LIBS)
 
 mostlyclean-compile:
 	-rm -f *.$(OBJEXT)
