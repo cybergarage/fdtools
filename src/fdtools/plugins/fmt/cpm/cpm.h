@@ -21,6 +21,8 @@
 extern "C" {
 #endif
 
+#define E5H 0xE5
+
 FdtFormat* fdt_cpm_format_new(void);
 
 const char* fdt_cpm_format_gettypeid(FdtFormat*);
