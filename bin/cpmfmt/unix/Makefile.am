@@ -12,4 +12,19 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-SUBDIRS = fdcopy fdinfo fddump cpmfmt cpmls
+bin_PROGRAMS = cpmfmt
+
+AM_CFLAGS = -I$(top_builddir)/include -I../ -I../../
+AM_CPPFLAGS = -I$(top_builddir)/include -I../ -I../../
+
+cpmfmt_SOURCES = \
+	../../fdutils/program.cpp \
+	../../fdutils/console.cpp \
+	../../fdutils/device.cpp \
+	..//main.c
+
+#if HAVE_LIBTOOL
+#cpmfmt_LDADD = ../../../lib/unix/libfdtools.la
+#else
+cpmfmt_LDADD = ../../../lib/unix/libfdtools.a
+#endif
