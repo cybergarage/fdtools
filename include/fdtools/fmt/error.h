@@ -21,7 +21,8 @@
 extern "C" {
 #endif
 
-#define FDT_CPM_FORMAT_DIRECTORY_SECTOR_NOT_FOUND "directory sector (%d) is not found"
+#define FDT_FORMAT_ERROR_NO_IMAGE "image is not found"
+#define FDT_FORMAT_ERROR_INVALID_OPERATION "operation (%s) is not supported yet"
 
 #ifdef __cplusplus
 } /* extern C */
