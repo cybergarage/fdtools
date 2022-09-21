@@ -48,30 +48,54 @@ const char* fdt_format_gettypeid(FdtFormat* fmt)
   return fmt->format_gettypeid(fmt);
 }
 
-bool fdt_format_format(FdtFormat* fmt)
+bool fdt_format_format(FdtFormat* fmt, FdtError* err)
 {
-  if (!fmt || !fmt->format_format || !fmt->image)
+  if (!fmt || !fmt->image) {
+    fdt_error_setmessage(err, FDT_FORMAT_ERROR_NO_IMAGE);
     return false;
-  return fmt->format_format(fmt);
+  }
+  if (!fmt->format_format) {
+    fdt_error_setmessage(err, FDT_FORMAT_ERROR_INVALID_OPERATION, "format");
+    return false;
+  }
+  return fmt->format_format(fmt, err);
 }
 
-bool fdt_format_list(FdtFormat* fmt, FdtFiles* files)
+bool fdt_format_list(FdtFormat* fmt, FdtFiles* files, FdtError* err)
 {
-  if (!fmt || !fmt->format_list || !fmt->image)
+  if (!fmt || !fmt->image) {
+    fdt_error_setmessage(err, FDT_FORMAT_ERROR_NO_IMAGE);
     return false;
-  return fmt->format_list(fmt, files);
+  }
+  if (!fmt->format_list) {
+    fdt_error_setmessage(err, FDT_FORMAT_ERROR_INVALID_OPERATION, "list");
+    return false;
+  }
+  return fmt->format_list(fmt, files, err);
 }
 
-bool fdt_format_add(FdtFormat* fmt, FdtFile* file)
+bool fdt_format_add(FdtFormat* fmt, FdtFile* file, FdtError* err)
 {
-  if (!fmt || !fmt->format_add || !fmt->image)
+  if (!fmt || !fmt->image) {
+    fdt_error_setmessage(err, FDT_FORMAT_ERROR_NO_IMAGE);
     return false;
-  return fmt->format_add(fmt, file);
+  }
+  if (!fmt->format_add) {
+    fdt_error_setmessage(err, FDT_FORMAT_ERROR_INVALID_OPERATION, "add");
+    return false;
+  }
+  return fmt->format_add(fmt, file, err);
 }
 
-bool fdt_format_del(FdtFormat* fmt, FdtFile* file)
+bool fdt_format_del(FdtFormat* fmt, FdtFile* file, FdtError* err)
 {
-  if (!fmt || !fmt->format_del || !fmt->image)
+  if (!fmt || !fmt->image) {
+    fdt_error_setmessage(err, FDT_FORMAT_ERROR_NO_IMAGE);
     return false;
-  return fmt->format_del(fmt, file);
+  }
+  if (!fmt->format_del) {
+    fdt_error_setmessage(err, FDT_FORMAT_ERROR_INVALID_OPERATION, "del");
+    return false;
+  }
+  return fmt->format_del(fmt, file, err);
 }

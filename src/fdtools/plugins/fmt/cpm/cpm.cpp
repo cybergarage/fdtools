@@ -12,6 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#include <fdtools/fmt/error.h>
 #include <fdtools/plugins/fmt/cpm/cpm.h>
 
 FdtFormat* fdt_cpm_format_new(void)
@@ -31,9 +32,9 @@ FdtFormat* fdt_cpm_format_new(void)
   return fmt;
 }
 
-const char* fdt_cpm_format_gettypeid(FdtFormat* fmt)
+const char* fdt_cpm_format_gettypeid(FdtFormat* fmt, FdtError* err)
 {
-  return "CPM";
+  return "CP/M";
 }
 
 bool fdt_cpm_format_format(FdtFormat* fmt)
@@ -41,17 +42,19 @@ bool fdt_cpm_format_format(FdtFormat* fmt)
   return false;
 }
 
-bool fdt_cpm_format_list(FdtFormat* fmt, FdtFiles* files)
+bool fdt_cpm_format_list(FdtFormat* fmt, FdtFiles* files, FdtError* err)
+{
+//  FdtImage *img = fdt_format_getimage(fmt);
+  
+  return false;
+}
+
+bool fdt_cpm_format_add(FdtFormat* fmt, FdtFile* file, FdtError* err)
 {
   return false;
 }
 
-bool fdt_cpm_format_add(FdtFormat* fmt, FdtFile* file)
-{
-  return false;
-}
-
-bool fdt_cpm_format_del(FdtFormat* fmt, FdtFile* file)
+bool fdt_cpm_format_del(FdtFormat* fmt, FdtFile* file, FdtError* err)
 {
   return false;
 }

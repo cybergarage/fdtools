@@ -17,7 +17,7 @@
 
 #include <stdio.h>
 
-#include <fdtools/error.h>
+#include <fdtools/fmt/error.h>
 #include <fdtools/fmt/file.h>
 #include <fdtools/img/image.h>
 #include <fdtools/typedef.h>
@@ -33,10 +33,10 @@ typedef enum {
 } FdtFormatType;
 
 typedef const char* (*FDT_FORMAT_GETTYPEID)(void*);
-typedef bool (*FDT_FORMAT_FORMAT)(void*);
-typedef bool (*FDT_FORMAT_LIST)(void*, FdtFiles*);
-typedef bool (*FDT_FORMAT_ADD)(void*, FdtFile*);
-typedef bool (*FDT_FORMAT_DEL)(void*, FdtFile*);
+typedef bool (*FDT_FORMAT_FORMAT)(void*, FdtError*);
+typedef bool (*FDT_FORMAT_LIST)(void*, FdtFiles*, FdtError*);
+typedef bool (*FDT_FORMAT_ADD)(void*, FdtFile*, FdtError*);
+typedef bool (*FDT_FORMAT_DEL)(void*, FdtFile*, FdtError*);
 typedef bool (*FDT_FORMAT_DESTRUCTOR)(void*);
 
 #define FDT_FORMAT_STRUCT_MEMBERS        \
@@ -60,10 +60,10 @@ bool fdt_format_delete(FdtFormat*);
 
 FdtFormatType fdt_format_gettype(FdtFormat*);
 const char* fdt_format_gettypeid(FdtFormat*);
-bool fdt_format_format(FdtFormat* fmt);
-bool fdt_format_list(FdtFormat*, FdtFiles*);
-bool fdt_format_add(FdtFormat*, FdtFile*);
-bool fdt_format_del(FdtFormat*, FdtFile*);
+bool fdt_format_format(FdtFormat*, FdtError*);
+bool fdt_format_list(FdtFormat*, FdtFiles*, FdtError*);
+bool fdt_format_add(FdtFormat*, FdtFile*, FdtError*);
+bool fdt_format_del(FdtFormat*, FdtFile*, FdtError*);
 
 #define fdt_format_setimage(fmt, img) (fmt->image = img)
 #define fdt_format_getimage(fmt) (fmt->image)
