@@ -21,6 +21,9 @@
 extern "C" {
 #endif
 
+#define FDT_CPM_START_TRACK_NO 2
+#define FDT_CPM_END_TRACK_NO 3
+
 #define E5H 0xE5
 
 typedef struct FDT_ATTR_PACKED {
