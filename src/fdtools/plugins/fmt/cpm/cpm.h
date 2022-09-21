@@ -23,6 +23,17 @@ extern "C" {
 
 #define E5H 0xE5
 
+typedef struct FDT_ATTR_PACKED {
+  byte_t UserNumber;
+  byte_t Filename[8];
+  byte_t Type[3];
+  byte_t EX;
+  byte_t S2;
+  byte_t S1;
+  byte_t RC;
+  byte_t AL[16];
+} FdtCpmDirectory;
+
 FdtFormat* fdt_cpm_format_new(void);
 
 const char* fdt_cpm_format_gettypeid(FdtFormat*);
