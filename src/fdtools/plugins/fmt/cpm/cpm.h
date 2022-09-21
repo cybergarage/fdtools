@@ -16,13 +16,14 @@
 #define _FDTOOLS_CPM_FORMAT_H_
 
 #include <fdtools/fmt/format.h>
+#include <fdtools/plugins/fmt/cpm/error.h>
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-#define FDT_CPM_START_TRACK_NO 2
-#define FDT_CPM_END_TRACK_NO 3
+#define FDT_CPM_DICTIONARY_START_TRACK_NO 2
+#define FDT_CPM_DICTIONARY_END_TRACK_NO 2
 
 #define E5H 0xE5
 

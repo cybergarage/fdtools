@@ -12,7 +12,6 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include <fdtools/fmt/error.h>
 #include <fdtools/plugins/fmt/cpm/cpm.h>
 
 FdtFormat* fdt_cpm_format_new(void)
@@ -44,8 +43,22 @@ bool fdt_cpm_format_format(FdtFormat* fmt)
 
 bool fdt_cpm_format_list(FdtFormat* fmt, FdtFiles* files, FdtError* err)
 {
-//  FdtImage *img = fdt_format_getimage(fmt);
-  
+  FdtImage* img = fdt_format_getimage(fmt);
+
+  size_t head_num = fdt_image_getnumberofhead(img);
+  size_t sect_num = fdt_image_getnumberofsector(img);
+  for (int t = FDT_CPM_DICTIONARY_START_TRACK_NO; t <= FDT_CPM_DICTIONARY_END_TRACK_NO; t++) {
+    for (int h = 0; h < head_num; h++) {
+      for (int s = 1; s <= sect_num; s++) {
+        FdtImageSector* sector = fdt_image_getsector(img, t, h, s);
+        if (!sector) {
+          fdt_error_setmessage(err, FDT_CPM_FORMAT_DIRECTORY_SECTOR_NOT_FOUND, t, h, s);
+          return false;
+        }
+      }
+    }
+  }
+
   return false;
 }
 
