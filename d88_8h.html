@@ -94,8 +94,8 @@ Functions</h2></td></tr>
 <tr class="separator:a3ef9da0d5b397f68418a50d4eb4adc28"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a240e1da75c60e8aab5b3fd686313c3a5"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="d88_8h.html#a240e1da75c60e8aab5b3fd686313c3a5">fdt_d88_image_gettypeid</a> (<a class="el" href="img_2image_8h.html#aae5c0feac759135787be1c5c8065dc90">FdtImage</a> *img)</td></tr>
 <tr class="separator:a240e1da75c60e8aab5b3fd686313c3a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa398323f71cbbbe1efe1ca007c61b031"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="d88_8h.html#aa398323f71cbbbe1efe1ca007c61b031">fdt_d88_image_hasext</a> (<a class="el" href="img_2file_8h.html#a2f392d0928393dddb49708acb03cce5b">FdtFileImage</a> *, const char *)</td></tr>
-<tr class="separator:aa398323f71cbbbe1efe1ca007c61b031"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a60e3bdabbd743ded92eaa7143c38a677"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="d88_8h.html#a60e3bdabbd743ded92eaa7143c38a677">fdt_d88_image_getextentions</a> (<a class="el" href="img_2image_8h.html#aae5c0feac759135787be1c5c8065dc90">FdtImage</a> *, <a class="el" href="string_8h.html#ae32d8bb272c61bee280a22bcba96688b">FdtStrings</a> *)</td></tr>
+<tr class="separator:a60e3bdabbd743ded92eaa7143c38a677"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac005cd00760e97b83cb7742678ac8a3d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="d88_8h.html#ac005cd00760e97b83cb7742678ac8a3d">fdt_d88_image_load</a> (<a class="el" href="img_2file_8h.html#a2f392d0928393dddb49708acb03cce5b">FdtFileImage</a> *, <a class="el" href="structFdtError.html">FdtError</a> *)</td></tr>
 <tr class="separator:ac005cd00760e97b83cb7742678ac8a3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6f48b98ab1836f90726ac8044f2bb8fe"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="d88_8h.html#a6f48b98ab1836f90726ac8044f2bb8fe">fdt_d88_image_export</a> (<a class="el" href="img_2file_8h.html#a2f392d0928393dddb49708acb03cce5b">FdtFileImage</a> *, <a class="el" href="structFdtError.html">FdtError</a> *)</td></tr>
@@ -305,6 +305,34 @@ Variables</h2></td></tr>
 
 </div>
 </div>
+<a id="a60e3bdabbd743ded92eaa7143c38a677" name="a60e3bdabbd743ded92eaa7143c38a677"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a60e3bdabbd743ded92eaa7143c38a677">&#9670;&nbsp;</a></span>fdt_d88_image_getextentions()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool fdt_d88_image_getextentions </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="img_2image_8h.html#aae5c0feac759135787be1c5c8065dc90">FdtImage</a> *&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="string_8h.html#ae32d8bb272c61bee280a22bcba96688b">FdtStrings</a> *&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a240e1da75c60e8aab5b3fd686313c3a5" name="a240e1da75c60e8aab5b3fd686313c3a5"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a240e1da75c60e8aab5b3fd686313c3a5">&#9670;&nbsp;</a></span>fdt_d88_image_gettypeid()</h2>
 
@@ -317,34 +345,6 @@ Variables</h2></td></tr>
           <td class="paramtype"><a class="el" href="img_2image_8h.html#aae5c0feac759135787be1c5c8065dc90">FdtImage</a> *&#160;</td>
           <td class="paramname"><em>img</em></td><td>)</td>
           <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="aa398323f71cbbbe1efe1ca007c61b031" name="aa398323f71cbbbe1efe1ca007c61b031"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa398323f71cbbbe1efe1ca007c61b031">&#9670;&nbsp;</a></span>fdt_d88_image_hasext()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool fdt_d88_image_hasext </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="img_2file_8h.html#a2f392d0928393dddb49708acb03cce5b">FdtFileImage</a> *&#160;</td>
-          <td class="paramname">, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname">&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">

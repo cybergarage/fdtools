@@ -62,12 +62,14 @@ $(document).ready(function(){initNavTree('string_8h.html',''); initResizable(); 
   <div class="summary">
 <a href="#nested-classes">Data Structures</a> &#124;
 <a href="#define-members">Macros</a> &#124;
+<a href="#typedef-members">Typedefs</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle"><div class="title">string.h File Reference</div></div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &lt;<a class="el" href="string_8h.html">string.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="typedef_8h.html">fdtools/typedef.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="list_8h.html">fdtools/util/list.h</a>&gt;</code><br />
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Data Structures</h2></td></tr>
@@ -92,6 +94,21 @@ Macros</h2></td></tr>
 <tr class="separator:a1fb4d0e71a64c1db0ce51f9d10026097"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab6ce97045eade1053e488fac06f966e3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="string_8h.html#ab6ce97045eade1053e488fac06f966e3">fdt_str2ssizet</a>(value)&#160;&#160;&#160;((ssize_t)(value ? atol(value) : 0))</td></tr>
 <tr class="separator:ab6ce97045eade1053e488fac06f966e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a54e48a9f5f7284304fcbb865d535df1d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="string_8h.html#a54e48a9f5f7284304fcbb865d535df1d">fdt_string_next</a>(str)&#160;&#160;&#160;(<a class="el" href="structFdtString.html">FdtString</a>*)<a class="el" href="list_8h.html#aea9932bd9770b18418a8f4594959045b">fdt_list_next</a>((<a class="el" href="list_8h.html#a8256af85c688d84df9191c52d2baf09c">FdtListNode</a>*)str)</td></tr>
+<tr class="separator:a54e48a9f5f7284304fcbb865d535df1d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a60e7db1d4479324cc92a61df3151ef00"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="string_8h.html#a60e7db1d4479324cc92a61df3151ef00">fdt_strings_size</a>(strs)&#160;&#160;&#160;<a class="el" href="list_8h.html#a2c226067357c8aef5ab35fb1ff1ed245">fdt_list_size</a>((<a class="el" href="list_8h.html#ae38d06cad01ec09d9f5ef54c8801caf8">FdtList</a>*)strs)</td></tr>
+<tr class="separator:a60e7db1d4479324cc92a61df3151ef00"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adf546974fb2f33bc88fb499c8ead05e8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="string_8h.html#adf546974fb2f33bc88fb499c8ead05e8">fdt_strings_gets</a>(strs)&#160;&#160;&#160;(<a class="el" href="structFdtString.html">FdtString</a>*)<a class="el" href="list_8h.html#a1b60d9824ebaf3acd6a97abee7578e74">fdt_list_gets</a>((<a class="el" href="list_8h.html#ae38d06cad01ec09d9f5ef54c8801caf8">FdtList</a>*)strs)</td></tr>
+<tr class="separator:adf546974fb2f33bc88fb499c8ead05e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a08cd316bef0a8926b1a1897eccff3590"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="string_8h.html#a08cd316bef0a8926b1a1897eccff3590">fdt_strings_addstring</a>(strs,  str)&#160;&#160;&#160;<a class="el" href="list_8h.html#ad39ddc90bba456ba7b35137375197060">fdt_list_add</a>((<a class="el" href="list_8h.html#ae38d06cad01ec09d9f5ef54c8801caf8">FdtList</a>*)strs, (<a class="el" href="list_8h.html#a8256af85c688d84df9191c52d2baf09c">FdtListNode</a>*)str)</td></tr>
+<tr class="separator:a08cd316bef0a8926b1a1897eccff3590"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad3708c2c4d4b28881d75dfa523f16579"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="string_8h.html#ad3708c2c4d4b28881d75dfa523f16579">fdt_strings_clear</a>(strs)&#160;&#160;&#160;<a class="el" href="list_8h.html#aafd084375d2a1c0833e339106a565e9a">fdt_list_clear</a>((<a class="el" href="list_8h.html#ae38d06cad01ec09d9f5ef54c8801caf8">FdtList</a>*)strs, (<a class="el" href="list_8h.html#a44a696a88d685818e901b3a5a02a9ef7">FDT_LIST_DESTRUCTORFUNC</a>)<a class="el" href="string_8h.html#ade784094ca292c490aba11738a4521c0">fdt_string_delete</a>)</td></tr>
+<tr class="separator:ad3708c2c4d4b28881d75dfa523f16579"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
+Typedefs</h2></td></tr>
+<tr class="memitem:ae32d8bb272c61bee280a22bcba96688b"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structFdtString.html">FdtString</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="string_8h.html#ae32d8bb272c61bee280a22bcba96688b">FdtStrings</a></td></tr>
+<tr class="separator:ae32d8bb272c61bee280a22bcba96688b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
@@ -165,6 +182,12 @@ Functions</h2></td></tr>
 <tr class="separator:afaf5ca5e753717be9897db3daba59559"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a24a0406c738957278c79e6742680c7ab"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="string_8h.html#a24a0406c738957278c79e6742680c7ab">fdt_string_length</a> (<a class="el" href="structFdtString.html">FdtString</a> *str)</td></tr>
 <tr class="separator:a24a0406c738957278c79e6742680c7ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a450f22021fb271c2c22ff5dc1501a32d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="string_8h.html#ae32d8bb272c61bee280a22bcba96688b">FdtStrings</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="string_8h.html#a450f22021fb271c2c22ff5dc1501a32d">fdt_strings_new</a> ()</td></tr>
+<tr class="separator:a450f22021fb271c2c22ff5dc1501a32d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af027a6e5b1d73f7b6ddb669fa7c54b78"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="string_8h.html#af027a6e5b1d73f7b6ddb669fa7c54b78">fdt_strings_delete</a> (<a class="el" href="string_8h.html#ae32d8bb272c61bee280a22bcba96688b">FdtStrings</a> *)</td></tr>
+<tr class="separator:af027a6e5b1d73f7b6ddb669fa7c54b78"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeb53678e6020e49cc132dcf669fce22c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="string_8h.html#aeb53678e6020e49cc132dcf669fce22c">fdt_strings_addcstring</a> (<a class="el" href="string_8h.html#ae32d8bb272c61bee280a22bcba96688b">FdtStrings</a> *, const char *value)</td></tr>
+<tr class="separator:aeb53678e6020e49cc132dcf669fce22c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="aa4830f6cc1e0b1bcdf605a8cbfb44494" name="aa4830f6cc1e0b1bcdf605a8cbfb44494"></a>
@@ -305,6 +328,121 @@ Functions</h2></td></tr>
           <td class="paramtype">&#160;</td>
           <td class="paramname">value</td><td>)</td>
           <td>&#160;&#160;&#160;(value ? strtoul(value, NULL, 16) : 0)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a54e48a9f5f7284304fcbb865d535df1d" name="a54e48a9f5f7284304fcbb865d535df1d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a54e48a9f5f7284304fcbb865d535df1d">&#9670;&nbsp;</a></span>fdt_string_next</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define fdt_string_next</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">str</td><td>)</td>
+          <td>&#160;&#160;&#160;(<a class="el" href="structFdtString.html">FdtString</a>*)<a class="el" href="list_8h.html#aea9932bd9770b18418a8f4594959045b">fdt_list_next</a>((<a class="el" href="list_8h.html#a8256af85c688d84df9191c52d2baf09c">FdtListNode</a>*)str)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a08cd316bef0a8926b1a1897eccff3590" name="a08cd316bef0a8926b1a1897eccff3590"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a08cd316bef0a8926b1a1897eccff3590">&#9670;&nbsp;</a></span>fdt_strings_addstring</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define fdt_strings_addstring</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">strs, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">str&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;<a class="el" href="list_8h.html#ad39ddc90bba456ba7b35137375197060">fdt_list_add</a>((<a class="el" href="list_8h.html#ae38d06cad01ec09d9f5ef54c8801caf8">FdtList</a>*)strs, (<a class="el" href="list_8h.html#a8256af85c688d84df9191c52d2baf09c">FdtListNode</a>*)str)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad3708c2c4d4b28881d75dfa523f16579" name="ad3708c2c4d4b28881d75dfa523f16579"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad3708c2c4d4b28881d75dfa523f16579">&#9670;&nbsp;</a></span>fdt_strings_clear</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define fdt_strings_clear</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">strs</td><td>)</td>
+          <td>&#160;&#160;&#160;<a class="el" href="list_8h.html#aafd084375d2a1c0833e339106a565e9a">fdt_list_clear</a>((<a class="el" href="list_8h.html#ae38d06cad01ec09d9f5ef54c8801caf8">FdtList</a>*)strs, (<a class="el" href="list_8h.html#a44a696a88d685818e901b3a5a02a9ef7">FDT_LIST_DESTRUCTORFUNC</a>)<a class="el" href="string_8h.html#ade784094ca292c490aba11738a4521c0">fdt_string_delete</a>)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="adf546974fb2f33bc88fb499c8ead05e8" name="adf546974fb2f33bc88fb499c8ead05e8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adf546974fb2f33bc88fb499c8ead05e8">&#9670;&nbsp;</a></span>fdt_strings_gets</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define fdt_strings_gets</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">strs</td><td>)</td>
+          <td>&#160;&#160;&#160;(<a class="el" href="structFdtString.html">FdtString</a>*)<a class="el" href="list_8h.html#a1b60d9824ebaf3acd6a97abee7578e74">fdt_list_gets</a>((<a class="el" href="list_8h.html#ae38d06cad01ec09d9f5ef54c8801caf8">FdtList</a>*)strs)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a60e7db1d4479324cc92a61df3151ef00" name="a60e7db1d4479324cc92a61df3151ef00"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a60e7db1d4479324cc92a61df3151ef00">&#9670;&nbsp;</a></span>fdt_strings_size</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define fdt_strings_size</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">strs</td><td>)</td>
+          <td>&#160;&#160;&#160;<a class="el" href="list_8h.html#a2c226067357c8aef5ab35fb1ff1ed245">fdt_list_size</a>((<a class="el" href="list_8h.html#ae38d06cad01ec09d9f5ef54c8801caf8">FdtList</a>*)strs)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Typedef Documentation</h2>
+<a id="ae32d8bb272c61bee280a22bcba96688b" name="ae32d8bb272c61bee280a22bcba96688b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae32d8bb272c61bee280a22bcba96688b">&#9670;&nbsp;</a></span>FdtStrings</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef  struct <a class="el" href="structFdtString.html">FdtString</a> <a class="el" href="string_8h.html#ae32d8bb272c61bee280a22bcba96688b">FdtStrings</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -1005,6 +1143,69 @@ Functions</h2></td></tr>
           <td></td>
           <td>)</td>
           <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aeb53678e6020e49cc132dcf669fce22c" name="aeb53678e6020e49cc132dcf669fce22c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeb53678e6020e49cc132dcf669fce22c">&#9670;&nbsp;</a></span>fdt_strings_addcstring()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void fdt_strings_addcstring </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="string_8h.html#ae32d8bb272c61bee280a22bcba96688b">FdtStrings</a> *&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af027a6e5b1d73f7b6ddb669fa7c54b78" name="af027a6e5b1d73f7b6ddb669fa7c54b78"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af027a6e5b1d73f7b6ddb669fa7c54b78">&#9670;&nbsp;</a></span>fdt_strings_delete()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void fdt_strings_delete </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="string_8h.html#ae32d8bb272c61bee280a22bcba96688b">FdtStrings</a> *&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a450f22021fb271c2c22ff5dc1501a32d" name="a450f22021fb271c2c22ff5dc1501a32d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a450f22021fb271c2c22ff5dc1501a32d">&#9670;&nbsp;</a></span>fdt_strings_new()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="string_8h.html#ae32d8bb272c61bee280a22bcba96688b">FdtStrings</a> * fdt_strings_new </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
         </tr>
       </table>
 </div><div class="memdoc">

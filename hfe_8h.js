@@ -34,6 +34,7 @@ var hfe_8h =
     [ "FdtHfeTrackOffsets", "hfe_8h.html#a3bbd625e064c8c85f3326b79fb3f476e", null ],
     [ "fdt_hfe_header_print", "hfe_8h.html#a7c353da483f24d23cd77306e25c31443", null ],
     [ "fdt_hfe_image_export", "hfe_8h.html#a8983cee1af8d9254aadfd7b89faf29ce", null ],
+    [ "fdt_hfe_image_getextentions", "hfe_8h.html#ac705f60f47db0055a6dfcf4431ce4d12", null ],
     [ "fdt_hfe_image_gettypeid", "hfe_8h.html#adc5624ce37aa950b8afb5d14445b8f04", null ],
     [ "fdt_hfe_image_hassig", "hfe_8h.html#ac4026b4116810b91f2f2ecf9b767bac2", null ],
     [ "fdt_hfe_image_load", "hfe_8h.html#ac685424bddd7761148c56581e9d52c0c", null ],

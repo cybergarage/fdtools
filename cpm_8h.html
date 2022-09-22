@@ -60,17 +60,34 @@ $(document).ready(function(){initNavTree('cpm_8h.html',''); initResizable(); });
 <div id="doc-content">
 <div class="header">
   <div class="summary">
+<a href="#nested-classes">Data Structures</a> &#124;
 <a href="#define-members">Macros</a> &#124;
+<a href="#typedef-members">Typedefs</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle"><div class="title">cpm.h File Reference</div></div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &lt;<a class="el" href="fmt_2format_8h.html">fdtools/fmt/format.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="src_2fdtools_2plugins_2fmt_2cpm_2error_8h.html">fdtools/plugins/fmt/cpm/error.h</a>&gt;</code><br />
 </div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Data Structures</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structFDT__ATTR__PACKED.html">FDT_ATTR_PACKED</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
 Macros</h2></td></tr>
+<tr class="memitem:ab8c96a4582efd3c3d25bedf1afc187a0"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpm_8h.html#ab8c96a4582efd3c3d25bedf1afc187a0">FDT_CPM_DICTIONARY_START_TRACK_NO</a>&#160;&#160;&#160;2</td></tr>
+<tr class="separator:ab8c96a4582efd3c3d25bedf1afc187a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad25167119497e16f89d3d97a32b041cc"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpm_8h.html#ad25167119497e16f89d3d97a32b041cc">FDT_CPM_DICTIONARY_END_TRACK_NO</a>&#160;&#160;&#160;2</td></tr>
+<tr class="separator:ad25167119497e16f89d3d97a32b041cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a28a798611e502d03c0d6db034d766591"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpm_8h.html#a28a798611e502d03c0d6db034d766591">E5H</a>&#160;&#160;&#160;0xE5</td></tr>
 <tr class="separator:a28a798611e502d03c0d6db034d766591"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
+Typedefs</h2></td></tr>
+<tr class="memitem:a0cbece750d87c1391f831bf47fe91045"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structFDT__ATTR__PACKED.html">FDT_ATTR_PACKED</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpm_8h.html#a0cbece750d87c1391f831bf47fe91045">FdtCpmDirectory</a></td></tr>
+<tr class="separator:a0cbece750d87c1391f831bf47fe91045"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
@@ -78,14 +95,14 @@ Functions</h2></td></tr>
 <tr class="separator:a8f4e5e7edc621b2db6393cc04c51a7d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a17d19e671794667e81a6f22b9e1ffdd0"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpm_8h.html#a17d19e671794667e81a6f22b9e1ffdd0">fdt_cpm_format_gettypeid</a> (<a class="el" href="fmt_2format_8h.html#aaef1619e756019bfb37461b0a9030e55">FdtFormat</a> *)</td></tr>
 <tr class="separator:a17d19e671794667e81a6f22b9e1ffdd0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a69776f3262c6530c62a45a86956d2c00"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpm_8h.html#a69776f3262c6530c62a45a86956d2c00">fdt_cpm_format_format</a> (<a class="el" href="fmt_2format_8h.html#aaef1619e756019bfb37461b0a9030e55">FdtFormat</a> *)</td></tr>
-<tr class="separator:a69776f3262c6530c62a45a86956d2c00"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa267176bfa4b1cf3fcc6b7b87090498b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpm_8h.html#aa267176bfa4b1cf3fcc6b7b87090498b">fdt_cpm_format_list</a> (<a class="el" href="fmt_2format_8h.html#aaef1619e756019bfb37461b0a9030e55">FdtFormat</a> *, <a class="el" href="fmt_2file_8h.html#a3130601285efc0c8b6d1bc4c3441c346">FdtFiles</a> *)</td></tr>
-<tr class="separator:aa267176bfa4b1cf3fcc6b7b87090498b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a15afa01e05962bfd98b51ce7a730d4fd"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpm_8h.html#a15afa01e05962bfd98b51ce7a730d4fd">fdt_cpm_format_add</a> (<a class="el" href="fmt_2format_8h.html#aaef1619e756019bfb37461b0a9030e55">FdtFormat</a> *, <a class="el" href="structFdtFile.html">FdtFile</a> *)</td></tr>
-<tr class="separator:a15afa01e05962bfd98b51ce7a730d4fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af924f83ee21d549b7c0820f19318e8ba"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpm_8h.html#af924f83ee21d549b7c0820f19318e8ba">fdt_cpm_format_del</a> (<a class="el" href="fmt_2format_8h.html#aaef1619e756019bfb37461b0a9030e55">FdtFormat</a> *, <a class="el" href="structFdtFile.html">FdtFile</a> *)</td></tr>
-<tr class="separator:af924f83ee21d549b7c0820f19318e8ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad644b25d51caface383f111d6584cff7"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpm_8h.html#ad644b25d51caface383f111d6584cff7">fdt_cpm_format_format</a> (<a class="el" href="fmt_2format_8h.html#aaef1619e756019bfb37461b0a9030e55">FdtFormat</a> *, <a class="el" href="structFdtError.html">FdtError</a> *err)</td></tr>
+<tr class="separator:ad644b25d51caface383f111d6584cff7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af9cf711f0d67ae9f818a8bea4361efa8"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpm_8h.html#af9cf711f0d67ae9f818a8bea4361efa8">fdt_cpm_format_list</a> (<a class="el" href="fmt_2format_8h.html#aaef1619e756019bfb37461b0a9030e55">FdtFormat</a> *, <a class="el" href="fmt_2file_8h.html#a3130601285efc0c8b6d1bc4c3441c346">FdtFiles</a> *, <a class="el" href="structFdtError.html">FdtError</a> *err)</td></tr>
+<tr class="separator:af9cf711f0d67ae9f818a8bea4361efa8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9722d4049020d31f02c4c9722ce598b3"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpm_8h.html#a9722d4049020d31f02c4c9722ce598b3">fdt_cpm_format_add</a> (<a class="el" href="fmt_2format_8h.html#aaef1619e756019bfb37461b0a9030e55">FdtFormat</a> *, <a class="el" href="structFdtFile.html">FdtFile</a> *, <a class="el" href="structFdtError.html">FdtError</a> *err)</td></tr>
+<tr class="separator:a9722d4049020d31f02c4c9722ce598b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a18e2daa40c6893cae47df2ccbf9ec961"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpm_8h.html#a18e2daa40c6893cae47df2ccbf9ec961">fdt_cpm_format_del</a> (<a class="el" href="fmt_2format_8h.html#aaef1619e756019bfb37461b0a9030e55">FdtFormat</a> *, <a class="el" href="structFdtFile.html">FdtFile</a> *, <a class="el" href="structFdtError.html">FdtError</a> *err)</td></tr>
+<tr class="separator:a18e2daa40c6893cae47df2ccbf9ec961"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="a28a798611e502d03c0d6db034d766591" name="a28a798611e502d03c0d6db034d766591"></a>
@@ -102,9 +119,52 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="ad25167119497e16f89d3d97a32b041cc" name="ad25167119497e16f89d3d97a32b041cc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad25167119497e16f89d3d97a32b041cc">&#9670;&nbsp;</a></span>FDT_CPM_DICTIONARY_END_TRACK_NO</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define FDT_CPM_DICTIONARY_END_TRACK_NO&#160;&#160;&#160;2</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab8c96a4582efd3c3d25bedf1afc187a0" name="ab8c96a4582efd3c3d25bedf1afc187a0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab8c96a4582efd3c3d25bedf1afc187a0">&#9670;&nbsp;</a></span>FDT_CPM_DICTIONARY_START_TRACK_NO</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define FDT_CPM_DICTIONARY_START_TRACK_NO&#160;&#160;&#160;2</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Typedef Documentation</h2>
+<a id="a0cbece750d87c1391f831bf47fe91045" name="a0cbece750d87c1391f831bf47fe91045"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0cbece750d87c1391f831bf47fe91045">&#9670;&nbsp;</a></span>FdtCpmDirectory</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="structFDT__ATTR__PACKED.html">FDT_ATTR_PACKED</a> <a class="el" href="cpm_8h.html#a0cbece750d87c1391f831bf47fe91045">FdtCpmDirectory</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="a15afa01e05962bfd98b51ce7a730d4fd" name="a15afa01e05962bfd98b51ce7a730d4fd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a15afa01e05962bfd98b51ce7a730d4fd">&#9670;&nbsp;</a></span>fdt_cpm_format_add()</h2>
+<a id="a9722d4049020d31f02c4c9722ce598b3" name="a9722d4049020d31f02c4c9722ce598b3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9722d4049020d31f02c4c9722ce598b3">&#9670;&nbsp;</a></span>fdt_cpm_format_add()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -119,7 +179,13 @@ Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype"><a class="el" href="structFdtFile.html">FdtFile</a> *&#160;</td>
-          <td class="paramname">&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structFdtError.html">FdtError</a> *&#160;</td>
+          <td class="paramname"><em>err</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -131,8 +197,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="af924f83ee21d549b7c0820f19318e8ba" name="af924f83ee21d549b7c0820f19318e8ba"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af924f83ee21d549b7c0820f19318e8ba">&#9670;&nbsp;</a></span>fdt_cpm_format_del()</h2>
+<a id="a18e2daa40c6893cae47df2ccbf9ec961" name="a18e2daa40c6893cae47df2ccbf9ec961"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a18e2daa40c6893cae47df2ccbf9ec961">&#9670;&nbsp;</a></span>fdt_cpm_format_del()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -147,7 +213,13 @@ Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype"><a class="el" href="structFdtFile.html">FdtFile</a> *&#160;</td>
-          <td class="paramname">&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structFdtError.html">FdtError</a> *&#160;</td>
+          <td class="paramname"><em>err</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -159,8 +231,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a69776f3262c6530c62a45a86956d2c00" name="a69776f3262c6530c62a45a86956d2c00"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a69776f3262c6530c62a45a86956d2c00">&#9670;&nbsp;</a></span>fdt_cpm_format_format()</h2>
+<a id="ad644b25d51caface383f111d6584cff7" name="ad644b25d51caface383f111d6584cff7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad644b25d51caface383f111d6584cff7">&#9670;&nbsp;</a></span>fdt_cpm_format_format()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -169,8 +241,18 @@ Functions</h2></td></tr>
           <td class="memname">bool fdt_cpm_format_format </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="fmt_2format_8h.html#aaef1619e756019bfb37461b0a9030e55">FdtFormat</a> *&#160;</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype"><a class="el" href="structFdtError.html">FdtError</a> *&#160;</td>
+          <td class="paramname"><em>err</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -195,8 +277,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="aa267176bfa4b1cf3fcc6b7b87090498b" name="aa267176bfa4b1cf3fcc6b7b87090498b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa267176bfa4b1cf3fcc6b7b87090498b">&#9670;&nbsp;</a></span>fdt_cpm_format_list()</h2>
+<a id="af9cf711f0d67ae9f818a8bea4361efa8" name="af9cf711f0d67ae9f818a8bea4361efa8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af9cf711f0d67ae9f818a8bea4361efa8">&#9670;&nbsp;</a></span>fdt_cpm_format_list()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -211,7 +293,13 @@ Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype"><a class="el" href="fmt_2file_8h.html#a3130601285efc0c8b6d1bc4c3441c346">FdtFiles</a> *&#160;</td>
-          <td class="paramname">&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structFdtError.html">FdtError</a> *&#160;</td>
+          <td class="paramname"><em>err</em>&#160;</td>
         </tr>
         <tr>
           <td></td>

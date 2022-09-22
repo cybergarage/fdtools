@@ -14,5 +14,6 @@ var img_2plugin_8h =
     [ "fdt_image_plugin_new", "img_2plugin_8h.html#a23bb742d1a3bd4626a0388f616df7369", null ],
     [ "fdt_image_plugins_add", "img_2plugin_8h.html#aa1486c3b8fc06b34a9b1532c840dede6", null ],
     [ "fdt_image_plugins_delete", "img_2plugin_8h.html#a40d996b1fc2b235a12997de792719ff6", null ],
+    [ "fdt_image_plugins_getallextentions", "img_2plugin_8h.html#a4a7e0604c9b88b4fd42e871e8340af84", null ],
     [ "fdt_image_plugins_new", "img_2plugin_8h.html#a0d0fae274cb75369f1c315a2c87c2de3", null ]
 ];

@@ -1,5 +1,6 @@
 var structFDT__ATTR__PACKED =
 [
+    [ "AL", "structFDT__ATTR__PACKED.html#a483d3e02783e41e3414437dc0a8f4364", null ],
     [ "bitrate", "structFDT__ATTR__PACKED.html#a8eab241468995dee190bd53c275d499b", null ],
     [ "bitRate", "structFDT__ATTR__PACKED.html#a845a4b5c97c3ca67c91e9a33a70eb4c6", null ],
     [ "Blank", "structFDT__ATTR__PACKED.html#a4449d03a4a6c81ff92db33f2bade8070", null ],
@@ -32,7 +33,9 @@ var structFDT__ATTR__PACKED =
     [ "disk_size", "structFDT__ATTR__PACKED.html#a2cd078de48ef9f7eea6887d14a86314e", null ],
     [ "disk_type", "structFDT__ATTR__PACKED.html#a354527bda4a43057199d3bf451585920", null ],
     [ "dnu", "structFDT__ATTR__PACKED.html#a95c7a8bf83d6e711318ed6417be59e03", null ],
+    [ "EX", "structFDT__ATTR__PACKED.html#ad0ebf0fcc155d36640b5e5bc6a1ecce5", null ],
     [ "fd", "structFDT__ATTR__PACKED.html#afb65850792c87dccb6624ce76fb33318", null ],
+    [ "Filename", "structFDT__ATTR__PACKED.html#ab345e470d61ebb5d0c4457a7b2189ec6", null ],
     [ "floppyinterfacemode", "structFDT__ATTR__PACKED.html#ab9daf0c5b01fb8f03b0f9be1ab5a4b20", null ],
     [ "floppyRPM", "structFDT__ATTR__PACKED.html#abd46f31a4a5cff0f002110d851c8683a", null ],
     [ "formatrevision", "structFDT__ATTR__PACKED.html#a300e0480895ff42bfba9fdf6b3405fd0", null ],
@@ -50,8 +53,11 @@ var structFDT__ATTR__PACKED =
     [ "number_of_side", "structFDT__ATTR__PACKED.html#a9bb04ade2f095b696a3a3efd361fad59", null ],
     [ "offset", "structFDT__ATTR__PACKED.html#aba56e0fbd0547205f12c3992cf81211c", null ],
     [ "r", "structFDT__ATTR__PACKED.html#ad79a964d597a1723c43b1f70db77aa32", null ],
+    [ "RC", "structFDT__ATTR__PACKED.html#a7df4c265c75b5a3f3543b3b1cb404763", null ],
     [ "reserve", "structFDT__ATTR__PACKED.html#aa7badf477b38b38ea1c16c5b93ae031c", null ],
     [ "rpm", "structFDT__ATTR__PACKED.html#adb8f9a82301f587a5d8b5dfee1facfa7", null ],
+    [ "S1", "structFDT__ATTR__PACKED.html#a0bc6a43990c284c78502be49338f97ff", null ],
+    [ "S2", "structFDT__ATTR__PACKED.html#a24f5b324cbd22216ff500abcdfce98d5", null ],
     [ "sector_size", "structFDT__ATTR__PACKED.html#a6c69df286b4c1cf27a2117bd0d19845a", null ],
     [ "Signature_word", "structFDT__ATTR__PACKED.html#ae420b34324512cac8cc2793210b055f2", null ],
     [ "single_step", "structFDT__ATTR__PACKED.html#a6900732f305290e10add99304e013b9a", null ],
@@ -66,6 +72,8 @@ var structFDT__ATTR__PACKED =
     [ "track_len", "structFDT__ATTR__PACKED.html#a56bf339919595acb9432b54214de924a", null ],
     [ "track_list_offset", "structFDT__ATTR__PACKED.html#a784b0a6aa6a8b44e9e716b236c925340", null ],
     [ "track_offset", "structFDT__ATTR__PACKED.html#a4608a9e1a1ffae20185d21b7d60b10db", null ],
+    [ "Type", "structFDT__ATTR__PACKED.html#ac83508170b87cf9e6014d1c2a737f95a", null ],
+    [ "UserNumber", "structFDT__ATTR__PACKED.html#aa4596ea289a3604d8ed6b638c815f957", null ],
     [ "write_allowed", "structFDT__ATTR__PACKED.html#a5d9d1cb0a8babf10f4c8298854ababd1", null ],
     [ "write_protect", "structFDT__ATTR__PACKED.html#a797b5f75ac02dff1e4aef008a8b8b966", null ],
     [ "write_protect", "structFDT__ATTR__PACKED.html#a6aaf4ba8ddea033d400affdbaf4e8568", null ]
