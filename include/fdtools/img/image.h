@@ -38,7 +38,6 @@ const int FDT_IMAGE_HEADER_SIGNATURE_MAX = 8;
 typedef FdtImageType (*FDT_IMAGE_GETTYPE)(void*);
 typedef const char* (*FDT_IMAGE_GETTYPEID)(void*);
 typedef bool (*FDT_IMAGE_GETEXTENTIONS)(void*, FdtStrings*);
-typedef bool (*FDT_IMAGE_HASEXT)(void*, const char*);
 typedef bool (*FDT_IMAGE_HASSIG)(void*, byte_t*, size_t);
 typedef bool (*FDT_IMAGE_OPENER)(void*, const char*, FdtFileMode, FdtError*);
 typedef bool (*FDT_IMAGE_CLOSER)(void*, FdtError*);
@@ -54,7 +53,6 @@ typedef bool (*FDT_IMAGE_DESTRUCTOR)(void*);
   FDT_IMAGE_GETTYPE image_gettype;             \
   FDT_IMAGE_GETTYPEID image_gettypeid;         \
   FDT_IMAGE_GETEXTENTIONS image_getextentions; \
-  FDT_IMAGE_HASEXT image_hasext;               \
   FDT_IMAGE_HASSIG image_hassig;               \
   FDT_IMAGE_OPENER image_opener;               \
   FDT_IMAGE_CLOSER image_closer;               \
@@ -99,7 +97,6 @@ void fdt_image_print(FdtImage* img);
 #define fdt_image_setgettype(img, fn) (img->image_gettype = (FDT_IMAGE_GETTYPE)fn)
 #define fdt_image_setgettypeid(img, fn) (img->image_gettypeid = (FDT_IMAGE_GETTYPEID)fn)
 #define fdt_image_setgetextentions(img, fn) (img->image_getextentions = (FDT_IMAGE_GETEXTENTIONS)fn)
-#define fdt_image_sethasext(img, fn) (img->image_hasext = (FDT_IMAGE_HASEXT)fn)
 #define fdt_image_sethassig(img, fn) (img->image_hassig = (FDT_IMAGE_HASSIG)fn)
 #define fdt_image_setopener(img, fn) (img->image_opener = (FDT_IMAGE_OPENER)fn)
 #define fdt_image_setcloser(img, fn) (img->image_closer = (FDT_IMAGE_CLOSER)fn)
