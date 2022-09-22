@@ -29,6 +29,8 @@ FdtString* fdt_string_new()
   if (!str)
     return NULL;
 
+  fdt_list_node_init((FdtListNode*)str);
+
   str->value = NULL;
   str->mem_size = 0;
   str->value_size = 0;

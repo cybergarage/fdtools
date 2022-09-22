@@ -142,6 +142,7 @@ am__objects_1 = ../../src/fdtools/util/struct.$(OBJEXT) \
 	../../src/fdtools/util/log.$(OBJEXT) \
 	../../src/fdtools/util/string_func.$(OBJEXT) \
 	../../src/fdtools/util/arguments.$(OBJEXT) \
+	../../src/fdtools/util/strings.$(OBJEXT) \
 	../../src/fdtools/util/string.$(OBJEXT) \
 	../../src/fdtools/util/option.$(OBJEXT) \
 	../../src/fdtools/util/file.$(OBJEXT) \
@@ -247,6 +248,7 @@ am__depfiles_remade = ../../src/fdtools/$(DEPDIR)/error.Po \
 	../../src/fdtools/util/$(DEPDIR)/program.Po \
 	../../src/fdtools/util/$(DEPDIR)/string.Po \
 	../../src/fdtools/util/$(DEPDIR)/string_func.Po \
+	../../src/fdtools/util/$(DEPDIR)/strings.Po \
 	../../src/fdtools/util/$(DEPDIR)/struct.Po
 am__mv = mv -f
 CXXCOMPILE = $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) \
@@ -408,6 +410,7 @@ fdtools_sources = \
 	../../src/fdtools/util/log.cpp \
 	../../src/fdtools/util/string_func.cpp \
 	../../src/fdtools/util/arguments.cpp \
+	../../src/fdtools/util/strings.cpp \
 	../../src/fdtools/util/string.cpp \
 	../../src/fdtools/util/option.cpp \
 	../../src/fdtools/util/file.cpp \
@@ -548,6 +551,9 @@ clean-libLIBRARIES:
 	../../src/fdtools/util/$(am__dirstamp) \
 	../../src/fdtools/util/$(DEPDIR)/$(am__dirstamp)
 ../../src/fdtools/util/arguments.$(OBJEXT):  \
+	../../src/fdtools/util/$(am__dirstamp) \
+	../../src/fdtools/util/$(DEPDIR)/$(am__dirstamp)
+../../src/fdtools/util/strings.$(OBJEXT):  \
 	../../src/fdtools/util/$(am__dirstamp) \
 	../../src/fdtools/util/$(DEPDIR)/$(am__dirstamp)
 ../../src/fdtools/util/string.$(OBJEXT):  \
@@ -811,6 +817,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@../../src/fdtools/util/$(DEPDIR)/program.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@../../src/fdtools/util/$(DEPDIR)/string.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@../../src/fdtools/util/$(DEPDIR)/string_func.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@../../src/fdtools/util/$(DEPDIR)/strings.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@../../src/fdtools/util/$(DEPDIR)/struct.Po@am__quote@ # am--include-marker
 
 $(am__depfiles_remade):
@@ -1055,6 +1062,7 @@ distclean: distclean-am
 	-rm -f ../../src/fdtools/util/$(DEPDIR)/program.Po
 	-rm -f ../../src/fdtools/util/$(DEPDIR)/string.Po
 	-rm -f ../../src/fdtools/util/$(DEPDIR)/string_func.Po
+	-rm -f ../../src/fdtools/util/$(DEPDIR)/strings.Po
 	-rm -f ../../src/fdtools/util/$(DEPDIR)/struct.Po
 	-rm -f Makefile
 distclean-am: clean-am distclean-compile distclean-generic \
@@ -1147,6 +1155,7 @@ maintainer-clean: maintainer-clean-am
 	-rm -f ../../src/fdtools/util/$(DEPDIR)/program.Po
 	-rm -f ../../src/fdtools/util/$(DEPDIR)/string.Po
 	-rm -f ../../src/fdtools/util/$(DEPDIR)/string_func.Po
+	-rm -f ../../src/fdtools/util/$(DEPDIR)/strings.Po
 	-rm -f ../../src/fdtools/util/$(DEPDIR)/struct.Po
 	-rm -f Makefile
 maintainer-clean-am: distclean-am maintainer-clean-generic

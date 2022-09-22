@@ -26,6 +26,7 @@ fdtoolsheaders = \
 	./fdtools/util/string.h \
 	./fdtools/plugins/format.h \
 	./fdtools/plugins/image.h \
+	./fdtools/fmt/error.h \
 	./fdtools/fmt/file.h \
 	./fdtools/fmt/format.h \
 	./fdtools/img/error.h \

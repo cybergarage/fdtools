@@ -65,6 +65,7 @@
 		21E15B05256A742700029338 /* list.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 21E15B04256A742700029338 /* list.cpp */; };
 		21E15B08256A955A00029338 /* image.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 21E15B07256A955A00029338 /* image.cpp */; };
 		21E15B0C256BB09100029338 /* string.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 21E15B0B256BB09100029338 /* string.cpp */; };
+		21EADC8828DC8A4E002BF3B7 /* strings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 21EADC8728DC8A4E002BF3B7 /* strings.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -128,6 +129,7 @@
 		21E15B04256A742700029338 /* list.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = list.cpp; path = ../../../src/fdtools/util/list.cpp; sourceTree = "<group>"; };
 		21E15B07256A955A00029338 /* image.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = image.cpp; path = ../../../src/fdtools/img/image.cpp; sourceTree = "<group>"; };
 		21E15B0B256BB09100029338 /* string.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = string.cpp; path = ../../../src/fdtools/util/string.cpp; sourceTree = "<group>"; };
+		21EADC8728DC8A4E002BF3B7 /* strings.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = strings.cpp; path = ../../../src/fdtools/util/strings.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,19 +165,20 @@
 		21403C0E255F02B00022389D /* util */ = {
 			isa = PBXGroup;
 			children = (
-				2161939A26EB9841007FA97A /* log.cpp */,
-				21B0AB4825A0EE6F00B064A3 /* struct.cpp */,
-				211D4858257BE46A00895CFE /* arguments.cpp */,
 				211D4851257BD66400895CFE /* argument.cpp */,
+				211D4858257BE46A00895CFE /* arguments.cpp */,
+				21DC201F257B9EEA004F3363 /* dictionary.cpp */,
+				21DC2022257BA110004F3363 /* element.cpp */,
+				2151DF45256989AC009FC0E0 /* file.cpp */,
+				21352E2025768FA7007E05A4 /* hexdump.cpp */,
+				21E15B04256A742700029338 /* list.cpp */,
+				2161939A26EB9841007FA97A /* log.cpp */,
 				211D484C257BD13100895CFE /* option.cpp */,
 				211D4844257BB31900895CFE /* program.cpp */,
-				21DC2022257BA110004F3363 /* element.cpp */,
-				21DC201F257B9EEA004F3363 /* dictionary.cpp */,
-				21352E2025768FA7007E05A4 /* hexdump.cpp */,
-				21E15B0B256BB09100029338 /* string.cpp */,
-				21E15B04256A742700029338 /* list.cpp */,
-				2151DF45256989AC009FC0E0 /* file.cpp */,
 				21403C0F255F02C80022389D /* string_func.cpp */,
+				21E15B0B256BB09100029338 /* string.cpp */,
+				21EADC8728DC8A4E002BF3B7 /* strings.cpp */,
+				21B0AB4825A0EE6F00B064A3 /* struct.cpp */,
 			);
 			name = util;
 			sourceTree = "<group>";
@@ -460,6 +463,7 @@
 				215C210A28D5572C00C21A1F /* plugin.cpp in Sources */,
 				215C210F28D55E8400C21A1F /* dos.cpp in Sources */,
 				21BD0E2B28D4D64800826636 /* func.cpp in Sources */,
+				21EADC8828DC8A4E002BF3B7 /* strings.cpp in Sources */,
 				21BD0E4A28D4D6D000826636 /* hfe_loader.cpp in Sources */,
 				215C211C28D58DDC00C21A1F /* files.cpp in Sources */,
 				21B0AB4625A0ED1F00B064A3 /* density.cpp in Sources */,

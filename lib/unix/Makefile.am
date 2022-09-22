@@ -25,6 +25,7 @@ fdtools_sources = \
 	../../src/fdtools/util/log.cpp \
 	../../src/fdtools/util/string_func.cpp \
 	../../src/fdtools/util/arguments.cpp \
+	../../src/fdtools/util/strings.cpp \
 	../../src/fdtools/util/string.cpp \
 	../../src/fdtools/util/option.cpp \
 	../../src/fdtools/util/file.cpp \

@@ -18,10 +18,15 @@
 #include <string.h>
 
 #include <fdtools/typedef.h>
+#include <fdtools/util/list.h>
 
 #ifdef __cplusplus
 extern "C" {
 #endif
+
+////////////////////////////////////////
+// fdt_str*
+////////////////////////////////////////
 
 char* fdt_strdup(const char* str);
 size_t fdt_strlen(const char* str);
@@ -58,11 +63,16 @@ const char* fdt_ssizet2str(ssize_t value, char* buf, size_t bufSize);
 #define fdt_str2sizet(value) ((size_t)(value ? atol(value) : 0))
 #define fdt_str2ssizet(value) ((ssize_t)(value ? atol(value) : 0))
 
+////////////////////////////////////////
+// fdt_string_*
+////////////////////////////////////////
+
 typedef struct {
+  FDT_LIST_STRUCT_MEMBERS
   char* value;
   size_t mem_size;
   size_t value_size;
-} FdtString;
+} FdtString, FdtStrings;
 
 FdtString* fdt_string_new();
 bool fdt_string_delete(FdtString* str);
@@ -76,6 +86,18 @@ bool fdt_string_appendnvalue(FdtString* str, const char* value, size_t valueLen)
 const char* fdt_string_getvalue(FdtString* str);
 bool fdt_string_equals(FdtString* str, FdtString* other);
 size_t fdt_string_length(FdtString* str);
+
+////////////////////////////////////////
+// fdt_strings_*
+////////////////////////////////////////
+
+FdtStrings* fdt_strings_new();
+void fdt_strings_delete(FdtStrings*);
+
+#define fdt_strings_size(strs) fdt_list_size((FdtList*)strs)
+#define fdt_strings_gets(strs) (FdtString*)fdt_list_gets((FdtList*)strs)
+#define fdt_strings_addstr(strs, str) fdt_list_add((FdtList*)strs, (FdtListNode*)str)
+#define fdt_strings_clear(strs) fdt_list_clear((FdtList*)strs, (FDT_LIST_DESTRUCTORFUNC)fdt_string_delete)
 
 #ifdef __cplusplus
 } /* extern C */
