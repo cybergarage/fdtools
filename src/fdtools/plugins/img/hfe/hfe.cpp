@@ -21,6 +21,7 @@ FdtImage* fdt_hfe_image_new(void)
     return NULL;
 
   fdt_image_setgettypeid(img, fdt_hfe_image_gettypeid);
+  fdt_image_setgetextentions(img, fdt_hfe_image_getextentions);
   fdt_image_sethassig(img, fdt_hfe_image_hassig);
   fdt_image_setloader(img, fdt_hfe_image_load);
   fdt_image_setexporter(img, fdt_hfe_image_export);
@@ -31,6 +32,12 @@ FdtImage* fdt_hfe_image_new(void)
 const char* fdt_hfe_image_gettypeid(FdtImage* img)
 {
   return "HFE";
+}
+
+bool fdt_hfe_image_getextentions(FdtImage* img, FdtStrings* strs)
+{
+  fdt_strings_addcstring(strs, "HFE");
+  return true;
 }
 
 bool fdt_hfe_image_hassig(FdtFileImage* img, byte_t* header, size_t header_size)
