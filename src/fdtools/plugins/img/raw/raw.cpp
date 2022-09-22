@@ -21,7 +21,7 @@ FdtImage* fdt_raw_image_new(void)
     return NULL;
 
   fdt_image_setgettypeid(img, fdt_raw_image_gettypeid);
-  fdt_image_sethasext(img, fdt_raw_image_hasext);
+  fdt_image_setgetextentions(img, fdt_raw_image_getextentions);
   fdt_image_setloader(img, fdt_raw_image_load);
   fdt_image_setexporter(img, fdt_raw_image_export);
 
@@ -33,11 +33,9 @@ const char* fdt_raw_image_gettypeid(FdtImage* img)
   return "RAW";
 }
 
-bool fdt_raw_image_hasext(FdtFileImage* img, const char* filename)
+bool fdt_raw_image_getextentions(FdtImage* img, FdtStrings* strs)
 {
-  if (fdt_file_hasextension(filename, FDT_RAW_EXTENTION_RAW))
-    return true;
-  if (fdt_file_hasextension(filename, FDT_RAW_EXTENTION_IMG))
-    return true;
-  return false;
+  fdt_strings_addcstring(strs, FDT_RAW_EXTENTION_RAW);
+  fdt_strings_addcstring(strs, FDT_RAW_EXTENTION_IMG);
+  return true;
 }

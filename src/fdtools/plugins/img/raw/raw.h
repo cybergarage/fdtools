@@ -27,7 +27,7 @@ const char FDT_RAW_EXTENTION_IMG[] = "img";
 FdtImage* fdt_raw_image_new(void);
 
 const char* fdt_raw_image_gettypeid(FdtImage* img);
-bool fdt_raw_image_hasext(FdtFileImage*, const char*);
+bool fdt_raw_image_getextentions(FdtImage* img, FdtStrings* strs);
 bool fdt_raw_image_load(FdtFileImage*, FdtError* err);
 bool fdt_raw_image_export(FdtFileImage*, FdtError* err);
 
