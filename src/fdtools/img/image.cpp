@@ -77,11 +77,30 @@ const char* fdt_image_gettypeid(FdtImage* img)
   return img->image_gettypeid(img);
 }
 
+bool fdt_image_getextentions(FdtImage* img, FdtStrings* strs)
+{
+  if (!img || !img->image_getextentions)
+    return false;
+  return img->image_getextentions(img, strs);
+}
+
 bool fdt_image_hasext(FdtImage* img, const char* filename)
 {
-  if (!img || !img->image_hasext)
+  FdtStrings* exts = fdt_strings_new();
+  if (!exts)
     return false;
-  return img->image_hasext(img, filename);
+  if (!fdt_image_getextentions(img, exts)) {
+    fdt_strings_delete(exts);
+    return false;
+  }
+  for (FdtString* ext = fdt_strings_gets(exts); ext; ext = fdt_string_next(ext)) {
+    if (fdt_file_hasextension(filename, fdt_string_getvalue(ext))) {
+      fdt_strings_delete(exts);
+      return true;
+    }
+  }
+  fdt_strings_delete(exts);
+  return false;
 }
 
 bool fdt_image_hassig(FdtImage* img, byte_t* header, size_t header_size)
