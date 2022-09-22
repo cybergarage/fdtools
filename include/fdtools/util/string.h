@@ -94,6 +94,8 @@ size_t fdt_string_length(FdtString* str);
 FdtStrings* fdt_strings_new();
 void fdt_strings_delete(FdtStrings*);
 
+#define fdt_string_next(str) (FdtString*)fdt_list_next((FdtListNode*)str)
+
 #define fdt_strings_size(strs) fdt_list_size((FdtList*)strs)
 #define fdt_strings_gets(strs) (FdtString*)fdt_list_gets((FdtList*)strs)
 #define fdt_strings_addstr(strs, str) fdt_list_add((FdtList*)strs, (FdtListNode*)str)
