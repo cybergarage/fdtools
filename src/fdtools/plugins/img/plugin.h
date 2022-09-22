@@ -44,6 +44,8 @@ bool fdt_image_plugin_delete(FdtImagePlugin*);
 #define fdt_image_plugin_createimage(plg) (plg->imager())
 #define fdt_image_plugin_next(plg) (FdtImagePlugin*)fdt_list_next((FdtListNode*)plg)
 
+void fdt_image_plugins_getallextentions(FdtStrings*);
+
 #ifdef __cplusplus
 } /* extern C */
 #endif

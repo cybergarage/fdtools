@@ -32,6 +32,15 @@ bool fdt_image_name_isdevice(const char* filename)
   return true;
 }
 
+void fdt_image_plugins_getallextentions(FdtStrings* exts)
+{
+  for (FdtImagePlugin* plg = fdt_image_plugins_getimagers(); plg; plg = fdt_image_plugin_next(plg)) {
+    FdtImage* img = fdt_image_plugin_createimage(plg);
+    fdt_image_getextentions(img, exts);
+    fdt_image_delete(img);
+  }
+}
+
 FDT_IMAGE_IMAGER fdt_image_plugins_getimagerbysignature(const char* filename)
 {
   if (!filename || (fdt_strlen(filename) <= 0))
