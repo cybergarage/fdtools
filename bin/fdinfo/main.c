@@ -61,7 +61,7 @@ int main(int argc, char* argv[])
   // Loads source file image
 
   const char* img_name = fdt_program_getargument(prg, 0);
-  FdtImage* img = fdt_image_plugins_create(img_name, err);
+  FdtImage* img = fdt_image_plugins_createimagebyfile(img_name, err);
   if (!img) {
     error(err);
   }

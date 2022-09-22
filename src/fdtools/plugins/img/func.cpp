@@ -107,7 +107,7 @@ FDT_IMAGE_IMAGER fdt_image_plugins_getimager(const char* filename, FdtError* err
   return imager;
 }
 
-FdtImage* fdt_image_plugins_create(const char* filename, FdtError* err)
+FdtImage* fdt_image_plugins_createimagebyfile(const char* filename, FdtError* err)
 {
   if (!filename || (fdt_strlen(filename) <= 0))
     return NULL;

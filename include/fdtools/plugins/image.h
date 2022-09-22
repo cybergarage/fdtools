@@ -22,7 +22,7 @@ extern "C" {
 #endif
 
 FDT_IMAGE_IMAGER fdt_image_plugins_getimager(const char*, FdtError*);
-FdtImage* fdt_image_plugins_create(const char*, FdtError*);
+FdtImage* fdt_image_plugins_createimagebyfile(const char*, FdtError*);
 
 #ifdef __cplusplus
 } /* extern C */
