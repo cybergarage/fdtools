@@ -101,6 +101,8 @@ void fdt_strings_delete(FdtStrings*);
 #define fdt_strings_addstring(strs, str) fdt_list_add((FdtList*)strs, (FdtListNode*)str)
 #define fdt_strings_clear(strs) fdt_list_clear((FdtList*)strs, (FDT_LIST_DESTRUCTORFUNC)fdt_string_delete)
 
+void fdt_strings_addcstring(FdtStrings*, const char* value);
+
 #ifdef __cplusplus
 } /* extern C */
 #endif

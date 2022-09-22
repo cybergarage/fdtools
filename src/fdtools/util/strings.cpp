@@ -36,3 +36,12 @@ void fdt_strings_delete(FdtStrings* strs)
   fdt_strings_clear(strs);
   free(strs);
 }
+
+void fdt_strings_addcstring(FdtStrings* strs, const char* value)
+{
+  FdtString* str = fdt_string_new();
+  if (!str)
+    return;
+  fdt_string_setvalue(str, value);
+  fdt_strings_addstring(strs, str);
+}
