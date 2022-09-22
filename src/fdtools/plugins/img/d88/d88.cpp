@@ -24,7 +24,7 @@ FdtImage* fdt_d88_image_new(void)
     return NULL;
 
   fdt_image_setgettypeid(img, fdt_d88_image_gettypeid);
-  fdt_image_sethasext(img, fdt_d88_image_hasext);
+  fdt_image_setgetextentions(img, fdt_d88_image_getextentions);
   fdt_image_setloader(img, fdt_d88_image_load);
   fdt_image_setexporter(img, fdt_d88_image_export);
 
@@ -36,23 +36,16 @@ const char* fdt_d88_image_gettypeid(FdtImage* img)
   return "D88";
 }
 
-bool fdt_d88_image_hasext(FdtFileImage* img, const char* filename)
+bool fdt_d88_image_getextentions(FdtImage* img, FdtStrings* strs)
 {
-  if (fdt_file_hasextension(filename, D88_EXTENTION_D88))
-    return true;
-  if (fdt_file_hasextension(filename, D88_EXTENTION_88D))
-    return true;
-  if (fdt_file_hasextension(filename, D88_EXTENTION_D77))
-    return true;
-  if (fdt_file_hasextension(filename, D88_EXTENTION_D68))
-    return true;
-  if (fdt_file_hasextension(filename, D88_EXTENTION_D98))
-    return true;
-  if (fdt_file_hasextension(filename, D88_EXTENTION_D8U))
-    return true;
-  if (fdt_file_hasextension(filename, D88_EXTENTION_1DD))
-    return true;
-  return false;
+  fdt_strings_addcstring(strs, D88_EXTENTION_D88);
+  fdt_strings_addcstring(strs, D88_EXTENTION_88D);
+  fdt_strings_addcstring(strs, D88_EXTENTION_D77);
+  fdt_strings_addcstring(strs, D88_EXTENTION_D68);
+  fdt_strings_addcstring(strs, D88_EXTENTION_D98);
+  fdt_strings_addcstring(strs, D88_EXTENTION_D8U);
+  fdt_strings_addcstring(strs, D88_EXTENTION_1DD);
+  return true;
 }
 
 void fdt_d88_header_setconfigerror(FdtD88Header* d88_header, FdtImage* img, FdtError* err)
