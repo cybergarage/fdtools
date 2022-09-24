@@ -48,6 +48,7 @@ bool fdt_image_config_isvalid(FdtImageConfig*, FdtError*);
 FdtImageConfig* fdt_image_config_copy(FdtImageConfig*);
 bool fdt_image_config_equals(FdtImageConfig*, FdtImageConfig*, FdtError*);
 
+bool fdt_image_config_autoparametersbysize(FdtImageConfig*, size_t);
 FdtImageDensity fdt_image_config_getsupposeddensity(FdtImageConfig*);
 size_t fdt_image_config_calculaterawsize(FdtImageConfig*);
 const char* fdt_image_config_getdescription(FdtImageConfig*);

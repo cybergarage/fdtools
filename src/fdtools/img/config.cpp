@@ -62,6 +62,40 @@ bool fdt_image_config_delete(FdtImageConfig* config)
   return true;
 }
 
+bool fdt_image_config_autoparametersbysize(FdtImageConfig* config, size_t img_size)
+{
+  if (!config)
+    return false;
+
+  switch (img_size) {
+  case 327680: // 5.25 CP/M
+  {
+    fdt_image_config_setnumberofcylinder(config, 40);
+    fdt_image_config_setnumberofhead(config, 2);
+    fdt_image_config_setnumberofsector(config, 16);
+    fdt_image_config_setsectorsize(config, 256);
+  } break;
+  case 1474560: // 3.5 inch IBM-PC
+  {
+    fdt_image_config_setnumberofcylinder(config, 80);
+    fdt_image_config_setnumberofhead(config, 2);
+    fdt_image_config_setnumberofsector(config, 18);
+    fdt_image_config_setsectorsize(config, 512);
+  } break;
+  default:
+    return false;
+  }
+
+  FdtImageDensity density = fdt_image_config_getsupposeddensity(config);
+  if (density == FDT_IMAGE_DENSITY_UNKNOWN) {
+    return false;
+  }
+
+  fdt_image_config_setdensity(config, density);
+
+  return true;
+}
+
 FdtImageDensity fdt_image_config_getsupposeddensity(FdtImageConfig* config)
 {
   if (config->density != FDT_IMAGE_DENSITY_UNKNOWN)
