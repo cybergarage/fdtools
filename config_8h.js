@@ -24,6 +24,7 @@ var config_8h =
     [ "fdt_image_config_setsize", "config_8h.html#aae189d4b7e9ef25519c97222354ff4fa", null ],
     [ "fdt_image_config_setwriteprotectenabled", "config_8h.html#a9d46694cf4646b6e938fd4e8f5159f74", null ],
     [ "FdtImageConfig", "config_8h.html#a4e438bcfd8a530c47246b497789f963d", null ],
+    [ "fdt_image_config_autoparametersbysize", "config_8h.html#a47d5dbc2238c8c34cd39ccaa562da976", null ],
     [ "fdt_image_config_calculaterawsize", "config_8h.html#ad273fd696280a948dbb5381693f4d84b", null ],
     [ "fdt_image_config_copy", "config_8h.html#ae1f5047c97f85ce24dac935a633bd4d8", null ],
     [ "fdt_image_config_delete", "config_8h.html#a56d7ba275ecd9d84c66b9307dc03f920", null ],
