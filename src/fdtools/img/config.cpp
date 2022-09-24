@@ -75,6 +75,13 @@ bool fdt_image_config_autoparametersbysize(FdtImageConfig* config, size_t img_si
     fdt_image_config_setnumberofsector(config, 16);
     fdt_image_config_setsectorsize(config, 256);
   } break;
+  case 1261568: // 5.25 inch PC-9800/X68000
+  {
+    fdt_image_config_setnumberofcylinder(config, 77);
+    fdt_image_config_setnumberofhead(config, 2);
+    fdt_image_config_setnumberofsector(config, 8);
+    fdt_image_config_setsectorsize(config, 1024);
+  } break;
   case 1474560: // 3.5 inch IBM-PC
   {
     fdt_image_config_setnumberofcylinder(config, 80);
@@ -130,14 +137,6 @@ FdtImageDensity fdt_image_config_getsupposeddensity(FdtImageConfig* config)
         return FDT_IMAGE_DENSITY_HD;
       }
     }
-  case 40:
-    switch (config->number_of_sector) {
-    case 16:
-      switch (config->sector_size) {
-      case 256:
-        return FDT_IMAGE_DENSITY_DD;
-      }
-    }
   case 77:
     switch (config->number_of_sector) {
     case 8:
@@ -149,6 +148,14 @@ FdtImageDensity fdt_image_config_getsupposeddensity(FdtImageConfig* config)
       switch (config->sector_size) {
       case 256:
         return FDT_IMAGE_DENSITY_HD;
+      }
+    }
+  case 40:
+    switch (config->number_of_sector) {
+    case 16:
+      switch (config->sector_size) {
+      case 256:
+        return FDT_IMAGE_DENSITY_DD;
       }
     }
   }
