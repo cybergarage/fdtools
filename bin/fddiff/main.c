@@ -35,6 +35,13 @@ void usage(FdtProgram* prg)
   fdu_program_usage(prg, ARG_IMAGE_FILENAME " " ARG_IMAGE_FILENAME " " ARG_IMAGE_DEVICE_CYL_HEAD_SEC);
 }
 
+bool hexdump_line_cmp(size_t offset, byte_t* buf_l, size_t line_l_len, byte_t* buf_r, size_t line_r_len)
+{
+  if (line_l_len != line_r_len)
+    return false;
+  return memcmp(buf_l + offset, buf_r + offset, line_l_len) == 0 ? true : false;
+}
+
 void hexdump_diff_print(byte_t* buf_l, size_t buf_l_len, byte_t* buf_r, size_t buf_r_len)
 {
   size_t offset = 0;
@@ -52,7 +59,12 @@ void hexdump_diff_print(byte_t* buf_l, size_t buf_l_len, byte_t* buf_r, size_t b
       line_r_len = buf_r_len % FDT_HEXDUMP_LINE_BYTES;
     }
 
-    printf(" ");
+    if (hexdump_line_cmp(offset, buf_l, line_l_len, buf_r, line_r_len)) {
+      printf("   ");
+    }
+    else {
+      printf(" | ");
+    }
 
     fdt_hexdump_line_print(buf_r, offset, line_r_len);
 
@@ -99,11 +111,19 @@ int main(int argc, char* argv[])
     usage(prg);
     error(err);
   }
+  if (!fdt_image_load(img_l, err)) {
+    usage(prg);
+    error(err);
+  }
 
   const char* img_name_r = fdt_program_getargument(prg, 1);
 
   FdtImage* img_r = fdt_image_plugins_createimagebyfile(img_name_r, err);
   if (!img_r) {
+    usage(prg);
+    error(err);
+  }
+  if (!fdt_image_load(img_r, err)) {
     usage(prg);
     error(err);
   }
@@ -133,13 +153,26 @@ int main(int argc, char* argv[])
   for (int c = cyclinder_start_no; c <= cyclinder_end_no; c++) {
     for (int h = head_start_no; h <= head_end_no; h++) {
       for (int s = sector_start_no; s <= sector_end_no; s++) {
-        FdtImageSector* sector = fdt_image_getsector(img_l, c, h, s);
-        if (!sector)
-          continue;
         printf("cyl:%d head:%d sect:%d\n", c, h, s);
-        size_t sector_size = fdt_image_sector_getsize(sector);
-        byte_t* sector_data = fdt_image_sector_getdata(sector);
-        fdt_hexdump_print(sector_data, sector_size);
+
+        FdtImageSector* sector_l = fdt_image_getsector(img_l, c, h, s);
+        if (!sector_l) {
+          printf("X %s cyl:%d head:%d sect:%d\n", img_name_l, c, h, s);
+          continue;
+        }
+        byte_t* sector_l_data = fdt_image_sector_getdata(sector_l);
+        size_t sector_l_size = fdt_image_sector_getsize(sector_l);
+
+        FdtImageSector* sector_r = fdt_image_getsector(img_r, c, h, s);
+        if (!sector_r) {
+          printf("X %s cyl:%d head:%d sect:%d\n", img_name_r, c, h, s);
+          continue;
+        }
+        byte_t* sector_r_data = fdt_image_sector_getdata(sector_r);
+        size_t sector_r_size = fdt_image_sector_getsize(sector_r);
+
+        hexdump_diff_print(sector_l_data, sector_l_size, sector_r_data, sector_r_size);
+
         fdu_console_flush();
       }
     }
