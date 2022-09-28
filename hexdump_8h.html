@@ -60,7 +60,8 @@ $(document).ready(function(){initNavTree('hexdump_8h.html',''); initResizable();
 <div id="doc-content">
 <div class="header">
   <div class="summary">
-<a href="#func-members">Functions</a>  </div>
+<a href="#func-members">Functions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle"><div class="title">hexdump.h File Reference</div></div>
 </div><!--header-->
 <div class="contents">
@@ -70,8 +71,49 @@ $(document).ready(function(){initNavTree('hexdump_8h.html',''); initResizable();
 Functions</h2></td></tr>
 <tr class="memitem:af35d6489a1b41c4a693893339eb1cb10"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hexdump_8h.html#af35d6489a1b41c4a693893339eb1cb10">fdt_hexdump_print</a> (<a class="el" href="typedef_8h.html#a0661d7d1353e0bca70c64563f635b034">byte_t</a> *buf, size_t buf_len)</td></tr>
 <tr class="separator:af35d6489a1b41c4a693893339eb1cb10"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a063cd34ab922d3eb5d17c8e1c8b1ee3b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hexdump_8h.html#a063cd34ab922d3eb5d17c8e1c8b1ee3b">fdt_hexdump_line_print</a> (<a class="el" href="typedef_8h.html#a0661d7d1353e0bca70c64563f635b034">byte_t</a> *buf, size_t offset, size_t line_len)</td></tr>
+<tr class="separator:a063cd34ab922d3eb5d17c8e1c8b1ee3b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:ad5eceeb1ba0f3f0a2614bdbb774f86c4"><td class="memItemLeft" align="right" valign="top">const size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hexdump_8h.html#ad5eceeb1ba0f3f0a2614bdbb774f86c4">FDT_HEXDUMP_LINE_BYTES</a> = 16</td></tr>
+<tr class="separator:ad5eceeb1ba0f3f0a2614bdbb774f86c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
+<a id="a063cd34ab922d3eb5d17c8e1c8b1ee3b" name="a063cd34ab922d3eb5d17c8e1c8b1ee3b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a063cd34ab922d3eb5d17c8e1c8b1ee3b">&#9670;&nbsp;</a></span>fdt_hexdump_line_print()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void fdt_hexdump_line_print </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="typedef_8h.html#a0661d7d1353e0bca70c64563f635b034">byte_t</a> *&#160;</td>
+          <td class="paramname"><em>buf</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>offset</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>line_len</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="af35d6489a1b41c4a693893339eb1cb10" name="af35d6489a1b41c4a693893339eb1cb10"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#af35d6489a1b41c4a693893339eb1cb10">&#9670;&nbsp;</a></span>fdt_hexdump_print()</h2>
 
@@ -94,6 +136,21 @@ Functions</h2></td></tr>
           <td></td>
           <td>)</td>
           <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Variable Documentation</h2>
+<a id="ad5eceeb1ba0f3f0a2614bdbb774f86c4" name="ad5eceeb1ba0f3f0a2614bdbb774f86c4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad5eceeb1ba0f3f0a2614bdbb774f86c4">&#9670;&nbsp;</a></span>FDT_HEXDUMP_LINE_BYTES</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const size_t FDT_HEXDUMP_LINE_BYTES = 16</td>
         </tr>
       </table>
 </div><div class="memdoc">

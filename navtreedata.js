@@ -51,8 +51,8 @@ var NAVTREEINDEX =
 [
 "annotated.html",
 "floppy_8h.html#a8d4fbbc6ea34f3cd0726d45ad49a6a25aa932966509ad88a66f2542290dc75643",
-"img_2loader_8h.html",
-"string_8h.html#aff5577ab3ffac6e9d033dc5eb36d7503"
+"img_2image_8h.html#afacaf2c2704714836743cc72084e1f5b",
+"string_8h.html#af959758236ff4f340dc89ac9d9bf4c1c"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
