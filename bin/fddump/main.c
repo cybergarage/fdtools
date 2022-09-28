@@ -70,6 +70,7 @@ int main(int argc, char* argv[])
 
   FdtImage* img = fdt_image_plugins_createimagebyfile(img_name, err);
   if (!img) {
+    usage(prg);
     error(err);
   }
 
