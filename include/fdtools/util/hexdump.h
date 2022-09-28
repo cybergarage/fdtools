@@ -21,7 +21,10 @@
 extern "C" {
 #endif
 
+const size_t FDT_HEXDUMP_LINE_BYTES = 16;
+
 void fdt_hexdump_print(byte_t* buf, size_t buf_len);
+void fdt_hexdump_line_print(byte_t* buf, size_t offset, size_t line_len);
 
 #ifdef __cplusplus
 } /* extern "C" */
