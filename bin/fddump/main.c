@@ -32,7 +32,7 @@
 
 void usage(FdtProgram* prg)
 {
-  fdu_program_usage(prg, ARG_IMAGE_DEVICE_FILENAME);
+  fdu_program_usage(prg, ARG_IMAGE_DEVICE_FILENAME " " ARG_IMAGE_DEVICE_CYL_HEAD_SEC);
 }
 
 int main(int argc, char* argv[])

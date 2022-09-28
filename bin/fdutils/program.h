@@ -43,6 +43,7 @@ extern "C" {
 
 #define ARG_IMAGE_FILENAME "<file name>"
 #define ARG_IMAGE_DEVICE_FILENAME "<file or device name>"
+#define ARG_IMAGE_DEVICE_CYL_HEAD_SEC " [cylinder] [head] [sector]"
 
 void fdu_program_adddefaultoptions(FdtProgram* prg);
 void fdu_program_adddeviceoptions(FdtProgram* prg);
