@@ -20,6 +20,8 @@ REM
 REM HXC_HFE;RW;SD Card HxCFE HFE file Loader;*.hfe;
 REM MSX_DSK;R ;MSX DSK Loader;*.dsk;
 REM NEC_D88;RW;NEC D88 Loader;*.d88;
+REM RAW_IMG;R ;IBM PC IMG Loader;*.img;
+REM RAW_LOADER;RW;RAW Sector loader;*.img;
 
 REM ---------------------------------------------------------------------------
 REM -                        File informations                                -
