@@ -17,10 +17,12 @@ makefiles=(
 "include"
 "lib/unix"
 "test/unix"
-"bin/fdinfo/unix"
 "bin/fdcopy/unix"
+"bin/fddiffunix"
 "bin/fddump/unix"
+"bin/fdinfo/unix"
 "bin/cpmls/unix"
+"bin/cpmfmt/unix"
 )
 
 for makefile in "${makefiles[@]}"

@@ -1,3 +1,5 @@
+#!/usr/bin/perl
+print<<HEADER;
 # Copyright (C) 2020 Satoshi Konno. All rights reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,17 +16,33 @@
 
 bin_PROGRAMS = fddump
 
-AM_CFLAGS = -I$(top_builddir)/include -I../ -I../../
-AM_CPPFLAGS = -I$(top_builddir)/include -I../ -I../../
+AM_CFLAGS = -I\$(top_builddir)/include -I../ -I../../
+AM_CPPFLAGS = -I\$(top_builddir)/include -I../ -I../../
 
-fddump_SOURCES = \
-	../../fdutils/program.cpp \
-	../../fdutils/console.cpp \
-	../../fdutils/device.cpp \
-	..//main.c
+fddump_SOURCES = \\
+HEADER
+
+my @source_files;
+my @common_source_files = `find ../../fdutils -name *.c -or -name *.cpp`;
+foreach $file (@common_source_files) {
+	$file =~ s/\n//;
+	$file = "\t" . $file;
+	push @source_files, $file;
+}
+my @main_source_files = `find ../ -name *.c -or -name *.cpp`;
+foreach $file (@main_source_files) {
+	$file =~ s/\n//;
+	$file = "\t" . $file;
+	push @source_files, $file;
+}
+print join(" \\\n", @source_files) . "\n";
+
+print<<FOTTER;
 
 #if HAVE_LIBTOOL
 #fddump_LDADD = ../../../lib/unix/libfdtools.la
 #else
 fddump_LDADD = ../../../lib/unix/libfdtools.a
 #endif
+FOTTER
+
