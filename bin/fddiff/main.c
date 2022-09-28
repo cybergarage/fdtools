@@ -35,6 +35,33 @@ void usage(FdtProgram* prg)
   fdu_program_usage(prg, ARG_IMAGE_FILENAME " " ARG_IMAGE_FILENAME " " ARG_IMAGE_DEVICE_CYL_HEAD_SEC);
 }
 
+void hexdump_diff_print(byte_t* buf_l, size_t buf_l_len, byte_t* buf_r, size_t buf_r_len)
+{
+  size_t offset = 0;
+  while (offset < buf_l_len || offset < buf_r_len) {
+    // Left image
+    size_t line_l_len = FDT_HEXDUMP_LINE_BYTES;
+    if (buf_l_len < (offset + line_l_len)) {
+      line_l_len = buf_l_len % FDT_HEXDUMP_LINE_BYTES;
+    }
+    fdt_hexdump_line_print(buf_l, offset, line_l_len);
+
+    // Left image
+    size_t line_r_len = FDT_HEXDUMP_LINE_BYTES;
+    if (buf_r_len < (offset + line_r_len)) {
+      line_r_len = buf_r_len % FDT_HEXDUMP_LINE_BYTES;
+    }
+
+    printf(" ");
+
+    fdt_hexdump_line_print(buf_r, offset, line_r_len);
+
+    printf("\n");
+
+    offset += FDT_HEXDUMP_LINE_BYTES;
+  }
+}
+
 int main(int argc, char* argv[])
 {
   fdu_console_enabled();
@@ -69,6 +96,7 @@ int main(int argc, char* argv[])
 
   FdtImage* img_l = fdt_image_plugins_createimagebyfile(img_name_l, err);
   if (!img_l) {
+    usage(prg);
     error(err);
   }
 
@@ -76,6 +104,7 @@ int main(int argc, char* argv[])
 
   FdtImage* img_r = fdt_image_plugins_createimagebyfile(img_name_r, err);
   if (!img_r) {
+    usage(prg);
     error(err);
   }
 
