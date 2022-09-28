@@ -32,7 +32,7 @@
 
 void usage(FdtProgram* prg)
 {
-  fdu_program_usage(prg, ARG_IMAGE_DEVICE_FILENAME);
+  fdu_program_usage(prg, ARG_IMAGE_FILENAME " " ARG_IMAGE_FILENAME " " ARG_IMAGE_DEVICE_CYL_HEAD_SEC);
 }
 
 int main(int argc, char* argv[])
@@ -51,7 +51,6 @@ int main(int argc, char* argv[])
     panic();
   }
   fdu_program_adddefaultoptions(prg);
-  fdu_program_adddeviceoptions(prg);
 
   if (!fdu_program_parsearguments(prg, argc, argv, err)) {
     fdu_console_error(err);
@@ -59,56 +58,45 @@ int main(int argc, char* argv[])
     return EXIT_FAILURE;
   }
 
-  if (fdt_program_getnarguments(prg) < 1) {
+  if (fdt_program_getnarguments(prg) < 2) {
     usage(prg);
     return EXIT_FAILURE;
   }
 
   // Loads source file image
 
-  const char* img_name = fdt_program_getargument(prg, 0);
+  const char* img_name_l = fdt_program_getargument(prg, 0);
 
-  FdtImage* img = fdt_image_plugins_createimagebyfile(img_name, err);
-  if (!img) {
+  FdtImage* img_l = fdt_image_plugins_createimagebyfile(img_name_l, err);
+  if (!img_l) {
     error(err);
   }
 
-  if (fdt_image_isdevice(img)) {
-    if (!fdu_device_image_setoptions(img, prg, err)) {
-      error(err);
-    }
-    if (!fdu_device_image_load(img, err)) {
-      error(err);
-    }
-  }
-  else {
-    if (!fdt_image_load(img, err)) {
-      error(err);
-    }
-  }
+  const char* img_name_r = fdt_program_getargument(prg, 1);
 
-  // Print line field to message buffer
-
-  fdu_console_lf();
+  FdtImage* img_r = fdt_image_plugins_createimagebyfile(img_name_r, err);
+  if (!img_r) {
+    error(err);
+  }
 
   // Sets command line options
 
   int cyclinder_start_no = 0;
-  int cyclinder_end_no = fdt_image_getnumberofsector(img) - 1;
-  if (2 <= fdt_program_getnarguments(prg)) {
-    cyclinder_start_no = cyclinder_end_no = fdt_str2int(fdt_program_getargument(prg, 1));
+  int cyclinder_end_no = fdt_image_getnumberofsector(img_l) - 1;
+  if (3 <= fdt_program_getnarguments(prg)) {
+    cyclinder_start_no = cyclinder_end_no = fdt_str2int(fdt_program_getargument(prg, 2));
   }
 
   int head_start_no = 0;
-  int head_end_no = fdt_image_getnumberofhead(img) - 1;
-  if (3 <= fdt_program_getnarguments(prg)) {
-    head_start_no = head_end_no = fdt_str2int(fdt_program_getargument(prg, 2));
+  int head_end_no = fdt_image_getnumberofhead(img_l) - 1;
+  if (4 <= fdt_program_getnarguments(prg)) {
+    head_start_no = head_end_no = fdt_str2int(fdt_program_getargument(prg, 3));
   }
 
   int sector_start_no = 1;
-  int sector_end_no = fdt_image_getnumberofcylinder(img);
-  if (4 <= fdt_program_getnarguments(prg)) {
-    sector_start_no = sector_end_no = fdt_str2int(fdt_program_getargument(prg, 3));
+  int sector_end_no = fdt_image_getnumberofcylinder(img_l);
+  if (5 <= fdt_program_getnarguments(prg)) {
+    sector_start_no = sector_end_no = fdt_str2int(fdt_program_getargument(prg, 4));
   }
 
   // Dumps sector bytes
@@ -116,7 +104,7 @@ int main(int argc, char* argv[])
   for (int c = cyclinder_start_no; c <= cyclinder_end_no; c++) {
     for (int h = head_start_no; h <= head_end_no; h++) {
       for (int s = sector_start_no; s <= sector_end_no; s++) {
-        FdtImageSector* sector = fdt_image_getsector(img, c, h, s);
+        FdtImageSector* sector = fdt_image_getsector(img_l, c, h, s);
         if (!sector)
           continue;
         printf("cyl:%d head:%d sect:%d\n", c, h, s);
@@ -129,7 +117,9 @@ int main(int argc, char* argv[])
   }
   // Cleanups
 
-  fdt_image_delete(img);
+  fdt_image_delete(img_l);
+  fdt_image_delete(img_r);
+
   fdu_console_flush();
   fdt_program_delete(prg);
   fdt_error_delete(err);
