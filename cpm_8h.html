@@ -81,6 +81,12 @@ Macros</h2></td></tr>
 <tr class="separator:ab8c96a4582efd3c3d25bedf1afc187a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad25167119497e16f89d3d97a32b041cc"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpm_8h.html#ad25167119497e16f89d3d97a32b041cc">FDT_CPM_DICTIONARY_END_TRACK_NO</a>&#160;&#160;&#160;2</td></tr>
 <tr class="separator:ad25167119497e16f89d3d97a32b041cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abcf033f2349c1bf1d4189deab1c29e60"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpm_8h.html#abcf033f2349c1bf1d4189deab1c29e60">FDT_CPM_DICTIONARY_SIZE</a>&#160;&#160;&#160;32</td></tr>
+<tr class="separator:abcf033f2349c1bf1d4189deab1c29e60"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab49d6e12f4034ebe80fa12d79567ae1a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpm_8h.html#ab49d6e12f4034ebe80fa12d79567ae1a">FDT_CPM_DICTIONARY_FILENAME_MAX</a>&#160;&#160;&#160;8</td></tr>
+<tr class="separator:ab49d6e12f4034ebe80fa12d79567ae1a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad0db058a00354c598f8e035cfd1d1aa5"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpm_8h.html#ad0db058a00354c598f8e035cfd1d1aa5">FDT_CPM_DICTIONARY_FILETYPE_MAX</a>&#160;&#160;&#160;3</td></tr>
+<tr class="separator:ad0db058a00354c598f8e035cfd1d1aa5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a28a798611e502d03c0d6db034d766591"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpm_8h.html#a28a798611e502d03c0d6db034d766591">E5H</a>&#160;&#160;&#160;0xE5</td></tr>
 <tr class="separator:a28a798611e502d03c0d6db034d766591"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -103,6 +109,10 @@ Functions</h2></td></tr>
 <tr class="separator:a9722d4049020d31f02c4c9722ce598b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a18e2daa40c6893cae47df2ccbf9ec961"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpm_8h.html#a18e2daa40c6893cae47df2ccbf9ec961">fdt_cpm_format_del</a> (<a class="el" href="fmt_2format_8h.html#aaef1619e756019bfb37461b0a9030e55">FdtFormat</a> *, <a class="el" href="structFdtFile.html">FdtFile</a> *, <a class="el" href="structFdtError.html">FdtError</a> *err)</td></tr>
 <tr class="separator:a18e2daa40c6893cae47df2ccbf9ec961"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:accbd90d829ed8b293244af7b065ce54e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="cpm_8h.html#a0cbece750d87c1391f831bf47fe91045">FdtCpmDirectory</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpm_8h.html#accbd90d829ed8b293244af7b065ce54e">fdt_cpm_format_ditectory_new</a> (void *)</td></tr>
+<tr class="separator:accbd90d829ed8b293244af7b065ce54e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af2de8d0b5b91718c2cec4ab02efee0f4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpm_8h.html#af2de8d0b5b91718c2cec4ab02efee0f4">fdt_cpm_format_ditectory_getfilename</a> (<a class="el" href="cpm_8h.html#a0cbece750d87c1391f831bf47fe91045">FdtCpmDirectory</a> *dir, char *filename)</td></tr>
+<tr class="separator:af2de8d0b5b91718c2cec4ab02efee0f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="a28a798611e502d03c0d6db034d766591" name="a28a798611e502d03c0d6db034d766591"></a>
@@ -127,6 +137,48 @@ Functions</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname">#define FDT_CPM_DICTIONARY_END_TRACK_NO&#160;&#160;&#160;2</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab49d6e12f4034ebe80fa12d79567ae1a" name="ab49d6e12f4034ebe80fa12d79567ae1a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab49d6e12f4034ebe80fa12d79567ae1a">&#9670;&nbsp;</a></span>FDT_CPM_DICTIONARY_FILENAME_MAX</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define FDT_CPM_DICTIONARY_FILENAME_MAX&#160;&#160;&#160;8</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad0db058a00354c598f8e035cfd1d1aa5" name="ad0db058a00354c598f8e035cfd1d1aa5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad0db058a00354c598f8e035cfd1d1aa5">&#9670;&nbsp;</a></span>FDT_CPM_DICTIONARY_FILETYPE_MAX</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define FDT_CPM_DICTIONARY_FILETYPE_MAX&#160;&#160;&#160;3</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="abcf033f2349c1bf1d4189deab1c29e60" name="abcf033f2349c1bf1d4189deab1c29e60"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abcf033f2349c1bf1d4189deab1c29e60">&#9670;&nbsp;</a></span>FDT_CPM_DICTIONARY_SIZE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define FDT_CPM_DICTIONARY_SIZE&#160;&#160;&#160;32</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -225,6 +277,52 @@ Functions</h2></td></tr>
           <td></td>
           <td>)</td>
           <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af2de8d0b5b91718c2cec4ab02efee0f4" name="af2de8d0b5b91718c2cec4ab02efee0f4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af2de8d0b5b91718c2cec4ab02efee0f4">&#9670;&nbsp;</a></span>fdt_cpm_format_ditectory_getfilename()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void fdt_cpm_format_ditectory_getfilename </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="cpm_8h.html#a0cbece750d87c1391f831bf47fe91045">FdtCpmDirectory</a> *&#160;</td>
+          <td class="paramname"><em>dir</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>filename</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="accbd90d829ed8b293244af7b065ce54e" name="accbd90d829ed8b293244af7b065ce54e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#accbd90d829ed8b293244af7b065ce54e">&#9670;&nbsp;</a></span>fdt_cpm_format_ditectory_new()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="cpm_8h.html#a0cbece750d87c1391f831bf47fe91045">FdtCpmDirectory</a> * fdt_cpm_format_ditectory_new </td>
+          <td>(</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
