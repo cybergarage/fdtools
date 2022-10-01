@@ -49,7 +49,7 @@ bool fdt_cpm_format_list(FdtFormat*, FdtFiles*, FdtError* err);
 bool fdt_cpm_format_add(FdtFormat*, FdtFile*, FdtError* err);
 bool fdt_cpm_format_del(FdtFormat*, FdtFile*, FdtError* err);
 
-FdtCpmDirectory* fdt_cpm_format_ditectory_new(void*);
+FdtCpmDirectory* fdt_cpm_format_ditectory_new(byte_t* data, size_t size);
 void fdt_cpm_format_ditectory_getfilename(FdtCpmDirectory* dir, char* filename);
 
 #ifdef __cplusplus
