@@ -55,6 +55,15 @@ bool fdt_cpm_format_list(FdtFormat* fmt, FdtFiles* files, FdtError* err)
           fdt_error_setmessage(err, FDT_CPM_FORMAT_DIRECTORY_SECTOR_NOT_FOUND, t, h, s);
           return false;
         }
+        byte_t* sector_data = fdt_image_sector_getdata(sector);
+        size_t sector_size = fdt_image_sector_getsize(sector);
+        for (size_t offset = 0; offset < sector_size; offset += FDT_CPM_DICTIONARY_SIZE) {
+          FdtCpmDirectory* dir = fdt_cpm_format_ditectory_new((sector_data + offset), (sector_size - offset));
+          if (!dir)
+            break;
+          if (fdt_cpm_format_ditectory_isdeleted(dir))
+            continue;
+        }
       }
     }
   }
