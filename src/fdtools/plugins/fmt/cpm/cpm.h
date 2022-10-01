@@ -24,6 +24,7 @@ extern "C" {
 
 #define FDT_CPM_DICTIONARY_START_TRACK_NO 2
 #define FDT_CPM_DICTIONARY_END_TRACK_NO 2
+#define FDT_CPM_DICTIONARY_SIZE 32
 
 #define E5H 0xE5
 
@@ -45,6 +46,8 @@ bool fdt_cpm_format_format(FdtFormat*, FdtError* err);
 bool fdt_cpm_format_list(FdtFormat*, FdtFiles*, FdtError* err);
 bool fdt_cpm_format_add(FdtFormat*, FdtFile*, FdtError* err);
 bool fdt_cpm_format_del(FdtFormat*, FdtFile*, FdtError* err);
+
+FdtCpmDirectory* fdt_cpm_format_ditectory_new(void*);
 
 #ifdef __cplusplus
 } /* extern C */

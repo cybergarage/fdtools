@@ -31,6 +31,7 @@
 		2161939B26EB9841007FA97A /* log.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2161939A26EB9841007FA97A /* log.cpp */; };
 		21641A81258E2C490062AD50 /* device_unix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 21641A80258E2C490062AD50 /* device_unix.cpp */; };
 		21641A84258EF8240062AD50 /* image.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 21641A83258EF8240062AD50 /* image.cpp */; };
+		2174417828E80850007F39BF /* directory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2174417728E80850007F39BF /* directory.cpp */; };
 		219F7D4A255FC8B000827D5C /* config.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 219F7D48255FC8B000827D5C /* config.cpp */; };
 		21ACB8E728C46EE000DFAEE6 /* format.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 21ACB8E628C46EE000DFAEE6 /* format.cpp */; };
 		21B0912125865DB800036CC5 /* device_linux.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 21B0911F25865DB800036CC5 /* device_linux.cpp */; };
@@ -95,6 +96,7 @@
 		21641A80258E2C490062AD50 /* device_unix.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = device_unix.cpp; path = ../../../src/fdtools/dev/device_unix.cpp; sourceTree = "<group>"; };
 		21641A83258EF8240062AD50 /* image.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = image.cpp; path = ../../../src/fdtools/dev/image.cpp; sourceTree = "<group>"; };
 		216F3666255DB161004507DF /* fdtools */ = {isa = PBXFileReference; lastKnownFileType = folder; name = fdtools; path = ../../../include/fdtools; sourceTree = "<group>"; };
+		2174417728E80850007F39BF /* directory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = directory.cpp; path = ../../../src/fdtools/plugins/fmt/cpm/directory.cpp; sourceTree = "<group>"; };
 		219F7D48255FC8B000827D5C /* config.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = config.cpp; path = ../../../src/fdtools/img/config.cpp; sourceTree = "<group>"; };
 		21ACB8E628C46EE000DFAEE6 /* format.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = format.cpp; path = ../../../src/fdtools/fmt/format.cpp; sourceTree = "<group>"; };
 		21B0911F25865DB800036CC5 /* device_linux.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = device_linux.cpp; path = ../../../src/fdtools/dev/device_linux.cpp; sourceTree = "<group>"; };
@@ -209,6 +211,7 @@
 		215C211128D55E8B00C21A1F /* cpm */ = {
 			isa = PBXGroup;
 			children = (
+				2174417728E80850007F39BF /* directory.cpp */,
 				21525AF728DB569C006B50B7 /* error.h */,
 				215C211328D55EA400C21A1F /* cpm.cpp */,
 				215C211228D55EA400C21A1F /* cpm.h */,
@@ -449,6 +452,7 @@
 				211D4845257BB31900895CFE /* program.cpp in Sources */,
 				21DC2023257BA110004F3363 /* element.cpp in Sources */,
 				2151DF46256989AC009FC0E0 /* file.cpp in Sources */,
+				2174417828E80850007F39BF /* directory.cpp in Sources */,
 				21DC2017257B5656004F3363 /* device.cpp in Sources */,
 				21BD0E4028D4D6B300826636 /* raw.cpp in Sources */,
 				219F7D4A255FC8B000827D5C /* config.cpp in Sources */,
