@@ -46,11 +46,11 @@ bool fdt_device_writeoffsetblock(FdtDevice*, off_t, byte_t*, size_t, FdtError*);
 bool fdt_device_seek(FdtDevice*, off_t, int, FdtError*);
 ssize_t fdt_device_getsize(FdtDevice*, FdtError*);
 
-#define fdt_device_setname(dev, v) fdt_string_setvalue(dev->name, v)
-#define fdt_device_setfileno(dev, v) (dev->fd = v)
+inline void fdt_device_setname(FdtDevice* dev, const char* v) { fdt_string_setvalue(dev->name, v); }
+inline void fdt_device_setfileno(FdtDevice* dev, int v) { (dev->fd = v); }
 
-#define fdt_device_getname(dev) fdt_string_getvalue(dev->name)
-#define fdt_device_getfileno(dev) (dev->fd)
+inline const char* fdt_device_getname(FdtDevice* dev) { return fdt_string_getvalue(dev->name); }
+inline int fdt_device_getfileno(FdtDevice* dev) { return dev->fd; }
 
 bool fdt_device_getfloppyparameters(FdtDevice*, FdtFloppyParams*, FdtError*);
 bool fdt_device_detectfloppyformat(FdtDevice*, FdtFloppyParams*, FdtError*);
