@@ -18,3 +18,16 @@ FdtCpmDirectory* fdt_cpm_format_ditectory_new(void* dir)
 {
   return (FdtCpmDirectory*)dir;
 }
+
+void fdt_cpm_format_ditectory_getfilename(FdtCpmDirectory* dir, char* filename)
+{
+  if (!dir)
+    return;
+  for (size_t n = 0; n < FDT_CPM_DICTIONARY_FILENAME_MAX; n++) {
+    if (dir->Filename[n] == 0x20) {
+      dir->Filename[n] = '\0';
+    }
+    filename[n] = dir->Filename[n];
+  }
+  filename[FDT_CPM_DICTIONARY_FILENAME_MAX] = '\0';
+}
