@@ -12,28 +12,22 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef _FDTOOLS_UTIL_LOGIC_H_
-#define _FDTOOLS_UTIL_LOGIC_H_
+#include <fdtools/plugins/fmt/cpm/cpm.h>
 
-#include <fdtools/typedef.h>
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-inline byte_t fdt_byte_reverse(byte_t x)
+FdtCpmDirectory* fdt_cpm_format_ditectory_new(void* dir)
 {
-//  x = (x & 0xF0) >> 4 | ((x & 0x0F) << 4);
-//  x = (x & 0xCC) >> 2 | ((x & 0x33) << 2);
-//  x = (x & 0xAA) >> 1 | ((x & 0x55) << 1);
-  x = ((x & 0x0f) << 4) | ((x >> 4) & 0x0f);
-  x = ((x & 0x33) << 2) | ((x >> 2) & 0x33);
-  x = ((x & 0x55) << 1) | ((x >> 1) & 0x55);
-  return x;
+  return (FdtCpmDirectory*)dir;
 }
 
-#ifdef __cplusplus
-} /* extern "C" */
-#endif
-
-#endif /* _FDTOOLS_UTIL_LOGIC_H_ */
+void fdt_cpm_format_ditectory_getfilename(FdtCpmDirectory* dir, char* filename)
+{
+  if (!dir)
+    return;
+  for (size_t n = 0; n < FDT_CPM_DICTIONARY_FILENAME_MAX; n++) {
+    if (dir->Filename[n] == 0x20) {
+      dir->Filename[n] = '\0';
+    }
+    filename[n] = dir->Filename[n];
+  }
+  filename[FDT_CPM_DICTIONARY_FILENAME_MAX] = '\0';
+}
