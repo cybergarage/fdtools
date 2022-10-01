@@ -22,11 +22,11 @@
 extern "C" {
 #endif
 
-#define FDT_CPM_DICTIONARY_START_TRACK_NO 2
-#define FDT_CPM_DICTIONARY_END_TRACK_NO 2
-#define FDT_CPM_DICTIONARY_SIZE 32
-#define FDT_CPM_DICTIONARY_FILENAME_MAX 8
-#define FDT_CPM_DICTIONARY_FILETYPE_MAX 3
+const int FDT_CPM_DICTIONARY_START_TRACK_NO = 2;
+const int FDT_CPM_DICTIONARY_END_TRACK_NO = 2;
+const int FDT_CPM_DICTIONARY_SIZE = 32;
+const int FDT_CPM_DICTIONARY_FILENAME_MAX = 8;
+const int FDT_CPM_DICTIONARY_FILETYPE_MAX = 3;
 
 #define E5H 0xE5
 
@@ -50,6 +50,7 @@ bool fdt_cpm_format_add(FdtFormat*, FdtFile*, FdtError* err);
 bool fdt_cpm_format_del(FdtFormat*, FdtFile*, FdtError* err);
 
 FdtCpmDirectory* fdt_cpm_format_ditectory_new(byte_t* data, size_t size);
+inline bool fdt_cpm_format_ditectory_isdeleted(FdtCpmDirectory* dir) { return (dir->UserNumber == FDT_CPM_DICTIONARY_SIZE) ? true : false; }
 void fdt_cpm_format_ditectory_getfilename(FdtCpmDirectory* dir, char* filename);
 
 #ifdef __cplusplus
