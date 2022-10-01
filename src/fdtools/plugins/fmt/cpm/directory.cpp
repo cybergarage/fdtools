@@ -14,9 +14,11 @@
 
 #include <fdtools/plugins/fmt/cpm/cpm.h>
 
-FdtCpmDirectory* fdt_cpm_format_ditectory_new(void* dir)
+FdtCpmDirectory* fdt_cpm_format_ditectory_new(byte_t* data, size_t size)
 {
-  return (FdtCpmDirectory*)dir;
+  if (!data || size < FDT_CPM_DICTIONARY_SIZE)
+    return NULL;
+  return (FdtCpmDirectory*)data;
 }
 
 void fdt_cpm_format_ditectory_getfilename(FdtCpmDirectory* dir, char* filename)
