@@ -92,13 +92,13 @@ typedef struct {
   int stretch;
   size_t gap1;
   size_t gap2;
-  unsigned char rate;
-  unsigned char spec1;
+  byte_t rate;
+  byte_t spec1;
   FdtString* desc;
 } FdtFloppyParams;
 
-#define FDT_FLOPPY_STRETCH_DOUBLE_STEPS 0x01
-#define FDT_FLOPPY_STRETCH_SWAP_SIDES 0x02
+const int FDT_FLOPPY_STRETCH_DOUBLE_STEPS = 0x01;
+const int FDT_FLOPPY_STRETCH_SWAP_SIDES = 0x02;
 
 FdtFloppyParams* fdt_floppy_params_new();
 bool fdt_floppy_params_delete(FdtFloppyParams*);
@@ -106,21 +106,21 @@ bool fdt_floppy_params_delete(FdtFloppyParams*);
 bool fdt_floppy_params_setdrivetype(FdtFloppyParams*, FdtFloppyDriveType, FdtError*);
 bool fdt_floppy_params_setdtr(FdtFloppyParams*, FdtFloppyDataTransferRate, FdtError*);
 
-#define fdt_floppy_params_setname(dev, v) fdt_string_setvalue(dev->name = v)
-#define fdt_floppy_params_setmedia(params, v) (params->media = v)
-#define fdt_floppy_params_setmaxdensity(params, v) (params->max_density = v)
-#define fdt_floppy_params_setdensity(params, v) (params->density = v)
-#define fdt_floppy_params_setdeviceno(params, v) (params->deviceno = v)
-#define fdt_floppy_params_settpi(params, v) (params->tpi = v)
-#define fdt_floppy_params_setrpm(params, v) (params->rpm = v)
-#define fdt_floppy_params_setsect(params, v) (params->sect = v)
-#define fdt_floppy_params_sethead(params, v) (params->head = v)
-#define fdt_floppy_params_settrack(params, v) (params->track = v)
-#define fdt_floppy_params_setstretch(params, v) (params->stretch = v)
-#define fdt_floppy_params_setgap1size(params, v) (params->gap1 = v)
-#define fdt_floppy_params_setgap2size(params, v) (params->gap2 = v)
-#define fdt_floppy_params_setrate(params, v) (params->rate = v)
-#define fdt_floppy_params_setspec1(params, v) (params->spec1 = v)
+inline void fdt_floppy_params_setname(FdtFloppyParams* params, const char* v) { fdt_string_setvalue(params->name, v); }
+inline void fdt_floppy_params_setmedia(FdtFloppyParams* params, FdtFloppyMedia v) { params->media = v; }
+inline void fdt_floppy_params_setmaxdensity(FdtFloppyParams* params, FdtFloppyDensity v) { params->max_density = v; }
+inline void fdt_floppy_params_setdensity(FdtFloppyParams* params, FdtFloppyDensity v) { params->density = v; }
+inline void fdt_floppy_params_setdeviceno(FdtFloppyParams* params, int v) { params->deviceno = v; }
+inline void fdt_floppy_params_settpi(FdtFloppyParams* params, int v) { params->tpi = v; }
+inline void fdt_floppy_params_setrpm(FdtFloppyParams* params, int v) { params->rpm = v; }
+inline void fdt_floppy_params_setsect(FdtFloppyParams* params, size_t v) { params->sect = v; }
+inline void fdt_floppy_params_sethead(FdtFloppyParams* params, size_t v) { params->head = v; }
+inline void fdt_floppy_params_settrack(FdtFloppyParams* params, size_t v) { params->track = v; }
+inline void fdt_floppy_params_setstretch(FdtFloppyParams* params, int v) { params->stretch = v; }
+inline void fdt_floppy_params_setgap1size(FdtFloppyParams* params, size_t v) { params->gap1 = v; }
+inline void fdt_floppy_params_setgap2size(FdtFloppyParams* params, size_t v) { params->gap2 = v; }
+inline void fdt_floppy_params_setrate(FdtFloppyParams* params, byte_t v) { params->rate = v; }
+inline void fdt_floppy_params_setspec1(FdtFloppyParams* params, byte_t v) { params->spec1 = v; }
 
 FdtFloppyDriveType fdt_floppy_params_getdrivetype(FdtFloppyParams*);
 size_t fdt_floppy_params_gettrackcapacity(FdtFloppyParams* params);
@@ -130,24 +130,24 @@ const char* fdt_floppy_params_getmediastring(FdtFloppyParams*);
 const char* fdt_floppy_params_getdensitystring(FdtFloppyParams*);
 const char* fdt_floppy_params_getdescription(FdtFloppyParams*);
 
-#define fdt_floppy_params_getname (dev) fdt_string_getvalue(dev->name)
-#define fdt_floppy_params_getmedia(params) (params->media)
-#define fdt_floppy_params_getmaxdensity(params) (params->max_density)
-#define fdt_floppy_params_getdensity(params) (params->density)
-#define fdt_floppy_params_getdeviceno(params) (params->deviceno)
-#define fdt_floppy_params_getdtr(params) (params->dtr)
-#define fdt_floppy_params_gettpi(params) (params->tpi)
-#define fdt_floppy_params_getrpm(params) (params->rpm)
-#define fdt_floppy_params_getsect(params) (params->sect)
-#define fdt_floppy_params_gethead(params) (params->head)
-#define fdt_floppy_params_gettrack(params) (params->track)
-#define fdt_floppy_params_getstretch(params) (params->stretch)
-#define fdt_floppy_params_isdoublesteps(params) ((params->stretch & FDT_FLOPPY_STRETCH_DOUBLE_STEPS) ? true : false)
-#define fdt_floppy_params_isswapsides(params) ((params->stretch & FDT_FLOPPY_STRETCH_SWAP_SIDES) ? true : false)
-#define fdt_floppy_params_getgap1size(params) (params->gap1)
-#define fdt_floppy_params_getgap2size(params) (params->gap2)
-#define fdt_floppy_params_getrate(params) (params->rate)
-#define fdt_floppy_params_getspec1(params) (params->spec1)
+inline const char* fdt_floppy_params_getname(FdtFloppyParams* params) { return fdt_string_getvalue(params->name); }
+inline FdtFloppyMedia fdt_floppy_params_getmedia(FdtFloppyParams* params) { return params->media; }
+inline FdtFloppyDensity fdt_floppy_params_getmaxdensity(FdtFloppyParams* params) { return params->max_density; }
+inline FdtFloppyDensity fdt_floppy_params_getdensity(FdtFloppyParams* params) { return params->density; }
+inline int fdt_floppy_params_getdeviceno(FdtFloppyParams* params) { return params->deviceno; }
+inline FdtFloppyDataTransferRate fdt_floppy_params_getdtr(FdtFloppyParams* params) { return params->dtr; }
+inline int fdt_floppy_params_gettpi(FdtFloppyParams* params) { return params->tpi; }
+inline int fdt_floppy_params_getrpm(FdtFloppyParams* params) { return params->rpm; }
+inline size_t fdt_floppy_params_getsect(FdtFloppyParams* params) { return params->sect; }
+inline size_t fdt_floppy_params_gethead(FdtFloppyParams* params) { return params->head; }
+inline size_t fdt_floppy_params_gettrack(FdtFloppyParams* params) { return params->track; }
+inline int fdt_floppy_params_getstretch(FdtFloppyParams* params) { return params->stretch; }
+inline bool fdt_floppy_params_isdoublesteps(FdtFloppyParams* params) { return (params->stretch & FDT_FLOPPY_STRETCH_DOUBLE_STEPS) ? true : false; }
+inline bool fdt_floppy_params_isswapsides(FdtFloppyParams* params) { return (params->stretch & FDT_FLOPPY_STRETCH_SWAP_SIDES) ? true : false; }
+inline size_t fdt_floppy_params_getgap1size(FdtFloppyParams* params) { return params->gap1; }
+inline size_t fdt_floppy_params_getgap2size(FdtFloppyParams* params) { return params->gap2; }
+inline byte_t fdt_floppy_params_getrate(FdtFloppyParams* params) { return params->rate; }
+inline byte_t fdt_floppy_params_getspec1(FdtFloppyParams* params) { return params->spec1; }
 
 #if defined(__linux__)
 bool fdt_floppy_struct_equals(struct floppy_struct*, struct floppy_struct*);
