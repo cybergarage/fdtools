@@ -23,12 +23,9 @@ extern "C" {
 
 inline byte_t fdt_byte_reverse(byte_t x)
 {
-  //  x = (x & 0xF0) >> 4 | ((x & 0x0F) << 4);
-  //  x = (x & 0xCC) >> 2 | ((x & 0x33) << 2);
-  //  x = (x & 0xAA) >> 1 | ((x & 0x55) << 1);
-  x = ((x & 0x0f) << 4) | ((x >> 4) & 0x0f);
-  x = ((x & 0x33) << 2) | ((x >> 2) & 0x33);
-  x = ((x & 0x55) << 1) | ((x >> 1) & 0x55);
+  x = (x & 0xF0) >> 4 | ((x & 0x0F) << 4);
+  x = (x & 0xCC) >> 2 | ((x & 0x33) << 2);
+  x = (x & 0xAA) >> 1 | ((x & 0x55) << 1);
   return x;
 }
 
