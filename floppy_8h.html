@@ -61,9 +61,9 @@ $(document).ready(function(){initNavTree('floppy_8h.html',''); initResizable(); 
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Data Structures</a> &#124;
-<a href="#define-members">Macros</a> &#124;
 <a href="#enum-members">Enumerations</a> &#124;
-<a href="#func-members">Functions</a>  </div>
+<a href="#func-members">Functions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle"><div class="title">floppy.h File Reference</div></div>
 </div><!--header-->
 <div class="contents">
@@ -75,79 +75,6 @@ $(document).ready(function(){initNavTree('floppy_8h.html',''); initResizable(); 
 Data Structures</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structFdtFloppyParams.html">FdtFloppyParams</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
-Macros</h2></td></tr>
-<tr class="memitem:a084c74a2b92c510084223e3049a90d17"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="floppy_8h.html#a084c74a2b92c510084223e3049a90d17">FDT_FLOPPY_STRETCH_DOUBLE_STEPS</a>&#160;&#160;&#160;0x01</td></tr>
-<tr class="separator:a084c74a2b92c510084223e3049a90d17"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afc091b8b30058eeac6233e3e4beb59ff"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="floppy_8h.html#afc091b8b30058eeac6233e3e4beb59ff">FDT_FLOPPY_STRETCH_SWAP_SIDES</a>&#160;&#160;&#160;0x02</td></tr>
-<tr class="separator:afc091b8b30058eeac6233e3e4beb59ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afb1af5d528aa5261cb3691c49809dadb"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="floppy_8h.html#afb1af5d528aa5261cb3691c49809dadb">fdt_floppy_params_setname</a>(dev,  v)&#160;&#160;&#160;<a class="el" href="string_8h.html#a4cd727c6b544c115f618a40e7c8b80dc">fdt_string_setvalue</a>(dev-&gt;name = v)</td></tr>
-<tr class="separator:afb1af5d528aa5261cb3691c49809dadb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a51c323c0c40fbabb871b721fbc359507"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="floppy_8h.html#a51c323c0c40fbabb871b721fbc359507">fdt_floppy_params_setmedia</a>(params,  v)&#160;&#160;&#160;(params-&gt;media = v)</td></tr>
-<tr class="separator:a51c323c0c40fbabb871b721fbc359507"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a52b3a4d29c9445ae96de2512aa86db09"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="floppy_8h.html#a52b3a4d29c9445ae96de2512aa86db09">fdt_floppy_params_setmaxdensity</a>(params,  v)&#160;&#160;&#160;(params-&gt;max_density = v)</td></tr>
-<tr class="separator:a52b3a4d29c9445ae96de2512aa86db09"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac5ffc8e61e1aad0d2015df2b3bf72ed2"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="floppy_8h.html#ac5ffc8e61e1aad0d2015df2b3bf72ed2">fdt_floppy_params_setdensity</a>(params,  v)&#160;&#160;&#160;(params-&gt;density = v)</td></tr>
-<tr class="separator:ac5ffc8e61e1aad0d2015df2b3bf72ed2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a38c5e2e994c5ced01c8c24307c8a0021"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="floppy_8h.html#a38c5e2e994c5ced01c8c24307c8a0021">fdt_floppy_params_setdeviceno</a>(params,  v)&#160;&#160;&#160;(params-&gt;deviceno = v)</td></tr>
-<tr class="separator:a38c5e2e994c5ced01c8c24307c8a0021"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a82861ca6d3b07a924ff684308c6f24e5"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="floppy_8h.html#a82861ca6d3b07a924ff684308c6f24e5">fdt_floppy_params_settpi</a>(params,  v)&#160;&#160;&#160;(params-&gt;tpi = v)</td></tr>
-<tr class="separator:a82861ca6d3b07a924ff684308c6f24e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aed1aa143b2e8502818ef78a012d51bba"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="floppy_8h.html#aed1aa143b2e8502818ef78a012d51bba">fdt_floppy_params_setrpm</a>(params,  v)&#160;&#160;&#160;(params-&gt;rpm = v)</td></tr>
-<tr class="separator:aed1aa143b2e8502818ef78a012d51bba"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa348fc2d4b83b1480ede3bd9ece86214"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="floppy_8h.html#aa348fc2d4b83b1480ede3bd9ece86214">fdt_floppy_params_setsect</a>(params,  v)&#160;&#160;&#160;(params-&gt;sect = v)</td></tr>
-<tr class="separator:aa348fc2d4b83b1480ede3bd9ece86214"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a02baffeeb70c24786ae660383534674a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="floppy_8h.html#a02baffeeb70c24786ae660383534674a">fdt_floppy_params_sethead</a>(params,  v)&#160;&#160;&#160;(params-&gt;head = v)</td></tr>
-<tr class="separator:a02baffeeb70c24786ae660383534674a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7fc35030a8e1dad0affb75a5a73f189a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="floppy_8h.html#a7fc35030a8e1dad0affb75a5a73f189a">fdt_floppy_params_settrack</a>(params,  v)&#160;&#160;&#160;(params-&gt;track = v)</td></tr>
-<tr class="separator:a7fc35030a8e1dad0affb75a5a73f189a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a59b67bf9cb04985d5adfdb76e5237f0d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="floppy_8h.html#a59b67bf9cb04985d5adfdb76e5237f0d">fdt_floppy_params_setstretch</a>(params,  v)&#160;&#160;&#160;(params-&gt;stretch = v)</td></tr>
-<tr class="separator:a59b67bf9cb04985d5adfdb76e5237f0d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a50917ea5e0bebb203a88e00dde6e2959"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="floppy_8h.html#a50917ea5e0bebb203a88e00dde6e2959">fdt_floppy_params_setgap1size</a>(params,  v)&#160;&#160;&#160;(params-&gt;gap1 = v)</td></tr>
-<tr class="separator:a50917ea5e0bebb203a88e00dde6e2959"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a203c5fb6475929ba061105893b8670b1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="floppy_8h.html#a203c5fb6475929ba061105893b8670b1">fdt_floppy_params_setgap2size</a>(params,  v)&#160;&#160;&#160;(params-&gt;gap2 = v)</td></tr>
-<tr class="separator:a203c5fb6475929ba061105893b8670b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a63e4f1f532318a707a1b96de1db95b61"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="floppy_8h.html#a63e4f1f532318a707a1b96de1db95b61">fdt_floppy_params_setrate</a>(params,  v)&#160;&#160;&#160;(params-&gt;rate = v)</td></tr>
-<tr class="separator:a63e4f1f532318a707a1b96de1db95b61"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1d5ac5d01d28bf9931b892c9660e6e92"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="floppy_8h.html#a1d5ac5d01d28bf9931b892c9660e6e92">fdt_floppy_params_setspec1</a>(params,  v)&#160;&#160;&#160;(params-&gt;spec1 = v)</td></tr>
-<tr class="separator:a1d5ac5d01d28bf9931b892c9660e6e92"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3d3f0571d65c9529729eefc9bb8436d4"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="floppy_8h.html#a3d3f0571d65c9529729eefc9bb8436d4">fdt_floppy_params_getname</a>&#160;&#160;&#160;(dev) <a class="el" href="string_8h.html#a520610a7bfdcec3e607bdb9f5dc50bfe">fdt_string_getvalue</a>(dev-&gt;name)</td></tr>
-<tr class="separator:a3d3f0571d65c9529729eefc9bb8436d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6b7feacfdbfcd0d488f4c90056d1bdf5"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="floppy_8h.html#a6b7feacfdbfcd0d488f4c90056d1bdf5">fdt_floppy_params_getmedia</a>(params)&#160;&#160;&#160;(params-&gt;media)</td></tr>
-<tr class="separator:a6b7feacfdbfcd0d488f4c90056d1bdf5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac79be5af3f41d364fd7a7740162e798a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="floppy_8h.html#ac79be5af3f41d364fd7a7740162e798a">fdt_floppy_params_getmaxdensity</a>(params)&#160;&#160;&#160;(params-&gt;max_density)</td></tr>
-<tr class="separator:ac79be5af3f41d364fd7a7740162e798a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae874deb32ffa95acb687b6d113c5fed7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="floppy_8h.html#ae874deb32ffa95acb687b6d113c5fed7">fdt_floppy_params_getdensity</a>(params)&#160;&#160;&#160;(params-&gt;density)</td></tr>
-<tr class="separator:ae874deb32ffa95acb687b6d113c5fed7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae7850c79635369149da25b1851e44555"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="floppy_8h.html#ae7850c79635369149da25b1851e44555">fdt_floppy_params_getdeviceno</a>(params)&#160;&#160;&#160;(params-&gt;deviceno)</td></tr>
-<tr class="separator:ae7850c79635369149da25b1851e44555"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7ed9e26a56322ccdf2f9797f9e4d54bd"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="floppy_8h.html#a7ed9e26a56322ccdf2f9797f9e4d54bd">fdt_floppy_params_getdtr</a>(params)&#160;&#160;&#160;(params-&gt;dtr)</td></tr>
-<tr class="separator:a7ed9e26a56322ccdf2f9797f9e4d54bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0afc4dfec9d1f1aea6ba0f9767838bc0"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="floppy_8h.html#a0afc4dfec9d1f1aea6ba0f9767838bc0">fdt_floppy_params_gettpi</a>(params)&#160;&#160;&#160;(params-&gt;tpi)</td></tr>
-<tr class="separator:a0afc4dfec9d1f1aea6ba0f9767838bc0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7080c807d1f062e3b5fbacd6c25e5add"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="floppy_8h.html#a7080c807d1f062e3b5fbacd6c25e5add">fdt_floppy_params_getrpm</a>(params)&#160;&#160;&#160;(params-&gt;rpm)</td></tr>
-<tr class="separator:a7080c807d1f062e3b5fbacd6c25e5add"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab9487d0b7bedb286ea213d6c5491b2e0"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="floppy_8h.html#ab9487d0b7bedb286ea213d6c5491b2e0">fdt_floppy_params_getsect</a>(params)&#160;&#160;&#160;(params-&gt;sect)</td></tr>
-<tr class="separator:ab9487d0b7bedb286ea213d6c5491b2e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8925f3de698ad9bf26bbb74d43b03578"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="floppy_8h.html#a8925f3de698ad9bf26bbb74d43b03578">fdt_floppy_params_gethead</a>(params)&#160;&#160;&#160;(params-&gt;head)</td></tr>
-<tr class="separator:a8925f3de698ad9bf26bbb74d43b03578"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a01896ec9ea84675bd7e305113c9c83a5"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="floppy_8h.html#a01896ec9ea84675bd7e305113c9c83a5">fdt_floppy_params_gettrack</a>(params)&#160;&#160;&#160;(params-&gt;track)</td></tr>
-<tr class="separator:a01896ec9ea84675bd7e305113c9c83a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a33082483d2943bada52914c20015c838"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="floppy_8h.html#a33082483d2943bada52914c20015c838">fdt_floppy_params_getstretch</a>(params)&#160;&#160;&#160;(params-&gt;stretch)</td></tr>
-<tr class="separator:a33082483d2943bada52914c20015c838"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af752cd11bcb2baa1d3b63104b49b672c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="floppy_8h.html#af752cd11bcb2baa1d3b63104b49b672c">fdt_floppy_params_isdoublesteps</a>(params)&#160;&#160;&#160;((params-&gt;stretch &amp; <a class="el" href="floppy_8h.html#a084c74a2b92c510084223e3049a90d17">FDT_FLOPPY_STRETCH_DOUBLE_STEPS</a>) ? true : false)</td></tr>
-<tr class="separator:af752cd11bcb2baa1d3b63104b49b672c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6b19bbf4141ff611d7e460accaea66b7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="floppy_8h.html#a6b19bbf4141ff611d7e460accaea66b7">fdt_floppy_params_isswapsides</a>(params)&#160;&#160;&#160;((params-&gt;stretch &amp; <a class="el" href="floppy_8h.html#afc091b8b30058eeac6233e3e4beb59ff">FDT_FLOPPY_STRETCH_SWAP_SIDES</a>) ? true : false)</td></tr>
-<tr class="separator:a6b19bbf4141ff611d7e460accaea66b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af0e670bf50a0a2d65745ebe3ca4251e1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="floppy_8h.html#af0e670bf50a0a2d65745ebe3ca4251e1">fdt_floppy_params_getgap1size</a>(params)&#160;&#160;&#160;(params-&gt;gap1)</td></tr>
-<tr class="separator:af0e670bf50a0a2d65745ebe3ca4251e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aae070aa11d0efb6995d92c609ae81dc1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="floppy_8h.html#aae070aa11d0efb6995d92c609ae81dc1">fdt_floppy_params_getgap2size</a>(params)&#160;&#160;&#160;(params-&gt;gap2)</td></tr>
-<tr class="separator:aae070aa11d0efb6995d92c609ae81dc1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0af2b21ff45ff141fee57929705e7b54"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="floppy_8h.html#a0af2b21ff45ff141fee57929705e7b54">fdt_floppy_params_getrate</a>(params)&#160;&#160;&#160;(params-&gt;rate)</td></tr>
-<tr class="separator:a0af2b21ff45ff141fee57929705e7b54"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a83c088c72122901ffa9911c33b581145"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="floppy_8h.html#a83c088c72122901ffa9911c33b581145">fdt_floppy_params_getspec1</a>(params)&#160;&#160;&#160;(params-&gt;spec1)</td></tr>
-<tr class="separator:a83c088c72122901ffa9911c33b581145"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
 Enumerations</h2></td></tr>
@@ -217,6 +144,36 @@ Functions</h2></td></tr>
 <tr class="separator:a5b16e786b277b302f31c74a8aa194e08"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0c95e3cab11828dfe18eaad0a5113992"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="floppy_8h.html#a0c95e3cab11828dfe18eaad0a5113992">fdt_floppy_params_setdtr</a> (<a class="el" href="structFdtFloppyParams.html">FdtFloppyParams</a> *, <a class="el" href="floppy_8h.html#a69ebde1f2c929fcbb6af3c46e89910d3">FdtFloppyDataTransferRate</a>, <a class="el" href="structFdtError.html">FdtError</a> *)</td></tr>
 <tr class="separator:a0c95e3cab11828dfe18eaad0a5113992"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae2c7470802a62abb482851aa19d87d67"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="floppy_8h.html#ae2c7470802a62abb482851aa19d87d67">fdt_floppy_params_setname</a> (<a class="el" href="structFdtFloppyParams.html">FdtFloppyParams</a> *params, const char *v)</td></tr>
+<tr class="separator:ae2c7470802a62abb482851aa19d87d67"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7b3e4c3c2f6b4d77597dabb27b22b113"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="floppy_8h.html#a7b3e4c3c2f6b4d77597dabb27b22b113">fdt_floppy_params_setmedia</a> (<a class="el" href="structFdtFloppyParams.html">FdtFloppyParams</a> *params, <a class="el" href="floppy_8h.html#ae58f7c3b5da942d353b2060d49d1f66c">FdtFloppyMedia</a> v)</td></tr>
+<tr class="separator:a7b3e4c3c2f6b4d77597dabb27b22b113"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac92d11554999eb2da17157fd0d44d1b5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="floppy_8h.html#ac92d11554999eb2da17157fd0d44d1b5">fdt_floppy_params_setmaxdensity</a> (<a class="el" href="structFdtFloppyParams.html">FdtFloppyParams</a> *params, <a class="el" href="floppy_8h.html#a9b228a37b1fbd5d8ee62ac75efca3480">FdtFloppyDensity</a> v)</td></tr>
+<tr class="separator:ac92d11554999eb2da17157fd0d44d1b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7f2fd1d93fe5bda0bd72a72baa6fca72"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="floppy_8h.html#a7f2fd1d93fe5bda0bd72a72baa6fca72">fdt_floppy_params_setdensity</a> (<a class="el" href="structFdtFloppyParams.html">FdtFloppyParams</a> *params, <a class="el" href="floppy_8h.html#a9b228a37b1fbd5d8ee62ac75efca3480">FdtFloppyDensity</a> v)</td></tr>
+<tr class="separator:a7f2fd1d93fe5bda0bd72a72baa6fca72"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a56c6f14e62f8fe3c01f18db46e657717"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="floppy_8h.html#a56c6f14e62f8fe3c01f18db46e657717">fdt_floppy_params_setdeviceno</a> (<a class="el" href="structFdtFloppyParams.html">FdtFloppyParams</a> *params, int v)</td></tr>
+<tr class="separator:a56c6f14e62f8fe3c01f18db46e657717"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aff8df12d0ed9d2ad9557ad541c1124f3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="floppy_8h.html#aff8df12d0ed9d2ad9557ad541c1124f3">fdt_floppy_params_settpi</a> (<a class="el" href="structFdtFloppyParams.html">FdtFloppyParams</a> *params, int v)</td></tr>
+<tr class="separator:aff8df12d0ed9d2ad9557ad541c1124f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeb735498efa74362466468468a463487"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="floppy_8h.html#aeb735498efa74362466468468a463487">fdt_floppy_params_setrpm</a> (<a class="el" href="structFdtFloppyParams.html">FdtFloppyParams</a> *params, int v)</td></tr>
+<tr class="separator:aeb735498efa74362466468468a463487"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a973e0232273bd7bce0b7189b8badb719"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="floppy_8h.html#a973e0232273bd7bce0b7189b8badb719">fdt_floppy_params_setsect</a> (<a class="el" href="structFdtFloppyParams.html">FdtFloppyParams</a> *params, size_t v)</td></tr>
+<tr class="separator:a973e0232273bd7bce0b7189b8badb719"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1b4848b6888ef8d77bcff758a0be1b99"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="floppy_8h.html#a1b4848b6888ef8d77bcff758a0be1b99">fdt_floppy_params_sethead</a> (<a class="el" href="structFdtFloppyParams.html">FdtFloppyParams</a> *params, size_t v)</td></tr>
+<tr class="separator:a1b4848b6888ef8d77bcff758a0be1b99"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeac4ae811a5933f420a65b1404e2a6a6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="floppy_8h.html#aeac4ae811a5933f420a65b1404e2a6a6">fdt_floppy_params_settrack</a> (<a class="el" href="structFdtFloppyParams.html">FdtFloppyParams</a> *params, size_t v)</td></tr>
+<tr class="separator:aeac4ae811a5933f420a65b1404e2a6a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0e55d4e6576f9de42a902c183ed6b83e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="floppy_8h.html#a0e55d4e6576f9de42a902c183ed6b83e">fdt_floppy_params_setstretch</a> (<a class="el" href="structFdtFloppyParams.html">FdtFloppyParams</a> *params, int v)</td></tr>
+<tr class="separator:a0e55d4e6576f9de42a902c183ed6b83e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6a424f6b5884ae6c73fc071d9e2b4e2a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="floppy_8h.html#a6a424f6b5884ae6c73fc071d9e2b4e2a">fdt_floppy_params_setgap1size</a> (<a class="el" href="structFdtFloppyParams.html">FdtFloppyParams</a> *params, size_t v)</td></tr>
+<tr class="separator:a6a424f6b5884ae6c73fc071d9e2b4e2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afbe1dcf89a7aa647a67259ba826dc236"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="floppy_8h.html#afbe1dcf89a7aa647a67259ba826dc236">fdt_floppy_params_setgap2size</a> (<a class="el" href="structFdtFloppyParams.html">FdtFloppyParams</a> *params, size_t v)</td></tr>
+<tr class="separator:afbe1dcf89a7aa647a67259ba826dc236"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a837b14c4bd6c60100a38d1ec5d26774d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="floppy_8h.html#a837b14c4bd6c60100a38d1ec5d26774d">fdt_floppy_params_setrate</a> (<a class="el" href="structFdtFloppyParams.html">FdtFloppyParams</a> *params, <a class="el" href="typedef_8h.html#a0661d7d1353e0bca70c64563f635b034">byte_t</a> v)</td></tr>
+<tr class="separator:a837b14c4bd6c60100a38d1ec5d26774d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a25e36ad28424323add0345c08d0dbc5b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="floppy_8h.html#a25e36ad28424323add0345c08d0dbc5b">fdt_floppy_params_setspec1</a> (<a class="el" href="structFdtFloppyParams.html">FdtFloppyParams</a> *params, <a class="el" href="typedef_8h.html#a0661d7d1353e0bca70c64563f635b034">byte_t</a> v)</td></tr>
+<tr class="separator:a25e36ad28424323add0345c08d0dbc5b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa0a2a3e632169e28aa2c3833f453c964"><td class="memItemLeft" align="right" valign="top"><a class="el" href="floppy_8h.html#a8d4fbbc6ea34f3cd0726d45ad49a6a25">FdtFloppyDriveType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="floppy_8h.html#aa0a2a3e632169e28aa2c3833f453c964">fdt_floppy_params_getdrivetype</a> (<a class="el" href="structFdtFloppyParams.html">FdtFloppyParams</a> *)</td></tr>
 <tr class="separator:aa0a2a3e632169e28aa2c3833f453c964"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0b2f0e269dd7aa326869b0933d701a96"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="floppy_8h.html#a0b2f0e269dd7aa326869b0933d701a96">fdt_floppy_params_gettrackcapacity</a> (<a class="el" href="structFdtFloppyParams.html">FdtFloppyParams</a> *params)</td></tr>
@@ -231,776 +188,50 @@ Functions</h2></td></tr>
 <tr class="separator:a5e119b8a04ebe63439645deb29dc7b2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2880d5706c92e0006ad6ade4fcefff34"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="floppy_8h.html#a2880d5706c92e0006ad6ade4fcefff34">fdt_floppy_params_getdescription</a> (<a class="el" href="structFdtFloppyParams.html">FdtFloppyParams</a> *)</td></tr>
 <tr class="separator:a2880d5706c92e0006ad6ade4fcefff34"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa0deb60a07c2bdb6ba7c1ec87d1cf1e0"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="floppy_8h.html#aa0deb60a07c2bdb6ba7c1ec87d1cf1e0">fdt_floppy_params_getname</a> (<a class="el" href="structFdtFloppyParams.html">FdtFloppyParams</a> *params)</td></tr>
+<tr class="separator:aa0deb60a07c2bdb6ba7c1ec87d1cf1e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adc9c813cc6bcfc79e818ba0e966a7761"><td class="memItemLeft" align="right" valign="top"><a class="el" href="floppy_8h.html#ae58f7c3b5da942d353b2060d49d1f66c">FdtFloppyMedia</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="floppy_8h.html#adc9c813cc6bcfc79e818ba0e966a7761">fdt_floppy_params_getmedia</a> (<a class="el" href="structFdtFloppyParams.html">FdtFloppyParams</a> *params)</td></tr>
+<tr class="separator:adc9c813cc6bcfc79e818ba0e966a7761"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5b8174192254577cee24c106075c19e9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="floppy_8h.html#a9b228a37b1fbd5d8ee62ac75efca3480">FdtFloppyDensity</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="floppy_8h.html#a5b8174192254577cee24c106075c19e9">fdt_floppy_params_getmaxdensity</a> (<a class="el" href="structFdtFloppyParams.html">FdtFloppyParams</a> *params)</td></tr>
+<tr class="separator:a5b8174192254577cee24c106075c19e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3714f74cb0ba9b41a00fdb432286a708"><td class="memItemLeft" align="right" valign="top"><a class="el" href="floppy_8h.html#a9b228a37b1fbd5d8ee62ac75efca3480">FdtFloppyDensity</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="floppy_8h.html#a3714f74cb0ba9b41a00fdb432286a708">fdt_floppy_params_getdensity</a> (<a class="el" href="structFdtFloppyParams.html">FdtFloppyParams</a> *params)</td></tr>
+<tr class="separator:a3714f74cb0ba9b41a00fdb432286a708"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a78605f7881c4fd4493efcbcb08f0d12a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="floppy_8h.html#a78605f7881c4fd4493efcbcb08f0d12a">fdt_floppy_params_getdeviceno</a> (<a class="el" href="structFdtFloppyParams.html">FdtFloppyParams</a> *params)</td></tr>
+<tr class="separator:a78605f7881c4fd4493efcbcb08f0d12a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae0450def03b888d733618924afa4383b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="floppy_8h.html#a69ebde1f2c929fcbb6af3c46e89910d3">FdtFloppyDataTransferRate</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="floppy_8h.html#ae0450def03b888d733618924afa4383b">fdt_floppy_params_getdtr</a> (<a class="el" href="structFdtFloppyParams.html">FdtFloppyParams</a> *params)</td></tr>
+<tr class="separator:ae0450def03b888d733618924afa4383b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a77b69389faa8b74ba83ccbb31428c2a1"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="floppy_8h.html#a77b69389faa8b74ba83ccbb31428c2a1">fdt_floppy_params_gettpi</a> (<a class="el" href="structFdtFloppyParams.html">FdtFloppyParams</a> *params)</td></tr>
+<tr class="separator:a77b69389faa8b74ba83ccbb31428c2a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0cc2576dc09b90ae6a22146ef46ddd23"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="floppy_8h.html#a0cc2576dc09b90ae6a22146ef46ddd23">fdt_floppy_params_getrpm</a> (<a class="el" href="structFdtFloppyParams.html">FdtFloppyParams</a> *params)</td></tr>
+<tr class="separator:a0cc2576dc09b90ae6a22146ef46ddd23"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a437c748309eb3f52214b5f13752da91a"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="floppy_8h.html#a437c748309eb3f52214b5f13752da91a">fdt_floppy_params_getsect</a> (<a class="el" href="structFdtFloppyParams.html">FdtFloppyParams</a> *params)</td></tr>
+<tr class="separator:a437c748309eb3f52214b5f13752da91a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4a7cbb870aca610e2e9841c2e8baca1e"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="floppy_8h.html#a4a7cbb870aca610e2e9841c2e8baca1e">fdt_floppy_params_gethead</a> (<a class="el" href="structFdtFloppyParams.html">FdtFloppyParams</a> *params)</td></tr>
+<tr class="separator:a4a7cbb870aca610e2e9841c2e8baca1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0cfa5c0088cc4e468aac1d10b75546e5"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="floppy_8h.html#a0cfa5c0088cc4e468aac1d10b75546e5">fdt_floppy_params_gettrack</a> (<a class="el" href="structFdtFloppyParams.html">FdtFloppyParams</a> *params)</td></tr>
+<tr class="separator:a0cfa5c0088cc4e468aac1d10b75546e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a35f0fd419775af0eadbdaf17cfa9bd1f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="floppy_8h.html#a35f0fd419775af0eadbdaf17cfa9bd1f">fdt_floppy_params_getstretch</a> (<a class="el" href="structFdtFloppyParams.html">FdtFloppyParams</a> *params)</td></tr>
+<tr class="separator:a35f0fd419775af0eadbdaf17cfa9bd1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af675f8b7483d6878398c051641e4dbe5"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="floppy_8h.html#af675f8b7483d6878398c051641e4dbe5">fdt_floppy_params_isdoublesteps</a> (<a class="el" href="structFdtFloppyParams.html">FdtFloppyParams</a> *params)</td></tr>
+<tr class="separator:af675f8b7483d6878398c051641e4dbe5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa07a1fd67b59843c7fe8e61363d1ca96"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="floppy_8h.html#aa07a1fd67b59843c7fe8e61363d1ca96">fdt_floppy_params_isswapsides</a> (<a class="el" href="structFdtFloppyParams.html">FdtFloppyParams</a> *params)</td></tr>
+<tr class="separator:aa07a1fd67b59843c7fe8e61363d1ca96"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2d687d10bd1bbbcaf17f691517674cf7"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="floppy_8h.html#a2d687d10bd1bbbcaf17f691517674cf7">fdt_floppy_params_getgap1size</a> (<a class="el" href="structFdtFloppyParams.html">FdtFloppyParams</a> *params)</td></tr>
+<tr class="separator:a2d687d10bd1bbbcaf17f691517674cf7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9c0e763d24b63dffc03dea2172e93994"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="floppy_8h.html#a9c0e763d24b63dffc03dea2172e93994">fdt_floppy_params_getgap2size</a> (<a class="el" href="structFdtFloppyParams.html">FdtFloppyParams</a> *params)</td></tr>
+<tr class="separator:a9c0e763d24b63dffc03dea2172e93994"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a91695afd92ef9329c0f23ef9090158c0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="typedef_8h.html#a0661d7d1353e0bca70c64563f635b034">byte_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="floppy_8h.html#a91695afd92ef9329c0f23ef9090158c0">fdt_floppy_params_getrate</a> (<a class="el" href="structFdtFloppyParams.html">FdtFloppyParams</a> *params)</td></tr>
+<tr class="separator:a91695afd92ef9329c0f23ef9090158c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a84557998f8d619fae08d4f9e15ab9e44"><td class="memItemLeft" align="right" valign="top"><a class="el" href="typedef_8h.html#a0661d7d1353e0bca70c64563f635b034">byte_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="floppy_8h.html#a84557998f8d619fae08d4f9e15ab9e44">fdt_floppy_params_getspec1</a> (<a class="el" href="structFdtFloppyParams.html">FdtFloppyParams</a> *params)</td></tr>
+<tr class="separator:a84557998f8d619fae08d4f9e15ab9e44"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:a03f896f022498e6600f0dd7ee3c375e4"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="floppy_8h.html#a03f896f022498e6600f0dd7ee3c375e4">FDT_FLOPPY_STRETCH_DOUBLE_STEPS</a> = 0x01</td></tr>
+<tr class="separator:a03f896f022498e6600f0dd7ee3c375e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3aa36e4c1082a8c0075885415aa1836d"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="floppy_8h.html#a3aa36e4c1082a8c0075885415aa1836d">FDT_FLOPPY_STRETCH_SWAP_SIDES</a> = 0x02</td></tr>
+<tr class="separator:a3aa36e4c1082a8c0075885415aa1836d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Macro Definition Documentation</h2>
-<a id="ae874deb32ffa95acb687b6d113c5fed7" name="ae874deb32ffa95acb687b6d113c5fed7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae874deb32ffa95acb687b6d113c5fed7">&#9670;&nbsp;</a></span>fdt_floppy_params_getdensity</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define fdt_floppy_params_getdensity</td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">params</td><td>)</td>
-          <td>&#160;&#160;&#160;(params-&gt;density)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="ae7850c79635369149da25b1851e44555" name="ae7850c79635369149da25b1851e44555"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae7850c79635369149da25b1851e44555">&#9670;&nbsp;</a></span>fdt_floppy_params_getdeviceno</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define fdt_floppy_params_getdeviceno</td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">params</td><td>)</td>
-          <td>&#160;&#160;&#160;(params-&gt;deviceno)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a7ed9e26a56322ccdf2f9797f9e4d54bd" name="a7ed9e26a56322ccdf2f9797f9e4d54bd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7ed9e26a56322ccdf2f9797f9e4d54bd">&#9670;&nbsp;</a></span>fdt_floppy_params_getdtr</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define fdt_floppy_params_getdtr</td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">params</td><td>)</td>
-          <td>&#160;&#160;&#160;(params-&gt;dtr)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="af0e670bf50a0a2d65745ebe3ca4251e1" name="af0e670bf50a0a2d65745ebe3ca4251e1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af0e670bf50a0a2d65745ebe3ca4251e1">&#9670;&nbsp;</a></span>fdt_floppy_params_getgap1size</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define fdt_floppy_params_getgap1size</td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">params</td><td>)</td>
-          <td>&#160;&#160;&#160;(params-&gt;gap1)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="aae070aa11d0efb6995d92c609ae81dc1" name="aae070aa11d0efb6995d92c609ae81dc1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aae070aa11d0efb6995d92c609ae81dc1">&#9670;&nbsp;</a></span>fdt_floppy_params_getgap2size</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define fdt_floppy_params_getgap2size</td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">params</td><td>)</td>
-          <td>&#160;&#160;&#160;(params-&gt;gap2)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a8925f3de698ad9bf26bbb74d43b03578" name="a8925f3de698ad9bf26bbb74d43b03578"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8925f3de698ad9bf26bbb74d43b03578">&#9670;&nbsp;</a></span>fdt_floppy_params_gethead</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define fdt_floppy_params_gethead</td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">params</td><td>)</td>
-          <td>&#160;&#160;&#160;(params-&gt;head)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="ac79be5af3f41d364fd7a7740162e798a" name="ac79be5af3f41d364fd7a7740162e798a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac79be5af3f41d364fd7a7740162e798a">&#9670;&nbsp;</a></span>fdt_floppy_params_getmaxdensity</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define fdt_floppy_params_getmaxdensity</td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">params</td><td>)</td>
-          <td>&#160;&#160;&#160;(params-&gt;max_density)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a6b7feacfdbfcd0d488f4c90056d1bdf5" name="a6b7feacfdbfcd0d488f4c90056d1bdf5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6b7feacfdbfcd0d488f4c90056d1bdf5">&#9670;&nbsp;</a></span>fdt_floppy_params_getmedia</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define fdt_floppy_params_getmedia</td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">params</td><td>)</td>
-          <td>&#160;&#160;&#160;(params-&gt;media)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a3d3f0571d65c9529729eefc9bb8436d4" name="a3d3f0571d65c9529729eefc9bb8436d4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3d3f0571d65c9529729eefc9bb8436d4">&#9670;&nbsp;</a></span>fdt_floppy_params_getname</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define fdt_floppy_params_getname&#160;&#160;&#160;(dev) <a class="el" href="string_8h.html#a520610a7bfdcec3e607bdb9f5dc50bfe">fdt_string_getvalue</a>(dev-&gt;name)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a0af2b21ff45ff141fee57929705e7b54" name="a0af2b21ff45ff141fee57929705e7b54"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0af2b21ff45ff141fee57929705e7b54">&#9670;&nbsp;</a></span>fdt_floppy_params_getrate</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define fdt_floppy_params_getrate</td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">params</td><td>)</td>
-          <td>&#160;&#160;&#160;(params-&gt;rate)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a7080c807d1f062e3b5fbacd6c25e5add" name="a7080c807d1f062e3b5fbacd6c25e5add"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7080c807d1f062e3b5fbacd6c25e5add">&#9670;&nbsp;</a></span>fdt_floppy_params_getrpm</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define fdt_floppy_params_getrpm</td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">params</td><td>)</td>
-          <td>&#160;&#160;&#160;(params-&gt;rpm)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="ab9487d0b7bedb286ea213d6c5491b2e0" name="ab9487d0b7bedb286ea213d6c5491b2e0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab9487d0b7bedb286ea213d6c5491b2e0">&#9670;&nbsp;</a></span>fdt_floppy_params_getsect</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define fdt_floppy_params_getsect</td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">params</td><td>)</td>
-          <td>&#160;&#160;&#160;(params-&gt;sect)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a83c088c72122901ffa9911c33b581145" name="a83c088c72122901ffa9911c33b581145"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a83c088c72122901ffa9911c33b581145">&#9670;&nbsp;</a></span>fdt_floppy_params_getspec1</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define fdt_floppy_params_getspec1</td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">params</td><td>)</td>
-          <td>&#160;&#160;&#160;(params-&gt;spec1)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a33082483d2943bada52914c20015c838" name="a33082483d2943bada52914c20015c838"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a33082483d2943bada52914c20015c838">&#9670;&nbsp;</a></span>fdt_floppy_params_getstretch</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define fdt_floppy_params_getstretch</td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">params</td><td>)</td>
-          <td>&#160;&#160;&#160;(params-&gt;stretch)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a0afc4dfec9d1f1aea6ba0f9767838bc0" name="a0afc4dfec9d1f1aea6ba0f9767838bc0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0afc4dfec9d1f1aea6ba0f9767838bc0">&#9670;&nbsp;</a></span>fdt_floppy_params_gettpi</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define fdt_floppy_params_gettpi</td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">params</td><td>)</td>
-          <td>&#160;&#160;&#160;(params-&gt;tpi)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a01896ec9ea84675bd7e305113c9c83a5" name="a01896ec9ea84675bd7e305113c9c83a5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a01896ec9ea84675bd7e305113c9c83a5">&#9670;&nbsp;</a></span>fdt_floppy_params_gettrack</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define fdt_floppy_params_gettrack</td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">params</td><td>)</td>
-          <td>&#160;&#160;&#160;(params-&gt;track)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="af752cd11bcb2baa1d3b63104b49b672c" name="af752cd11bcb2baa1d3b63104b49b672c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af752cd11bcb2baa1d3b63104b49b672c">&#9670;&nbsp;</a></span>fdt_floppy_params_isdoublesteps</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define fdt_floppy_params_isdoublesteps</td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">params</td><td>)</td>
-          <td>&#160;&#160;&#160;((params-&gt;stretch &amp; <a class="el" href="floppy_8h.html#a084c74a2b92c510084223e3049a90d17">FDT_FLOPPY_STRETCH_DOUBLE_STEPS</a>) ? true : false)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a6b19bbf4141ff611d7e460accaea66b7" name="a6b19bbf4141ff611d7e460accaea66b7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6b19bbf4141ff611d7e460accaea66b7">&#9670;&nbsp;</a></span>fdt_floppy_params_isswapsides</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define fdt_floppy_params_isswapsides</td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">params</td><td>)</td>
-          <td>&#160;&#160;&#160;((params-&gt;stretch &amp; <a class="el" href="floppy_8h.html#afc091b8b30058eeac6233e3e4beb59ff">FDT_FLOPPY_STRETCH_SWAP_SIDES</a>) ? true : false)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="ac5ffc8e61e1aad0d2015df2b3bf72ed2" name="ac5ffc8e61e1aad0d2015df2b3bf72ed2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac5ffc8e61e1aad0d2015df2b3bf72ed2">&#9670;&nbsp;</a></span>fdt_floppy_params_setdensity</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define fdt_floppy_params_setdensity</td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">params, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">v&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td>&#160;&#160;&#160;(params-&gt;density = v)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a38c5e2e994c5ced01c8c24307c8a0021" name="a38c5e2e994c5ced01c8c24307c8a0021"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a38c5e2e994c5ced01c8c24307c8a0021">&#9670;&nbsp;</a></span>fdt_floppy_params_setdeviceno</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define fdt_floppy_params_setdeviceno</td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">params, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">v&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td>&#160;&#160;&#160;(params-&gt;deviceno = v)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a50917ea5e0bebb203a88e00dde6e2959" name="a50917ea5e0bebb203a88e00dde6e2959"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a50917ea5e0bebb203a88e00dde6e2959">&#9670;&nbsp;</a></span>fdt_floppy_params_setgap1size</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define fdt_floppy_params_setgap1size</td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">params, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">v&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td>&#160;&#160;&#160;(params-&gt;gap1 = v)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a203c5fb6475929ba061105893b8670b1" name="a203c5fb6475929ba061105893b8670b1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a203c5fb6475929ba061105893b8670b1">&#9670;&nbsp;</a></span>fdt_floppy_params_setgap2size</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define fdt_floppy_params_setgap2size</td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">params, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">v&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td>&#160;&#160;&#160;(params-&gt;gap2 = v)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a02baffeeb70c24786ae660383534674a" name="a02baffeeb70c24786ae660383534674a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a02baffeeb70c24786ae660383534674a">&#9670;&nbsp;</a></span>fdt_floppy_params_sethead</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define fdt_floppy_params_sethead</td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">params, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">v&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td>&#160;&#160;&#160;(params-&gt;head = v)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a52b3a4d29c9445ae96de2512aa86db09" name="a52b3a4d29c9445ae96de2512aa86db09"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a52b3a4d29c9445ae96de2512aa86db09">&#9670;&nbsp;</a></span>fdt_floppy_params_setmaxdensity</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define fdt_floppy_params_setmaxdensity</td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">params, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">v&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td>&#160;&#160;&#160;(params-&gt;max_density = v)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a51c323c0c40fbabb871b721fbc359507" name="a51c323c0c40fbabb871b721fbc359507"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a51c323c0c40fbabb871b721fbc359507">&#9670;&nbsp;</a></span>fdt_floppy_params_setmedia</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define fdt_floppy_params_setmedia</td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">params, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">v&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td>&#160;&#160;&#160;(params-&gt;media = v)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="afb1af5d528aa5261cb3691c49809dadb" name="afb1af5d528aa5261cb3691c49809dadb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afb1af5d528aa5261cb3691c49809dadb">&#9670;&nbsp;</a></span>fdt_floppy_params_setname</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define fdt_floppy_params_setname</td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">dev, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">v&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td>&#160;&#160;&#160;<a class="el" href="string_8h.html#a4cd727c6b544c115f618a40e7c8b80dc">fdt_string_setvalue</a>(dev-&gt;name = v)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a63e4f1f532318a707a1b96de1db95b61" name="a63e4f1f532318a707a1b96de1db95b61"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a63e4f1f532318a707a1b96de1db95b61">&#9670;&nbsp;</a></span>fdt_floppy_params_setrate</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define fdt_floppy_params_setrate</td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">params, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">v&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td>&#160;&#160;&#160;(params-&gt;rate = v)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="aed1aa143b2e8502818ef78a012d51bba" name="aed1aa143b2e8502818ef78a012d51bba"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aed1aa143b2e8502818ef78a012d51bba">&#9670;&nbsp;</a></span>fdt_floppy_params_setrpm</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define fdt_floppy_params_setrpm</td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">params, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">v&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td>&#160;&#160;&#160;(params-&gt;rpm = v)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="aa348fc2d4b83b1480ede3bd9ece86214" name="aa348fc2d4b83b1480ede3bd9ece86214"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa348fc2d4b83b1480ede3bd9ece86214">&#9670;&nbsp;</a></span>fdt_floppy_params_setsect</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define fdt_floppy_params_setsect</td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">params, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">v&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td>&#160;&#160;&#160;(params-&gt;sect = v)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a1d5ac5d01d28bf9931b892c9660e6e92" name="a1d5ac5d01d28bf9931b892c9660e6e92"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1d5ac5d01d28bf9931b892c9660e6e92">&#9670;&nbsp;</a></span>fdt_floppy_params_setspec1</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define fdt_floppy_params_setspec1</td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">params, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">v&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td>&#160;&#160;&#160;(params-&gt;spec1 = v)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a59b67bf9cb04985d5adfdb76e5237f0d" name="a59b67bf9cb04985d5adfdb76e5237f0d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a59b67bf9cb04985d5adfdb76e5237f0d">&#9670;&nbsp;</a></span>fdt_floppy_params_setstretch</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define fdt_floppy_params_setstretch</td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">params, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">v&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td>&#160;&#160;&#160;(params-&gt;stretch = v)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a82861ca6d3b07a924ff684308c6f24e5" name="a82861ca6d3b07a924ff684308c6f24e5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a82861ca6d3b07a924ff684308c6f24e5">&#9670;&nbsp;</a></span>fdt_floppy_params_settpi</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define fdt_floppy_params_settpi</td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">params, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">v&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td>&#160;&#160;&#160;(params-&gt;tpi = v)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a7fc35030a8e1dad0affb75a5a73f189a" name="a7fc35030a8e1dad0affb75a5a73f189a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7fc35030a8e1dad0affb75a5a73f189a">&#9670;&nbsp;</a></span>fdt_floppy_params_settrack</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define fdt_floppy_params_settrack</td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">params, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">v&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td>&#160;&#160;&#160;(params-&gt;track = v)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a084c74a2b92c510084223e3049a90d17" name="a084c74a2b92c510084223e3049a90d17"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a084c74a2b92c510084223e3049a90d17">&#9670;&nbsp;</a></span>FDT_FLOPPY_STRETCH_DOUBLE_STEPS</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define FDT_FLOPPY_STRETCH_DOUBLE_STEPS&#160;&#160;&#160;0x01</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="afc091b8b30058eeac6233e3e4beb59ff" name="afc091b8b30058eeac6233e3e4beb59ff"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afc091b8b30058eeac6233e3e4beb59ff">&#9670;&nbsp;</a></span>FDT_FLOPPY_STRETCH_SWAP_SIDES</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define FDT_FLOPPY_STRETCH_SWAP_SIDES&#160;&#160;&#160;0x02</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <h2 class="groupheader">Enumeration Type Documentation</h2>
 <a id="a69ebde1f2c929fcbb6af3c46e89910d3" name="a69ebde1f2c929fcbb6af3c46e89910d3"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a69ebde1f2c929fcbb6af3c46e89910d3">&#9670;&nbsp;</a></span>FdtFloppyDataTransferRate</h2>
@@ -1133,6 +364,32 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="a3714f74cb0ba9b41a00fdb432286a708" name="a3714f74cb0ba9b41a00fdb432286a708"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3714f74cb0ba9b41a00fdb432286a708">&#9670;&nbsp;</a></span>fdt_floppy_params_getdensity()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="floppy_8h.html#a9b228a37b1fbd5d8ee62ac75efca3480">FdtFloppyDensity</a> fdt_floppy_params_getdensity </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structFdtFloppyParams.html">FdtFloppyParams</a> *&#160;</td>
+          <td class="paramname"><em>params</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a5e119b8a04ebe63439645deb29dc7b2f" name="a5e119b8a04ebe63439645deb29dc7b2f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a5e119b8a04ebe63439645deb29dc7b2f">&#9670;&nbsp;</a></span>fdt_floppy_params_getdensitystring()</h2>
 
@@ -1169,6 +426,32 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="a78605f7881c4fd4493efcbcb08f0d12a" name="a78605f7881c4fd4493efcbcb08f0d12a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a78605f7881c4fd4493efcbcb08f0d12a">&#9670;&nbsp;</a></span>fdt_floppy_params_getdeviceno()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int fdt_floppy_params_getdeviceno </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structFdtFloppyParams.html">FdtFloppyParams</a> *&#160;</td>
+          <td class="paramname"><em>params</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="aa0a2a3e632169e28aa2c3833f453c964" name="aa0a2a3e632169e28aa2c3833f453c964"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aa0a2a3e632169e28aa2c3833f453c964">&#9670;&nbsp;</a></span>fdt_floppy_params_getdrivetype()</h2>
 
@@ -1183,6 +466,162 @@ Functions</h2></td></tr>
           <td></td>
         </tr>
       </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae0450def03b888d733618924afa4383b" name="ae0450def03b888d733618924afa4383b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae0450def03b888d733618924afa4383b">&#9670;&nbsp;</a></span>fdt_floppy_params_getdtr()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="floppy_8h.html#a69ebde1f2c929fcbb6af3c46e89910d3">FdtFloppyDataTransferRate</a> fdt_floppy_params_getdtr </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structFdtFloppyParams.html">FdtFloppyParams</a> *&#160;</td>
+          <td class="paramname"><em>params</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2d687d10bd1bbbcaf17f691517674cf7" name="a2d687d10bd1bbbcaf17f691517674cf7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2d687d10bd1bbbcaf17f691517674cf7">&#9670;&nbsp;</a></span>fdt_floppy_params_getgap1size()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t fdt_floppy_params_getgap1size </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structFdtFloppyParams.html">FdtFloppyParams</a> *&#160;</td>
+          <td class="paramname"><em>params</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9c0e763d24b63dffc03dea2172e93994" name="a9c0e763d24b63dffc03dea2172e93994"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9c0e763d24b63dffc03dea2172e93994">&#9670;&nbsp;</a></span>fdt_floppy_params_getgap2size()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t fdt_floppy_params_getgap2size </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structFdtFloppyParams.html">FdtFloppyParams</a> *&#160;</td>
+          <td class="paramname"><em>params</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4a7cbb870aca610e2e9841c2e8baca1e" name="a4a7cbb870aca610e2e9841c2e8baca1e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4a7cbb870aca610e2e9841c2e8baca1e">&#9670;&nbsp;</a></span>fdt_floppy_params_gethead()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t fdt_floppy_params_gethead </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structFdtFloppyParams.html">FdtFloppyParams</a> *&#160;</td>
+          <td class="paramname"><em>params</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5b8174192254577cee24c106075c19e9" name="a5b8174192254577cee24c106075c19e9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5b8174192254577cee24c106075c19e9">&#9670;&nbsp;</a></span>fdt_floppy_params_getmaxdensity()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="floppy_8h.html#a9b228a37b1fbd5d8ee62ac75efca3480">FdtFloppyDensity</a> fdt_floppy_params_getmaxdensity </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structFdtFloppyParams.html">FdtFloppyParams</a> *&#160;</td>
+          <td class="paramname"><em>params</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="adc9c813cc6bcfc79e818ba0e966a7761" name="adc9c813cc6bcfc79e818ba0e966a7761"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adc9c813cc6bcfc79e818ba0e966a7761">&#9670;&nbsp;</a></span>fdt_floppy_params_getmedia()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="floppy_8h.html#ae58f7c3b5da942d353b2060d49d1f66c">FdtFloppyMedia</a> fdt_floppy_params_getmedia </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structFdtFloppyParams.html">FdtFloppyParams</a> *&#160;</td>
+          <td class="paramname"><em>params</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 </div>
@@ -1205,6 +644,110 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="aa0deb60a07c2bdb6ba7c1ec87d1cf1e0" name="aa0deb60a07c2bdb6ba7c1ec87d1cf1e0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa0deb60a07c2bdb6ba7c1ec87d1cf1e0">&#9670;&nbsp;</a></span>fdt_floppy_params_getname()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char * fdt_floppy_params_getname </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structFdtFloppyParams.html">FdtFloppyParams</a> *&#160;</td>
+          <td class="paramname"><em>params</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a91695afd92ef9329c0f23ef9090158c0" name="a91695afd92ef9329c0f23ef9090158c0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a91695afd92ef9329c0f23ef9090158c0">&#9670;&nbsp;</a></span>fdt_floppy_params_getrate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="typedef_8h.html#a0661d7d1353e0bca70c64563f635b034">byte_t</a> fdt_floppy_params_getrate </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structFdtFloppyParams.html">FdtFloppyParams</a> *&#160;</td>
+          <td class="paramname"><em>params</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0cc2576dc09b90ae6a22146ef46ddd23" name="a0cc2576dc09b90ae6a22146ef46ddd23"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0cc2576dc09b90ae6a22146ef46ddd23">&#9670;&nbsp;</a></span>fdt_floppy_params_getrpm()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int fdt_floppy_params_getrpm </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structFdtFloppyParams.html">FdtFloppyParams</a> *&#160;</td>
+          <td class="paramname"><em>params</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a437c748309eb3f52214b5f13752da91a" name="a437c748309eb3f52214b5f13752da91a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a437c748309eb3f52214b5f13752da91a">&#9670;&nbsp;</a></span>fdt_floppy_params_getsect()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t fdt_floppy_params_getsect </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structFdtFloppyParams.html">FdtFloppyParams</a> *&#160;</td>
+          <td class="paramname"><em>params</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a706d38312085462036597c9602cd77d4" name="a706d38312085462036597c9602cd77d4"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a706d38312085462036597c9602cd77d4">&#9670;&nbsp;</a></span>fdt_floppy_params_getsize()</h2>
 
@@ -1219,6 +762,32 @@ Functions</h2></td></tr>
           <td></td>
         </tr>
       </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a84557998f8d619fae08d4f9e15ab9e44" name="a84557998f8d619fae08d4f9e15ab9e44"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a84557998f8d619fae08d4f9e15ab9e44">&#9670;&nbsp;</a></span>fdt_floppy_params_getspec1()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="typedef_8h.html#a0661d7d1353e0bca70c64563f635b034">byte_t</a> fdt_floppy_params_getspec1 </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structFdtFloppyParams.html">FdtFloppyParams</a> *&#160;</td>
+          <td class="paramname"><em>params</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 </div>
@@ -1241,6 +810,84 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="a35f0fd419775af0eadbdaf17cfa9bd1f" name="a35f0fd419775af0eadbdaf17cfa9bd1f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a35f0fd419775af0eadbdaf17cfa9bd1f">&#9670;&nbsp;</a></span>fdt_floppy_params_getstretch()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int fdt_floppy_params_getstretch </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structFdtFloppyParams.html">FdtFloppyParams</a> *&#160;</td>
+          <td class="paramname"><em>params</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a77b69389faa8b74ba83ccbb31428c2a1" name="a77b69389faa8b74ba83ccbb31428c2a1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a77b69389faa8b74ba83ccbb31428c2a1">&#9670;&nbsp;</a></span>fdt_floppy_params_gettpi()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int fdt_floppy_params_gettpi </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structFdtFloppyParams.html">FdtFloppyParams</a> *&#160;</td>
+          <td class="paramname"><em>params</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0cfa5c0088cc4e468aac1d10b75546e5" name="a0cfa5c0088cc4e468aac1d10b75546e5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0cfa5c0088cc4e468aac1d10b75546e5">&#9670;&nbsp;</a></span>fdt_floppy_params_gettrack()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t fdt_floppy_params_gettrack </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structFdtFloppyParams.html">FdtFloppyParams</a> *&#160;</td>
+          <td class="paramname"><em>params</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a0b2f0e269dd7aa326869b0933d701a96" name="a0b2f0e269dd7aa326869b0933d701a96"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a0b2f0e269dd7aa326869b0933d701a96">&#9670;&nbsp;</a></span>fdt_floppy_params_gettrackcapacity()</h2>
 
@@ -1259,6 +906,58 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="af675f8b7483d6878398c051641e4dbe5" name="af675f8b7483d6878398c051641e4dbe5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af675f8b7483d6878398c051641e4dbe5">&#9670;&nbsp;</a></span>fdt_floppy_params_isdoublesteps()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool fdt_floppy_params_isdoublesteps </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structFdtFloppyParams.html">FdtFloppyParams</a> *&#160;</td>
+          <td class="paramname"><em>params</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa07a1fd67b59843c7fe8e61363d1ca96" name="aa07a1fd67b59843c7fe8e61363d1ca96"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa07a1fd67b59843c7fe8e61363d1ca96">&#9670;&nbsp;</a></span>fdt_floppy_params_isswapsides()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool fdt_floppy_params_isswapsides </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structFdtFloppyParams.html">FdtFloppyParams</a> *&#160;</td>
+          <td class="paramname"><em>params</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="ae918a5552d8e5a461be1bd1372e36391" name="ae918a5552d8e5a461be1bd1372e36391"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae918a5552d8e5a461be1bd1372e36391">&#9670;&nbsp;</a></span>fdt_floppy_params_new()</h2>
 
@@ -1272,6 +971,78 @@ Functions</h2></td></tr>
           <td></td>
         </tr>
       </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a7f2fd1d93fe5bda0bd72a72baa6fca72" name="a7f2fd1d93fe5bda0bd72a72baa6fca72"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7f2fd1d93fe5bda0bd72a72baa6fca72">&#9670;&nbsp;</a></span>fdt_floppy_params_setdensity()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void fdt_floppy_params_setdensity </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structFdtFloppyParams.html">FdtFloppyParams</a> *&#160;</td>
+          <td class="paramname"><em>params</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="floppy_8h.html#a9b228a37b1fbd5d8ee62ac75efca3480">FdtFloppyDensity</a>&#160;</td>
+          <td class="paramname"><em>v</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a56c6f14e62f8fe3c01f18db46e657717" name="a56c6f14e62f8fe3c01f18db46e657717"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a56c6f14e62f8fe3c01f18db46e657717">&#9670;&nbsp;</a></span>fdt_floppy_params_setdeviceno()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void fdt_floppy_params_setdeviceno </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structFdtFloppyParams.html">FdtFloppyParams</a> *&#160;</td>
+          <td class="paramname"><em>params</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>v</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 </div>
@@ -1338,6 +1109,503 @@ Functions</h2></td></tr>
           <td></td>
           <td>)</td>
           <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a6a424f6b5884ae6c73fc071d9e2b4e2a" name="a6a424f6b5884ae6c73fc071d9e2b4e2a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6a424f6b5884ae6c73fc071d9e2b4e2a">&#9670;&nbsp;</a></span>fdt_floppy_params_setgap1size()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void fdt_floppy_params_setgap1size </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structFdtFloppyParams.html">FdtFloppyParams</a> *&#160;</td>
+          <td class="paramname"><em>params</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>v</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="afbe1dcf89a7aa647a67259ba826dc236" name="afbe1dcf89a7aa647a67259ba826dc236"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afbe1dcf89a7aa647a67259ba826dc236">&#9670;&nbsp;</a></span>fdt_floppy_params_setgap2size()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void fdt_floppy_params_setgap2size </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structFdtFloppyParams.html">FdtFloppyParams</a> *&#160;</td>
+          <td class="paramname"><em>params</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>v</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1b4848b6888ef8d77bcff758a0be1b99" name="a1b4848b6888ef8d77bcff758a0be1b99"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1b4848b6888ef8d77bcff758a0be1b99">&#9670;&nbsp;</a></span>fdt_floppy_params_sethead()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void fdt_floppy_params_sethead </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structFdtFloppyParams.html">FdtFloppyParams</a> *&#160;</td>
+          <td class="paramname"><em>params</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>v</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac92d11554999eb2da17157fd0d44d1b5" name="ac92d11554999eb2da17157fd0d44d1b5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac92d11554999eb2da17157fd0d44d1b5">&#9670;&nbsp;</a></span>fdt_floppy_params_setmaxdensity()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void fdt_floppy_params_setmaxdensity </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structFdtFloppyParams.html">FdtFloppyParams</a> *&#160;</td>
+          <td class="paramname"><em>params</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="floppy_8h.html#a9b228a37b1fbd5d8ee62ac75efca3480">FdtFloppyDensity</a>&#160;</td>
+          <td class="paramname"><em>v</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a7b3e4c3c2f6b4d77597dabb27b22b113" name="a7b3e4c3c2f6b4d77597dabb27b22b113"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7b3e4c3c2f6b4d77597dabb27b22b113">&#9670;&nbsp;</a></span>fdt_floppy_params_setmedia()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void fdt_floppy_params_setmedia </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structFdtFloppyParams.html">FdtFloppyParams</a> *&#160;</td>
+          <td class="paramname"><em>params</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="floppy_8h.html#ae58f7c3b5da942d353b2060d49d1f66c">FdtFloppyMedia</a>&#160;</td>
+          <td class="paramname"><em>v</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae2c7470802a62abb482851aa19d87d67" name="ae2c7470802a62abb482851aa19d87d67"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae2c7470802a62abb482851aa19d87d67">&#9670;&nbsp;</a></span>fdt_floppy_params_setname()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void fdt_floppy_params_setname </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structFdtFloppyParams.html">FdtFloppyParams</a> *&#160;</td>
+          <td class="paramname"><em>params</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>v</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a837b14c4bd6c60100a38d1ec5d26774d" name="a837b14c4bd6c60100a38d1ec5d26774d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a837b14c4bd6c60100a38d1ec5d26774d">&#9670;&nbsp;</a></span>fdt_floppy_params_setrate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void fdt_floppy_params_setrate </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structFdtFloppyParams.html">FdtFloppyParams</a> *&#160;</td>
+          <td class="paramname"><em>params</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="typedef_8h.html#a0661d7d1353e0bca70c64563f635b034">byte_t</a>&#160;</td>
+          <td class="paramname"><em>v</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aeb735498efa74362466468468a463487" name="aeb735498efa74362466468468a463487"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeb735498efa74362466468468a463487">&#9670;&nbsp;</a></span>fdt_floppy_params_setrpm()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void fdt_floppy_params_setrpm </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structFdtFloppyParams.html">FdtFloppyParams</a> *&#160;</td>
+          <td class="paramname"><em>params</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>v</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a973e0232273bd7bce0b7189b8badb719" name="a973e0232273bd7bce0b7189b8badb719"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a973e0232273bd7bce0b7189b8badb719">&#9670;&nbsp;</a></span>fdt_floppy_params_setsect()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void fdt_floppy_params_setsect </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structFdtFloppyParams.html">FdtFloppyParams</a> *&#160;</td>
+          <td class="paramname"><em>params</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>v</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a25e36ad28424323add0345c08d0dbc5b" name="a25e36ad28424323add0345c08d0dbc5b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a25e36ad28424323add0345c08d0dbc5b">&#9670;&nbsp;</a></span>fdt_floppy_params_setspec1()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void fdt_floppy_params_setspec1 </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structFdtFloppyParams.html">FdtFloppyParams</a> *&#160;</td>
+          <td class="paramname"><em>params</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="typedef_8h.html#a0661d7d1353e0bca70c64563f635b034">byte_t</a>&#160;</td>
+          <td class="paramname"><em>v</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0e55d4e6576f9de42a902c183ed6b83e" name="a0e55d4e6576f9de42a902c183ed6b83e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0e55d4e6576f9de42a902c183ed6b83e">&#9670;&nbsp;</a></span>fdt_floppy_params_setstretch()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void fdt_floppy_params_setstretch </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structFdtFloppyParams.html">FdtFloppyParams</a> *&#160;</td>
+          <td class="paramname"><em>params</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>v</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aff8df12d0ed9d2ad9557ad541c1124f3" name="aff8df12d0ed9d2ad9557ad541c1124f3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aff8df12d0ed9d2ad9557ad541c1124f3">&#9670;&nbsp;</a></span>fdt_floppy_params_settpi()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void fdt_floppy_params_settpi </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structFdtFloppyParams.html">FdtFloppyParams</a> *&#160;</td>
+          <td class="paramname"><em>params</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>v</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aeac4ae811a5933f420a65b1404e2a6a6" name="aeac4ae811a5933f420a65b1404e2a6a6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeac4ae811a5933f420a65b1404e2a6a6">&#9670;&nbsp;</a></span>fdt_floppy_params_settrack()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void fdt_floppy_params_settrack </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structFdtFloppyParams.html">FdtFloppyParams</a> *&#160;</td>
+          <td class="paramname"><em>params</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>v</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Variable Documentation</h2>
+<a id="a03f896f022498e6600f0dd7ee3c375e4" name="a03f896f022498e6600f0dd7ee3c375e4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a03f896f022498e6600f0dd7ee3c375e4">&#9670;&nbsp;</a></span>FDT_FLOPPY_STRETCH_DOUBLE_STEPS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const int FDT_FLOPPY_STRETCH_DOUBLE_STEPS = 0x01</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3aa36e4c1082a8c0075885415aa1836d" name="a3aa36e4c1082a8c0075885415aa1836d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3aa36e4c1082a8c0075885415aa1836d">&#9670;&nbsp;</a></span>FDT_FLOPPY_STRETCH_SWAP_SIDES</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const int FDT_FLOPPY_STRETCH_SWAP_SIDES = 0x02</td>
         </tr>
       </table>
 </div><div class="memdoc">

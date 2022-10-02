@@ -61,7 +61,6 @@ $(document).ready(function(){initNavTree('dictionary_8h.html',''); initResizable
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Data Structures</a> &#124;
-<a href="#define-members">Macros</a> &#124;
 <a href="#typedef-members">Typedefs</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle"><div class="title">dictionary.h File Reference</div></div>
@@ -75,33 +74,6 @@ $(document).ready(function(){initNavTree('dictionary_8h.html',''); initResizable
 Data Structures</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structFdtDictionaryElement.html">FdtDictionaryElement</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
-Macros</h2></td></tr>
-<tr class="memitem:aa880b14c678a2f753ebf9d5480f99a94"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dictionary_8h.html#aa880b14c678a2f753ebf9d5480f99a94">fdt_dictionary_element_setkey</a>(elem,  name)&#160;&#160;&#160;<a class="el" href="string_8h.html#a4cd727c6b544c115f618a40e7c8b80dc">fdt_string_setvalue</a>(elem-&gt;key, name)</td></tr>
-<tr class="separator:aa880b14c678a2f753ebf9d5480f99a94"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a95daf3f5081da930012deace1f7f9ca6"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dictionary_8h.html#a95daf3f5081da930012deace1f7f9ca6">fdt_dictionary_element_getkey</a>(elem)&#160;&#160;&#160;<a class="el" href="string_8h.html#a520610a7bfdcec3e607bdb9f5dc50bfe">fdt_string_getvalue</a>(elem-&gt;key)</td></tr>
-<tr class="separator:a95daf3f5081da930012deace1f7f9ca6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4970b3204c086652cb647f66a31a07ab"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dictionary_8h.html#a4970b3204c086652cb647f66a31a07ab">fdt_dictionary_element_getvalue</a>(elem)&#160;&#160;&#160;(elem ? elem-&gt;value : NULL)</td></tr>
-<tr class="separator:a4970b3204c086652cb647f66a31a07ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a848ff9aa1dc3e2d7a6dca86493420074"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dictionary_8h.html#a848ff9aa1dc3e2d7a6dca86493420074">fdt_dictionary_element_setdestructor</a>(elem,  fn)&#160;&#160;&#160;(elem-&gt;destructor = fn)</td></tr>
-<tr class="separator:a848ff9aa1dc3e2d7a6dca86493420074"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9ca11327d57080030082d806d52c3ec9"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dictionary_8h.html#a9ca11327d57080030082d806d52c3ec9">fdt_dictionary_element_getdestructor</a>(elem)&#160;&#160;&#160;(elem-&gt;destructor)</td></tr>
-<tr class="separator:a9ca11327d57080030082d806d52c3ec9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a29c09ce5cde354bdbc732218dbab7363"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dictionary_8h.html#a29c09ce5cde354bdbc732218dbab7363">fdt_dictionary_element_next</a>(elem)&#160;&#160;&#160;(<a class="el" href="structFdtDictionaryElement.html">FdtDictionaryElement</a>*)<a class="el" href="list_8h.html#aea9932bd9770b18418a8f4594959045b">fdt_list_next</a>((<a class="el" href="list_8h.html#a8256af85c688d84df9191c52d2baf09c">FdtListNode</a>*)elem)</td></tr>
-<tr class="separator:a29c09ce5cde354bdbc732218dbab7363"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abc5aa7fafe6b6c7cfbef45e64dbdf4c1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dictionary_8h.html#abc5aa7fafe6b6c7cfbef45e64dbdf4c1">fdt_dictionary_element_remove</a>(elem)&#160;&#160;&#160;<a class="el" href="list_8h.html#aa79b2a4e770c74a2442de0077880779e">fdt_list_remove</a>((<a class="el" href="list_8h.html#a8256af85c688d84df9191c52d2baf09c">FdtListNode</a>*)elem)</td></tr>
-<tr class="separator:abc5aa7fafe6b6c7cfbef45e64dbdf4c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a77b581a41a87819eb02a99da08851bd7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dictionary_8h.html#a77b581a41a87819eb02a99da08851bd7">fdt_dictionary_clear</a>(dir)&#160;&#160;&#160;<a class="el" href="list_8h.html#aafd084375d2a1c0833e339106a565e9a">fdt_list_clear</a>((<a class="el" href="list_8h.html#ae38d06cad01ec09d9f5ef54c8801caf8">FdtList</a>*)dir, (<a class="el" href="list_8h.html#a44a696a88d685818e901b3a5a02a9ef7">FDT_LIST_DESTRUCTORFUNC</a>)<a class="el" href="dictionary_8h.html#a7cd2b130be397bcd38ea15c24dacc2ee">fdt_dictionary_element_delete</a>)</td></tr>
-<tr class="separator:a77b581a41a87819eb02a99da08851bd7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a018ba1dcbf9636651b5f3da6cb7090c8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dictionary_8h.html#a018ba1dcbf9636651b5f3da6cb7090c8">fdt_dictionary_size</a>(dir)&#160;&#160;&#160;<a class="el" href="list_8h.html#a2c226067357c8aef5ab35fb1ff1ed245">fdt_list_size</a>((<a class="el" href="list_8h.html#ae38d06cad01ec09d9f5ef54c8801caf8">FdtList</a>*)dir)</td></tr>
-<tr class="separator:a018ba1dcbf9636651b5f3da6cb7090c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aff2f6753ba6316588619ef459b181ac6"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dictionary_8h.html#aff2f6753ba6316588619ef459b181ac6">fdt_dictionary_getelements</a>(dir)&#160;&#160;&#160;(<a class="el" href="structFdtDictionaryElement.html">FdtDictionaryElement</a>*)<a class="el" href="list_8h.html#aea9932bd9770b18418a8f4594959045b">fdt_list_next</a>((<a class="el" href="list_8h.html#ae38d06cad01ec09d9f5ef54c8801caf8">FdtList</a>*)dir)</td></tr>
-<tr class="separator:aff2f6753ba6316588619ef459b181ac6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa3a77339c282803f7ae4ea83cfbdca6a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dictionary_8h.html#aa3a77339c282803f7ae4ea83cfbdca6a">fdt_dictionary_add</a>(dir,  elem)&#160;&#160;&#160;<a class="el" href="list_8h.html#ad39ddc90bba456ba7b35137375197060">fdt_list_add</a>((<a class="el" href="list_8h.html#ae38d06cad01ec09d9f5ef54c8801caf8">FdtList</a>*)dir, (<a class="el" href="list_8h.html#a8256af85c688d84df9191c52d2baf09c">FdtListNode</a>*)elem)</td></tr>
-<tr class="separator:aa3a77339c282803f7ae4ea83cfbdca6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a02f3df86517062ad6b346354b743d045"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dictionary_8h.html#a02f3df86517062ad6b346354b743d045">fdt_dictionary_remove</a>(elem)&#160;&#160;&#160;<a class="el" href="list_8h.html#aa79b2a4e770c74a2442de0077880779e">fdt_list_remove</a>((<a class="el" href="list_8h.html#a8256af85c688d84df9191c52d2baf09c">FdtListNode</a>*)elem)</td></tr>
-<tr class="separator:a02f3df86517062ad6b346354b743d045"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
@@ -118,6 +90,20 @@ Functions</h2></td></tr>
 <tr class="separator:a7cd2b130be397bcd38ea15c24dacc2ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a699fc593d7d03cca47c0414daa49413c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dictionary_8h.html#a699fc593d7d03cca47c0414daa49413c">fdt_dictionary_element_setvalue</a> (<a class="el" href="structFdtDictionaryElement.html">FdtDictionaryElement</a> *elem, void *value, <a class="el" href="dictionary_8h.html#a0a6f4db360e4f0c74436000094a9a997">FDT_DICTIONARY_ELEMENT_DESTRUCTORFUNC</a> destructor)</td></tr>
 <tr class="separator:a699fc593d7d03cca47c0414daa49413c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae327e5531a79b6c0e078415a4932483f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dictionary_8h.html#ae327e5531a79b6c0e078415a4932483f">fdt_dictionary_element_setkey</a> (<a class="el" href="structFdtDictionaryElement.html">FdtDictionaryElement</a> *elem, const char *name)</td></tr>
+<tr class="separator:ae327e5531a79b6c0e078415a4932483f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa1f7f626b953545045095ea7a347ee66"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dictionary_8h.html#aa1f7f626b953545045095ea7a347ee66">fdt_dictionary_element_getkey</a> (<a class="el" href="structFdtDictionaryElement.html">FdtDictionaryElement</a> *elem)</td></tr>
+<tr class="separator:aa1f7f626b953545045095ea7a347ee66"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a021e122ec63bd30c6cecc0a0ee18b2de"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dictionary_8h.html#a021e122ec63bd30c6cecc0a0ee18b2de">fdt_dictionary_element_getvalue</a> (<a class="el" href="structFdtDictionaryElement.html">FdtDictionaryElement</a> *elem)</td></tr>
+<tr class="separator:a021e122ec63bd30c6cecc0a0ee18b2de"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6a545daea2442e1c232f12336a67eb48"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dictionary_8h.html#a6a545daea2442e1c232f12336a67eb48">fdt_dictionary_element_setdestructor</a> (<a class="el" href="structFdtDictionaryElement.html">FdtDictionaryElement</a> *elem, <a class="el" href="dictionary_8h.html#a0a6f4db360e4f0c74436000094a9a997">FDT_DICTIONARY_ELEMENT_DESTRUCTORFUNC</a> fn)</td></tr>
+<tr class="separator:a6a545daea2442e1c232f12336a67eb48"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaedd1cdc35c3fc24caf9673c2928b52b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="dictionary_8h.html#a0a6f4db360e4f0c74436000094a9a997">FDT_DICTIONARY_ELEMENT_DESTRUCTORFUNC</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dictionary_8h.html#aaedd1cdc35c3fc24caf9673c2928b52b">fdt_dictionary_element_getdestructor</a> (<a class="el" href="structFdtDictionaryElement.html">FdtDictionaryElement</a> *elem)</td></tr>
+<tr class="separator:aaedd1cdc35c3fc24caf9673c2928b52b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aad7d5d7cb9075a06467d9b943d465731"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structFdtDictionaryElement.html">FdtDictionaryElement</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dictionary_8h.html#aad7d5d7cb9075a06467d9b943d465731">fdt_dictionary_element_next</a> (<a class="el" href="structFdtDictionaryElement.html">FdtDictionaryElement</a> *elem)</td></tr>
+<tr class="separator:aad7d5d7cb9075a06467d9b943d465731"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9fe0d208690824ad7b56c9ec91299f42"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dictionary_8h.html#a9fe0d208690824ad7b56c9ec91299f42">fdt_dictionary_element_remove</a> (<a class="el" href="structFdtDictionaryElement.html">FdtDictionaryElement</a> *elem)</td></tr>
+<tr class="separator:a9fe0d208690824ad7b56c9ec91299f42"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a852130de723ead2ced6da16d1d776a6f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="dictionary_8h.html#a3052ebb0b8f59aafef802bdf4c21b8c0">FdtDictionary</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dictionary_8h.html#a852130de723ead2ced6da16d1d776a6f">fdt_dictionary_new</a> ()</td></tr>
 <tr class="separator:a852130de723ead2ced6da16d1d776a6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3113d8f1ac440d0cac56188d4d75ac45"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dictionary_8h.html#a3113d8f1ac440d0cac56188d4d75ac45">fdt_dictionary_delete</a> (<a class="el" href="dictionary_8h.html#a3052ebb0b8f59aafef802bdf4c21b8c0">FdtDictionary</a> *dir)</td></tr>
@@ -128,258 +114,21 @@ Functions</h2></td></tr>
 <tr class="separator:a5ade2d68c8b7fa14082e11ebf352fca1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a78230ca9a0b4f1a3712a18fd05f53d2f"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dictionary_8h.html#a78230ca9a0b4f1a3712a18fd05f53d2f">fdt_dictionary_getvalue</a> (<a class="el" href="dictionary_8h.html#a3052ebb0b8f59aafef802bdf4c21b8c0">FdtDictionary</a> *dir, const char *key)</td></tr>
 <tr class="separator:a78230ca9a0b4f1a3712a18fd05f53d2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a98b38d949cb3ba357dcf5e241f1c0b10"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dictionary_8h.html#a98b38d949cb3ba357dcf5e241f1c0b10">fdt_dictionary_clear</a> (<a class="el" href="dictionary_8h.html#a3052ebb0b8f59aafef802bdf4c21b8c0">FdtDictionary</a> *dir)</td></tr>
+<tr class="separator:a98b38d949cb3ba357dcf5e241f1c0b10"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acdad1367796dc9ea287e5c8a3faaafc2"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dictionary_8h.html#acdad1367796dc9ea287e5c8a3faaafc2">fdt_dictionary_size</a> (<a class="el" href="dictionary_8h.html#a3052ebb0b8f59aafef802bdf4c21b8c0">FdtDictionary</a> *dir)</td></tr>
+<tr class="separator:acdad1367796dc9ea287e5c8a3faaafc2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa541bfd497291c93c4b265eef3e815e2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structFdtDictionaryElement.html">FdtDictionaryElement</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dictionary_8h.html#aa541bfd497291c93c4b265eef3e815e2">fdt_dictionary_getelements</a> (<a class="el" href="dictionary_8h.html#a3052ebb0b8f59aafef802bdf4c21b8c0">FdtDictionary</a> *dir)</td></tr>
+<tr class="separator:aa541bfd497291c93c4b265eef3e815e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae43250e71d00b6d7051355c23ed6c980"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dictionary_8h.html#ae43250e71d00b6d7051355c23ed6c980">fdt_dictionary_add</a> (<a class="el" href="dictionary_8h.html#a3052ebb0b8f59aafef802bdf4c21b8c0">FdtDictionary</a> *dir, <a class="el" href="structFdtDictionaryElement.html">FdtDictionaryElement</a> *elem)</td></tr>
+<tr class="separator:ae43250e71d00b6d7051355c23ed6c980"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab7e728b4b4438568f2a6356ca30be53c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dictionary_8h.html#ab7e728b4b4438568f2a6356ca30be53c">fdt_dictionary_remove</a> (<a class="el" href="structFdtDictionaryElement.html">FdtDictionaryElement</a> *elem)</td></tr>
+<tr class="separator:ab7e728b4b4438568f2a6356ca30be53c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae061ca5a62ebe35172e33ced1378f0cb"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dictionary_8h.html#ae061ca5a62ebe35172e33ced1378f0cb">fdt_dictionary_setstring</a> (<a class="el" href="dictionary_8h.html#a3052ebb0b8f59aafef802bdf4c21b8c0">FdtDictionary</a> *dir, const char *key, const char *value)</td></tr>
 <tr class="separator:ae061ca5a62ebe35172e33ced1378f0cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a07a94c323e820586621db396a6b45bb1"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dictionary_8h.html#a07a94c323e820586621db396a6b45bb1">fdt_dictionary_getstring</a> (<a class="el" href="dictionary_8h.html#a3052ebb0b8f59aafef802bdf4c21b8c0">FdtDictionary</a> *dir, const char *key)</td></tr>
 <tr class="separator:a07a94c323e820586621db396a6b45bb1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Macro Definition Documentation</h2>
-<a id="aa3a77339c282803f7ae4ea83cfbdca6a" name="aa3a77339c282803f7ae4ea83cfbdca6a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa3a77339c282803f7ae4ea83cfbdca6a">&#9670;&nbsp;</a></span>fdt_dictionary_add</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define fdt_dictionary_add</td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">dir, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">elem&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td>&#160;&#160;&#160;<a class="el" href="list_8h.html#ad39ddc90bba456ba7b35137375197060">fdt_list_add</a>((<a class="el" href="list_8h.html#ae38d06cad01ec09d9f5ef54c8801caf8">FdtList</a>*)dir, (<a class="el" href="list_8h.html#a8256af85c688d84df9191c52d2baf09c">FdtListNode</a>*)elem)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a77b581a41a87819eb02a99da08851bd7" name="a77b581a41a87819eb02a99da08851bd7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a77b581a41a87819eb02a99da08851bd7">&#9670;&nbsp;</a></span>fdt_dictionary_clear</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define fdt_dictionary_clear</td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">dir</td><td>)</td>
-          <td>&#160;&#160;&#160;<a class="el" href="list_8h.html#aafd084375d2a1c0833e339106a565e9a">fdt_list_clear</a>((<a class="el" href="list_8h.html#ae38d06cad01ec09d9f5ef54c8801caf8">FdtList</a>*)dir, (<a class="el" href="list_8h.html#a44a696a88d685818e901b3a5a02a9ef7">FDT_LIST_DESTRUCTORFUNC</a>)<a class="el" href="dictionary_8h.html#a7cd2b130be397bcd38ea15c24dacc2ee">fdt_dictionary_element_delete</a>)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a9ca11327d57080030082d806d52c3ec9" name="a9ca11327d57080030082d806d52c3ec9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9ca11327d57080030082d806d52c3ec9">&#9670;&nbsp;</a></span>fdt_dictionary_element_getdestructor</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define fdt_dictionary_element_getdestructor</td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">elem</td><td>)</td>
-          <td>&#160;&#160;&#160;(elem-&gt;destructor)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a95daf3f5081da930012deace1f7f9ca6" name="a95daf3f5081da930012deace1f7f9ca6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a95daf3f5081da930012deace1f7f9ca6">&#9670;&nbsp;</a></span>fdt_dictionary_element_getkey</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define fdt_dictionary_element_getkey</td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">elem</td><td>)</td>
-          <td>&#160;&#160;&#160;<a class="el" href="string_8h.html#a520610a7bfdcec3e607bdb9f5dc50bfe">fdt_string_getvalue</a>(elem-&gt;key)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a4970b3204c086652cb647f66a31a07ab" name="a4970b3204c086652cb647f66a31a07ab"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4970b3204c086652cb647f66a31a07ab">&#9670;&nbsp;</a></span>fdt_dictionary_element_getvalue</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define fdt_dictionary_element_getvalue</td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">elem</td><td>)</td>
-          <td>&#160;&#160;&#160;(elem ? elem-&gt;value : NULL)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a29c09ce5cde354bdbc732218dbab7363" name="a29c09ce5cde354bdbc732218dbab7363"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a29c09ce5cde354bdbc732218dbab7363">&#9670;&nbsp;</a></span>fdt_dictionary_element_next</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define fdt_dictionary_element_next</td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">elem</td><td>)</td>
-          <td>&#160;&#160;&#160;(<a class="el" href="structFdtDictionaryElement.html">FdtDictionaryElement</a>*)<a class="el" href="list_8h.html#aea9932bd9770b18418a8f4594959045b">fdt_list_next</a>((<a class="el" href="list_8h.html#a8256af85c688d84df9191c52d2baf09c">FdtListNode</a>*)elem)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="abc5aa7fafe6b6c7cfbef45e64dbdf4c1" name="abc5aa7fafe6b6c7cfbef45e64dbdf4c1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abc5aa7fafe6b6c7cfbef45e64dbdf4c1">&#9670;&nbsp;</a></span>fdt_dictionary_element_remove</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define fdt_dictionary_element_remove</td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">elem</td><td>)</td>
-          <td>&#160;&#160;&#160;<a class="el" href="list_8h.html#aa79b2a4e770c74a2442de0077880779e">fdt_list_remove</a>((<a class="el" href="list_8h.html#a8256af85c688d84df9191c52d2baf09c">FdtListNode</a>*)elem)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a848ff9aa1dc3e2d7a6dca86493420074" name="a848ff9aa1dc3e2d7a6dca86493420074"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a848ff9aa1dc3e2d7a6dca86493420074">&#9670;&nbsp;</a></span>fdt_dictionary_element_setdestructor</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define fdt_dictionary_element_setdestructor</td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">elem, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">fn&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td>&#160;&#160;&#160;(elem-&gt;destructor = fn)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="aa880b14c678a2f753ebf9d5480f99a94" name="aa880b14c678a2f753ebf9d5480f99a94"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa880b14c678a2f753ebf9d5480f99a94">&#9670;&nbsp;</a></span>fdt_dictionary_element_setkey</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define fdt_dictionary_element_setkey</td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">elem, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">name&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td>&#160;&#160;&#160;<a class="el" href="string_8h.html#a4cd727c6b544c115f618a40e7c8b80dc">fdt_string_setvalue</a>(elem-&gt;key, name)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="aff2f6753ba6316588619ef459b181ac6" name="aff2f6753ba6316588619ef459b181ac6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aff2f6753ba6316588619ef459b181ac6">&#9670;&nbsp;</a></span>fdt_dictionary_getelements</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define fdt_dictionary_getelements</td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">dir</td><td>)</td>
-          <td>&#160;&#160;&#160;(<a class="el" href="structFdtDictionaryElement.html">FdtDictionaryElement</a>*)<a class="el" href="list_8h.html#aea9932bd9770b18418a8f4594959045b">fdt_list_next</a>((<a class="el" href="list_8h.html#ae38d06cad01ec09d9f5ef54c8801caf8">FdtList</a>*)dir)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a02f3df86517062ad6b346354b743d045" name="a02f3df86517062ad6b346354b743d045"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a02f3df86517062ad6b346354b743d045">&#9670;&nbsp;</a></span>fdt_dictionary_remove</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define fdt_dictionary_remove</td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">elem</td><td>)</td>
-          <td>&#160;&#160;&#160;<a class="el" href="list_8h.html#aa79b2a4e770c74a2442de0077880779e">fdt_list_remove</a>((<a class="el" href="list_8h.html#a8256af85c688d84df9191c52d2baf09c">FdtListNode</a>*)elem)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a018ba1dcbf9636651b5f3da6cb7090c8" name="a018ba1dcbf9636651b5f3da6cb7090c8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a018ba1dcbf9636651b5f3da6cb7090c8">&#9670;&nbsp;</a></span>fdt_dictionary_size</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define fdt_dictionary_size</td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">dir</td><td>)</td>
-          <td>&#160;&#160;&#160;<a class="el" href="list_8h.html#a2c226067357c8aef5ab35fb1ff1ed245">fdt_list_size</a>((<a class="el" href="list_8h.html#ae38d06cad01ec09d9f5ef54c8801caf8">FdtList</a>*)dir)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <h2 class="groupheader">Typedef Documentation</h2>
 <a id="a0a6f4db360e4f0c74436000094a9a997" name="a0a6f4db360e4f0c74436000094a9a997"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a0a6f4db360e4f0c74436000094a9a997">&#9670;&nbsp;</a></span>FDT_DICTIONARY_ELEMENT_DESTRUCTORFUNC</h2>
@@ -410,6 +159,68 @@ Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
+<a id="ae43250e71d00b6d7051355c23ed6c980" name="ae43250e71d00b6d7051355c23ed6c980"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae43250e71d00b6d7051355c23ed6c980">&#9670;&nbsp;</a></span>fdt_dictionary_add()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void fdt_dictionary_add </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="dictionary_8h.html#a3052ebb0b8f59aafef802bdf4c21b8c0">FdtDictionary</a> *&#160;</td>
+          <td class="paramname"><em>dir</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structFdtDictionaryElement.html">FdtDictionaryElement</a> *&#160;</td>
+          <td class="paramname"><em>elem</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a98b38d949cb3ba357dcf5e241f1c0b10" name="a98b38d949cb3ba357dcf5e241f1c0b10"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a98b38d949cb3ba357dcf5e241f1c0b10">&#9670;&nbsp;</a></span>fdt_dictionary_clear()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void fdt_dictionary_clear </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="dictionary_8h.html#a3052ebb0b8f59aafef802bdf4c21b8c0">FdtDictionary</a> *&#160;</td>
+          <td class="paramname"><em>dir</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a3113d8f1ac440d0cac56188d4d75ac45" name="a3113d8f1ac440d0cac56188d4d75ac45"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a3113d8f1ac440d0cac56188d4d75ac45">&#9670;&nbsp;</a></span>fdt_dictionary_delete()</h2>
 
@@ -446,6 +257,84 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="aaedd1cdc35c3fc24caf9673c2928b52b" name="aaedd1cdc35c3fc24caf9673c2928b52b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaedd1cdc35c3fc24caf9673c2928b52b">&#9670;&nbsp;</a></span>fdt_dictionary_element_getdestructor()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="dictionary_8h.html#a0a6f4db360e4f0c74436000094a9a997">FDT_DICTIONARY_ELEMENT_DESTRUCTORFUNC</a> fdt_dictionary_element_getdestructor </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structFdtDictionaryElement.html">FdtDictionaryElement</a> *&#160;</td>
+          <td class="paramname"><em>elem</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa1f7f626b953545045095ea7a347ee66" name="aa1f7f626b953545045095ea7a347ee66"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa1f7f626b953545045095ea7a347ee66">&#9670;&nbsp;</a></span>fdt_dictionary_element_getkey()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char * fdt_dictionary_element_getkey </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structFdtDictionaryElement.html">FdtDictionaryElement</a> *&#160;</td>
+          <td class="paramname"><em>elem</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a021e122ec63bd30c6cecc0a0ee18b2de" name="a021e122ec63bd30c6cecc0a0ee18b2de"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a021e122ec63bd30c6cecc0a0ee18b2de">&#9670;&nbsp;</a></span>fdt_dictionary_element_getvalue()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void * fdt_dictionary_element_getvalue </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structFdtDictionaryElement.html">FdtDictionaryElement</a> *&#160;</td>
+          <td class="paramname"><em>elem</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a7c7e9613762f086ac6191a69a21ff4f2" name="a7c7e9613762f086ac6191a69a21ff4f2"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a7c7e9613762f086ac6191a69a21ff4f2">&#9670;&nbsp;</a></span>fdt_dictionary_element_new()</h2>
 
@@ -459,6 +348,130 @@ Functions</h2></td></tr>
           <td></td>
         </tr>
       </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aad7d5d7cb9075a06467d9b943d465731" name="aad7d5d7cb9075a06467d9b943d465731"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aad7d5d7cb9075a06467d9b943d465731">&#9670;&nbsp;</a></span>fdt_dictionary_element_next()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structFdtDictionaryElement.html">FdtDictionaryElement</a> * fdt_dictionary_element_next </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structFdtDictionaryElement.html">FdtDictionaryElement</a> *&#160;</td>
+          <td class="paramname"><em>elem</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9fe0d208690824ad7b56c9ec91299f42" name="a9fe0d208690824ad7b56c9ec91299f42"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9fe0d208690824ad7b56c9ec91299f42">&#9670;&nbsp;</a></span>fdt_dictionary_element_remove()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void fdt_dictionary_element_remove </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structFdtDictionaryElement.html">FdtDictionaryElement</a> *&#160;</td>
+          <td class="paramname"><em>elem</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a6a545daea2442e1c232f12336a67eb48" name="a6a545daea2442e1c232f12336a67eb48"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6a545daea2442e1c232f12336a67eb48">&#9670;&nbsp;</a></span>fdt_dictionary_element_setdestructor()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void fdt_dictionary_element_setdestructor </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structFdtDictionaryElement.html">FdtDictionaryElement</a> *&#160;</td>
+          <td class="paramname"><em>elem</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="dictionary_8h.html#a0a6f4db360e4f0c74436000094a9a997">FDT_DICTIONARY_ELEMENT_DESTRUCTORFUNC</a>&#160;</td>
+          <td class="paramname"><em>fn</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae327e5531a79b6c0e078415a4932483f" name="ae327e5531a79b6c0e078415a4932483f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae327e5531a79b6c0e078415a4932483f">&#9670;&nbsp;</a></span>fdt_dictionary_element_setkey()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void fdt_dictionary_element_setkey </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structFdtDictionaryElement.html">FdtDictionaryElement</a> *&#160;</td>
+          <td class="paramname"><em>elem</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>name</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 </div>
@@ -521,6 +534,32 @@ Functions</h2></td></tr>
           <td></td><td></td>
         </tr>
       </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa541bfd497291c93c4b265eef3e815e2" name="aa541bfd497291c93c4b265eef3e815e2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa541bfd497291c93c4b265eef3e815e2">&#9670;&nbsp;</a></span>fdt_dictionary_getelements()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structFdtDictionaryElement.html">FdtDictionaryElement</a> * fdt_dictionary_getelements </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="dictionary_8h.html#a3052ebb0b8f59aafef802bdf4c21b8c0">FdtDictionary</a> *&#160;</td>
+          <td class="paramname"><em>dir</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 </div>
@@ -598,6 +637,32 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="ab7e728b4b4438568f2a6356ca30be53c" name="ab7e728b4b4438568f2a6356ca30be53c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab7e728b4b4438568f2a6356ca30be53c">&#9670;&nbsp;</a></span>fdt_dictionary_remove()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void fdt_dictionary_remove </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structFdtDictionaryElement.html">FdtDictionaryElement</a> *&#160;</td>
+          <td class="paramname"><em>elem</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="ae061ca5a62ebe35172e33ced1378f0cb" name="ae061ca5a62ebe35172e33ced1378f0cb"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae061ca5a62ebe35172e33ced1378f0cb">&#9670;&nbsp;</a></span>fdt_dictionary_setstring()</h2>
 
@@ -668,6 +733,32 @@ Functions</h2></td></tr>
           <td></td><td></td>
         </tr>
       </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="acdad1367796dc9ea287e5c8a3faaafc2" name="acdad1367796dc9ea287e5c8a3faaafc2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acdad1367796dc9ea287e5c8a3faaafc2">&#9670;&nbsp;</a></span>fdt_dictionary_size()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t fdt_dictionary_size </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="dictionary_8h.html#a3052ebb0b8f59aafef802bdf4c21b8c0">FdtDictionary</a> *&#160;</td>
+          <td class="paramname"><em>dir</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 </div>

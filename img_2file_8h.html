@@ -61,7 +61,6 @@ $(document).ready(function(){initNavTree('img_2file_8h.html',''); initResizable(
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Data Structures</a> &#124;
-<a href="#define-members">Macros</a> &#124;
 <a href="#typedef-members">Typedefs</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle"><div class="title">file.h File Reference</div></div>
@@ -78,15 +77,6 @@ Data Structures</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structFDT__ATTR__PACKED.html">FDT_ATTR_PACKED</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
-Macros</h2></td></tr>
-<tr class="memitem:ad4e6165bf6b14ed2ad7150eaf16fb2de"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="img_2file_8h.html#ad4e6165bf6b14ed2ad7150eaf16fb2de">fdt_image_file_isvalid</a>(img,  err)&#160;&#160;&#160;<a class="el" href="img_2image_8h.html#ae68e77f53555c1ed36e0eba922b466b6">fdt_image_isvalid</a>(((<a class="el" href="img_2image_8h.html#aae5c0feac759135787be1c5c8065dc90">FdtImage</a>*)img), err)</td></tr>
-<tr class="separator:ad4e6165bf6b14ed2ad7150eaf16fb2de"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2e2e0457dd7a3d485d60883e7af5e3d5"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="img_2file_8h.html#a2e2e0457dd7a3d485d60883e7af5e3d5">fdt_image_file_setfile</a>(img,  v)&#160;&#160;&#160;(((<a class="el" href="img_2file_8h.html#a2f392d0928393dddb49708acb03cce5b">FdtFileImage</a>*)img)-&gt;fp = v)</td></tr>
-<tr class="separator:a2e2e0457dd7a3d485d60883e7af5e3d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a59af2dd4201eea391b2749104aab2ccc"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="img_2file_8h.html#a59af2dd4201eea391b2749104aab2ccc">fdt_image_file_getfile</a>(img)&#160;&#160;&#160;(img-&gt;fp)</td></tr>
-<tr class="separator:a59af2dd4201eea391b2749104aab2ccc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
 <tr class="memitem:a2f392d0928393dddb49708acb03cce5b"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structFDT__ATTR__PACKED.html">FDT_ATTR_PACKED</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="img_2file_8h.html#a2f392d0928393dddb49708acb03cce5b">FdtFileImage</a></td></tr>
@@ -96,82 +86,13 @@ Typedefs</h2></td></tr>
 Functions</h2></td></tr>
 <tr class="memitem:a16a7c053dcf0eacbcc8bc01e476a5c67"><td class="memItemLeft" align="right" valign="top"><a class="el" href="img_2image_8h.html#aae5c0feac759135787be1c5c8065dc90">FdtImage</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="img_2file_8h.html#a16a7c053dcf0eacbcc8bc01e476a5c67">fdt_image_file_new</a> (void)</td></tr>
 <tr class="separator:a16a7c053dcf0eacbcc8bc01e476a5c67"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaac3e4c2e65ec619a74c8b65a52447a0"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="img_2file_8h.html#aaac3e4c2e65ec619a74c8b65a52447a0">fdt_image_file_isvalid</a> (<a class="el" href="img_2file_8h.html#a2f392d0928393dddb49708acb03cce5b">FdtFileImage</a> *img, <a class="el" href="structFdtError.html">FdtError</a> *err)</td></tr>
+<tr class="separator:aaac3e4c2e65ec619a74c8b65a52447a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a125f58a9bc44e828c86b38decbcc6087"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="img_2file_8h.html#a125f58a9bc44e828c86b38decbcc6087">fdt_image_file_setfile</a> (<a class="el" href="img_2file_8h.html#a2f392d0928393dddb49708acb03cce5b">FdtFileImage</a> *img, FILE *v)</td></tr>
+<tr class="separator:a125f58a9bc44e828c86b38decbcc6087"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0660a0267d6f8fe6052d0b53ad35f490"><td class="memItemLeft" align="right" valign="top">FILE *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="img_2file_8h.html#a0660a0267d6f8fe6052d0b53ad35f490">fdt_image_file_getfile</a> (<a class="el" href="img_2file_8h.html#a2f392d0928393dddb49708acb03cce5b">FdtFileImage</a> *img)</td></tr>
+<tr class="separator:a0660a0267d6f8fe6052d0b53ad35f490"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Macro Definition Documentation</h2>
-<a id="a59af2dd4201eea391b2749104aab2ccc" name="a59af2dd4201eea391b2749104aab2ccc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a59af2dd4201eea391b2749104aab2ccc">&#9670;&nbsp;</a></span>fdt_image_file_getfile</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define fdt_image_file_getfile</td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">img</td><td>)</td>
-          <td>&#160;&#160;&#160;(img-&gt;fp)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="ad4e6165bf6b14ed2ad7150eaf16fb2de" name="ad4e6165bf6b14ed2ad7150eaf16fb2de"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad4e6165bf6b14ed2ad7150eaf16fb2de">&#9670;&nbsp;</a></span>fdt_image_file_isvalid</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define fdt_image_file_isvalid</td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">img, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">err&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td>&#160;&#160;&#160;<a class="el" href="img_2image_8h.html#ae68e77f53555c1ed36e0eba922b466b6">fdt_image_isvalid</a>(((<a class="el" href="img_2image_8h.html#aae5c0feac759135787be1c5c8065dc90">FdtImage</a>*)img), err)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a2e2e0457dd7a3d485d60883e7af5e3d5" name="a2e2e0457dd7a3d485d60883e7af5e3d5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2e2e0457dd7a3d485d60883e7af5e3d5">&#9670;&nbsp;</a></span>fdt_image_file_setfile</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define fdt_image_file_setfile</td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">img, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">v&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td>&#160;&#160;&#160;(((<a class="el" href="img_2file_8h.html#a2f392d0928393dddb49708acb03cce5b">FdtFileImage</a>*)img)-&gt;fp = v)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <h2 class="groupheader">Typedef Documentation</h2>
 <a id="a2f392d0928393dddb49708acb03cce5b" name="a2f392d0928393dddb49708acb03cce5b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a2f392d0928393dddb49708acb03cce5b">&#9670;&nbsp;</a></span>FdtFileImage</h2>
@@ -188,6 +109,68 @@ Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
+<a id="a0660a0267d6f8fe6052d0b53ad35f490" name="a0660a0267d6f8fe6052d0b53ad35f490"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0660a0267d6f8fe6052d0b53ad35f490">&#9670;&nbsp;</a></span>fdt_image_file_getfile()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">FILE * fdt_image_file_getfile </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="img_2file_8h.html#a2f392d0928393dddb49708acb03cce5b">FdtFileImage</a> *&#160;</td>
+          <td class="paramname"><em>img</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aaac3e4c2e65ec619a74c8b65a52447a0" name="aaac3e4c2e65ec619a74c8b65a52447a0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaac3e4c2e65ec619a74c8b65a52447a0">&#9670;&nbsp;</a></span>fdt_image_file_isvalid()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool fdt_image_file_isvalid </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="img_2file_8h.html#a2f392d0928393dddb49708acb03cce5b">FdtFileImage</a> *&#160;</td>
+          <td class="paramname"><em>img</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structFdtError.html">FdtError</a> *&#160;</td>
+          <td class="paramname"><em>err</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a16a7c053dcf0eacbcc8bc01e476a5c67" name="a16a7c053dcf0eacbcc8bc01e476a5c67"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a16a7c053dcf0eacbcc8bc01e476a5c67">&#9670;&nbsp;</a></span>fdt_image_file_new()</h2>
 
@@ -202,6 +185,42 @@ Functions</h2></td></tr>
           <td></td>
         </tr>
       </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a125f58a9bc44e828c86b38decbcc6087" name="a125f58a9bc44e828c86b38decbcc6087"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a125f58a9bc44e828c86b38decbcc6087">&#9670;&nbsp;</a></span>fdt_image_file_setfile()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void fdt_image_file_setfile </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="img_2file_8h.html#a2f392d0928393dddb49708acb03cce5b">FdtFileImage</a> *&#160;</td>
+          <td class="paramname"><em>img</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">FILE *&#160;</td>
+          <td class="paramname"><em>v</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 </div>

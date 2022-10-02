@@ -61,7 +61,6 @@ $(document).ready(function(){initNavTree('device_8h.html',''); initResizable(); 
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Data Structures</a> &#124;
-<a href="#define-members">Macros</a> &#124;
 <a href="#typedef-members">Typedefs</a> &#124;
 <a href="#func-members">Functions</a> &#124;
 <a href="#var-members">Variables</a>  </div>
@@ -78,17 +77,6 @@ $(document).ready(function(){initNavTree('device_8h.html',''); initResizable(); 
 Data Structures</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structFDT__ATTR__PACKED.html">FDT_ATTR_PACKED</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
-Macros</h2></td></tr>
-<tr class="memitem:ab24a46a66ec6e16d518e2f8b5df6c940"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="device_8h.html#ab24a46a66ec6e16d518e2f8b5df6c940">fdt_device_setname</a>(dev,  v)&#160;&#160;&#160;<a class="el" href="string_8h.html#a4cd727c6b544c115f618a40e7c8b80dc">fdt_string_setvalue</a>(dev-&gt;name, v)</td></tr>
-<tr class="separator:ab24a46a66ec6e16d518e2f8b5df6c940"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a95c7e321df9d916f10dee8e1bd0a2c88"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="device_8h.html#a95c7e321df9d916f10dee8e1bd0a2c88">fdt_device_setfileno</a>(dev,  v)&#160;&#160;&#160;(dev-&gt;fd = v)</td></tr>
-<tr class="separator:a95c7e321df9d916f10dee8e1bd0a2c88"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4e8cadc3ba1b23eb0873c912a12d63a1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="device_8h.html#a4e8cadc3ba1b23eb0873c912a12d63a1">fdt_device_getname</a>(dev)&#160;&#160;&#160;<a class="el" href="string_8h.html#a520610a7bfdcec3e607bdb9f5dc50bfe">fdt_string_getvalue</a>(dev-&gt;name)</td></tr>
-<tr class="separator:a4e8cadc3ba1b23eb0873c912a12d63a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad961acc5db0388d4dcfe3af36a4e601c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="device_8h.html#ad961acc5db0388d4dcfe3af36a4e601c">fdt_device_getfileno</a>(dev)&#160;&#160;&#160;(dev-&gt;fd)</td></tr>
-<tr class="separator:ad961acc5db0388d4dcfe3af36a4e601c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
@@ -119,6 +107,14 @@ Functions</h2></td></tr>
 <tr class="separator:abf36385046044165911bcd08f5592ae4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1f16bf78aab7e1339318e2b029811261"><td class="memItemLeft" align="right" valign="top">ssize_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="device_8h.html#a1f16bf78aab7e1339318e2b029811261">fdt_device_getsize</a> (<a class="el" href="device_8h.html#a65dffc71fe4dd342845b14db86dc62bf">FdtDevice</a> *, <a class="el" href="structFdtError.html">FdtError</a> *)</td></tr>
 <tr class="separator:a1f16bf78aab7e1339318e2b029811261"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af7d51aabb721dbce283b310de3ea1bf3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="device_8h.html#af7d51aabb721dbce283b310de3ea1bf3">fdt_device_setname</a> (<a class="el" href="device_8h.html#a65dffc71fe4dd342845b14db86dc62bf">FdtDevice</a> *dev, const char *v)</td></tr>
+<tr class="separator:af7d51aabb721dbce283b310de3ea1bf3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a02ab24df4a8d17877bf28e206b1c3769"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="device_8h.html#a02ab24df4a8d17877bf28e206b1c3769">fdt_device_setfileno</a> (<a class="el" href="device_8h.html#a65dffc71fe4dd342845b14db86dc62bf">FdtDevice</a> *dev, int v)</td></tr>
+<tr class="separator:a02ab24df4a8d17877bf28e206b1c3769"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afad6c63c61c5fa5d0b52fe2721199dbd"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="device_8h.html#afad6c63c61c5fa5d0b52fe2721199dbd">fdt_device_getname</a> (<a class="el" href="device_8h.html#a65dffc71fe4dd342845b14db86dc62bf">FdtDevice</a> *dev)</td></tr>
+<tr class="separator:afad6c63c61c5fa5d0b52fe2721199dbd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3ee412fe96ba1da9f7d9328933d7d23f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="device_8h.html#a3ee412fe96ba1da9f7d9328933d7d23f">fdt_device_getfileno</a> (<a class="el" href="device_8h.html#a65dffc71fe4dd342845b14db86dc62bf">FdtDevice</a> *dev)</td></tr>
+<tr class="separator:a3ee412fe96ba1da9f7d9328933d7d23f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a525d476d7ac59d721402b9c8824a4cf4"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="device_8h.html#a525d476d7ac59d721402b9c8824a4cf4">fdt_device_getfloppyparameters</a> (<a class="el" href="device_8h.html#a65dffc71fe4dd342845b14db86dc62bf">FdtDevice</a> *, <a class="el" href="structFdtFloppyParams.html">FdtFloppyParams</a> *, <a class="el" href="structFdtError.html">FdtError</a> *)</td></tr>
 <tr class="separator:a525d476d7ac59d721402b9c8824a4cf4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6fc0c734b39ddb8a523ce665b6e019c1"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="device_8h.html#a6fc0c734b39ddb8a523ce665b6e019c1">fdt_device_detectfloppyformat</a> (<a class="el" href="device_8h.html#a65dffc71fe4dd342845b14db86dc62bf">FdtDevice</a> *, <a class="el" href="structFdtFloppyParams.html">FdtFloppyParams</a> *, <a class="el" href="structFdtError.html">FdtError</a> *)</td></tr>
@@ -129,99 +125,6 @@ Variables</h2></td></tr>
 <tr class="memitem:ab8b58a584bedbc85d00c961fc4d54ae5"><td class="memItemLeft" align="right" valign="top">const char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="device_8h.html#ab8b58a584bedbc85d00c961fc4d54ae5">FDT_DEVICE_PREFIX</a> [] = &quot;/dev/&quot;</td></tr>
 <tr class="separator:ab8b58a584bedbc85d00c961fc4d54ae5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Macro Definition Documentation</h2>
-<a id="ad961acc5db0388d4dcfe3af36a4e601c" name="ad961acc5db0388d4dcfe3af36a4e601c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad961acc5db0388d4dcfe3af36a4e601c">&#9670;&nbsp;</a></span>fdt_device_getfileno</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define fdt_device_getfileno</td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">dev</td><td>)</td>
-          <td>&#160;&#160;&#160;(dev-&gt;fd)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a4e8cadc3ba1b23eb0873c912a12d63a1" name="a4e8cadc3ba1b23eb0873c912a12d63a1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4e8cadc3ba1b23eb0873c912a12d63a1">&#9670;&nbsp;</a></span>fdt_device_getname</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define fdt_device_getname</td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">dev</td><td>)</td>
-          <td>&#160;&#160;&#160;<a class="el" href="string_8h.html#a520610a7bfdcec3e607bdb9f5dc50bfe">fdt_string_getvalue</a>(dev-&gt;name)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a95c7e321df9d916f10dee8e1bd0a2c88" name="a95c7e321df9d916f10dee8e1bd0a2c88"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a95c7e321df9d916f10dee8e1bd0a2c88">&#9670;&nbsp;</a></span>fdt_device_setfileno</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define fdt_device_setfileno</td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">dev, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">v&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td>&#160;&#160;&#160;(dev-&gt;fd = v)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="ab24a46a66ec6e16d518e2f8b5df6c940" name="ab24a46a66ec6e16d518e2f8b5df6c940"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab24a46a66ec6e16d518e2f8b5df6c940">&#9670;&nbsp;</a></span>fdt_device_setname</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define fdt_device_setname</td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">dev, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">v&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td>&#160;&#160;&#160;<a class="el" href="string_8h.html#a4cd727c6b544c115f618a40e7c8b80dc">fdt_string_setvalue</a>(dev-&gt;name, v)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <h2 class="groupheader">Typedef Documentation</h2>
 <a id="a65dffc71fe4dd342845b14db86dc62bf" name="a65dffc71fe4dd342845b14db86dc62bf"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a65dffc71fe4dd342845b14db86dc62bf">&#9670;&nbsp;</a></span>FdtDevice</h2>
@@ -318,6 +221,32 @@ Variables</h2></td></tr>
 
 </div>
 </div>
+<a id="a3ee412fe96ba1da9f7d9328933d7d23f" name="a3ee412fe96ba1da9f7d9328933d7d23f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3ee412fe96ba1da9f7d9328933d7d23f">&#9670;&nbsp;</a></span>fdt_device_getfileno()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int fdt_device_getfileno </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="device_8h.html#a65dffc71fe4dd342845b14db86dc62bf">FdtDevice</a> *&#160;</td>
+          <td class="paramname"><em>dev</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a525d476d7ac59d721402b9c8824a4cf4" name="a525d476d7ac59d721402b9c8824a4cf4"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a525d476d7ac59d721402b9c8824a4cf4">&#9670;&nbsp;</a></span>fdt_device_getfloppyparameters()</h2>
 
@@ -348,6 +277,32 @@ Variables</h2></td></tr>
           <td></td><td></td>
         </tr>
       </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="afad6c63c61c5fa5d0b52fe2721199dbd" name="afad6c63c61c5fa5d0b52fe2721199dbd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afad6c63c61c5fa5d0b52fe2721199dbd">&#9670;&nbsp;</a></span>fdt_device_getname()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char * fdt_device_getname </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="device_8h.html#a65dffc71fe4dd342845b14db86dc62bf">FdtDevice</a> *&#160;</td>
+          <td class="paramname"><em>dev</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 </div>
@@ -571,6 +526,78 @@ Variables</h2></td></tr>
           <td></td><td></td>
         </tr>
       </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a02ab24df4a8d17877bf28e206b1c3769" name="a02ab24df4a8d17877bf28e206b1c3769"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a02ab24df4a8d17877bf28e206b1c3769">&#9670;&nbsp;</a></span>fdt_device_setfileno()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void fdt_device_setfileno </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="device_8h.html#a65dffc71fe4dd342845b14db86dc62bf">FdtDevice</a> *&#160;</td>
+          <td class="paramname"><em>dev</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>v</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af7d51aabb721dbce283b310de3ea1bf3" name="af7d51aabb721dbce283b310de3ea1bf3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af7d51aabb721dbce283b310de3ea1bf3">&#9670;&nbsp;</a></span>fdt_device_setname()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void fdt_device_setname </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="device_8h.html#a65dffc71fe4dd342845b14db86dc62bf">FdtDevice</a> *&#160;</td>
+          <td class="paramname"><em>dev</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>v</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 </div>
