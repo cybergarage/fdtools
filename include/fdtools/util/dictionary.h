@@ -36,14 +36,14 @@ FdtDictionaryElement* fdt_dictionary_element_new();
 bool fdt_dictionary_element_delete(FdtDictionaryElement* elem);
 bool fdt_dictionary_element_setvalue(FdtDictionaryElement* elem, void* value, FDT_DICTIONARY_ELEMENT_DESTRUCTORFUNC destructor);
 
-#define fdt_dictionary_element_setkey(elem, name) fdt_string_setvalue(elem->key, name)
-#define fdt_dictionary_element_getkey(elem) fdt_string_getvalue(elem->key)
-#define fdt_dictionary_element_getvalue(elem) (elem ? elem->value : NULL)
-#define fdt_dictionary_element_setdestructor(elem, fn) (elem->destructor = fn)
-#define fdt_dictionary_element_getdestructor(elem) (elem->destructor)
+inline void fdt_dictionary_element_setkey(FdtDictionaryElement* elem, const char* name) { fdt_string_setvalue(elem->key, name); }
+inline const char* fdt_dictionary_element_getkey(FdtDictionaryElement* elem) { return fdt_string_getvalue(elem->key); }
+inline void* fdt_dictionary_element_getvalue(FdtDictionaryElement* elem) { return (elem ? elem->value : NULL); }
+inline void fdt_dictionary_element_setdestructor(FdtDictionaryElement* elem, FDT_DICTIONARY_ELEMENT_DESTRUCTORFUNC fn) { elem->destructor = fn; }
+inline FDT_DICTIONARY_ELEMENT_DESTRUCTORFUNC fdt_dictionary_element_getdestructor(FdtDictionaryElement* elem) { return elem->destructor; }
 
-#define fdt_dictionary_element_next(elem) (FdtDictionaryElement*)fdt_list_next((FdtListNode*)elem)
-#define fdt_dictionary_element_remove(elem) fdt_list_remove((FdtListNode*)elem)
+inline FdtDictionaryElement* fdt_dictionary_element_next(FdtDictionaryElement* elem) { return (FdtDictionaryElement*)fdt_list_next((FdtListNode*)elem); }
+inline void fdt_dictionary_element_remove(FdtDictionaryElement* elem) { fdt_list_remove((FdtListNode*)elem); }
 
 FdtDictionary* fdt_dictionary_new();
 bool fdt_dictionary_delete(FdtDictionary* dir);
@@ -51,11 +51,11 @@ FdtDictionaryElement* fdt_dictionary_get(FdtDictionary* dir, const char* key);
 bool fdt_dictionary_setvalue(FdtDictionary* dir, const char* key, void* value, FDT_DICTIONARY_ELEMENT_DESTRUCTORFUNC destructor);
 void* fdt_dictionary_getvalue(FdtDictionary* dir, const char* key);
 
-#define fdt_dictionary_clear(dir) fdt_list_clear((FdtList*)dir, (FDT_LIST_DESTRUCTORFUNC)fdt_dictionary_element_delete)
-#define fdt_dictionary_size(dir) fdt_list_size((FdtList*)dir)
-#define fdt_dictionary_getelements(dir) (FdtDictionaryElement*)fdt_list_next((FdtList*)dir)
-#define fdt_dictionary_add(dir, elem) fdt_list_add((FdtList*)dir, (FdtListNode*)elem)
-#define fdt_dictionary_remove(elem) fdt_list_remove((FdtListNode*)elem)
+inline void fdt_dictionary_clear(FdtDictionary* dir) { fdt_list_clear((FdtList*)dir, (FDT_LIST_DESTRUCTORFUNC)fdt_dictionary_element_delete); }
+inline size_t fdt_dictionary_size(FdtDictionary* dir) { return fdt_list_size((FdtList*)dir); }
+inline FdtDictionaryElement* fdt_dictionary_getelements(FdtDictionary* dir) { return (FdtDictionaryElement*)fdt_list_next((FdtList*)dir); }
+inline void fdt_dictionary_add(FdtDictionary* dir, FdtDictionaryElement* elem) { fdt_list_add((FdtList*)dir, (FdtListNode*)elem); }
+inline void fdt_dictionary_remove(FdtDictionaryElement* elem) { fdt_list_remove((FdtListNode*)elem); }
 
 bool fdt_dictionary_setstring(FdtDictionary* dir, const char* key, const char* value);
 const char* fdt_dictionary_getstring(FdtDictionary* dir, const char* key);
