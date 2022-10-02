@@ -94,12 +94,12 @@ size_t fdt_string_length(FdtString* str);
 FdtStrings* fdt_strings_new();
 void fdt_strings_delete(FdtStrings*);
 
-#define fdt_string_next(str) (FdtString*)fdt_list_next((FdtListNode*)str)
+inline FdtString* fdt_string_next(FdtString* str) { return (FdtString*)fdt_list_next((FdtListNode*)str); }
 
-#define fdt_strings_size(strs) fdt_list_size((FdtList*)strs)
-#define fdt_strings_gets(strs) (FdtString*)fdt_list_gets((FdtList*)strs)
-#define fdt_strings_addstring(strs, str) fdt_list_add((FdtList*)strs, (FdtListNode*)str)
-#define fdt_strings_clear(strs) fdt_list_clear((FdtList*)strs, (FDT_LIST_DESTRUCTORFUNC)fdt_string_delete)
+inline size_t fdt_strings_size(FdtString* strs) { return fdt_list_size((FdtList*)strs); }
+inline FdtString* fdt_strings_gets(FdtString* strs) { return (FdtString*)fdt_list_gets((FdtList*)strs); }
+inline void fdt_strings_addstring(FdtString* strs, FdtString* str) { fdt_list_add((FdtList*)strs, (FdtListNode*)str); }
+inline void fdt_strings_clear(FdtString* strs) { fdt_list_clear((FdtList*)strs, (FDT_LIST_DESTRUCTORFUNC)fdt_string_delete); }
 
 void fdt_strings_addcstring(FdtStrings*, const char* value);
 
