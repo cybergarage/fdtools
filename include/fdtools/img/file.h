@@ -33,9 +33,9 @@ typedef struct FDT_ATTR_PACKED {
 
 FdtImage* fdt_image_file_new(void);
 
-#define fdt_image_file_isvalid(img, err) fdt_image_isvalid(((FdtImage*)img), err)
-#define fdt_image_file_setfile(img, v) (((FdtFileImage*)img)->fp = v)
-#define fdt_image_file_getfile(img) (img->fp)
+inline bool fdt_image_file_isvalid(FdtFileImage* img, FdtError* err) { return fdt_image_isvalid(((FdtImage*)img), err); }
+inline void fdt_image_file_setfile(FdtFileImage* img, FILE* v) { ((FdtFileImage*)img)->fp = v; }
+inline FILE* fdt_image_file_getfile(FdtFileImage* img) { return img->fp; }
 
 #ifdef __cplusplus
 } /* extern C */

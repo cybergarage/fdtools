@@ -41,7 +41,7 @@ void ImageExportCompareTest(FdtImage* img, FDT_IMAGE_IMAGER convert_imager)
   BOOST_CHECK_MESSAGE(fdt_image_import(export_img, img, err), fdt_error_getdebugmessage(err));
   FILE* mem_fp = fdt_file_memopen(export_img_buf, export_img_buf_size, FDT_FILE_WRITE);
   BOOST_REQUIRE(mem_fp);
-  fdt_image_file_setfile(export_img, mem_fp);
+  fdt_image_file_setfile((FdtFileImage*)export_img, mem_fp);
   BOOST_REQUIRE_MESSAGE(fdt_image_export(export_img, err), fdt_error_getdebugmessage(err));
   BOOST_CHECK_MESSAGE(fdt_image_close(export_img, err), fdt_error_getdebugmessage(err));
 
@@ -55,7 +55,7 @@ void ImageExportCompareTest(FdtImage* img, FDT_IMAGE_IMAGER convert_imager)
   BOOST_REQUIRE(mem_fp);
   FdtImage* exported_img = convert_imager();
   BOOST_REQUIRE(exported_img);
-  fdt_image_file_setfile(exported_img, mem_fp);
+  fdt_image_file_setfile((FdtFileImage*)exported_img, mem_fp);
   BOOST_REQUIRE_MESSAGE(fdt_image_load(exported_img, err), fdt_error_getdebugmessage(err));
   BOOST_CHECK_MESSAGE(fdt_image_close(exported_img, err), fdt_error_getdebugmessage(err));
 
