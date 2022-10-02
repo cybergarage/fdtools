@@ -52,21 +52,21 @@ int fdt_image_sector_compare(FdtImageSector*, FdtImageSector*);
 bool fdt_image_sector_equals(FdtImageSector*, FdtImageSector*, FdtError*);
 FdtImageSector* fdt_image_sector_copy(FdtImageSector* sector);
 
-#define fdt_image_sector_next(sector) (FdtImageSector*)fdt_list_next((FdtListNode*)sector)
+inline FdtImageSector* fdt_image_sector_next(FdtImageSector* sector) { return (FdtImageSector*)fdt_list_next((FdtListNode*)sector); }
 
-#define fdt_image_sector_setcylindernumber(sector, n) (sector->cylinder_number = n)
-#define fdt_image_sector_setheadnumber(sector, n) (sector->head_number = n)
-#define fdt_image_sector_setnumber(sector, n) (sector->number = n)
-#define fdt_image_sector_setsize(sector, n) (sector->size = n)
-#define fdt_image_sector_seterrorcount(sector, n) (sector->error_count = n)
-#define fdt_image_sector_incrementerrorcount(sector) (sector->error_count++)
+inline void fdt_image_sector_setcylindernumber(FdtImageSector* sector, FdtCylinderNumber n) { sector->cylinder_number = n; }
+inline void fdt_image_sector_setheadnumber(FdtImageSector* sector, FdtHeadNumber n) { sector->head_number = n; }
+inline void fdt_image_sector_setnumber(FdtImageSector* sector, FdtSectorNumber n) { sector->number = n; }
+inline void fdt_image_sector_setsize(FdtImageSector* sector, size_t n) { sector->size = n; }
+inline void fdt_image_sector_seterrorcount(FdtImageSector* sector, int n) { sector->error_count = n; }
+inline void fdt_image_sector_incrementerrorcount(FdtImageSector* sector) { sector->error_count++; }
 
-#define fdt_image_sector_getcylindernumber(sector) (sector->cylinder_number)
-#define fdt_image_sector_getheadnumber(sector) (sector->head_number)
-#define fdt_image_sector_getnumber(sector) (sector->number)
-#define fdt_image_sector_getsize(sector) (sector->size)
-#define fdt_image_sector_getdata(sector) (sector->data)
-#define fdt_image_sector_geterrorcount(sector) (sector->error_count)
+inline FdtCylinderNumber fdt_image_sector_getcylindernumber(FdtImageSector* sector) { return sector->cylinder_number; }
+inline FdtHeadNumber fdt_image_sector_getheadnumber(FdtImageSector* sector) { return sector->head_number; }
+inline FdtSectorNumber fdt_image_sector_getnumber(FdtImageSector* sector) { return sector->number; }
+inline size_t fdt_image_sector_getsize(FdtImageSector* sector) { return sector->size; }
+inline byte_t* fdt_image_sector_getdata(FdtImageSector* sector) { return sector->data; }
+inline int fdt_image_sector_geterrorcount(FdtImageSector* sector) { return sector->error_count; }
 
 ////////////////////////////////////////
 // fdt_image_sectors_*
