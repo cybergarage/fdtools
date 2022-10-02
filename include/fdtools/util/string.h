@@ -54,14 +54,14 @@ const char* fdt_double2str(double value, char* buf, size_t bufSize);
 const char* fdt_sizet2str(size_t value, char* buf, size_t bufSize);
 const char* fdt_ssizet2str(ssize_t value, char* buf, size_t bufSize);
 
-#define fdt_str2int(value) (value ? atoi(value) : 0)
-#define fdt_str2long(value) (value ? atol(value) : 0)
-#define fdt_strhex2long(value) (value ? strtol(value, NULL, 16) : 0)
-#define fdt_strhex2ulong(value) (value ? strtoul(value, NULL, 16) : 0)
-#define fdt_str2float(value) ((float)(value ? atof(value) : 0.0))
-#define fdt_str2double(value) (value ? atof(value) : 0.0)
-#define fdt_str2sizet(value) ((size_t)(value ? atol(value) : 0))
-#define fdt_str2ssizet(value) ((ssize_t)(value ? atol(value) : 0))
+inline int fdt_str2int(const char* value) { return (value ? atoi(value) : 0); }
+inline long fdt_str2long(const char* value) { return (value ? atol(value) : 0); }
+inline long fdt_strhex2long(const char* value) { return (value ? strtol(value, NULL, 16) : 0); }
+inline unsigned long fdt_strhex2ulong(const char* value) { return (value ? strtoul(value, NULL, 16) : 0); }
+inline float fdt_str2float(const char* value) { return ((float)(value ? atof(value) : 0.0)); }
+inline double fdt_str2double(const char* value) { return (value ? atof(value) : 0.0); }
+inline size_t fdt_str2sizet(const char* value) { return ((size_t)(value ? atol(value) : 0)); }
+inline size_t fdt_str2ssizet(const char* value) { return ((ssize_t)(value ? atol(value) : 0)); }
 
 ////////////////////////////////////////
 // fdt_string_*
