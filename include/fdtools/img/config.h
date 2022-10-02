@@ -54,29 +54,29 @@ size_t fdt_image_config_calculaterawsize(FdtImageConfig*);
 const char* fdt_image_config_getdescription(FdtImageConfig*);
 void fdt_image_config_print(FdtImageConfig*);
 
-#define fdt_image_config_setname(config, v) fdt_string_setvalue(config->name, v)
-#define fdt_image_config_setsize(config, v) (config->size = v)
-#define fdt_image_config_setdensity(config, v) (config->density = v)
-#define fdt_image_config_setnumberofhead(config, v) (config->number_of_head = v)
-#define fdt_image_config_setnumberofsector(config, v) (config->number_of_sector = v)
-#define fdt_image_config_setnumberofcylinder(config, v) (config->number_of_cylinder = v)
-#define fdt_image_config_setsectorsize(config, v) (config->sector_size = v)
-#define fdt_image_config_setbitrate(config, v) (config->bitrate = v)
-#define fdt_image_config_setrpm(config, v) (config->rpm = v)
-#define fdt_image_config_setwriteprotectenabled(config, v) (config->write_protect = v)
+inline void fdt_image_config_setname(FdtImageConfig* config, const char* v) { fdt_string_setvalue(config->name, v); }
+inline void fdt_image_config_setsize(FdtImageConfig* config, size_t v) { config->size = v; }
+inline void fdt_image_config_setdensity(FdtImageConfig* config, FdtImageDensity v) { config->density = v; }
+inline void fdt_image_config_setnumberofhead(FdtImageConfig* config, size_t v) { config->number_of_head = v; }
+inline void fdt_image_config_setnumberofsector(FdtImageConfig* config, size_t v) { config->number_of_sector = v; }
+inline void fdt_image_config_setnumberofcylinder(FdtImageConfig* config, size_t v) { config->number_of_cylinder = v; }
+inline void fdt_image_config_setsectorsize(FdtImageConfig* config, size_t v) { config->sector_size = v; }
+inline void fdt_image_config_setbitrate(FdtImageConfig* config, int v) { config->bitrate = v; }
+inline void fdt_image_config_setrpm(FdtImageConfig* config, int v) { config->rpm = v; }
+inline void fdt_image_config_setwriteprotectenabled(FdtImageConfig* config, bool v) { config->write_protect = v; }
 
-#define fdt_image_config_hasname(config) ((0 < fdt_string_length(config->name)) ? true : false)
-#define fdt_image_config_getname(config) fdt_string_getvalue(config->name)
-#define fdt_image_config_getsize(config) (config->size)
-#define fdt_image_config_getdensity(config) (config->density)
-#define fdt_image_config_getdensitystring(config) fdt_image_density_getstring(config->density)
-#define fdt_image_config_getnumberofhead(config) (config->number_of_head)
-#define fdt_image_config_getnumberofsector(config) (config->number_of_sector)
-#define fdt_image_config_getnumberofcylinder(config) (config->number_of_cylinder)
-#define fdt_image_config_getsectorsize(config) (config->sector_size)
-#define fdt_image_config_getbitrate(config) (config->bitrate)
-#define fdt_image_config_getrpm(config) (config->rpm)
-#define fdt_image_config_iswriteprotectenabled(config) (config->write_protect)
+inline bool fdt_image_config_hasname(FdtImageConfig* config) { return ((0 < fdt_string_length(config->name)) ? true : false); }
+inline const char* fdt_image_config_getname(FdtImageConfig* config) { return fdt_string_getvalue(config->name); }
+inline size_t fdt_image_config_getsize(FdtImageConfig* config) { return config->size; }
+inline FdtImageDensity fdt_image_config_getdensity(FdtImageConfig* config) { return config->density; }
+inline const char* fdt_image_config_getdensitystring(FdtImageConfig* config) { return fdt_image_density_getstring(config->density); }
+inline size_t fdt_image_config_getnumberofhead(FdtImageConfig* config) { return config->number_of_head; }
+inline size_t fdt_image_config_getnumberofsector(FdtImageConfig* config) { return config->number_of_sector; }
+inline size_t fdt_image_config_getnumberofcylinder(FdtImageConfig* config) { return config->number_of_cylinder; }
+inline size_t fdt_image_config_getsectorsize(FdtImageConfig* config) { return config->sector_size; }
+inline int fdt_image_config_getbitrate(FdtImageConfig* config) { return config->bitrate; }
+inline int fdt_image_config_getrpm(FdtImageConfig* config) { return config->rpm; }
+inline bool fdt_image_config_iswriteprotectenabled(FdtImageConfig* config) { return config->write_protect; }
 
 #ifdef __cplusplus
 } /* extern C */
