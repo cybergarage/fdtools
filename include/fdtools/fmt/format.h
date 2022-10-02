@@ -65,8 +65,8 @@ bool fdt_format_list(FdtFormat*, FdtFiles*, FdtError*);
 bool fdt_format_add(FdtFormat*, FdtFile*, FdtError*);
 bool fdt_format_del(FdtFormat*, FdtFile*, FdtError*);
 
-#define fdt_format_setimage(fmt, img) (fmt->image = img)
-#define fdt_format_getimage(fmt) (fmt->image)
+inline void fdt_format_setimage(FdtFormat* fmt, FdtImage* img) { fmt->image = img; }
+inline FdtImage* fdt_format_getimage(FdtFormat* fmt) { return fmt->image; }
 
 #define fdt_format_setgettypeid(fmt, fn) (fmt->format_gettypeid = (FDT_FORMAT_GETTYPEID)fn)
 #define fdt_format_setformat(fmt, fn) (fmt->format_format = (FDT_FORMAT_FORMAT)fn)
