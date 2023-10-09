@@ -23,6 +23,7 @@ extern "C" {
 
 const char FDT_RAW_EXTENTION_RAW[] = "raw";
 const char FDT_RAW_EXTENTION_IMG[] = "img";
+const char FDT_RAW_EXTENTION_XDF[] = "xdf";
 
 FdtImage* fdt_raw_image_new(void);
 
