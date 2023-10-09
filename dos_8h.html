@@ -60,26 +60,13 @@ $(document).ready(function(){initNavTree('dos_8h.html',''); initResizable(); });
 <div id="doc-content">
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Data Structures</a> &#124;
-<a href="#typedef-members">Typedefs</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle"><div class="title">dos.h File Reference</div></div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &lt;<a class="el" href="fmt_2format_8h.html">fdtools/fmt/format.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="bpb_8h.html">fdtools/plugins/fmt/dos/bpb.h</a>&gt;</code><br />
 </div><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
-Data Structures</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structFDT__ATTR__PACKED.html">FDT_ATTR_PACKED</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
-Typedefs</h2></td></tr>
-<tr class="memitem:ac2a30588e8101c5a3fac08cbb4d1cb23"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structFDT__ATTR__PACKED.html">FDT_ATTR_PACKED</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dos_8h.html#ac2a30588e8101c5a3fac08cbb4d1cb23">FdtFatBpb</a></td></tr>
-<tr class="separator:ac2a30588e8101c5a3fac08cbb4d1cb23"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a958b36cf1c69a9679e9ed9b4c163af5d"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structFDT__ATTR__PACKED.html">FDT_ATTR_PACKED</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dos_8h.html#a958b36cf1c69a9679e9ed9b4c163af5d">FdtFatBpbExtended</a></td></tr>
-<tr class="separator:a958b36cf1c69a9679e9ed9b4c163af5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a285238c1f50e6dd10b476120360d2b97"><td class="memItemLeft" align="right" valign="top"><a class="el" href="fmt_2format_8h.html#aaef1619e756019bfb37461b0a9030e55">FdtFormat</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dos_8h.html#a285238c1f50e6dd10b476120360d2b97">fdt_dos_format_new</a> (void)</td></tr>
@@ -95,35 +82,6 @@ Functions</h2></td></tr>
 <tr class="memitem:abc4929868ffa9e9e346da167330d3096"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dos_8h.html#abc4929868ffa9e9e346da167330d3096">fdt_dos_format_del</a> (<a class="el" href="fmt_2format_8h.html#aaef1619e756019bfb37461b0a9030e55">FdtFormat</a> *, <a class="el" href="structFdtFile.html">FdtFile</a> *)</td></tr>
 <tr class="separator:abc4929868ffa9e9e346da167330d3096"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Typedef Documentation</h2>
-<a id="ac2a30588e8101c5a3fac08cbb4d1cb23" name="ac2a30588e8101c5a3fac08cbb4d1cb23"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac2a30588e8101c5a3fac08cbb4d1cb23">&#9670;&nbsp;</a></span>FdtFatBpb</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef struct <a class="el" href="structFDT__ATTR__PACKED.html">FDT_ATTR_PACKED</a> <a class="el" href="dos_8h.html#ac2a30588e8101c5a3fac08cbb4d1cb23">FdtFatBpb</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a958b36cf1c69a9679e9ed9b4c163af5d" name="a958b36cf1c69a9679e9ed9b4c163af5d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a958b36cf1c69a9679e9ed9b4c163af5d">&#9670;&nbsp;</a></span>FdtFatBpbExtended</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef struct <a class="el" href="structFDT__ATTR__PACKED.html">FDT_ATTR_PACKED</a> <a class="el" href="dos_8h.html#a958b36cf1c69a9679e9ed9b4c163af5d">FdtFatBpbExtended</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <h2 class="groupheader">Function Documentation</h2>
 <a id="afa8dfd01f91f077ed5e91e24721e7389" name="afa8dfd01f91f077ed5e91e24721e7389"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#afa8dfd01f91f077ed5e91e24721e7389">&#9670;&nbsp;</a></span>fdt_dos_format_add()</h2>
