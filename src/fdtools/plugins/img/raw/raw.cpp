@@ -37,5 +37,6 @@ bool fdt_raw_image_getextentions(FdtImage* img, FdtStrings* strs)
 {
   fdt_strings_addcstring(strs, FDT_RAW_EXTENTION_RAW);
   fdt_strings_addcstring(strs, FDT_RAW_EXTENTION_IMG);
+  fdt_strings_addcstring(strs, FDT_RAW_EXTENTION_XDF);
   return true;
 }
