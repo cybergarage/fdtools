@@ -12,4 +12,4 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-SUBDIRS = fdcopy fdinfo fddump fddiff dosinfo dosdir dosfmt cpmfmt cpmdir
+SUBDIRS = unix 
