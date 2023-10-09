@@ -81,6 +81,7 @@ typedef struct FDT_ATTR_PACKED {
 } FdtFatBpbExtended;
 
 FdtFatBpb* fdt_fat_bpb_new(void);
+bool fdt_fat_bpb_delete(FdtFatBpb* bpb);
 
 #ifdef __cplusplus
 } /* extern C */

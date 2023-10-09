@@ -20,6 +20,15 @@ FdtFatBpb* fdt_fat_bpb_new(void)
   if (!bpb) {
     return NULL;
   }
-
   return bpb;
+}
+
+bool fdt_fat_bpb_delete(FdtFatBpb* bpb)
+{
+  if (!bpb)
+    return false;
+
+  free(bpb);
+
+  return true;
 }
