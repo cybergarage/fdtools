@@ -96,8 +96,12 @@ bin/fddump/Makefile
 bin/fddump/unix/Makefile
 bin/fddiff/Makefile
 bin/fddiff/unix/Makefile
-bin/cpmls/Makefile
-bin/cpmls/unix/Makefile
+bin/dosdir/Makefile
+bin/dosdir/unix/Makefile
+bin/dosfmt/Makefile
+bin/dosfmt/unix/Makefile
+bin/cpmdir/Makefile
+bin/cpmdir/unix/Makefile
 bin/cpmfmt/Makefile
 bin/cpmfmt/unix/Makefile
 test/Makefile
