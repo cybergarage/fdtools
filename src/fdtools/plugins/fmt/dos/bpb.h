@@ -22,8 +22,6 @@
 extern "C" {
 #endif
 
-const size_t FDT_FAT_BPB_SIZE = 36;
-
 // Microsoft FAT Specification - Microsoft Corporation August 30 2005
 // 3.1 BPB structure common to FAT12, FAT16, and FAT32 implementations
 // The BPB (BIOS Parameter Block) is located in the first sector of the volume in the Reserved Region.
@@ -84,8 +82,12 @@ typedef struct FDT_ATTR_PACKED {
 } FdtFatBpbExtended;
 
 FdtFatBpb* fdt_fat_bpb_new(void);
-bool fdt_fat_bpb_delete(FdtFatBpb* bpb);
-bool fdt_fat_bpb_readimagesector(FdtFatBpb* bpb, FdtImageSector*, FdtError*);
+bool fdt_fat_bpb_delete(FdtFatBpb*);
+bool fdt_fat_bpb_readimagesector(FdtFatBpb*, FdtImageSector*, FdtError*);
+
+FdtFatBpbExtended* fdt_fat_bpbex_new(void);
+bool fdt_fat_bpbex_delete(FdtFatBpbExtended*);
+bool fdt_fat_bpbex_readimagesector(FdtFatBpbExtended*, FdtImageSector*, FdtError*);
 
 #ifdef __cplusplus
 } /* extern C */
