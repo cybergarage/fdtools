@@ -80,6 +80,8 @@ typedef struct FDT_ATTR_PACKED {
   // Set to 0x00 (only for media where BPB_BytsPerSec > 512.
 } FdtFatBpbExtended;
 
+FdtFatBpb* fdt_fat_bpb_new(void);
+
 #ifdef __cplusplus
 } /* extern C */
 #endif

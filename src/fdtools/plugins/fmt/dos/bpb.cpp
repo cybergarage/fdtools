@@ -13,3 +13,13 @@
 // limitations under the License.
 
 #include <fdtools/plugins/fmt/dos/bpb.h>
+
+FdtFatBpb* fdt_fat_bpb_new(void)
+{
+  FdtFatBpb* bpb = (FdtFatBpb*)calloc(sizeof(FdtFatBpb), 1);
+  if (!bpb) {
+    return NULL;
+  }
+
+  return bpb;
+}
