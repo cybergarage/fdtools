@@ -62,7 +62,8 @@ $(document).ready(function(){initNavTree('bpb_8h.html',''); initResizable(); });
   <div class="summary">
 <a href="#nested-classes">Data Structures</a> &#124;
 <a href="#typedef-members">Typedefs</a> &#124;
-<a href="#func-members">Functions</a>  </div>
+<a href="#func-members">Functions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle"><div class="title">bpb.h File Reference</div></div>
 </div><!--header-->
 <div class="contents">
@@ -87,8 +88,13 @@ Functions</h2></td></tr>
 <tr class="separator:acab60488acdaa281a493ea30a90d2d84"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa4b2c36273ddf1474aedeacf6b51242d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bpb_8h.html#aa4b2c36273ddf1474aedeacf6b51242d">fdt_fat_bpb_delete</a> (<a class="el" href="bpb_8h.html#ac2a30588e8101c5a3fac08cbb4d1cb23">FdtFatBpb</a> *bpb)</td></tr>
 <tr class="separator:aa4b2c36273ddf1474aedeacf6b51242d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abe7c01e20dabc5de47765c16a8ec5278"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bpb_8h.html#abe7c01e20dabc5de47765c16a8ec5278">fdt_fat_bpb_readimagesector</a> (<a class="el" href="structFdtImageSector.html">FdtImageSector</a> *, <a class="el" href="structFdtError.html">FdtError</a> *)</td></tr>
-<tr class="separator:abe7c01e20dabc5de47765c16a8ec5278"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae3542c37a5abcc5b4f9549d95628e201"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bpb_8h.html#ae3542c37a5abcc5b4f9549d95628e201">fdt_fat_bpb_readimagesector</a> (<a class="el" href="bpb_8h.html#ac2a30588e8101c5a3fac08cbb4d1cb23">FdtFatBpb</a> *bpb, <a class="el" href="structFdtImageSector.html">FdtImageSector</a> *, <a class="el" href="structFdtError.html">FdtError</a> *)</td></tr>
+<tr class="separator:ae3542c37a5abcc5b4f9549d95628e201"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:a00eb66c9ef551a815d34831adf500446"><td class="memItemLeft" align="right" valign="top">const size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bpb_8h.html#a00eb66c9ef551a815d34831adf500446">FDT_FAT_BPB_SIZE</a> = 36</td></tr>
+<tr class="separator:a00eb66c9ef551a815d34831adf500446"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Typedef Documentation</h2>
 <a id="ac2a30588e8101c5a3fac08cbb4d1cb23" name="ac2a30588e8101c5a3fac08cbb4d1cb23"></a>
@@ -156,8 +162,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="abe7c01e20dabc5de47765c16a8ec5278" name="abe7c01e20dabc5de47765c16a8ec5278"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abe7c01e20dabc5de47765c16a8ec5278">&#9670;&nbsp;</a></span>fdt_fat_bpb_readimagesector()</h2>
+<a id="ae3542c37a5abcc5b4f9549d95628e201" name="ae3542c37a5abcc5b4f9549d95628e201"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae3542c37a5abcc5b4f9549d95628e201">&#9670;&nbsp;</a></span>fdt_fat_bpb_readimagesector()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -165,6 +171,12 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">bool fdt_fat_bpb_readimagesector </td>
           <td>(</td>
+          <td class="paramtype"><a class="el" href="bpb_8h.html#ac2a30588e8101c5a3fac08cbb4d1cb23">FdtFatBpb</a> *&#160;</td>
+          <td class="paramname"><em>bpb</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
           <td class="paramtype"><a class="el" href="structFdtImageSector.html">FdtImageSector</a> *&#160;</td>
           <td class="paramname">, </td>
         </tr>
@@ -178,6 +190,21 @@ Functions</h2></td></tr>
           <td></td>
           <td>)</td>
           <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Variable Documentation</h2>
+<a id="a00eb66c9ef551a815d34831adf500446" name="a00eb66c9ef551a815d34831adf500446"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a00eb66c9ef551a815d34831adf500446">&#9670;&nbsp;</a></span>FDT_FAT_BPB_SIZE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const size_t FDT_FAT_BPB_SIZE = 36</td>
         </tr>
       </table>
 </div><div class="memdoc">

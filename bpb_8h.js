@@ -5,5 +5,6 @@ var bpb_8h =
     [ "FdtFatBpbExtended", "bpb_8h.html#a958b36cf1c69a9679e9ed9b4c163af5d", null ],
     [ "fdt_fat_bpb_delete", "bpb_8h.html#aa4b2c36273ddf1474aedeacf6b51242d", null ],
     [ "fdt_fat_bpb_new", "bpb_8h.html#acab60488acdaa281a493ea30a90d2d84", null ],
-    [ "fdt_fat_bpb_readimagesector", "bpb_8h.html#abe7c01e20dabc5de47765c16a8ec5278", null ]
+    [ "fdt_fat_bpb_readimagesector", "bpb_8h.html#ae3542c37a5abcc5b4f9549d95628e201", null ],
+    [ "FDT_FAT_BPB_SIZE", "bpb_8h.html#a00eb66c9ef551a815d34831adf500446", null ]
 ];
