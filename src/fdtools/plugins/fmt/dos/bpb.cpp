@@ -43,16 +43,17 @@ bool fdt_fat_bpb_readimagesector(FdtFatBpb* bpb, FdtImageSector* sector, FdtErro
     size_t sector_no = fdt_image_sectors_getnumberofsector(sector);
 
     if (cylinder_no != 0 || head_no != 0 || sector_no != 0) {
-        fdt_error_setmessage(err, FDT_DOS_FAT_BPB_INVALID_SECTOR, cylinder_no, head_no, sector_no);
+        fdt_error_setmessage(err, FDT_DOS_FAT_BPB_INVALID_SECTOR_NO, cylinder_no, head_no, sector_no);
         return false;
     }
 
     size_t sector_size = fdt_image_sector_getsize(sector);
-    byte_t *sector_data = fdt_image_sector_getdata(sector);
+    if (sector_size < FDT_FAT_BPB_SIZE) {
+        fdt_error_setmessage(err, FDT_DOS_FAT_BPB_INVALID_SECTOR_SIZE, sector_size, FDT_FAT_BPB_SIZE);
+        return false;
+    }
 
-    size_t sector_offset = 0;  
-
-
+    memcpy(bpb, fdt_image_sector_getdata(sector), FDT_FAT_BPB_SIZE);
 
     return true;
 }

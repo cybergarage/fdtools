@@ -22,7 +22,8 @@ extern "C" {
 #endif
 
 #define FDT_DOS_FAT_SECTOR "C:%02ld H:%01ld R:%02ld"
-#define FDT_DOS_FAT_BPB_INVALID_SECTOR "Invalid BPB sector: " FDT_DOS_FAT_SECTOR
+#define FDT_DOS_FAT_BPB_INVALID_SECTOR_NO "Invalid BPB sector: " FDT_DOS_FAT_SECTOR
+#define FDT_DOS_FAT_BPB_INVALID_SECTOR_SIZE "Invalid BPB size: %d < %d"
 
 #ifdef __cplusplus
 } /* extern C */
