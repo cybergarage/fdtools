@@ -21,7 +21,9 @@ makefiles=(
 "bin/fddiff/unix"
 "bin/fddump/unix"
 "bin/fdinfo/unix"
-"bin/cpmls/unix"
+"bin/dosdir/unix"
+"bin/dosfmt/unix"
+"bin/cpmdir/unix"
 "bin/cpmfmt/unix"
 )
 
