@@ -12,19 +12,19 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-bin_PROGRAMS = cpmls
+bin_PROGRAMS = cpmdir
 
 AM_CFLAGS = -I$(top_builddir)/include -I../ -I../../
 AM_CPPFLAGS = -I$(top_builddir)/include -I../ -I../../
 
-cpmls_SOURCES = \
+cpmdir_SOURCES = \
 	../../fdutils/program.cpp \
 	../../fdutils/console.cpp \
 	../../fdutils/device.cpp \
 	..//main.c
 
 #if HAVE_LIBTOOL
-#cpmls_LDADD = ../../../lib/unix/libfdtools.la
+#cpmdir_LDADD = ../../../lib/unix/libfdtools.la
 #else
-cpmls_LDADD = ../../../lib/unix/libfdtools.a
+cpmdir_LDADD = ../../../lib/unix/libfdtools.a
 #endif

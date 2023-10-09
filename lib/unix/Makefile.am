@@ -39,6 +39,7 @@ fdtools_sources = \
 	../../src/fdtools/plugins/fmt/plugin.cpp \
 	../../src/fdtools/plugins/fmt/plugins.cpp \
 	../../src/fdtools/plugins/fmt/cpm/cpm.cpp \
+	../../src/fdtools/plugins/fmt/cpm/directory.cpp \
 	../../src/fdtools/plugins/fmt/loader.cpp \
 	../../src/fdtools/plugins/img/func.cpp \
 	../../src/fdtools/plugins/img/hfe/hfe_exporter.cpp \
