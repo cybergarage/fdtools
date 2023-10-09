@@ -12,6 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#include <fdtools/plugins/fmt/dos/error.h>
 #include <fdtools/plugins/fmt/dos/bpb.h>
 
 FdtFatBpb* fdt_fat_bpb_new(void)
@@ -33,9 +34,25 @@ bool fdt_fat_bpb_delete(FdtFatBpb* bpb)
   return true;
 }
 
-bool fdt_fat_bpb_readimagesector(FdtImageSector* sector, FdtError* err) {
-    if (!sector)
+bool fdt_fat_bpb_readimagesector(FdtFatBpb* bpb, FdtImageSector* sector, FdtError* err) {
+    if (!bpb || !sector)
         return false;
-        
+
+    size_t cylinder_no = fdt_image_sectors_getnumberofcylinder(sector);
+    size_t head_no = fdt_image_sectors_getnumberofhead(sector);
+    size_t sector_no = fdt_image_sectors_getnumberofsector(sector);
+
+    if (cylinder_no != 0 || head_no != 0 || sector_no != 0) {
+        fdt_error_setmessage(err, FDT_DOS_FAT_BPB_INVALID_SECTOR, cylinder_no, head_no, sector_no);
+        return false;
+    }
+
+    size_t sector_size = fdt_image_sector_getsize(sector);
+    byte_t *sector_data = fdt_image_sector_getdata(sector);
+
+    size_t sector_offset = 0;  
+
+
+
     return true;
 }
