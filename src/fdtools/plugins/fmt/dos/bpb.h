@@ -16,6 +16,7 @@
 #define _FDTOOLS_DOS_BPBT_H_
 
 #include <fdtools/fmt/format.h>
+#include <fdtools/img/sector.h>
 
 #ifdef __cplusplus
 extern "C" {
@@ -82,6 +83,7 @@ typedef struct FDT_ATTR_PACKED {
 
 FdtFatBpb* fdt_fat_bpb_new(void);
 bool fdt_fat_bpb_delete(FdtFatBpb* bpb);
+bool fdt_fat_bpb_readimagesector(FdtImageSector*, FdtError*);
 
 #ifdef __cplusplus
 } /* extern C */

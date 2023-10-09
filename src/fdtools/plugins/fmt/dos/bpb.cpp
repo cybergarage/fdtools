@@ -32,3 +32,10 @@ bool fdt_fat_bpb_delete(FdtFatBpb* bpb)
 
   return true;
 }
+
+bool fdt_fat_bpb_readimagesector(FdtImageSector* sector, FdtError* err) {
+    if (!sector)
+        return false;
+        
+    return true;
+}
