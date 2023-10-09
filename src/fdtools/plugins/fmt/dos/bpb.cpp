@@ -12,8 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include <fdtools/plugins/fmt/dos/error.h>
 #include <fdtools/plugins/fmt/dos/bpb.h>
+#include <fdtools/plugins/fmt/dos/error.h>
 
 FdtFatBpb* fdt_fat_bpb_new(void)
 {
@@ -34,26 +34,28 @@ bool fdt_fat_bpb_delete(FdtFatBpb* bpb)
   return true;
 }
 
-bool fdt_fat_bpb_readimagesector(FdtFatBpb* bpb, FdtImageSector* sector, FdtError* err) {
-    if (!bpb || !sector)
-        return false;
+bool fdt_fat_bpb_readimagesector(FdtFatBpb* bpb, FdtImageSector* sector, FdtError* err)
+{
+  if (!bpb || !sector)
+    return false;
 
-    size_t cylinder_no = fdt_image_sectors_getnumberofcylinder(sector);
-    size_t head_no = fdt_image_sectors_getnumberofhead(sector);
-    size_t sector_no = fdt_image_sectors_getnumberofsector(sector);
+  size_t cylinder_no = fdt_image_sectors_getnumberofcylinder(sector);
+  size_t head_no = fdt_image_sectors_getnumberofhead(sector);
+  size_t sector_no = fdt_image_sectors_getnumberofsector(sector);
 
-    if (cylinder_no != 0 || head_no != 0 || sector_no != 0) {
-        fdt_error_setmessage(err, FDT_DOS_FAT_BPB_INVALID_SECTOR_NO, cylinder_no, head_no, sector_no);
-        return false;
-    }
+  if (cylinder_no != 0 || head_no != 0 || sector_no != 0) {
+    fdt_error_setmessage(err, FDT_DOS_FAT_BPB_INVALID_SECTOR_NO, cylinder_no, head_no, sector_no);
+    return false;
+  }
 
-    size_t sector_size = fdt_image_sector_getsize(sector);
-    if (sector_size < FDT_FAT_BPB_SIZE) {
-        fdt_error_setmessage(err, FDT_DOS_FAT_BPB_INVALID_SECTOR_SIZE, sector_size, FDT_FAT_BPB_SIZE);
-        return false;
-    }
+  size_t sector_size = fdt_image_sector_getsize(sector);
+  size_t expected_sector_size = sizeof(FdtFatBpb);
+  if (sector_size < expected_sector_size) {
+    fdt_error_setmessage(err, FDT_DOS_FAT_BPB_INVALID_SECTOR_SIZE, sector_size, expected_sector_size);
+    return false;
+  }
 
-    memcpy(bpb, fdt_image_sector_getdata(sector), FDT_FAT_BPB_SIZE);
+  memcpy(bpb, fdt_image_sector_getdata(sector), expected_sector_size);
 
-    return true;
+  return true;
 }
