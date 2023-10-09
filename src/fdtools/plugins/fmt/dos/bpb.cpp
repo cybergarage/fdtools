@@ -12,26 +12,4 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef _FDTOOLS_DOS_FORMAT_H_
-#define _FDTOOLS_DOS_FORMAT_H_
-
-#include <fdtools/fmt/format.h>
 #include <fdtools/plugins/fmt/dos/bpb.h>
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-FdtFormat* fdt_dos_format_new(void);
-
-const char* fdt_dos_format_gettypeid(FdtFormat*);
-bool fdt_dos_format_format(FdtFormat*);
-bool fdt_dos_format_list(FdtFormat*, FdtFiles*);
-bool fdt_dos_format_add(FdtFormat*, FdtFile*);
-bool fdt_dos_format_del(FdtFormat*, FdtFile*);
-
-#ifdef __cplusplus
-} /* extern C */
-#endif
-
-#endif /* _FDTOOLS_DOS_FORMAT_H_ */
