@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		211519B8255DA6DA00B747E1 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 211519B7255DA6DA00B747E1 /* main.cpp */; };
 		211D4842257BB28E00895CFE /* program_test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 211D4841257BB28E00895CFE /* program_test.cpp */; };
+		211E01B72AD5AB6C00DA369B /* format_dos_test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 211E01B62AD5AB6C00DA369B /* format_dos_test.cpp */; };
 		213114AA259C38D100C3C8F6 /* config_test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 213114A9259C38D100C3C8F6 /* config_test.cpp */; };
 		213114AD259C407400C3C8F6 /* sector_test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 213114AC259C407400C3C8F6 /* sector_test.cpp */; };
 		213114B0259C5AEE00C3C8F6 /* image_test_func.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 213114AF259C5AEE00C3C8F6 /* image_test_func.cpp */; };
@@ -62,6 +63,7 @@
 /* Begin PBXFileReference section */
 		211519B7255DA6DA00B747E1 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = ../../main.cpp; sourceTree = "<group>"; };
 		211D4841257BB28E00895CFE /* program_test.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = program_test.cpp; path = ../../program_test.cpp; sourceTree = "<group>"; };
+		211E01B62AD5AB6C00DA369B /* format_dos_test.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = format_dos_test.cpp; path = ../../format_dos_test.cpp; sourceTree = "<group>"; };
 		2131149D259B6F3A00C3C8F6 /* image_test.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = image_test.h; path = ../../image_test.h; sourceTree = "<group>"; };
 		213114A9259C38D100C3C8F6 /* config_test.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = config_test.cpp; path = ../../config_test.cpp; sourceTree = "<group>"; };
 		213114AC259C407400C3C8F6 /* sector_test.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = sector_test.cpp; path = ../../sector_test.cpp; sourceTree = "<group>"; };
@@ -100,6 +102,7 @@
 		211519B5255DA6C200B747E1 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				211E01B62AD5AB6C00DA369B /* format_dos_test.cpp */,
 				215C211628D5684600C21A1F /* format_plugin_test.cpp */,
 				21ACB8E828C46F3F00DFAEE6 /* format_test.cpp */,
 				213114A9259C38D100C3C8F6 /* config_test.cpp */,
@@ -257,6 +260,7 @@
 				21B0AB39259F607D00B064A3 /* device_floppy_test.cpp in Sources */,
 				21AB318C2577F1ED00AD5066 /* logic_test.cpp in Sources */,
 				21ACB8E928C46F3F00DFAEE6 /* format_test.cpp in Sources */,
+				211E01B72AD5AB6C00DA369B /* format_dos_test.cpp in Sources */,
 				213114B0259C5AEE00C3C8F6 /* image_test_func.cpp in Sources */,
 				21403C09255EF3360022389D /* image_file_test.cpp in Sources */,
 				21DC201D257B6B81004F3363 /* device_test.cpp in Sources */,
