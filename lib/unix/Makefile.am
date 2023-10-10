@@ -36,6 +36,7 @@ fdtools_sources = \
 	../../src/fdtools/util/dictionary.cpp \
 	../../src/fdtools/error.cpp \
 	../../src/fdtools/plugins/fmt/dos/fat.cpp \
+	../../src/fdtools/plugins/fmt/dos/bpb_ex.cpp \
 	../../src/fdtools/plugins/fmt/dos/bpb.cpp \
 	../../src/fdtools/plugins/fmt/dos/dos.cpp \
 	../../src/fdtools/plugins/fmt/plugin.cpp \
