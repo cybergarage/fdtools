@@ -83,11 +83,11 @@ typedef struct FDT_ATTR_PACKED {
 
 FdtFatBpb* fdt_fat_bpb_new(void);
 bool fdt_fat_bpb_delete(FdtFatBpb*);
-bool fdt_fat_bpb_readimagesector(FdtFatBpb*, FdtImageSector*, FdtError*);
+bool fdt_fat_bpb_loadimagesector(FdtFatBpb*, FdtImageSector*, FdtError*);
 
 FdtFatBpbExtended* fdt_fat_bpbex_new(void);
 bool fdt_fat_bpbex_delete(FdtFatBpbExtended*);
-bool fdt_fat_bpbex_readimagesector(FdtFatBpbExtended*, FdtImageSector*, FdtError*);
+bool fdt_fat_bpbex_loadimagesector(FdtFatBpbExtended*, FdtImageSector*, FdtError*);
 
 #ifdef __cplusplus
 } /* extern C */
