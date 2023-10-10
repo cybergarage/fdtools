@@ -13,7 +13,10 @@
 // limitations under the License.
 
 #include <boost/test/unit_test.hpp>
+#include <fdtools/plugins/fmt/dos/fat.h>
 
 BOOST_AUTO_TEST_CASE(FormatFatTest)
 {
+  BOOST_CHECK_EQUAL(sizeof(FdtFatBpb), 36);
+  BOOST_CHECK_EQUAL(sizeof(FdtFatBpbExtended), (512 - sizeof(FdtFatBpb)));
 }

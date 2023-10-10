@@ -23,6 +23,7 @@ fdtoolstest_SOURCES = \
 	..//device_test.cpp \
 	..//config_test.cpp \
 	..//dictionary_test.cpp \
+	..//format_dos_test.cpp \
 	..//string_test.cpp \
 	..//image_plugin_test.cpp \
 	..//program_test.cpp \
