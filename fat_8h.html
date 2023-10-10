@@ -66,7 +66,8 @@ $(document).ready(function(){initNavTree('fat_8h.html',''); initResizable(); });
   <div class="headertitle"><div class="title">fat.h File Reference</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;<a class="el" href="bpb_8h.html">fdtools/plugins/fmt/dos/bpb.h</a>&gt;</code><br />
+<div class="textblock"><code>#include &lt;<a class="el" href="img_2image_8h.html">fdtools/img/image.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="bpb_8h.html">fdtools/plugins/fmt/dos/bpb.h</a>&gt;</code><br />
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Data Structures</h2></td></tr>
@@ -84,6 +85,10 @@ Functions</h2></td></tr>
 <tr class="separator:a8be435fe30ea6a59afd4b78318047771"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abf14c128d98ee94aceb1993a77c882a2"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fat_8h.html#abf14c128d98ee94aceb1993a77c882a2">fdt_fat_delete</a> (<a class="el" href="fat_8h.html#ad6ded5f08f4e789759542ae031758822">FdtFat</a> *bpb)</td></tr>
 <tr class="separator:abf14c128d98ee94aceb1993a77c882a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af5f882de268d273d9fa84f407b0a0607"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fat_8h.html#af5f882de268d273d9fa84f407b0a0607">fdt_fat_loadimage</a> (<a class="el" href="fat_8h.html#ad6ded5f08f4e789759542ae031758822">FdtFat</a> *fat, <a class="el" href="img_2image_8h.html#aae5c0feac759135787be1c5c8065dc90">FdtImage</a> *img, <a class="el" href="structFdtError.html">FdtError</a> *err)</td></tr>
+<tr class="separator:af5f882de268d273d9fa84f407b0a0607"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a04a56a7c812cfc635e4b313d4b332c56"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fat_8h.html#a04a56a7c812cfc635e4b313d4b332c56">fdt_fat_isbootimagesector</a> (<a class="el" href="structFdtImageSector.html">FdtImageSector</a> *)</td></tr>
+<tr class="separator:a04a56a7c812cfc635e4b313d4b332c56"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Typedef Documentation</h2>
 <a id="ad6ded5f08f4e789759542ae031758822" name="ad6ded5f08f4e789759542ae031758822"></a>
@@ -113,6 +118,58 @@ Functions</h2></td></tr>
           <td class="paramtype"><a class="el" href="fat_8h.html#ad6ded5f08f4e789759542ae031758822">FdtFat</a> *&#160;</td>
           <td class="paramname"><em>bpb</em></td><td>)</td>
           <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a04a56a7c812cfc635e4b313d4b332c56" name="a04a56a7c812cfc635e4b313d4b332c56"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a04a56a7c812cfc635e4b313d4b332c56">&#9670;&nbsp;</a></span>fdt_fat_isbootimagesector()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool fdt_fat_isbootimagesector </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structFdtImageSector.html">FdtImageSector</a> *&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af5f882de268d273d9fa84f407b0a0607" name="af5f882de268d273d9fa84f407b0a0607"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af5f882de268d273d9fa84f407b0a0607">&#9670;&nbsp;</a></span>fdt_fat_loadimage()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool fdt_fat_loadimage </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="fat_8h.html#ad6ded5f08f4e789759542ae031758822">FdtFat</a> *&#160;</td>
+          <td class="paramname"><em>fat</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="img_2image_8h.html#aae5c0feac759135787be1c5c8065dc90">FdtImage</a> *&#160;</td>
+          <td class="paramname"><em>img</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structFdtError.html">FdtError</a> *&#160;</td>
+          <td class="paramname"><em>err</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
