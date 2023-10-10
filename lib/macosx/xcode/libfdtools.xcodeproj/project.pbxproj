@@ -32,6 +32,11 @@
 		21641A81258E2C490062AD50 /* device_unix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 21641A80258E2C490062AD50 /* device_unix.cpp */; };
 		21641A84258EF8240062AD50 /* image.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 21641A83258EF8240062AD50 /* image.cpp */; };
 		2174417828E80850007F39BF /* directory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2174417728E80850007F39BF /* directory.cpp */; };
+		217BF2352AD5032A003FB649 /* bpb.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 217BF2302AD5032A003FB649 /* bpb.cpp */; };
+		217BF2362AD5032A003FB649 /* fat.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 217BF2312AD5032A003FB649 /* fat.cpp */; };
+		217BF2372AD5032A003FB649 /* fat.h in Headers */ = {isa = PBXBuildFile; fileRef = 217BF2322AD5032A003FB649 /* fat.h */; };
+		217BF2382AD5032A003FB649 /* bpb.h in Headers */ = {isa = PBXBuildFile; fileRef = 217BF2332AD5032A003FB649 /* bpb.h */; };
+		217BF2392AD5032A003FB649 /* error.h in Headers */ = {isa = PBXBuildFile; fileRef = 217BF2342AD5032A003FB649 /* error.h */; };
 		219F7D4A255FC8B000827D5C /* config.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 219F7D48255FC8B000827D5C /* config.cpp */; };
 		21ACB8E728C46EE000DFAEE6 /* format.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 21ACB8E628C46EE000DFAEE6 /* format.cpp */; };
 		21B0912125865DB800036CC5 /* device_linux.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 21B0911F25865DB800036CC5 /* device_linux.cpp */; };
@@ -97,6 +102,11 @@
 		21641A83258EF8240062AD50 /* image.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = image.cpp; path = ../../../src/fdtools/dev/image.cpp; sourceTree = "<group>"; };
 		216F3666255DB161004507DF /* fdtools */ = {isa = PBXFileReference; lastKnownFileType = folder; name = fdtools; path = ../../../include/fdtools; sourceTree = "<group>"; };
 		2174417728E80850007F39BF /* directory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = directory.cpp; path = ../../../src/fdtools/plugins/fmt/cpm/directory.cpp; sourceTree = "<group>"; };
+		217BF2302AD5032A003FB649 /* bpb.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = bpb.cpp; path = ../../../src/fdtools/plugins/fmt/dos/bpb.cpp; sourceTree = "<group>"; };
+		217BF2312AD5032A003FB649 /* fat.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = fat.cpp; path = ../../../src/fdtools/plugins/fmt/dos/fat.cpp; sourceTree = "<group>"; };
+		217BF2322AD5032A003FB649 /* fat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = fat.h; path = ../../../src/fdtools/plugins/fmt/dos/fat.h; sourceTree = "<group>"; };
+		217BF2332AD5032A003FB649 /* bpb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = bpb.h; path = ../../../src/fdtools/plugins/fmt/dos/bpb.h; sourceTree = "<group>"; };
+		217BF2342AD5032A003FB649 /* error.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = error.h; path = ../../../src/fdtools/plugins/fmt/dos/error.h; sourceTree = "<group>"; };
 		219F7D48255FC8B000827D5C /* config.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = config.cpp; path = ../../../src/fdtools/img/config.cpp; sourceTree = "<group>"; };
 		21ACB8E628C46EE000DFAEE6 /* format.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = format.cpp; path = ../../../src/fdtools/fmt/format.cpp; sourceTree = "<group>"; };
 		21B0911F25865DB800036CC5 /* device_linux.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = device_linux.cpp; path = ../../../src/fdtools/dev/device_linux.cpp; sourceTree = "<group>"; };
@@ -202,6 +212,11 @@
 		215C210C28D55E3400C21A1F /* dos */ = {
 			isa = PBXGroup;
 			children = (
+				217BF2302AD5032A003FB649 /* bpb.cpp */,
+				217BF2332AD5032A003FB649 /* bpb.h */,
+				217BF2342AD5032A003FB649 /* error.h */,
+				217BF2312AD5032A003FB649 /* fat.cpp */,
+				217BF2322AD5032A003FB649 /* fat.h */,
 				215C210D28D55E8400C21A1F /* dos.cpp */,
 				215C210E28D55E8400C21A1F /* dos.h */,
 			);
@@ -359,14 +374,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				215C211028D55E8400C21A1F /* dos.h in Headers */,
+				217BF2382AD5032A003FB649 /* bpb.h in Headers */,
 				215C211428D55EA400C21A1F /* cpm.h in Headers */,
 				21525AF828DB569C006B50B7 /* error.h in Headers */,
 				21BD0E4728D4D6D000826636 /* hfe.h in Headers */,
 				21BD0E2F28D4D67700826636 /* fdx.h in Headers */,
 				21BD0E4128D4D6B300826636 /* raw.h in Headers */,
+				217BF2372AD5032A003FB649 /* fat.h in Headers */,
 				21BD0E2828D4D64800826636 /* plugin.h in Headers */,
 				21BD0E2A28D4D64800826636 /* loader.h in Headers */,
 				215C210B28D5572C00C21A1F /* plugin.h in Headers */,
+				217BF2392AD5032A003FB649 /* error.h in Headers */,
 				215C210928D5572C00C21A1F /* loader.h in Headers */,
 				21BD0E3628D4D69600826636 /* d88.h in Headers */,
 			);
@@ -434,6 +452,7 @@
 				21BD0E4828D4D6D000826636 /* hfe_exporter.cpp in Sources */,
 				2151DF4C256A4B40009FC0E0 /* sector.cpp in Sources */,
 				21E15B0C256BB09100029338 /* string.cpp in Sources */,
+				217BF2352AD5032A003FB649 /* bpb.cpp in Sources */,
 				215C211528D55EA400C21A1F /* cpm.cpp in Sources */,
 				21E15B05256A742700029338 /* list.cpp in Sources */,
 				21352E2125768FA7007E05A4 /* hexdump.cpp in Sources */,
@@ -475,6 +494,7 @@
 				21BD0E3E28D4D6B300826636 /* raw_exporter.cpp in Sources */,
 				2161939B26EB9841007FA97A /* log.cpp in Sources */,
 				21403C0C255EFF060022389D /* file.cpp in Sources */,
+				217BF2362AD5032A003FB649 /* fat.cpp in Sources */,
 				21C2E0C7257299DF00305F1A /* error.cpp in Sources */,
 				21BD0E2928D4D64800826636 /* plugin.cpp in Sources */,
 			);
