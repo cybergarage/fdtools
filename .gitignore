@@ -45,5 +45,5 @@ xcshareddata/
 *.xcworkspace/
 
 # UNIX Binaries
-bin/*/unix/*
-test/unix/*
+bin/*/unix/^Makefile
+test/unix/^Makefile
