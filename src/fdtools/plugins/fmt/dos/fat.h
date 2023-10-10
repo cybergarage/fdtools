@@ -16,6 +16,7 @@
 #ifndef _FDTOOLS_DOS_FAT_H_
 #define _FDTOOLS_DOS_FAT_H_
 
+#include <fdtools/img/image.h>
 #include <fdtools/plugins/fmt/dos/bpb.h>
 
 #ifdef __cplusplus
@@ -23,12 +24,15 @@ extern "C" {
 #endif
 
 typedef struct FDT_ATTR_PACKED {
-  FdtFatBpb bpb;
-  FdtFatBpbExtended bpbExt;
+  FdtFatBpb* bpb;
+  FdtFatBpbExtended* bpbExt;
 } FdtFat;
 
 FdtFat* fdt_fat_new(void);
 bool fdt_fat_delete(FdtFat* bpb);
+bool fdt_fat_loadimage(FdtFat* fat, FdtImage* img, FdtError* err);
+
+bool fdt_fat_isbootimagesector(FdtImageSector*);
 
 #ifdef __cplusplus
 } /* extern C */
