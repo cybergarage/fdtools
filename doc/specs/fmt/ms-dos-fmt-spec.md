@@ -7,4 +7,5 @@
 - [Microsoft FAT Specification - Microsoft Corporation August 30 2005](https://academy.cba.mit.edu/classes/networking_communications/SD/FAT.pdf)
 - [How FAT Works_ Local File Systems _ Microsoft Learn](http://technet.microsoft.com/en-us/library/cc776720.aspx)
 - [Microsoft Extensible Firmware Initiative FAT32 File System Specification ]()
+- [FATファイルシステムのしくみと操作法](http://technet.microsoft.com/en-us/library/cc776720.aspx)
 - [Downloads | MSX Resource Center](https://www.msx.org/)
