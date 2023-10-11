@@ -70,7 +70,7 @@ FDT_IMAGE_IMAGER fdt_image_getimagerbysignature(const char* filename)
   return NULL;
 }
 
-FDT_IMAGE_IMAGER fdt_image_getimagerbyextention(const char* filename)
+FDT_IMAGE_IMAGER fdt_image_getfileimagerbyextention(const char* filename)
 {
   for (FdtImagePlugin* plg = fdt_image_getimagers(); plg; plg = fdt_image_plugin_next(plg)) {
     FdtImage* img = fdt_image_plugin_createimage(plg);
@@ -96,7 +96,7 @@ FDT_IMAGE_IMAGER fdt_image_getfileimager(const char* filename, FdtError* err)
   if (imager)
     return imager;
 
-  imager = fdt_image_getimagerbyextention(filename);
+  imager = fdt_image_getfileimagerbyextention(filename);
   if (imager)
     return imager;
 
