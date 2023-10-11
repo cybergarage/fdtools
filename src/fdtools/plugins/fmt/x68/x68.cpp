@@ -31,6 +31,11 @@ FdtFormat* fdt_x68_format_new(void)
   return fmt;
 }
 
+FdtImage* fdt_x68_floppy_image_from(const char*, FdtError*)
+{
+  return NULL;
+}
+
 const char* fdt_x68_format_gettypeid(FdtFormat* fmt)
 {
   return "X68000";
