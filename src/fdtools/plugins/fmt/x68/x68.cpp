@@ -13,6 +13,7 @@
 // limitations under the License.
 
 #include <fdtools/plugins/fmt/x68/x68.h>
+#include <fdtools/plugins/image.h>
 
 FdtFormat* fdt_x68_format_new(void)
 {
@@ -31,9 +32,14 @@ FdtFormat* fdt_x68_format_new(void)
   return fmt;
 }
 
-FdtImage* fdt_x68_floppy_image_from(const char*, FdtError*)
+FdtImage* fdt_x68_floppy_from(const char*target, FdtError*err)
 {
-  return NULL;
+  FdtImage* img = fdt_image_from(target, err);
+  if (!img) {
+    return NULL;
+  }
+
+  return img;
 }
 
 const char* fdt_x68_format_gettypeid(FdtFormat* fmt)

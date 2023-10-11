@@ -29,7 +29,7 @@ const size_t FDT_X68_FD_SECTOR = 8;
 const size_t FDT_X68_FD_SECTOR_SIZE = 1024;
 
 FdtImage* fdt_x68_floppy_image_new(void);
-FdtImage* fdt_x68_floppy_image_from(const char*, FdtError*);
+FdtImage* fdt_x68_floppy_from(const char*, FdtError*);
 bool fdt_x68_image_generate(FdtImage*);
 bool fdt_x68_image_delete(FdtImage*);
 
