@@ -21,5 +21,5 @@ all: test
 format:
 	./format
 
-test: format
-	fswatch -i ".*\\.h$$" -i ".*\\.cpp$$" -e "config.h" -o include -o src -o test | xargs -n 1 -I{} make check
+test:
+	fswatch -i ".*\\.h$$" -i ".*\\.cpp$$" -e "config.h" -o include -o src -o test | xargs -n 1 -I{} sh -c './format && make check'
