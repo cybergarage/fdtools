@@ -21,18 +21,18 @@
 #include <fdtools/plugins/img/plugin.h>
 #include <fdtools/plugins/img/raw/raw.h>
 
-bool fdt_image_name_isdevice(const char* filename)
+bool fdt_image_name_isdevice(const char* target)
 {
-  if (!filename || (fdt_strlen(filename) <= 0))
+  if (!target || (fdt_strlen(target) <= 0))
     return false;
 
-  if (!fdt_file_hasprefix(filename, FDT_DEVICE_PREFIX))
+  if (!fdt_file_hasprefix(target, FDT_DEVICE_PREFIX))
     return false;
 
   return true;
 }
 
-void fdt_image_plugins_getallextentions(FdtStrings* exts)
+void fdt_image_getallimagerextentions(FdtStrings* exts)
 {
   for (FdtImagePlugin* plg = fdt_image_getimagers(); plg; plg = fdt_image_plugin_next(plg)) {
     FdtImage* img = fdt_image_plugin_createimage(plg);

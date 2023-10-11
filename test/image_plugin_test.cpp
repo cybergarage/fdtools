@@ -21,7 +21,7 @@ BOOST_AUTO_TEST_CASE(ImagePluginTest)
 {
   FdtError* err = fdt_error_new();
   FdtStrings* all_target_exts = fdt_strings_new();
-  // fdt_image_plugins_getallextentions(all_target_exts);
+  // fdt_image_getallimagerextentions(all_target_exts);
   fdt_strings_addcstring(all_target_exts, "HFE");
 
   for (FdtString* target_ext = fdt_strings_gets(all_target_exts); target_ext; target_ext = fdt_string_next(target_ext)) {

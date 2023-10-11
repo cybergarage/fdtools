@@ -18,6 +18,7 @@
         "string_view": "cpp",
         "initializer_list": "cpp",
         "program.h": "c",
-        "chrono": "cpp"
+        "chrono": "cpp",
+        "filesystem": "cpp"
     }
 }
