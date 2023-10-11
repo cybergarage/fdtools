@@ -12,19 +12,19 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-bin_PROGRAMS = dosdir
+bin_PROGRAMS = x68info
 
 AM_CFLAGS = -I$(top_builddir)/include -I../ -I../../
 AM_CPPFLAGS = -I$(top_builddir)/include -I../ -I../../
 
-dosdir_SOURCES = \
+x68info_SOURCES = \
 	../../fdutils/program.cpp \
 	../../fdutils/console.cpp \
 	../../fdutils/device.cpp \
 	..//main.c
 
 #if HAVE_LIBTOOL
-#dosdir_LDADD = ../../../lib/unix/libfdtools.la
+#x68info_LDADD = ../../../lib/unix/libfdtools.la
 #else
-dosdir_LDADD = ../../../lib/unix/libfdtools.a
+x68info_LDADD = ../../../lib/unix/libfdtools.a
 #endif

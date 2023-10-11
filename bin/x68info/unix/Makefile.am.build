@@ -14,12 +14,12 @@ print<<HEADER;
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-bin_PROGRAMS = dosinfo
+bin_PROGRAMS = x68info
 
 AM_CFLAGS = -I\$(top_builddir)/include -I../ -I../../
 AM_CPPFLAGS = -I\$(top_builddir)/include -I../ -I../../
 
-dosinfo_SOURCES = \\
+x68info_SOURCES = \\
 HEADER
 
 my @source_files;
@@ -40,9 +40,9 @@ print join(" \\\n", @source_files) . "\n";
 print<<FOTTER;
 
 #if HAVE_LIBTOOL
-#dosinfo_LDADD = ../../../lib/unix/libfdtools.la
+#x68info_LDADD = ../../../lib/unix/libfdtools.la
 #else
-dosinfo_LDADD = ../../../lib/unix/libfdtools.a
+x68info_LDADD = ../../../lib/unix/libfdtools.a
 #endif
 FOTTER
 

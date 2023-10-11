@@ -100,8 +100,8 @@ POST_INSTALL = :
 NORMAL_UNINSTALL = :
 PRE_UNINSTALL = :
 POST_UNINSTALL = :
-bin_PROGRAMS = dosdir$(EXEEXT)
-subdir = bin/dosinfo/unix
+bin_PROGRAMS = x68info$(EXEEXT)
+subdir = bin/x68info/unix
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 am__aclocal_m4_deps = $(top_srcdir)/configure.ac
 am__configure_deps = $(am__aclocal_m4_deps) $(CONFIGURE_DEPENDENCIES) \
@@ -114,11 +114,11 @@ CONFIG_CLEAN_VPATH_FILES =
 am__installdirs = "$(DESTDIR)$(bindir)"
 PROGRAMS = $(bin_PROGRAMS)
 am__dirstamp = $(am__leading_dot)dirstamp
-am_dosdir_OBJECTS = ../../fdutils/program.$(OBJEXT) \
+am_x68info_OBJECTS = ../../fdutils/program.$(OBJEXT) \
 	../../fdutils/console.$(OBJEXT) ../../fdutils/device.$(OBJEXT) \
 	../main.$(OBJEXT)
-dosdir_OBJECTS = $(am_dosdir_OBJECTS)
-dosdir_DEPENDENCIES = ../../../lib/unix/libfdtools.a
+x68info_OBJECTS = $(am_x68info_OBJECTS)
+x68info_DEPENDENCIES = ../../../lib/unix/libfdtools.a
 AM_V_P = $(am__v_P_@AM_V@)
 am__v_P_ = $(am__v_P_@AM_DEFAULT_V@)
 am__v_P_0 = false
@@ -164,8 +164,8 @@ AM_V_CXXLD = $(am__v_CXXLD_@AM_V@)
 am__v_CXXLD_ = $(am__v_CXXLD_@AM_DEFAULT_V@)
 am__v_CXXLD_0 = @echo "  CXXLD   " $@;
 am__v_CXXLD_1 = 
-SOURCES = $(dosdir_SOURCES)
-DIST_SOURCES = $(dosdir_SOURCES)
+SOURCES = $(x68info_SOURCES)
+DIST_SOURCES = $(x68info_SOURCES)
 am__can_run_installinfo = \
   case $$AM_UPDATE_INFO_DIR in \
     n|no|NO) false;; \
@@ -285,7 +285,7 @@ top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
 AM_CFLAGS = -I$(top_builddir)/include -I../ -I../../
 AM_CPPFLAGS = -I$(top_builddir)/include -I../ -I../../
-dosdir_SOURCES = \
+x68info_SOURCES = \
 	../../fdutils/program.cpp \
 	../../fdutils/console.cpp \
 	../../fdutils/device.cpp \
@@ -293,9 +293,9 @@ dosdir_SOURCES = \
 
 
 #if HAVE_LIBTOOL
-#dosdir_LDADD = ../../../lib/unix/libfdtools.la
+#x68info_LDADD = ../../../lib/unix/libfdtools.la
 #else
-dosdir_LDADD = ../../../lib/unix/libfdtools.a
+x68info_LDADD = ../../../lib/unix/libfdtools.a
 all: all-am
 
 .SUFFIXES:
@@ -309,9 +309,9 @@ $(srcdir)/Makefile.in:  $(srcdir)/Makefile.am  $(am__configure_deps)
 	      exit 1;; \
 	  esac; \
 	done; \
-	echo ' cd $(top_srcdir) && $(AUTOMAKE) --foreign bin/dosinfo/unix/Makefile'; \
+	echo ' cd $(top_srcdir) && $(AUTOMAKE) --foreign bin/x68info/unix/Makefile'; \
 	$(am__cd) $(top_srcdir) && \
-	  $(AUTOMAKE) --foreign bin/dosinfo/unix/Makefile
+	  $(AUTOMAKE) --foreign bin/x68info/unix/Makefile
 Makefile: $(srcdir)/Makefile.in $(top_builddir)/config.status
 	@case '$?' in \
 	  *config.status*) \
@@ -391,9 +391,9 @@ clean-binPROGRAMS:
 	@: > ../$(DEPDIR)/$(am__dirstamp)
 ../main.$(OBJEXT): ../$(am__dirstamp) ../$(DEPDIR)/$(am__dirstamp)
 
-dosdir$(EXEEXT): $(dosdir_OBJECTS) $(dosdir_DEPENDENCIES) $(EXTRA_dosdir_DEPENDENCIES) 
-	@rm -f dosdir$(EXEEXT)
-	$(AM_V_CXXLD)$(CXXLINK) $(dosdir_OBJECTS) $(dosdir_LDADD) $(LIBS)
+x68info$(EXEEXT): $(x68info_OBJECTS) $(x68info_DEPENDENCIES) $(EXTRA_x68info_DEPENDENCIES) 
+	@rm -f x68info$(EXEEXT)
+	$(AM_V_CXXLD)$(CXXLINK) $(x68info_OBJECTS) $(x68info_LDADD) $(LIBS)
 
 mostlyclean-compile:
 	-rm -f *.$(OBJEXT)
