@@ -83,7 +83,7 @@ FDT_IMAGE_IMAGER fdt_image_getimagerbyextention(const char* filename)
   return NULL;
 }
 
-FDT_IMAGE_IMAGER fdt_image_getimagerbyfile(const char* filename, FdtError* err)
+FDT_IMAGE_IMAGER fdt_image_getfileimager(const char* filename, FdtError* err)
 {
   if (!filename || (fdt_strlen(filename) <= 0))
     return NULL;
@@ -108,7 +108,7 @@ FDT_IMAGE_IMAGER fdt_image_getimager(const char* target, FdtError* err)
   if (!target || (fdt_strlen(target) <= 0))
     return NULL;
 
-  FDT_IMAGE_IMAGER imager = fdt_image_getimagerbyfile(target, err);
+  FDT_IMAGE_IMAGER imager = fdt_image_getfileimager(target, err);
   if (!imager) {
     fdt_error_setmessage(err, FDT_IMAGE_MESSAGE_UNKNOWN_TYPE_FORMAT, target);
     return NULL;
