@@ -5513,7 +5513,7 @@ fi
 # Makefiles
 ##############################
 
-ac_config_files="$ac_config_files Makefile include/Makefile lib/Makefile lib/unix/Makefile bin/Makefile bin/fdcopy/Makefile bin/fdcopy/unix/Makefile bin/fdinfo/Makefile bin/fdinfo/unix/Makefile bin/fddump/Makefile bin/fddump/unix/Makefile bin/fddiff/Makefile bin/fddiff/unix/Makefile bin/dosinfo/Makefile bin/dosinfo/unix/Makefile bin/dosdir/Makefile bin/dosdir/unix/Makefile bin/dosfmt/Makefile bin/dosfmt/unix/Makefile bin/cpmdir/Makefile bin/cpmdir/unix/Makefile bin/cpmfmt/Makefile bin/cpmfmt/unix/Makefile bin/x68dsk/Makefile bin/x68dsk/unix/Makefile bin/x68fmt/Makefile bin/x68fmt/unix/Makefile test/Makefile test/unix/Makefile"
+ac_config_files="$ac_config_files Makefile include/Makefile lib/Makefile lib/unix/Makefile bin/Makefile bin/fdcopy/Makefile bin/fdcopy/unix/Makefile bin/fdinfo/Makefile bin/fdinfo/unix/Makefile bin/fddump/Makefile bin/fddump/unix/Makefile bin/fddiff/Makefile bin/fddiff/unix/Makefile bin/dosinfo/Makefile bin/dosinfo/unix/Makefile bin/dosdir/Makefile bin/dosdir/unix/Makefile bin/dosfmt/Makefile bin/dosfmt/unix/Makefile bin/cpmdir/Makefile bin/cpmdir/unix/Makefile bin/cpmfmt/Makefile bin/cpmfmt/unix/Makefile bin/x68dsk/Makefile bin/x68dsk/unix/Makefile bin/x68fmt/Makefile bin/x68fmt/unix/Makefile bin/x68info/Makefile bin/x68info/unix/Makefile test/Makefile test/unix/Makefile"
 
 cat >confcache <<\_ACEOF
 # This file is a shell script that caches the results of configure
@@ -6272,6 +6272,8 @@ do
     "bin/x68dsk/unix/Makefile") CONFIG_FILES="$CONFIG_FILES bin/x68dsk/unix/Makefile" ;;
     "bin/x68fmt/Makefile") CONFIG_FILES="$CONFIG_FILES bin/x68fmt/Makefile" ;;
     "bin/x68fmt/unix/Makefile") CONFIG_FILES="$CONFIG_FILES bin/x68fmt/unix/Makefile" ;;
+    "bin/x68info/Makefile") CONFIG_FILES="$CONFIG_FILES bin/x68info/Makefile" ;;
+    "bin/x68info/unix/Makefile") CONFIG_FILES="$CONFIG_FILES bin/x68info/unix/Makefile" ;;
     "test/Makefile") CONFIG_FILES="$CONFIG_FILES test/Makefile" ;;
     "test/unix/Makefile") CONFIG_FILES="$CONFIG_FILES test/unix/Makefile" ;;
 

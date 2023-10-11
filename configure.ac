@@ -110,6 +110,8 @@ bin/x68dsk/Makefile
 bin/x68dsk/unix/Makefile
 bin/x68fmt/Makefile
 bin/x68fmt/unix/Makefile
+bin/x68info/Makefile
+bin/x68info/unix/Makefile
 test/Makefile
 test/unix/Makefile
 ])
