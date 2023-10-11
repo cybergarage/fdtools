@@ -120,8 +120,8 @@ am_fdtoolstest_OBJECTS = ../device_test.$(OBJEXT) \
 	../format_plugin_test.$(OBJEXT) ../image_hfe_test.$(OBJEXT) \
 	../sector_test.$(OBJEXT) ../list_test.$(OBJEXT) \
 	../logic_test.$(OBJEXT) ../image_test_func.$(OBJEXT) \
-	../format_test.$(OBJEXT) ../image_test.$(OBJEXT) \
-	../image_d88_test.$(OBJEXT) \
+	../format_x68_test.$(OBJEXT) ../format_test.$(OBJEXT) \
+	../image_test.$(OBJEXT) ../image_d88_test.$(OBJEXT) \
 	../device_floppy_params_test.$(OBJEXT) ../main.$(OBJEXT) \
 	../error_test.$(OBJEXT)
 fdtoolstest_OBJECTS = $(am_fdtoolstest_OBJECTS)
@@ -147,8 +147,8 @@ am__depfiles_remade = ../$(DEPDIR)/config_test.Po \
 	../$(DEPDIR)/dictionary_test.Po ../$(DEPDIR)/error_test.Po \
 	../$(DEPDIR)/format_dos_test.Po \
 	../$(DEPDIR)/format_plugin_test.Po ../$(DEPDIR)/format_test.Po \
-	../$(DEPDIR)/image_d88_test.Po ../$(DEPDIR)/image_file_test.Po \
-	../$(DEPDIR)/image_hfe_test.Po \
+	../$(DEPDIR)/format_x68_test.Po ../$(DEPDIR)/image_d88_test.Po \
+	../$(DEPDIR)/image_file_test.Po ../$(DEPDIR)/image_hfe_test.Po \
 	../$(DEPDIR)/image_plugin_test.Po ../$(DEPDIR)/image_test.Po \
 	../$(DEPDIR)/image_test_func.Po ../$(DEPDIR)/list_test.Po \
 	../$(DEPDIR)/logic_test.Po ../$(DEPDIR)/main.Po \
@@ -510,6 +510,7 @@ fdtoolstest_SOURCES = \
 	..//list_test.cpp \
 	..//logic_test.cpp \
 	..//image_test_func.cpp \
+	..//format_x68_test.cpp \
 	..//format_test.cpp \
 	..//image_test.cpp \
 	..//image_d88_test.cpp \
@@ -594,6 +595,8 @@ clean-checkPROGRAMS:
 	../$(DEPDIR)/$(am__dirstamp)
 ../image_test_func.$(OBJEXT): ../$(am__dirstamp) \
 	../$(DEPDIR)/$(am__dirstamp)
+../format_x68_test.$(OBJEXT): ../$(am__dirstamp) \
+	../$(DEPDIR)/$(am__dirstamp)
 ../format_test.$(OBJEXT): ../$(am__dirstamp) \
 	../$(DEPDIR)/$(am__dirstamp)
 ../image_test.$(OBJEXT): ../$(am__dirstamp) \
@@ -626,6 +629,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@../$(DEPDIR)/format_dos_test.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@../$(DEPDIR)/format_plugin_test.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@../$(DEPDIR)/format_test.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@../$(DEPDIR)/format_x68_test.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@../$(DEPDIR)/image_d88_test.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@../$(DEPDIR)/image_file_test.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@../$(DEPDIR)/image_hfe_test.Po@am__quote@ # am--include-marker
@@ -963,6 +967,7 @@ distclean: distclean-am
 	-rm -f ../$(DEPDIR)/format_dos_test.Po
 	-rm -f ../$(DEPDIR)/format_plugin_test.Po
 	-rm -f ../$(DEPDIR)/format_test.Po
+	-rm -f ../$(DEPDIR)/format_x68_test.Po
 	-rm -f ../$(DEPDIR)/image_d88_test.Po
 	-rm -f ../$(DEPDIR)/image_file_test.Po
 	-rm -f ../$(DEPDIR)/image_hfe_test.Po
@@ -1029,6 +1034,7 @@ maintainer-clean: maintainer-clean-am
 	-rm -f ../$(DEPDIR)/format_dos_test.Po
 	-rm -f ../$(DEPDIR)/format_plugin_test.Po
 	-rm -f ../$(DEPDIR)/format_test.Po
+	-rm -f ../$(DEPDIR)/format_x68_test.Po
 	-rm -f ../$(DEPDIR)/image_d88_test.Po
 	-rm -f ../$(DEPDIR)/image_file_test.Po
 	-rm -f ../$(DEPDIR)/image_hfe_test.Po

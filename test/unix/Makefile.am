@@ -35,6 +35,7 @@ fdtoolstest_SOURCES = \
 	..//list_test.cpp \
 	..//logic_test.cpp \
 	..//image_test_func.cpp \
+	..//format_x68_test.cpp \
 	..//format_test.cpp \
 	..//image_test.cpp \
 	..//image_d88_test.cpp \
