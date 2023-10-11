@@ -61,6 +61,7 @@ $(document).ready(function(){initNavTree('bpb_8h.html',''); initResizable(); });
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Data Structures</a> &#124;
+<a href="#define-members">Macros</a> &#124;
 <a href="#typedef-members">Typedefs</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle"><div class="title">bpb.h File Reference</div></div>
@@ -74,12 +75,41 @@ Data Structures</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structFDT__ATTR__PACKED.html">FDT_ATTR_PACKED</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:aed03fdaa0a2f12cd40aa11e2c3e8a861"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bpb_8h.html#aed03fdaa0a2f12cd40aa11e2c3e8a861">fdt_fat_bpb_getjumpboot</a>(bpb)&#160;&#160;&#160;((bpb)-&gt;BS_jmpBoot)</td></tr>
+<tr class="separator:aed03fdaa0a2f12cd40aa11e2c3e8a861"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a487096dd6c3ac5c1779dac2c3406164a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bpb_8h.html#a487096dd6c3ac5c1779dac2c3406164a">fdt_fat_bpb_getoemname</a>(bpb)&#160;&#160;&#160;((bpb)-&gt;BS_OEMName)</td></tr>
+<tr class="separator:a487096dd6c3ac5c1779dac2c3406164a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6e4e89cd263bd26519fdf2c15e98ecba"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bpb_8h.html#a6e4e89cd263bd26519fdf2c15e98ecba">fdt_fat_bpb_getbytespersec</a>(bpb)&#160;&#160;&#160;((bpb)-&gt;BPB_BytsPerSec)</td></tr>
+<tr class="separator:a6e4e89cd263bd26519fdf2c15e98ecba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a268fb1316b4f8f3fee12aba9baf893d7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bpb_8h.html#a268fb1316b4f8f3fee12aba9baf893d7">fdt_fat_bpb_getsecperclus</a>(bpb)&#160;&#160;&#160;((bpb)-&gt;BPB_SecPerClus[0])</td></tr>
+<tr class="separator:a268fb1316b4f8f3fee12aba9baf893d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a55b0f79825022de992f2f7d3d118a1d0"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bpb_8h.html#a55b0f79825022de992f2f7d3d118a1d0">fdt_fat_bpb_getrsvdseccnt</a>(bpb)&#160;&#160;&#160;((bpb)-&gt;BPB_RsvdSecCnt)</td></tr>
+<tr class="separator:a55b0f79825022de992f2f7d3d118a1d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0604281ff4b0af19384435d16e8e9397"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bpb_8h.html#a0604281ff4b0af19384435d16e8e9397">fdt_fat_bpb_getnumfats</a>(bpb)&#160;&#160;&#160;((bpb)-&gt;BPB_NumFATs[0])</td></tr>
+<tr class="separator:a0604281ff4b0af19384435d16e8e9397"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afd9c8746373392dfdf8a30adfa91d4cc"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bpb_8h.html#afd9c8746373392dfdf8a30adfa91d4cc">fdt_fat_bpb_getrootentcnt</a>(bpb)&#160;&#160;&#160;((bpb)-&gt;BPB_RootEntCnt)</td></tr>
+<tr class="separator:afd9c8746373392dfdf8a30adfa91d4cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adb3c00014d10bcfbed8cde92388238bd"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bpb_8h.html#adb3c00014d10bcfbed8cde92388238bd">fdt_fat_bpb_gettotsec16</a>(bpb)&#160;&#160;&#160;((bpb)-&gt;BPB_TotSec16)</td></tr>
+<tr class="separator:adb3c00014d10bcfbed8cde92388238bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afba2d7d79575c40ddd4f21b4b5dedd57"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bpb_8h.html#afba2d7d79575c40ddd4f21b4b5dedd57">fdt_fat_bpb_getmedia</a>(bpb)&#160;&#160;&#160;((bpb)-&gt;BPB_Media[0])</td></tr>
+<tr class="separator:afba2d7d79575c40ddd4f21b4b5dedd57"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac8d16221ff12bc0de5738be0f54d67d2"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bpb_8h.html#ac8d16221ff12bc0de5738be0f54d67d2">fdt_fat_bpb_getfatsz16</a>(bpb)&#160;&#160;&#160;((bpb)-&gt;BPB_FATSz16)</td></tr>
+<tr class="separator:ac8d16221ff12bc0de5738be0f54d67d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad96ab114a87d4350e451c19dede66df2"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bpb_8h.html#ad96ab114a87d4350e451c19dede66df2">fdt_fat_bpb_getsecpertrk</a>(bpb)&#160;&#160;&#160;((bpb)-&gt;BPB_SecPerTrk)</td></tr>
+<tr class="separator:ad96ab114a87d4350e451c19dede66df2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a24f89ad57a577ba59dee758779c0a734"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bpb_8h.html#a24f89ad57a577ba59dee758779c0a734">fdt_fat_bpb_getnumheads</a>(bpb)&#160;&#160;&#160;((bpb)-&gt;BPB_NumHeads)</td></tr>
+<tr class="separator:a24f89ad57a577ba59dee758779c0a734"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a29b1aa375551a0cfa78f1675a6d945c8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bpb_8h.html#a29b1aa375551a0cfa78f1675a6d945c8">fdt_fat_bpb_gethiddsec</a>(bpb)&#160;&#160;&#160;((bpb)-&gt;BPB_HiddSec)</td></tr>
+<tr class="separator:a29b1aa375551a0cfa78f1675a6d945c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2883dbf21784006c36ad5e04484b32f0"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bpb_8h.html#a2883dbf21784006c36ad5e04484b32f0">fdt_fat_bpb_gettotsec32</a>(bpb)&#160;&#160;&#160;((bpb)-&gt;BPB_TotSec32)</td></tr>
+<tr class="separator:a2883dbf21784006c36ad5e04484b32f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
 <tr class="memitem:ac2a30588e8101c5a3fac08cbb4d1cb23"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structFDT__ATTR__PACKED.html">FDT_ATTR_PACKED</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bpb_8h.html#ac2a30588e8101c5a3fac08cbb4d1cb23">FdtFatBpb</a></td></tr>
 <tr class="separator:ac2a30588e8101c5a3fac08cbb4d1cb23"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a958b36cf1c69a9679e9ed9b4c163af5d"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structFDT__ATTR__PACKED.html">FDT_ATTR_PACKED</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bpb_8h.html#a958b36cf1c69a9679e9ed9b4c163af5d">FdtFatBpbExtended</a></td></tr>
-<tr class="separator:a958b36cf1c69a9679e9ed9b4c163af5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
@@ -89,13 +119,260 @@ Functions</h2></td></tr>
 <tr class="separator:abfd31cea2097cf953abd1a327186b276"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a70c76564fa05de983ee40083c492f9e5"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bpb_8h.html#a70c76564fa05de983ee40083c492f9e5">fdt_fat_bpb_loadimagesector</a> (<a class="el" href="bpb_8h.html#ac2a30588e8101c5a3fac08cbb4d1cb23">FdtFatBpb</a> *, <a class="el" href="structFdtImageSector.html">FdtImageSector</a> *, <a class="el" href="structFdtError.html">FdtError</a> *)</td></tr>
 <tr class="separator:a70c76564fa05de983ee40083c492f9e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6a05a87ce62bb7d9e40972ef3f712da8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="bpb_8h.html#a958b36cf1c69a9679e9ed9b4c163af5d">FdtFatBpbExtended</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bpb_8h.html#a6a05a87ce62bb7d9e40972ef3f712da8">fdt_fat_bpbex_new</a> (void)</td></tr>
-<tr class="separator:a6a05a87ce62bb7d9e40972ef3f712da8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3d988895774944038a0384a5b83eeddf"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bpb_8h.html#a3d988895774944038a0384a5b83eeddf">fdt_fat_bpbex_delete</a> (<a class="el" href="bpb_8h.html#a958b36cf1c69a9679e9ed9b4c163af5d">FdtFatBpbExtended</a> *)</td></tr>
-<tr class="separator:a3d988895774944038a0384a5b83eeddf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8d0731d117a051bc92a7284dfb6134a1"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bpb_8h.html#a8d0731d117a051bc92a7284dfb6134a1">fdt_fat_bpbex_loadimagesector</a> (<a class="el" href="bpb_8h.html#a958b36cf1c69a9679e9ed9b4c163af5d">FdtFatBpbExtended</a> *, <a class="el" href="structFdtImageSector.html">FdtImageSector</a> *, <a class="el" href="structFdtError.html">FdtError</a> *)</td></tr>
-<tr class="separator:a8d0731d117a051bc92a7284dfb6134a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Macro Definition Documentation</h2>
+<a id="a6e4e89cd263bd26519fdf2c15e98ecba" name="a6e4e89cd263bd26519fdf2c15e98ecba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6e4e89cd263bd26519fdf2c15e98ecba">&#9670;&nbsp;</a></span>fdt_fat_bpb_getbytespersec</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define fdt_fat_bpb_getbytespersec</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">bpb</td><td>)</td>
+          <td>&#160;&#160;&#160;((bpb)-&gt;BPB_BytsPerSec)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac8d16221ff12bc0de5738be0f54d67d2" name="ac8d16221ff12bc0de5738be0f54d67d2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac8d16221ff12bc0de5738be0f54d67d2">&#9670;&nbsp;</a></span>fdt_fat_bpb_getfatsz16</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define fdt_fat_bpb_getfatsz16</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">bpb</td><td>)</td>
+          <td>&#160;&#160;&#160;((bpb)-&gt;BPB_FATSz16)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a29b1aa375551a0cfa78f1675a6d945c8" name="a29b1aa375551a0cfa78f1675a6d945c8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a29b1aa375551a0cfa78f1675a6d945c8">&#9670;&nbsp;</a></span>fdt_fat_bpb_gethiddsec</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define fdt_fat_bpb_gethiddsec</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">bpb</td><td>)</td>
+          <td>&#160;&#160;&#160;((bpb)-&gt;BPB_HiddSec)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aed03fdaa0a2f12cd40aa11e2c3e8a861" name="aed03fdaa0a2f12cd40aa11e2c3e8a861"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aed03fdaa0a2f12cd40aa11e2c3e8a861">&#9670;&nbsp;</a></span>fdt_fat_bpb_getjumpboot</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define fdt_fat_bpb_getjumpboot</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">bpb</td><td>)</td>
+          <td>&#160;&#160;&#160;((bpb)-&gt;BS_jmpBoot)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="afba2d7d79575c40ddd4f21b4b5dedd57" name="afba2d7d79575c40ddd4f21b4b5dedd57"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afba2d7d79575c40ddd4f21b4b5dedd57">&#9670;&nbsp;</a></span>fdt_fat_bpb_getmedia</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define fdt_fat_bpb_getmedia</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">bpb</td><td>)</td>
+          <td>&#160;&#160;&#160;((bpb)-&gt;BPB_Media[0])</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0604281ff4b0af19384435d16e8e9397" name="a0604281ff4b0af19384435d16e8e9397"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0604281ff4b0af19384435d16e8e9397">&#9670;&nbsp;</a></span>fdt_fat_bpb_getnumfats</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define fdt_fat_bpb_getnumfats</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">bpb</td><td>)</td>
+          <td>&#160;&#160;&#160;((bpb)-&gt;BPB_NumFATs[0])</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a24f89ad57a577ba59dee758779c0a734" name="a24f89ad57a577ba59dee758779c0a734"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a24f89ad57a577ba59dee758779c0a734">&#9670;&nbsp;</a></span>fdt_fat_bpb_getnumheads</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define fdt_fat_bpb_getnumheads</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">bpb</td><td>)</td>
+          <td>&#160;&#160;&#160;((bpb)-&gt;BPB_NumHeads)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a487096dd6c3ac5c1779dac2c3406164a" name="a487096dd6c3ac5c1779dac2c3406164a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a487096dd6c3ac5c1779dac2c3406164a">&#9670;&nbsp;</a></span>fdt_fat_bpb_getoemname</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define fdt_fat_bpb_getoemname</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">bpb</td><td>)</td>
+          <td>&#160;&#160;&#160;((bpb)-&gt;BS_OEMName)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="afd9c8746373392dfdf8a30adfa91d4cc" name="afd9c8746373392dfdf8a30adfa91d4cc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afd9c8746373392dfdf8a30adfa91d4cc">&#9670;&nbsp;</a></span>fdt_fat_bpb_getrootentcnt</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define fdt_fat_bpb_getrootentcnt</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">bpb</td><td>)</td>
+          <td>&#160;&#160;&#160;((bpb)-&gt;BPB_RootEntCnt)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a55b0f79825022de992f2f7d3d118a1d0" name="a55b0f79825022de992f2f7d3d118a1d0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a55b0f79825022de992f2f7d3d118a1d0">&#9670;&nbsp;</a></span>fdt_fat_bpb_getrsvdseccnt</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define fdt_fat_bpb_getrsvdseccnt</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">bpb</td><td>)</td>
+          <td>&#160;&#160;&#160;((bpb)-&gt;BPB_RsvdSecCnt)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a268fb1316b4f8f3fee12aba9baf893d7" name="a268fb1316b4f8f3fee12aba9baf893d7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a268fb1316b4f8f3fee12aba9baf893d7">&#9670;&nbsp;</a></span>fdt_fat_bpb_getsecperclus</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define fdt_fat_bpb_getsecperclus</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">bpb</td><td>)</td>
+          <td>&#160;&#160;&#160;((bpb)-&gt;BPB_SecPerClus[0])</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad96ab114a87d4350e451c19dede66df2" name="ad96ab114a87d4350e451c19dede66df2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad96ab114a87d4350e451c19dede66df2">&#9670;&nbsp;</a></span>fdt_fat_bpb_getsecpertrk</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define fdt_fat_bpb_getsecpertrk</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">bpb</td><td>)</td>
+          <td>&#160;&#160;&#160;((bpb)-&gt;BPB_SecPerTrk)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="adb3c00014d10bcfbed8cde92388238bd" name="adb3c00014d10bcfbed8cde92388238bd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adb3c00014d10bcfbed8cde92388238bd">&#9670;&nbsp;</a></span>fdt_fat_bpb_gettotsec16</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define fdt_fat_bpb_gettotsec16</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">bpb</td><td>)</td>
+          <td>&#160;&#160;&#160;((bpb)-&gt;BPB_TotSec16)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2883dbf21784006c36ad5e04484b32f0" name="a2883dbf21784006c36ad5e04484b32f0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2883dbf21784006c36ad5e04484b32f0">&#9670;&nbsp;</a></span>fdt_fat_bpb_gettotsec32</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define fdt_fat_bpb_gettotsec32</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">bpb</td><td>)</td>
+          <td>&#160;&#160;&#160;((bpb)-&gt;BPB_TotSec32)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <h2 class="groupheader">Typedef Documentation</h2>
 <a id="ac2a30588e8101c5a3fac08cbb4d1cb23" name="ac2a30588e8101c5a3fac08cbb4d1cb23"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac2a30588e8101c5a3fac08cbb4d1cb23">&#9670;&nbsp;</a></span>FdtFatBpb</h2>
@@ -105,20 +382,6 @@ Functions</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname">typedef struct <a class="el" href="structFDT__ATTR__PACKED.html">FDT_ATTR_PACKED</a> <a class="el" href="bpb_8h.html#ac2a30588e8101c5a3fac08cbb4d1cb23">FdtFatBpb</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a958b36cf1c69a9679e9ed9b4c163af5d" name="a958b36cf1c69a9679e9ed9b4c163af5d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a958b36cf1c69a9679e9ed9b4c163af5d">&#9670;&nbsp;</a></span>FdtFatBpbExtended</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef struct <a class="el" href="structFDT__ATTR__PACKED.html">FDT_ATTR_PACKED</a> <a class="el" href="bpb_8h.html#a958b36cf1c69a9679e9ed9b4c163af5d">FdtFatBpbExtended</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -186,76 +449,6 @@ Functions</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="bpb_8h.html#ac2a30588e8101c5a3fac08cbb4d1cb23">FdtFatBpb</a> * fdt_fat_bpb_new </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a3d988895774944038a0384a5b83eeddf" name="a3d988895774944038a0384a5b83eeddf"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3d988895774944038a0384a5b83eeddf">&#9670;&nbsp;</a></span>fdt_fat_bpbex_delete()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool fdt_fat_bpbex_delete </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="bpb_8h.html#a958b36cf1c69a9679e9ed9b4c163af5d">FdtFatBpbExtended</a> *&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a8d0731d117a051bc92a7284dfb6134a1" name="a8d0731d117a051bc92a7284dfb6134a1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8d0731d117a051bc92a7284dfb6134a1">&#9670;&nbsp;</a></span>fdt_fat_bpbex_loadimagesector()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool fdt_fat_bpbex_loadimagesector </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="bpb_8h.html#a958b36cf1c69a9679e9ed9b4c163af5d">FdtFatBpbExtended</a> *&#160;</td>
-          <td class="paramname">, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="structFdtImageSector.html">FdtImageSector</a> *&#160;</td>
-          <td class="paramname">, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="structFdtError.html">FdtError</a> *&#160;</td>
-          <td class="paramname">&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a6a05a87ce62bb7d9e40972ef3f712da8" name="a6a05a87ce62bb7d9e40972ef3f712da8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6a05a87ce62bb7d9e40972ef3f712da8">&#9670;&nbsp;</a></span>fdt_fat_bpbex_new()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="bpb_8h.html#a958b36cf1c69a9679e9ed9b4c163af5d">FdtFatBpbExtended</a> * fdt_fat_bpbex_new </td>
           <td>(</td>
           <td class="paramtype">void&#160;</td>
           <td class="paramname"></td><td>)</td>
