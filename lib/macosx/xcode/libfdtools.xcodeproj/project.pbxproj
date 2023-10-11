@@ -28,6 +28,7 @@
 		215C211528D55EA400C21A1F /* cpm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 215C211328D55EA400C21A1F /* cpm.cpp */; };
 		215C211A28D5801200C21A1F /* file.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 215C211928D5801200C21A1F /* file.cpp */; };
 		215C211C28D58DDC00C21A1F /* files.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 215C211B28D58DDC00C21A1F /* files.cpp */; };
+		21612F1D2AD6E94D004D2F1B /* bpbex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 21612F1C2AD6E94D004D2F1B /* bpbex.cpp */; };
 		2161939B26EB9841007FA97A /* log.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2161939A26EB9841007FA97A /* log.cpp */; };
 		21641A81258E2C490062AD50 /* device_unix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 21641A80258E2C490062AD50 /* device_unix.cpp */; };
 		21641A84258EF8240062AD50 /* image.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 21641A83258EF8240062AD50 /* image.cpp */; };
@@ -37,7 +38,6 @@
 		217BF2372AD5032A003FB649 /* fat.h in Headers */ = {isa = PBXBuildFile; fileRef = 217BF2322AD5032A003FB649 /* fat.h */; };
 		217BF2382AD5032A003FB649 /* bpb.h in Headers */ = {isa = PBXBuildFile; fileRef = 217BF2332AD5032A003FB649 /* bpb.h */; };
 		217BF2392AD5032A003FB649 /* error.h in Headers */ = {isa = PBXBuildFile; fileRef = 217BF2342AD5032A003FB649 /* error.h */; };
-		217BF23B2AD527AF003FB649 /* bpb_ex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 217BF23A2AD527AF003FB649 /* bpb_ex.cpp */; };
 		217BF23D2AD5303E003FB649 /* func.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 217BF23C2AD5303E003FB649 /* func.cpp */; };
 		219F7D4A255FC8B000827D5C /* config.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 219F7D48255FC8B000827D5C /* config.cpp */; };
 		21ACB8E728C46EE000DFAEE6 /* format.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 21ACB8E628C46EE000DFAEE6 /* format.cpp */; };
@@ -99,6 +99,7 @@
 		215C211328D55EA400C21A1F /* cpm.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = cpm.cpp; path = ../../../src/fdtools/plugins/fmt/cpm/cpm.cpp; sourceTree = "<group>"; };
 		215C211928D5801200C21A1F /* file.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = file.cpp; path = ../../../src/fdtools/fmt/file.cpp; sourceTree = "<group>"; };
 		215C211B28D58DDC00C21A1F /* files.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = files.cpp; path = ../../../src/fdtools/fmt/files.cpp; sourceTree = "<group>"; };
+		21612F1C2AD6E94D004D2F1B /* bpbex.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = bpbex.cpp; path = ../../../src/fdtools/plugins/fmt/dos/bpbex.cpp; sourceTree = "<group>"; };
 		2161939A26EB9841007FA97A /* log.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = log.cpp; path = ../../../src/fdtools/util/log.cpp; sourceTree = "<group>"; };
 		21641A80258E2C490062AD50 /* device_unix.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = device_unix.cpp; path = ../../../src/fdtools/dev/device_unix.cpp; sourceTree = "<group>"; };
 		21641A83258EF8240062AD50 /* image.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = image.cpp; path = ../../../src/fdtools/dev/image.cpp; sourceTree = "<group>"; };
@@ -109,7 +110,6 @@
 		217BF2322AD5032A003FB649 /* fat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = fat.h; path = ../../../src/fdtools/plugins/fmt/dos/fat.h; sourceTree = "<group>"; };
 		217BF2332AD5032A003FB649 /* bpb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = bpb.h; path = ../../../src/fdtools/plugins/fmt/dos/bpb.h; sourceTree = "<group>"; };
 		217BF2342AD5032A003FB649 /* error.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = error.h; path = ../../../src/fdtools/plugins/fmt/dos/error.h; sourceTree = "<group>"; };
-		217BF23A2AD527AF003FB649 /* bpb_ex.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = bpb_ex.cpp; path = ../../../src/fdtools/plugins/fmt/dos/bpb_ex.cpp; sourceTree = "<group>"; };
 		217BF23C2AD5303E003FB649 /* func.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = func.cpp; path = ../../../src/fdtools/plugins/fmt/dos/func.cpp; sourceTree = "<group>"; };
 		219F7D48255FC8B000827D5C /* config.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = config.cpp; path = ../../../src/fdtools/img/config.cpp; sourceTree = "<group>"; };
 		21ACB8E628C46EE000DFAEE6 /* format.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = format.cpp; path = ../../../src/fdtools/fmt/format.cpp; sourceTree = "<group>"; };
@@ -216,8 +216,8 @@
 		215C210C28D55E3400C21A1F /* dos */ = {
 			isa = PBXGroup;
 			children = (
+				21612F1C2AD6E94D004D2F1B /* bpbex.cpp */,
 				217BF23C2AD5303E003FB649 /* func.cpp */,
-				217BF23A2AD527AF003FB649 /* bpb_ex.cpp */,
 				217BF2302AD5032A003FB649 /* bpb.cpp */,
 				217BF2332AD5032A003FB649 /* bpb.h */,
 				217BF2342AD5032A003FB649 /* error.h */,
@@ -470,6 +470,7 @@
 				21BD0E3528D4D69600826636 /* d88_loader.cpp in Sources */,
 				21E15B02256A70D200029338 /* sectors.cpp in Sources */,
 				21C6A1B926C6914F002C9EF8 /* floppy_linux.cpp in Sources */,
+				21612F1D2AD6E94D004D2F1B /* bpbex.cpp in Sources */,
 				21BD0E2728D4D64800826636 /* plugins.cpp in Sources */,
 				211D4852257BD66400895CFE /* argument.cpp in Sources */,
 				21B0AB40259F7F7C00B064A3 /* floppy.cpp in Sources */,
@@ -483,7 +484,6 @@
 				219F7D4A255FC8B000827D5C /* config.cpp in Sources */,
 				21ACB8E728C46EE000DFAEE6 /* format.cpp in Sources */,
 				21641A81258E2C490062AD50 /* device_unix.cpp in Sources */,
-				217BF23B2AD527AF003FB649 /* bpb_ex.cpp in Sources */,
 				21BD0E3828D4D69600826636 /* d88_exporter.cpp in Sources */,
 				215C210728D5572C00C21A1F /* loader.cpp in Sources */,
 				21DC2020257B9EEA004F3363 /* dictionary.cpp in Sources */,

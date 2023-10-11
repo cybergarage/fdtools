@@ -68,7 +68,7 @@ int main(int argc, char* argv[])
 
   const char* img_name = fdt_program_getargument(prg, 0);
 
-  FdtImage* img = fdt_image_plugins_createimagebyfile(img_name, err);
+  FdtImage* img = fdt_image_from(img_name, err);
   if (!img) {
     usage(prg);
     error(err);

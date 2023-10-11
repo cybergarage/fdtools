@@ -116,16 +116,16 @@ FDT_IMAGE_IMAGER fdt_image_plugins_getimager(const char* filename, FdtError* err
   return imager;
 }
 
-FdtImage* fdt_image_plugins_createimagebyfile(const char* filename, FdtError* err)
+FdtImage* fdt_image_from(const char* target, FdtError* err)
 {
-  if (!filename || (fdt_strlen(filename) <= 0))
+  if (!target || (fdt_strlen(target) <= 0))
     return NULL;
 
-  FDT_IMAGE_IMAGER imager = fdt_image_plugins_getimager(filename, err);
+  FDT_IMAGE_IMAGER imager = fdt_image_plugins_getimager(target, err);
   if (!imager)
     return NULL;
 
   FdtImage* img = imager();
-  fdt_image_settarget(img, filename);
+  fdt_image_settarget(img, target);
   return img;
 }
