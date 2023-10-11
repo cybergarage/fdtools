@@ -10,10 +10,10 @@ var img_2plugin_8h =
     [ "fdt_image_plugins_gets", "img_2plugin_8h.html#a6c1068f86fd57acc9ed883e48bc40c31", null ],
     [ "fdt_image_plugins_size", "img_2plugin_8h.html#a75feeef41f272e66611d1eee17f25769", null ],
     [ "FdtImagePlugins", "img_2plugin_8h.html#a49c1b558bacf1094981dc143059bfe94", null ],
+    [ "fdt_image_getallimagerextentions", "img_2plugin_8h.html#a3f1894eaba956d28eb4b549d80f60945", null ],
     [ "fdt_image_plugin_delete", "img_2plugin_8h.html#adb6c50af6340705b5538334aa74dd17d", null ],
     [ "fdt_image_plugin_new", "img_2plugin_8h.html#a23bb742d1a3bd4626a0388f616df7369", null ],
     [ "fdt_image_plugins_add", "img_2plugin_8h.html#aa1486c3b8fc06b34a9b1532c840dede6", null ],
     [ "fdt_image_plugins_delete", "img_2plugin_8h.html#a40d996b1fc2b235a12997de792719ff6", null ],
-    [ "fdt_image_plugins_getallextentions", "img_2plugin_8h.html#a4a7e0604c9b88b4fd42e871e8340af84", null ],
     [ "fdt_image_plugins_new", "img_2plugin_8h.html#a0d0fae274cb75369f1c315a2c87c2de3", null ]
 ];

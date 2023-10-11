@@ -1,6 +1,6 @@
 var x68_8h =
 [
-    [ "fdt_x68_floppy_image_from", "x68_8h.html#a47f1260fd1184e0eec78ee77188e6329", null ],
+    [ "fdt_x68_floppy_from", "x68_8h.html#a435730a0044a02e0e41a8268caf0e6de", null ],
     [ "fdt_x68_floppy_image_new", "x68_8h.html#a6de2e7a81e703c668edb69002b98d535", null ],
     [ "fdt_x68_format_add", "x68_8h.html#a4307aa0966365d1dd5abe476331312f8", null ],
     [ "fdt_x68_format_del", "x68_8h.html#afe3520d79ac87c73291cd48ebb4a31dd", null ],
@@ -11,6 +11,7 @@ var x68_8h =
     [ "fdt_x68_format_new", "x68_8h.html#a19f6902770dfa959d9ae05e685dff2ed", null ],
     [ "fdt_x68_image_delete", "x68_8h.html#acfaf54d086d30d908b81a11b70d862c5", null ],
     [ "fdt_x68_image_generate", "x68_8h.html#aac5d9c63bd7652abaa26462f5ba2eab6", null ],
+    [ "fdt_x68_image_isfloppy", "x68_8h.html#a1ae11998a8765bd0bfcece9561948507", null ],
     [ "FDT_X68_FD_CYLINDER", "x68_8h.html#a02f4f22c8d27d596d5b935c0e9820821", null ],
     [ "FDT_X68_FD_HEAD", "x68_8h.html#a772d95e9cf414d67c351d95ac7659cdf", null ],
     [ "FDT_X68_FD_SECTOR", "x68_8h.html#a8939e0366dc68587c412ff675a00b311", null ],

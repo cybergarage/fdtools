@@ -1,4 +1,4 @@
 var img_2loader_8h =
 [
-    [ "fdt_image_plugins_getimagers", "img_2loader_8h.html#aca9803019ca2a749f5d38966b9f61e60", null ]
+    [ "fdt_image_getimagers", "img_2loader_8h.html#ae7a73f9cbd909ac74ffa9ed39c708a32", null ]
 ];
