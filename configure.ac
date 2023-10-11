@@ -106,6 +106,10 @@ bin/cpmdir/Makefile
 bin/cpmdir/unix/Makefile
 bin/cpmfmt/Makefile
 bin/cpmfmt/unix/Makefile
+bin/x68dsk/Makefile
+bin/x68dsk/unix/Makefile
+bin/x68fmt/Makefile
+bin/x68fmt/unix/Makefile
 test/Makefile
 test/unix/Makefile
 ])
