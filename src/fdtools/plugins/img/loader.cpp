@@ -20,7 +20,7 @@
 
 static FdtImagePlugins* img_plgs;
 
-FdtImagePlugins* fdt_image_plugins_getimagers()
+FdtImagePlugins* fdt_image_getimagers()
 {
   if (img_plgs)
     return fdt_image_plugin_next(img_plgs);

@@ -41,7 +41,7 @@ BOOST_AUTO_TEST_CASE(ImagePluginTest)
         continue;
 
       const boost::filesystem::path test_img_filename = test_img_filepath.filename();
-      FDT_IMAGE_IMAGER test_imager = fdt_image_plugins_getimager(test_img_filepath.c_str(), err);
+      FDT_IMAGE_IMAGER test_imager = fdt_image_getimager(test_img_filepath.c_str(), err);
       if (!test_imager)
         continue;
 
