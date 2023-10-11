@@ -32,7 +32,7 @@ FdtFormat* fdt_x68_format_new(void)
   return fmt;
 }
 
-FdtImage* fdt_x68_floppy_from(const char*target, FdtError*err)
+FdtImage* fdt_x68_floppy_from(const char* target, FdtError* err)
 {
   FdtImage* img = fdt_image_from(target, err);
   if (!img) {

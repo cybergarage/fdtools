@@ -19,10 +19,7 @@ BOOST_AUTO_TEST_CASE(FormatX68Test)
 {
   FdtImage* img = fdt_x68_floppy_image_new();
   BOOST_CHECK(img);
-  BOOST_CHECK_EQUAL(fdt_image_getnumberofcylinder(img), FDT_X68_FD_CYLINDER);
-  BOOST_CHECK_EQUAL(fdt_image_getnumberofhead(img), FDT_X68_FD_HEAD);
-  BOOST_CHECK_EQUAL(fdt_image_getnumberofsector(img), FDT_X68_FD_SECTOR);
-  BOOST_CHECK_EQUAL(fdt_image_getsectorsize(img), FDT_X68_FD_SECTOR_SIZE);
+  BOOST_CHECK(fdt_x68_image_isfloppy(img));
   BOOST_CHECK(fdt_x68_image_generate(img));
   BOOST_CHECK(fdt_x68_image_delete(img));
 }

@@ -28,6 +28,25 @@ FdtImage* fdt_x68_floppy_image_new(void)
   return img;
 }
 
+bool fdt_x68_image_isfloppy(FdtImage*img) {
+  if (!img)
+    return false;
+
+  if (fdt_image_getnumberofcylinder(img) != FDT_X68_FD_CYLINDER)
+    return false;
+
+  if (fdt_image_getnumberofhead(img) != FDT_X68_FD_HEAD)
+    return false;
+
+  if (fdt_image_getnumberofsector(img) != FDT_X68_FD_SECTOR)
+    return false;
+
+  if (fdt_image_getsectorsize(img) != FDT_X68_FD_SECTOR_SIZE)
+    return false;
+
+  return true;
+}
+
 bool fdt_x68_image_generate(FdtImage* img)
 {
   if (!fdt_image_generatesectors(img, NULL))

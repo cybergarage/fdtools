@@ -32,6 +32,7 @@ FdtImage* fdt_x68_floppy_image_new(void);
 FdtImage* fdt_x68_floppy_from(const char*, FdtError*);
 bool fdt_x68_image_generate(FdtImage*);
 bool fdt_x68_image_delete(FdtImage*);
+bool fdt_x68_image_isfloppy(FdtImage*);
 
 FdtFormat* fdt_x68_format_new(void);
 const char* fdt_x68_format_gettypeid(FdtFormat* fmt);
