@@ -55,3 +55,8 @@ bool fdt_x68_format_del(FdtFormat* fmt, FdtFile* file)
 {
   return false;
 }
+
+bool fdt_x68_format_loadimage(FdtImage*, FdtError*)
+{
+  return false;
+}

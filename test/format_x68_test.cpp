@@ -17,7 +17,7 @@
 
 BOOST_AUTO_TEST_CASE(FormatX68Test)
 {
-  FdtImage* img = fdt_x68_image_new();
+  FdtImage* img = fdt_x68_floppy_image_new();
   BOOST_CHECK(img);
   BOOST_CHECK_EQUAL(fdt_image_getnumberofcylinder(img), FDT_X68_FD_CYLINDER);
   BOOST_CHECK_EQUAL(fdt_image_getnumberofhead(img), FDT_X68_FD_HEAD);

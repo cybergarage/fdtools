@@ -14,7 +14,7 @@
 
 #include <fdtools/plugins/fmt/x68/x68.h>
 
-FdtImage* fdt_x68_image_new(void)
+FdtImage* fdt_x68_floppy_image_new(void)
 {
   FdtImage* img = fdt_image_new();
   if (!img)

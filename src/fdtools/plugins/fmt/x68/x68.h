@@ -28,7 +28,7 @@ const size_t FDT_X68_FD_HEAD = 2;
 const size_t FDT_X68_FD_SECTOR = 8;
 const size_t FDT_X68_FD_SECTOR_SIZE = 1024;
 
-FdtImage* fdt_x68_image_new(void);
+FdtImage* fdt_x68_floppy_image_new(void);
 bool fdt_x68_image_generate(FdtImage*);
 bool fdt_x68_image_delete(FdtImage*);
 
@@ -38,6 +38,8 @@ bool fdt_x68_format_format(FdtFormat* fmt);
 bool fdt_x68_format_list(FdtFormat* fmt, FdtFiles* files);
 bool fdt_x68_format_add(FdtFormat* fmt, FdtFile* file);
 bool fdt_x68_format_del(FdtFormat* fmt, FdtFile* file);
+
+bool fdt_x68_format_loadimage(FdtImage*, FdtError*);
 
 #ifdef __cplusplus
 } /* extern C */
