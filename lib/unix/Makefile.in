@@ -154,9 +154,9 @@ am__objects_1 = ../../src/fdtools/util/struct.$(OBJEXT) \
 	../../src/fdtools/error.$(OBJEXT) \
 	../../src/fdtools/plugins/fmt/dos/func.$(OBJEXT) \
 	../../src/fdtools/plugins/fmt/dos/fat.$(OBJEXT) \
-	../../src/fdtools/plugins/fmt/dos/bpb_ex.$(OBJEXT) \
 	../../src/fdtools/plugins/fmt/dos/bpb.$(OBJEXT) \
 	../../src/fdtools/plugins/fmt/dos/dos.$(OBJEXT) \
+	../../src/fdtools/plugins/fmt/dos/bpbex.$(OBJEXT) \
 	../../src/fdtools/plugins/fmt/plugin.$(OBJEXT) \
 	../../src/fdtools/plugins/fmt/plugins.$(OBJEXT) \
 	../../src/fdtools/plugins/fmt/cpm/cpm.$(OBJEXT) \
@@ -229,7 +229,7 @@ am__depfiles_remade = ../../src/fdtools/$(DEPDIR)/error.Po \
 	../../src/fdtools/plugins/fmt/cpm/$(DEPDIR)/cpm.Po \
 	../../src/fdtools/plugins/fmt/cpm/$(DEPDIR)/directory.Po \
 	../../src/fdtools/plugins/fmt/dos/$(DEPDIR)/bpb.Po \
-	../../src/fdtools/plugins/fmt/dos/$(DEPDIR)/bpb_ex.Po \
+	../../src/fdtools/plugins/fmt/dos/$(DEPDIR)/bpbex.Po \
 	../../src/fdtools/plugins/fmt/dos/$(DEPDIR)/dos.Po \
 	../../src/fdtools/plugins/fmt/dos/$(DEPDIR)/fat.Po \
 	../../src/fdtools/plugins/fmt/dos/$(DEPDIR)/func.Po \
@@ -432,9 +432,9 @@ fdtools_sources = \
 	../../src/fdtools/error.cpp \
 	../../src/fdtools/plugins/fmt/dos/func.cpp \
 	../../src/fdtools/plugins/fmt/dos/fat.cpp \
-	../../src/fdtools/plugins/fmt/dos/bpb_ex.cpp \
 	../../src/fdtools/plugins/fmt/dos/bpb.cpp \
 	../../src/fdtools/plugins/fmt/dos/dos.cpp \
+	../../src/fdtools/plugins/fmt/dos/bpbex.cpp \
 	../../src/fdtools/plugins/fmt/plugin.cpp \
 	../../src/fdtools/plugins/fmt/plugins.cpp \
 	../../src/fdtools/plugins/fmt/cpm/cpm.cpp \
@@ -615,13 +615,13 @@ clean-libLIBRARIES:
 ../../src/fdtools/plugins/fmt/dos/fat.$(OBJEXT):  \
 	../../src/fdtools/plugins/fmt/dos/$(am__dirstamp) \
 	../../src/fdtools/plugins/fmt/dos/$(DEPDIR)/$(am__dirstamp)
-../../src/fdtools/plugins/fmt/dos/bpb_ex.$(OBJEXT):  \
-	../../src/fdtools/plugins/fmt/dos/$(am__dirstamp) \
-	../../src/fdtools/plugins/fmt/dos/$(DEPDIR)/$(am__dirstamp)
 ../../src/fdtools/plugins/fmt/dos/bpb.$(OBJEXT):  \
 	../../src/fdtools/plugins/fmt/dos/$(am__dirstamp) \
 	../../src/fdtools/plugins/fmt/dos/$(DEPDIR)/$(am__dirstamp)
 ../../src/fdtools/plugins/fmt/dos/dos.$(OBJEXT):  \
+	../../src/fdtools/plugins/fmt/dos/$(am__dirstamp) \
+	../../src/fdtools/plugins/fmt/dos/$(DEPDIR)/$(am__dirstamp)
+../../src/fdtools/plugins/fmt/dos/bpbex.$(OBJEXT):  \
 	../../src/fdtools/plugins/fmt/dos/$(am__dirstamp) \
 	../../src/fdtools/plugins/fmt/dos/$(DEPDIR)/$(am__dirstamp)
 ../../src/fdtools/plugins/fmt/$(am__dirstamp):
@@ -823,7 +823,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@../../src/fdtools/plugins/fmt/cpm/$(DEPDIR)/cpm.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@../../src/fdtools/plugins/fmt/cpm/$(DEPDIR)/directory.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@../../src/fdtools/plugins/fmt/dos/$(DEPDIR)/bpb.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@../../src/fdtools/plugins/fmt/dos/$(DEPDIR)/bpb_ex.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@../../src/fdtools/plugins/fmt/dos/$(DEPDIR)/bpbex.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@../../src/fdtools/plugins/fmt/dos/$(DEPDIR)/dos.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@../../src/fdtools/plugins/fmt/dos/$(DEPDIR)/fat.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@../../src/fdtools/plugins/fmt/dos/$(DEPDIR)/func.Po@am__quote@ # am--include-marker
@@ -1073,7 +1073,7 @@ distclean: distclean-am
 	-rm -f ../../src/fdtools/plugins/fmt/cpm/$(DEPDIR)/cpm.Po
 	-rm -f ../../src/fdtools/plugins/fmt/cpm/$(DEPDIR)/directory.Po
 	-rm -f ../../src/fdtools/plugins/fmt/dos/$(DEPDIR)/bpb.Po
-	-rm -f ../../src/fdtools/plugins/fmt/dos/$(DEPDIR)/bpb_ex.Po
+	-rm -f ../../src/fdtools/plugins/fmt/dos/$(DEPDIR)/bpbex.Po
 	-rm -f ../../src/fdtools/plugins/fmt/dos/$(DEPDIR)/dos.Po
 	-rm -f ../../src/fdtools/plugins/fmt/dos/$(DEPDIR)/fat.Po
 	-rm -f ../../src/fdtools/plugins/fmt/dos/$(DEPDIR)/func.Po
@@ -1171,7 +1171,7 @@ maintainer-clean: maintainer-clean-am
 	-rm -f ../../src/fdtools/plugins/fmt/cpm/$(DEPDIR)/cpm.Po
 	-rm -f ../../src/fdtools/plugins/fmt/cpm/$(DEPDIR)/directory.Po
 	-rm -f ../../src/fdtools/plugins/fmt/dos/$(DEPDIR)/bpb.Po
-	-rm -f ../../src/fdtools/plugins/fmt/dos/$(DEPDIR)/bpb_ex.Po
+	-rm -f ../../src/fdtools/plugins/fmt/dos/$(DEPDIR)/bpbex.Po
 	-rm -f ../../src/fdtools/plugins/fmt/dos/$(DEPDIR)/dos.Po
 	-rm -f ../../src/fdtools/plugins/fmt/dos/$(DEPDIR)/fat.Po
 	-rm -f ../../src/fdtools/plugins/fmt/dos/$(DEPDIR)/func.Po
