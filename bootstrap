@@ -27,6 +27,7 @@ makefiles=(
 "bin/cpmfmt/unix"
 "bin/x68dsk/unix"
 "bin/x68fmt/unix"
+"bin/x68info/unix"
 )
 
 for makefile in "${makefiles[@]}"
