@@ -12,4 +12,30 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include <fdtools/plugins/fmt/dos/x68.h>
+#include <fdtools/plugins/fmt/x68/x68.h>
+
+FdtImage* fdt_x68_image_new(void)
+{
+  FdtImage* img = fdt_image_new();
+  if (!img)
+    return NULL;
+
+  fdt_image_setnumberofcylinder(img, FDT_X68_FD_CYLINDER);
+  fdt_image_setnumberofhead(img, FDT_X68_FD_HEAD);
+  fdt_image_setnumberofsector(img, FDT_X68_FD_SECTOR);
+  fdt_image_setsectorsize(img, FDT_X68_FD_SECTOR_SIZE);
+
+  return img;
+}
+
+bool fdt_x68_image_generate(FdtImage* img)
+{
+  if (!fdt_image_generatesectors(img, NULL))
+    return false;
+  return true;
+}
+
+bool fdt_x68_image_delete(FdtImage* img)
+{
+  return fdt_image_delete(img);
+}
