@@ -21,5 +21,6 @@ BOOST_AUTO_TEST_CASE(FormatX68Test)
   BOOST_CHECK(img);
   BOOST_CHECK(fdt_x68_image_isfloppy(img));
   BOOST_CHECK(fdt_x68_image_generate(img));
+  BOOST_CHECK(fdt_x68_image_isfloppy(img));
   BOOST_CHECK(fdt_x68_image_delete(img));
 }
