@@ -18,6 +18,7 @@
 
 #include <fdtools/img/image.h>
 #include <fdtools/plugins/fmt/dos/bpb.h>
+#include <fdtools/plugins/fmt/dos/bpbex.h>
 
 #ifdef __cplusplus
 extern "C" {

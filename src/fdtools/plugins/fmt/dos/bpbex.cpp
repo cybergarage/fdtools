@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include <fdtools/plugins/fmt/dos/bpb.h>
+#include <fdtools/plugins/fmt/dos/bpbex.h>
 #include <fdtools/plugins/fmt/dos/error.h>
 #include <fdtools/plugins/fmt/dos/fat.h>
 

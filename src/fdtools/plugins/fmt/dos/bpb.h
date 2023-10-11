@@ -57,40 +57,27 @@ typedef struct FDT_ATTR_PACKED {
   byte_t BPB_TotSec32[4];
 } FdtFatBpb;
 
-// Microsoft FAT Specification - Microsoft Corporation August 30 2005
-// 3.2 Extended BPB structure for FAT12 and FAT16 volumes
-// If the volume has been formatted FAT12 or FAT16, the remainder of the BPB structure must be as described below:
-typedef struct FDT_ATTR_PACKED {
-  // Set value to 0x80 or 0x00.
-  byte_t BS_DrvNum[1];
-  // Reserved. Set value to 0x00.
-  byte_t BS_Reserved1[1];
-  // Extended boot signature. Set value to 0x29 if either of the following two fields are non-zero.
-  byte_t BS_BootSig[1];
-  // Volume serial number.
-  byte_t BS_VolID[4];
-  // Volume label. This field matches the 11-byte volume label recorded in the root directory.
-  byte_t BS_VolLab[11];
-  // One of the strings “FAT12 ”, “FAT16 ”, or “FAT ”. NOTE: This string is informational only and does not determine the FAT type.
-  byte_t BS_FilSysType[8];
-  // Set to 0x00.
-  byte_t Blank[448];
-  // Set to 0x55 (at byte offset 510) and 0xAA (at byte offset 511).
-  byte_t Signature_word[2];
-  // All remaining bytes in sector.
-  // Set to 0x00 (only for media where BPB_BytsPerSec > 512.
-} FdtFatBpbExtended;
-
 FdtFatBpb* fdt_fat_bpb_new(void);
 bool fdt_fat_bpb_delete(FdtFatBpb*);
 bool fdt_fat_bpb_loadimagesector(FdtFatBpb*, FdtImageSector*, FdtError*);
 
-FdtFatBpbExtended* fdt_fat_bpbex_new(void);
-bool fdt_fat_bpbex_delete(FdtFatBpbExtended*);
-bool fdt_fat_bpbex_loadimagesector(FdtFatBpbExtended*, FdtImageSector*, FdtError*);
+#define fdt_fat_bpb_getjumpboot(bpb) ((bpb)->BS_jmpBoot)
+#define fdt_fat_bpb_getoemname(bpb) ((bpb)->BS_OEMName)
+#define fdt_fat_bpb_getbytespersec(bpb) ((bpb)->BPB_BytsPerSec)
+#define fdt_fat_bpb_getsecperclus(bpb) ((bpb)->BPB_SecPerClus[0])
+#define fdt_fat_bpb_getrsvdseccnt(bpb) ((bpb)->BPB_RsvdSecCnt)
+#define fdt_fat_bpb_getnumfats(bpb) ((bpb)->BPB_NumFATs[0])
+#define fdt_fat_bpb_getrootentcnt(bpb) ((bpb)->BPB_RootEntCnt)
+#define fdt_fat_bpb_gettotsec16(bpb) ((bpb)->BPB_TotSec16)
+#define fdt_fat_bpb_getmedia(bpb) ((bpb)->BPB_Media[0])
+#define fdt_fat_bpb_getfatsz16(bpb) ((bpb)->BPB_FATSz16)
+#define fdt_fat_bpb_getsecpertrk(bpb) ((bpb)->BPB_SecPerTrk)
+#define fdt_fat_bpb_getnumheads(bpb) ((bpb)->BPB_NumHeads)
+#define fdt_fat_bpb_gethiddsec(bpb) ((bpb)->BPB_HiddSec)
+#define fdt_fat_bpb_gettotsec32(bpb) ((bpb)->BPB_TotSec32)
 
 #ifdef __cplusplus
 } /* extern C */
 #endif
 
-#endif /* _FDTOOLS_DOS_FORMAT_H_ */
+#endif /* _FDTOOLS_DOS_BPBT_H_ */
