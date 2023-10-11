@@ -45,7 +45,7 @@ fdtools_sources = \
 	../../src/fdtools/plugins/fmt/cpm/cpm.cpp \
 	../../src/fdtools/plugins/fmt/cpm/directory.cpp \
 	../../src/fdtools/plugins/fmt/x68/x68_img.cpp \
-	../../src/fdtools/plugins/fmt/x68/x68_fmt.cpp \
+	../../src/fdtools/plugins/fmt/x68/x68.cpp \
 	../../src/fdtools/plugins/fmt/loader.cpp \
 	../../src/fdtools/plugins/img/func.cpp \
 	../../src/fdtools/plugins/img/hfe/hfe_exporter.cpp \
