@@ -38,6 +38,7 @@ fdtools_sources = \
 	../../src/fdtools/plugins/fmt/dos/func.cpp \
 	../../src/fdtools/plugins/fmt/dos/fat.cpp \
 	../../src/fdtools/plugins/fmt/dos/bpb.cpp \
+	../../src/fdtools/plugins/fmt/dos/x68.cpp \
 	../../src/fdtools/plugins/fmt/dos/dos.cpp \
 	../../src/fdtools/plugins/fmt/dos/bpbex.cpp \
 	../../src/fdtools/plugins/fmt/plugin.cpp \
