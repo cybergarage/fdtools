@@ -41,7 +41,7 @@ void fdt_image_plugins_getallextentions(FdtStrings* exts)
   }
 }
 
-FDT_IMAGE_IMAGER fdt_image_getimagerbysignature(const char* filename)
+FDT_IMAGE_IMAGER fdt_image_getfileimagerbysignature(const char* filename)
 {
   if (!filename || (fdt_strlen(filename) <= 0))
     return NULL;
@@ -92,7 +92,7 @@ FDT_IMAGE_IMAGER fdt_image_getfileimager(const char* filename, FdtError* err)
     return fdt_device_image_new;
 
   FDT_IMAGE_IMAGER imager;
-  imager = fdt_image_getimagerbysignature(filename);
+  imager = fdt_image_getfileimagerbysignature(filename);
   if (imager)
     return imager;
 
