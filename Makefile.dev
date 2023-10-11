@@ -22,4 +22,4 @@ format:
 	./format
 
 test:
-	fswatch -i ".*\\.h$$" -i ".*\\.cpp$$" -e "config.h" -o include -o src -o test | xargs -n 1 -I{} sh -c './format && make check'
+	fswatch -i ".*\\.h$$" -i ".*\\.cpp$$" include src test | xargs -I{} sh -c 'echo {} && make check'
