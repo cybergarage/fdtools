@@ -12,8 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef _FDTOOLS_DOS_X68_H_
-#define _FDTOOLS_DOS_X68_H_
+#ifndef _FDTOOLS_FMT_X68_H_
+#define _FDTOOLS_FMT_X68_H_
 
 #include <fdtools/fmt/format.h>
 #include <fdtools/img/image.h>
@@ -47,4 +47,4 @@ bool fdt_x68_format_loadimage(FdtImage*, FdtError*);
 } /* extern C */
 #endif
 
-#endif /* _FDTOOLS_DOS_X68_H_ */
+#endif /* _FDTOOLS_FMT_X68_H_ */

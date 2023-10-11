@@ -28,7 +28,8 @@ FdtImage* fdt_x68_floppy_image_new(void)
   return img;
 }
 
-bool fdt_x68_image_isfloppy(FdtImage*img) {
+bool fdt_x68_image_isfloppy(FdtImage* img)
+{
   if (!img)
     return false;
 
