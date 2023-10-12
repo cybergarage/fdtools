@@ -282,7 +282,21 @@ target_alias = @target_alias@
 top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
-SUBDIRS = fdcopy fdinfo fddump fddiff dosinfo dosdir dosfmt cpmfmt cpmdir
+SUBDIRS = \
+    cpmdir \
+    cpmfmt \
+    dosdir \
+    dosfmt \
+    dosinfo \
+    fdcopy \
+    fddiff \
+    fddump \
+    fdinfo \
+    fdutils \
+    x68dsk \
+    x68fmt \
+    x68info
+
 all: all-recursive
 
 .SUFFIXES:
