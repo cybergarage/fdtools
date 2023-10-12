@@ -13,6 +13,7 @@
 // limitations under the License.
 
 #include <fdtools/plugins/fmt/x68/x68.h>
+#include <fdtools/plugins/image.h>
 
 FdtImage* fdt_x68_floppy_image_new(void)
 {
@@ -24,6 +25,16 @@ FdtImage* fdt_x68_floppy_image_new(void)
   fdt_image_setnumberofhead(img, FDT_X68_FD_HEAD);
   fdt_image_setnumberofsector(img, FDT_X68_FD_SECTOR);
   fdt_image_setsectorsize(img, FDT_X68_FD_SECTOR_SIZE);
+
+  return img;
+}
+
+FdtImage* fdt_x68_floppy_image_from(const char* target, FdtError* err)
+{
+  FdtImage* img = fdt_image_from(target, err);
+  if (!img) {
+    return NULL;
+  }
 
   return img;
 }
