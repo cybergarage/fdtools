@@ -28,7 +28,7 @@ BOOST_AUTO_TEST_CASE(FormatX68Test)
   BOOST_CHECK(fdt_x68_image_isfloppy(img));
   BOOST_CHECK(fdt_x68_image_delete(img));
 
-   FdtImage* org_img = fdt_x68_floppy_image_from(TEST_X86_BLANK_IMAGE.c_str(), err);
+  FdtImage* org_img = fdt_x68_floppy_image_from(TEST_X86_BLANK_IMAGE.c_str(), err);
   BOOST_CHECK(org_img);
   BOOST_CHECK(fdt_x68_image_delete(org_img));
 
