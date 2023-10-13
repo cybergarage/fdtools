@@ -5,6 +5,7 @@ var x68_8h =
     [ "fdt_x68_format_add", "x68_8h.html#a4307aa0966365d1dd5abe476331312f8", null ],
     [ "fdt_x68_format_del", "x68_8h.html#afe3520d79ac87c73291cd48ebb4a31dd", null ],
     [ "fdt_x68_format_format", "x68_8h.html#a4f62aab10ae3d4bd1d7cc5a95994cb1d", null ],
+    [ "fdt_x68_format_from", "x68_8h.html#abaaefa0aff670f13a70ed47ebc35dcc7", null ],
     [ "fdt_x68_format_gettypeid", "x68_8h.html#abc531a7a221a280c504b2a9020fe740f", null ],
     [ "fdt_x68_format_list", "x68_8h.html#a3ea354d9be5f604dc23539536857e83a", null ],
     [ "fdt_x68_format_loadimage", "x68_8h.html#a367bc393ad0825e736c5aa74f5ef12ca", null ],
