@@ -45,6 +45,9 @@
 		21B0AB40259F7F7C00B064A3 /* floppy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 21B0AB3E259F7F7B00B064A3 /* floppy.cpp */; };
 		21B0AB4625A0ED1F00B064A3 /* density.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 21B0AB4525A0ED1F00B064A3 /* density.cpp */; };
 		21B0AB4925A0EE6F00B064A3 /* struct.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 21B0AB4825A0EE6F00B064A3 /* struct.cpp */; };
+		21B2018A2AD8CD20000D6983 /* x68.h in Headers */ = {isa = PBXBuildFile; fileRef = 21B201872AD8CD20000D6983 /* x68.h */; };
+		21B2018B2AD8CD20000D6983 /* x68.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 21B201882AD8CD20000D6983 /* x68.cpp */; };
+		21B2018C2AD8CD20000D6983 /* x68_img.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 21B201892AD8CD20000D6983 /* x68_img.cpp */; };
 		21BD0E2728D4D64800826636 /* plugins.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 21BD0E2128D4D64800826636 /* plugins.cpp */; };
 		21BD0E2828D4D64800826636 /* plugin.h in Headers */ = {isa = PBXBuildFile; fileRef = 21BD0E2228D4D64800826636 /* plugin.h */; };
 		21BD0E2928D4D64800826636 /* plugin.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 21BD0E2328D4D64800826636 /* plugin.cpp */; };
@@ -117,6 +120,9 @@
 		21B0AB3E259F7F7B00B064A3 /* floppy.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = floppy.cpp; path = ../../../src/fdtools/dev/floppy.cpp; sourceTree = "<group>"; };
 		21B0AB4525A0ED1F00B064A3 /* density.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = density.cpp; path = ../../../src/fdtools/img/density.cpp; sourceTree = "<group>"; };
 		21B0AB4825A0EE6F00B064A3 /* struct.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = struct.cpp; path = ../../../src/fdtools/util/struct.cpp; sourceTree = "<group>"; };
+		21B201872AD8CD20000D6983 /* x68.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = x68.h; path = ../../../src/fdtools/plugins/fmt/x68/x68.h; sourceTree = "<group>"; };
+		21B201882AD8CD20000D6983 /* x68.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = x68.cpp; path = ../../../src/fdtools/plugins/fmt/x68/x68.cpp; sourceTree = "<group>"; };
+		21B201892AD8CD20000D6983 /* x68_img.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = x68_img.cpp; path = ../../../src/fdtools/plugins/fmt/x68/x68_img.cpp; sourceTree = "<group>"; };
 		21BD0E2128D4D64800826636 /* plugins.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = plugins.cpp; path = ../../../src/fdtools/plugins/img/plugins.cpp; sourceTree = "<group>"; };
 		21BD0E2228D4D64800826636 /* plugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = plugin.h; path = ../../../src/fdtools/plugins/img/plugin.h; sourceTree = "<group>"; };
 		21BD0E2328D4D64800826636 /* plugin.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = plugin.cpp; path = ../../../src/fdtools/plugins/img/plugin.cpp; sourceTree = "<group>"; };
@@ -202,6 +208,7 @@
 		215C20FF28D5570D00C21A1F /* fmt */ = {
 			isa = PBXGroup;
 			children = (
+				21B2018D2AD8CDE6000D6983 /* x68 */,
 				215C211128D55E8B00C21A1F /* cpm */,
 				215C210C28D55E3400C21A1F /* dos */,
 				215C210128D5572C00C21A1F /* loader.cpp */,
@@ -273,6 +280,16 @@
 				21ACB8E628C46EE000DFAEE6 /* format.cpp */,
 			);
 			name = fmt;
+			sourceTree = "<group>";
+		};
+		21B2018D2AD8CDE6000D6983 /* x68 */ = {
+			isa = PBXGroup;
+			children = (
+				21B201892AD8CD20000D6983 /* x68_img.cpp */,
+				21B201882AD8CD20000D6983 /* x68.cpp */,
+				21B201872AD8CD20000D6983 /* x68.h */,
+			);
+			name = x68;
 			sourceTree = "<group>";
 		};
 		21BD0E2028D4D62C00826636 /* img */ = {
@@ -385,6 +402,7 @@
 				21525AF828DB569C006B50B7 /* error.h in Headers */,
 				21BD0E4728D4D6D000826636 /* hfe.h in Headers */,
 				21BD0E2F28D4D67700826636 /* fdx.h in Headers */,
+				21B2018A2AD8CD20000D6983 /* x68.h in Headers */,
 				21BD0E4128D4D6B300826636 /* raw.h in Headers */,
 				217BF2372AD5032A003FB649 /* fat.h in Headers */,
 				21BD0E2828D4D64800826636 /* plugin.h in Headers */,
@@ -464,6 +482,7 @@
 				21352E2125768FA7007E05A4 /* hexdump.cpp in Sources */,
 				21B0912125865DB800036CC5 /* device_linux.cpp in Sources */,
 				21BD0E3F28D4D6B300826636 /* raw_loader.cpp in Sources */,
+				21B2018B2AD8CD20000D6983 /* x68.cpp in Sources */,
 				215C211A28D5801200C21A1F /* file.cpp in Sources */,
 				211D4859257BE46A00895CFE /* arguments.cpp in Sources */,
 				21BD0E2C28D4D64800826636 /* loader.cpp in Sources */,
@@ -495,6 +514,7 @@
 				21BD0E2B28D4D64800826636 /* func.cpp in Sources */,
 				21EADC8828DC8A4E002BF3B7 /* strings.cpp in Sources */,
 				21BD0E4A28D4D6D000826636 /* hfe_loader.cpp in Sources */,
+				21B2018C2AD8CD20000D6983 /* x68_img.cpp in Sources */,
 				215C211C28D58DDC00C21A1F /* files.cpp in Sources */,
 				21B0AB4625A0ED1F00B064A3 /* density.cpp in Sources */,
 				21641A84258EF8240062AD50 /* image.cpp in Sources */,
