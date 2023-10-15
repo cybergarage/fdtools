@@ -41,17 +41,14 @@ BOOST_AUTO_TEST_CASE(ImagePluginTest)
         continue;
 
       const boost::filesystem::path test_img_filename = test_img_filepath.filename();
-      FDT_IMAGE_IMAGER test_imager = fdt_image_getimager(test_img_filepath.c_str(), err);
-      if (!test_imager)
+      FdtImage* test_img = fdt_image_getimager(test_img_filepath.c_str(), err);
+      if (!test_img)
         continue;
 
       // Loads a found test disk image
 
       BOOST_TEST_MESSAGE("Loading   <- " << test_img_filename);
 
-      FdtImage* test_img = test_imager();
-      BOOST_REQUIRE(test_img);
-      fdt_image_settarget(test_img, test_img_filepath.c_str());
       BOOST_REQUIRE_MESSAGE(fdt_image_load(test_img, err), fdt_error_getdebugmessage(err));
 
       BOOST_TEST_MESSAGE("Loaded    <- " << test_img_filename << "(" << fdt_image_gettypeid(test_img) << ")");
