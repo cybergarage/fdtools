@@ -11,7 +11,7 @@
             "program": "${workspaceFolder}/test/unix/fdtoolstest",
             "args": [],
             "stopAtEntry": false,
-            "cwd": "${fileDirname}",
+            "cwd": "${workspaceFolder}/test",
             "environment": [],
             "externalConsole": false,
             "MIMode": "lldb"
