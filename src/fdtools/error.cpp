@@ -155,6 +155,8 @@ const char* fdt_error_getdebugmessage(FdtError* err)
 
 void fdt_error_printmessage(FdtError* err)
 {
+  if (!fdt_error_iserror(err))
+    return;
   printf("%s\n", fdt_error_getmessage(err));
 }
 
