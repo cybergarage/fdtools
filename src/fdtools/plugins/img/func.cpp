@@ -128,5 +128,8 @@ FdtImage* fdt_image_from(const char* target, FdtError* err)
   if (!img)
     return NULL;
 
+  if (!fdt_image_load(img, err))
+    return NULL;
+
   return img;
 }
