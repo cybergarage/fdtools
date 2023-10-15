@@ -34,7 +34,7 @@ FdtFormat* fdt_x68_format_new(void)
 
 FdtFormat* fdt_x68_format_from(const char* target, FdtError* err)
 {
-  FdtImage* img = fdt_image_from(target, err);
+  FdtImage* img = fdt_image_getimager(target, err);
   if (!img) {
     return NULL;
   }

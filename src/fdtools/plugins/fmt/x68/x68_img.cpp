@@ -31,7 +31,7 @@ FdtImage* fdt_x68_floppy_image_new(void)
 
 FdtImage* fdt_x68_floppy_image_from(const char* target, FdtError* err)
 {
-  FdtImage* img = fdt_image_from(target, err);
+  FdtImage* img = fdt_image_getimager(target, err);
   if (!img) {
     return NULL;
   }

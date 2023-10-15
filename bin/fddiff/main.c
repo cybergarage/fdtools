@@ -106,7 +106,7 @@ int main(int argc, char* argv[])
 
   const char* img_name_l = fdt_program_getargument(prg, 0);
 
-  FdtImage* img_l = fdt_image_from(img_name_l, err);
+  FdtImage* img_l = fdt_image_getimager(img_name_l, err);
   if (!img_l) {
     usage(prg);
     error(err);
@@ -118,7 +118,7 @@ int main(int argc, char* argv[])
 
   const char* img_name_r = fdt_program_getargument(prg, 1);
 
-  FdtImage* img_r = fdt_image_from(img_name_r, err);
+  FdtImage* img_r = fdt_image_getimager(img_name_r, err);
   if (!img_r) {
     usage(prg);
     error(err);

@@ -103,7 +103,7 @@ FDT_IMAGE_IMAGER fdt_image_getfileimager(const char* filename, FdtError* err)
   return NULL;
 }
 
-FDT_IMAGE_IMAGER fdt_image_getimager(const char* target, FdtError* err)
+FdtImage* fdt_image_getimager(const char* target, FdtError* err)
 {
   if (!target || (fdt_strlen(target) <= 0))
     return NULL;
@@ -113,7 +113,10 @@ FDT_IMAGE_IMAGER fdt_image_getimager(const char* target, FdtError* err)
     fdt_error_setmessage(err, FDT_IMAGE_MESSAGE_UNKNOWN_TYPE_FORMAT, target);
     return NULL;
   }
-  return imager;
+
+  FdtImage* img = imager();
+  fdt_image_settarget(img, target);
+  return img;
 }
 
 FdtImage* fdt_image_from(const char* target, FdtError* err)
@@ -121,11 +124,9 @@ FdtImage* fdt_image_from(const char* target, FdtError* err)
   if (!target || (fdt_strlen(target) <= 0))
     return NULL;
 
-  FDT_IMAGE_IMAGER imager = fdt_image_getimager(target, err);
-  if (!imager)
+  FdtImage* img = fdt_image_getimager(target, err);
+  if (!img)
     return NULL;
 
-  FdtImage* img = imager();
-  fdt_image_settarget(img, target);
   return img;
 }
