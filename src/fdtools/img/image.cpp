@@ -285,6 +285,8 @@ bool fdt_image_generatesectors(FdtImage* img, FdtError* err)
   size_t number_of_sector = fdt_image_getnumberofsector(img);
   size_t sector_size = fdt_image_getsectorsize(img);
 
+  size_t total_image_size = 0;
+
   for (size_t c = 0; c < number_of_cylinder; c++) {
     for (size_t h = 0; h < number_of_head; h++) {
       for (size_t s = 1; s <= number_of_sector; s++) {
@@ -297,9 +299,13 @@ bool fdt_image_generatesectors(FdtImage* img, FdtError* err)
         fdt_image_sector_setnumber(sector, s);
         fdt_image_sector_setsize(sector, sector_size);
         fdt_image_addsector(img, sector);
+
+        total_image_size += sector_size;
       }
     }
   }
+
+  fdt_image_setsize(img, total_image_size);
 
   return true;
 }
