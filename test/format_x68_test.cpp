@@ -31,6 +31,7 @@ BOOST_AUTO_TEST_CASE(FormatX68Test)
   BOOST_CHECK(org_img);
 
   BOOST_CHECK(fdt_image_equals(img, org_img, err));
+  fdt_error_printmessage(err);
 
   fdt_error_delete(err);
   BOOST_CHECK(fdt_x68_image_delete(img));
