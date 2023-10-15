@@ -160,5 +160,9 @@ void fdt_error_printmessage(FdtError* err)
 
 void fdt_error_printdebugmessage(FdtError* err)
 {
+#if defined(DEBUG)
+  if (!fdt_error_iserror(err))
+    return;
   printf("%s\n", fdt_error_getmessage(err));
+#endif
 }
