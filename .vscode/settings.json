@@ -20,5 +20,6 @@
         "program.h": "c",
         "chrono": "cpp",
         "filesystem": "cpp"
-    }
+    },
+    "cmake.configureOnOpen": false
 }
