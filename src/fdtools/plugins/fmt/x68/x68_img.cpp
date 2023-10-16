@@ -21,6 +21,7 @@ FdtImage* fdt_x68_floppy_image_new(void)
   if (!img)
     return NULL;
 
+  fdt_image_setdensity(img, FDT_IMAGE_DENSITY_HD);
   fdt_image_setnumberofcylinder(img, FDT_X68_FD_CYLINDER);
   fdt_image_setnumberofhead(img, FDT_X68_FD_HEAD);
   fdt_image_setnumberofsector(img, FDT_X68_FD_SECTOR);
