@@ -22,18 +22,17 @@ BOOST_AUTO_TEST_CASE(FormatX68Test)
   FdtError* err = fdt_error_new();
 
   FdtImage* img = fdt_x68_floppy_image_new();
-  BOOST_CHECK(img);
-  BOOST_CHECK(fdt_x68_image_isfloppy(img));
-  BOOST_CHECK(fdt_x68_image_generate(img));
-  BOOST_CHECK(fdt_x68_image_isfloppy(img));
+  BOOST_REQUIRE(img);
+  BOOST_REQUIRE(fdt_x68_image_isfloppy(img));
+  BOOST_REQUIRE(fdt_x68_image_generate(img));
+  BOOST_REQUIRE(fdt_x68_image_isfloppy(img));
 
   FdtImage* org_img = fdt_x68_floppy_image_from(TEST_X86_BLANK_IMAGE.c_str(), err);
-  BOOST_CHECK(org_img);
+  BOOST_REQUIRE_MESSAGE(org_img, fdt_error_getmessage(err));
 
-  BOOST_CHECK(fdt_image_equals(img, org_img, err));
-  fdt_error_printmessage(err);
+  BOOST_REQUIRE_MESSAGE(fdt_image_equals(img, org_img, err), fdt_error_getmessage(err));
 
-  fdt_error_delete(err);
+  BOOST_CHECK(fdt_error_delete(err));
   BOOST_CHECK(fdt_x68_image_delete(img));
   BOOST_CHECK(fdt_x68_image_delete(org_img));
 }
