@@ -141,7 +141,7 @@ var NAVTREEINDEX2 =
 "plugins_2format_8h.html#a3b2fdabf124cfd922016fe5359cbe2dd":[1,0,0,0,3,0,0],
 "plugins_2image_8h.html":[1,0,0,0,3,1],
 "plugins_2image_8h.html#a0378d1c4d46660773215a289e95dc6b7":[1,0,0,0,3,1,0],
-"plugins_2image_8h.html#ae6d46d569bc85bf5b93fbf1d24d00715":[1,0,0,0,3,1,1],
+"plugins_2image_8h.html#aa820f8abdcd5eef6df7349bcfdb7b1ac":[1,0,0,0,3,1,1],
 "program_8h.html":[1,0,0,0,4,7],
 "program_8h.html#a037fc58db7dff0b8ca07ed958226b1cb":[1,0,0,0,4,7,12],
 "program_8h.html#a18f04ee53c6a45c1285986e4f60b533d":[1,0,0,0,4,7,43],
