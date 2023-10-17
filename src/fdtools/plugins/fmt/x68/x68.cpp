@@ -39,6 +39,14 @@ FdtFormat* fdt_x68_format_from(const char* target, FdtError* err)
     return NULL;
   }
 
+  FdtFormat* fmt = fdt_x68_format_new();
+  if (!fmt) {
+    fdt_image_delete(img);
+    return NULL;
+  }
+
+  fdt_format_setimage(fmt, img);
+
   return NULL;
 }
 
