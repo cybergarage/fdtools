@@ -12,6 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#include <fdtools/plugins/fmt/dos/dos.h>
 #include <fdtools/plugins/fmt/x68/x68.h>
 #include <fdtools/plugins/image.h>
 
@@ -51,7 +52,10 @@ const char* fdt_x68_gettypeid(FdtFormat* fmt)
 
 bool fdt_x68_format(FdtFormat* fmt, FdtError* err)
 {
-  return false;
+  if (!fdt_dos_format(fmt, err))
+    return false;
+
+  return true;
 }
 
 bool fdt_x68_list(FdtFormat* fmt, FdtFiles* files, FdtError* err)
