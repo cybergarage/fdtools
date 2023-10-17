@@ -16,7 +16,7 @@
 #define _FDTOOLS_DOS_FORMAT_H_
 
 #include <fdtools/fmt/format.h>
-#include <fdtools/plugins/fmt/dos/bpb.h>
+#include <fdtools/plugins/fmt/dos/fat.h>
 
 #ifdef __cplusplus
 extern "C" {
