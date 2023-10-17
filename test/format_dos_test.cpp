@@ -17,13 +17,13 @@
 
 const std::string TEST_DOS_BLANK_IMAGE = "./img/35-2hd-msdos.raw";
 
-BOOST_AUTO_TEST_CASE(FormatFatTest)
+BOOST_AUTO_TEST_CASE(DosFatTest)
 {
   BOOST_CHECK_EQUAL(sizeof(FdtFatBpb), 36);
   BOOST_CHECK_EQUAL(sizeof(FdtFatBpbExtended), (512 - sizeof(FdtFatBpb)));
 }
 
-BOOST_AUTO_TEST_CASE(FormatDocTest)
+BOOST_AUTO_TEST_CASE(DosFormatTest)
 {
   FdtError* err = fdt_error_new();
 
