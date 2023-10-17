@@ -21,7 +21,7 @@
 extern "C" {
 #endif
 
-#define FDT_CPM_FORMAT_DIRECTORY_SECTOR_NOT_FOUND "directory sector (%02d:%02d:%02d) is not found"
+#define fdt_cpm_DIRECTORY_SECTOR_NOT_FOUND "directory sector (%02d:%02d:%02d) is not found"
 
 #ifdef __cplusplus
 } /* extern C */

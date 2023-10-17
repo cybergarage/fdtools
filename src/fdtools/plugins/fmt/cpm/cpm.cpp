@@ -14,7 +14,7 @@
 
 #include <fdtools/plugins/fmt/cpm/cpm.h>
 
-FdtFormat* fdt_cpm_format_new(void)
+FdtFormat* fdt_cpm_new(void)
 {
   FdtFormat* fmt = fdt_format_new();
   if (!fmt)
@@ -22,26 +22,26 @@ FdtFormat* fdt_cpm_format_new(void)
 
   fmt->type = FDT_FORMAT_TYPE_CPM;
 
-  fdt_format_setgettypeid(fmt, fdt_cpm_format_gettypeid);
-  fdt_format_setformat(fmt, fdt_cpm_format_format);
-  fdt_format_setlist(fmt, fdt_cpm_format_list);
-  fdt_format_setadd(fmt, fdt_cpm_format_add);
-  fdt_format_setdel(fmt, fdt_cpm_format_del);
+  fdt_format_setgettypeid(fmt, fdt_cpm_gettypeid);
+  fdt_format_setformat(fmt, fdt_cpm_format);
+  fdt_format_setlist(fmt, fdt_cpm_list);
+  fdt_format_setadd(fmt, fdt_cpm_add);
+  fdt_format_setdel(fmt, fdt_cpm_del);
 
   return fmt;
 }
 
-const char* fdt_cpm_format_gettypeid(FdtFormat* fmt, FdtError* err)
+const char* fdt_cpm_gettypeid(FdtFormat* fmt, FdtError* err)
 {
   return "CP/M";
 }
 
-bool fdt_cpm_format_format(FdtFormat* fmt)
+bool fdt_cpm_format(FdtFormat* fmt)
 {
   return false;
 }
 
-bool fdt_cpm_format_list(FdtFormat* fmt, FdtFiles* files, FdtError* err)
+bool fdt_cpm_list(FdtFormat* fmt, FdtFiles* files, FdtError* err)
 {
   FdtImage* img = fdt_format_getimage(fmt);
 
@@ -52,16 +52,16 @@ bool fdt_cpm_format_list(FdtFormat* fmt, FdtFiles* files, FdtError* err)
       for (int s = 1; s <= sect_num; s++) {
         FdtImageSector* sector = fdt_image_getsector(img, t, h, s);
         if (!sector) {
-          fdt_error_setmessage(err, FDT_CPM_FORMAT_DIRECTORY_SECTOR_NOT_FOUND, t, h, s);
+          fdt_error_setmessage(err, fdt_cpm_DIRECTORY_SECTOR_NOT_FOUND, t, h, s);
           return false;
         }
         byte_t* sector_data = fdt_image_sector_getdata(sector);
         size_t sector_size = fdt_image_sector_getsize(sector);
         for (size_t offset = 0; offset < sector_size; offset += FDT_CPM_DICTIONARY_SIZE) {
-          FdtCpmDirectory* dir = fdt_cpm_format_ditectory_new((sector_data + offset), (sector_size - offset));
+          FdtCpmDirectory* dir = fdt_cpm_ditectory_new((sector_data + offset), (sector_size - offset));
           if (!dir)
             break;
-          if (fdt_cpm_format_ditectory_isdeleted(dir))
+          if (fdt_cpm_ditectory_isdeleted(dir))
             continue;
         }
       }
@@ -71,12 +71,12 @@ bool fdt_cpm_format_list(FdtFormat* fmt, FdtFiles* files, FdtError* err)
   return false;
 }
 
-bool fdt_cpm_format_add(FdtFormat* fmt, FdtFile* file, FdtError* err)
+bool fdt_cpm_add(FdtFormat* fmt, FdtFile* file, FdtError* err)
 {
   return false;
 }
 
-bool fdt_cpm_format_del(FdtFormat* fmt, FdtFile* file, FdtError* err)
+bool fdt_cpm_del(FdtFormat* fmt, FdtFile* file, FdtError* err)
 {
   return false;
 }

@@ -41,17 +41,17 @@ typedef struct FDT_ATTR_PACKED {
   byte_t AL[16];
 } FdtCpmDirectory;
 
-FdtFormat* fdt_cpm_format_new(void);
+FdtFormat* fdt_cpm_new(void);
 
-const char* fdt_cpm_format_gettypeid(FdtFormat*);
-bool fdt_cpm_format_format(FdtFormat*, FdtError* err);
-bool fdt_cpm_format_list(FdtFormat*, FdtFiles*, FdtError* err);
-bool fdt_cpm_format_add(FdtFormat*, FdtFile*, FdtError* err);
-bool fdt_cpm_format_del(FdtFormat*, FdtFile*, FdtError* err);
+const char* fdt_cpm_gettypeid(FdtFormat*);
+bool fdt_cpm_format(FdtFormat*, FdtError* err);
+bool fdt_cpm_list(FdtFormat*, FdtFiles*, FdtError* err);
+bool fdt_cpm_add(FdtFormat*, FdtFile*, FdtError* err);
+bool fdt_cpm_del(FdtFormat*, FdtFile*, FdtError* err);
 
-FdtCpmDirectory* fdt_cpm_format_ditectory_new(byte_t* data, size_t size);
-inline bool fdt_cpm_format_ditectory_isdeleted(FdtCpmDirectory* dir) { return (dir->UserNumber == FDT_CPM_DICTIONARY_SIZE) ? true : false; }
-void fdt_cpm_format_ditectory_getfilename(FdtCpmDirectory* dir, char* filename);
+FdtCpmDirectory* fdt_cpm_ditectory_new(byte_t* data, size_t size);
+inline bool fdt_cpm_ditectory_isdeleted(FdtCpmDirectory* dir) { return (dir->UserNumber == FDT_CPM_DICTIONARY_SIZE) ? true : false; }
+void fdt_cpm_ditectory_getfilename(FdtCpmDirectory* dir, char* filename);
 
 #ifdef __cplusplus
 } /* extern C */

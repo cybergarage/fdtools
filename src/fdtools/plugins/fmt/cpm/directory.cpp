@@ -14,14 +14,14 @@
 
 #include <fdtools/plugins/fmt/cpm/cpm.h>
 
-FdtCpmDirectory* fdt_cpm_format_ditectory_new(byte_t* data, size_t size)
+FdtCpmDirectory* fdt_cpm_ditectory_new(byte_t* data, size_t size)
 {
   if (!data || size < FDT_CPM_DICTIONARY_SIZE)
     return NULL;
   return (FdtCpmDirectory*)data;
 }
 
-void fdt_cpm_format_ditectory_getfilename(FdtCpmDirectory* dir, char* filename)
+void fdt_cpm_ditectory_getfilename(FdtCpmDirectory* dir, char* filename)
 {
   if (!dir)
     return;
