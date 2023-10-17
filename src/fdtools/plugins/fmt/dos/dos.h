@@ -22,13 +22,13 @@
 extern "C" {
 #endif
 
-FdtFormat* fdt_dos_format_new(void);
+FdtFormat* fdt_dos_new(void);
 
-const char* fdt_dos_format_gettypeid(FdtFormat*);
-bool fdt_dos_format_format(FdtFormat*);
-bool fdt_dos_format_list(FdtFormat*, FdtFiles*);
-bool fdt_dos_format_add(FdtFormat*, FdtFile*);
-bool fdt_dos_format_del(FdtFormat*, FdtFile*);
+const char* fdt_dos_gettypeid(FdtFormat*);
+bool fdt_dos_format(FdtFormat*, FdtError*);
+bool fdt_dos_list(FdtFormat*, FdtFiles*, FdtError*);
+bool fdt_dos_add(FdtFormat*, FdtFile*, FdtError*);
+bool fdt_dos_del(FdtFormat*, FdtFile*, FdtError*);
 
 #ifdef __cplusplus
 } /* extern C */

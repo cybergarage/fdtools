@@ -26,7 +26,7 @@ FdtFormatPlugins* fdt_format_plugins_getfomatters()
   fmt_plgs = fdt_format_plugins_new();
 
   // Adds your new format plugins
-  fdt_format_plugins_add(fmt_plgs, fdt_dos_format_new);
+  fdt_format_plugins_add(fmt_plgs, fdt_dos_new);
   fdt_format_plugins_add(fmt_plgs, fdt_cpm_format_new);
 
   return fdt_format_plugin_next(fmt_plgs);

@@ -14,7 +14,7 @@
 
 #include <fdtools/plugins/fmt/dos/dos.h>
 
-FdtFormat* fdt_dos_format_new(void)
+FdtFormat* fdt_dos_new(void)
 {
   FdtFormat* fmt = fdt_format_new();
   if (!fmt)
@@ -22,36 +22,36 @@ FdtFormat* fdt_dos_format_new(void)
 
   fmt->type = FDT_FORMAT_TYPE_DOS;
 
-  fdt_format_setgettypeid(fmt, fdt_dos_format_gettypeid);
-  fdt_format_setformat(fmt, fdt_dos_format_format);
-  fdt_format_setlist(fmt, fdt_dos_format_list);
-  fdt_format_setadd(fmt, fdt_dos_format_add);
-  fdt_format_setdel(fmt, fdt_dos_format_del);
+  fdt_format_setgettypeid(fmt, fdt_dos_gettypeid);
+  fdt_format_setformat(fmt, fdt_dos_format);
+  fdt_format_setlist(fmt, fdt_dos_list);
+  fdt_format_setadd(fmt, fdt_dos_add);
+  fdt_format_setdel(fmt, fdt_dos_del);
 
   return fmt;
 }
 
-const char* fdt_dos_format_gettypeid(FdtFormat* fmt)
+const char* fdt_dos_gettypeid(FdtFormat* fmt)
 {
   return "DOS";
 }
 
-bool fdt_dos_format_format(FdtFormat* fmt)
+bool fdt_dos_format(FdtFormat* fmt, FdtError* err)
 {
   return false;
 }
 
-bool fdt_dos_format_list(FdtFormat* fmt, FdtFiles* files)
+bool fdt_dos_list(FdtFormat* fmt, FdtFiles* files, FdtError* err)
 {
   return false;
 }
 
-bool fdt_dos_format_add(FdtFormat* fmt, FdtFile* file)
+bool fdt_dos_add(FdtFormat* fmt, FdtFile* file, FdtError* err)
 {
   return false;
 }
 
-bool fdt_dos_format_del(FdtFormat* fmt, FdtFile* file)
+bool fdt_dos_del(FdtFormat* fmt, FdtFile* file, FdtError* err)
 {
   return false;
 }
