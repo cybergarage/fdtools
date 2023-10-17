@@ -15,8 +15,35 @@
 #include <boost/test/unit_test.hpp>
 #include <fdtools/plugins/fmt/dos/fat.h>
 
+const std::string TEST_DOS_BLANK_IMAGE = "./img/35-2hd-msdos.raw";
+
 BOOST_AUTO_TEST_CASE(FormatFatTest)
 {
   BOOST_CHECK_EQUAL(sizeof(FdtFatBpb), 36);
   BOOST_CHECK_EQUAL(sizeof(FdtFatBpbExtended), (512 - sizeof(FdtFatBpb)));
+}
+
+BOOST_AUTO_TEST_CASE(FormatDocTest)
+{
+  FdtError* err = fdt_error_new();
+
+  //  FdtImage* img = fdt_x68_floppy_image_new();
+  //  BOOST_REQUIRE(img);
+  //  BOOST_REQUIRE(fdt_x68_image_isfloppy(img));
+  //  BOOST_REQUIRE(fdt_x68_image_generate(img));
+  //  BOOST_REQUIRE(fdt_x68_image_isfloppy(img));
+
+  //  FdtFormat* fmt = fdt_x68_from(img);
+  //  BOOST_REQUIRE(img);
+  //  BOOST_REQUIRE_MESSAGE(fdt_format_format(fmt, err), fdt_error_getmessage(err));
+  //  BOOST_CHECK(fdt_format_delete(fmt));
+
+  //  FdtImage* org_img = fdt_x68_floppy_image_from(TEST_DOS_BLANK_IMAGE.c_str(), err);
+  //  BOOST_REQUIRE_MESSAGE(org_img, fdt_error_getmessage(err));
+  //
+  //  BOOST_REQUIRE_MESSAGE(fdt_image_equals(img, org_img, err), fdt_error_getmessage(err));
+
+  BOOST_CHECK(fdt_error_delete(err));
+  //  BOOST_CHECK(fdt_x68_image_delete(img));
+  //  BOOST_CHECK(fdt_x68_image_delete(org_img));
 }
