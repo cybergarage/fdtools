@@ -34,15 +34,13 @@ bool fdt_x68_image_generate(FdtImage*);
 bool fdt_x68_image_delete(FdtImage*);
 bool fdt_x68_image_isfloppy(FdtImage*);
 
-FdtFormat* fdt_x68_format_new(void);
-FdtFormat* fdt_x68_format_from(FdtImage*);
-const char* fdt_x68_format_gettypeid(FdtFormat* fmt);
-bool fdt_x68_format_format(FdtFormat* fmt);
-bool fdt_x68_format_list(FdtFormat* fmt, FdtFiles* files);
-bool fdt_x68_format_add(FdtFormat* fmt, FdtFile* file);
-bool fdt_x68_format_del(FdtFormat* fmt, FdtFile* file);
-
-bool fdt_x68_format_loadimage(FdtImage*, FdtError*);
+FdtFormat* fdt_x68_new(void);
+FdtFormat* fdt_x68_from(FdtImage*);
+const char* fdt_x68_gettypeid(FdtFormat*);
+bool fdt_x68_format(FdtFormat*, FdtError*);
+bool fdt_x68_list(FdtFormat*, FdtFiles*, FdtError*);
+bool fdt_x68_add(FdtFormat*, FdtFile*, FdtError*);
+bool fdt_x68_del(FdtFormat*, FdtFile*, FdtError*);
 
 #ifdef __cplusplus
 } /* extern C */

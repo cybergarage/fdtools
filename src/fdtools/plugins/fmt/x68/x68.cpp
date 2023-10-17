@@ -15,7 +15,7 @@
 #include <fdtools/plugins/fmt/x68/x68.h>
 #include <fdtools/plugins/image.h>
 
-FdtFormat* fdt_x68_format_new(void)
+FdtFormat* fdt_x68_new(void)
 {
   FdtFormat* fmt = fdt_format_new();
   if (!fmt)
@@ -23,18 +23,18 @@ FdtFormat* fdt_x68_format_new(void)
 
   fmt->type = FDT_FORMAT_TYPE_DOS;
 
-  fdt_format_setgettypeid(fmt, fdt_x68_format_gettypeid);
-  fdt_format_setformat(fmt, fdt_x68_format_format);
-  fdt_format_setlist(fmt, fdt_x68_format_list);
-  fdt_format_setadd(fmt, fdt_x68_format_add);
-  fdt_format_setdel(fmt, fdt_x68_format_del);
+  fdt_format_setgettypeid(fmt, fdt_x68_gettypeid);
+  fdt_format_setformat(fmt, fdt_x68_format);
+  fdt_format_setlist(fmt, fdt_x68_list);
+  fdt_format_setadd(fmt, fdt_x68_add);
+  fdt_format_setdel(fmt, fdt_x68_del);
 
   return fmt;
 }
 
-FdtFormat* fdt_x68_format_from(FdtImage* img, FdtError* err)
+FdtFormat* fdt_x68_from(FdtImage* img, FdtError* err)
 {
-  FdtFormat* fmt = fdt_x68_format_new();
+  FdtFormat* fmt = fdt_x68_new();
   if (!fmt) {
     return NULL;
   }
@@ -44,32 +44,27 @@ FdtFormat* fdt_x68_format_from(FdtImage* img, FdtError* err)
   return NULL;
 }
 
-const char* fdt_x68_format_gettypeid(FdtFormat* fmt)
+const char* fdt_x68_gettypeid(FdtFormat* fmt)
 {
   return "X68000";
 }
 
-bool fdt_x68_format_format(FdtFormat* fmt)
+bool fdt_x68_format(FdtFormat* fmt, FdtError* err)
 {
   return false;
 }
 
-bool fdt_x68_format_list(FdtFormat* fmt, FdtFiles* files)
+bool fdt_x68_list(FdtFormat* fmt, FdtFiles* files, FdtError* err)
 {
   return false;
 }
 
-bool fdt_x68_format_add(FdtFormat* fmt, FdtFile* file)
+bool fdt_x68_add(FdtFormat* fmt, FdtFile* file, FdtError* err)
 {
   return false;
 }
 
-bool fdt_x68_format_del(FdtFormat* fmt, FdtFile* file)
-{
-  return false;
-}
-
-bool fdt_x68_format_loadimage(FdtImage*, FdtError*)
+bool fdt_x68_del(FdtFormat* fmt, FdtFile* file, FdtError* err)
 {
   return false;
 }

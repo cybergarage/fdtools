@@ -27,7 +27,7 @@ BOOST_AUTO_TEST_CASE(FormatX68Test)
   BOOST_REQUIRE(fdt_x68_image_generate(img));
   BOOST_REQUIRE(fdt_x68_image_isfloppy(img));
 
-  FdtFormat* fmt = fdt_x68_format_from(img);
+  FdtFormat* fmt = fdt_x68_from(img);
   BOOST_REQUIRE(img);
   BOOST_REQUIRE_MESSAGE(fdt_format_format(fmt, err), fdt_error_getmessage(err));
   BOOST_CHECK(fdt_format_delete(fmt));
