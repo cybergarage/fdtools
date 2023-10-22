@@ -21,10 +21,10 @@
 extern "C" {
 #endif
 
-const char* FDT_DEVICE_FOLPPY_ERROR_UNKNOWN_CMOS_FORMAT = "Unknown CMOS type: %d";
-const char* FDT_DEVICE_FOLPPY_ERROR_UNKNOWN_DRIVE_TYPE_FORMAT = "Unknown drive type: %d";
-const char* FDT_DEVICE_FOLPPY_ERROR_INVALID_PARAMETORE_FORMAT = "Invalid floppy parameters: %s";
-const char* FDT_DEVICE_FOLPPY_ERROR_UNKNOWN_DATA_TRANSFER_RATE_TYPE_FORMAT = "Unknown data transfer rate type: %d";
+#define FDT_DEVICE_FOLPPY_ERROR_UNKNOWN_CMOS_FORMAT "Unknown CMOS type: %d"
+#define FDT_DEVICE_FOLPPY_ERROR_UNKNOWN_DRIVE_TYPE_FORMAT "Unknown drive type: %d"
+#define FDT_DEVICE_FOLPPY_ERROR_INVALID_PARAMETORE_FORMAT "Invalid floppy parameters: %s"
+#define FDT_DEVICE_FOLPPY_ERROR_UNKNOWN_DATA_TRANSFER_RATE_TYPE_FORMAT "Unknown data transfer rate type: %d"
 
 #ifdef __cplusplus
 } /* extern C */
