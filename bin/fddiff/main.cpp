@@ -35,45 +35,6 @@ void usage(FdtProgram* prg)
   fdu_program_usage(prg, ARG_IMAGE_FILENAME " " ARG_IMAGE_FILENAME " " ARG_IMAGE_DEVICE_CYL_HEAD_SEC);
 }
 
-bool hexdump_line_cmp(size_t offset, byte_t* buf_l, size_t line_l_len, byte_t* buf_r, size_t line_r_len)
-{
-  if (line_l_len != line_r_len)
-    return false;
-  return memcmp(buf_l + offset, buf_r + offset, line_l_len) == 0 ? true : false;
-}
-
-void hexdump_diff_print(byte_t* buf_l, size_t buf_l_len, byte_t* buf_r, size_t buf_r_len)
-{
-  size_t offset = 0;
-  while (offset < buf_l_len || offset < buf_r_len) {
-    // Left image
-    size_t line_l_len = FDT_HEXDUMP_LINE_BYTES;
-    if (buf_l_len < (offset + line_l_len)) {
-      line_l_len = buf_l_len % FDT_HEXDUMP_LINE_BYTES;
-    }
-    fdt_hexdump_line_print(buf_l, offset, line_l_len);
-
-    // Left image
-    size_t line_r_len = FDT_HEXDUMP_LINE_BYTES;
-    if (buf_r_len < (offset + line_r_len)) {
-      line_r_len = buf_r_len % FDT_HEXDUMP_LINE_BYTES;
-    }
-
-    if (hexdump_line_cmp(offset, buf_l, line_l_len, buf_r, line_r_len)) {
-      printf("   ");
-    }
-    else {
-      printf(" | ");
-    }
-
-    fdt_hexdump_line_print(buf_r, offset, line_r_len);
-
-    printf("\n");
-
-    offset += FDT_HEXDUMP_LINE_BYTES;
-  }
-}
-
 int main(int argc, char* argv[])
 {
   fdu_console_enabled();
@@ -171,7 +132,7 @@ int main(int argc, char* argv[])
         byte_t* sector_r_data = fdt_image_sector_getdata(sector_r);
         size_t sector_r_size = fdt_image_sector_getsize(sector_r);
 
-        hexdump_diff_print(sector_l_data, sector_l_size, sector_r_data, sector_r_size);
+        fdt_hexdump_compare_print(sector_l_data, sector_l_size, sector_r_data, sector_r_size);
 
         fdu_console_flush();
       }

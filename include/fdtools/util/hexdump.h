@@ -26,6 +26,8 @@ const size_t FDT_HEXDUMP_LINE_BYTES = 16;
 void fdt_hexdump_print(byte_t* buf, size_t buf_len);
 void fdt_hexdump_line_print(byte_t* buf, size_t offset, size_t line_len);
 
+void fdt_hexdump_compare_print(byte_t* buf_l, size_t buf_l_len, byte_t* buf_r, size_t buf_r_len);
+
 #ifdef __cplusplus
 } /* extern "C" */
 #endif
