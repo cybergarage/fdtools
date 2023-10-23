@@ -14,6 +14,7 @@
             "cwd": "${workspaceFolder}/test",
             "environment": [],
             "externalConsole": false,
+            "preLaunchTask": "make",
             "linux": {
                 "MIMode": "gdb",
                 "miDebuggerPath": "/usr/bin/gdb"
