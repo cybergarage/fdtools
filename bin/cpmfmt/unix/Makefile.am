@@ -21,7 +21,7 @@ cpmfmt_SOURCES = \
 	../../fdutils/device.cpp \
 	../../fdutils/program.cpp \
 	../../fdutils/console.cpp \
-	../main.c
+	../main.cpp
 
 #if HAVE_LIBTOOL
 #cpmfmt_LDADD = ../../../lib/unix/libfdtools.la

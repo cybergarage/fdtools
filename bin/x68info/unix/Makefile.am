@@ -21,7 +21,7 @@ x68info_SOURCES = \
 	../../fdutils/device.cpp \
 	../../fdutils/program.cpp \
 	../../fdutils/console.cpp \
-	../main.c
+	../main.cpp
 
 #if HAVE_LIBTOOL
 #x68info_LDADD = ../../../lib/unix/libfdtools.la

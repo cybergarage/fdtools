@@ -21,7 +21,7 @@ dosdir_SOURCES = \
 	../../fdutils/device.cpp \
 	../../fdutils/program.cpp \
 	../../fdutils/console.cpp \
-	../main.c
+	../main.cpp
 
 #if HAVE_LIBTOOL
 #dosdir_LDADD = ../../../lib/unix/libfdtools.la
