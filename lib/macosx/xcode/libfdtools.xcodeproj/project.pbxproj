@@ -14,6 +14,7 @@
 		21352E2125768FA7007E05A4 /* hexdump.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 21352E2025768FA7007E05A4 /* hexdump.cpp */; };
 		21403C0C255EFF060022389D /* file.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 21403C0B255EFF060022389D /* file.cpp */; };
 		21403C10255F02C80022389D /* string_func.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 21403C0F255F02C80022389D /* string_func.cpp */; };
+		2149FDBA2AE73DD900CA36E6 /* hexdump_diff.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2149FDB92AE73DD900CA36E6 /* hexdump_diff.cpp */; };
 		2151DF46256989AC009FC0E0 /* file.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2151DF45256989AC009FC0E0 /* file.cpp */; };
 		2151DF4C256A4B40009FC0E0 /* sector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2151DF4B256A4B40009FC0E0 /* sector.cpp */; };
 		21525AF828DB569C006B50B7 /* error.h in Headers */ = {isa = PBXBuildFile; fileRef = 21525AF728DB569C006B50B7 /* error.h */; };
@@ -88,6 +89,7 @@
 		213AA829255DB05700C00188 /* libfdtools.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libfdtools.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		21403C0B255EFF060022389D /* file.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = file.cpp; path = ../../../src/fdtools/img/file.cpp; sourceTree = "<group>"; };
 		21403C0F255F02C80022389D /* string_func.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = string_func.cpp; path = ../../../src/fdtools/util/string_func.cpp; sourceTree = "<group>"; };
+		2149FDB92AE73DD900CA36E6 /* hexdump_diff.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = hexdump_diff.cpp; path = ../../../src/fdtools/util/hexdump_diff.cpp; sourceTree = "<group>"; };
 		2151DF45256989AC009FC0E0 /* file.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = file.cpp; path = ../../../src/fdtools/util/file.cpp; sourceTree = "<group>"; };
 		2151DF4B256A4B40009FC0E0 /* sector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = sector.cpp; path = ../../../src/fdtools/img/sector.cpp; sourceTree = "<group>"; };
 		21525AF728DB569C006B50B7 /* error.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = error.h; path = ../../../src/fdtools/plugins/fmt/cpm/error.h; sourceTree = "<group>"; };
@@ -193,6 +195,7 @@
 				21DC2022257BA110004F3363 /* element.cpp */,
 				2151DF45256989AC009FC0E0 /* file.cpp */,
 				21352E2025768FA7007E05A4 /* hexdump.cpp */,
+				2149FDB92AE73DD900CA36E6 /* hexdump_diff.cpp */,
 				21E15B04256A742700029338 /* list.cpp */,
 				2161939A26EB9841007FA97A /* log.cpp */,
 				211D484C257BD13100895CFE /* option.cpp */,
@@ -522,6 +525,7 @@
 				21BD0E3E28D4D6B300826636 /* raw_exporter.cpp in Sources */,
 				2161939B26EB9841007FA97A /* log.cpp in Sources */,
 				21403C0C255EFF060022389D /* file.cpp in Sources */,
+				2149FDBA2AE73DD900CA36E6 /* hexdump_diff.cpp in Sources */,
 				217BF2362AD5032A003FB649 /* fat.cpp in Sources */,
 				21C2E0C7257299DF00305F1A /* error.cpp in Sources */,
 				21BD0E2928D4D64800826636 /* plugin.cpp in Sources */,
