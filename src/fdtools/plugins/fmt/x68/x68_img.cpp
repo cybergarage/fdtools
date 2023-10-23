@@ -12,8 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include <fdtools/plugins/image.h>
 #include <fdtools/plugins/fmt/x68/x68.h>
+#include <fdtools/plugins/image.h>
 
 FdtImage* fdt_x68_floppy_image_new(void)
 {

@@ -13,8 +13,8 @@
 // limitations under the License.
 
 #include <boost/test/unit_test.hpp>
-#include <fdtools/plugins/image.h>
 #include <fdtools/plugins/fmt/dos/fat.h>
+#include <fdtools/plugins/image.h>
 
 const std::string TEST_DOS_BLANK_IMAGE = "./img/35-2hd-msdos.raw";
 
