@@ -114,9 +114,9 @@ CONFIG_CLEAN_VPATH_FILES =
 am__installdirs = "$(DESTDIR)$(bindir)"
 PROGRAMS = $(bin_PROGRAMS)
 am__dirstamp = $(am__leading_dot)dirstamp
-am_dosfmt_OBJECTS = ../../fdutils/program.$(OBJEXT) \
-	../../fdutils/console.$(OBJEXT) ../../fdutils/device.$(OBJEXT) \
-	../main.$(OBJEXT)
+am_dosfmt_OBJECTS = ../../fdutils/device.$(OBJEXT) \
+	../../fdutils/program.$(OBJEXT) \
+	../../fdutils/console.$(OBJEXT) ../main.$(OBJEXT)
 dosfmt_OBJECTS = $(am_dosfmt_OBJECTS)
 dosfmt_DEPENDENCIES = ../../../lib/unix/libfdtools.a
 AM_V_P = $(am__v_P_@AM_V@)
@@ -286,10 +286,10 @@ top_srcdir = @top_srcdir@
 AM_CFLAGS = -I$(top_builddir)/include -I../ -I../../
 AM_CPPFLAGS = -I$(top_builddir)/include -I../ -I../../
 dosfmt_SOURCES = \
+	../../fdutils/device.cpp \
 	../../fdutils/program.cpp \
 	../../fdutils/console.cpp \
-	../../fdutils/device.cpp \
-	..//main.c
+	../main.c
 
 
 #if HAVE_LIBTOOL
@@ -377,11 +377,11 @@ clean-binPROGRAMS:
 ../../fdutils/$(DEPDIR)/$(am__dirstamp):
 	@$(MKDIR_P) ../../fdutils/$(DEPDIR)
 	@: > ../../fdutils/$(DEPDIR)/$(am__dirstamp)
+../../fdutils/device.$(OBJEXT): ../../fdutils/$(am__dirstamp) \
+	../../fdutils/$(DEPDIR)/$(am__dirstamp)
 ../../fdutils/program.$(OBJEXT): ../../fdutils/$(am__dirstamp) \
 	../../fdutils/$(DEPDIR)/$(am__dirstamp)
 ../../fdutils/console.$(OBJEXT): ../../fdutils/$(am__dirstamp) \
-	../../fdutils/$(DEPDIR)/$(am__dirstamp)
-../../fdutils/device.$(OBJEXT): ../../fdutils/$(am__dirstamp) \
 	../../fdutils/$(DEPDIR)/$(am__dirstamp)
 ../$(am__dirstamp):
 	@$(MKDIR_P) ..
