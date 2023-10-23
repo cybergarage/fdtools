@@ -18,10 +18,10 @@ AM_CFLAGS = -I$(top_builddir)/include -I../ -I../../
 AM_CPPFLAGS = -I$(top_builddir)/include -I../ -I../../
 
 fddump_SOURCES = \
-	../../fdutils/device.cpp \
 	../../fdutils/program.cpp \
 	../../fdutils/console.cpp \
-	../main.cpp
+	../../fdutils/device.cpp \
+	..//main.cpp
 
 #if HAVE_LIBTOOL
 #fddump_LDADD = ../../../lib/unix/libfdtools.la
