@@ -18,10 +18,10 @@ AM_CFLAGS = -I$(top_builddir)/include -I../ -I../../
 AM_CPPFLAGS = -I$(top_builddir)/include -I../ -I../../
 
 cpmfmt_SOURCES = \
+	../../fdutils/device.cpp \
 	../../fdutils/program.cpp \
 	../../fdutils/console.cpp \
-	../../fdutils/device.cpp \
-	..//main.c
+	../main.c
 
 #if HAVE_LIBTOOL
 #cpmfmt_LDADD = ../../../lib/unix/libfdtools.la
