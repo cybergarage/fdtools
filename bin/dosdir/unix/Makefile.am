@@ -18,10 +18,10 @@ AM_CFLAGS = -I$(top_builddir)/include -I../ -I../../
 AM_CPPFLAGS = -I$(top_builddir)/include -I../ -I../../
 
 dosdir_SOURCES = \
-	../../fdutils/device.cpp \
 	../../fdutils/program.cpp \
 	../../fdutils/console.cpp \
-	../main.c
+	../../fdutils/device.cpp \
+	..//main.c
 
 #if HAVE_LIBTOOL
 #dosdir_LDADD = ../../../lib/unix/libfdtools.la

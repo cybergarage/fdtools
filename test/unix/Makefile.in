@@ -494,30 +494,6 @@ top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
 AM_CPPFLAGS = -I$(top_builddir)/include -I$(top_builddir)/src -I../
 fdtoolstest_SOURCES = \
-<<<<<<< HEAD
-	../logic_test.cpp \
-	../device_test.cpp \
-	../config_test.cpp \
-	../image_hfe_test.cpp \
-	../image_d88_test.cpp \
-	../list_test.cpp \
-	../string_test.cpp \
-	../main.cpp \
-	../sector_test.cpp \
-	../dictionary_test.cpp \
-	../error_test.cpp \
-	../format_x68_test.cpp \
-	../program_test.cpp \
-	../image_plugin_test.cpp \
-	../format_dos_test.cpp \
-	../image_test.cpp \
-	../image_file_test.cpp \
-	../device_floppy_test.cpp \
-	../format_plugin_test.cpp \
-	../device_floppy_params_test.cpp \
-	../format_test.cpp \
-	../image_test_func.cpp
-=======
 	..//device_test.cpp \
 	..//x68_test.cpp \
 	..//config_test.cpp \
@@ -540,7 +516,6 @@ fdtoolstest_SOURCES = \
 	..//device_floppy_params_test.cpp \
 	..//main.cpp \
 	..//error_test.cpp
->>>>>>> 1d6d37e (Remove fdt_x68_floppy_image_from())
 
 
 #if HAVE_LIBTOOL
@@ -589,64 +564,46 @@ clean-checkPROGRAMS:
 ../$(DEPDIR)/$(am__dirstamp):
 	@$(MKDIR_P) ../$(DEPDIR)
 	@: > ../$(DEPDIR)/$(am__dirstamp)
-../logic_test.$(OBJEXT): ../$(am__dirstamp) \
-	../$(DEPDIR)/$(am__dirstamp)
 ../device_test.$(OBJEXT): ../$(am__dirstamp) \
 	../$(DEPDIR)/$(am__dirstamp)
 ../x68_test.$(OBJEXT): ../$(am__dirstamp) ../$(DEPDIR)/$(am__dirstamp)
 ../config_test.$(OBJEXT): ../$(am__dirstamp) \
 	../$(DEPDIR)/$(am__dirstamp)
-<<<<<<< HEAD
-../image_hfe_test.$(OBJEXT): ../$(am__dirstamp) \
-=======
 ../dictionary_test.$(OBJEXT): ../$(am__dirstamp) \
 	../$(DEPDIR)/$(am__dirstamp)
 ../string_test.$(OBJEXT): ../$(am__dirstamp) \
->>>>>>> 1d6d37e (Remove fdt_x68_floppy_image_from())
-	../$(DEPDIR)/$(am__dirstamp)
-../image_d88_test.$(OBJEXT): ../$(am__dirstamp) \
-	../$(DEPDIR)/$(am__dirstamp)
-../list_test.$(OBJEXT): ../$(am__dirstamp) \
-	../$(DEPDIR)/$(am__dirstamp)
-../string_test.$(OBJEXT): ../$(am__dirstamp) \
-	../$(DEPDIR)/$(am__dirstamp)
-../main.$(OBJEXT): ../$(am__dirstamp) ../$(DEPDIR)/$(am__dirstamp)
-../sector_test.$(OBJEXT): ../$(am__dirstamp) \
-	../$(DEPDIR)/$(am__dirstamp)
-../dictionary_test.$(OBJEXT): ../$(am__dirstamp) \
-	../$(DEPDIR)/$(am__dirstamp)
-../error_test.$(OBJEXT): ../$(am__dirstamp) \
-	../$(DEPDIR)/$(am__dirstamp)
-../format_x68_test.$(OBJEXT): ../$(am__dirstamp) \
-	../$(DEPDIR)/$(am__dirstamp)
-<<<<<<< HEAD
-../program_test.$(OBJEXT): ../$(am__dirstamp) \
-=======
-../dos_test.$(OBJEXT): ../$(am__dirstamp) ../$(DEPDIR)/$(am__dirstamp)
-../list_test.$(OBJEXT): ../$(am__dirstamp) \
->>>>>>> 1d6d37e (Remove fdt_x68_floppy_image_from())
 	../$(DEPDIR)/$(am__dirstamp)
 ../image_plugin_test.$(OBJEXT): ../$(am__dirstamp) \
 	../$(DEPDIR)/$(am__dirstamp)
-../format_dos_test.$(OBJEXT): ../$(am__dirstamp) \
-	../$(DEPDIR)/$(am__dirstamp)
-<<<<<<< HEAD
-../image_test.$(OBJEXT): ../$(am__dirstamp) \
-	../$(DEPDIR)/$(am__dirstamp)
-../image_file_test.$(OBJEXT): ../$(am__dirstamp) \
-=======
-../format_test.$(OBJEXT): ../$(am__dirstamp) \
->>>>>>> 1d6d37e (Remove fdt_x68_floppy_image_from())
+../program_test.$(OBJEXT): ../$(am__dirstamp) \
 	../$(DEPDIR)/$(am__dirstamp)
 ../device_floppy_test.$(OBJEXT): ../$(am__dirstamp) \
 	../$(DEPDIR)/$(am__dirstamp)
+../image_file_test.$(OBJEXT): ../$(am__dirstamp) \
+	../$(DEPDIR)/$(am__dirstamp)
 ../format_plugin_test.$(OBJEXT): ../$(am__dirstamp) \
 	../$(DEPDIR)/$(am__dirstamp)
-../device_floppy_params_test.$(OBJEXT): ../$(am__dirstamp) \
+../image_hfe_test.$(OBJEXT): ../$(am__dirstamp) \
+	../$(DEPDIR)/$(am__dirstamp)
+../sector_test.$(OBJEXT): ../$(am__dirstamp) \
+	../$(DEPDIR)/$(am__dirstamp)
+../dos_test.$(OBJEXT): ../$(am__dirstamp) ../$(DEPDIR)/$(am__dirstamp)
+../list_test.$(OBJEXT): ../$(am__dirstamp) \
+	../$(DEPDIR)/$(am__dirstamp)
+../logic_test.$(OBJEXT): ../$(am__dirstamp) \
+	../$(DEPDIR)/$(am__dirstamp)
+../image_test_func.$(OBJEXT): ../$(am__dirstamp) \
 	../$(DEPDIR)/$(am__dirstamp)
 ../format_test.$(OBJEXT): ../$(am__dirstamp) \
 	../$(DEPDIR)/$(am__dirstamp)
-../image_test_func.$(OBJEXT): ../$(am__dirstamp) \
+../image_test.$(OBJEXT): ../$(am__dirstamp) \
+	../$(DEPDIR)/$(am__dirstamp)
+../image_d88_test.$(OBJEXT): ../$(am__dirstamp) \
+	../$(DEPDIR)/$(am__dirstamp)
+../device_floppy_params_test.$(OBJEXT): ../$(am__dirstamp) \
+	../$(DEPDIR)/$(am__dirstamp)
+../main.$(OBJEXT): ../$(am__dirstamp) ../$(DEPDIR)/$(am__dirstamp)
+../error_test.$(OBJEXT): ../$(am__dirstamp) \
 	../$(DEPDIR)/$(am__dirstamp)
 
 fdtoolstest$(EXEEXT): $(fdtoolstest_OBJECTS) $(fdtoolstest_DEPENDENCIES) $(EXTRA_fdtoolstest_DEPENDENCIES) 
@@ -1121,7 +1078,7 @@ uninstall-am:
 
 .PRECIOUS: Makefile
 
-	../image_test.h
+	..//image_test.h
 #endif
 
 # Tell versions [3.59,3.63) of GNU make to not export all variables.

@@ -17,7 +17,7 @@ TESTS = fdtoolstest
 check_PROGRAMS = fdtoolstest
 
 AM_CPPFLAGS = -I$(top_builddir)/include -I$(top_builddir)/src -I../
-	../image_test.h
+	..//image_test.h
 
 fdtoolstest_SOURCES = \
 	..//device_test.cpp \

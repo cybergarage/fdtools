@@ -22,7 +22,6 @@ SUBDIRS = \
     fddiff \
     fddump \
     fdinfo \
-    fdutils \
     x68dsk \
     x68fmt \
     x68info
