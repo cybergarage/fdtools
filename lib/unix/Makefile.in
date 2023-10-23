@@ -147,6 +147,7 @@ am__objects_1 = ../../src/fdtools/util/struct.$(OBJEXT) \
 	../../src/fdtools/util/option.$(OBJEXT) \
 	../../src/fdtools/util/file.$(OBJEXT) \
 	../../src/fdtools/util/list.$(OBJEXT) \
+	../../src/fdtools/util/hexdump_diff.$(OBJEXT) \
 	../../src/fdtools/util/element.$(OBJEXT) \
 	../../src/fdtools/util/argument.$(OBJEXT) \
 	../../src/fdtools/util/hexdump.$(OBJEXT) \
@@ -256,6 +257,7 @@ am__depfiles_remade = ../../src/fdtools/$(DEPDIR)/error.Po \
 	../../src/fdtools/util/$(DEPDIR)/element.Po \
 	../../src/fdtools/util/$(DEPDIR)/file.Po \
 	../../src/fdtools/util/$(DEPDIR)/hexdump.Po \
+	../../src/fdtools/util/$(DEPDIR)/hexdump_diff.Po \
 	../../src/fdtools/util/$(DEPDIR)/list.Po \
 	../../src/fdtools/util/$(DEPDIR)/log.Po \
 	../../src/fdtools/util/$(DEPDIR)/option.Po \
@@ -429,6 +431,7 @@ fdtools_sources = \
 	../../src/fdtools/util/option.cpp \
 	../../src/fdtools/util/file.cpp \
 	../../src/fdtools/util/list.cpp \
+	../../src/fdtools/util/hexdump_diff.cpp \
 	../../src/fdtools/util/element.cpp \
 	../../src/fdtools/util/argument.cpp \
 	../../src/fdtools/util/hexdump.cpp \
@@ -587,6 +590,9 @@ clean-libLIBRARIES:
 	../../src/fdtools/util/$(am__dirstamp) \
 	../../src/fdtools/util/$(DEPDIR)/$(am__dirstamp)
 ../../src/fdtools/util/list.$(OBJEXT):  \
+	../../src/fdtools/util/$(am__dirstamp) \
+	../../src/fdtools/util/$(DEPDIR)/$(am__dirstamp)
+../../src/fdtools/util/hexdump_diff.$(OBJEXT):  \
 	../../src/fdtools/util/$(am__dirstamp) \
 	../../src/fdtools/util/$(DEPDIR)/$(am__dirstamp)
 ../../src/fdtools/util/element.$(OBJEXT):  \
@@ -867,6 +873,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@../../src/fdtools/util/$(DEPDIR)/element.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@../../src/fdtools/util/$(DEPDIR)/file.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@../../src/fdtools/util/$(DEPDIR)/hexdump.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@../../src/fdtools/util/$(DEPDIR)/hexdump_diff.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@../../src/fdtools/util/$(DEPDIR)/list.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@../../src/fdtools/util/$(DEPDIR)/log.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@../../src/fdtools/util/$(DEPDIR)/option.Po@am__quote@ # am--include-marker
@@ -1121,6 +1128,7 @@ distclean: distclean-am
 	-rm -f ../../src/fdtools/util/$(DEPDIR)/element.Po
 	-rm -f ../../src/fdtools/util/$(DEPDIR)/file.Po
 	-rm -f ../../src/fdtools/util/$(DEPDIR)/hexdump.Po
+	-rm -f ../../src/fdtools/util/$(DEPDIR)/hexdump_diff.Po
 	-rm -f ../../src/fdtools/util/$(DEPDIR)/list.Po
 	-rm -f ../../src/fdtools/util/$(DEPDIR)/log.Po
 	-rm -f ../../src/fdtools/util/$(DEPDIR)/option.Po
@@ -1221,6 +1229,7 @@ maintainer-clean: maintainer-clean-am
 	-rm -f ../../src/fdtools/util/$(DEPDIR)/element.Po
 	-rm -f ../../src/fdtools/util/$(DEPDIR)/file.Po
 	-rm -f ../../src/fdtools/util/$(DEPDIR)/hexdump.Po
+	-rm -f ../../src/fdtools/util/$(DEPDIR)/hexdump_diff.Po
 	-rm -f ../../src/fdtools/util/$(DEPDIR)/list.Po
 	-rm -f ../../src/fdtools/util/$(DEPDIR)/log.Po
 	-rm -f ../../src/fdtools/util/$(DEPDIR)/option.Po

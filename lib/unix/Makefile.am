@@ -30,6 +30,7 @@ fdtools_sources = \
 	../../src/fdtools/util/option.cpp \
 	../../src/fdtools/util/file.cpp \
 	../../src/fdtools/util/list.cpp \
+	../../src/fdtools/util/hexdump_diff.cpp \
 	../../src/fdtools/util/element.cpp \
 	../../src/fdtools/util/argument.cpp \
 	../../src/fdtools/util/hexdump.cpp \
