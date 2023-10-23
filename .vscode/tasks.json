@@ -7,8 +7,9 @@
             "command": "./configure --enable-debug --enable-test",
             "group": "build",
             "presentation": {
-                "reveal": "always",
-                "panel": "new"
+                "reveal": "silent",
+                "panel": "shared",
+                "clear": true
             },
             "options": {
                 "cwd": "${workspaceFolder}"
@@ -21,8 +22,9 @@
             "command": "./format",
             "group": "build",
             "presentation": {
-                "reveal": "always",
-                "panel": "new"
+                "reveal": "silent",
+                "panel": "shared",
+                "clear": true
             },
             "options": {
                 "cwd": "${workspaceFolder}"
@@ -37,15 +39,13 @@
                 "isDefault": true
             },
             "presentation": {
-                "reveal": "always",
-                "panel": "new"
+                "reveal": "silent",
+                "panel": "shared",
+                "clear": true
             },
             "options": {
                 "cwd": "${workspaceFolder}"
             },
-            "dependsOn": [
-                "format",
-            ],
             "problemMatcher": []
         },
         {
@@ -57,8 +57,9 @@
                 "isDefault": true
             },
             "presentation": {
-                "reveal": "always",
-                "panel": "new"
+                "reveal": "silent",
+                "panel": "shared",
+                "clear": true
             },
             "options": {
                 "cwd": "${workspaceFolder}"
@@ -77,8 +78,9 @@
                 "isDefault": true
             },
             "presentation": {
-                "reveal": "always",
-                "panel": "new"
+                "reveal": "silent",
+                "panel": "shared",
+                "clear": true
             },
             "options": {
                 "cwd": "${workspaceFolder}/test/unix"
