@@ -16,23 +16,6 @@
             "problemMatcher": []
         },
         {
-            "label": "make",
-            "type": "shell",
-            "command": "make check",
-            "group": {
-                "kind": "build",
-                "isDefault": true
-            },
-            "presentation": {
-                "reveal": "always",
-                "panel": "new"
-            },
-            "options": {
-                "cwd": "${workspaceFolder}"
-            },
-            "problemMatcher": []
-        },
-        {
             "label": "format",
             "type": "shell",
             "command": "./format",
@@ -44,6 +27,66 @@
             "options": {
                 "cwd": "${workspaceFolder}"
             }
+        },
+        {
+            "label": "make",
+            "type": "shell",
+            "command": "make -j 20",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            },
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "dependsOn": [
+                "format",
+            ],
+            "problemMatcher": []
+        },
+        {
+            "label": "make check",
+            "type": "shell",
+            "command": "make check -j 20",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            },
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "dependsOn": [
+                "format",
+            ],
+            "problemMatcher": []
+        },
+        {
+            "label": "make test",
+            "type": "shell",
+            "command": "make fdtoolstest -j 20",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            },
+            "options": {
+                "cwd": "${workspaceFolder}/test/unix"
+            },
+            "dependsOn": [
+                "make",
+            ],
+            "problemMatcher": []
         }
-   ]
+    ]
 }
