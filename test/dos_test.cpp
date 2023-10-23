@@ -13,6 +13,7 @@
 // limitations under the License.
 
 #include <boost/test/unit_test.hpp>
+#include <fdtools/plugins/image.h>
 #include <fdtools/plugins/fmt/dos/fat.h>
 
 const std::string TEST_DOS_BLANK_IMAGE = "./img/35-2hd-msdos.raw";
@@ -38,9 +39,9 @@ BOOST_AUTO_TEST_CASE(DosFormatTest)
   //  BOOST_REQUIRE_MESSAGE(fdt_format_format(fmt, err), fdt_error_getmessage(err));
   //  BOOST_CHECK(fdt_format_delete(fmt));
 
-  //  FdtImage* org_img = fdt_x68_floppy_image_from(TEST_DOS_BLANK_IMAGE.c_str(), err);
-  //  BOOST_REQUIRE_MESSAGE(org_img, fdt_error_getmessage(err));
-  //
+  FdtImage* org_img = fdt_image_from(TEST_DOS_BLANK_IMAGE.c_str(), err);
+  BOOST_REQUIRE_MESSAGE(org_img, fdt_error_getmessage(err));
+
   //  BOOST_REQUIRE_MESSAGE(fdt_image_equals(img, org_img, err), fdt_error_getmessage(err));
 
   BOOST_CHECK(fdt_error_delete(err));

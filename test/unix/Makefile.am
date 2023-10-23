@@ -20,28 +20,28 @@ AM_CPPFLAGS = -I$(top_builddir)/include -I$(top_builddir)/src -I../
 	../image_test.h
 
 fdtoolstest_SOURCES = \
-	../logic_test.cpp \
-	../device_test.cpp \
-	../config_test.cpp \
-	../image_hfe_test.cpp \
-	../image_d88_test.cpp \
-	../list_test.cpp \
-	../string_test.cpp \
-	../main.cpp \
-	../sector_test.cpp \
-	../dictionary_test.cpp \
-	../error_test.cpp \
-	../format_x68_test.cpp \
-	../program_test.cpp \
-	../image_plugin_test.cpp \
-	../format_dos_test.cpp \
-	../image_test.cpp \
-	../image_file_test.cpp \
-	../device_floppy_test.cpp \
-	../format_plugin_test.cpp \
-	../device_floppy_params_test.cpp \
-	../format_test.cpp \
-	../image_test_func.cpp
+	..//device_test.cpp \
+	..//x68_test.cpp \
+	..//config_test.cpp \
+	..//dictionary_test.cpp \
+	..//string_test.cpp \
+	..//image_plugin_test.cpp \
+	..//program_test.cpp \
+	..//device_floppy_test.cpp \
+	..//image_file_test.cpp \
+	..//format_plugin_test.cpp \
+	..//image_hfe_test.cpp \
+	..//sector_test.cpp \
+	..//dos_test.cpp \
+	..//list_test.cpp \
+	..//logic_test.cpp \
+	..//image_test_func.cpp \
+	..//format_test.cpp \
+	..//image_test.cpp \
+	..//image_d88_test.cpp \
+	..//device_floppy_params_test.cpp \
+	..//main.cpp \
+	..//error_test.cpp
 
 #if HAVE_LIBTOOL
 #fdtoolstest_LDADD = ../../lib/unix/libfdtools.la
