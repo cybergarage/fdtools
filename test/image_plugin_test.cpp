@@ -15,7 +15,7 @@
 #include <boost/filesystem.hpp>
 #include <boost/test/unit_test.hpp>
 
-#include "image_test.h"
+#include "helper/image.h"
 
 BOOST_AUTO_TEST_CASE(ImagePluginTest)
 {

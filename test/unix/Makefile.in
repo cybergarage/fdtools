@@ -120,8 +120,8 @@ am_fdtoolstest_OBJECTS = ../device_test.$(OBJEXT) \
 	../format_plugin_test.$(OBJEXT) ../image_hfe_test.$(OBJEXT) \
 	../sector_test.$(OBJEXT) ../dos_test.$(OBJEXT) \
 	../list_test.$(OBJEXT) ../logic_test.$(OBJEXT) \
-	../image_test_func.$(OBJEXT) ../format_test.$(OBJEXT) \
-	../image_test.$(OBJEXT) ../image_d88_test.$(OBJEXT) \
+	../format_test.$(OBJEXT) ../image_test.$(OBJEXT) \
+	..//helper/image.$(OBJEXT) ../image_d88_test.$(OBJEXT) \
 	../device_floppy_params_test.$(OBJEXT) ../main.$(OBJEXT) \
 	../error_test.$(OBJEXT)
 fdtoolstest_OBJECTS = $(am_fdtoolstest_OBJECTS)
@@ -149,10 +149,10 @@ am__depfiles_remade = ../$(DEPDIR)/config_test.Po \
 	../$(DEPDIR)/format_test.Po ../$(DEPDIR)/image_d88_test.Po \
 	../$(DEPDIR)/image_file_test.Po ../$(DEPDIR)/image_hfe_test.Po \
 	../$(DEPDIR)/image_plugin_test.Po ../$(DEPDIR)/image_test.Po \
-	../$(DEPDIR)/image_test_func.Po ../$(DEPDIR)/list_test.Po \
-	../$(DEPDIR)/logic_test.Po ../$(DEPDIR)/main.Po \
-	../$(DEPDIR)/program_test.Po ../$(DEPDIR)/sector_test.Po \
-	../$(DEPDIR)/string_test.Po ../$(DEPDIR)/x68_test.Po
+	../$(DEPDIR)/list_test.Po ../$(DEPDIR)/logic_test.Po \
+	../$(DEPDIR)/main.Po ../$(DEPDIR)/program_test.Po \
+	../$(DEPDIR)/sector_test.Po ../$(DEPDIR)/string_test.Po \
+	../$(DEPDIR)/x68_test.Po ../helper/$(DEPDIR)/image.Po
 am__mv = mv -f
 CXXCOMPILE = $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) \
 	$(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS)
@@ -509,9 +509,9 @@ fdtoolstest_SOURCES = \
 	..//dos_test.cpp \
 	..//list_test.cpp \
 	..//logic_test.cpp \
-	..//image_test_func.cpp \
 	..//format_test.cpp \
 	..//image_test.cpp \
+	..//helper/image.cpp \
 	..//image_d88_test.cpp \
 	..//device_floppy_params_test.cpp \
 	..//main.cpp \
@@ -592,12 +592,18 @@ clean-checkPROGRAMS:
 	../$(DEPDIR)/$(am__dirstamp)
 ../logic_test.$(OBJEXT): ../$(am__dirstamp) \
 	../$(DEPDIR)/$(am__dirstamp)
-../image_test_func.$(OBJEXT): ../$(am__dirstamp) \
-	../$(DEPDIR)/$(am__dirstamp)
 ../format_test.$(OBJEXT): ../$(am__dirstamp) \
 	../$(DEPDIR)/$(am__dirstamp)
 ../image_test.$(OBJEXT): ../$(am__dirstamp) \
 	../$(DEPDIR)/$(am__dirstamp)
+../helper/$(am__dirstamp):
+	@$(MKDIR_P) ..//helper
+	@: > ../helper/$(am__dirstamp)
+../helper/$(DEPDIR)/$(am__dirstamp):
+	@$(MKDIR_P) ..//helper/$(DEPDIR)
+	@: > ../helper/$(DEPDIR)/$(am__dirstamp)
+..//helper/image.$(OBJEXT): ../helper/$(am__dirstamp) \
+	../helper/$(DEPDIR)/$(am__dirstamp)
 ../image_d88_test.$(OBJEXT): ../$(am__dirstamp) \
 	../$(DEPDIR)/$(am__dirstamp)
 ../device_floppy_params_test.$(OBJEXT): ../$(am__dirstamp) \
@@ -613,6 +619,7 @@ fdtoolstest$(EXEEXT): $(fdtoolstest_OBJECTS) $(fdtoolstest_DEPENDENCIES) $(EXTRA
 mostlyclean-compile:
 	-rm -f *.$(OBJEXT)
 	-rm -f ../*.$(OBJEXT)
+	-rm -f ..//helper/*.$(OBJEXT)
 
 distclean-compile:
 	-rm -f *.tab.c
@@ -631,7 +638,6 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@../$(DEPDIR)/image_hfe_test.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@../$(DEPDIR)/image_plugin_test.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@../$(DEPDIR)/image_test.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@../$(DEPDIR)/image_test_func.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@../$(DEPDIR)/list_test.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@../$(DEPDIR)/logic_test.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@../$(DEPDIR)/main.Po@am__quote@ # am--include-marker
@@ -639,6 +645,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@../$(DEPDIR)/sector_test.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@../$(DEPDIR)/string_test.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@../$(DEPDIR)/x68_test.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@../helper/$(DEPDIR)/image.Po@am__quote@ # am--include-marker
 
 $(am__depfiles_remade):
 	@$(MKDIR_P) $(@D)
@@ -946,6 +953,8 @@ distclean-generic:
 	-test . = "$(srcdir)" || test -z "$(CONFIG_CLEAN_VPATH_FILES)" || rm -f $(CONFIG_CLEAN_VPATH_FILES)
 	-rm -f ../$(DEPDIR)/$(am__dirstamp)
 	-rm -f ../$(am__dirstamp)
+	-rm -f ../helper/$(DEPDIR)/$(am__dirstamp)
+	-rm -f ../helper/$(am__dirstamp)
 
 maintainer-clean-generic:
 	@echo "This command is intended for maintainers to use"
@@ -969,7 +978,6 @@ distclean: distclean-am
 	-rm -f ../$(DEPDIR)/image_hfe_test.Po
 	-rm -f ../$(DEPDIR)/image_plugin_test.Po
 	-rm -f ../$(DEPDIR)/image_test.Po
-	-rm -f ../$(DEPDIR)/image_test_func.Po
 	-rm -f ../$(DEPDIR)/list_test.Po
 	-rm -f ../$(DEPDIR)/logic_test.Po
 	-rm -f ../$(DEPDIR)/main.Po
@@ -977,6 +985,7 @@ distclean: distclean-am
 	-rm -f ../$(DEPDIR)/sector_test.Po
 	-rm -f ../$(DEPDIR)/string_test.Po
 	-rm -f ../$(DEPDIR)/x68_test.Po
+	-rm -f ../helper/$(DEPDIR)/image.Po
 	-rm -f Makefile
 distclean-am: clean-am distclean-compile distclean-generic \
 	distclean-tags
@@ -1036,7 +1045,6 @@ maintainer-clean: maintainer-clean-am
 	-rm -f ../$(DEPDIR)/image_hfe_test.Po
 	-rm -f ../$(DEPDIR)/image_plugin_test.Po
 	-rm -f ../$(DEPDIR)/image_test.Po
-	-rm -f ../$(DEPDIR)/image_test_func.Po
 	-rm -f ../$(DEPDIR)/list_test.Po
 	-rm -f ../$(DEPDIR)/logic_test.Po
 	-rm -f ../$(DEPDIR)/main.Po
@@ -1044,6 +1052,7 @@ maintainer-clean: maintainer-clean-am
 	-rm -f ../$(DEPDIR)/sector_test.Po
 	-rm -f ../$(DEPDIR)/string_test.Po
 	-rm -f ../$(DEPDIR)/x68_test.Po
+	-rm -f ../helper/$(DEPDIR)/image.Po
 	-rm -f Makefile
 maintainer-clean-am: distclean-am maintainer-clean-generic
 
@@ -1078,7 +1087,7 @@ uninstall-am:
 
 .PRECIOUS: Makefile
 
-	..//image_test.h
+	..//helper/image.h
 #endif
 
 # Tell versions [3.59,3.63) of GNU make to not export all variables.

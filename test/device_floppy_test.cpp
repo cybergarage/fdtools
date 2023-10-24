@@ -19,7 +19,7 @@
 #include <fdtools/dev/device.h>
 #include <fdtools/dev/image.h>
 
-#include "image_test.h"
+#include "helper/image.h"
 
 const char* TEST_FLOPPY_DEV = "/dev/fd0";
 

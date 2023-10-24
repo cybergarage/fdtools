@@ -17,7 +17,7 @@
 #include <fdtools/img/file.h>
 #include <fdtools/img/image.h>
 
-#include "image_test.h"
+#include "helper/image.h"
 
 void ImageExportCompareTest(FdtImage* img, FDT_IMAGE_IMAGER convert_imager)
 {

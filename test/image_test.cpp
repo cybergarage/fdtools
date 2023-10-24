@@ -17,7 +17,7 @@
 #include <fdtools/img/file.h>
 #include <fdtools/img/image.h>
 
-#include "image_test.h"
+#include "helper/image.h"
 
 BOOST_AUTO_TEST_CASE(ImageConfigTest)
 {

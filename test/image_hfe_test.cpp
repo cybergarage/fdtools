@@ -20,7 +20,7 @@
 #include <fdtools/plugins/img/plugin.h>
 #include <fdtools/util/array.h>
 
-#include "image_test.h"
+#include "helper/image.h"
 
 BOOST_AUTO_TEST_CASE(HfeHeaderSizeTest)
 {

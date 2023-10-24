@@ -17,7 +17,7 @@ TESTS = fdtoolstest
 check_PROGRAMS = fdtoolstest
 
 AM_CPPFLAGS = -I$(top_builddir)/include -I$(top_builddir)/src -I../
-	..//image_test.h
+	..//helper/image.h
 
 fdtoolstest_SOURCES = \
 	..//device_test.cpp \
@@ -35,9 +35,9 @@ fdtoolstest_SOURCES = \
 	..//dos_test.cpp \
 	..//list_test.cpp \
 	..//logic_test.cpp \
-	..//image_test_func.cpp \
 	..//format_test.cpp \
 	..//image_test.cpp \
+	..//helper/image.cpp \
 	..//image_d88_test.cpp \
 	..//device_floppy_params_test.cpp \
 	..//main.cpp \
