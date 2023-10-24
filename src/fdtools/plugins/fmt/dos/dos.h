@@ -22,7 +22,13 @@
 extern "C" {
 #endif
 
+const size_t FDT_DOS_35_FD_CYLINDER = 80;
+const size_t FDT_DOS_35_FD_HEAD = 2;
+const size_t FDT_DOS_35_FD_SECTOR = 18;
+const size_t FDT_DOS_35_FD_SECTOR_SIZE = 512;
+
 FdtFormat* fdt_dos_new(void);
+FdtFormat* fdt_dos_from(FdtImage*, FdtError*);
 
 const char* fdt_dos_gettypeid(FdtFormat*);
 bool fdt_dos_format(FdtFormat*, FdtError*);

@@ -31,6 +31,18 @@ FdtFormat* fdt_dos_new(void)
   return fmt;
 }
 
+FdtFormat* fdt_dos_from(FdtImage* img, FdtError* err)
+{
+  FdtFormat* fmt = fdt_dos_new();
+  if (!fmt) {
+    return NULL;
+  }
+
+  fdt_format_setimage(fmt, img);
+
+  return fmt;
+}
+
 const char* fdt_dos_gettypeid(FdtFormat* fmt)
 {
   return "DOS";
@@ -38,6 +50,16 @@ const char* fdt_dos_gettypeid(FdtFormat* fmt)
 
 bool fdt_dos_format(FdtFormat* fmt, FdtError* err)
 {
+  FdtImage* img = fdt_format_getimage(fmt);
+  if (!img) {
+    return false;
+  }
+
+  fdt_image_sectors_clear(img);
+
+  if (!fdt_image_generatesectors(img, err))
+    return false;
+
   return true;
 }
 
