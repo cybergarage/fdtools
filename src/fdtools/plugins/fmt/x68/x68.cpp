@@ -42,7 +42,7 @@ FdtFormat* fdt_x68_from(FdtImage* img, FdtError* err)
 
   fdt_format_setimage(fmt, img);
 
-  return NULL;
+  return fmt;
 }
 
 const char* fdt_x68_gettypeid(FdtFormat* fmt)
