@@ -298,6 +298,13 @@ bool fdt_image_generatesectors(FdtImage* img, FdtError* err)
         fdt_image_sector_setheadnumber(sector, h);
         fdt_image_sector_setnumber(sector, s);
         fdt_image_sector_setsize(sector, sector_size);
+        byte_t* sector_data = (byte_t*)calloc(sector_size, 1);
+        if (!sector_data) {
+          fdt_error_setmessage(err, "Could not generate sector" FDT_IMAGE_MESSAGE_SECTOR_PRINTF_FORMAT "%ld", c, h, s, sector_size);
+          fdt_image_sector_delete(sector);
+          return false;
+        }
+        fdt_image_sector_setdata(sector, sector_data);
         fdt_image_addsector(img, sector);
 
         total_image_size += sector_size;
