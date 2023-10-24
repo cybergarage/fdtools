@@ -13,13 +13,27 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#include <fdtools/plugins/fmt/dos/dos.h>
 #include <fdtools/plugins/fmt/dos/sector.h>
 
 bool fdt_dos_formatbootsector(FdtFormat* fmt, FdtError* err)
 {
   FdtImage* img = fdt_format_getimage(fmt);
-  if (!img) {
+  if (!img)
+    return false;
+
+  FdtImageSector* boot_sector = fdt_image_getsector(img, 0, 0, 1);
+  if (!boot_sector) {
+    fdt_error_setmessage(err, "boot sector is not found");
     return false;
   }
+
+  if (fdt_image_sector_getsize(boot_sector) < sizeof(FdtFatBpb)) {
+    fdt_error_setmessage(err, "boot sector size is too small");
+    return false;
+  }
+
+  FdtFatBpb* bpb = fdt_fat_bpb_from(fdt_image_sector_getdata(boot_sector));
+
   return true;
 }
