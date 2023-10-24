@@ -4,7 +4,7 @@ var x68_8h =
     [ "fdt_x68_del", "x68_8h.html#abc9368debab321d1b200a769702ea72a", null ],
     [ "fdt_x68_floppy_image_new", "x68_8h.html#a6de2e7a81e703c668edb69002b98d535", null ],
     [ "fdt_x68_format", "x68_8h.html#af8dc651c7f47ff01630107e00771181c", null ],
-    [ "fdt_x68_from", "x68_8h.html#a9410586195d2f9a1ae8b1a578f3bcd1c", null ],
+    [ "fdt_x68_from", "x68_8h.html#aafe1b2cbac1b874895ae9ab5e992c448", null ],
     [ "fdt_x68_gettypeid", "x68_8h.html#ab01781354608dd65c8aa1fffc5ce5b35", null ],
     [ "fdt_x68_image_delete", "x68_8h.html#acfaf54d086d30d908b81a11b70d862c5", null ],
     [ "fdt_x68_image_generate", "x68_8h.html#aac5d9c63bd7652abaa26462f5ba2eab6", null ],
