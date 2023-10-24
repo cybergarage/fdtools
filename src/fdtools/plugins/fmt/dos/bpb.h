@@ -62,20 +62,20 @@ FdtFatBpb* fdt_fat_bpb_from(byte_t*);
 bool fdt_fat_bpb_delete(FdtFatBpb*);
 bool fdt_fat_bpb_loadimagesector(FdtFatBpb*, FdtImageSector*, FdtError*);
 
-#define fdt_fat_bpb_getjumpboot(bpb) ((bpb)->BS_jmpBoot)
-#define fdt_fat_bpb_getoemname(bpb) ((bpb)->BS_OEMName)
-#define fdt_fat_bpb_getbytespersec(bpb) ((bpb)->BPB_BytsPerSec)
-#define fdt_fat_bpb_getsecperclus(bpb) ((bpb)->BPB_SecPerClus[0])
-#define fdt_fat_bpb_getrsvdseccnt(bpb) ((bpb)->BPB_RsvdSecCnt)
-#define fdt_fat_bpb_getnumfats(bpb) ((bpb)->BPB_NumFATs[0])
-#define fdt_fat_bpb_getrootentcnt(bpb) ((bpb)->BPB_RootEntCnt)
-#define fdt_fat_bpb_gettotsec16(bpb) ((bpb)->BPB_TotSec16)
-#define fdt_fat_bpb_getmedia(bpb) ((bpb)->BPB_Media[0])
-#define fdt_fat_bpb_getfatsz16(bpb) ((bpb)->BPB_FATSz16)
-#define fdt_fat_bpb_getsecpertrk(bpb) ((bpb)->BPB_SecPerTrk)
-#define fdt_fat_bpb_getnumheads(bpb) ((bpb)->BPB_NumHeads)
-#define fdt_fat_bpb_gethiddsec(bpb) ((bpb)->BPB_HiddSec)
-#define fdt_fat_bpb_gettotsec32(bpb) ((bpb)->BPB_TotSec32)
+inline byte_t* fdt_fat_bpb_getjumpboot(FdtFatBpb* bpb) { return (bpb)->BS_jmpBoot; }
+inline byte_t* fdt_fat_bpb_getoemname(FdtFatBpb* bpb) { return (bpb)->BS_OEMName; }
+inline byte_t* fdt_fat_bpb_getbytespersec(FdtFatBpb* bpb) { return (bpb)->BPB_BytsPerSec; }
+inline byte_t* fdt_fat_bpb_getsecperclus(FdtFatBpb* bpb) { return (bpb)->BPB_SecPerClus; }
+inline byte_t* fdt_fat_bpb_getrsvdseccnt(FdtFatBpb* bpb) { return (bpb)->BPB_RsvdSecCnt; }
+inline byte_t* fdt_fat_bpb_getnumfats(FdtFatBpb* bpb) { return (bpb)->BPB_NumFATs; }
+inline byte_t* fdt_fat_bpb_getrootentcnt(FdtFatBpb* bpb) { return (bpb)->BPB_RootEntCnt; }
+inline byte_t* fdt_fat_bpb_gettotsec16(FdtFatBpb* bpb) { return (bpb)->BPB_TotSec16; }
+inline byte_t* fdt_fat_bpb_getmedia(FdtFatBpb* bpb) { return (bpb)->BPB_Media; }
+inline byte_t* fdt_fat_bpb_getfatsz16(FdtFatBpb* bpb) { return (bpb)->BPB_FATSz16; }
+inline byte_t* fdt_fat_bpb_getsecpertrk(FdtFatBpb* bpb) { return (bpb)->BPB_SecPerTrk; }
+inline byte_t* fdt_fat_bpb_getnumheads(FdtFatBpb* bpb) { return (bpb)->BPB_NumHeads; }
+inline byte_t* fdt_fat_bpb_gethiddsec(FdtFatBpb* bpb) { return (bpb)->BPB_HiddSec; }
+inline byte_t* fdt_fat_bpb_gettotsec32(FdtFatBpb* bpb) { return (bpb)->BPB_TotSec32; }
 
 #ifdef __cplusplus
 } /* extern C */
