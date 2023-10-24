@@ -155,6 +155,7 @@ am__objects_1 = ../../src/fdtools/util/struct.$(OBJEXT) \
 	../../src/fdtools/error.$(OBJEXT) \
 	../../src/fdtools/plugins/fmt/dos/func.$(OBJEXT) \
 	../../src/fdtools/plugins/fmt/dos/fat.$(OBJEXT) \
+	../../src/fdtools/plugins/fmt/dos/sector.$(OBJEXT) \
 	../../src/fdtools/plugins/fmt/dos/bpb.$(OBJEXT) \
 	../../src/fdtools/plugins/fmt/dos/dos.$(OBJEXT) \
 	../../src/fdtools/plugins/fmt/dos/bpbex.$(OBJEXT) \
@@ -236,6 +237,7 @@ am__depfiles_remade = ../../src/fdtools/$(DEPDIR)/error.Po \
 	../../src/fdtools/plugins/fmt/dos/$(DEPDIR)/dos.Po \
 	../../src/fdtools/plugins/fmt/dos/$(DEPDIR)/fat.Po \
 	../../src/fdtools/plugins/fmt/dos/$(DEPDIR)/func.Po \
+	../../src/fdtools/plugins/fmt/dos/$(DEPDIR)/sector.Po \
 	../../src/fdtools/plugins/fmt/x68/$(DEPDIR)/x68.Po \
 	../../src/fdtools/plugins/fmt/x68/$(DEPDIR)/x68_img.Po \
 	../../src/fdtools/plugins/img/$(DEPDIR)/func.Po \
@@ -439,6 +441,7 @@ fdtools_sources = \
 	../../src/fdtools/error.cpp \
 	../../src/fdtools/plugins/fmt/dos/func.cpp \
 	../../src/fdtools/plugins/fmt/dos/fat.cpp \
+	../../src/fdtools/plugins/fmt/dos/sector.cpp \
 	../../src/fdtools/plugins/fmt/dos/bpb.cpp \
 	../../src/fdtools/plugins/fmt/dos/dos.cpp \
 	../../src/fdtools/plugins/fmt/dos/bpbex.cpp \
@@ -625,6 +628,9 @@ clean-libLIBRARIES:
 	../../src/fdtools/plugins/fmt/dos/$(am__dirstamp) \
 	../../src/fdtools/plugins/fmt/dos/$(DEPDIR)/$(am__dirstamp)
 ../../src/fdtools/plugins/fmt/dos/fat.$(OBJEXT):  \
+	../../src/fdtools/plugins/fmt/dos/$(am__dirstamp) \
+	../../src/fdtools/plugins/fmt/dos/$(DEPDIR)/$(am__dirstamp)
+../../src/fdtools/plugins/fmt/dos/sector.$(OBJEXT):  \
 	../../src/fdtools/plugins/fmt/dos/$(am__dirstamp) \
 	../../src/fdtools/plugins/fmt/dos/$(DEPDIR)/$(am__dirstamp)
 ../../src/fdtools/plugins/fmt/dos/bpb.$(OBJEXT):  \
@@ -852,6 +858,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@../../src/fdtools/plugins/fmt/dos/$(DEPDIR)/dos.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@../../src/fdtools/plugins/fmt/dos/$(DEPDIR)/fat.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@../../src/fdtools/plugins/fmt/dos/$(DEPDIR)/func.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@../../src/fdtools/plugins/fmt/dos/$(DEPDIR)/sector.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@../../src/fdtools/plugins/fmt/x68/$(DEPDIR)/x68.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@../../src/fdtools/plugins/fmt/x68/$(DEPDIR)/x68_img.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@../../src/fdtools/plugins/img/$(DEPDIR)/func.Po@am__quote@ # am--include-marker
@@ -1107,6 +1114,7 @@ distclean: distclean-am
 	-rm -f ../../src/fdtools/plugins/fmt/dos/$(DEPDIR)/dos.Po
 	-rm -f ../../src/fdtools/plugins/fmt/dos/$(DEPDIR)/fat.Po
 	-rm -f ../../src/fdtools/plugins/fmt/dos/$(DEPDIR)/func.Po
+	-rm -f ../../src/fdtools/plugins/fmt/dos/$(DEPDIR)/sector.Po
 	-rm -f ../../src/fdtools/plugins/fmt/x68/$(DEPDIR)/x68.Po
 	-rm -f ../../src/fdtools/plugins/fmt/x68/$(DEPDIR)/x68_img.Po
 	-rm -f ../../src/fdtools/plugins/img/$(DEPDIR)/func.Po
@@ -1208,6 +1216,7 @@ maintainer-clean: maintainer-clean-am
 	-rm -f ../../src/fdtools/plugins/fmt/dos/$(DEPDIR)/dos.Po
 	-rm -f ../../src/fdtools/plugins/fmt/dos/$(DEPDIR)/fat.Po
 	-rm -f ../../src/fdtools/plugins/fmt/dos/$(DEPDIR)/func.Po
+	-rm -f ../../src/fdtools/plugins/fmt/dos/$(DEPDIR)/sector.Po
 	-rm -f ../../src/fdtools/plugins/fmt/x68/$(DEPDIR)/x68.Po
 	-rm -f ../../src/fdtools/plugins/fmt/x68/$(DEPDIR)/x68_img.Po
 	-rm -f ../../src/fdtools/plugins/img/$(DEPDIR)/func.Po

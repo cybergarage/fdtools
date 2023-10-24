@@ -13,6 +13,7 @@
 // limitations under the License.
 
 #include <fdtools/plugins/fmt/dos/dos.h>
+#include <fdtools/plugins/fmt/dos/sector.h>
 
 FdtFormat* fdt_dos_new(void)
 {
@@ -58,6 +59,9 @@ bool fdt_dos_format(FdtFormat* fmt, FdtError* err)
   fdt_image_sectors_clear(img);
 
   if (!fdt_image_generatesectors(img, err))
+    return false;
+
+  if (!fdt_dos_formatbootsector(fmt, err))
     return false;
 
   return true;
