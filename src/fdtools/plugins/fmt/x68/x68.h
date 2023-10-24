@@ -17,7 +17,6 @@
 
 #include <fdtools/fmt/format.h>
 #include <fdtools/img/image.h>
-#include <fdtools/plugins/fmt/dos/bpb.h>
 
 #ifdef __cplusplus
 extern "C" {
