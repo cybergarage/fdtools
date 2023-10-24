@@ -19,7 +19,8 @@
         "initializer_list": "cpp",
         "program.h": "c",
         "chrono": "cpp",
-        "filesystem": "cpp"
+        "filesystem": "cpp",
+        "iosfwd": "cpp"
     },
     "cmake.configureOnOpen": false
 }
