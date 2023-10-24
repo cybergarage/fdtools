@@ -16,7 +16,8 @@
 #include <fdtools/img/image.h>
 #include <fdtools/plugins/fmt/dos/dos.h>
 #include <fdtools/plugins/image.h>
-#include <fdtools/util/hexdump.h>
+
+#include "helper/image.h"
 
 BOOST_AUTO_TEST_CASE(DosFatTest)
 {
@@ -49,28 +50,7 @@ BOOST_AUTO_TEST_CASE(Dos35FormatTest)
 
   BOOST_CHECK_MESSAGE(fdt_image_equals(img, org_img, err), fdt_error_getmessage(err));
 
-  for (FdtImageSector* sector = fdt_image_sectors_gets(org_img->sectors); sector; sector = fdt_image_sector_next(sector)) {
-    size_t t = fdt_image_sector_getcylindernumber(sector);
-    size_t h = fdt_image_sector_getheadnumber(sector);
-    size_t s = fdt_image_sector_getnumber(sector);
-    FdtImageSector* other = fdt_image_sectors_getsector(img->sectors, t, h, s);
-    if (!other) {
-      continue;
-    }
-
-    if (fdt_image_sector_equals(sector, other, err))
-      continue;
-
-    byte_t* sector_l_data = fdt_image_sector_getdata(sector);
-    size_t sector_l_size = fdt_image_sector_getsize(sector);
-
-    byte_t* sector_r_data = fdt_image_sector_getdata(other);
-    size_t sector_r_size = fdt_image_sector_getsize(other);
-
-    fdt_hexdump_compare_print(sector_l_data, sector_l_size, sector_r_data, sector_r_size);
-
-    break;
-  }
+  ImageCompareDump(org_img, img, err);
 
   BOOST_CHECK(fdt_error_delete(err));
   BOOST_CHECK(fdt_image_delete(img));

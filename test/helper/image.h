@@ -22,3 +22,4 @@
 const std::string TEST_IMAGE_DIRECTORY = "./img";
 
 void ImageExportCompareTest(FdtImage*, FDT_IMAGE_IMAGER);
+void ImageCompareDump(FdtImage*, FdtImage*, FdtError*);
