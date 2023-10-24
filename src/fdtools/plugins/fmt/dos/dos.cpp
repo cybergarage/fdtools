@@ -38,7 +38,7 @@ const char* fdt_dos_gettypeid(FdtFormat* fmt)
 
 bool fdt_dos_format(FdtFormat* fmt, FdtError* err)
 {
-  return false;
+  return true;
 }
 
 bool fdt_dos_list(FdtFormat* fmt, FdtFiles* files, FdtError* err)
