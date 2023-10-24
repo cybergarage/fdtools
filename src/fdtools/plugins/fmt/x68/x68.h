@@ -33,7 +33,7 @@ bool fdt_x68_image_delete(FdtImage*);
 bool fdt_x68_image_isfloppy(FdtImage*);
 
 FdtFormat* fdt_x68_new(void);
-FdtFormat* fdt_x68_from(FdtImage*);
+FdtFormat* fdt_x68_from(FdtImage*, FdtError*);
 const char* fdt_x68_gettypeid(FdtFormat*);
 bool fdt_x68_format(FdtFormat*, FdtError*);
 bool fdt_x68_list(FdtFormat*, FdtFiles*, FdtError*);
