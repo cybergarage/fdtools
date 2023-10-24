@@ -77,6 +77,9 @@ inline byte_t* fdt_fat_bpb_getnumheads(FdtFatBpb* bpb) { return (bpb)->BPB_NumHe
 inline byte_t* fdt_fat_bpb_gethiddsec(FdtFatBpb* bpb) { return (bpb)->BPB_HiddSec; }
 inline byte_t* fdt_fat_bpb_gettotsec32(FdtFatBpb* bpb) { return (bpb)->BPB_TotSec32; }
 
+inline void fdt_fat_bpb_setjumpboot(FdtFatBpb* bpb, const byte_t* v) { memcpy((bpb)->BS_jmpBoot, v, sizeof((bpb)->BS_jmpBoot)); }
+inline void fdt_fat_bpb_setoemname(FdtFatBpb* bpb, const byte_t* v) { memcpy((bpb)->BS_OEMName, v, sizeof((bpb)->BS_OEMName)); }
+
 #ifdef __cplusplus
 } /* extern C */
 #endif
