@@ -25,6 +25,11 @@ FdtFatBpb* fdt_fat_bpb_new(void)
   return bpb;
 }
 
+FdtFatBpb* fdt_fat_bpb_from(byte_t* b)
+{
+  return (FdtFatBpb*)b;
+}
+
 bool fdt_fat_bpb_delete(FdtFatBpb* bpb)
 {
   if (!bpb)

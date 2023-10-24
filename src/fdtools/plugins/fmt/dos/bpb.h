@@ -58,6 +58,7 @@ typedef struct FDT_ATTR_PACKED {
 } FdtFatBpb;
 
 FdtFatBpb* fdt_fat_bpb_new(void);
+FdtFatBpb* fdt_fat_bpb_from(byte_t*);
 bool fdt_fat_bpb_delete(FdtFatBpb*);
 bool fdt_fat_bpb_loadimagesector(FdtFatBpb*, FdtImageSector*, FdtError*);
 
