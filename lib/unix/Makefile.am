@@ -28,6 +28,7 @@ fdtools_sources = \
 	../../src/fdtools/util/strings.cpp \
 	../../src/fdtools/util/bytes_le.cpp \
 	../../src/fdtools/util/string.cpp \
+	../../src/fdtools/util/bytes.cpp \
 	../../src/fdtools/util/option.cpp \
 	../../src/fdtools/util/file.cpp \
 	../../src/fdtools/util/list.cpp \
