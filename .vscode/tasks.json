@@ -46,9 +46,6 @@
             "options": {
                 "cwd": "${workspaceFolder}"
             },
-            "dependsOn": [
-                "format",
-            ],
             "problemMatcher": []
         },
         {
