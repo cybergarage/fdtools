@@ -1,10 +1,10 @@
 var NAVTREEINDEX3 =
 {
-"src_2fdtools_2plugins_2fmt_2cpm_2error_8h.html#a8306f3d36bcd8a25c250c32782edebfe":[1,0,1,0,0,0,0,1,0],
-"src_2fdtools_2plugins_2fmt_2dos_2error_8h.html":[1,0,1,0,0,0,1,3],
 "src_2fdtools_2plugins_2fmt_2dos_2error_8h.html#a6fb263d8ff45c54ad21902e6c3c8c8f7":[1,0,1,0,0,0,1,3,0],
 "src_2fdtools_2plugins_2fmt_2dos_2error_8h.html#a9d0bd8d30583a13b167d46ef12a36e7f":[1,0,1,0,0,0,1,3,1],
 "src_2fdtools_2plugins_2fmt_2dos_2error_8h.html#ab51ffb75cd962601d6338e4ae16adcd2":[1,0,1,0,0,0,1,3,2],
+"src_2fdtools_2plugins_2fmt_2dos_2sector_8h.html":[1,0,1,0,0,0,1,5],
+"src_2fdtools_2plugins_2fmt_2dos_2sector_8h.html#ae0c23bfef8c76fc88375441cce48bedc":[1,0,1,0,0,0,1,5,0],
 "string_8h.html":[1,0,0,0,4,8],
 "string_8h.html#a04f6d0eed011202b6cad7e9f03d86ec9":[1,0,0,0,4,8,35],
 "string_8h.html#a065b57e37374fc2c9d5b1d44e98ff975":[1,0,0,0,4,8,51],

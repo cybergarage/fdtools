@@ -41,7 +41,7 @@ var NAVTREE =
         [ "Typedefs", "globals_type.html", null ],
         [ "Enumerations", "globals_enum.html", null ],
         [ "Enumerator", "globals_eval.html", null ],
-        [ "Macros", "globals_defs.html", "globals_defs" ]
+        [ "Macros", "globals_defs.html", null ]
       ] ]
     ] ]
   ] ]
@@ -50,9 +50,9 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"floppy_8h.html#a0b2f0e269dd7aa326869b0933d701a96",
-"img_2image_8h.html#a6c3424d9cead76c6f81cdad4862cc1b2",
-"src_2fdtools_2plugins_2fmt_2cpm_2error_8h.html#a8306f3d36bcd8a25c250c32782edebfe",
+"floppy_8h.html",
+"img_2image_8h.html#a6f36cabbab31429d0c6d859d6bcba1b8",
+"src_2fdtools_2plugins_2fmt_2dos_2error_8h.html#a6fb263d8ff45c54ad21902e6c3c8c8f7",
 "x68_8h.html#ae715f1acb27886608f3e1ef5e6a70ea2"
 ];
 
