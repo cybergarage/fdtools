@@ -17,6 +17,7 @@
 
 #include <fdtools/fmt/format.h>
 #include <fdtools/img/sector.h>
+#include <fdtools/util/bytes.h>
 
 #ifdef __cplusplus
 extern "C" {
@@ -64,7 +65,7 @@ bool fdt_fat_bpb_loadimagesector(FdtFatBpb*, FdtImageSector*, FdtError*);
 
 inline byte_t* fdt_fat_bpb_getjumpboot(FdtFatBpb* bpb) { return (bpb)->BS_jmpBoot; }
 inline byte_t* fdt_fat_bpb_getoemname(FdtFatBpb* bpb) { return (bpb)->BS_OEMName; }
-inline byte_t* fdt_fat_bpb_getbytespersec(FdtFatBpb* bpb) { return (bpb)->BPB_BytsPerSec; }
+inline size_t fdt_fat_bpb_getbytespersec(FdtFatBpb* bpb) { return fdt_ushort_fromlebytes((bpb)->BPB_BytsPerSec); }
 inline byte_t* fdt_fat_bpb_getsecperclus(FdtFatBpb* bpb) { return (bpb)->BPB_SecPerClus; }
 inline byte_t* fdt_fat_bpb_getrsvdseccnt(FdtFatBpb* bpb) { return (bpb)->BPB_RsvdSecCnt; }
 inline byte_t* fdt_fat_bpb_getnumfats(FdtFatBpb* bpb) { return (bpb)->BPB_NumFATs; }
