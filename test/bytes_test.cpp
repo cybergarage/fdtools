@@ -18,22 +18,22 @@
 
 BOOST_AUTO_TEST_CASE(LittleEndianUshortBytes)
 {
-    byte_t bytes[2];
-    unsigned short value = 0x1234;
-    fdt_ushort_setlebytes(value, bytes);
-    BOOST_CHECK_EQUAL(bytes[0], 0x34);
-    BOOST_CHECK_EQUAL(bytes[1], 0x12);
-    BOOST_CHECK_EQUAL(fdt_ushort_fromlebytes(bytes), value);
+  byte_t bytes[2];
+  unsigned short value = 0x1234;
+  fdt_ushort_setlebytes(value, bytes);
+  BOOST_CHECK_EQUAL(bytes[0], 0x34);
+  BOOST_CHECK_EQUAL(bytes[1], 0x12);
+  BOOST_CHECK_EQUAL(fdt_ushort_fromlebytes(bytes), value);
 }
 
 BOOST_AUTO_TEST_CASE(LittleEndianUintBytes)
 {
-    byte_t bytes[4];
-    unsigned int value = 0x12345678;
-    fdt_uint_setlebytes(value, bytes);
-    BOOST_CHECK_EQUAL(bytes[0], 0x78);
-    BOOST_CHECK_EQUAL(bytes[1], 0x56);
-    BOOST_CHECK_EQUAL(bytes[2], 0x34);
-    BOOST_CHECK_EQUAL(bytes[3], 0x12);
-    BOOST_CHECK_EQUAL(fdt_uint_fromlebytes(bytes), value);
+  byte_t bytes[4];
+  unsigned int value = 0x12345678;
+  fdt_uint_setlebytes(value, bytes);
+  BOOST_CHECK_EQUAL(bytes[0], 0x78);
+  BOOST_CHECK_EQUAL(bytes[1], 0x56);
+  BOOST_CHECK_EQUAL(bytes[2], 0x34);
+  BOOST_CHECK_EQUAL(bytes[3], 0x12);
+  BOOST_CHECK_EQUAL(fdt_uint_fromlebytes(bytes), value);
 }
