@@ -40,7 +40,7 @@ bool fdt_dos_formatbootsector(FdtFormat* fmt, FdtError* err)
 
   fdt_fat_bpb_setjumpboot(bpb, FDT_DOS_FAT_BPB_JUMPBOOT);
   fdt_fat_bpb_setoemname(bpb, FDT_DOS_FAT_BPB_OEMNAME);
-  fdt_fat_bpb_setbytespersec(bpb, 512);
+  fdt_fat_bpb_setbytespersec(bpb, fdt_image_getsectorsize(img));
 
   return true;
 }
