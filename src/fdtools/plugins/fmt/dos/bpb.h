@@ -66,21 +66,29 @@ bool fdt_fat_bpb_loadimagesector(FdtFatBpb*, FdtImageSector*, FdtError*);
 inline byte_t* fdt_fat_bpb_getjumpboot(FdtFatBpb* bpb) { return (bpb)->BS_jmpBoot; }
 inline byte_t* fdt_fat_bpb_getoemname(FdtFatBpb* bpb) { return (bpb)->BS_OEMName; }
 inline size_t fdt_fat_bpb_getbytespersec(FdtFatBpb* bpb) { return fdt_ushort_fromlebytes((bpb)->BPB_BytsPerSec); }
-inline byte_t* fdt_fat_bpb_getsecperclus(FdtFatBpb* bpb) { return (bpb)->BPB_SecPerClus; }
-inline byte_t* fdt_fat_bpb_getrsvdseccnt(FdtFatBpb* bpb) { return (bpb)->BPB_RsvdSecCnt; }
-inline byte_t* fdt_fat_bpb_getnumfats(FdtFatBpb* bpb) { return (bpb)->BPB_NumFATs; }
-inline byte_t* fdt_fat_bpb_getrootentcnt(FdtFatBpb* bpb) { return (bpb)->BPB_RootEntCnt; }
-inline byte_t* fdt_fat_bpb_gettotsec16(FdtFatBpb* bpb) { return (bpb)->BPB_TotSec16; }
-inline byte_t* fdt_fat_bpb_getmedia(FdtFatBpb* bpb) { return (bpb)->BPB_Media; }
+inline size_t fdt_fat_bpb_getsecperclus(FdtFatBpb* bpb) { return (bpb)->BPB_SecPerClus[0]; }
+inline size_t fdt_fat_bpb_getrsvdseccnt(FdtFatBpb* bpb) { return fdt_ushort_fromlebytes((bpb)->BPB_RsvdSecCnt); }
+inline size_t fdt_fat_bpb_getnumfats(FdtFatBpb* bpb) { return (bpb)->BPB_NumFATs[0]; }
+inline size_t fdt_fat_bpb_getrootentcnt(FdtFatBpb* bpb) { return fdt_ushort_fromlebytes((bpb)->BPB_RootEntCnt); }
+inline size_t fdt_fat_bpb_gettotsec16(FdtFatBpb* bpb) { return fdt_ushort_fromlebytes((bpb)->BPB_TotSec16); }
+inline byte_t fdt_fat_bpb_getmedia(FdtFatBpb* bpb) { return (bpb)->BPB_Media[0]; }
 inline byte_t* fdt_fat_bpb_getfatsz16(FdtFatBpb* bpb) { return (bpb)->BPB_FATSz16; }
-inline byte_t* fdt_fat_bpb_getsecpertrk(FdtFatBpb* bpb) { return (bpb)->BPB_SecPerTrk; }
-inline byte_t* fdt_fat_bpb_getnumheads(FdtFatBpb* bpb) { return (bpb)->BPB_NumHeads; }
+inline size_t fdt_fat_bpb_getsecpertrk(FdtFatBpb* bpb) { return fdt_ushort_fromlebytes((bpb)->BPB_SecPerTrk); }
+inline size_t fdt_fat_bpb_getnumheads(FdtFatBpb* bpb) { return fdt_ushort_fromlebytes((bpb)->BPB_NumHeads); }
 inline byte_t* fdt_fat_bpb_gethiddsec(FdtFatBpb* bpb) { return (bpb)->BPB_HiddSec; }
 inline byte_t* fdt_fat_bpb_gettotsec32(FdtFatBpb* bpb) { return (bpb)->BPB_TotSec32; }
 
 inline void fdt_fat_bpb_setjumpboot(FdtFatBpb* bpb, const byte_t* v) { memcpy((bpb)->BS_jmpBoot, v, sizeof((bpb)->BS_jmpBoot)); }
 inline void fdt_fat_bpb_setoemname(FdtFatBpb* bpb, const byte_t* v) { memcpy((bpb)->BS_OEMName, v, sizeof((bpb)->BS_OEMName)); }
+inline void fdt_fat_bpb_setsecperclus(FdtFatBpb* bpb, size_t v) { (bpb)->BPB_SecPerClus[0] = v; }
+inline void fdt_fat_bpb_setrsvdseccnt(FdtFatBpb* bpb, size_t v) { fdt_ushort_setlebytes(v, (bpb)->BPB_RsvdSecCnt); }
+inline void fdt_fat_bpb_setnumfats(FdtFatBpb* bpb, size_t v) { (bpb)->BPB_NumFATs[0] = v; }
+inline void fdt_fat_bpb_setrootentcnt(FdtFatBpb* bpb, size_t v) { fdt_ushort_setlebytes(v, (bpb)->BPB_RootEntCnt); }
+inline void fdt_fat_bpb_settotsec16(FdtFatBpb* bpb, size_t v) { fdt_ushort_setlebytes(v, (bpb)->BPB_TotSec16); }
+inline void fdt_fat_bpb_setmedia(FdtFatBpb* bpb, byte_t v) { (bpb)->BPB_Media[0] = v; }
 inline void fdt_fat_bpb_setbytespersec(FdtFatBpb* bpb, size_t v) { fdt_ushort_setlebytes(v, (bpb)->BPB_BytsPerSec); }
+inline void fdt_fat_bpb_setsecpertrk(FdtFatBpb* bpb, size_t v) { fdt_ushort_setlebytes(v, (bpb)->BPB_SecPerTrk); }
+inline void fdt_fat_bpb_setnumheads(FdtFatBpb* bpb, size_t v) { fdt_ushort_setlebytes(v, (bpb)->BPB_NumHeads); }
 
 #ifdef __cplusplus
 } /* extern C */
