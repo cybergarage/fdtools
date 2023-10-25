@@ -22,7 +22,7 @@
 
 #include "helper/image.h"
 
-BOOST_AUTO_TEST_CASE(HfeHeaderSizeTest)
+BOOST_AUTO_TEST_CASE(HfeHeaderSize)
 {
   BOOST_CHECK_EQUAL(sizeof(FdtHfeHeader), HFE_HEADER_SIZE);
 }

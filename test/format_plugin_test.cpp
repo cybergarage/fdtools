@@ -19,7 +19,7 @@
 
 const std::string TEST_FORMAT_IMAGE_DIRECTORY = "./img";
 
-BOOST_AUTO_TEST_CASE(FormatPluginTest)
+BOOST_AUTO_TEST_CASE(FormatPlugin)
 {
   FdtError* err = fdt_error_new();
   BOOST_REQUIRE(err);

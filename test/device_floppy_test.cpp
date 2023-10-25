@@ -23,14 +23,14 @@
 
 const char* TEST_FLOPPY_DEV = "/dev/fd0";
 
-BOOST_AUTO_TEST_CASE(FloppyParamsTest)
+BOOST_AUTO_TEST_CASE(FloppyParams)
 {
   FdtFloppyParams* params = fdt_floppy_params_new();
   BOOST_REQUIRE(params);
   BOOST_CHECK(fdt_floppy_params_delete(params));
 }
 
-BOOST_AUTO_TEST_CASE(FloppyGetParamsTest)
+BOOST_AUTO_TEST_CASE(FloppyGetParams)
 {
   FdtError* err = fdt_error_new();
   BOOST_REQUIRE(err);
@@ -53,7 +53,7 @@ BOOST_AUTO_TEST_CASE(FloppyGetParamsTest)
   BOOST_CHECK(fdt_error_delete(err));
 }
 
-BOOST_AUTO_TEST_CASE(FloppyImportTest)
+BOOST_AUTO_TEST_CASE(FloppyImport)
 {
   FdtError* err = fdt_error_new();
   BOOST_REQUIRE(err);

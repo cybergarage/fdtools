@@ -16,7 +16,7 @@
 
 #include <fdtools/img/config.h>
 
-BOOST_AUTO_TEST_CASE(ConfigCopyTest)
+BOOST_AUTO_TEST_CASE(ConfigCopy)
 {
   FdtError* err = fdt_error_new();
   BOOST_REQUIRE(err);
@@ -52,7 +52,7 @@ void TEST_CHECK_DENSITY_EQUAL(FdtImageConfig* config, int c, int h, int s, int s
   BOOST_CHECK_MESSAGE((fdt_image_config_getsupposeddensity(config) == density), msg);
 }
 
-BOOST_AUTO_TEST_CASE(ConfigSupposedDensityTest)
+BOOST_AUTO_TEST_CASE(ConfigSupposedDensity)
 {
   FdtImageConfig* config = fdt_image_config_new();
   BOOST_REQUIRE(config);

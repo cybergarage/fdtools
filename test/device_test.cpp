@@ -16,7 +16,7 @@
 
 #include <fdtools/dev/device.h>
 
-BOOST_AUTO_TEST_CASE(DeviceReadTest)
+BOOST_AUTO_TEST_CASE(DeviceRead)
 {
   FdtDevice* dev = fdt_device_new();
   BOOST_REQUIRE(dev);

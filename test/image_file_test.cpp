@@ -18,7 +18,7 @@
 
 #include "helper/image.h"
 
-BOOST_AUTO_TEST_CASE(ImageFileTest)
+BOOST_AUTO_TEST_CASE(ImageFile)
 {
   FdtImage* img = fdt_image_file_new();
   BOOST_CHECK(img);

@@ -20,7 +20,7 @@
 
 #include "helper/image.h"
 
-BOOST_AUTO_TEST_CASE(D88HeaderSizeTest)
+BOOST_AUTO_TEST_CASE(D88HeaderSize)
 {
   BOOST_CHECK_EQUAL(sizeof(FdtD88Header), D88_HEADER_SIZE);
 }
@@ -41,7 +41,7 @@ void TEST_CHECK_D88_DISKTYPE_EQUAL(FdtImage* img, int c, int h, int s, int ssize
   BOOST_CHECK_MESSAGE((d88_header.disk_type == d88_disk_type), msg);
 }
 
-BOOST_AUTO_TEST_CASE(D88ConfigTest)
+BOOST_AUTO_TEST_CASE(D88Config)
 {
   FdtImage* img = fdt_image_new();
   BOOST_REQUIRE(img);

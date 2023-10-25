@@ -16,7 +16,7 @@
 
 #include <fdtools/img/sector.h>
 
-BOOST_AUTO_TEST_CASE(SectorCopyTest)
+BOOST_AUTO_TEST_CASE(SectorCopy)
 {
   const int TEST_SECTOR_DATA_SIZE = 16;
   byte_t* TEST_SECTOR_DATA = (byte_t*)calloc(TEST_SECTOR_DATA_SIZE, 1);

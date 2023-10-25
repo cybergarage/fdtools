@@ -18,7 +18,7 @@
 #include <fdtools/util/program.h>
 
 /* NOTE: getopt() can't parse args repeatly
-BOOST_AUTO_TEST_CASE(ProgramParseTest)
+BOOST_AUTO_TEST_CASE(ProgramParse)
 {
   const char* TEST_PRG_ARG1 = "/dev/fd0";
   const char* TEST_PRG_ARG2 = "test.img";

@@ -16,7 +16,7 @@
 
 #include <fdtools/util/dictionary.h>
 
-BOOST_AUTO_TEST_CASE(DictionaryTest)
+BOOST_AUTO_TEST_CASE(Dictionary)
 {
   const int TEST_DICTIONARY_ELEMENT_COUNT = 10;
 

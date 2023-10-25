@@ -16,6 +16,6 @@
 
 #include <fdtools/fmt/format.h>
 
-BOOST_AUTO_TEST_CASE(FormatTest)
+BOOST_AUTO_TEST_CASE(Format)
 {
 }

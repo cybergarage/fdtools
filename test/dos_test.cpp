@@ -19,13 +19,13 @@
 
 #include "helper/image.h"
 
-BOOST_AUTO_TEST_CASE(DosFatTest)
+BOOST_AUTO_TEST_CASE(DosFat)
 {
   BOOST_CHECK_EQUAL(sizeof(FdtFatBpb), 36);
   BOOST_CHECK_EQUAL(sizeof(FdtFatBpbExtended), (512 - sizeof(FdtFatBpb)));
 }
 
-BOOST_AUTO_TEST_CASE(Dos35FormatTest)
+BOOST_AUTO_TEST_CASE(Dos35Format)
 {
   const std::string TEST_DOS_BLANK_IMAGE = "./img/35-2hd-msdos.raw";
 

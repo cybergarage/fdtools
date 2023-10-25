@@ -17,7 +17,7 @@
 #include <fdtools/util/array.h>
 #include <fdtools/util/program.h>
 
-BOOST_AUTO_TEST_CASE(ErrorTest)
+BOOST_AUTO_TEST_CASE(Error)
 {
   FdtError* err = fdt_error_new();
   BOOST_CHECK(err);
@@ -25,7 +25,7 @@ BOOST_AUTO_TEST_CASE(ErrorTest)
   BOOST_CHECK(fdt_error_delete(err));
 }
 
-BOOST_AUTO_TEST_CASE(ErrorNullTest)
+BOOST_AUTO_TEST_CASE(ErrorNull)
 {
   BOOST_CHECK(!fdt_error_setmessage(NULL, ""));
 }

@@ -21,7 +21,7 @@
 
 const std::string TEST_X86_BLANK_IMAGE = "./img/525-2hd-x68.xdf";
 
-BOOST_AUTO_TEST_CASE(X68FormatTest)
+BOOST_AUTO_TEST_CASE(X68Format)
 {
   FdtError* err = fdt_error_new();
 

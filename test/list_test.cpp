@@ -78,7 +78,7 @@ size_t test_list_size(TestList* list)
   return fdt_list_size((FdtList*)list);
 }
 
-BOOST_AUTO_TEST_CASE(ListSortTest)
+BOOST_AUTO_TEST_CASE(ListSort)
 {
   TestList* list = test_list_new();
   BOOST_REQUIRE(list);

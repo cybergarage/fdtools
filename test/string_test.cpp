@@ -17,7 +17,7 @@
 #include <fdtools/util/array.h>
 #include <fdtools/util/string.h>
 
-BOOST_AUTO_TEST_CASE(StringAddValueTest)
+BOOST_AUTO_TEST_CASE(StringAddValue)
 {
   const char TEST_STRINGS[] = "abcdefghijklmnopqrstuvwxyz";
 

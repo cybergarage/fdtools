@@ -19,7 +19,7 @@
 
 #include "helper/image.h"
 
-BOOST_AUTO_TEST_CASE(ImageConfigTest)
+BOOST_AUTO_TEST_CASE(ImageConfig)
 {
   FdtImageConfig* config = fdt_image_config_new();
   BOOST_REQUIRE(config);
@@ -28,7 +28,7 @@ BOOST_AUTO_TEST_CASE(ImageConfigTest)
   BOOST_CHECK(fdt_image_config_delete(config));
 }
 
-BOOST_AUTO_TEST_CASE(ImageGenerateTest)
+BOOST_AUTO_TEST_CASE(ImageGenerate)
 {
   FdtError* err = fdt_error_new();
   BOOST_REQUIRE(err);
@@ -50,7 +50,7 @@ BOOST_AUTO_TEST_CASE(ImageGenerateTest)
   BOOST_CHECK(fdt_error_delete(err));
 }
 
-BOOST_AUTO_TEST_CASE(ImageSortSectorsTest)
+BOOST_AUTO_TEST_CASE(ImageSortSectors)
 {
   FdtImage* img = fdt_image_new();
   BOOST_REQUIRE(img);
@@ -80,7 +80,7 @@ BOOST_AUTO_TEST_CASE(ImageSortSectorsTest)
   BOOST_CHECK(fdt_image_delete(img));
 }
 
-BOOST_AUTO_TEST_CASE(ImageImportTest)
+BOOST_AUTO_TEST_CASE(ImageImport)
 {
   FdtError* err = fdt_error_new();
   BOOST_REQUIRE(err);

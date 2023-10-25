@@ -17,7 +17,7 @@
 
 #include "helper/image.h"
 
-BOOST_AUTO_TEST_CASE(ImagePluginTest)
+BOOST_AUTO_TEST_CASE(ImagePlugin)
 {
   FdtError* err = fdt_error_new();
   FdtStrings* all_target_exts = fdt_strings_new();
