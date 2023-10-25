@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		210D91E02AE8C6CC00E2C004 /* bytes_le.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 210D91DF2AE8C6CC00E2C004 /* bytes_le.cpp */; };
 		211D4845257BB31900895CFE /* program.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 211D4844257BB31900895CFE /* program.cpp */; };
 		211D484E257BD13100895CFE /* option.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 211D484C257BD13100895CFE /* option.cpp */; };
 		211D4852257BD66400895CFE /* argument.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 211D4851257BD66400895CFE /* argument.cpp */; };
@@ -83,6 +84,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		210D91DF2AE8C6CC00E2C004 /* bytes_le.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = bytes_le.cpp; path = ../../../src/fdtools/util/bytes_le.cpp; sourceTree = "<group>"; };
 		211D4844257BB31900895CFE /* program.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = program.cpp; path = ../../../src/fdtools/util/program.cpp; sourceTree = "<group>"; };
 		211D484C257BD13100895CFE /* option.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = option.cpp; path = ../../../src/fdtools/util/option.cpp; sourceTree = "<group>"; };
 		211D4851257BD66400895CFE /* argument.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = argument.cpp; path = ../../../src/fdtools/util/argument.cpp; sourceTree = "<group>"; };
@@ -193,6 +195,7 @@
 		21403C0E255F02B00022389D /* util */ = {
 			isa = PBXGroup;
 			children = (
+				210D91DF2AE8C6CC00E2C004 /* bytes_le.cpp */,
 				211D4851257BD66400895CFE /* argument.cpp */,
 				211D4858257BE46A00895CFE /* arguments.cpp */,
 				21DC201F257B9EEA004F3363 /* dictionary.cpp */,
@@ -490,6 +493,7 @@
 				217BF2352AD5032A003FB649 /* bpb.cpp in Sources */,
 				215C211528D55EA400C21A1F /* cpm.cpp in Sources */,
 				21E15B05256A742700029338 /* list.cpp in Sources */,
+				210D91E02AE8C6CC00E2C004 /* bytes_le.cpp in Sources */,
 				21352E2125768FA7007E05A4 /* hexdump.cpp in Sources */,
 				21B0912125865DB800036CC5 /* device_linux.cpp in Sources */,
 				21BD0E3F28D4D6B300826636 /* raw_loader.cpp in Sources */,

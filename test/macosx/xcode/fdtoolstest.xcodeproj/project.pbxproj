@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2105D6792AE7ED5300DABF34 /* image.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2105D6772AE7ED5300DABF34 /* image.cpp */; };
+		210D91E22AE8C6E700E2C004 /* bytes_test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 210D91E12AE8C6E700E2C004 /* bytes_test.cpp */; };
 		211519B8255DA6DA00B747E1 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 211519B7255DA6DA00B747E1 /* main.cpp */; };
 		211D4842257BB28E00895CFE /* program_test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 211D4841257BB28E00895CFE /* program_test.cpp */; };
 		211E01B72AD5AB6C00DA369B /* dos_test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 211E01B62AD5AB6C00DA369B /* dos_test.cpp */; };
@@ -64,6 +65,7 @@
 /* Begin PBXFileReference section */
 		2105D6772AE7ED5300DABF34 /* image.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = image.cpp; path = ../../helper/image.cpp; sourceTree = "<group>"; };
 		2105D6782AE7ED5300DABF34 /* image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = image.h; path = ../../helper/image.h; sourceTree = "<group>"; };
+		210D91E12AE8C6E700E2C004 /* bytes_test.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = bytes_test.cpp; path = ../../bytes_test.cpp; sourceTree = "<group>"; };
 		211519B7255DA6DA00B747E1 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = ../../main.cpp; sourceTree = "<group>"; };
 		211D4841257BB28E00895CFE /* program_test.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = program_test.cpp; path = ../../program_test.cpp; sourceTree = "<group>"; };
 		211E01B62AD5AB6C00DA369B /* dos_test.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = dos_test.cpp; path = ../../dos_test.cpp; sourceTree = "<group>"; };
@@ -104,6 +106,7 @@
 		2105D6762AE7ED2500DABF34 /* helper */ = {
 			isa = PBXGroup;
 			children = (
+				210D91E12AE8C6E700E2C004 /* bytes_test.cpp */,
 				2105D6772AE7ED5300DABF34 /* image.cpp */,
 				2105D6782AE7ED5300DABF34 /* image.h */,
 			);
@@ -259,6 +262,7 @@
 				215C211728D5684600C21A1F /* format_plugin_test.cpp in Sources */,
 				219F7D522568F68700827D5C /* image_d88_test.cpp in Sources */,
 				21B201852AD8CCDE000D6983 /* x68_test.cpp in Sources */,
+				210D91E22AE8C6E700E2C004 /* bytes_test.cpp in Sources */,
 				219F7D4E255FD26600827D5C /* image_hfe_test.cpp in Sources */,
 				211519B8255DA6DA00B747E1 /* main.cpp in Sources */,
 				21B0911C2585D14C00036CC5 /* string_test.cpp in Sources */,
