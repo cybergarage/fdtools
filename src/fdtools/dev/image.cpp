@@ -209,7 +209,7 @@ bool fdt_device_image_writesector(FdtDeviceImage* img, FdtImageSector* sector, F
   return true;
 }
 
-bool fdt_image_sector_format(FdtImageSector*img, byte_t b, FdtError*err)
+bool fdt_image_sector_format(FdtImageSector* img, byte_t b, FdtError* err)
 {
   if (!img)
     return false;
