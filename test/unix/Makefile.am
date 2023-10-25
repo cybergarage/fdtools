@@ -32,6 +32,7 @@ fdtoolstest_SOURCES = \
 	..//format_plugin_test.cpp \
 	..//image_hfe_test.cpp \
 	..//sector_test.cpp \
+	..//bytes_test.cpp \
 	..//dos_test.cpp \
 	..//list_test.cpp \
 	..//logic_test.cpp \

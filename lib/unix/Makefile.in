@@ -143,6 +143,7 @@ am__objects_1 = ../../src/fdtools/util/struct.$(OBJEXT) \
 	../../src/fdtools/util/string_func.$(OBJEXT) \
 	../../src/fdtools/util/arguments.$(OBJEXT) \
 	../../src/fdtools/util/strings.$(OBJEXT) \
+	../../src/fdtools/util/bytes_le.$(OBJEXT) \
 	../../src/fdtools/util/string.$(OBJEXT) \
 	../../src/fdtools/util/option.$(OBJEXT) \
 	../../src/fdtools/util/file.$(OBJEXT) \
@@ -255,6 +256,7 @@ am__depfiles_remade = ../../src/fdtools/$(DEPDIR)/error.Po \
 	../../src/fdtools/plugins/img/raw/$(DEPDIR)/raw_loader.Po \
 	../../src/fdtools/util/$(DEPDIR)/argument.Po \
 	../../src/fdtools/util/$(DEPDIR)/arguments.Po \
+	../../src/fdtools/util/$(DEPDIR)/bytes_le.Po \
 	../../src/fdtools/util/$(DEPDIR)/dictionary.Po \
 	../../src/fdtools/util/$(DEPDIR)/element.Po \
 	../../src/fdtools/util/$(DEPDIR)/file.Po \
@@ -429,6 +431,7 @@ fdtools_sources = \
 	../../src/fdtools/util/string_func.cpp \
 	../../src/fdtools/util/arguments.cpp \
 	../../src/fdtools/util/strings.cpp \
+	../../src/fdtools/util/bytes_le.cpp \
 	../../src/fdtools/util/string.cpp \
 	../../src/fdtools/util/option.cpp \
 	../../src/fdtools/util/file.cpp \
@@ -581,6 +584,9 @@ clean-libLIBRARIES:
 	../../src/fdtools/util/$(am__dirstamp) \
 	../../src/fdtools/util/$(DEPDIR)/$(am__dirstamp)
 ../../src/fdtools/util/strings.$(OBJEXT):  \
+	../../src/fdtools/util/$(am__dirstamp) \
+	../../src/fdtools/util/$(DEPDIR)/$(am__dirstamp)
+../../src/fdtools/util/bytes_le.$(OBJEXT):  \
 	../../src/fdtools/util/$(am__dirstamp) \
 	../../src/fdtools/util/$(DEPDIR)/$(am__dirstamp)
 ../../src/fdtools/util/string.$(OBJEXT):  \
@@ -876,6 +882,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@../../src/fdtools/plugins/img/raw/$(DEPDIR)/raw_loader.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@../../src/fdtools/util/$(DEPDIR)/argument.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@../../src/fdtools/util/$(DEPDIR)/arguments.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@../../src/fdtools/util/$(DEPDIR)/bytes_le.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@../../src/fdtools/util/$(DEPDIR)/dictionary.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@../../src/fdtools/util/$(DEPDIR)/element.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@../../src/fdtools/util/$(DEPDIR)/file.Po@am__quote@ # am--include-marker
@@ -1132,6 +1139,7 @@ distclean: distclean-am
 	-rm -f ../../src/fdtools/plugins/img/raw/$(DEPDIR)/raw_loader.Po
 	-rm -f ../../src/fdtools/util/$(DEPDIR)/argument.Po
 	-rm -f ../../src/fdtools/util/$(DEPDIR)/arguments.Po
+	-rm -f ../../src/fdtools/util/$(DEPDIR)/bytes_le.Po
 	-rm -f ../../src/fdtools/util/$(DEPDIR)/dictionary.Po
 	-rm -f ../../src/fdtools/util/$(DEPDIR)/element.Po
 	-rm -f ../../src/fdtools/util/$(DEPDIR)/file.Po
@@ -1234,6 +1242,7 @@ maintainer-clean: maintainer-clean-am
 	-rm -f ../../src/fdtools/plugins/img/raw/$(DEPDIR)/raw_loader.Po
 	-rm -f ../../src/fdtools/util/$(DEPDIR)/argument.Po
 	-rm -f ../../src/fdtools/util/$(DEPDIR)/arguments.Po
+	-rm -f ../../src/fdtools/util/$(DEPDIR)/bytes_le.Po
 	-rm -f ../../src/fdtools/util/$(DEPDIR)/dictionary.Po
 	-rm -f ../../src/fdtools/util/$(DEPDIR)/element.Po
 	-rm -f ../../src/fdtools/util/$(DEPDIR)/file.Po
