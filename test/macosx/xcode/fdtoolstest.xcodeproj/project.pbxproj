@@ -106,7 +106,6 @@
 		2105D6762AE7ED2500DABF34 /* helper */ = {
 			isa = PBXGroup;
 			children = (
-				210D91E12AE8C6E700E2C004 /* bytes_test.cpp */,
 				2105D6772AE7ED5300DABF34 /* image.cpp */,
 				2105D6782AE7ED5300DABF34 /* image.h */,
 			);
@@ -118,6 +117,7 @@
 			children = (
 				2105D6762AE7ED2500DABF34 /* helper */,
 				21B201842AD8CCDE000D6983 /* x68_test.cpp */,
+				210D91E12AE8C6E700E2C004 /* bytes_test.cpp */,
 				211E01B62AD5AB6C00DA369B /* dos_test.cpp */,
 				215C211628D5684600C21A1F /* format_plugin_test.cpp */,
 				21ACB8E828C46F3F00DFAEE6 /* format_test.cpp */,
