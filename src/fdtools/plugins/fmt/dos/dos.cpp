@@ -56,10 +56,10 @@ bool fdt_dos_format(FdtFormat* fmt, FdtError* err)
     return false;
   }
 
-  fdt_image_sectors_clear(img);
-
-  if (!fdt_image_generatesectors(img, err))
-    return false;
+  if (fdt_image_getnsectors(img) == 0) {
+    if (!fdt_image_generatesectors(img, err))
+      return false;
+  }
 
   if (!fdt_dos_formatbootsector(fmt, err))
     return false;
