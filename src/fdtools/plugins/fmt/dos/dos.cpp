@@ -61,6 +61,11 @@ bool fdt_dos_format(FdtFormat* fmt, FdtError* err)
       return false;
   }
 
+  for (FdtImageSector* sector = fdt_image_getsectors(img); sector; sector = fdt_image_sector_next(sector)) {
+    if (!fdt_image_sector_format(sector, 0x00, err))
+      return false;
+  }
+
   if (!fdt_dos_formatbootsector(fmt, err))
     return false;
 
