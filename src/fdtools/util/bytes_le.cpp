@@ -14,27 +14,26 @@
 
 #include <fdtools/util/bytes.h>
 
-unsigned short fdt_ushort_fromlebytes(byte_t *bytes)
+unsigned short fdt_ushort_fromlebytes(byte_t* bytes)
 {
-    return (bytes[0] << 0) | (bytes[1] << 8);
+  return (bytes[0] << 0) | (bytes[1] << 8);
 }
 
-void fdt_ushort_setlebytes(unsigned short v, byte_t *bytes)
+void fdt_ushort_setlebytes(unsigned short v, byte_t* bytes)
 {
-    bytes[0] = (v >> 0) & 0xff;
-    bytes[1] = (v >> 8) & 0xff;
+  bytes[0] = (v >> 0) & 0xff;
+  bytes[1] = (v >> 8) & 0xff;
 }
 
-
-unsigned short fdt_uint_fromlebytes(byte_t *bytes) 
+unsigned short fdt_uint_fromlebytes(byte_t* bytes)
 {
-    return (bytes[0] << 0) | (bytes[1] << 8) | (bytes[2] << 16) | (bytes[3] << 24);
+  return (bytes[0] << 0) | (bytes[1] << 8) | (bytes[2] << 16) | (bytes[3] << 24);
 }
 
-void fdt_uint_setlebytes(unsigned short v, byte_t *bytes)
+void fdt_uint_setlebytes(unsigned short v, byte_t* bytes)
 {
-    bytes[0] = (v >> 0) & 0xff;
-    bytes[1] = (v >> 8) & 0xff;
-    bytes[2] = (v >> 16) & 0xff;
-    bytes[3] = (v >> 24) & 0xff;
+  bytes[0] = (v >> 0) & 0xff;
+  bytes[1] = (v >> 8) & 0xff;
+  bytes[2] = (v >> 16) & 0xff;
+  bytes[3] = (v >> 24) & 0xff;
 }

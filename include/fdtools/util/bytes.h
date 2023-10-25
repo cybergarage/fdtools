@@ -15,18 +15,18 @@
 #ifndef _FDTOOLS_UTIL_BYTES_H_
 #define _FDTOOLS_UTIL_BYTES_H_
 
-#include <stdlib.h>
 #include <fdtools/typedef.h>
+#include <stdlib.h>
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-unsigned short fdt_ushort_fromlebytes(byte_t *);
-void fdt_ushort_setlebytes(unsigned short, byte_t *);
+unsigned short fdt_ushort_fromlebytes(byte_t*);
+void fdt_ushort_setlebytes(unsigned short, byte_t*);
 
-unsigned short fdt_uint_fromlebytes(byte_t *);
-void fdt_uint_setlebytes(unsigned short, byte_t *);
+unsigned short fdt_uint_fromlebytes(byte_t*);
+void fdt_uint_setlebytes(unsigned short, byte_t*);
 
 #ifdef __cplusplus
 } /* extern C */
