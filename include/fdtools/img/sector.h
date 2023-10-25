@@ -51,6 +51,7 @@ bool fdt_image_sector_hasdata(FdtImageSector*);
 int fdt_image_sector_compare(FdtImageSector*, FdtImageSector*);
 bool fdt_image_sector_equals(FdtImageSector*, FdtImageSector*, FdtError*);
 FdtImageSector* fdt_image_sector_copy(FdtImageSector* sector);
+bool fdt_image_sector_format(FdtImageSector*, byte_t, FdtError*);
 
 inline FdtImageSector* fdt_image_sector_next(FdtImageSector* sector) { return (FdtImageSector*)fdt_list_next((FdtListNode*)sector); }
 
@@ -87,7 +88,7 @@ byte_t* fdt_image_sectors_gettrackbytes(FdtImageSectors*, FdtCylinderNumber, Fdt
 FdtImageSector* fdt_image_sectors_geterrorsector(FdtImageSectors*);
 int fdt_image_sectors_getnerrorsectors(FdtImageSectors*);
 
-FdtImageSectors* fdt_image_sectors_copy(FdtImageSectors* sectors, FdtError* err);
+FdtImageSectors* fdt_image_sectors_copy(FdtImageSectors*, FdtError*);
 bool fdt_image_sectors_issorted(FdtImageSectors*);
 bool fdt_image_sectors_sort(FdtImageSectors*);
 bool fdt_image_sectors_equals(FdtImageSectors*, FdtImageSectors*, FdtError*);

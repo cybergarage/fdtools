@@ -208,3 +208,20 @@ bool fdt_device_image_writesector(FdtDeviceImage* img, FdtImageSector* sector, F
 
   return true;
 }
+
+bool fdt_image_sector_format(FdtImageSector*img, byte_t b, FdtError*err)
+{
+  if (!img)
+    return false;
+
+  size_t sector_size = fdt_image_sector_getsize(img);
+  byte_t* sector_data = fdt_image_sector_getdata(img);
+  if ((sector_size <= 0) || !sector_data) {
+    fdt_error_setmessage(err, "Bad sector " FDT_IMAGE_MESSAGE_SECTOR_SIZE_PRINTF_FORMAT, fdt_image_sector_getcylindernumber(img), fdt_image_sector_getheadnumber(img), fdt_image_sector_getnumber(img), fdt_image_sector_getsize(img));
+    return false;
+  }
+
+  memset(sector_data, b, sector_size);
+
+  return true;
+}
