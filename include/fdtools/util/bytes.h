@@ -22,11 +22,11 @@
 extern "C" {
 #endif
 
-unsigned short fdt_ushort_fromlebytes(byte_t*);
-void fdt_ushort_setlebytes(unsigned short, byte_t*);
+unsigned short fdt_ushort_fromlebytes(byte_t bytes[2]);
+void fdt_ushort_setlebytes(unsigned short v, byte_t bytes[2]);
 
-unsigned short fdt_uint_fromlebytes(byte_t*);
-void fdt_uint_setlebytes(unsigned short, byte_t*);
+unsigned short fdt_uint_fromlebytes(byte_t bytes[4]);
+void fdt_uint_setlebytes(unsigned short v, byte_t bytes[4]);
 
 #ifdef __cplusplus
 } /* extern C */
