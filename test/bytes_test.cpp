@@ -16,6 +16,15 @@
 
 #include <fdtools/util/bytes.h>
 
+BOOST_AUTO_TEST_CASE(Bytes)
+{
+  byte_t bytes[1];
+  byte_t value = 0x12;
+  fdt_byte_setbytes(value, bytes);
+  BOOST_CHECK_EQUAL(bytes[0], value);
+  BOOST_CHECK_EQUAL(fdt_byte_fromlebytes(bytes), value);
+}
+
 BOOST_AUTO_TEST_CASE(LittleEndianUshortBytes)
 {
   byte_t bytes[2];
