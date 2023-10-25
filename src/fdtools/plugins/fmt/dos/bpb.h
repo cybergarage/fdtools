@@ -80,6 +80,7 @@ inline byte_t* fdt_fat_bpb_gettotsec32(FdtFatBpb* bpb) { return (bpb)->BPB_TotSe
 
 inline void fdt_fat_bpb_setjumpboot(FdtFatBpb* bpb, const byte_t* v) { memcpy((bpb)->BS_jmpBoot, v, sizeof((bpb)->BS_jmpBoot)); }
 inline void fdt_fat_bpb_setoemname(FdtFatBpb* bpb, const byte_t* v) { memcpy((bpb)->BS_OEMName, v, sizeof((bpb)->BS_OEMName)); }
+inline void fdt_fat_bpb_setbytespersec(FdtFatBpb* bpb, size_t v) { fdt_ushort_setlebytes(v, (bpb)->BPB_BytsPerSec); }
 
 #ifdef __cplusplus
 } /* extern C */
