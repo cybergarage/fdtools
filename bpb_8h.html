@@ -68,6 +68,7 @@ $(document).ready(function(){initNavTree('bpb_8h.html',''); initResizable(); });
 <div class="contents">
 <div class="textblock"><code>#include &lt;<a class="el" href="fmt_2format_8h.html">fdtools/fmt/format.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="include_2fdtools_2img_2sector_8h.html">fdtools/img/sector.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="bytes_8h.html">fdtools/util/bytes.h</a>&gt;</code><br />
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Data Structures</h2></td></tr>
@@ -93,8 +94,8 @@ Functions</h2></td></tr>
 <tr class="separator:a2e048cc4dc66d1ba9ef7da1be7a05d8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab803506cc302884961b20867b2bfd86b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="typedef_8h.html#a0661d7d1353e0bca70c64563f635b034">byte_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bpb_8h.html#ab803506cc302884961b20867b2bfd86b">fdt_fat_bpb_getoemname</a> (<a class="el" href="bpb_8h.html#ac2a30588e8101c5a3fac08cbb4d1cb23">FdtFatBpb</a> *bpb)</td></tr>
 <tr class="separator:ab803506cc302884961b20867b2bfd86b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a864a8b30894c039aececf6430f9cadb5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="typedef_8h.html#a0661d7d1353e0bca70c64563f635b034">byte_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bpb_8h.html#a864a8b30894c039aececf6430f9cadb5">fdt_fat_bpb_getbytespersec</a> (<a class="el" href="bpb_8h.html#ac2a30588e8101c5a3fac08cbb4d1cb23">FdtFatBpb</a> *bpb)</td></tr>
-<tr class="separator:a864a8b30894c039aececf6430f9cadb5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acce4b8caaec4e30efb42862990edc724"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bpb_8h.html#acce4b8caaec4e30efb42862990edc724">fdt_fat_bpb_getbytespersec</a> (<a class="el" href="bpb_8h.html#ac2a30588e8101c5a3fac08cbb4d1cb23">FdtFatBpb</a> *bpb)</td></tr>
+<tr class="separator:acce4b8caaec4e30efb42862990edc724"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2aabd3e638be8f840fec4f04308aba80"><td class="memItemLeft" align="right" valign="top"><a class="el" href="typedef_8h.html#a0661d7d1353e0bca70c64563f635b034">byte_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bpb_8h.html#a2aabd3e638be8f840fec4f04308aba80">fdt_fat_bpb_getsecperclus</a> (<a class="el" href="bpb_8h.html#ac2a30588e8101c5a3fac08cbb4d1cb23">FdtFatBpb</a> *bpb)</td></tr>
 <tr class="separator:a2aabd3e638be8f840fec4f04308aba80"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a448d2666345c788013ab1c4f51cb18f1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="typedef_8h.html#a0661d7d1353e0bca70c64563f635b034">byte_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bpb_8h.html#a448d2666345c788013ab1c4f51cb18f1">fdt_fat_bpb_getrsvdseccnt</a> (<a class="el" href="bpb_8h.html#ac2a30588e8101c5a3fac08cbb4d1cb23">FdtFatBpb</a> *bpb)</td></tr>
@@ -121,6 +122,8 @@ Functions</h2></td></tr>
 <tr class="separator:a410446a555829c7a7e2fede70b882569"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1684b837dea6975a1bcfaa1c49f73ee8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bpb_8h.html#a1684b837dea6975a1bcfaa1c49f73ee8">fdt_fat_bpb_setoemname</a> (<a class="el" href="bpb_8h.html#ac2a30588e8101c5a3fac08cbb4d1cb23">FdtFatBpb</a> *bpb, const <a class="el" href="typedef_8h.html#a0661d7d1353e0bca70c64563f635b034">byte_t</a> *v)</td></tr>
 <tr class="separator:a1684b837dea6975a1bcfaa1c49f73ee8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aafe68da7b9ed19f2228c3d832a9f9294"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bpb_8h.html#aafe68da7b9ed19f2228c3d832a9f9294">fdt_fat_bpb_setbytespersec</a> (<a class="el" href="bpb_8h.html#ac2a30588e8101c5a3fac08cbb4d1cb23">FdtFatBpb</a> *bpb, size_t v)</td></tr>
+<tr class="separator:aafe68da7b9ed19f2228c3d832a9f9294"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Typedef Documentation</h2>
 <a id="ac2a30588e8101c5a3fac08cbb4d1cb23" name="ac2a30588e8101c5a3fac08cbb4d1cb23"></a>
@@ -174,8 +177,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a864a8b30894c039aececf6430f9cadb5" name="a864a8b30894c039aececf6430f9cadb5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a864a8b30894c039aececf6430f9cadb5">&#9670;&nbsp;</a></span>fdt_fat_bpb_getbytespersec()</h2>
+<a id="acce4b8caaec4e30efb42862990edc724" name="acce4b8caaec4e30efb42862990edc724"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acce4b8caaec4e30efb42862990edc724">&#9670;&nbsp;</a></span>fdt_fat_bpb_getbytespersec()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -184,7 +187,7 @@ Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="typedef_8h.html#a0661d7d1353e0bca70c64563f635b034">byte_t</a> * fdt_fat_bpb_getbytespersec </td>
+          <td class="memname">size_t fdt_fat_bpb_getbytespersec </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="bpb_8h.html#ac2a30588e8101c5a3fac08cbb4d1cb23">FdtFatBpb</a> *&#160;</td>
           <td class="paramname"><em>bpb</em></td><td>)</td>
@@ -586,6 +589,42 @@ Functions</h2></td></tr>
           <td></td>
         </tr>
       </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aafe68da7b9ed19f2228c3d832a9f9294" name="aafe68da7b9ed19f2228c3d832a9f9294"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aafe68da7b9ed19f2228c3d832a9f9294">&#9670;&nbsp;</a></span>fdt_fat_bpb_setbytespersec()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void fdt_fat_bpb_setbytespersec </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="bpb_8h.html#ac2a30588e8101c5a3fac08cbb4d1cb23">FdtFatBpb</a> *&#160;</td>
+          <td class="paramname"><em>bpb</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>v</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 </div>

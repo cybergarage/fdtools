@@ -4,7 +4,7 @@ var bpb_8h =
     [ "FdtFatBpb", "bpb_8h.html#ac2a30588e8101c5a3fac08cbb4d1cb23", null ],
     [ "fdt_fat_bpb_delete", "bpb_8h.html#abfd31cea2097cf953abd1a327186b276", null ],
     [ "fdt_fat_bpb_from", "bpb_8h.html#acc71898950a9400ab1aadd6da5065b2c", null ],
-    [ "fdt_fat_bpb_getbytespersec", "bpb_8h.html#a864a8b30894c039aececf6430f9cadb5", null ],
+    [ "fdt_fat_bpb_getbytespersec", "bpb_8h.html#acce4b8caaec4e30efb42862990edc724", null ],
     [ "fdt_fat_bpb_getfatsz16", "bpb_8h.html#a99dab24398c19f31fa5556642ca2a1aa", null ],
     [ "fdt_fat_bpb_gethiddsec", "bpb_8h.html#a2b689fe743e6652fd3e621b7a50b7f7e", null ],
     [ "fdt_fat_bpb_getjumpboot", "bpb_8h.html#a2e048cc4dc66d1ba9ef7da1be7a05d8c", null ],
@@ -20,6 +20,7 @@ var bpb_8h =
     [ "fdt_fat_bpb_gettotsec32", "bpb_8h.html#afd592d383715f1187619a4d8d0044844", null ],
     [ "fdt_fat_bpb_loadimagesector", "bpb_8h.html#a70c76564fa05de983ee40083c492f9e5", null ],
     [ "fdt_fat_bpb_new", "bpb_8h.html#acab60488acdaa281a493ea30a90d2d84", null ],
+    [ "fdt_fat_bpb_setbytespersec", "bpb_8h.html#aafe68da7b9ed19f2228c3d832a9f9294", null ],
     [ "fdt_fat_bpb_setjumpboot", "bpb_8h.html#a410446a555829c7a7e2fede70b882569", null ],
     [ "fdt_fat_bpb_setoemname", "bpb_8h.html#a1684b837dea6975a1bcfaa1c49f73ee8", null ]
 ];
