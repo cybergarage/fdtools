@@ -12,27 +12,14 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef _FDTOOLS_UTIL_BYTES_H_
-#define _FDTOOLS_UTIL_BYTES_H_
+#include <fdtools/util/bytes.h>
 
-#include <fdtools/typedef.h>
-#include <stdlib.h>
+byte_t fdt_byte_fromlebytes(byte_t bytes[1])
+{
+  return bytes[0];
+}
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-byte_t fdt_byte_fromlebytes(byte_t bytes[1]);
-void fdt_byte_setbytes(byte_t v, byte_t bytes[1]);
-
-unsigned short fdt_ushort_fromlebytes(byte_t bytes[2]);
-void fdt_ushort_setlebytes(unsigned short v, byte_t bytes[2]);
-
-unsigned short fdt_uint_fromlebytes(byte_t bytes[4]);
-void fdt_uint_setlebytes(unsigned short v, byte_t bytes[4]);
-
-#ifdef __cplusplus
-} /* extern C */
-#endif
-
-#endif /* _FDTOOLS_UTIL_BYTES_H_ */
+void fdt_byte_setbytes(byte_t v, byte_t bytes[1])
+{
+  bytes[0] = v;
+}
