@@ -193,6 +193,8 @@ size_t fdt_floppy_params_gettrackcapacity(FdtFloppyParams* params)
     return FDT_FLOPPY_TRACK_CAPACITY_12500;
   case FDT_FLOPPY_DRIVE_35_ED:
     return FDT_FLOPPY_TRACK_CAPACITY_25000;
+  case FDT_FLOPPY_DENSITY_UNKNOWN:
+    return 0;
   }
 
   return 0;
