@@ -21,6 +21,7 @@ var bpb_8h =
     [ "fdt_fat_bpb_loadimagesector", "bpb_8h.html#a70c76564fa05de983ee40083c492f9e5", null ],
     [ "fdt_fat_bpb_new", "bpb_8h.html#acab60488acdaa281a493ea30a90d2d84", null ],
     [ "fdt_fat_bpb_setbytespersec", "bpb_8h.html#aafe68da7b9ed19f2228c3d832a9f9294", null ],
+    [ "fdt_fat_bpb_setfatsz16", "bpb_8h.html#ac28fb386e653b9ccac25ef4dab5aa3d3", null ],
     [ "fdt_fat_bpb_setjumpboot", "bpb_8h.html#a410446a555829c7a7e2fede70b882569", null ],
     [ "fdt_fat_bpb_setmedia", "bpb_8h.html#a8655425d5260295a25567cb32e39f285", null ],
     [ "fdt_fat_bpb_setnumfats", "bpb_8h.html#a0287d3385b3807b9e2345e28c4afbce2", null ],
