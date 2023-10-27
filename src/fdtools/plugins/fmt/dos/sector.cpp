@@ -45,7 +45,7 @@ bool fdt_dos_formatbootsector(FdtFormat* fmt, FdtError* err)
   fdt_fat_bpb_setnumfats(bpb, 2);
   fdt_fat_bpb_setrootentcnt(bpb, 224);
   fdt_fat_bpb_setmedia(bpb, 0xF0);
-  size_t n = fdt_image_getnsectors(img);
+  fdt_fat_bpb_setfatsz16(bpb, 9);
   fdt_fat_bpb_settotsec16(bpb, fdt_image_getnsectors(img));
   fdt_fat_bpb_setbytespersec(bpb, fdt_image_getsectorsize(img));
   fdt_fat_bpb_setsecpertrk(bpb, fdt_image_getnumberofsector(img));
