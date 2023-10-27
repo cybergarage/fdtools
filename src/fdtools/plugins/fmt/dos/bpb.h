@@ -86,6 +86,7 @@ inline void fdt_fat_bpb_setnumfats(FdtFatBpb* bpb, size_t v) { (bpb)->BPB_NumFAT
 inline void fdt_fat_bpb_setrootentcnt(FdtFatBpb* bpb, size_t v) { fdt_ushort_setlebytes(v, (bpb)->BPB_RootEntCnt); }
 inline void fdt_fat_bpb_settotsec16(FdtFatBpb* bpb, size_t v) { fdt_ushort_setlebytes(v, (bpb)->BPB_TotSec16); }
 inline void fdt_fat_bpb_setmedia(FdtFatBpb* bpb, byte_t v) { (bpb)->BPB_Media[0] = v; }
+inline void fdt_fat_bpb_setfatsz16(FdtFatBpb* bpb, size_t v) { fdt_ushort_setlebytes(v, (bpb)->BPB_FATSz16); }
 inline void fdt_fat_bpb_setbytespersec(FdtFatBpb* bpb, size_t v) { fdt_ushort_setlebytes(v, (bpb)->BPB_BytsPerSec); }
 inline void fdt_fat_bpb_setsecpertrk(FdtFatBpb* bpb, size_t v) { fdt_ushort_setlebytes(v, (bpb)->BPB_SecPerTrk); }
 inline void fdt_fat_bpb_setnumheads(FdtFatBpb* bpb, size_t v) { fdt_ushort_setlebytes(v, (bpb)->BPB_NumHeads); }
