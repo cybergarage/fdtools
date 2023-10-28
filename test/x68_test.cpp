@@ -19,7 +19,8 @@
 
 #include "helper/image.h"
 
-const std::string TEST_X86_BLANK_IMAGE = "./img/525-2hd-x68.xdf";
+// const std::string TEST_X86_BLANK_IMAGE = "./img/x68/x68-525-2hd.xdf";
+const std::string TEST_X86_BLANK_IMAGE = "./img/x68/HUMAN302.XDF";
 
 BOOST_AUTO_TEST_CASE(X68Format)
 {
@@ -37,7 +38,7 @@ BOOST_AUTO_TEST_CASE(X68Format)
   BOOST_CHECK(fdt_format_delete(fmt));
 
   FdtImage* org_img = fdt_image_from(TEST_X86_BLANK_IMAGE.c_str(), err);
-  BOOST_REQUIRE_MESSAGE(org_img, fdt_error_getmessage(err));
+  BOOST_CHECK_MESSAGE(org_img, fdt_error_getmessage(err));
 
   BOOST_CHECK_MESSAGE(fdt_image_equals(img, org_img, err), fdt_error_getmessage(err));
 

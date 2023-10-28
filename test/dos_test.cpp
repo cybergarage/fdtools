@@ -27,7 +27,7 @@ BOOST_AUTO_TEST_CASE(DosFat)
 
 BOOST_AUTO_TEST_CASE(Dos35Format)
 {
-  const std::string TEST_DOS_BLANK_IMAGE = "./img/35-2hd-msdos.raw";
+  const std::string TEST_DOS_BLANK_IMAGE = "./img/dos/msdos-35-2hd-ubuntu.img";
 
   FdtError* err = fdt_error_new();
 
